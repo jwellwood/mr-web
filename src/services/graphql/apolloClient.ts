@@ -1,0 +1,34 @@
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+// @ts-expect-error types dont work for this lib
+import createUploadLink from "apollo-upload-client/createUploadLink";
+
+export const apolloClient = new ApolloClient({
+    uri: '/graphql',
+    credentials: 'include',
+    cache: new InMemoryCache({
+        typePolicies: {
+            Query: {
+                fields: {
+                    matchesBySeason: {
+                        // Don't cache separate results based on
+                        // any of this field's arguments.
+                        keyArgs: ['seasonId', 'teamId'],
+                        // Concatenate the incoming list items with
+                        // the existing list items.
+                        merge(existing, incoming, { args }) {
+                            // Slicing is necessary because the existing data is
+                            //  immutable and frozen in development.
+                            const merged = existing ? existing.slice(0) : [];
+                            for (let i = 0; i < incoming.length; ++i) {
+                                merged[(args?.offset || 0) + i] = incoming[i];
+                            }
+                            return merged;
+                        },
+                    },
+                },
+            },
+        },
+    }),
+
+    link: createUploadLink(),
+});
