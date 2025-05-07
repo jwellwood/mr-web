@@ -3,10 +3,10 @@ import { Control, Controller } from 'react-hook-form';
 import CustomSwitch from './CustomSwitch';
 
 type Props = {
-  control: Control<any>;
+  control: Control<Record<string, unknown>>;
   name: string;
   label?: string | ReactElement;
-  placement?: string;
+  placement?: "top" | "end" | "start" | "bottom";
   disabled?: boolean;
 };
 
@@ -27,7 +27,7 @@ const ControlledSwitchInput: React.FC<Props> = ({
             name={name}
             label={label}
             placement={placement}
-            checked={value}
+            checked={value as boolean}
             onCheck={(e) => onChange(e.target.checked)}
             disabled={disabled}
           />

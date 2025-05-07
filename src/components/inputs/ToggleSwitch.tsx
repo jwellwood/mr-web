@@ -8,7 +8,7 @@ interface Props {
   onChange: () => void;
   checked: boolean;
   label: string | ReactNode;
-  color?: any;
+  color?: "primary" | "secondary" | "success" | "error" | "info" | "warning";
 }
 
 const ToggleSwitch: React.FC<Props> = ({

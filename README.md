@@ -2,6 +2,54 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Testing with Jest
+
+This project uses Jest with TypeScript for testing. The following features are set up:
+
+- TypeScript support with ts-jest
+- React Testing Library for component testing
+- Jest DOM for DOM testing utilities
+- Automatic mocking of the IntersectionObserver API
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Generate test coverage report
+npm run test:coverage
+```
+
+### Writing Tests
+
+Tests should be placed in `__tests__` directories or named with `.test.ts` or `.spec.ts` extensions. For React components, use `.test.tsx` or `.spec.tsx`.
+
+Example test for a React component:
+
+```tsx
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import TestWrapper from '../TestWrapper';
+
+describe('TestWrapper', () => {
+  it('renders children correctly', () => {
+    render(
+      <TestWrapper>
+        <div data-testid="test-child">Test Child</div>
+      </TestWrapper>
+    );
+
+    const childElement = screen.getByTestId('test-child');
+    expect(childElement).toBeInTheDocument();
+    expect(childElement).toHaveTextContent('Test Child');
+  });
+});
+```
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh

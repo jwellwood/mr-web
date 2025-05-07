@@ -1,12 +1,13 @@
 import React from 'react';
 import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
 import { CustomTypography } from '../typography';
-import { theme } from 'theme';
+import { theme } from '../../theme';
 
 interface Data {
   apps: string;
   goals: number;
   assists: number;
+  position: string;
 }
 
 interface Props {
@@ -14,7 +15,11 @@ interface Props {
     event: React.MouseEvent<unknown>,
     property: keyof Data
   ) => void;
-  columns: any[];
+  columns: {
+    id: keyof Data,
+    label: string,
+    width: string
+  }[];
   sortBy?: string;
   isSortable: boolean;
 }

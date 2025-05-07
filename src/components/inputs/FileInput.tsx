@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import TextField from '@mui/material/TextField';
 import FormErrorMessage from '../alerts/FormErrorMessage';
 
 interface Props {
   inputName: string;
-  defaultValue?: any; //TODO
-  onChange: (e) => void;
-  errors?: any; //TODO
+  defaultValue?: string; //TODO
+  onChange: (e: ChangeEvent) => void;
+  errors?: { type: string }[]; //TODO
 }
 
 const FileInput: React.FC<Props> = ({
@@ -28,7 +28,7 @@ const FileInput: React.FC<Props> = ({
         fullWidth
       />
 
-      {errors ? <FormErrorMessage error={errors} /> : null}
+      {errors ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };

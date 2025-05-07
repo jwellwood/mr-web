@@ -1,9 +1,9 @@
-import { ISelectOptions } from 'components/inputs/SelectInput';
+import {ISelectOptions} from "../../components/inputs/SelectInput.tsx";
 
-export const getIntegers: Function = (
+export function getIntegers (
   max: number = 99,
   min: number = 0
-): ISelectOptions[] => {
+): ISelectOptions[] {
   if (typeof max !== 'number') max = +max;
   if (typeof min !== 'number') min = +min;
   const integers = [];

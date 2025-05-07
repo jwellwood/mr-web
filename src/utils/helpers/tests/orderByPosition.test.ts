@@ -58,7 +58,7 @@ describe('order by position tests', () => {
   });
 
   test('should return an empty array if input is empty', () => {
-    const data: any[] = [];
+    const data: never[] = [];
 
     const result = orderByPosition(data);
 

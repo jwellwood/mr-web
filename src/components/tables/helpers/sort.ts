@@ -10,12 +10,12 @@ function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   return 0;
 }
 
-export function getComparator<Key extends keyof object>(
+export function getComparator(
   order: SortOrder,
-  orderBy: Key
+  orderBy: string
 ): (
-  a: { [key in Key]: number | string },
-  b: { [key in Key]: number | string }
+  a: Record<string, string | number | object>,
+  b: Record<string, string | number | object>,
 ) => number {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)

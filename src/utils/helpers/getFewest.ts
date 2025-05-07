@@ -1,2 +1,3 @@
-export const getFewest: Function = (arr: Array<number>): number =>
-  arr.length ? Math.min(...arr) : 0;
+export function getFewest(arr: Array<number>): number {
+  return arr.length ? Math.min(...arr) : 0;
+}

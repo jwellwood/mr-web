@@ -1,7 +1,12 @@
-import { MatchStatsKeys } from 'types';
+export function sortArr<T>(
+  arr: T[],
+  stat: keyof T
+): T[] {
+  return [...arr].sort((a, b) => {
+      const aVal = Number(a[stat])
+      const bVal = Number(b[stat])
 
-export const sortArr: Function = (
-  arr: Array<[]>,
-  stat: MatchStatsKeys
-): Array<[]> =>
-  [...arr].sort((a: any, b: any) => parseFloat(b[stat]) - parseFloat(a[stat]));
+      return aVal - bVal
+
+  });
+}

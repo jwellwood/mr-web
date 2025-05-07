@@ -1,21 +1,21 @@
 import React, { Fragment } from 'react';
-import { IMAGE_TYPE } from 'app/constants';
 import { SectionContainer } from '../containers';
 import { CenteredGrid, GridItem } from '../grids';
 import FlagIcon from '../icons/FlagIcon';
 import CircularImage from '../images/CircularImage';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
-import { useNationality } from 'hooks';
-import { theme } from 'theme';
+import {TImageType} from "../../constants.ts";
+import {useNationality} from "../../hooks";
+import {theme} from "../../theme";
 
 type Props = {
   title: string;
   badge: string;
-  data?: { label: string; value: any }[];
+  data?: { label: string; value: string }[];
   city?: string;
   country: string;
-  type: IMAGE_TYPE;
+  type: TImageType;
   loading?: boolean;
 };
 

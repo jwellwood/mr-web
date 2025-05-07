@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { type ReactNode} from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 interface Props {
-  children: any;
+  children: ReactNode;
   auth?: boolean;
   admin?: boolean;
   canEdit?: boolean;
-  storeData?: any;
+  storeData?: object;
 }
 
 const ReduxWrapper: React.FC<Props> = ({

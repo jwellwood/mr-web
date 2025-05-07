@@ -6,11 +6,13 @@ import { ISelectOptions } from './SelectInput';
 type Props = {
   name: string;
   label: string;
-  control: Control<any>;
-  rules?: any;
+  control: Control<Record<string, string>>;
+  rules?: {
+    required?: boolean;
+  };
   options: ISelectOptions[];
   showLabels?: boolean;
-  errors: any;
+  errors: (string | Error)[];
 };
 
 const ControlledMultiSelectInput: React.FC<Props> = ({

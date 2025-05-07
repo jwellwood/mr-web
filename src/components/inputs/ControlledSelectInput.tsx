@@ -3,12 +3,14 @@ import { Control, Controller } from 'react-hook-form';
 import SelectInput, { ISelectOptions } from './SelectInput';
 
 type Props = {
-  control: Control<any>;
+  control: Control<Record<string, string>>;
   options: ISelectOptions[];
   name: string;
   label: string;
-  rules?: any;
-  errors: any;
+  rules?: {
+    required?: boolean;
+  };
+  errors: (string | Error)[];
   disabled?: boolean;
 };
 

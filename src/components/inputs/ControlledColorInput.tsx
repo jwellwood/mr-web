@@ -6,7 +6,7 @@ type Props = {
   control: Control;
   name: string;
   label: string;
-  errors: any;
+  errors: { type: string }[];
 };
 
 const ControlledColorInput: React.FC<Props> = ({

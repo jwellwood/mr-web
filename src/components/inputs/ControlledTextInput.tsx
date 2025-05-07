@@ -3,11 +3,13 @@ import { Control, Controller } from 'react-hook-form';
 import TextInput from './TextInput';
 
 type Props = {
-  control: Control<any>;
+  control: Control<object>;
   name: string;
   label: string;
-  errors: any;
-  rules?: any;
+  errors: { type: string }[];
+  rules?: {
+    required?: boolean;
+  };
   multiline?: boolean;
   isPassword?: boolean;
   placeholder?: string;
@@ -26,7 +28,7 @@ const ControlledTextInput: React.FC<Props> = ({
   return (
     <Controller
       control={control}
-      name={name}
+      name={name as never}
       rules={rules}
       render={({ field: { name, value, onChange } }) => {
         return (

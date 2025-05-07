@@ -4,7 +4,7 @@ import { CustomButton, SubmitButton } from '../buttons';
 import SectionContainer from './SectionContainer';
 
 interface Props {
-  onSubmit: (formData: any) => void;
+  onSubmit: (formData: object) => void;
   children: React.ReactNode;
   disabled?: boolean;
   text?: string;

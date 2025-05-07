@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import TextField from '@mui/material/TextField';
 import {
   MobileDatePicker,
@@ -7,16 +7,17 @@ import {
 } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import FormErrorMessage from '../alerts/FormErrorMessage';
+import {PickerValue} from "@mui/x-date-pickers/internals";
 
 interface Props {
   inputName: string;
   defaultValue?: Date;
-  onChange: (date: Date | string | ChangeEvent<HTMLInputElement>) => void; // TODO
+  onChange: (date: PickerValue) => void; // TODO
   label: string;
   disableFuture: boolean;
   openTo?: DateView;
   view?: string;
-  errors?: any;
+  errors?: {type:string}[];
 }
 
 const DateInput: React.FC<Props> = ({
@@ -60,7 +61,7 @@ const DateInput: React.FC<Props> = ({
           }}
         />
       </LocalizationProvider>
-      {errors ? <FormErrorMessage error={errors} /> : null}
+      {errors ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };

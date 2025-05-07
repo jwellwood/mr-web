@@ -1,5 +1,10 @@
-export const generateOrdinals: Function = (num: number): string => {
-  if (typeof num !== 'number') num = Number(num);
+export function generateOrdinals (num: number | string): string {
+  if (typeof num !== 'number') {
+    num = Number(num);
+    if (isNaN(num)) {
+      throw new Error('Invalid number');
+    }
+  }
   if (num < 50 && num > 0) {
     switch (num) {
       case 1:

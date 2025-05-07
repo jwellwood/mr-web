@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
-import { theme } from 'theme';
+import {theme} from "../../theme";
 
 interface Props {
-  data: any;
+  data: {
+    name: string;
+    value: number;
+    color?: string;
+    children?: []
+  }[];
   height?: number;
   colors?: string[];
 }
@@ -16,9 +21,7 @@ const CustomPieChart: React.FC<Props> = ({ data, colors, height = 100 }) => {
         colors={colors}
         series={[{ data, innerRadius: 25, outerRadius: 50, paddingAngle: 5 }]}
         height={height}
-        slotProps={{
-          legend: { hidden: true },
-        }}
+        hideLegend={true}
         margin={{
           left: 0,
           right: 0,

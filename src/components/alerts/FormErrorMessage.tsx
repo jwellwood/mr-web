@@ -1,34 +1,35 @@
 import React from 'react';
 import { CustomTypography } from '../typography';
-import { form_error_text as errText } from 'i18n';
+import {form_error_text} from "../../i18n";
 
 interface Props {
-  error: any; // TODO
+  error: (string | Error | { type: string})
 }
 
 const FormErrorMessage: React.FC<Props> = ({ error }) => {
-  let message = errText.default;
-  switch (error.type) {
+  let message = form_error_text.default;
+  const errType = typeof error === "string" ? error : "type" in error ? error.type : "";
+  switch (errType) {
     case 'required':
-      message = errText.required;
+      message = form_error_text.required;
       break;
     case 'minLength':
-      message = errText.short;
+      message = form_error_text.short;
       break;
     case 'maxLength':
-      message = errText.long;
+      message = form_error_text.long;
       break;
     case 'max':
-      message = errText.high;
+      message = form_error_text.high;
       break;
     case 'min':
-      message = errText.low;
+      message = form_error_text.low;
       break;
     case 'pattern':
-      message = errText.pattern;
+      message = form_error_text.pattern;
       break;
     case 'validate':
-      message = errText.validate;
+      message = form_error_text.validate;
       break;
     default:
       break;

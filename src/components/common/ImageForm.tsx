@@ -5,12 +5,12 @@ import { FormContainer } from '../containers';
 import { CenteredGrid } from '../grids';
 import CircularImage from '../images/CircularImage';
 import FileInput from '../inputs/FileInput';
-import { button_text } from 'i18n';
+import {button_text} from "../../i18n";
 
 interface Props {
   imageUrl: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string>>;
-  onSubmit: (data) => any;
+  onSubmit: (data: unknown) => void;
   currentUrl: string;
   removeImage: () => void;
 }

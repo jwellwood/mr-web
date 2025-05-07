@@ -3,10 +3,10 @@ import TablePagination from '@mui/material/TablePagination';
 
 type Props = {
   page: number;
-  setPage: any;
+  setPage: (pageNumber: number) => void;
   rowsPerPage: number;
-  setRowsPerPage: any;
-  rows: any;
+  setRowsPerPage: (rows: number) => void;
+  rows: object[];
 };
 
 const Pagination: React.FC<Props> = ({
@@ -16,7 +16,7 @@ const Pagination: React.FC<Props> = ({
   setRowsPerPage,
   rows,
 }) => {
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
   };
 

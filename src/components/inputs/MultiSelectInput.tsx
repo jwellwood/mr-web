@@ -9,15 +9,13 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormErrorMessage from '../alerts/FormErrorMessage';
 import { ISelectOptions } from './SelectInput';
 
-// const names = ['Joe', 'Matías', 'Hannah'];
-
 interface Props {
   options: ISelectOptions[];
-  value: any;
+  value: string;
   label: string;
   onChange: (event: SelectChangeEvent<string>) => void;
   showLabels?: boolean;
-  errors: any;
+  errors: (string | Error)[]
 }
 
 const MultipleSelectInput: React.FC<Props> = ({
@@ -28,10 +26,10 @@ const MultipleSelectInput: React.FC<Props> = ({
   showLabels,
   errors,
 }) => {
-  const renderValue = (selected) => {
+  const renderValue = (selected: string) => {
     if (showLabels) {
-      const label = options.filter((option, i) =>
-        selected.includes(option.value)
+      const label = options.filter((option) =>
+        selected.includes(option.value as string)
       );
       return label.map(
         (item, i) => `${item.label}${i !== label.length - 1 ? ', ' : ''}`
@@ -54,12 +52,12 @@ const MultipleSelectInput: React.FC<Props> = ({
         >
           {options?.map((option) => (
             <MenuItem key={option.label} value={option.value as string}>
-              <Checkbox checked={value.indexOf(option.value) > -1} />
+              <Checkbox checked={value.indexOf(option.value as string) > -1} />
               <ListItemText primary={option.label} />
             </MenuItem>
           ))}
         </Select>
-        {errors ? <FormErrorMessage error={errors} /> : null}
+        {errors ? <FormErrorMessage error={errors[0]} /> : null}
       </FormControl>
     </>
   );

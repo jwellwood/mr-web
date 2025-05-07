@@ -1,2 +1,3 @@
-export const filterer: Function = (arr: Array<{}> = [], stat: string): number =>
-  arr.filter((elem) => elem[stat]).length;
+export function filterer<T extends object>(arr: T[], stat: keyof T): number {
+  return arr.filter((elem) => elem[stat]).length;
+}

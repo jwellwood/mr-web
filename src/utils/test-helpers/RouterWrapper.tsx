@@ -7,7 +7,8 @@ interface Props {
   children: ReactElement;
 }
 
-export const renderWithRouter = (ui, { route = '/' } = {}) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const renderWithRouter = (ui: any, { route = '/' } = {}) => {
   window.history.pushState({}, 'Test page', route);
 
   return {

@@ -1,14 +1,14 @@
-import { BASE_YEAR, MAX_YEAR } from 'app/constants';
+import {BASE_YEAR, MAX_YEAR} from "../../constants.ts";
 
 interface IYearOptions {
   label: string;
   value: number;
 }
 
-export const yearOptions: Function = (
+export function yearOptions(
   minYear: number = BASE_YEAR,
   maxYear: number = MAX_YEAR
-): IYearOptions[] => {
+): IYearOptions[] {
   if (typeof minYear !== 'number') minYear = +minYear;
   if (typeof maxYear !== 'number') maxYear = +maxYear;
   const years = [];

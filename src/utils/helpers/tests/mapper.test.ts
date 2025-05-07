@@ -6,14 +6,20 @@ import { MOCK_DATA as mockData } from './MOCK_DATA';
 const length = mockData.length;
 describe('mapper tests', () => {
   test('it returns an empty array when arr is empty', () => {
-    const array: any = [];
-    expect(mapper(array)).toEqual([]);
+    const array: {
+      id: number,
+      stringId: string,
+      name: string,
+      number: number
+    }[] = [];
+    expect(mapper(array, 'id')).toEqual([]);
   });
   test('it returns an array with all the items', () => {
     expect(mapper(mockData, 'id')).toHaveLength(length);
     expect(mapper(mockData, 'number')).toHaveLength(length);
     expect(mapper(mockData, 'stringId')).toHaveLength(length);
     expect(mapper(mockData, 'other')).toHaveLength(length);
+    // @ts-expect-error test
     expect(mapper(mockData, 'fake')).toHaveLength(length);
   });
   test('it returns an array containing the items', () => {

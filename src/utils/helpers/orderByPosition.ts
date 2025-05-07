@@ -1,4 +1,4 @@
-export const orderByPosition = (data: any) => {
+export function orderByPosition <T extends {position: string}>(data: T[]) {
   const filterByPosition = (pos: string) =>
     data.filter((item) => item.position === pos);
   const newArray = [
@@ -11,4 +11,4 @@ export const orderByPosition = (data: any) => {
   const other = data.filter((item) => !item.position);
 
   return [...newArray, ...other];
-};
+}

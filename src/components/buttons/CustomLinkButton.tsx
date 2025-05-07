@@ -5,8 +5,8 @@ import Button from '@mui/material/Button';
 interface Props {
   children: ReactNode | string;
   link: string;
-  type?: any;
-  color?: any;
+  type?: "outlined" | "text" | "contained";
+  color?: "primary" | "inherit" | "secondary" | "success" | "error" | "info" | "warning";
   disabled?: boolean;
   fullWidth?: boolean;
 }

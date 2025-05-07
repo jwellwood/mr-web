@@ -5,7 +5,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CustomTypography } from '../typography';
-import { IListItem } from 'types';
+import { IListItem } from '../../types';
 
 interface Props {
   data: IListItem[];
@@ -13,7 +13,7 @@ interface Props {
   loading?: boolean;
 }
 
-const TextList: React.FC<Props> = ({ data, labelSize, loading }) => {
+const TextList: React.FC<Props> = ({ data, labelSize }) => {
   return (
     <List dense>
       {data.map((item, i) => {

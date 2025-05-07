@@ -3,7 +3,7 @@ import { MOCK_DATA as mockData } from './MOCK_DATA';
 
 describe('sort array tests', () => {
   test('should return an empty arr if array is empty', () => {
-    const array: any = [];
+    const array: never[] = [];
     expect(sortArr(array, 'any')).toStrictEqual([]);
   });
   test('should return an array sorted by id', () => {

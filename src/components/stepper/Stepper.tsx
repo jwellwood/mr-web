@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import { MobileStepper } from '@mui/material';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 interface Props {
-  steps: any;
+  steps: {
+    component: ReactNode
+  }[];
   step: number;
   handleBackClick: () => void;
 }

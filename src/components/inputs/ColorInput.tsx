@@ -7,7 +7,7 @@ interface Props {
   defaultValue?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
-  errors?: object; // TODO
+  errors?: {type: string}[]; // TODO
   isPassword?: boolean;
   isEmail?: boolean;
   multiline?: boolean;
@@ -37,7 +37,7 @@ const ColorInput: React.FC<Props> = ({
         inputProps={{ style: { height: '75px' } }}
         disabled={disabled}
       />
-      {errors ? <FormErrorMessage error={errors} /> : null}
+      {errors ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };

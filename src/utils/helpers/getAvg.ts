@@ -1,8 +1,8 @@
-export const getAvg: Function = (
-  stat: any,
+export function getAvg(
+  stat: number,
   total: number,
   fix: number = 2
-): string => {
+): string {
   if (!total || total === 0) return Number(0).toFixed(fix);
   return (stat / total).toFixed(fix);
 };

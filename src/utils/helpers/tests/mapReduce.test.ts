@@ -4,7 +4,7 @@ import { MOCK_DATA as mockData } from './MOCK_DATA';
 //   arr.map((elem) => +elem[stat]).reduce(getSum, 0);
 describe('map reduce tests', () => {
   test('should return 0 if array is empty', () => {
-    const array: any = [];
+    const array: never[] = [];
     expect(mapReduce(array, 'any')).toBe(0);
     expect(mapReduce(array)).toBe(0);
   });

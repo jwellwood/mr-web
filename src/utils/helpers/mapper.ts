@@ -1,4 +1,3 @@
-import { MatchStatsKeys } from 'types';
-
-export const mapper: Function = (arr: Array<{}>, stat: MatchStatsKeys) =>
-  arr.map((elem: any) => elem[stat]);
+export function mapper<T>(arr: T[], stat: keyof T) {
+    return arr.map((elem) => elem[stat]);
+}

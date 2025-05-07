@@ -14,8 +14,10 @@ import PositionString from './PositionString';
 import { ICellStyleByIndex } from './types';
 
 interface Props {
-  rows: any[];
-  columns: any[];
+  rows: Record<string, {value: string, isPercentage: boolean}>[];
+  columns: {
+    id: string;
+  }[];
   isSortable: boolean;
   sortByString?: string;
   cellIndexStyles?: ICellStyleByIndex[];
@@ -37,14 +39,17 @@ const CustomTable: React.FC<Props> = ({
   const [sortBy, setSortBy] = useState(sortByString);
 
   const handleRequestSort = (
-    event: React.MouseEvent<unknown>,
+    _: React.MouseEvent<unknown>,
     property: keyof Data
   ) => {
     setSortBy(property);
   };
 
   const visibleRows = React.useMemo(
-    () => stableSort(rows, getComparator('desc', sortBy)),
+    () => stableSort(
+        rows,
+        getComparator('desc', sortBy)
+    ),
     [sortBy, rows]
   );
 
@@ -73,12 +78,12 @@ const CustomTable: React.FC<Props> = ({
                     const customCellValue = () => {
                       if (item[0] === 'position') {
                         return (
-                          <PositionString>{item[1] as number}</PositionString>
+                          <PositionString>{typeof item[1] === "object" ? item[1].value : item[1]}</PositionString>
                         );
                       }
 
                       return typeof item[1] === 'object' && item[0] !== 'icon'
-                        ? (item[1] as any)?.value
+                        ? item[1]?.value
                         : item[1];
                     };
 
@@ -111,7 +116,7 @@ const CustomTable: React.FC<Props> = ({
                       >
                         <CustomCellValue
                           isDifference={item[0] === 'difference'}
-                          isPercentage={(item[1] as any)?.isPercentage}
+                          isPercentage={(item[1])?.isPercentage}
                           textColor={textColor}
                           value={customCellValue()}
                         />

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { type ReactElement } from 'react';
 import ThemeWrapper from './ThemeWrapper';
 
 interface Props {
@@ -6,16 +6,6 @@ interface Props {
 }
 
 const TestWrapper: React.FC<Props> = ({ children }: Props) => {
-  const mockIO = function () {
-    return {
-      observe: jest.fn(),
-      unobserve: jest.fn(),
-      disconnect: jest.fn(),
-    };
-  };
-
-  (window.IntersectionObserver as any) = mockIO;
-
   return <ThemeWrapper>{children}</ThemeWrapper>;
 };
 

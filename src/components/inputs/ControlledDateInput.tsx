@@ -1,14 +1,18 @@
 import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import DateInput from './DateInput';
+import {DateView} from "@mui/x-date-pickers";
 
 type Props = {
-  control: Control<any>;
-  name: string;
+  control: Control<object>;
+  name: never;
   label: string;
-  errors: any;
-  view?: any;
-  openTo?: any;
+  errors: {type: string}[];
+  rules?: {
+    required?: boolean;
+  }
+  view?: string;
+  openTo?: DateView;
   disableFuture?: boolean;
 };
 

@@ -1,2 +1,3 @@
-export const getMost: Function = (arr: Array<number>): number =>
-  arr.length ? Math.max(...arr) : 0;
+export function getMost (arr: Array<number>): number {
+  return arr.length ? Math.max(...arr) : 0;
+}
