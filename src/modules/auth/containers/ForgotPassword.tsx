@@ -2,17 +2,18 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import { AUTH } from 'router/paths';
-import RouteGuard from 'router/RouteGuard';
+
 import { FORGOT_PASSWORD_PAGE, forgotPasswordFormState } from '../constants';
 import ForgotPasswordForm from '../forms/ForgotPassword.form';
 import { FORGOT_PASSWORD } from '../graphql';
 import { IForgotPasswordForm } from '../types';
+import { AppDispatch } from '../../../store/store';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import { AUTH } from '../../../router/paths.ts';
+import {AuthRoles} from "../../../constants.ts";
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const ForgotPasswordContainer: React.FC = () => {
   const [forgotPassword, { loading }] = useMutation(FORGOT_PASSWORD);
@@ -23,20 +24,21 @@ const ForgotPasswordContainer: React.FC = () => {
     forgotPassword({ variables: { email: formData.email } })
       .then(({ data }) => {
         dispatch(
-          showAlert(
-            `Password reset email sent to ${data.user?.email}`,
-            'success'
-          )
+          showAlert({
+
+            text: `Password reset email sent to ${data?.user?.email}`,
+            type: 'success'
+              })
         );
         navigate(AUTH.SIGN_IN);
       })
       .catch((err) => {
-        dispatch(showAlert(err.message, 'error'));
+        dispatch(showAlert({text: err.message, type: 'error'}));
       });
   };
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.NONE}>
+    <RouteGuard authorization={AuthRoles.NONE}>
       <PageHeader title={FORGOT_PASSWORD_PAGE} />
       {!loading ? (
         <ForgotPasswordForm

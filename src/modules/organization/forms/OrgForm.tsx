@@ -1,16 +1,19 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledDateInput from 'components/inputs/ControlledDateInput';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { IOrganization } from 'types';
+import { IOrganization } from '../../../types';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import ControlledDateInput from "../../../components/inputs/ControlledDateInput.tsx";
+import ControlledSelectInput
+  from "../../../components/inputs/ControlledSelectInput.tsx";
+import {ISelectOptions} from "../../../components/inputs/SelectInput.tsx";
+
 
 interface Props {
   onSubmit: (data: Partial<IOrganization>) => void;
   defaultValues: Partial<IOrganization>;
-  countryOptions: any;
+  countryOptions: ISelectOptions[];
 }
 
 const OrgForm: React.FC<Props> = ({
@@ -34,7 +37,7 @@ const OrgForm: React.FC<Props> = ({
             name="name"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
             label="Organization Name"
-            errors={errors.name}
+            errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -43,7 +46,7 @@ const OrgForm: React.FC<Props> = ({
             name="website"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
             label="Website"
-            errors={errors.name}
+            errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -52,7 +55,7 @@ const OrgForm: React.FC<Props> = ({
             name="yearFounded"
             label="Year Founded"
             view="year"
-            errors={errors.yearFounded}
+            errors={errors.yearFounded ? [errors.yearFounded] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -61,7 +64,7 @@ const OrgForm: React.FC<Props> = ({
             name="city"
             rules={{ minLength: 2, maxLength: 50 }}
             label="City"
-            errors={errors.city}
+            errors={errors.city ? [errors.city] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -70,7 +73,7 @@ const OrgForm: React.FC<Props> = ({
             name="country"
             label="Country"
             options={countryOptions}
-            errors={errors.country}
+            errors={errors.country ? [errors.country] : []}
           />
         </GridItem>
       </CenteredGrid>

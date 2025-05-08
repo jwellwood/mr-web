@@ -4,7 +4,7 @@ import {theme} from "../../../theme";
 import {getOpaqueValue} from "../../../utils/colors/getOpaqueValue.ts";
 
 export const getBackgroundColor = (
-  item: [string, object],
+  item: [string, string | number | object],
   i: number,
   sortBy?: string,
   cellIndexStyles?: ICellStyleByIndex[]

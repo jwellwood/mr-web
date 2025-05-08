@@ -1,14 +1,15 @@
 import React from 'react';
 import { makeStyles } from '@mui/styles';
-import { SectionContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import CustomSkeleton from 'components/loaders/CustomSkeleton';
-import { CustomTypography } from 'components/typography';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
-import { ITeamResponse } from 'types';
+import {ITeamResponse} from "../../../types";
+import { SectionContainer } from '../../../components/containers';
+import {CenteredGrid, GridItem} from '../../../components/grids';
+import { CustomTypography } from '../../../components/typography';
+import CustomSkeleton from "../../../components/loaders/CustomSkeleton.tsx";
 
-export const useStyles = makeStyles((theme) => ({
+// eslint-disable-next-line react-refresh/only-export-components
+export const useStyles = makeStyles(() => ({
   container: {
     borderRadius: '4px',
     marginTop: '8px',

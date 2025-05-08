@@ -1,17 +1,21 @@
-import { theme } from 'theme';
-import { ITrophy } from 'types';
+import { theme } from '../../theme';
+import { ITrophy } from '../../types';
 import { IAward, ITeamSeason } from './types';
 
-export enum PAGES {
-  TROPHY = 'Trophy',
-  ADD_TROPHY = 'Add New Trophy',
-  EDIT_TROPHY = 'Edit Trophy',
-  SEASON = 'Season',
-  EDIT_SEASON = 'Edit Season',
-  ADD_SEASON = 'Add New Season',
-  ADD_AWARD = 'Add Season Award',
-  EDIT_AWARD = 'Edit Season Award',
-}
+// Replace the enum with this const object
+export const PAGES = {
+  TROPHY: 'Trophy',
+  ADD_TROPHY: 'Add New Trophy',
+  EDIT_TROPHY: 'Edit Trophy',
+  SEASON: 'Season',
+  EDIT_SEASON: 'Edit Season',
+  ADD_SEASON: 'Add New Season',
+  ADD_AWARD: 'Add Season Award',
+  EDIT_AWARD: 'Edit Season Award',
+} as const;
+
+// Add this type to get the same type safety as an enum
+export type PAGES_TYPE = typeof PAGES[keyof typeof PAGES];
 
 export const initialTrophyFormState: Partial<ITrophy> = {
   name: '',

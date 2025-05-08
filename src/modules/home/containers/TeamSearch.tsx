@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { Spinner } from 'components/loaders';
-import ErrorGraphql from 'errors/ErrorGraphql';
 import { SearchForm } from '../components/SearchForm';
 import { TeamList } from '../components/TeamList';
 import { GET_TEAM_BY_SEARCH } from '../graphql/searchByTeam.graphql';
+import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import {Spinner} from "../../../components/loaders";
 
 export const TeamSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,7 +17,9 @@ export const TeamSearch = () => {
     }
   );
 
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: {
+    teamName: string;
+  }) => {
     setSearchTerm(data.teamName);
     getTeamBySearch().finally(() => {
       setIsSearchComplete(true);
@@ -33,7 +35,7 @@ export const TeamSearch = () => {
         onSubmit={onSubmit}
       />
       {!loading ? (
-        <TeamList teams={data?.team} isSearchComplete={isSearchComplete} />
+        <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />
       ) : (
         <Spinner />
       )}

@@ -39,7 +39,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             name="name"
             label="Competition Name"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
-            errors={errors.name}
+            errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -48,7 +48,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             name="competitionType"
             label="Competition Type"
             options={competitionOptions}
-            errors={errors.competitionType}
+            errors={errors.competitionType ? [errors.competitionType] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -57,7 +57,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             name="playersPerTeam"
             label="Players Per Team"
             options={getIntegers(15)}
-            errors={errors.playersPerTeam}
+            errors={errors.playersPerTeam ? [errors.playersPerTeam] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -66,7 +66,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             name="matchMinutes"
             label="Minutes Per Match"
             options={getMinutesOptions(120)}
-            errors={errors.matchMinutes}
+            errors={errors.matchMinutes ? [errors.matchMinutes] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -75,7 +75,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             name="numberOfTeams"
             label="Number of Teams"
             options={getIntegers(50)}
-            errors={errors.numberOfTeams}
+            errors={errors.numberOfTeams ? [errors.numberOfTeams] : []}
           />
         </GridItem>
       </CenteredGrid>

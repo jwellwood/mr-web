@@ -33,7 +33,7 @@ const ResetPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
           name="password"
           rules={{ required: true }}
           label="New Password"
-          errors={errors.password}
+          errors={errors.password ? [errors.password] : []}
           isPassword={true}
         />
         <ControlledTextInput

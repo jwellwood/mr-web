@@ -2,16 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { GET_PLAYERS_BY_SEASON_ID } from 'modules/players/graphql';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
-import { getTempMatch, getTempPlayers } from 'selectors';
-import { IPlayerInMatch, ITempMatch } from 'types';
+
 import { resetTempMatch, setTempMatch } from '../actions/matches.actions';
 import { resetTempPlayers, setTempPlayers } from '../actions/players.actions';
 import MatchFormStepper from '../components/MatchFormStepper';
@@ -21,14 +12,25 @@ import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
 import { mapMatch } from '../helpers';
 import { mapMatchToTempMatch } from '../helpers/mapMatchToTempMatch';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
+import {IPlayerInMatch, ITempMatch} from '../../../types';
+import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import { AppDispatch } from '../../../store/store.ts';
+import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
+import { getTempPlayers } from '../../../store/features/players/playersSelection.ts';
+import {GET_PLAYERS_BY_SEASON_ID} from "../../players/graphql";
+import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {AuthRoles} from "../../../constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const EditMatch: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<ITempMatch>(null);
-  const [currentPlayers, setCurrentPlayers] = useState<IPlayerInMatch[]>(null);
+  const [defaultValues, setDefaultValues] = useState<ITempMatch | null>(null);
+  const [currentPlayers, setCurrentPlayers] = useState<IPlayerInMatch[]>([]);
 
   const { data, loading, error } = useQuery(GET_MATCH_BY_ID, {
     variables: { matchId },
@@ -80,9 +82,13 @@ const EditMatch: React.FC = () => {
   }, [currentTempPlayers]);
 
   const onSubmit = () => {
+    if(!teamId) {
+      console.error("Missing team id")
+      return;
+    }
     const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
     editMatch({ variables: { matchId, ...data } })
-      .then((res) => {
+      .then(() => {
         dispatch(resetTempMatch());
         dispatch(resetTempPlayers());
         navigate(-1);
@@ -97,7 +103,7 @@ const EditMatch: React.FC = () => {
   }
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} teamId={teamId}>
+    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_MATCH} backButton />
 
       {!loading &&
@@ -110,7 +116,7 @@ const EditMatch: React.FC = () => {
         <MatchFormStepper
           defaultValues={defaultValues}
           currentPlayers={currentPlayers}
-          teamId={teamId}
+          teamId={teamId as string}
           seasonOptions={seasonOptions}
           opponents={opponents}
           competitions={competitions}

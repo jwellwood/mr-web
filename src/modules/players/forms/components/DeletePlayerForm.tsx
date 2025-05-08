@@ -38,7 +38,7 @@ const DeletePlayerForm: React.FC<Props> = ({
             control={control}
             name="name"
             label="Name"
-            errors={errors.name}
+            errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
       </CenteredGrid>

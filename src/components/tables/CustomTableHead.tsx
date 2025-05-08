@@ -1,4 +1,4 @@
-import React from 'react';
+import {MouseEvent} from 'react';
 import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
 import { CustomTypography } from '../typography';
 import { theme } from '../../theme';
@@ -8,11 +8,12 @@ interface Data {
   goals: number;
   assists: number;
   position: string;
+  isPercentage?: boolean;
 }
 
 interface Props {
   onRequestSort: (
-    event: React.MouseEvent<unknown>,
+    event: MouseEvent,
     property: keyof Data
   ) => void;
   columns: {
@@ -24,14 +25,14 @@ interface Props {
   isSortable: boolean;
 }
 
-const CustomTableHead: React.FC<Props> = ({
+function CustomTableHead({
   columns,
   onRequestSort,
   sortBy,
   isSortable,
-}) => {
+}: Props) {
   const createSortHandler =
-    (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
+    (property: keyof Data) => (event: MouseEvent) => {
       onRequestSort(event, property);
     };
 

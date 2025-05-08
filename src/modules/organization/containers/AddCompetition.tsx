@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
-import { ICompetition } from 'types';
+
 import { PAGES, initialCompetitionState } from '../constants';
 import CompetitionForm from '../forms/CompetitionForm';
 import { ADD_COMPETITION, GET_ORG } from '../graphql';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
+import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import { AppDispatch } from '../../../store/store.ts';
+import { ICompetition } from '../../../types/organization.ts';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {PageHeader} from "../../../components/typography";
+import Spinner from '../../../components/loaders/Spinner.tsx';
+import {AuthRoles} from "../../../constants.ts";
 
 const AddCompetition: React.FC = () => {
   const { orgId } = useCustomParams();
@@ -35,19 +36,20 @@ const AddCompetition: React.FC = () => {
     try {
       return addCompetition({
         variables: { orgId, ...mapCompetitionInput(formData) },
-      }).then((res) => {
-        dispatch(showAlert('Competition added successfully!', 'success'));
+      }).then(() => {
+        dispatch(showAlert({text: 'Competition added successfully!', type: 'success'}))
         navigate(-1);
       });
     } catch (error) {
-      dispatch(showAlert('Something went wrong', 'error'));
+      console.error(error);
+      dispatch(showAlert({text: 'Something went wrong', type: 'error'}))
     }
   };
 
   if (error) return <ErrorGraphql error={[error.message]} />;
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN} orgId={orgId}>
+    <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
       <PageHeader title={PAGES.ADD_COMPETITION} />
       {!loading && defaultValues ? (
         <CompetitionForm defaultValues={defaultValues} onSubmit={onSubmit} />

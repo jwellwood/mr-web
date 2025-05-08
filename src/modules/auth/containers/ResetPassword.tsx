@@ -2,17 +2,18 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import { AUTH } from 'router/paths';
-import RouteGuard from 'router/RouteGuard';
+
 import { RESET_PASSWORD_PAGE, resetPasswordFormState } from '../constants';
 import ResetPassword from '../forms/ResetPassword.form';
 import { RESET_PASSWORD } from '../graphql';
 import { IResetPasswordForm } from '../types';
+import { AppDispatch } from '../../../store/store';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import {AUTH} from "../../../router/paths.ts";
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {AUTH_ROLES} from "../../../app/constants.ts";
+import {PageHeader} from "../../../components/typography";
+import Spinner from '../../../components/loaders/Spinner.tsx';
 
 const ResetPasswordContainer: React.FC = () => {
   const { token } = useParams<{ token: string }>();
@@ -26,15 +27,16 @@ const ResetPasswordContainer: React.FC = () => {
     resetPassword({ variables: { password: formData.password, token } })
       .then(() => {
         dispatch(
-          showAlert(
-            'Password has been reset! Use your new password to sign in',
-            'success'
-          )
+          showAlert({
+
+           text: 'Password has been reset! Use your new password to sign in',
+            type: 'success'
+          })
         );
         navigate(AUTH.SIGN_IN);
       })
       .catch((err) => {
-        dispatch(showAlert(err.message, 'error'));
+        dispatch(showAlert({text: err.message, type: 'error'}));
       });
   };
 

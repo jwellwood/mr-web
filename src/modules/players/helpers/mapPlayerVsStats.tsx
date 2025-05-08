@@ -1,12 +1,11 @@
-import React from 'react';
-import { IMAGE_TYPE } from 'app/constants';
-import CustomAvatar from 'components/avatars/CustomAvatar';
-import { PresentationModal } from 'components/modals';
-import { CustomTypography } from 'components/typography';
-import { IPlayerVsStats } from 'types';
-import { getAvg } from 'utils/helpers';
+import { IPlayerVsStats } from "../../../types";
+import {ImageTypes} from "../../../constants.ts";
+import CustomAvatar from "../../../components/avatars/CustomAvatar.tsx";
+import PresentationModal from "../../../components/modals/PresentationModal.tsx";
+import CustomTypography from "../../../components/typography/CustomTypography.tsx";
+import {getAvg} from "../../../utils/helpers";
 
-export const mapPlayerVsStats = (stats: IPlayerVsStats[], loading: boolean) => {
+export const mapPlayerVsStats = (stats: IPlayerVsStats[]) => {
   return stats?.map((item: IPlayerVsStats) => ({
     name: {
       value: (
@@ -20,7 +19,7 @@ export const mapPlayerVsStats = (stats: IPlayerVsStats[], loading: boolean) => {
           <CustomAvatar
             size="24px"
             imageUrl={item?.opponentBadge}
-            type={IMAGE_TYPE.TEAM}
+            type={ImageTypes.TEAM}
           />
           <div style={{ marginRight: '4px' }} />
           <PresentationModal

@@ -2,17 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useNationality } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
-import { GET_TEAMS_BY_ORG } from 'modules/organization/graphql';
-import { GET_TEAMS_BY_USER_ID } from 'modules/profile/graphql';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
+
 import {
   PAGES,
   initialTeamDetailsState,
@@ -22,6 +12,17 @@ import {
 import AddTeamForm from '../forms/AddTeamForm';
 import { ADD_TEAM } from '../graphql';
 import { ITeamDetailsInput } from '../types';
+import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import { AppDispatch } from '../../../store/store.ts';
+import { useNationality } from '../../../hooks';
+import { GET_TEAMS_BY_ORG} from '../../organization/graphql';
+import { GET_TEAMS_BY_USER_ID } from '../../profile/graphql';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import {AUTH_ROLES} from "../../../app/constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const AddTeamSeason: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -30,7 +31,7 @@ const AddTeamSeason: React.FC = () => {
   const { nationalityOptions } = useNationality();
 
   const [defaultValues, setDefaultValues] =
-    useState<Partial<ITeamDetailsInput>>(null);
+    useState<Partial<ITeamDetailsInput>>({});
 
   const [addTeam, { error, loading }] = useMutation(ADD_TEAM, {
     refetchQueries: [
@@ -49,11 +50,20 @@ const AddTeamSeason: React.FC = () => {
   const onSubmit = async (data: Partial<ITeamDetailsInput>) => {
     try {
       return addTeam({ variables: { teamId, ...data } }).then((res) => {
-        dispatch(showAlert(TeamSuccess.edit, 'success'));
-        navigate(`team/${res.data.team._id}`);
+        dispatch(showAlert({
+            text: TeamSuccess.edit,
+            type: 'success'
+        }));
+        if(res.data) {
+          navigate(`team/${res.data.team._id}`);
+        }
       });
     } catch (error) {
-      dispatch(showAlert(TeamError.edit, 'error'));
+      console.error(error)
+      dispatch(showAlert({
+        text: TeamError.edit,
+          type: 'error'
+      }));
     }
   };
 

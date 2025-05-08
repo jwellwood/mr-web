@@ -42,7 +42,7 @@ const SeasonForm: React.FC<Props> = ({
             name="yearStarted"
             label="Year Started"
             view="year"
-            errors={errors.yearStarted}
+            errors={errors.yearStarted ? [errors.yearStarted] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -52,7 +52,7 @@ const SeasonForm: React.FC<Props> = ({
             label="Year Ended"
             view="year"
             disableFuture={false}
-            errors={errors.yearEnded}
+            errors={errors.yearEnded ? [errors.yearEnded] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -60,7 +60,7 @@ const SeasonForm: React.FC<Props> = ({
             control={control}
             name="division"
             label="Division"
-            errors={errors.division}
+            errors={errors.division ? [errors.division] : []}
             options={competitionOptions}
           />
         </GridItem>
@@ -69,7 +69,7 @@ const SeasonForm: React.FC<Props> = ({
             control={control}
             name="leaguePosition"
             label="Final Position"
-            errors={errors.leaguePosition}
+            errors={errors.leaguePosition ? [errors.leaguePosition] : []}
             options={getIntegers(50, 1)}
           />
         </GridItem>
@@ -79,7 +79,7 @@ const SeasonForm: React.FC<Props> = ({
             control={control}
             name="comment"
             label="Comment"
-            errors={errors.comment}
+            errors={errors.comment ? [errors.comment] : []}
           />
         </GridItem>
       </CenteredGrid>

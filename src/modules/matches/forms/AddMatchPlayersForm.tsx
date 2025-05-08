@@ -52,7 +52,7 @@ const AddMatchPlayersForm: React.FC<Props> = ({
             name="matchPlayers"
             label="Players"
             options={playersOptions}
-            errors={errors.matchPlayers}
+            errors={errors.matchPlayers ? [errors.matchPlayers] : []}
           />
         </GridItem>
         <GridItem>

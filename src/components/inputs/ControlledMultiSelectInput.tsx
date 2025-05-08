@@ -1,12 +1,11 @@
-import React from 'react';
-import { Control, Controller } from 'react-hook-form';
+import {Control, Controller, Path} from 'react-hook-form';
 import MultiSelectInput from './MultiSelectInput';
 import { ISelectOptions } from './SelectInput';
 
-type Props = {
-  name: string;
+type Props<T extends object> = {
+  name: Path<T>;
   label: string;
-  control: Control<Record<string, string>>;
+  control: Control<T>;
   rules?: {
     required?: boolean;
   };
@@ -15,7 +14,7 @@ type Props = {
   errors: (string | Error)[];
 };
 
-const ControlledMultiSelectInput: React.FC<Props> = ({
+function ControlledMultiSelectInput<T extends object>({
   name,
   control,
   options,
@@ -23,7 +22,7 @@ const ControlledMultiSelectInput: React.FC<Props> = ({
   rules,
   errors,
   showLabels,
-}) => {
+}: Props<T>) {
   return (
     <Controller
       control={control}

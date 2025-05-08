@@ -1,9 +1,10 @@
 import React from 'react';
 import { CustomTypography } from '../typography';
 import {form_error_text} from "../../i18n";
+import { FormError } from '../../types/form';
 
 interface Props {
-  error: (string | Error | { type: string})
+  error: FormError
 }
 
 const FormErrorMessage: React.FC<Props> = ({ error }) => {

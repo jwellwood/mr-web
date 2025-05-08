@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
+
 import ValidationEmailSent from '../components/ValidationEmailSent';
 import { signUpFormState } from '../constants';
 import SignUpForm from '../forms/SignUp.form';
 import { REGISTER_USER } from '../graphql';
 import { ISignUpForm } from '../types';
+import { AppDispatch } from '../../../store/store';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import {PageHeader} from "../../../components/typography";
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import {AuthRoles} from "../../../constants.ts";
+import {Spinner} from "../../../components/loaders";
 
 const SignUpContainer: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<ISignUpForm>(null);
+  const [defaultValues, setDefaultValues] = useState<ISignUpForm | null>(null);
   const [acceptTerms, setAcceptTerms] = useState<boolean>(false);
   const [email, setEmail] = useState<string | null>(null);
   const [registerUser, { loading }] = useMutation(REGISTER_USER);
@@ -24,7 +25,7 @@ const SignUpContainer: React.FC = () => {
     setDefaultValues({ ...signUpFormState });
   }, []);
 
-  const onAcceptTermsToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onAcceptTermsToggle = () => {
     setAcceptTerms(!acceptTerms);
   };
 
@@ -33,17 +34,17 @@ const SignUpContainer: React.FC = () => {
       .then(({ data }) => {
         if (data) {
           const { user } = data;
-          dispatch(showAlert(`Welcome ${user.username}!`, 'success'));
+          dispatch(showAlert({text: `Welcome ${user.username}!`, type: 'success'}))
           setEmail(user.email);
         }
       })
       .catch((err) => {
-        dispatch(showAlert(err.message, 'error'));
+        dispatch(showAlert({text: err.message, type: 'error'}));
       });
   return (
     <>
       <PageHeader title="Sign Up" />
-      <RouteGuard authorization={AUTH_ROLES.NONE}>
+      <RouteGuard authorization={AuthRoles.NONE}>
         {!loading && defaultValues ? (
           <SignUpForm
             onSubmit={onSubmit}

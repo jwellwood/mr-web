@@ -1,6 +1,5 @@
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import { ITeamRoles } from 'types';
 import { ITeamDetailsInput } from './types';
+import {ISelectOptions} from "../../components/inputs/SelectInput.tsx";
 
 export const initialTeamDetailsState: ITeamDetailsInput = {
   teamName: '',
@@ -21,35 +20,35 @@ export const initialTeamDetailsState: ITeamDetailsInput = {
   isActive: true,
 };
 
-export const initialRoleState: Partial<ITeamRoles> = {
+export const initialRoleState = {
   name: '',
   role: '',
   contact: '',
-};
+} as const;
 
-export enum PAGES {
-  TEAM = 'Team',
-  ADD_TEAM = 'Add Team',
-  EDIT_TEAM = 'Edit Team',
-  EDIT_BADGE = 'Edit Team Badge',
-  EDIT_ROLES = 'Add Team Role',
-  TROPHIES_ADMIN_PAGE = 'Trophies Admin',
-  DELETE_TEAM = 'Delete Team',
-}
+export const PAGES = {
+  TEAM: 'Team',
+  ADD_TEAM: 'Add Team',
+  EDIT_TEAM: 'Edit Team',
+  EDIT_BADGE: 'Edit Team Badge',
+  EDIT_ROLES: 'Add Team Role',
+  TROPHIES_ADMIN_PAGE: 'Trophies Admin',
+  DELETE_TEAM: 'Delete Team',
+} as const;
 
-export enum TeamSuccess {
-  add = 'Team added',
-  edit = 'Team updated',
-  delete = 'Team deleted',
-}
+export const TeamSuccess = {
+  add: 'Team added',
+  edit: 'Team updated',
+  delete: 'Team deleted',
+} as const;
 
-export enum TeamError {
-  add = 'Something went wrong. Try again',
-  edit = 'Something went wrong. Try again',
-  delete = 'Something went wrong. Try again',
-}
+export const TeamError = {
+  add: 'Something went wrong. Try again',
+  edit: 'Something went wrong. Try again',
+  delete: 'Something went wrong. Try again',
+} as const;
 
-export const surfaceOptions: ISelectOptions[] = [
+export const surfaceOptions = [
   { value: '', label: '' },
   { value: 'Grass', label: 'Grass' },
   { value: 'Artificial Grass', label: 'Artificial Grass' },
@@ -58,4 +57,4 @@ export const surfaceOptions: ISelectOptions[] = [
   { value: 'Acrylic', label: 'Acrylic' },
   { value: 'Sand', label: 'Sand' },
   { value: 'Other', label: 'Other' },
-];
+] as const satisfies ISelectOptions[];

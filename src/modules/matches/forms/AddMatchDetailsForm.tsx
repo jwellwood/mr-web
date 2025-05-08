@@ -57,7 +57,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             name="opponentId"
             label="Opponent"
             rules={{ required: true }}
-            errors={errors.opponentId}
+            errors={errors.opponentId ? [errors.opponentId] : []}
             options={opponentOptions}
           />
         </GridItem>
@@ -67,7 +67,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             name="competitionId"
             label="Competition"
             rules={{ required: true }}
-            errors={errors.competitionId}
+            errors={errors.competitionId ? [errors.competitionId] : []}
             options={competitionOptions}
           />
         </GridItem>
@@ -77,7 +77,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             name="seasonId"
             label="Season"
             rules={{ required: true }}
-            errors={errors.seasonId}
+            errors={errors.seasonId ? [errors.seasonId] : []}
             options={seasonOptions}
           />
         </GridItem>
@@ -86,7 +86,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             control={control}
             name="date"
             label="Date"
-            errors={errors.date}
+            errors={errors.date ? [errors.date] : []}
             disableFuture={false}
           />
         </GridItem>
@@ -110,7 +110,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 control={control}
                 name="teamGoals"
                 label="Goals Scored"
-                errors={errors.teamGoals}
+                errors={errors.teamGoals ? [errors.teamGoals] : []}
                 options={getIntegers(selectedCompetition?.matchMinutes)}
               />
             </GridItem>
@@ -119,7 +119,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 control={control}
                 name="opponentGoals"
                 label="Goals Conceded"
-                errors={errors.opponentGoals}
+                errors={errors.opponentGoals ? [errors.opponentGoals] : []}
                 options={getIntegers(selectedCompetition?.matchMinutes)}
               />
             </GridItem>
@@ -144,7 +144,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                   control={control}
                   name="leaguePosition"
                   label="League Position"
-                  errors={errors.leaguePosition}
+                  errors={errors.leaguePosition ? [errors.leaguePosition] : []}
                   options={getIntegers(selectedCompetition.numberOfTeams)}
                 />
               </GridItem>
@@ -155,7 +155,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                   control={control}
                   name="cupRound"
                   label="Cup Round"
-                  errors={errors.cupRound}
+                  errors={errors.cupRound ? [errors.cupRound] : []}
                   options={cupRoundOptions}
                 />
               </GridItem>

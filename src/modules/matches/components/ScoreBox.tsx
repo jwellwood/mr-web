@@ -1,13 +1,13 @@
 import React from 'react';
 import { Avatar } from '@mui/material';
-import { CustomTypography } from 'components/typography';
+import {CustomTypography} from "../../../components/typography";
 
 type Props = {
   points: number;
   goals: number;
 };
 
-const ScoreBox: React.FC<Props> = ({ goals, points }) => {
+const ScoreBox: React.FC<Props> = ({ goals }) => {
   return (
     <Avatar
       variant="square"

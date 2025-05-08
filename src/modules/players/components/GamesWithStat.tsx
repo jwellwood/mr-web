@@ -1,15 +1,14 @@
-import React from 'react';
-import CustomTable from 'components/tables/CustomTable';
-import { IPlayerStats } from 'types';
-import { getPercentage } from 'utils/helpers';
 import { game_with_stat_styles, player_games_with_stat } from '../configs';
+import {IPlayerStats} from "../../../types";
+import {getPercentage} from "../../../utils/helpers";
+import CustomTable from "../../../components/tables/CustomTable.tsx";
 
 type Props = {
   player: IPlayerStats;
   loading: boolean;
 };
 
-const GamesWithStat: React.FC<Props> = ({ player, loading }) => {
+function GamesWithStat({ player }: Props) {
   const {
     apps,
     gamesWithGoal,

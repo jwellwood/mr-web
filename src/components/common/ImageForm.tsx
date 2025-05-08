@@ -49,7 +49,7 @@ const ImageForm: React.FC<Props> = ({
                   onChange(event.target.files[0]);
                   setImageUrl(URL.createObjectURL(event.target.files[0]));
                 }}
-                errors={errors.imageFile}
+                errors={errors.imageFile ? [errors.imageFile] : []}
               />
             );
           }}

@@ -1,27 +1,32 @@
-import React from 'react';
-import { CustomButton } from 'components/buttons';
-import LinksList from 'components/lists/LinksList';
-import { Spinner } from 'components/loaders';
-import { PresentationModal } from 'components/modals';
-import { CustomTypography } from 'components/typography';
-import { IListItem } from 'types';
-import { parseDate } from 'utils/helpers';
+import {IListItem} from "../../../types";
+import {CustomTypography} from "../../../components/typography";
+import {parseDate} from "../../../utils/helpers";
+import {PresentationModal} from "../../../components/modals";
+import {CustomButton} from "../../../components/buttons";
+import LinksList from "../../../components/lists/LinksList.tsx";
+import {Spinner} from "../../../components/loaders";
 
 interface Props {
-  data: any;
+  data: {
+      teamGoals: number;
+      opponentGoals: number;
+      opponent: string;
+      date: string;
+      _id: string;
+  }[];
   loading: boolean;
   orgId: string;
   teamId: string;
   title: string;
 }
 
-const MostInMatchesModal: React.FC<Props> = ({
+function MostInMatchesModal ({
   data,
   loading,
   orgId,
   teamId,
   title,
-}) => {
+}: Props) {
   const listData: IListItem[] =
     data?.map((item) => {
       const labelColor =

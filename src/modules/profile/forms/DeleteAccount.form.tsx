@@ -41,7 +41,7 @@ const DeleteAccountForm: React.FC<Props> = ({
             maxLength: 30,
           }}
           label="Username"
-          errors={errors.username}
+          errors={errors.username ? [errors.username] : []}
         />
       </CenteredGrid>
     </FormContainer>

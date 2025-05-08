@@ -62,7 +62,7 @@ const TrophyForm: React.FC<Props> = ({
             name="name"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
             label="Name"
-            errors={errors.name}
+            errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -72,7 +72,7 @@ const TrophyForm: React.FC<Props> = ({
             rules={{ required: true }}
             label="Season"
             options={seasonOptions}
-            errors={errors.seasonId}
+            errors={errors.seasonId ? [errors.seasonId] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -81,7 +81,7 @@ const TrophyForm: React.FC<Props> = ({
             name="year"
             label="Year"
             options={yearOptions(BASE_YEAR, CURRENT_YEAR)}
-            errors={errors.year}
+            errors={errors.year ? [errors.year] : []}
           />
         </GridItem>
         <GridItem>
@@ -93,7 +93,7 @@ const TrophyForm: React.FC<Props> = ({
               control={control}
               name="opponent"
               label="Opponent"
-              errors={errors.opponentId}
+              errors={errors.opponentId ? [errors.opponentId] : []}
             />
           </GridItem>
         )}
@@ -102,7 +102,7 @@ const TrophyForm: React.FC<Props> = ({
             control={control}
             name="comment"
             label="Comment"
-            errors={errors.comment}
+            errors={errors.comment ? [errors.comment] : []}
             multiline
           />
         </GridItem>

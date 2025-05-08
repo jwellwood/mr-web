@@ -1,21 +1,20 @@
-import React from 'react';
-import { IMAGE_TYPE } from 'app/constants';
-import CustomAvatar from 'components/avatars/CustomAvatar';
-import { PresentationModal } from 'components/modals';
-import { CustomTypography } from 'components/typography';
-import { IOpponentTable } from 'types';
-import { getAvg, getPercentage } from 'utils/helpers';
+import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import { IOpponentTable } from '../../../types';
+import {getAvg, getPercentage} from '../../../utils/helpers';
 import HeadToHead from '../containers/HeadToHead';
+import {ImageTypes} from "../../../constants.ts";
+import {PresentationModal} from "../../../components/modals";
+import CustomTypography from '../../../components/typography/CustomTypography.tsx';
 
-export const mapOpponentStats = (stats: IOpponentTable[], loading: boolean) => {
-  const getPoints = (wins, draws) => {
+export const mapOpponentStats = (stats: IOpponentTable[]) => {
+  const getPoints = (wins: number, draws: number) => {
     return wins * 3 + draws;
   };
 
-  const getAvgScore = (total, goals, conceded) => {
+  const getAvgScore = (total: number, goals: number, conceded: number): number => {
     const avgScored = getAvg(goals, total);
     const avgConceded = getAvg(conceded, total);
-    return +(avgScored - avgConceded).toFixed(1);
+    return +(Number(avgScored) - Number(avgConceded)).toFixed(1);
   };
 
   return stats?.map((item: IOpponentTable) => ({
@@ -31,7 +30,7 @@ export const mapOpponentStats = (stats: IOpponentTable[], loading: boolean) => {
           <CustomAvatar
             size="24px"
             imageUrl={item?.opponentBadge}
-            type={IMAGE_TYPE.TEAM}
+            type={ImageTypes.TEAM}
           />
           <div style={{ marginRight: '4px' }} />
           <PresentationModal

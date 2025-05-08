@@ -1,6 +1,13 @@
-import { getAvg } from 'utils/helpers';
+import {getAvg} from "../../../utils/helpers";
 
-export const mapAverages = (player: any) => ({
+export const mapAverages = (player: {
+  apps: number;
+  wins: number;
+  draws: number;
+  defeats: number;
+  goalsFor: number;
+  goalsAgainst: number;
+}) => ({
   total: player.apps,
   wins: player.wins,
   draws: player.draws,

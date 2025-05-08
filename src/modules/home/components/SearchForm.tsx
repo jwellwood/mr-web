@@ -33,7 +33,7 @@ export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
         name="teamName"
         rules={{ minLength: 3 }}
         label="Search Team"
-        errors={errors.teamName}
+        errors={errors.teamName ? [errors.teamName] : []}
       />
     </FormContainer>
   );

@@ -1,15 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid } from 'components/grids';
-import ControlledDateInput from 'components/inputs/ControlledDateInput';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { useNationality } from 'hooks';
 import { IEditProfileForm } from '../types';
+import {useNationality} from "../../../hooks";
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid } from '../../../components/grids';
+import ControlledTextInput from "../../../components/inputs/ControlledTextInput.tsx";
+import ControlledDateInput from "../../../components/inputs/ControlledDateInput.tsx";
+import ControlledSelectInput
+    from "../../../components/inputs/ControlledSelectInput.tsx";
 
 interface Props {
-  onSubmit: (data: any) => void;
+  onSubmit: (event: IEditProfileForm) => Promise<void> | void;
   defaultValues: IEditProfileForm;
 }
 const EditProfileForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
@@ -31,7 +32,7 @@ const EditProfileForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
           name="username"
           rules={{ required: true, minLength: 2, maxLength: 30 }}
           label="Username"
-          errors={errors.username}
+          errors={errors.username ? [errors.username] : []}
         />
         <ControlledTextInput
           control={control}
@@ -43,20 +44,20 @@ const EditProfileForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
           }}
           label="Email Address"
-          errors={errors.email}
+          errors={errors.email ? [errors.email] : []}
         />
         <ControlledDateInput
           control={control}
           name="dateOfBirth"
           label="Date of Birth"
           view="year"
-          errors={errors.dateOfBirth}
+          errors={errors.dateOfBirth ?  [errors.dateOfBirth] : []}
         />
         <ControlledSelectInput
           control={control}
           name="nationality"
           label="Nationality"
-          errors={errors.nationality}
+          errors={errors.nationality ? [errors.nationality] : []}
           options={nationalityOptions}
         />
       </CenteredGrid>

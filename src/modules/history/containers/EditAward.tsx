@@ -1,8 +1,4 @@
-import React from 'react';
-
-type Props = {};
-
-const EditAward: React.FC<Props> = (props: Props) => {
+function EditAward(){
   return <div>EditAward</div>;
 };
 

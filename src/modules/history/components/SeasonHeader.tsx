@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { SectionContainer } from 'components/containers';
+import {SectionContainer} from "../../../components/containers";
 
 type Props = {
   title: string;
@@ -7,7 +7,7 @@ type Props = {
   children: ReactElement;
 };
 
-const SeasonHeader: React.FC<Props> = ({ children, title, position }) => {
+const SeasonHeader: React.FC<Props> = ({ children, title }) => {
   return <SectionContainer title={title}>{children}</SectionContainer>;
 };
 

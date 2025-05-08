@@ -1,7 +1,7 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 
 export const GET_SQUAD_SEASON_STATS: TypedDocumentNode<{
-  stats: any;
+  stats: object;
 }> = gql`
   query GetSquadSeasonStats($teamId: String!, $seasonId: String!) {
     stats: squadSeasonStats(teamId: $teamId, seasonId: $seasonId) {

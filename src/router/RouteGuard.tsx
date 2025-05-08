@@ -1,6 +1,5 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { AUTH_ROLES } from '../app/constants';
 import { HOME } from './paths';
 
 interface Props {
@@ -12,9 +11,8 @@ interface Props {
 // If not, it redirects to the home page
 // For now, it's a simple implementation that allows all access
 const RouteGuard: React.FC<Props> = ({ 
-  children, 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  authorization = AUTH_ROLES.USER 
+  children,
+   
 }) => {
   const location = useLocation();
 

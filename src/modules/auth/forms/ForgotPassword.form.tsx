@@ -33,7 +33,7 @@ const ForgotPasswordForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
           pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
         }}
         label="Email Address"
-        errors={errors.email}
+        errors={errors.email ? [errors.email] : []}
       />
     </FormContainer>
   );

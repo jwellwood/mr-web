@@ -1,10 +1,9 @@
-import React from 'react';
-import { SectionContainer } from 'components/containers';
-import LinksList from 'components/lists/LinksList';
-import { CustomTypography } from 'components/typography';
-import { theme } from 'theme';
-import { IListItem, IMostGoalsInMatch } from 'types';
-import { parseDate } from 'utils/helpers';
+import {IListItem, IMostGoalsInMatch} from "../../../types";
+import {CustomTypography} from "../../../components/typography";
+import {parseDate} from "../../../utils/helpers";
+import {SectionContainer} from "../../../components/containers";
+import {theme} from "../../../theme";
+import LinksList from "../../../components/lists/LinksList.tsx";
 
 type Props = {
   title: string;
@@ -12,7 +11,7 @@ type Props = {
   loading: boolean;
 };
 
-const MostInGame: React.FC<Props> = ({ data, loading, title }) => {
+function MostInGame({ data, title }: Props) {
   const listData: IListItem[] =
     data?.map((item) => {
       const labelColor =

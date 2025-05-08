@@ -58,7 +58,7 @@ const SignUpForm: React.FC<Props> = ({
             maxLength: 30,
           }}
           label="Username"
-          errors={errors.username}
+          errors={errors.username ? [errors.username] : []}
         />
         <ControlledTextInput
           control={control}
@@ -70,14 +70,14 @@ const SignUpForm: React.FC<Props> = ({
             pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
           }}
           label="Email Address"
-          errors={errors.email}
+          errors={errors.email ? [errors.email] : []}
         />
         <ControlledTextInput
           control={control}
           name="password"
           isPassword={true}
           label="Password"
-          errors={errors.password}
+          errors={errors.password ? [errors.password] : []}
         />
 
         <div style={{ marginLeft: '10px' }}>

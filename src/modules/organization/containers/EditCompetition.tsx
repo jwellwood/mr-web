@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
-import { ICompetition } from 'types';
+
 import { PAGES } from '../constants';
 import CompetitionForm from '../forms/CompetitionForm';
 import { GET_COMPETITION_BY_ID, UPDATE_COMPETITION } from '../graphql';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
+import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import { AppDispatch } from '../../../store/store.ts';
+import { ICompetition } from '../../../types';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {AuthRoles} from "../../../constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const EditCompetition: React.FC = () => {
   const { orgId, competitionId } = useCustomParams();
@@ -48,20 +49,25 @@ const EditCompetition: React.FC = () => {
           compId: competitionId,
           ...mapCompetitionInput(formData),
         },
-      }).then((res) => {
-        dispatch(showAlert('Competition updated successfully!', 'success'));
+      }).then(() => {
+        dispatch(showAlert({text: 'Competition updated successfully!', type: 'success'}))
         navigate(-1);
       });
     } catch (error) {
-      dispatch(showAlert('Something went wrong', 'error'));
+      console.error(error);
+      dispatch(showAlert({text: 'Something went wrong', type: 'error'}))
     }
   };
 
-  if (error || updateError)
-    return <ErrorGraphql error={[error.message, updateError.message]} />;
+  if (error){
+    return <ErrorGraphql error={[error.message]} />;
+  }
+  if (updateError){
+    return <ErrorGraphql error={[updateError.message]} />
+  }
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN} orgId={orgId}>
+    <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
       <PageHeader title={PAGES.EDIT_COMP} />
       {!loading && !updateLoading && defaultValues ? (
         <CompetitionForm defaultValues={defaultValues} onSubmit={onSubmit} />

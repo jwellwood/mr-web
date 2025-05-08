@@ -1,4 +1,4 @@
-import { IMatch, IPlayerInMatch, ITempMatch } from 'types';
+import {IMatch, IPlayerInMatch, ITempMatch} from "../../../types";
 
 export const mapMatch = (
   teamId: string,
@@ -30,7 +30,7 @@ export const mapMatch = (
     teamId,
     seasonId: tempMatch.seasonId,
     date: tempMatch.date,
-    competitionId: tempMatch.competition._id,
+    competitionId: tempMatch.competition?._id,
     opponentId: tempMatch.opponentId,
     teamGoals: +tempMatch.teamGoals,
     opponentGoals: +tempMatch.opponentGoals,

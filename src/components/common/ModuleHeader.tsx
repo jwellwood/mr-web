@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, {Fragment, ReactNode} from 'react';
 import { SectionContainer } from '../containers';
 import { CenteredGrid, GridItem } from '../grids';
 import FlagIcon from '../icons/FlagIcon';
@@ -12,7 +12,7 @@ import {theme} from "../../theme";
 type Props = {
   title: string;
   badge: string;
-  data?: { label: string; value: string }[];
+  data?: { label: string; value: ReactNode }[];
   city?: string;
   country: string;
   type: TImageType;

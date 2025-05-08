@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useNationality } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
-import { IOrganization } from 'types';
+
 import { PAGES } from '../constants';
 import OrgForm from '../forms/OrgForm';
 import { GET_ORG, UPDATE_ORG } from '../graphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { AppDispatch } from '../../../store/store';
+import {useNationality} from "../../../hooks";
+import {IOrganization} from "../../../types";
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {AUTH_ROLES} from "../../../app/constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const UpdateDetailsContainer: React.FC = () => {
   const { orgId } = useCustomParams();
@@ -27,7 +28,7 @@ const UpdateDetailsContainer: React.FC = () => {
     useMutation(UPDATE_ORG);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<IOrganization>(null);
+  const [defaultValues, setDefaultValues] = useState<IOrganization | null>(null);
 
   useEffect(() => {
     if (data) {
@@ -38,24 +39,25 @@ const UpdateDetailsContainer: React.FC = () => {
     }
   }, [data]);
 
-  const onSubmit = (formData: IOrganization) => {
+  const onSubmit = (formData: Partial<IOrganization>) => {
     try {
       updateOrganization({ variables: { orgId: orgId, ...formData } }).then(
         () => {
           refetch({ orgId });
-          dispatch(showAlert('Organization updated!', 'success'));
+          dispatch(showAlert({text: 'Organization updated!', type: 'success'}))
           navigate(`/org/${orgId}`);
         }
       );
     } catch (error) {
-      dispatch(showAlert('There was a problem', 'error'));
+      console.error(error);
+      dispatch(showAlert({text: 'There was a problem', type: 'error'}))
     }
   };
 
   if (error || updateError)
     return <ErrorGraphql error={[error, updateError]} />;
   return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN} orgId={orgId}>
+    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.EDIT} />
       {!loading && !updateLoading && defaultValues ? (
         <OrgForm

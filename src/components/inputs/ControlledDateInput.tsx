@@ -1,11 +1,10 @@
-import React from 'react';
-import { Control, Controller } from 'react-hook-form';
+import {Control, Controller, Path} from 'react-hook-form';
 import DateInput from './DateInput';
 import {DateView} from "@mui/x-date-pickers";
 
-type Props = {
-  control: Control<object>;
-  name: never;
+type Props<T extends object> = {
+  control: Control<T>;
+  name: Path<T>;
   label: string;
   errors: {type: string}[];
   rules?: {
@@ -16,7 +15,7 @@ type Props = {
   disableFuture?: boolean;
 };
 
-const ControlledDateInput: React.FC<Props> = ({
+function ControlledDateInput <T extends object>({
   control,
   name,
   label,
@@ -24,7 +23,7 @@ const ControlledDateInput: React.FC<Props> = ({
   view,
   openTo,
   disableFuture = true,
-}) => {
+}: Props<T>) {
   return (
     <Controller
       control={control}

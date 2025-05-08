@@ -1,4 +1,4 @@
-export const initTabState: any = {
+export const initTabState = {
   profile: 0,
   org: 0,
   orgTeams: 0,
@@ -9,4 +9,4 @@ export const initTabState: any = {
   player: 0,
   history: 0,
   season: 0,
-};
+} as const;

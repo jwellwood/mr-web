@@ -84,7 +84,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="minutes"
             label="Minutes"
             options={minuteOptions}
-            errors={errors.minutes}
+            errors={errors.minutes ? [errors.minutes] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -93,7 +93,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="matchPosition"
             label="Position"
             options={positionOptions}
-            errors={errors.matchPosition}
+            errors={errors.matchPosition ? [errors.matchPosition] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -102,7 +102,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="goals"
             label="Goals"
             options={goalOptions}
-            errors={errors.goals}
+            errors={errors.goals ? [errors.goals] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -111,7 +111,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="pensScored"
             label="Pens Scored"
             options={goalOptions}
-            errors={errors.pensScored}
+            errors={errors.pensScored ? [errors.pensScored] : []}
             disabled={+goalsScored === 0}
           />
         </GridItem>
@@ -121,7 +121,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="assists"
             label="Assists"
             options={goalOptions}
-            errors={errors.assists}
+            errors={errors.assists ? [errors.assists] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -130,7 +130,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="ownGoals"
             label="Own Goals"
             options={concededOptions}
-            errors={errors.ownGoals}
+            errors={errors.ownGoals ? [errors.ownGoals] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -139,7 +139,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="pensMissed"
             label="Pens Missed"
             options={getIntegers(10)}
-            errors={errors.pensMissed}
+            errors={errors.pensMissed ? [errors.pensMissed] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -148,7 +148,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="pensSaved"
             label="Pens Saved"
             options={getIntegers(10)}
-            errors={errors.pensSaved}
+            errors={errors.pensSaved ? [errors.pensSaved] : []}
           />
         </GridItem>
 
@@ -158,7 +158,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="conceded"
             label="Conceded"
             options={concededOptions}
-            errors={errors.conceded}
+            errors={errors.conceded ? [errors.conceded] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -167,7 +167,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             name="yellowCards"
             label="Yellow Cards"
             options={getIntegers(2, 0)}
-            errors={errors.yellowCards}
+            errors={errors.yellowCards ? [errors.yellowCards] : []}
           />
         </GridItem>
         <GridItem>

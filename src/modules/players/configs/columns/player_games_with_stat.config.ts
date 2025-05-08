@@ -1,5 +1,5 @@
-import { BACKGROUND_STYLE } from 'app/constants';
-import { CellStyleByIndex } from 'components/tables/types';
+import {BACKGROUND_STYLE} from "../../../../app/constants.ts";
+import {ICellStyleByIndex} from "../../../../components/tables/types.ts";
 
 const { STATIC } = BACKGROUND_STYLE;
 
@@ -20,9 +20,9 @@ export const player_games_with_stat = [
     label: '',
     width: 30,
   },
-];
+] as const;
 
-export const game_with_stat_styles: CellStyleByIndex[] = [
+export const game_with_stat_styles: ICellStyleByIndex[] = [
   { index: 0, background: STATIC },
   { index: 2, textColor: 'label' },
 ];

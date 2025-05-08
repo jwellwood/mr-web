@@ -58,13 +58,13 @@ const SignInForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
               pattern: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
             }}
             label="Email Address"
-            errors={errors.email}
+            errors={errors.email ? [errors.email] : []}
           />
           <ControlledTextInput
             control={control}
             name="password"
             label="Password"
-            errors={errors.password}
+            errors={errors.password ? [errors.password] : []}
             isPassword={true}
           />
         </CenteredGrid>

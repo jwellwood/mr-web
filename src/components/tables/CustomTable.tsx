@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import {useState, MouseEvent, useMemo} from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import CustomTableHead from '../tables/CustomTableHead';
-import { getComparator, stableSort } from '../tables/helpers/sort';
+import { getComparator, stableSort } from './helpers/sort.ts';
 import CustomCellValue from './CustomCellValue';
 import { getBackgroundColor } from './helpers/getBackgroundColor';
 import { getBorderStyle } from './helpers/getBorderStyle';
@@ -14,9 +14,19 @@ import PositionString from './PositionString';
 import { ICellStyleByIndex } from './types';
 
 interface Props {
-  rows: Record<string, {value: string, isPercentage: boolean}>[];
+  rows: {
+    label: string
+    value: number;
+    average: {
+      value: number;
+      isPercentage: boolean;
+    };
+  }[];
   columns: {
-    id: string;
+    id: keyof Data;
+    label: string;
+    width: string;
+    isPercentage?: boolean;
   }[];
   isSortable: boolean;
   sortByString?: string;
@@ -27,25 +37,27 @@ interface Data {
   apps: string;
   goals: number;
   assists: number;
+  position: string;
+  isPercentage?: boolean;
 }
 
-const CustomTable: React.FC<Props> = ({
+function CustomTable({
   rows = [],
   columns,
   isSortable,
   sortByString = '',
   cellIndexStyles = [],
-}) => {
+}: Props) {
   const [sortBy, setSortBy] = useState(sortByString);
 
   const handleRequestSort = (
-    _: React.MouseEvent<unknown>,
+    _: MouseEvent,
     property: keyof Data
   ) => {
     setSortBy(property);
   };
 
-  const visibleRows = React.useMemo(
+  const visibleRows = useMemo(
     () => stableSort(
         rows,
         getComparator('desc', sortBy)
@@ -116,7 +128,7 @@ const CustomTable: React.FC<Props> = ({
                       >
                         <CustomCellValue
                           isDifference={item[0] === 'difference'}
-                          isPercentage={(item[1])?.isPercentage}
+                          isPercentage={typeof item[1] === "object" && "isPercentage" in item[1] ? item[1].isPercentage : false}
                           textColor={textColor}
                           value={customCellValue()}
                         />

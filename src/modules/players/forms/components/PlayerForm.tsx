@@ -70,7 +70,7 @@ const PlayerForm: React.FC<Props> = ({
             name="name"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
             label="Name"
-            errors={errors.name}
+            errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -79,7 +79,7 @@ const PlayerForm: React.FC<Props> = ({
             name="nationality"
             label="Nationality"
             options={countryOptions}
-            errors={errors.nationality}
+            errors={errors.nationality ? [errors.nationality] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -88,7 +88,7 @@ const PlayerForm: React.FC<Props> = ({
             name="dateOfBirth"
             label="Date of Birth"
             openTo="year"
-            errors={errors.dateOfBirth}
+            errors={errors.dateOfBirth ? [errors.dateOfBirth] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -97,7 +97,7 @@ const PlayerForm: React.FC<Props> = ({
             name="yearJoined"
             label="Year Joined"
             view="year"
-            errors={errors.yearJoined}
+            errors={errors.yearJoined ? [errors.yearJoined] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -106,7 +106,7 @@ const PlayerForm: React.FC<Props> = ({
             name="position"
             label="Position"
             options={positionOptions}
-            errors={errors.position}
+            errors={errors.position ? [errors.position] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -115,7 +115,7 @@ const PlayerForm: React.FC<Props> = ({
             name="squadNumber"
             label="Squad Number"
             options={getIntegers(99)}
-            errors={errors.squadNumber}
+            errors={errors.squadNumber ? [errors.squadNumber] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -125,7 +125,7 @@ const PlayerForm: React.FC<Props> = ({
             rules={{ required: true }}
             options={seasonOptions}
             label="Seasons Played"
-            errors={errors.seasonIds}
+            errors={errors.seasonIds ? [errors.seasonIds] : []}
           />
         </GridItem>
       </CenteredGrid>

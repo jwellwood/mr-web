@@ -15,7 +15,7 @@ export const useLogout = (toggleDrawer: () => void) => {
     logOutUser().then(() => {
       toggleDrawer();
       client.resetStore();
-      dispatch(showAlert('You have logged out. Bye!', 'success'));
+      dispatch(showAlert({text: 'You have logged out. Bye!', type: 'success'}));
     });
   };
 

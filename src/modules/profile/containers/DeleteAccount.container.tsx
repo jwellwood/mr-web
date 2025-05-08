@@ -2,18 +2,19 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { client } from 'graphql/client';
-import { showAlert } from 'modules/alerts';
-import { setAuth } from 'modules/auth';
-import { AUTH } from 'router/paths';
-import RouteGuard from 'router/RouteGuard';
+
 import { pages } from '../constants';
 import DeleteAccountForm from '../forms/DeleteAccount.form';
 import { GET_USER, DELETE_USER } from '../graphql';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import {resetAuth} from "../../../store/features/auth/authSlice.ts";
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import {PageHeader} from "../../../components/typography";
+import {AuthRoles} from "../../../constants.ts";
+import {Spinner} from "../../../components/loaders";
+import {apolloClient} from "../../../services/graphql/apolloClient.ts";
+import { AUTH } from '../../../router/paths.ts';
 
 const DeleteAccountContainer: React.FC = () => {
   const navigate = useNavigate();
@@ -26,15 +27,15 @@ const DeleteAccountContainer: React.FC = () => {
 
   const onSubmit = () => {
     return deleteUser()
-      .then(() => {
-        dispatch(showAlert('User account deleted successfully', 'success'));
-        client.resetStore();
-        dispatch(setAuth([], [], []));
+      .then(async () => {
+        dispatch(showAlert({text: 'User account deleted successfully', type: 'success'}))
+        await apolloClient.resetStore();
+        dispatch(resetAuth());
         navigate(AUTH.SIGN_IN);
       })
       .catch((err) => {
-        dispatch(showAlert('Something went wrong', 'error'));
-        console.log(err);
+        dispatch(showAlert({text: 'Something went wrong', type: 'error'}))
+        console.error(err);
       });
   };
 
@@ -43,7 +44,7 @@ const DeleteAccountContainer: React.FC = () => {
   }
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.USER}>
+    <RouteGuard authorization={AuthRoles.USER}>
       <PageHeader title={pages.DELETE_ACCOUNT} />
       {!loading && !deleteLoading && data ? (
         <DeleteAccountForm

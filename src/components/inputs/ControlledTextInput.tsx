@@ -1,21 +1,25 @@
-import React from 'react';
 import { Control, Controller } from 'react-hook-form';
 import TextInput from './TextInput';
 
-type Props = {
-  control: Control<object>;
+type Props<T extends object> = {
+  control: Control<T>;
   name: string;
   label: string;
-  errors: { type: string }[];
+  errors: ({ type: string } | Error)[];
   rules?: {
     required?: boolean;
+    minLength?: number;
+    maxLength?: number;
+    pattern?: RegExp;
+    min?: number;
+    max?: number;
   };
   multiline?: boolean;
   isPassword?: boolean;
   placeholder?: string;
 };
 
-const ControlledTextInput: React.FC<Props> = ({
+function ControlledTextInput<T extends object> ({
   control,
   name,
   label,
@@ -24,7 +28,7 @@ const ControlledTextInput: React.FC<Props> = ({
   multiline = false,
   isPassword = false,
   placeholder,
-}) => {
+}: Props<T>)  {
   return (
     <Controller
       control={control}

@@ -2,19 +2,20 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { DeleteModal } from 'components/modals';
-import { CustomTypography, PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { useSeasons } from 'hooks/useSeasons';
-import { showAlert } from 'modules/alerts';
-import { GET_PLAYERS_BY_SEASON_ID } from 'modules/players/graphql';
-import RouteGuard from 'router/RouteGuard';
+
 import { PAGES } from '../constants';
 import { DELETE_MATCH, GET_MATCHES_BY_SEASON } from '../graphql';
 import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
+import { useSeasons } from '../../../hooks/useSeasons';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {AuthRoles} from "../../../constants.ts";
+import {CustomTypography, PageHeader} from "../../../components/typography";
+import {DeleteModal} from "../../../components/modals";
+import {Spinner} from "../../../components/loaders";
 
 const DeleteMatch: React.FC = () => {
   const { seasonId } = useSeasons();
@@ -45,15 +46,29 @@ const DeleteMatch: React.FC = () => {
     deleteMatch()
       .then(() => {
         navigate(-2);
-        dispatch(showAlert('Match deleted', 'success'));
+        dispatch(
+            showAlert(
+                {
+                  text: 'Match deleted',
+                  type: 'success'
+                }
+            )
+        )
       })
       .catch((err) => {
-        dispatch(showAlert(err, 'error'));
+        dispatch(
+            showAlert(
+                {
+                  text: err,
+                  type: 'error'
+                }
+            )
+        )
       });
   };
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} teamId={teamId}>
+    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.DELETE_MATCH} backButton />
 
       {!loading ? (

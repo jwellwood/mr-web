@@ -37,7 +37,7 @@ const DeleteTeamForm: React.FC<Props> = ({
           name="teamName"
           rules={{ required: true }}
           label="Team Name"
-          errors={errors.teamName}
+          errors={errors.teamName ? [errors.teamName] : []}
         />
       </CenteredGrid>
     </FormContainer>

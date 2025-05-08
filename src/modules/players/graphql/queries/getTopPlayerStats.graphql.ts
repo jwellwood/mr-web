@@ -1,7 +1,7 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 
 export const GET_TOP_PLAYER_STATS: TypedDocumentNode<{
-  stats: any;
+  stats: object;
 }> = gql`
   query GetTopPlayerStats($teamId: String!) {
     stats: topPlayerStats(teamId: $teamId) {

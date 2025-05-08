@@ -1,15 +1,17 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledMultiSelectInput from 'components/inputs/ControlledMultiSelectInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { ISelectOptions } from 'components/inputs/SelectInput';
+
 import { IAward } from '../types';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import ControlledMultiSelectInput
+  from "../../../components/inputs/ControlledMultiSelectInput.tsx";
 
 interface Props {
   onSubmit: (data: Partial<IAward>) => void;
-  defaultValues: IAward;
+  defaultValues: Partial<IAward>;
   playersOptions: ISelectOptions[];
 }
 const AwardForm: React.FC<Props> = ({
@@ -21,7 +23,7 @@ const AwardForm: React.FC<Props> = ({
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<Partial<IAward>>({
+  } = useForm<IAward>({
     defaultValues,
   });
 
@@ -33,7 +35,7 @@ const AwardForm: React.FC<Props> = ({
             control={control}
             name="awardName"
             label="Award Name"
-            errors={errors.awardName}
+            errors={errors.awardName ? [errors.awardName] : []}
             placeholder="e.g. Player of the Season"
           />
         </GridItem>
@@ -43,7 +45,7 @@ const AwardForm: React.FC<Props> = ({
             name="winners"
             label="Winners"
             options={playersOptions}
-            errors={errors.winners}
+            errors={errors.winners && "name" in errors.winners ? typeof errors.winners.name === "string" ? [errors.winners.name] : [] : []}
             showLabels
           />
         </GridItem>
@@ -52,7 +54,7 @@ const AwardForm: React.FC<Props> = ({
             control={control}
             name="awardValue"
             label="Value"
-            errors={errors.awardValue}
+            errors={errors.awardValue ? [errors.awardValue] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -60,7 +62,7 @@ const AwardForm: React.FC<Props> = ({
             control={control}
             name="comment"
             label="Comment"
-            errors={errors.comment}
+            errors={errors.comment ? [errors.comment] : []}
           />
         </GridItem>
       </CenteredGrid>

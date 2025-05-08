@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useNationality } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
+
 import { PAGES, TeamError, TeamSuccess } from '../constants';
 import UpdateTeamDetailsForm from '../forms/UpdateTeamDetailsForm.form';
 import { GET_TEAM, UPDATE_TEAM_DETAILS } from '../graphql';
 import { ITeamDetailsInput } from '../types';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useNationality } from '../../../hooks';
+import { AppDispatch } from '../../../store/store';
+import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import {AuthRoles} from "../../../constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const UpdateDetailsContainer: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -27,7 +28,7 @@ const UpdateDetailsContainer: React.FC = () => {
     useMutation(UPDATE_TEAM_DETAILS);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<ITeamDetailsInput>(null);
+  const [defaultValues, setDefaultValues] = useState<ITeamDetailsInput | null>(null);
 
   useEffect(() => {
     if (data) {
@@ -38,22 +39,26 @@ const UpdateDetailsContainer: React.FC = () => {
     }
   }, [data]);
 
-  const onSubmit = (formData: ITeamDetailsInput) => {
+  const onSubmit = (formData: Partial<ITeamDetailsInput>) => {
     try {
       updateTeamDetails({ variables: { teamId, ...formData } }).then(() => {
         refetch({ teamId });
-        dispatch(showAlert(TeamSuccess.edit, 'success'));
+        dispatch(showAlert({
+          text: TeamSuccess.edit,
+          type: 'success'
+        }));
         navigate(-1);
       });
     } catch (error) {
-      dispatch(showAlert(TeamError.edit, 'error'));
+      console.error(error)
+      dispatch(showAlert({text: TeamError.edit, type: 'error'}));
     }
   };
 
   if (error || updateError)
     return <ErrorGraphql error={[error, updateError]} />;
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} teamId={teamId}>
+    <RouteGuard authorization={AuthRoles.TEAM_ADMIN} >
       <PageHeader title={PAGES.EDIT_TEAM} />
       {!loading && !updateLoading && defaultValues ? (
         <UpdateTeamDetailsForm

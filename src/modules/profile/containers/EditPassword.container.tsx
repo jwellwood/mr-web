@@ -2,16 +2,17 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import { showAlert } from 'modules/alerts';
-import { PROFILE } from 'router/paths';
-import RouteGuard from 'router/RouteGuard';
+
 import { pages, changePasswordFormState } from '../constants';
 import EditPasswordForm from '../forms/EditPassword.form';
 import { EDIT_PASSWORD, GET_USER } from '../graphql';
 import { IChangePasswordForm } from '../types';
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import { PROFILE } from '../../../router/paths.ts';
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import PageHeader from '../../../components/typography/PageHeader.tsx';
+import {Spinner} from "../../../components/loaders";
+import {AuthRoles} from "../../../constants.ts";
 
 const ChangePasswordContainer: React.FC = () => {
   const navigate = useNavigate();
@@ -26,17 +27,17 @@ const ChangePasswordContainer: React.FC = () => {
       variables: { password: data.password, newPassword: data.newPassword },
     })
       .then(() => {
-        dispatch(showAlert('Password changed successfully!', 'success'));
-        navigate(PROFILE.PROFILE);
+        dispatch(showAlert({text: 'Password changed successfully!', type: 'success'}))
+        navigate(PROFILE);
       })
       .catch((err) => {
-        console.log(err);
-        dispatch(showAlert('Something went wrong, please try again', 'error'));
+        console.error(err);
+        dispatch(showAlert({text: 'Something went wrong, please try again', type: 'error'}));
       });
   };
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.USER}>
+    <RouteGuard authorization={AuthRoles.USER}>
       <PageHeader title={pages.CHANGE_PASSWORD_PAGE} />
       {!loading ? (
         <EditPasswordForm

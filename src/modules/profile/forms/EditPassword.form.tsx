@@ -34,7 +34,7 @@ const EditPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
           label="Current Password"
           rules={{ required: true }}
           isPassword={true}
-          errors={errors.password}
+          errors={errors.password ? [errors.password] : []}
         />
         <ControlledTextInput
           control={control}
@@ -42,7 +42,7 @@ const EditPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
           label="New Password"
           rules={{ required: true }}
           isPassword={true}
-          errors={errors.newPassword}
+          errors={errors.newPassword ? [errors.newPassword] : []}
         />
         <ControlledTextInput
           control={control}
@@ -50,7 +50,7 @@ const EditPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
           rules={{ required: true }}
           label="Confirm New Password"
           isPassword={true}
-          errors={errors.confirmPassword}
+          errors={errors.confirmPassword ? [errors.confirmPassword] : []}
         />
       </CenteredGrid>
       {!isMatch && confirmPasswordInput.length > 2 && (

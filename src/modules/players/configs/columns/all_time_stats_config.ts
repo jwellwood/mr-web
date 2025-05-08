@@ -1,5 +1,5 @@
-import { BACKGROUND_STYLE, BORDER_STYLE } from 'app/constants';
 import { CellStyleByIndex, HeadCell } from 'components/tables/types';
+import {BACKGROUND_STYLE, BORDER_STYLE} from "../../../../app/constants.ts";
 
 const { STATIC } = BACKGROUND_STYLE;
 const { STANDARD } = BORDER_STYLE;
@@ -52,7 +52,7 @@ export const all_time_stats_config: HeadCell[] = [
   },
 ];
 
-export const all_time_stats_styles = (theme): CellStyleByIndex[] => [
+export const all_time_stats_styles = (): CellStyleByIndex[] => [
   {
     index: 0,
     background: STATIC,

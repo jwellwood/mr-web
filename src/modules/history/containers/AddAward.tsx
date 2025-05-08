@@ -2,27 +2,28 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
-import { useMatchPlayersInput } from 'modules/matches/hooks/useMatchPlayersInput';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
+
 import { PAGES, initialAwardState } from '../constants';
 import AwardForm from '../forms/AwardForm';
 import { ADD_SEASON_AWARD } from '../graphql/addSeasonAward.graphql';
 import { GET_SEASON_AWARDS } from '../graphql/getSeasonAwards.graphql';
 import { IAward } from '../types';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { AppDispatch } from '../../../store/store';
+import { useMatchPlayersInput } from '../../matches/hooks/useMatchPlayersInput';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import RouteGuard from '../../../router/RouteGuard';
+import {AuthRoles} from "../../../constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const AddAward: React.FC = () => {
   const { teamId, seasonId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<any>(null);
+  const [defaultValues, setDefaultValues] = useState<null | Partial<IAward>>(null);
   const {
     players,
     loading: playersLoading,
@@ -53,14 +54,15 @@ const AddAward: React.FC = () => {
           ...formData,
           teamId,
           seasonId,
-          awardValue: +formData.awardValue,
+          awardValue: +(formData.awardValue || 0),
         },
       }).then(() => {
-        dispatch(showAlert('Award added successfully', 'success'));
+        dispatch(showAlert({text: 'Award added successfully', type: 'success'}));
         navigate(-1);
       });
     } catch (error) {
-      dispatch(showAlert('There was a problem', 'error'));
+      console.error(error);
+      dispatch(showAlert({text: 'There was a problem', type: 'error'}));
     }
   };
 
@@ -68,7 +70,7 @@ const AddAward: React.FC = () => {
     return <ErrorGraphql error={[error, playersError]} />;
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} teamId={teamId}>
+    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_AWARD} />
       {!loading && !playersLoading && defaultValues ? (
         <AwardForm

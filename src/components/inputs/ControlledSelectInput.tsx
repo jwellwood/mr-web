@@ -1,20 +1,20 @@
-import React from 'react';
-import { Control, Controller } from 'react-hook-form';
+import {Control, Controller, Path} from 'react-hook-form';
 import SelectInput, { ISelectOptions } from './SelectInput';
+import {FormError} from "../../types/form.ts";
 
-type Props = {
-  control: Control<Record<string, string>>;
+type Props<T extends object> = {
+  control: Control<T>;
   options: ISelectOptions[];
-  name: string;
+  name: Path<T>;
   label: string;
   rules?: {
     required?: boolean;
   };
-  errors: (string | Error)[];
+  errors: FormError[];
   disabled?: boolean;
 };
 
-const ControlledSelectInput: React.FC<Props> = ({
+function ControlledSelectInput<T extends object>({
   control,
   options,
   name,
@@ -22,7 +22,7 @@ const ControlledSelectInput: React.FC<Props> = ({
   rules,
   errors,
   disabled = false,
-}) => {
+}: Props<T>) {
   return (
     <Controller
       control={control}

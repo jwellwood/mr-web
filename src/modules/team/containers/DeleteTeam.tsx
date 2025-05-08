@@ -30,11 +30,11 @@ const DeleteTeam: React.FC = () => {
     return deleteTeam({ variables: { teamId } })
       .then(() => {
         refetch();
-        dispatch(showAlert('Team deleted', 'success'));
+        dispatch(showAlert({text: 'Team deleted', type: 'success'}));
         navigate(PROFILE.PROFILE);
       })
       .catch(() => {
-        dispatch(showAlert('Something went wrong', 'error'));
+        dispatch(showAlert({text: 'Something went wrong', type: 'error'}));
       });
   };
 

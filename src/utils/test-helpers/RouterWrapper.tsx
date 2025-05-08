@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement, ReactNode} from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -7,8 +7,8 @@ interface Props {
   children: ReactElement;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const renderWithRouter = (ui: any, { route = '/' } = {}) => {
+// eslint-disable-next-line react-refresh/only-export-components
+export const renderWithRouter = (ui: ReactNode, { route = '/' } = {}) => {
   window.history.pushState({}, 'Test page', route);
 
   return {

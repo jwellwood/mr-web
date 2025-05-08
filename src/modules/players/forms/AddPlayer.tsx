@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useNationality } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { useSeasons } from 'hooks/useSeasons';
-import { showAlert } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
-import { IPlayer } from 'types';
+
 import { PAGES, initialPlayerState } from '../constants';
 import { GET_PLAYERS_BY_SEASON_ID } from '../graphql';
 import { ADD_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { AppDispatch } from '../../../store/store';
+import { useNationality } from '../../../hooks';
+import { useSeasons } from '../../../hooks/useSeasons';
+import { IPlayer } from '../../../types';
+import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import RouteGuard from '../../../router/RouteGuard';
+import {AuthRoles} from "../../../constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const AddPlayer: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -25,7 +26,7 @@ const AddPlayer: React.FC = () => {
   const { nationalityOptions } = useNationality();
   const { seasonOptions, seasonId, loading } = useSeasons();
 
-  const [defaultValues, setDefaultValues] = useState<Partial<IPlayer>>(null);
+  const [defaultValues, setDefaultValues] = useState<Partial<IPlayer>>({});
 
   const [addPlayer, { error, loading: addLoading }] = useMutation(ADD_PLAYER, {
     refetchQueries: [
@@ -39,20 +40,21 @@ const AddPlayer: React.FC = () => {
   const onSubmit = async (formData: Partial<IPlayer>) => {
     try {
       return addPlayer({ variables: { teamId: teamId, ...formData } }).then(
-        (res) => {
-          dispatch(showAlert('Player added successfully!', 'success'));
+        () => {
+          dispatch(showAlert({text: 'Player added successfully!', type: 'success'}))
           navigate(-1);
         }
       );
     } catch (error) {
-      dispatch(showAlert('Something went wrong', 'error'));
+      console.error("Couldn't add player: ", error)
+      dispatch(showAlert({text: 'Something went wrong', type: 'error'}))
     }
   };
 
   if (error) return <ErrorGraphql error={[error.message]} />;
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} teamId={teamId}>
+    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_PLAYER} />
       {!loading && !addLoading && defaultValues ? (
         <PlayerForm

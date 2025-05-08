@@ -26,7 +26,7 @@ const UpdateTeamRolesForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             control={control}
             name="name"
             label="Name"
-            errors={errors.name}
+            errors={errors.name ? [errors.name] : []}
             rules={{ required: true, minLength: 2, maxLength: 50 }}
           />
         </GridItem>
@@ -35,7 +35,7 @@ const UpdateTeamRolesForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             control={control}
             name="role"
             label="Role"
-            errors={errors.role}
+            errors={errors.role ? [errors.role] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -43,7 +43,7 @@ const UpdateTeamRolesForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             control={control}
             name="contact"
             label="Contact"
-            errors={errors.contact}
+            errors={errors.contact ? [errors.contact] : []}
             rules={{ maxLength: 99 }}
           />
         </GridItem>

@@ -2,13 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
-import RouteGuard from 'router/RouteGuard';
+
 import { PAGES } from '../constants';
 import {
   DELETE_PLAYER,
@@ -17,6 +11,13 @@ import {
   GET_PLAYER_BY_ID,
 } from '../graphql';
 import DeletePlayerForm from './components/DeletePlayerForm';
+import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import {AuthRoles} from "../../../constants.ts";
+import {PageHeader} from "../../../components/typography";
+import {Spinner} from "../../../components/loaders";
 
 const DeletePlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
@@ -41,24 +42,24 @@ const DeletePlayer: React.FC = () => {
   const onDelete = async () => {
     return await deletePlayer({ variables: { teamId, playerId } })
       .then(() => {
-        dispatch(showAlert('Player deleted', 'success'));
+        dispatch(showAlert({text: 'Player deleted', type: 'success'}))
         navigate(-2);
       })
       .catch(() => {
-        dispatch(showAlert('Something went wrong', 'error'));
+        dispatch(showAlert({text: 'Something went wrong', type: 'error'}))
       });
   };
 
   if (error) return <ErrorGraphql error={[error]} />;
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} teamId={teamId}>
+    <RouteGuard authorization={AuthRoles.TEAM_ADMIN} >
       <PageHeader title={PAGES.DELETE_PLAYER} />
       {!loading && !deleteLoading ? (
         <DeletePlayerForm
           onSubmit={onDelete}
           defaultValues={undefined}
-          playerName={data.player.name}
+          playerName={data?.player?.name || ''}
         />
       ) : (
         <Spinner />

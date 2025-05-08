@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {FormEvent} from 'react';
 import Container from '@mui/material/Container';
 import { CustomButton, SubmitButton } from '../buttons';
 import SectionContainer from './SectionContainer';
 
 interface Props {
-  onSubmit: (formData: object) => void;
+  onSubmit: (formData: FormEvent) => void;
   children: React.ReactNode;
   disabled?: boolean;
   text?: string;

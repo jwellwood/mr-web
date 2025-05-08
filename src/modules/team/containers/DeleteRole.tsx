@@ -1,18 +1,19 @@
 import React, { ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { useMutation, useQuery } from '@apollo/client';
-import { DeleteModal } from 'components/modals';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { showAlert } from 'modules/alerts';
+
 import { DELETE_ROLE, GET_TEAM } from '../graphql';
+import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import {DeleteModal} from "../../../components/modals";
 
 interface Props {
   roleId: string;
   children: ReactElement;
 }
 
-const DeleteRole: React.FC<Props> = ({ roleId, children }) => {
+const DeleteRole: React.FC<Props> = ({ roleId }) => {
   const { teamId } = useCustomParams();
   const dispatch = useDispatch();
   const { loading, refetch } = useQuery(GET_TEAM, {
@@ -25,12 +26,18 @@ const DeleteRole: React.FC<Props> = ({ roleId, children }) => {
 
   const onDeleteRole = () => {
     deleteTeamRole({ variables: { teamId, roleId } })
-      .then((res) => {
+      .then(() => {
         refetch({ teamId });
-        dispatch(showAlert('Deleted role', 'success'));
+        dispatch(showAlert({
+          text: 'Deleted role',
+          type: 'success'
+        }));
       })
       .catch(() => {
-        dispatch(showAlert('Error deleting role', 'error'));
+        dispatch(showAlert({
+          text: 'Error deleting role',
+          type: 'error'
+        }));
       });
   };
 

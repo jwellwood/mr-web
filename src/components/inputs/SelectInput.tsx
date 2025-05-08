@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 
 import FormErrorMessage from '../alerts/FormErrorMessage';
+import {FormError} from "../../types/form.ts";
 
 export interface ISelectOptions {
   label: string;
@@ -14,7 +15,7 @@ interface Props {
   defaultValue?: string | boolean | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
-  errors?: (string | Error)[]; // TODO
+  errors?: FormError[]; // TODO
   options: {
     label: string;
     value: string  | number;
@@ -59,7 +60,7 @@ const SelectInput: React.FC<Props> = ({
           </option>
         ))}
       </TextField>
-      {errors ? <FormErrorMessage error={errors[0]} /> : null}
+      {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };

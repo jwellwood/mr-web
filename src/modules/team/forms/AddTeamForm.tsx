@@ -1,18 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import SwitchList from 'components/common/SwitchList';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledDateInput from 'components/inputs/ControlledDateInput';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { IListItem } from 'types';
+
 import { ITeamDetailsInput } from '../types';
+import {IListItem} from "../../../types";
+import {FormContainer} from "../../../components/containers";
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import ControlledDateInput from "../../../components/inputs/ControlledDateInput.tsx";
+import ControlledSelectInput
+  from "../../../components/inputs/ControlledSelectInput.tsx";
+import SwitchList from "../../../components/common/SwitchList.tsx";
+import {ISelectOptions} from "../../../components/inputs/SelectInput.tsx";
 
 interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
   defaultValues: Partial<ITeamDetailsInput>;
-  countryOptions: any;
+  countryOptions: ISelectOptions[];
 }
 
 const AddTeamForm: React.FC<Props> = ({
@@ -44,7 +47,7 @@ const AddTeamForm: React.FC<Props> = ({
             name="teamName"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
             label="Team Name"
-            errors={errors.teamName}
+            errors={errors.teamName ? [errors.teamName] : []}
           />
         </GridItem>
         <GridItem xs={12}>
@@ -53,7 +56,7 @@ const AddTeamForm: React.FC<Props> = ({
             name="yearFounded"
             label="Year Founded"
             view="year"
-            errors={errors.yearFounded}
+            errors={errors.yearFounded ? [errors.yearFounded] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -62,7 +65,7 @@ const AddTeamForm: React.FC<Props> = ({
             name="location"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
             label="City"
-            errors={errors.location}
+            errors={errors.location ? [errors.location] : []}
           />
         </GridItem>
         <GridItem xs={6}>
@@ -72,7 +75,7 @@ const AddTeamForm: React.FC<Props> = ({
             label="Country"
             rules={{ required: true }}
             options={countryOptions}
-            errors={errors.country}
+            errors={errors.country ? [errors.country] : []}
           />
         </GridItem>
         <GridItem>
