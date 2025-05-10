@@ -1,6 +1,6 @@
 import React from 'react';
-import { IMAGE_TYPE } from 'app/constants';
-import CustomAvatar from 'components/avatars/CustomAvatar';
+import { IMAGE_TYPE } from '../../../app/constants';
+import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { IMatchList } from 'types/IMatchList';
 import MatchListLabel from '../components/MatchListLabel';
 import MatchListScoreBox from '../components/MatchListScoreBox';
