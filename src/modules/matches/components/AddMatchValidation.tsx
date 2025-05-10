@@ -1,7 +1,7 @@
 import React from 'react';
 import { DataContainer, SectionContainer } from '../../../components/containers';
 import { CustomTypography } from '../../../components/typography';
-import { IPlayerInMatch, ITempMatch } from '../../../types';import { validateStats } from '../helpers/statsValidation';
+import {IListItem, IPlayerInMatch, ITempMatch} from '../../../types';import { validateStats } from '../helpers/statsValidation';
 
 type Props = {
   match: ITempMatch;
@@ -10,13 +10,13 @@ type Props = {
 
 const AddMatchValidation: React.FC<Props> = ({ match, players }) => {
   const { validationArray } = validateStats(match, players);
-  const data = [];
+  const data: IListItem[] = [];
 
   const valueText = (
     value: number,
     total: number,
-    isValid: boolean,
-    isExact: boolean
+    isValid: boolean = false,
+    isExact: boolean = false
   ) => {
     let color = '';
     if (isValid && isExact) {
@@ -37,7 +37,9 @@ const AddMatchValidation: React.FC<Props> = ({ match, players }) => {
 
   validationArray.forEach((stat) => {
     const { label, value, total, isValid, isExact } = stat;
-    data.push({ label, value: valueText(value, total, isValid, isExact) });
+    if(value && total) {
+      data.push({ label, value: valueText(value, total, isValid, isExact) });
+    }
   });
 
   return (

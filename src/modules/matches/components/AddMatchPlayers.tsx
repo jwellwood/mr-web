@@ -4,12 +4,14 @@ import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import { getTempMatch, getTempPlayers } from 'selectors';
 import { setTempPlayers } from '../actions/players.actions';
 import { initPlayerInMatch } from '../constants';
 import AddMatchPlayersForm from '../forms/AddMatchPlayersForm';
 import { useMatchPlayersInput } from '../hooks/useMatchPlayersInput';
+import {AppDispatch} from "../../../store/store.ts";
+import {getTempMatch} from "../../../store/features/matches/matchesSelector.ts";
+import {getTempPlayers} from "../../../store/features/players/playersSelection.ts";
+import {IPlayerInMatch} from "../../../types";
 
 type Props = {
   onNextClick: () => void;
@@ -21,7 +23,9 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   const dispatch: AppDispatch = useDispatch();
   const currentPlayers = useSelector(getTempPlayers);
   const currentMatch = useSelector(getTempMatch);
-  const [values, setValues] = useState<{ matchPlayers: string[] }>(null);
+  const [values, setValues] = useState<{ matchPlayers: string[] }>({
+    matchPlayers: [],
+  });
   const { players, loading, error } = useMatchPlayersInput(
     teamId,
     currentMatch.seasonId
@@ -29,15 +33,15 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
 
   const onSubmit = (formData: { matchPlayers: string[] }) => {
     const { matchPlayers } = formData;
-    const selectedPlayers = [];
+    const selectedPlayers: IPlayerInMatch[] = [];
     // if id is in current players keep current stats, else remove it
     currentPlayers.forEach((player) => {
-      const id = player.playerId?._id || player._id;
-      if (matchPlayers.includes(id)) {
+      const id = typeof player.playerId === "object" ? player.playerId?._id : player._id;
+      if (id && matchPlayers.includes(id)) {
         const mappedPlayer = {
-          _id: id,
-          name: player.playerId?.name,
           ...player,
+          _id: id,
+          name: (typeof player.playerId === "object" ?  player.playerId?.name : player.name) || "-",
         };
         selectedPlayers.push(mappedPlayer);
       }
@@ -48,9 +52,9 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
       const selectedPlayer = players.find((pl) => pl._id === playerId);
       if (!selectedPlayersIds.includes(playerId)) {
         selectedPlayers.push({
-          _id: playerId,
-          name: selectedPlayer.name,
           ...initPlayerInMatch,
+          _id: playerId,
+          name: selectedPlayer?.name,
         });
       }
     });
@@ -68,7 +72,9 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   );
   useEffect(() => {
     const mappedValues = () =>
-      currentPlayers.map((player) => player?.playerId?._id || player._id);
+      currentPlayers
+          .map((player) => typeof player?.playerId === "object" ? player.playerId._id : player._id)
+          .filter(p => p !== undefined)
 
     setValues({ matchPlayers: mappedValues() });
   }, [currentPlayers, matchId]);

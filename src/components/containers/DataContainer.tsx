@@ -4,8 +4,8 @@ import { GridDirection } from '@mui/system';
 import { CenteredGrid, GridItem } from '../grids';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
-import { theme } from 'theme';
 import { IListItem } from '../../types';
+import {theme} from "../../theme";
 interface Props {
   data: IListItem[];
   loading?: boolean;
@@ -16,14 +16,13 @@ interface Props {
 const DataContainer: React.FC<Props> = ({
   data,
   loading,
-  width = 4,
   direction = 'row',
 }) => {
   return (
     <CenteredGrid dir={direction}>
-      {data.map((item, i) => {
+      {data.map((item) => {
         return (
-          <Grid key={i} item xs={width} sx={{ width: '100%' }}>
+          <Grid sx={{ width: '100%' }} key={String(item.value)}>
             <Paper
               elevation={1}
               sx={{

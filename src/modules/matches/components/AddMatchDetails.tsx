@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import { getTempMatch } from 'selectors';
 import { ICompetition, ITeam, ITempMatch } from '../../../types';import { setTempMatch } from '../actions/matches.actions';
 import { emptySelectOption } from '../constants';
 import AddMatchDetailsForm from '../forms/AddMatchDetailsForm';
+import {AppDispatch} from "../../../store/store.ts";
+import {getTempMatch} from "../../../store/features/matches/matchesSelector.ts";
 
 type Props = {
   onNextClick: () => void;
@@ -31,7 +31,7 @@ const AddMatchDetails: React.FC<Props> = ({
       emptySelectOption,
       ...opponents.map((opponent) => ({
         label: opponent.teamName,
-        value: opponent._id,
+        value: opponent._id as string,
         disabled: opponent._id === teamId,
       })),
     ],
@@ -43,7 +43,7 @@ const AddMatchDetails: React.FC<Props> = ({
       emptySelectOption,
       ...competitions.map((competition) => ({
         label: competition.name,
-        value: competition._id,
+        value: competition._id as string,
       })),
     ],
     [competitions]
@@ -66,8 +66,8 @@ const AddMatchDetails: React.FC<Props> = ({
     dispatch(
       setTempMatch({
         ...formData,
-        teamName: team.teamName,
-        opponentName: opponent.teamName,
+        teamName: team?.teamName,
+        opponentName: opponent?.teamName,
         competition,
       })
     );

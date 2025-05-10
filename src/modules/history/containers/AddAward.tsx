@@ -67,7 +67,7 @@ const AddAward: React.FC = () => {
   };
 
   if (error || playersError)
-    return <ErrorGraphql error={[error, playersError]} />;
+    return <ErrorGraphql error={(error || playersError) as Error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
