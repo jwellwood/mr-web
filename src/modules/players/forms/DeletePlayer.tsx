@@ -50,7 +50,7 @@ const DeletePlayer: React.FC = () => {
       });
   };
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN} >
@@ -58,7 +58,7 @@ const DeletePlayer: React.FC = () => {
       {!loading && !deleteLoading ? (
         <DeletePlayerForm
           onSubmit={onDelete}
-          defaultValues={undefined}
+          defaultValues={{}}
           playerName={data?.player?.name || ''}
         />
       ) : (

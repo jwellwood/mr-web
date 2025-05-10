@@ -7,7 +7,7 @@ import type {IIconType} from '../icons/types';
 import {type TImageType, ImageTypes} from "../../constants.ts";
 
 interface Props {
-    image: string;
+    image?: string;
     size?: string;
     alt?: string;
     type?: TImageType;

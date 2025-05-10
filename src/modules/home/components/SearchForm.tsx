@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
+import { FormContainer } from '../../../components/containers';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 
 type Props = {
   defaultValues: { teamName: string };

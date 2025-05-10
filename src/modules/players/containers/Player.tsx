@@ -53,7 +53,7 @@ const Player: React.FC = () => {
     { label: '', value: `${age} years` },
   ];
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.PUBLIC}>

@@ -14,7 +14,7 @@ const Profile: React.FC = () => {
           This is the profile page. It demonstrates a protected route.
         </CustomTypography>
         <div style={{ marginTop: '20px' }}>
-          <Link to={HOME}>Back to Home</Link>
+          <Link to={HOME.HOME}>Back to Home</Link>
         </div>
       </div>
     </RouteGuard>

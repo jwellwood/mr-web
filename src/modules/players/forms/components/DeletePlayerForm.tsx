@@ -1,10 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { IPlayer } from 'types';
-
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
+import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
+import {IPlayer} from "../../../../types";
 interface Props {
   onSubmit: (data: Partial<IPlayer>) => void;
   defaultValues: Partial<IPlayer>;

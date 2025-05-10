@@ -63,7 +63,7 @@ function Home() {
         Click on the Vite and React logos to learn more
       </p>
       <div>
-        <Link to={PROFILE}>Go to Profile</Link>
+        <Link to={PROFILE.PROFILE}>Go to Profile</Link>
       </div>
     </Root>
   )

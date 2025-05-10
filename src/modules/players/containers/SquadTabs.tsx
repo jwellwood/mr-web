@@ -1,6 +1,6 @@
 import React from 'react';
-import { TAB_TYPES } from 'app/constants';
-import { CustomTabs, ITab } from 'components/tabs';
+import { TAB_TYPES } from '../../../app/constants';
+import { CustomTabs, ITab } from '../../../components/tabs';
 import PastPlayers from './PastPlayers';
 import Squad from './Squad';
 import SquadRecords from './SquadRecords';

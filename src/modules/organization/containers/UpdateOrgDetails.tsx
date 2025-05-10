@@ -55,7 +55,7 @@ const UpdateDetailsContainer: React.FC = () => {
   };
 
   if (error || updateError)
-    return <ErrorGraphql error={[error, updateError]} />;
+    return <ErrorGraphql error={(error || updateError) as Error} />;
   return (
     <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.EDIT} />

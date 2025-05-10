@@ -1,7 +1,7 @@
 import React from 'react';
-import { AUTH_ROLES } from 'app/constants';
+import { AUTH_ROLES } from '../../app/constants';
 import { CustomTypography, PageHeader } from '../typography';
-import RouteGuard from 'router/RouteGuard';
+import RouteGuard from '../../router/RouteGuard';
 import { NOT_FOUND_PAGE } from './constants';
 
 const NotFound: React.FC = () => {

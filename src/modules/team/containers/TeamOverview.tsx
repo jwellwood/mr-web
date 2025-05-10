@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, IMAGE_TYPE } from 'app/constants';
-import ModuleHeader from 'components/common/ModuleHeader';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import RouteGuard from 'router/RouteGuard';
+import { AUTH_ROLES, IMAGE_TYPE } from '../../../app/constants';
+import ModuleHeader from '../../../components/common/ModuleHeader';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import RouteGuard from '../../../router/RouteGuard';
 import Organization from '../components/Organization';
 import { GET_TEAM } from '../graphql';
 import TeamTabs from './TeamTabs';
@@ -17,7 +17,7 @@ const TeamOverview: React.FC = () => {
 
   const { teamName, teamBadge, location, country } = data?.team || {};
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <ModuleHeader

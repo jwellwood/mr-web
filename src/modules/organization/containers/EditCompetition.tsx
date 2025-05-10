@@ -31,7 +31,7 @@ const EditCompetition: React.FC = () => {
         { query: GET_COMPETITION_BY_ID, variables: { compId: competitionId } },
       ],
     });
-  const [defaultValues, setDefaultValues] = useState<ICompetition>(null);
+  const [defaultValues, setDefaultValues] = useState<ICompetition | null>(null);
 
   useEffect(() => {
     if (data) {
@@ -41,7 +41,7 @@ const EditCompetition: React.FC = () => {
       });
     }
   }, [data]);
-  const onSubmit = async (formData: ICompetition) => {
+  const onSubmit = async (formData: Partial<ICompetition>) => {
     try {
       return updateCompetition({
         variables: {
@@ -60,10 +60,10 @@ const EditCompetition: React.FC = () => {
   };
 
   if (error){
-    return <ErrorGraphql error={[error.message]} />;
+    return <ErrorGraphql error={error} />;
   }
   if (updateError){
-    return <ErrorGraphql error={[updateError.message]} />
+    return <ErrorGraphql error={new Error(updateError.message)} />
   }
 
   return (

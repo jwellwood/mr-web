@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid } from 'components/grids';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { CustomTypography } from 'components/typography';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid } from '../../../components/grids';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import { CustomTypography } from '../../../components/typography';
 import { IChangePasswordForm } from '../types';
 
 interface Props {

@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import ImageForm from 'components/common/ImageForm';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { useUpload } from 'modules/images/hooks';
-import { uploadPlayerPhoto, removePlayerPhoto } from 'modules/images/services';
-import RouteGuard from 'router/RouteGuard';
+import { AUTH_ROLES } from '../../../app/constants';
+import ImageForm from '../../../components/common/ImageForm';
+import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import { PAGES } from '../constants';
 import { EDIT_PLAYER_PHOTO, GET_PLAYER_BY_ID } from '../graphql';
+import {removePlayerPhoto, uploadPlayerPhoto} from "../../images/services";
+import {useUpload} from "../../images/hooks";
+import RouteGuard from "../../../router/RouteGuard.tsx";
 
 const EditPlayerPhoto: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
@@ -43,11 +43,11 @@ const EditPlayerPhoto: React.FC = () => {
   const loadingState = loading || loadingTeam || editLoading;
 
   if (error || editError) {
-    return <ErrorGraphql error={[error, editError]} />;
+    return <ErrorGraphql error={(error || editError) as Error} />;
   }
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} teamId={teamId}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_PLAYER_PHOTO} />
       {!loadingState && imageUrl ? (
         <ImageForm

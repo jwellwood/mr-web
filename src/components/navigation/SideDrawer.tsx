@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
-import { NAV_ICONS } from 'app/icons';
+import { NAV_ICONS } from '../../app/icons';
 import CustomIconButton from '../buttons/CustomIconButton';
 import SidebarList from './SidebarList';
 

@@ -39,8 +39,8 @@ const DeleteAccountContainer: React.FC = () => {
       });
   };
 
-  if (error) {
-    return <ErrorGraphql error={[error, deleteError]} />;
+  if (error || deleteError) {
+    return <ErrorGraphql error={(error || deleteError) as Error} />;
   }
 
   return (

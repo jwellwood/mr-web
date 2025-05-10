@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import CustomSkeleton from 'components/loaders/CustomSkeleton';
-import { useSeasons } from 'hooks/useSeasons';
-import { GET_PLAYER_BY_ID } from 'modules/players/graphql';
+import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import { useSeasons } from '../../../hooks/useSeasons';
 import SelectSeasonModal from '../components/SelectSeasonModal';
+import {IListItem} from "../../../types";
+import {GET_PLAYER_BY_ID} from "../../players/graphql";
 
 interface Props {
   playerId?: string;
 }
 
 const SelectSeason: React.FC<Props> = ({ playerId }) => {
-  const [seasonsToDisplay, setSeasonsToDisplay] = useState([]);
+  const [seasonsToDisplay, setSeasonsToDisplay] = useState<IListItem[]>([]);
 
   const { onSelectSeason, seasonOptions, seasonId } = useSeasons();
 
@@ -21,9 +22,11 @@ const SelectSeason: React.FC<Props> = ({ playerId }) => {
   });
   useEffect(() => {
     if (seasonOptions.length && data?.player) {
-      const seasonIds = data.player.seasonIds.map((season) => season._id);
+      const seasonIds = data?.player?.seasonIds?.map((season: {
+        _id: string;
+      }) => season._id);
       const filteredSeasons = seasonOptions.filter((season) =>
-        seasonIds.includes(season.value)
+        seasonIds?.includes(String(season.value))
       );
       setSeasonsToDisplay(filteredSeasons);
     }

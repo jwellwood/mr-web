@@ -40,7 +40,7 @@ const DeleteMatch: React.FC = () => {
     ],
   });
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   const onDeleteMatch = () => {
     deleteMatch()

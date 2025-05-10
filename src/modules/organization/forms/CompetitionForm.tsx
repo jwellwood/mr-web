@@ -1,14 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import SwitchList from 'components/common/SwitchList';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { getMinutesOptions } from 'modules/matches/helpers';
-import { ICompetition, IListItem } from 'types';
-import { getIntegers } from 'utils/helpers';
+import SwitchList from '../../../components/common/SwitchList';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import { getMinutesOptions } from '../../matches/helpers';
+import { ICompetition, IListItem } from '../../../types';
 import { competitionOptions } from '../constants';
+import {getIntegers} from "../../../utils/helpers";
 
 interface Props {
   onSubmit: (data: Partial<ICompetition>) => void;

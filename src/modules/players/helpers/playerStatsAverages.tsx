@@ -1,7 +1,6 @@
-import React from 'react';
-import StatSkeleton from 'components/loaders/StatSkeleton';
-import { IListItem, IPlayerStats } from 'types';
-import { getAvg } from 'utils/helpers';
+import StatSkeleton from '../../../components/loaders/StatSkeleton';
+import { IListItem, IPlayerStats } from '../../../types';
+import { getAvg } from '../../../utils/helpers';
 
 export const playerStatsAverages = (
   stats: IPlayerStats,

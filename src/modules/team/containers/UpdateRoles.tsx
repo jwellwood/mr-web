@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import {ApolloError, useMutation, useQuery} from '@apollo/client';
 import { GET_TEAM, UPDATE_ROLES } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
@@ -8,11 +8,11 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import { ITeamRoles } from '../../../types';
 import {initialRoleState, PAGES, TeamError, TeamSuccess} from '../constants';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import PageHeader from '../../../components/typography/PageHeader.tsx';
-import {AuthRoles} from "../../../constants.ts";
-import UpdateTeamRolesForm from '../forms/UpdateTeamRoles.form.tsx';
-import RolesList from "../components/RolesList.tsx";
+import RouteGuard from "../../../router/RouteGuard";
+import PageHeader from '../../../components/typography/PageHeader';
+import {AuthRoles} from "../../../constants";
+import UpdateTeamRolesForm from '../forms/UpdateTeamRoles.form';
+import RolesList from "../components/RolesList";
 import {Spinner} from "../../../components/loaders";
 
 function UpdateRoles() {
@@ -40,7 +40,7 @@ function UpdateRoles() {
   };
 
   if (error || updateError)
-    return <ErrorGraphql error={[error, updateError]} />;
+    return <ErrorGraphql error={(error || updateError) as ApolloError} />;
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN} >
       <PageHeader title={PAGES.EDIT_ROLES} />

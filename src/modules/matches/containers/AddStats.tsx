@@ -1,20 +1,20 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Spinner } from 'components/loaders';
-import FormModal from 'components/modals/FormModal';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import { getTempMatch } from 'selectors';
-import { IPlayer, IPlayerInMatch } from 'types';
+import { Spinner } from '../../../components/loaders';
+import FormModal from '../../../components/modals/FormModal';
+import { IPlayer, IPlayerInMatch } from '../../../types';
 import { setTempPlayers } from '../actions/players.actions';
 import { initPlayerInMatch } from '../constants';
 import AddMatchPlayerStatsForm from '../forms/AddMatchPlayerStatsForm';
 import { getGoalsOptions } from '../helpers';
-import { getMinutesOptions } from '../helpers/getMinutesOptions';
+import { getMinutesOptions } from '../helpers';
+import {getTempMatch} from "../../../store/features/matches/matchesSelector.ts";
+import {AppDispatch} from "../../../store/store.ts";
 
 interface Props {
   playerId: string;
-  title: string;
-  currentPlayers: IPlayerInMatch[];
+  title?: string;
+  currentPlayers?: IPlayerInMatch[];
   buttonElement: ReactNode;
 }
 
@@ -26,10 +26,10 @@ const AddStats: React.FC<Props> = ({
 }) => {
   const currentMatch = useSelector(getTempMatch);
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<IPlayerInMatch>(null);
+  const [defaultValues, setDefaultValues] = useState<IPlayerInMatch | null>(null);
 
   useEffect(() => {
-    const selectedPlayer = currentPlayers.find(
+    const selectedPlayer = currentPlayers?.find(
       (player) => player._id === playerId
     );
     if (selectedPlayer) {
@@ -45,19 +45,22 @@ const AddStats: React.FC<Props> = ({
   const closeForm = () => true;
 
   const onSubmit = async (formData: IPlayerInMatch) => {
-    const playerIndex = currentPlayers.findIndex(
+    const playerIndex = currentPlayers?.findIndex(
       (player) => player._id === playerId
     );
-    const selectedPlayer = currentPlayers.find(
+    const selectedPlayer = currentPlayers?.find(
       (player) => player._id === playerId
     );
 
     const matchPlayersToUpdate = currentPlayers;
+
+    if (!matchPlayersToUpdate || !playerIndex) return;
+
     matchPlayersToUpdate[playerIndex] = {
-      _id: playerId,
-      name: selectedPlayer.name,
-      matchPosition: (selectedPlayer.playerId as IPlayer)?.position,
       ...formData,
+      _id: playerId,
+      name: selectedPlayer?.name || formData.name,
+      matchPosition: (selectedPlayer?.playerId as IPlayer)?.position || formData.matchPosition,
     };
     closeForm();
     await dispatch(setTempPlayers(matchPlayersToUpdate));
@@ -71,7 +74,7 @@ const AddStats: React.FC<Props> = ({
 
   return (
     <>
-      {defaultValues && currentPlayers.length ? (
+      {defaultValues && currentPlayers?.length ? (
         <FormModal
           buttonElement={buttonElement}
           title={title}

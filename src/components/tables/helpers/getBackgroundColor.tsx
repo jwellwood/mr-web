@@ -2,12 +2,13 @@ import {BackgroundStyles} from "../../../constants.ts";
 import type {ICellStyleByIndex} from "../types.ts";
 import {theme} from "../../../theme";
 import {getOpaqueValue} from "../../../utils/colors/getOpaqueValue.ts";
+import {ReactNode} from "react";
 
 export const getBackgroundColor = (
-  item: [string, string | number | object],
+  item: [string, ReactNode | number | object],
   i: number,
   sortBy?: string,
-  cellIndexStyles?: ICellStyleByIndex[]
+  cellIndexStyles?: readonly ICellStyleByIndex[]
 ) => {
   const staticBackground = theme.palette.secondary.dark;
   let backgroundColor = theme.palette.dark.main;

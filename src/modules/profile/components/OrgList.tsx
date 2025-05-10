@@ -1,15 +1,14 @@
 import React from 'react';
-import { IMAGE_TYPE } from 'app/constants';
-import CustomAvatar from 'components/avatars/CustomAvatar';
-import { SectionContainer } from 'components/containers';
-import LinksList from 'components/lists/LinksList';
-import { IListItem, IOrganization } from 'types';
-
+import { IMAGE_TYPE } from '../../../app/constants';
+import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import { SectionContainer } from '../../../components/containers';
+import LinksList from '../../../components/lists/LinksList';
+import { IListItem, IOrganization } from '../../../types';
 type Props = {
-  orgs: IOrganization[];
+  orgs?: IOrganization[];
 };
 
-const OrgList: React.FC<Props> = ({ orgs }) => {
+const OrgList: React.FC<Props> = ({ orgs = [] }) => {
   const links: IListItem[] = orgs.map((org) => {
     return {
       label: org.name,

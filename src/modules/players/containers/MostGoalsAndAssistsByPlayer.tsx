@@ -1,9 +1,9 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { Spinner } from 'components/loaders';
-import CustomTable from 'components/tables/CustomTable';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
+import { Spinner } from '../../../components/loaders';
+import CustomTable from '../../../components/tables/CustomTable';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import { player_most_goals_and_assists } from '../configs';
 import { GET_MOST_GOALS_AND_MOST_ASSISTS_BY_PLAYER } from '../graphql';
 import PlayerMatchesWithMostAssists from './PlayerMatchesWithMostAssists';
@@ -32,10 +32,10 @@ const MostGoalsAndAssistsByPlayer: React.FC = () => {
       value: maxAssists || 0,
       more: { value: maxAssists ? <PlayerMatchesWithMostAssists /> : '' },
     },
-  ];
+  ] as const;
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return !loading ? (

@@ -28,7 +28,7 @@ export const useStyles = makeStyles(() => ({
 }));
 
 interface Props {
-  team: ITeamResponse;
+  team?: ITeamResponse;
   loading: boolean;
 }
 

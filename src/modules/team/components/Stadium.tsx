@@ -1,13 +1,12 @@
 import React from 'react';
-import { DataContainer, SectionContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import AppIcon from 'components/icons/AppIcon';
-import { PresentationModal } from 'components/modals';
-import { CustomTypography } from 'components/typography';
-import { ITeamResponse } from 'types';
-
+import { DataContainer, SectionContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import AppIcon from '../../../components/icons/AppIcon';
+import { PresentationModal } from '../../../components/modals';
+import { CustomTypography } from '../../../components/typography';
+import { ITeamResponse } from '../../../types';
 type Props = {
-  team: ITeamResponse;
+  team?: ITeamResponse;
   loading: boolean;
 };
 
@@ -46,15 +45,15 @@ const Stadium: React.FC<Props> = ({ team, loading }) => {
         </PresentationModal>
       ),
     },
-    { label: 'Surface', value: team.stadiumSurface || '-' },
-    { label: 'Capacity', value: team.stadiumCapacity || '-' },
+    { label: 'Surface', value: team?.stadiumSurface || '-' },
+    { label: 'Capacity', value: team?.stadiumCapacity || '-' },
   ];
 
   return (
     <SectionContainer title="Stadium">
       <div style={{ margin: '10px auto' }}>
         <CustomTypography bold color="data">
-          {team.stadiumName}
+          {team?.stadiumName}
         </CustomTypography>
       </div>
 

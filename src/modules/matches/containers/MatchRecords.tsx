@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { SectionContainer } from 'components/containers';
-import LinksList from 'components/lists/LinksList';
-import { CustomTypography } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
+import { SectionContainer } from '../../../components/containers';
+import LinksList from '../../../components/lists/LinksList';
+import { CustomTypography } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import { theme } from 'theme';
 import { GET_MATCH_STATS_MOST } from '../graphql/matchStats.graphql';
 import { mostMatchListData } from '../helpers/mostMatchListData';
@@ -18,7 +18,7 @@ const MatchRecords: React.FC = () => {
   const { stats } = data || {};
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   const listData = [

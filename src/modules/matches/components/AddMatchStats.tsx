@@ -1,11 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { SubmitButton } from 'components/buttons';
-import { Spinner } from 'components/loaders';
-import CustomTable from 'components/tables/CustomTable';
+import { SubmitButton } from '../../../components/buttons';
+import { Spinner } from '../../../components/loaders';
+import CustomTable from '../../../components/tables/CustomTable';
 import { getTempMatch } from 'selectors';
-import { IPlayerInMatch } from 'types';
-import { match_form_table, match_form_table_styles } from '../configs';
+import { IPlayerInMatch } from '../../../types';import { match_form_table, match_form_table_styles } from '../configs';
 import { statsDataAll } from '../helpers';
 import { validateStats } from '../helpers/statsValidation';
 import AddMatchValidation from './AddMatchValidation';

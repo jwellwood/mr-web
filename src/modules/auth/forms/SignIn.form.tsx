@@ -1,14 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { CustomButton } from 'components/buttons';
-import { FormContainer } from 'components/containers';
-import CustomDivider from 'components/dividers/CustomDivider';
-import { CenteredGrid } from 'components/grids';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import LinksList from 'components/lists/LinksList';
+import { CustomButton } from '../../../components/buttons';
+import { FormContainer } from '../../../components/containers';
+import CustomDivider from '../../../components/dividers/CustomDivider';
+import { CenteredGrid } from '../../../components/grids';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import LinksList from '../../../components/lists/LinksList';
 import { AUTH } from 'router/paths';
-import { IListItem } from 'types';
-import { ISignInForm } from '../types';
+import { IListItem } from '../../../types';import { ISignInForm } from '../types';
 
 interface Props {
   defaultValues: ISignInForm;

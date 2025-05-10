@@ -1,10 +1,10 @@
-import { BACKGROUND_STYLE, BORDER_STYLE } from 'app/constants';
-import { CellStyleByIndex, HeadCell } from 'components/tables/types';
+import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
+import { ICellStyleByIndex } from '../../../../components/tables/types';
 
 const { STATIC } = BACKGROUND_STYLE;
 const { STANDARD } = BORDER_STYLE;
 
-export const squad_detailed_stats: HeadCell[] = [
+export const squad_detailed_stats = [
   {
     id: 'name',
     numeric: false,
@@ -72,9 +72,9 @@ export const squad_detailed_stats: HeadCell[] = [
     label: 'C/S',
     width: 50,
   },
-];
+] as const;
 
-export const season_stats_styles: CellStyleByIndex[] = [
+export const season_stats_styles: ICellStyleByIndex[] = [
   {
     index: 0,
     background: STATIC,
@@ -85,4 +85,4 @@ export const season_stats_styles: CellStyleByIndex[] = [
   { index: 5, border: STANDARD, textColor: 'label' },
   { index: 7, border: STANDARD, textColor: 'label' },
   { index: 9, border: STANDARD, textColor: 'label' },
-];
+] as const;

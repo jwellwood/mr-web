@@ -5,6 +5,7 @@ describe('get string color by number tests', () => {
     const num = null;
     const randomNum = 99;
     const randomString = '99';
+    // @ts-expect-error testing bad data
     expect(getStringColorByNumber(num)).toBe('secondary');
     expect(getStringColorByNumber(randomNum)).toBe('secondary');
     expect(getStringColorByNumber(randomString)).toBe('secondary');

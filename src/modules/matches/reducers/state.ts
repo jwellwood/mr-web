@@ -1,5 +1,4 @@
-import { ITempMatch } from 'types';
-
+import { ITempMatch } from '../../../types';
 export const initialMatchState: ITempMatch = {
   _id: '',
   teamId: '',
@@ -7,7 +6,7 @@ export const initialMatchState: ITempMatch = {
   teamName: '',
   opponentId: '',
   opponentName: '',
-  competitionId: null,
+  competitionId: '',
   competition: null,
   date: new Date().toString(),
   isHome: true,

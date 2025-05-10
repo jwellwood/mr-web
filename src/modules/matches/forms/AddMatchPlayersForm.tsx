@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledMultiSelectInput from 'components/inputs/ControlledMultiSelectInput';
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import TextList from 'components/lists/TextList';
-import { CustomTypography } from 'components/typography';
-import { IPlayer } from 'types';
-
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledMultiSelectInput from '../../../components/inputs/ControlledMultiSelectInput';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import TextList from '../../../components/lists/TextList';
+import { CustomTypography } from '../../../components/typography';
+import { IPlayer } from '../../../types';
 interface Props {
   onSubmit: (data: { matchPlayers: string[] }) => void;
   defaultValues: { matchPlayers: string[] };

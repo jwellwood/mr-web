@@ -1,8 +1,8 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { CenteredGrid } from 'components/grids';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
+import { CenteredGrid } from '../../../components/grids';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import AwardCard from '../components/AwardCard';
 import { GET_SEASON_AWARDS } from '../graphql/getSeasonAwards.graphql';
 
@@ -14,7 +14,7 @@ const Awards: React.FC = () => {
   });
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (

@@ -13,7 +13,7 @@ const {
   },
 } = theme;
 
-export function getThemeColorByType (background: string): string {
+export function getThemeColorByType (background?: string): string {
   let backgroundColor = 'transparent';
   switch (background) {
     case 'primary':

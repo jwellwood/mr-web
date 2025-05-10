@@ -1,19 +1,19 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, IMAGE_TYPE, LINK_TYPE } from 'app/constants';
-import ModuleHeader from 'components/common/ModuleHeader';
-import { Spinner } from 'components/loaders';
-import EditLinksModal from 'components/modals/EditLinksModal';
-import CustomAppBar from 'components/navigation/CustomAppBar';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useAuth } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { ORG } from 'router/paths';
-import RouteGuard from 'router/RouteGuard';
+import { AUTH_ROLES, IMAGE_TYPE, LINK_TYPE } from '../../../app/constants';
+import ModuleHeader from '../../../components/common/ModuleHeader';
+import { Spinner } from '../../../components/loaders';
+import EditLinksModal from '../../../components/modals/EditLinksModal';
+import CustomAppBar from '../../../components/navigation/CustomAppBar';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import CompetitionsList from '../components/CompetitionsList';
 import { PAGES } from '../constants';
 import { GET_ORG } from '../graphql';
 import OrgTeams from './OrgTeams';
+import RouteGuard from "../../../router/RouteGuard.tsx";
+import {ORG} from "../../../router/paths.ts";
+import {useAuth} from "../../../hooks";
 
 const Org: React.FC = () => {
   const { orgId } = useCustomParams();
@@ -31,7 +31,7 @@ const Org: React.FC = () => {
     { label: 'Edit Org Badge', type: LINK_TYPE.EDIT, link: ORG.EDIT_BADGE },
   ];
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
@@ -41,10 +41,10 @@ const Org: React.FC = () => {
         {!loading ? (
           <>
             <ModuleHeader
-              title={data.org.name}
-              badge={data.org.badge.url}
-              country={data.org.country}
-              city={data.org.city}
+              title={data?.org.name}
+              badge={data?.org.badge.url}
+              country={data?.org.country}
+              city={data?.org.city}
               type={IMAGE_TYPE.ORG}
             />
             <CompetitionsList competitions={data?.org.competitions} />

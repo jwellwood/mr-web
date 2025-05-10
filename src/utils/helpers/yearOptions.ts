@@ -6,8 +6,8 @@ interface IYearOptions {
 }
 
 export function yearOptions(
-  minYear: number = BASE_YEAR,
-  maxYear: number = MAX_YEAR
+  minYear: string | number = BASE_YEAR,
+  maxYear: string | number = MAX_YEAR
 ): IYearOptions[] {
   if (typeof minYear !== 'number') minYear = +minYear;
   if (typeof maxYear !== 'number') maxYear = +maxYear;

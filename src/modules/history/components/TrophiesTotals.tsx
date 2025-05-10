@@ -1,7 +1,6 @@
 import React from 'react';
-import { DataContainer, SectionContainer } from 'components/containers';
-import { IListItem, ITrophyTotals } from 'types';
-
+import { DataContainer, SectionContainer } from '../../../components/containers';
+import { IListItem, ITrophyTotals } from '../../../types';
 type Props = {
   data: ITrophyTotals;
   loading: boolean;

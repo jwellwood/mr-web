@@ -5,8 +5,7 @@ import { CenteredGrid, GridItem } from '../grids';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
 import { theme } from 'theme';
-import { IListItem } from 'types';
-
+import { IListItem } from '../../types';
 interface Props {
   data: IListItem[];
   loading?: boolean;

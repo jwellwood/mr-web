@@ -1,8 +1,7 @@
 import React from 'react';
-import { DataContainer, SectionContainer } from 'components/containers';
-import TextList from 'components/lists/TextList';
-import { ICompetition, IListItem } from 'types';
-
+import { DataContainer, SectionContainer } from '../../../components/containers';
+import TextList from '../../../components/lists/TextList';
+import { ICompetition, IListItem } from '../../../types';
 interface Props {
   competition: ICompetition;
 }

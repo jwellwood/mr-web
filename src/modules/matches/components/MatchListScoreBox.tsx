@@ -1,6 +1,6 @@
 import React from 'react';
-import CustomSkeleton from 'components/loaders/CustomSkeleton';
-import { CustomTypography } from 'components/typography';
+import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import { CustomTypography } from '../../../components/typography';
 import { theme } from 'theme';
 import { getOpaqueValue } from 'utils/colors/getOpaqueValue';
 import { getPoints } from '../helpers';

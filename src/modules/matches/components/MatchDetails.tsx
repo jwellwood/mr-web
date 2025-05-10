@@ -1,12 +1,11 @@
 import React from 'react';
-import { IMAGE_TYPE } from 'app/constants';
-import CustomAvatar from 'components/avatars/CustomAvatar';
-import { SectionContainer } from 'components/containers';
-import { CenteredGrid } from 'components/grids';
-import TextList from 'components/lists/TextList';
-import { CustomTypography } from 'components/typography';
-import { ICompetition, IListItem, IMatchResponse, ITeam } from 'types';
-import { parseDate } from 'utils/helpers';
+import { IMAGE_TYPE } from '../../../app/constants';
+import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import { SectionContainer } from '../../../components/containers';
+import { CenteredGrid } from '../../../components/grids';
+import TextList from '../../../components/lists/TextList';
+import { CustomTypography } from '../../../components/typography';
+import { ICompetition, IListItem, IMatchResponse, ITeam } from '../../../types';import { parseDate } from 'utils/helpers';
 import { getPoints } from '../helpers';
 import ScoreBox from './ScoreBox';
 

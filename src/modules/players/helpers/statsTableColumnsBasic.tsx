@@ -1,6 +1,6 @@
-import { HeadCell } from 'components/tables/types';
+import { IHeadCell } from '../../../components/tables/types';
 
-export const statsTableColumnsBasic: HeadCell[] = [
+export const statsTableColumnsBasic: IHeadCell[] = [
   {
     id: 'name',
     numeric: false,

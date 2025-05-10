@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { useCustomParams } from './useCustomParams';
-import { GET_TEAM_SEASONS } from '../modules/history/graphql/getTeamSeasons.graphql';
+import { useCustomParams } from './useCustomParams.tsx';
+import {GET_TEAM_SEASONS} from "../modules/history/graphql/getTeamSeasons.graphql.ts";
 import {ISelectOptions} from "../components/inputs/SelectInput.tsx";
 
 export const useSeasons = () => {

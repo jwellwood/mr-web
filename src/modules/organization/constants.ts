@@ -1,15 +1,15 @@
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import { ICompetition, IOrganization } from 'types';
+import { ISelectOptions } from '../../components/inputs/SelectInput';
+import {ICompetition, IOrganization} from "../../types";
 
-export enum PAGES {
-  ORG = 'Organization',
-  ADD = 'Add New Organization',
-  ADD_COMPETITION = 'Add Competition',
-  EDIT = 'Edit Organization',
-  EDIT_BADGE = 'Edit Organization Badge',
-  COMP = 'Competition',
-  EDIT_COMP = 'Edit Competition',
-}
+export const PAGES = {
+  ORG: 'Organization',
+  ADD: 'Add New Organization',
+  ADD_COMPETITION: 'Add Competition',
+  EDIT: 'Edit Organization',
+  EDIT_BADGE: 'Edit Organization Badge',
+  COMP: 'Competition',
+  EDIT_COMP: 'Edit Competition',
+} as const;
 
 export const initialOrgDetailsState: Partial<IOrganization> = {
   name: '',
@@ -21,9 +21,6 @@ export const initialOrgDetailsState: Partial<IOrganization> = {
 
 export const initialCompetitionState: Partial<ICompetition> = {
   name: '',
-  matchMinutes: null,
-  numberOfTeams: null,
-  playersPerTeam: null,
   competitionType: '',
   isActive: true,
 };

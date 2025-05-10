@@ -44,7 +44,7 @@ const AddOrg: React.FC = () => {
     }
   };
 
-  if (error) return <ErrorGraphql error={[error.message]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>

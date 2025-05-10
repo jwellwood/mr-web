@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import { Spinner } from 'components/loaders';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import { Spinner } from '../../../components/loaders';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from 'reduxStore/rootReducer';
 import { getTempMatch, getTempPlayers } from 'selectors';
 import { setTempPlayers } from '../actions/players.actions';
@@ -74,7 +74,7 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   }, [currentPlayers, matchId]);
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return !loading && values ? (

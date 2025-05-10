@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import MostInMatchesModal from '../components/MostInMatchesModal';
 import { GET_MOST_GOALS_BY_PLAYER_MATCHES } from '../graphql';
 
@@ -13,11 +13,11 @@ const PlayerMatchesWithMostGoals: React.FC = () => {
 
   const { stats } = data || {};
 
-  if (error) return <ErrorGraphql error={[error.message]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <MostInMatchesModal
-      data={stats}
+      data={stats || []}
       loading={loading}
       orgId={orgId}
       teamId={teamId}

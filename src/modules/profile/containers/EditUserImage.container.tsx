@@ -1,13 +1,13 @@
 import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import ImageForm from 'components/common/ImageForm';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useUpload } from 'modules/images/hooks';
-import { removeUserImage, uploadUserImage } from 'modules/images/services';
-import RouteGuard from 'router/RouteGuard';
+import { AUTH_ROLES } from '../../../app/constants';
+import ImageForm from '../../../components/common/ImageForm';
+import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useUpload } from '../../images/hooks';
+import { removeUserImage, uploadUserImage } from '../../images/services';
+import RouteGuard from '../../../router/RouteGuard';
 import { pages } from '../constants';
 import { EDIT_PROFILE_IMAGE, GET_USER } from '../graphql';
 
@@ -27,7 +27,7 @@ const EditUserImage: React.FC = () => {
   const loadingState = loading || loadingUser || editLoading;
 
   if (error || editError) {
-    return <ErrorGraphql error={[error, editError]} />;
+    return <ErrorGraphql error={(error || editError) as Error} />;
   }
 
   return (
@@ -38,7 +38,7 @@ const EditUserImage: React.FC = () => {
           imageUrl={imageUrl}
           setImageUrl={setImageUrl}
           onSubmit={onSubmit}
-          currentUrl={data.user.image.url}
+          currentUrl={data?.user?.image?.url}
           removeImage={removeImage}
         />
       ) : (

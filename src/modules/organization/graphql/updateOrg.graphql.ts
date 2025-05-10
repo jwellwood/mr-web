@@ -1,6 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IOrganization } from 'types';
-
+import { IOrganization } from '../../../types';
 export const UPDATE_ORG: TypedDocumentNode<{
   org: IOrganization;
 }> = gql`

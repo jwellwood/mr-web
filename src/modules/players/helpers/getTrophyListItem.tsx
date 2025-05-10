@@ -1,9 +1,7 @@
-import React from 'react';
-import { HISTORY_ICONS } from 'app/icons';
-import AppIcon from 'components/icons/AppIcon';
-import { CustomTypography } from 'components/typography';
-import { ITrophyResponse } from 'types';
-
+import { HISTORY_ICONS } from '../../../app/icons';
+import AppIcon from '../../../components/icons/AppIcon';
+import { CustomTypography } from '../../../components/typography';
+import { ITrophyResponse } from '../../../types';
 export const getTrophyListItem = (trophy: ITrophyResponse) => {
   return {
     icon: (

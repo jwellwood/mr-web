@@ -1,8 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { HOME, PROFILE, NOT_FOUND } from './paths';
+import { HOME, PROFILE } from './paths';
 import { Home, Profile } from '../pages';
-import { NotFound } from '../components/navigation';
 import { Layout } from '../components/layout';
 
 const AppRouter: React.FC = () => {
@@ -10,10 +9,9 @@ const AppRouter: React.FC = () => {
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />}>
-          <Route path={HOME} element={<Home />} />
-          <Route path={PROFILE} element={<Profile />} />
+          <Route path={HOME.HOME} element={<Home />} />
+          <Route path={PROFILE.PROFILE} element={<Profile />} />
         </Route>
-        <Route path={NOT_FOUND} element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

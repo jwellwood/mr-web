@@ -1,9 +1,8 @@
-import React from 'react';
 import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
-import { IMatchList } from 'types/IMatchList';
 import MatchListLabel from '../components/MatchListLabel';
 import MatchListScoreBox from '../components/MatchListScoreBox';
+import {IMatchList} from "../../../types/matchList.ts";
 
 interface Args {
   data: IMatchList[];
@@ -14,7 +13,7 @@ interface Args {
   matchId?: string;
 }
 
-export const matchListData = ({
+export const getMatchListData = ({
   data,
   orgId,
   teamId,
@@ -48,7 +47,7 @@ export const matchListData = ({
         />
       ),
       link: `/org/${orgId}/team/${teamId}/match/${match._id}`,
-      border: matchId && matchId === match._id,
+      border: (matchId?.length || 0) > 0 && matchId === match._id,
     };
   });
 };

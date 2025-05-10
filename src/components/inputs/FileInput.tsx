@@ -1,12 +1,13 @@
 import React, {ChangeEvent} from 'react';
 import TextField from '@mui/material/TextField';
 import FormErrorMessage from '../alerts/FormErrorMessage';
+import {FormError} from "../../types/form";
 
 interface Props {
   inputName: string;
   defaultValue?: string; //TODO
-  onChange: (e: ChangeEvent) => void;
-  errors?: { type: string }[]; //TODO
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  errors?: FormError[]; //TODO
 }
 
 const FileInput: React.FC<Props> = ({

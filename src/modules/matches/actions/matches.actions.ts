@@ -1,5 +1,4 @@
-import { ITempMatch } from 'types';
-
+import { ITempMatch } from '../../../types';
 export const SET_TEMP_MATCH = 'SET_TEMP_MATCH';
 export const RESET_TEMP_MATCH = 'RESET_TEMP_MATCH';
 

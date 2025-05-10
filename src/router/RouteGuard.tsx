@@ -22,7 +22,7 @@ const RouteGuard: React.FC<Props> = ({
 
   if (!isAuthorized) {
     // Redirect to home page if not authorized, preserving the current location
-    return <Navigate to={HOME} state={{ from: location }} replace />;
+    return <Navigate to={HOME.HOME} state={{ from: location }} replace />;
   }
 
   return <>{children}</>;

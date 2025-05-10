@@ -1,10 +1,9 @@
 import React from 'react';
-import { SectionContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import AppIcon from 'components/icons/AppIcon';
-import { CustomTypography } from 'components/typography';
-import { ITrophyResponse } from 'types';
-
+import { SectionContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import AppIcon from '../../../components/icons/AppIcon';
+import { CustomTypography } from '../../../components/typography';
+import { ITrophyResponse } from '../../../types';
 type Props = {
   trophy: ITrophyResponse;
 };

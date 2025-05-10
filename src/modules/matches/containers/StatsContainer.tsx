@@ -1,5 +1,5 @@
 import React from 'react';
-import { CustomTypography } from 'components/typography';
+import { CustomTypography } from '../../../components/typography';
 import AllTimeMatchStats from './AllTimeMatchStats';
 import MatchStats from './MatchStats';
 

@@ -17,6 +17,7 @@ describe('map reduce tests', () => {
     expect(mapReduce(array, 'stringId')).toBe(5);
   });
   test('should return NaN when stat does not exits', () => {
+    // @ts-expect-error testing bad data
     expect(mapReduce(mockData, 'fake')).toBe(NaN);
   });
 });

@@ -1,13 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid } from 'components/grids';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
+
 import { IDeleteTeamForm } from '../types';
+import {FormContainer} from "../../../components/containers";
+import {CenteredGrid} from "../../../components/grids";
+import ControlledTextInput from "../../../components/inputs/ControlledTextInput.tsx";
 
 interface Props {
   onSubmit: (data: IDeleteTeamForm) => void;
-  defaultValues: IDeleteTeamForm;
+  defaultValues?: IDeleteTeamForm;
   teamName: string;
 }
 const DeleteTeamForm: React.FC<Props> = ({

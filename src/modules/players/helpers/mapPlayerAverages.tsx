@@ -1,5 +1,5 @@
-import { IPlayerStats } from 'types';
-import { getAvg } from 'utils/helpers';
+import { IPlayerStats } from '../../../types';
+import { getAvg } from '../../../utils/helpers';
 
 export const mapPlayerAverages = (player: IPlayerStats) => {
   return {

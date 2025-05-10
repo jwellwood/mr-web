@@ -99,7 +99,7 @@ const EditMatch: React.FC = () => {
   };
 
   if (error || editError) {
-    return <ErrorGraphql error={[error, editError]} />;
+    return <ErrorGraphql error={(error || editError) as Error} />;
   }
 
   return (

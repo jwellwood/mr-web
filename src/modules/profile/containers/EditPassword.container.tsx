@@ -28,7 +28,7 @@ const ChangePasswordContainer: React.FC = () => {
     })
       .then(() => {
         dispatch(showAlert({text: 'Password changed successfully!', type: 'success'}))
-        navigate(PROFILE);
+        navigate(PROFILE.PROFILE);
       })
       .catch((err) => {
         console.error(err);

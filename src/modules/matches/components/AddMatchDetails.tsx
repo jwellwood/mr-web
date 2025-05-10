@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ISelectOptions } from 'components/inputs/SelectInput';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { AppDispatch } from 'reduxStore/rootReducer';
 import { getTempMatch } from 'selectors';
-import { ICompetition, ITeam, ITempMatch } from 'types';
-import { setTempMatch } from '../actions/matches.actions';
+import { ICompetition, ITeam, ITempMatch } from '../../../types';import { setTempMatch } from '../actions/matches.actions';
 import { emptySelectOption } from '../constants';
 import AddMatchDetailsForm from '../forms/AddMatchDetailsForm';
 

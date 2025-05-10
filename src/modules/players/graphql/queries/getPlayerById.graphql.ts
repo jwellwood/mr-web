@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import {IPlayer} from "../../../../types";
+import { IPlayer } from '../../../../types';
 
 export const GET_PLAYER_BY_ID: TypedDocumentNode<{
   player: IPlayer;

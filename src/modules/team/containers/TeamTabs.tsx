@@ -1,12 +1,12 @@
 import React from 'react';
-import { TAB_TYPES } from 'app/constants';
-import { CustomTabs, ITab } from 'components/tabs';
-import { ITeamResponse } from 'types';
-import Kits from '../components/Kits';
-// import Roles from '../components/Roles';
-import Stadium from '../components/Stadium';
 
-type Props = { team: ITeamResponse; loading: boolean };
+import Kits from '../components/Kits';
+import Stadium from '../components/Stadium';
+import {CustomTabs, ITab} from '../../../components/tabs';
+import {ITeamResponse} from "../../../types";
+import {TAB_TYPES} from "../../../app/constants.ts";
+
+type Props = { team?: ITeamResponse; loading: boolean };
 
 const TeamTabs: React.FC<Props> = ({ team, loading }) => {
   const tabs: ITab[] = [

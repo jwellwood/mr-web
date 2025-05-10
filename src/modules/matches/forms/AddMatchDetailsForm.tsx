@@ -1,15 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledDateInput from 'components/inputs/ControlledDateInput';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledSwitchInput from 'components/inputs/ControlledSwitchInput';
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import TextList from 'components/lists/TextList';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
+import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
+import ControlledSwitchInput from '../../../components/inputs/ControlledSwitchInput';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import TextList from '../../../components/lists/TextList';
 import { isFuture } from 'date-fns';
-import { ICompetition, ITempMatch } from 'types';
-import { getIntegers } from 'utils/helpers';
+import { ICompetition, ITempMatch } from '../../../types';import { getIntegers } from 'utils/helpers';
 import { cupRoundOptions } from '../constants';
 
 interface Props {

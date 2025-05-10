@@ -1,3 +1,5 @@
+import {ReactNode} from "react";
+
 export type SortOrder = 'asc' | 'desc';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -14,8 +16,8 @@ export function getComparator(
   order: SortOrder,
   orderBy: string
 ): (
-  a: Record<string, string | number | object>,
-  b: Record<string, string | number | object>,
+  a: Record<string, number | object | ReactNode>,
+  b: Record<string, number | object | ReactNode>,
 ) => number {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)

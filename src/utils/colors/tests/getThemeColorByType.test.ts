@@ -1,5 +1,5 @@
-import { theme } from 'theme';
 import { getThemeColorByType } from '..';
+import {theme} from "../../../theme";
 
 describe('get theme color by type tests', () => {
   const { success, warning, error, secondary } = theme.palette;
@@ -11,6 +11,7 @@ describe('get theme color by type tests', () => {
     expect(getThemeColorByType()).toBe('transparent');
     expect(getThemeColorByType(background)).toBe('transparent');
     expect(getThemeColorByType(random)).toBe('transparent');
+    // @ts-expect-error testing bad data
     expect(getThemeColorByType(number)).toBe('transparent');
   });
 

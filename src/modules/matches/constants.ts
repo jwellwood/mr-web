@@ -1,6 +1,5 @@
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import { IMatch, IPlayerInMatch } from 'types';
-
+import { ISelectOptions } from '../../components/inputs/SelectInput';
+import { IMatch, IPlayerInMatch } from '../../../types';
 export const PAGES = {
   MATCH: 'Match',
   ADD_MATCH: 'Add Match',

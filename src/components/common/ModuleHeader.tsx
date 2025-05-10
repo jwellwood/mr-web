@@ -10,12 +10,12 @@ import {useNationality} from "../../hooks";
 import {theme} from "../../theme";
 
 type Props = {
-  title: string;
-  badge: string;
+  title?: string;
+  badge?: string;
   data?: { label: string; value: ReactNode }[];
   city?: string;
-  country: string;
-  type: TImageType;
+  country?: string;
+  type?: TImageType;
   loading?: boolean;
 };
 

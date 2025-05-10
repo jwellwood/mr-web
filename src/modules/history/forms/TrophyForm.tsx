@@ -1,16 +1,16 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { BASE_YEAR, CURRENT_YEAR } from 'app/constants';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledSwitchInput from 'components/inputs/ControlledSwitchInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import TextList from 'components/lists/TextList';
-import { DeleteModal } from 'components/modals';
-import { IListItem, ITrophy } from 'types';
-import { yearOptions } from 'utils/helpers';
+import { BASE_YEAR, CURRENT_YEAR } from '../../../app/constants';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
+import ControlledSwitchInput from '../../../components/inputs/ControlledSwitchInput';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import TextList from '../../../components/lists/TextList';
+import { DeleteModal } from '../../../components/modals';
+import { IListItem, ITrophy } from '../../../types';
+import { yearOptions } from '../../../utils/helpers';
 
 interface Props {
   onSubmit: (data: Partial<ITrophy>) => void;

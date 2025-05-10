@@ -1,14 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, LINK_TYPE } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import EditLinksModal from 'components/modals/EditLinksModal';
-import CustomAppBar from 'components/navigation/CustomAppBar';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useAuth } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import RouteGuard from 'router/RouteGuard';
-import { IListItem } from 'types';
+import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
+import { Spinner } from '../../../components/loaders';
+import EditLinksModal from '../../../components/modals/EditLinksModal';
+import CustomAppBar from '../../../components/navigation/CustomAppBar';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useAuth } from '../../../hooks';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import RouteGuard from '../../../router/RouteGuard';
+import { IListItem } from '../../../types';
 import { PAGES } from '../constants';
 import { GET_TEAM_SEASON_BY_ID } from '../graphql/getTeamSeasonById.graphql';
 import SeasonTabs from './SeasonTabs';
@@ -35,7 +35,7 @@ const Season: React.FC = () => {
   });
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (

@@ -51,7 +51,7 @@ const AddPlayer: React.FC = () => {
     }
   };
 
-  if (error) return <ErrorGraphql error={[error.message]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>

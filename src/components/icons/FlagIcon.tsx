@@ -3,7 +3,7 @@ import ReactCountryFlag from 'react-country-flag';
 import AppIcon from './AppIcon';
 
 interface Props {
-  nationality: string;
+  nationality?: string;
   countryName?: string;
   size?: string;
 }
@@ -13,7 +13,7 @@ const FlagIcon: React.FC<Props> = ({
   countryName,
   size = '1.2rem',
 }) => {
-  return nationality !== '' ? (
+  return nationality && nationality !== '' ? (
     <ReactCountryFlag
       countryCode={nationality}
       svg

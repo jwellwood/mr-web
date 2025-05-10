@@ -1,10 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer, SectionContainer } from 'components/containers';
-import TextList from 'components/lists/TextList';
-import CustomTable from 'components/tables/CustomTable';
-import { IListItem, IPlayerInMatch, ITempMatch } from 'types';
-import { match_form_table, match_form_table_styles } from '../configs';
+import { FormContainer, SectionContainer } from '../../../components/containers';
+import TextList from '../../../components/lists/TextList';
+import CustomTable from '../../../components/tables/CustomTable';
+import { IListItem, IPlayerInMatch, ITempMatch } from '../../../types';import { match_form_table, match_form_table_styles } from '../configs';
 import { statsDataAll } from '../helpers';
 
 type Props = {

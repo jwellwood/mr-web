@@ -1,7 +1,7 @@
 import React from 'react';
-import { SectionContainer } from 'components/containers';
-import { GridItem } from 'components/grids';
-import { CustomTypography } from 'components/typography';
+import { SectionContainer } from '../../../components/containers';
+import { GridItem } from '../../../components/grids';
+import { CustomTypography } from '../../../components/typography';
 import { IAward } from '../types';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { theme } from '../../theme';
-import { ITrophy } from '../../types';
 import { IAward, ITeamSeason } from './types';
+import {ITrophy} from "../../types";
 
 // Replace the enum with this const object
 export const PAGES = {

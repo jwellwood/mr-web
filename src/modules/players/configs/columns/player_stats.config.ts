@@ -1,5 +1,5 @@
-import { BACKGROUND_STYLE } from 'app/constants';
-import { CellStyleByIndex } from 'components/tables/types';
+import { BACKGROUND_STYLE } from '../../../../app/constants';
+import { ICellStyleByIndex } from '../../../../components/tables/types';
 
 const { STATIC } = BACKGROUND_STYLE;
 
@@ -23,10 +23,10 @@ export const player_stats = [
     label: '',
     width: 30,
   },
-];
+] as const;
 
-export const player_stats_styles: CellStyleByIndex[] = [
+export const player_stats_styles: ICellStyleByIndex[] = [
   { index: 0, background: STATIC },
   { index: 1, background: STATIC },
   { index: 3, textColor: 'label' },
-];
+] as const;

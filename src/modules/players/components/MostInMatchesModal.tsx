@@ -15,9 +15,9 @@ interface Props {
       _id: string;
   }[];
   loading: boolean;
-  orgId: string;
-  teamId: string;
-  title: string;
+  orgId?: string;
+  teamId?: string;
+  title?: string;
 }
 
 function MostInMatchesModal ({

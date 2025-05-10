@@ -1,11 +1,10 @@
 import React from 'react';
-import CustomPieChart from 'components/charts/CustomPieChart';
-import { DataContainer, SectionContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import StatSkeleton from 'components/loaders/StatSkeleton';
-import { CustomTypography } from 'components/typography';
-import { IMatchStats } from 'types';
-import { getPercentage } from 'utils/helpers';
+import CustomPieChart from '../../../components/charts/CustomPieChart';
+import { DataContainer, SectionContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import StatSkeleton from '../../../components/loaders/StatSkeleton';
+import { CustomTypography } from '../../../components/typography';
+import { IMatchStats } from '../../../types';import { getPercentage } from 'utils/helpers';
 
 type Props = {
   stats: IMatchStats;

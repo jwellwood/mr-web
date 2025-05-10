@@ -1,4 +1,4 @@
-import {useState, MouseEvent, useMemo} from 'react';
+import {useState, MouseEvent, useMemo, ReactNode} from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,48 +13,33 @@ import { getBorderStyle } from './helpers/getBorderStyle';
 import PositionString from './PositionString';
 import { ICellStyleByIndex } from './types';
 
-interface Props {
-  rows: {
-    label: string
-    value: number;
-    average: {
-      value: number;
-      isPercentage: boolean;
-    };
-  }[];
-  columns: {
-    id: keyof Data;
-    label: string;
-    width: string;
+type Props<T extends Record<string, number | object | ReactNode>> = {
+  rows: readonly T[];
+  columns: readonly {
+    id: keyof T;
+    label?: ReactNode;
+    width?: number;
     isPercentage?: boolean;
   }[];
   isSortable: boolean;
   sortByString?: string;
-  cellIndexStyles?: ICellStyleByIndex[];
+  cellIndexStyles?: readonly ICellStyleByIndex[];
 }
 
-interface Data {
-  apps: string;
-  goals: number;
-  assists: number;
-  position: string;
-  isPercentage?: boolean;
-}
-
-function CustomTable({
+function CustomTable<T extends Record<string, number | object | ReactNode>>({
   rows = [],
   columns,
   isSortable,
   sortByString = '',
   cellIndexStyles = [],
-}: Props) {
+}: Props<T>) {
   const [sortBy, setSortBy] = useState(sortByString);
 
   const handleRequestSort = (
     _: MouseEvent,
-    property: keyof Data
+    property: keyof T
   ) => {
-    setSortBy(property);
+    setSortBy(String(property));
   };
 
   const visibleRows = useMemo(
@@ -90,11 +75,13 @@ function CustomTable({
                     const customCellValue = () => {
                       if (item[0] === 'position') {
                         return (
-                          <PositionString>{typeof item[1] === "object" ? item[1].value : item[1]}</PositionString>
+                          <PositionString>
+                            {(typeof item[1] === "object" && item[1] !== null && 'value' in item[1] ? item[1].value : item[1]) as string}
+                          </PositionString>
                         );
                       }
 
-                      return typeof item[1] === 'object' && item[0] !== 'icon'
+                      return typeof item[1] === 'object' && item[1] !== null  && 'value' in item[1]
                         ? item[1]?.value
                         : item[1];
                     };
@@ -128,7 +115,7 @@ function CustomTable({
                       >
                         <CustomCellValue
                           isDifference={item[0] === 'difference'}
-                          isPercentage={typeof item[1] === "object" && "isPercentage" in item[1] ? item[1].isPercentage : false}
+                          isPercentage={typeof item[1] === "object" && item[1] !== null && "isPercentage" in item[1] ? item[1].isPercentage as boolean : false}
                           textColor={textColor}
                           value={customCellValue()}
                         />

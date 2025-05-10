@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { ITeamRoles } from 'types';
+import {ITeamRoles} from "../../../types";
+import {FormContainer} from "../../../components/containers";
+import {CenteredGrid, GridItem} from "../../../components/grids";
+import ControlledTextInput from "../../../components/inputs/ControlledTextInput.tsx";
 
 interface Props {
   onSubmit: (data: ITeamRoles) => void;

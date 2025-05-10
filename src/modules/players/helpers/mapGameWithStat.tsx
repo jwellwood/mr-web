@@ -1,7 +1,6 @@
-import React from 'react';
-import { CustomTypography } from 'components/typography';
-import { IListItem, IPlayerStats } from 'types';
-import { getPercentage } from 'utils/helpers';
+import { CustomTypography } from '../../../components/typography';
+import { IListItem, IPlayerStats } from '../../../types';
+import { getPercentage } from '../../../utils/helpers';
 
 export const mapGameWithStat = (player: IPlayerStats) => {
   const {

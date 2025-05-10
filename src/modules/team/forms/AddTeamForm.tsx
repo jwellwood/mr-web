@@ -3,14 +3,14 @@ import { useForm } from 'react-hook-form';
 
 import { ITeamDetailsInput } from '../types';
 import {IListItem} from "../../../types";
-import {FormContainer} from "../../../components/containers";
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import ControlledDateInput from "../../../components/inputs/ControlledDateInput.tsx";
+import {ISelectOptions} from "../../../components/inputs/SelectInput.tsx";
 import ControlledSelectInput
   from "../../../components/inputs/ControlledSelectInput.tsx";
+import {FormContainer} from "../../../components/containers";
+import ControlledDateInput from "../../../components/inputs/ControlledDateInput.tsx";
 import SwitchList from "../../../components/common/SwitchList.tsx";
-import {ISelectOptions} from "../../../components/inputs/SelectInput.tsx";
 
 interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;

@@ -1,7 +1,6 @@
 import React from 'react';
-import { DataContainer, SectionContainer } from 'components/containers';
-import { ITeamResponse } from 'types';
-
+import { DataContainer, SectionContainer } from '../../../components/containers';
+import { ITeamResponse } from '../../../types';
 type Props = {
   team: ITeamResponse;
   loading: boolean;

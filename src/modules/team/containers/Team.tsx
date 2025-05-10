@@ -1,21 +1,22 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { AUTH_ROLES, LINK_TYPE, TAB_TYPES } from 'app/constants';
-import { NAV_ICONS } from 'app/icons';
-import NavIcon from 'components/icons/NavIcon';
-import EditLinksModal from 'components/modals/EditLinksModal';
-import CustomAppBar from 'components/navigation/CustomAppBar';
-import { CustomTabs, ITab } from 'components/tabs';
-import { useAuth } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import History from 'modules/history/containers/History';
-import MatchesTabs from 'modules/matches/containers/MatchesTabs';
-import SquadTabs from 'modules/players/containers/SquadTabs';
-import RouteGuard from 'router/RouteGuard';
-import { getTabIndex } from 'selectors';
+import { AUTH_ROLES, LINK_TYPE, TAB_TYPES } from '../../../app/constants';
+import NavIcon from '../../../components/icons/NavIcon';
+import EditLinksModal from '../../../components/modals/EditLinksModal';
+import CustomAppBar from '../../../components/navigation/CustomAppBar';
+import { CustomTabs, ITab } from '../../../components/tabs';
+import { useAuth } from '../../../hooks';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import History from '../../../modules/history/containers/History';
+import MatchesTabs from '../../../modules/matches/containers/MatchesTabs';
+import SquadTabs from '../../../modules/players/containers/SquadTabs';
+import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
 import TeamOverview from './TeamOverview';
+import {IIconType} from "../../../components/icons/types";
+import {getTabIndex} from "../../../store/features/tabs/tabsSelector";
+import {NAV_ICONS} from "../../../app/icons";
 
 const Team: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -23,7 +24,7 @@ const Team: React.FC = () => {
   const { isTeamAuth } = useAuth(teamId);
   const { team } = useSelector(getTabIndex);
 
-  const getIcon = (name, index) => (
+  const getIcon = (name: IIconType, index: number) => (
     <NavIcon
       icon={name}
       size="20px"

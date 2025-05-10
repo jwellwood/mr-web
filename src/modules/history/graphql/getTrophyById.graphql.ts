@@ -1,6 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITrophyResponse } from 'types';
-
+import { ITrophyResponse } from '../../../types';
 export const GET_TROPHY_BY_ID: TypedDocumentNode<{
   trophy: ITrophyResponse;
 }> = gql`

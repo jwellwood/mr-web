@@ -1,10 +1,25 @@
 import CustomSkeleton from "../../../components/loaders/CustomSkeleton";
 import NameCell from "../../../components/tables/NameCell";
 import { returnStatAsZero } from "../../../utils/helpers/returnZero";
+import {ReactNode} from "react";
 
 export const getSquadSeasonTableData = (data: {
   stats: object[];
-}, loading: boolean) => {
+}, loading: boolean): readonly {
+  name: {
+    value: ReactNode;
+  }
+  apps: number | ReactNode
+  goals: number | ReactNode
+  goalsPerGame: number | ReactNode
+  assists: number | ReactNode
+  assistsPerGame: number | ReactNode
+  mvp: number | ReactNode
+  mvpPerGame: number | ReactNode
+  conceded: number | ReactNode
+  concededPerGame: number | ReactNode
+  cleanSheets: number | ReactNode
+}[] => {
   const arr = new Array(15).fill({});
   const dataToMap = loading
     ? arr.map((stat) => stat)
@@ -42,6 +57,6 @@ export const getSquadSeasonTableData = (data: {
       conceded: returnStatAsZero(conceded),
       concededPerGame: returnStatAsZero(+concededPerGame?.toFixed(2)),
       cleanSheets: returnStatAsZero(cleanSheets),
-    };
+    } as const;
   });
 };

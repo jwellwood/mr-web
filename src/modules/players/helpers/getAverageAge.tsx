@@ -1,20 +1,27 @@
-import { differenceInYears, isValid, parseISO } from 'date-fns';
+import {differenceInYears, isValid, parseISO} from 'date-fns';
 
 export const getAverageAge = (
   datesOfBirth: string[],
   selectedDate?: string
-) => {
-  const getAges = (dob: string) => {
-    const dateToMatch = selectedDate ? new Date(selectedDate) : new Date();
-    const date = parseISO(dob);
+): number => {
+  const dateToMatch = selectedDate ? new Date(selectedDate) : new Date();
 
-    if (!isValid(date)) {
-      return null;
-    }
-    const age = differenceInYears(dateToMatch, date);
-    return age;
+  const getAge = (dob: string): number | null => {
+    const date = parseISO(dob);
+    return isValid(date) ? differenceInYears(dateToMatch, date) : null;
   };
-  const ages = datesOfBirth.map((dob) => getAges(dob)).filter(Boolean);
-  const averageAge = ages.reduce((a, b) => a + b, 0) / ages.length;
-  return averageAge;
+
+  let totalValid = 0
+  const totalAges = datesOfBirth.reduce((
+      total: number, dateOfBirth: string
+  ) => {
+    const age = getAge(dateOfBirth)
+
+    if (age) {
+      totalValid++
+    }
+    return total + (age || 0)
+  }, 0)
+
+  return totalValid ? totalAges / totalValid : 0
 };

@@ -8,6 +8,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormErrorMessage from '../alerts/FormErrorMessage';
 import { ISelectOptions } from './SelectInput';
+import {FormError} from "../../types/form.ts";
 
 interface Props {
   options: ISelectOptions[];
@@ -15,7 +16,7 @@ interface Props {
   label: string;
   onChange: (event: SelectChangeEvent<string>) => void;
   showLabels?: boolean;
-  errors: (string | Error)[]
+  errors: FormError[]
 }
 
 const MultipleSelectInput: React.FC<Props> = ({

@@ -4,7 +4,7 @@ export interface IHeadCell {
   id: string;
   label: string | ReactElement;
   numeric?: boolean;
-  width?: number | string;
+  width?: number;
   border?: boolean;
   padding?: string;
 }

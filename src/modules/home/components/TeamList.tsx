@@ -1,10 +1,9 @@
 import React from 'react';
-import { IMAGE_TYPE } from 'app/constants';
-import CustomAvatar from 'components/avatars/CustomAvatar';
-import LinksList from 'components/lists/LinksList';
-import { CustomTypography } from 'components/typography';
-import { IListItem, ITeamResponse } from 'types';
-
+import { IMAGE_TYPE } from '../../../app/constants';
+import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import LinksList from '../../../components/lists/LinksList';
+import { CustomTypography } from '../../../components/typography';
+import { IListItem, ITeamResponse } from '../../../types';
 type Props = {
   teams: ITeamResponse[];
   isSearchComplete: boolean;

@@ -1,10 +1,9 @@
-import { BACKGROUND_STYLE, BORDER_STYLE } from 'app/constants';
-import { CellStyleByIndex, HeadCell } from 'components/tables/types';
+import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
 
 const { STATIC } = BACKGROUND_STYLE;
 const { STANDARD } = BORDER_STYLE;
 
-export const squad_list: HeadCell[] = [
+export const squad_list = [
   {
     id: 'number',
     numeric: false,
@@ -50,9 +49,9 @@ export const squad_list: HeadCell[] = [
     label: 'Assists',
     width: 30,
   },
-];
+] as const;
 
-export const squad_list_styles: CellStyleByIndex[] = [
+export const squad_list_styles = [
   { index: 0, background: STATIC, textColor: 'label' },
   { index: 1, background: STATIC },
   { index: 2, background: STATIC },
@@ -62,4 +61,4 @@ export const squad_list_styles: CellStyleByIndex[] = [
     background: STATIC,
     border: STANDARD,
   },
-];
+] as const;

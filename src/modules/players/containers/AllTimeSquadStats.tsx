@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { useQuery } from '@apollo/client';
-import { SectionContainer } from 'components/containers';
-import CustomTable from 'components/tables/CustomTable';
-import { CustomTypography } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
+import { SectionContainer } from '../../../components/containers';
+import CustomTable from '../../../components/tables/CustomTable';
+import { CustomTypography } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import PlayersByNumbers from '../components/PlayersByNumbers';
 import { season_stats_styles, squad_detailed_stats } from '../configs';
 import { GET_ALL_TIME_SQUAD_STATS } from '../graphql';
@@ -23,7 +23,7 @@ const AllTimeSquadStats: React.FC = () => {
   }, [data, loading]);
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (
@@ -39,7 +39,7 @@ const AllTimeSquadStats: React.FC = () => {
           />
           <CustomTable
             columns={squad_detailed_stats}
-            rows={rows}
+            rows={rows || []}
             isSortable
             sortByString="apps"
             cellIndexStyles={season_stats_styles}

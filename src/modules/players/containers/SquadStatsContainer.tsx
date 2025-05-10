@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CustomSwitch } from 'components/inputs';
+import { CustomSwitch } from '../../../components/inputs';
 import AllTimeSquadStats from './AllTimeSquadStats';
 import SquadStats from './SquadStats';
 

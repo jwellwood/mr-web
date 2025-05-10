@@ -1,22 +1,22 @@
-import React, { ReactElement } from 'react';
-import { Control, Controller } from 'react-hook-form';
+import { ReactElement } from 'react';
+import {Control, Controller, Path} from 'react-hook-form';
 import CustomSwitch from './CustomSwitch';
 
-type Props = {
-  control: Control<Record<string, unknown>>;
-  name: string;
+type Props<T extends object> = {
+  control: Control<T>;
+  name: Path<T>;
   label?: string | ReactElement;
   placement?: "top" | "end" | "start" | "bottom";
   disabled?: boolean;
 };
 
-const ControlledSwitchInput: React.FC<Props> = ({
+function ControlledSwitchInput<T extends object>({
   control,
   name,
   label,
   placement,
   disabled = false,
-}) => {
+}: Props<T>) {
   return (
     <Controller
       control={control}

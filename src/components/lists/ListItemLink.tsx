@@ -9,8 +9,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CustomTypography } from '../typography';
 import { theme } from 'theme';
-import { IListItem } from 'types';
-
+import { IListItem } from '../../types';
 type Props = {
   data: IListItem;
   onClick?: () => void;

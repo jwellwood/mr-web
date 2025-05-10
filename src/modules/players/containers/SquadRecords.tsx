@@ -1,10 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { SectionContainer } from 'components/containers';
-import { Spinner } from 'components/loaders';
-import { CustomTypography } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
+import { SectionContainer } from '../../../components/containers';
+import { Spinner } from '../../../components/loaders';
+import { CustomTypography } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import RecordsTable from '../components/RecordsTable';
 import { GET_TOP_PLAYER_STATS } from '../graphql';
 import MostInMatchStats from './MostInMatchStats';
@@ -20,17 +20,17 @@ const SquadRecords: React.FC = () => {
     { label: 'Most Goals', value: 'goals' },
     { label: 'Most Assists', value: 'assists' },
     { label: 'Most MVPs', value: 'mvp' },
-  ];
+  ] as const;
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (
     <SectionContainer>
       {loading ? (
         <Spinner />
-      ) : (
+      ) : data?.stats ? (
         <>
           {data?.stats?.apps.length === 0 ? (
             <CustomTypography color="warning">No players yet</CustomTypography>
@@ -42,7 +42,7 @@ const SquadRecords: React.FC = () => {
                     key={item.label}
                     label={item.label}
                     stat={item.value}
-                    value={data?.stats}
+                    value={data.stats}
                   />
                 );
               })}
@@ -50,7 +50,7 @@ const SquadRecords: React.FC = () => {
             </>
           )}
         </>
-      )}
+      ) : null}
     </SectionContainer>
   );
 };

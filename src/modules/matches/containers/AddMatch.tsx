@@ -84,7 +84,7 @@ const AddMatch: React.FC = () => {
   };
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (

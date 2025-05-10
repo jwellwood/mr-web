@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import {ApolloError, useMutation, useQuery} from '@apollo/client';
 import { PAGES } from '../constants';
 import { GET_PLAYER_BY_ID, UPDATE_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
@@ -10,7 +10,6 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { useNationality } from '../../../hooks';
 import { AppDispatch } from '../../../store/store';
-import {Overwrite} from "../../../utils/types.ts";
 import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import {AuthRoles} from "../../../constants.ts";
@@ -32,17 +31,12 @@ const EditPlayer: React.FC = () => {
     useMutation(UPDATE_PLAYER);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<Partial<Overwrite<IPlayer, {
-    seasonIds: string[]
-  }>>>({});
+  const [defaultValues, setDefaultValues] = useState<Partial<IPlayer>>({});
 
   useEffect(() => {
     if (data) {
       const { player } = data;
-      setDefaultValues({
-        ...(player as Partial<IPlayer>),
-        seasonIds: player.seasonIds?.map((season) => String(season._id)) || [],
-      });
+      setDefaultValues({ ...player });
     }
   }, [data]);
 
@@ -73,7 +67,7 @@ const EditPlayer: React.FC = () => {
   };
 
   if (error || updateError) {
-    return <ErrorGraphql error={[error, updateError]} />;
+    return <ErrorGraphql error={(error || updateError) as ApolloError} />;
   }
 
   return (

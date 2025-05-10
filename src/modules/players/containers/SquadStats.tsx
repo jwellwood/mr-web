@@ -1,15 +1,16 @@
 import React, { useEffect, useMemo } from 'react';
 import { useQuery } from '@apollo/client';
-import { SectionContainer } from 'components/containers';
-import CustomTable from 'components/tables/CustomTable';
-import { CustomTypography } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { useSeasons } from 'hooks/useSeasons';
+import { SectionContainer } from '../../../components/containers';
+import CustomTable from '../../../components/tables/CustomTable';
+import { CustomTypography } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useSeasons } from '../../../hooks/useSeasons';
 import PlayersByNumbers from '../components/PlayersByNumbers';
 import { season_stats_styles, squad_detailed_stats } from '../configs';
 import { GET_SQUAD_SEASON_STATS } from '../graphql';
 import { getSquadSeasonTableData } from '../helpers/getSquadSeasonTableData';
+import {IPlayer} from "../../../types";
 
 const SquadStats: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -26,13 +27,13 @@ const SquadStats: React.FC = () => {
   }, [data?.stats, refetch, seasonId]);
 
   const rows = useMemo(() => {
-    if (seasonId) {
+    if (seasonId && data) {
       return getSquadSeasonTableData(data, loading);
     }
   }, [data, loading, seasonId]);
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
   return (
     <SectionContainer>
@@ -41,14 +42,14 @@ const SquadStats: React.FC = () => {
       ) : (
         <>
           <PlayersByNumbers
-            players={data?.stats || []}
+            players={(data?.stats || []) as IPlayer[]}
             loading={loading}
-            season={seasonEndDate}
+            season={seasonEndDate || undefined}
             showAge
           />
           <CustomTable
             columns={squad_detailed_stats}
-            rows={rows}
+            rows={rows || []}
             isSortable
             sortByString="apps"
             cellIndexStyles={season_stats_styles}

@@ -1,11 +1,11 @@
 import React from 'react';
-import { STAT_ICONS } from 'app/icons';
-import { SectionContainer } from 'components/containers';
-import StatIcon from 'components/icons/StatIcon';
-import TextList from 'components/lists/TextList';
-import { PresentationModal } from 'components/modals';
-import { CustomTypography } from 'components/typography';
-import { IListItem, IPlayerInMatch } from 'types';
+import { STAT_ICONS } from '../../../app/icons';
+import { SectionContainer } from '../../../components/containers';
+import StatIcon from '../../../components/icons/StatIcon';
+import TextList from '../../../components/lists/TextList';
+import { PresentationModal } from '../../../components/modals';
+import { CustomTypography } from '../../../components/typography';
+import { IListItem, IPlayerInMatch } from '../../../types';
 import AddStats from '../containers/AddStats';
 
 export const statsData = (

@@ -1,17 +1,17 @@
 import React from 'react';
-import CustomAvatar from 'components/avatars/CustomAvatar';
-import FlagIcon from 'components/icons/FlagIcon';
-import CustomTable from 'components/tables/CustomTable';
-import NameCell from 'components/tables/NameCell';
-import { IPastPlayer } from 'types/IPastPlayer';
+import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import FlagIcon from '../../../components/icons/FlagIcon';
+import CustomTable from '../../../components/tables/CustomTable';
+import NameCell from '../../../components/tables/NameCell';
 import { past_player_styles, squad_past_players } from '../configs';
+import {IPastPlayer} from "../../../types/pastPlayer.ts";
 
 type Props = {
-  players: IPastPlayer[];
+  players?: IPastPlayer[];
 };
 
 const PastPlayersTable: React.FC<Props> = ({ players }) => {
-  const rows = players.map((player) => ({
+  const rows = players?.map((player) => ({
     position: player.position,
     nationality: { value: <FlagIcon nationality={player.nationality} /> },
     image: {
@@ -28,7 +28,7 @@ const PastPlayersTable: React.FC<Props> = ({ players }) => {
     joined: player.joined,
     left: player.left,
     seasons: player.seasons,
-  }));
+  })) || [];
 
   return (
     <CustomTable

@@ -1,14 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { CustomButton } from 'components/buttons';
-import { FormContainer } from 'components/containers';
-import { CustomSwitch } from 'components/inputs';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import LinksList from 'components/lists/LinksList';
-import { CustomTypography } from 'components/typography';
+import { CustomButton } from '../../../components/buttons';
+import { FormContainer } from '../../../components/containers';
+import { CustomSwitch } from '../../../components/inputs';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import LinksList from '../../../components/lists/LinksList';
+import { CustomTypography } from '../../../components/typography';
 import { AUTH } from 'router/paths';
-import { IListItem } from 'types';
-import { ISignUpForm } from '../types';
+import { IListItem } from '../../../types';import { ISignUpForm } from '../types';
 
 interface Props {
   onSubmit: (data: ISignUpForm) => void;

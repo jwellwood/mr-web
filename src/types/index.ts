@@ -18,7 +18,7 @@ export interface IListItem {
   type?: TLinkType;
   link?: string;
   value?: string | number | ReactElement;
-  avatar?: string | ReactElement;
+  avatar?: string | ReactElement | null;
   icon?: ReactElement;
   border?: boolean;
   styles?: string | object;

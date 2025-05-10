@@ -1,4 +1,4 @@
-import { ISelectOptions } from 'components/inputs/SelectInput';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
 
 export const getMinutesOptions = (matchLength: string | number = 90) => {
   if (typeof matchLength !== 'number') {

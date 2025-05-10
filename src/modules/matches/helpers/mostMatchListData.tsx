@@ -1,6 +1,5 @@
 import React from 'react';
-import { IListItem, IMostMatch } from 'types';
-import MatchListLabelBasic from '../components/MatchListLabelBasic';
+import { IListItem, IMostMatch } from '../../../types';import MatchListLabelBasic from '../components/MatchListLabelBasic';
 import MatchListScoreBox from '../components/MatchListScoreBox';
 
 export const mostMatchListData = (

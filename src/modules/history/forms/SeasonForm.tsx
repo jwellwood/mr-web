@@ -1,12 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledDateInput from 'components/inputs/ControlledDateInput';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import { DeleteModal } from 'components/modals';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../components/grids';
+import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
+import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
+import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import { DeleteModal } from '../../../components/modals';
 import { getIntegers } from 'utils/helpers';
 import { ITeamSeason } from '../types';
 

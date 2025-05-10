@@ -11,6 +11,7 @@ describe('get percentage tests', () => {
     expect(getPercentage(10, 8, 1)).toBe(125.0);
   });
   test('should return 0 if NaN', () => {
+    // @ts-expect-error testing bad data
     expect(getPercentage('string', 8, 1)).toBe(0);
   });
   test('should round to nearest int if fix not specified', () => {

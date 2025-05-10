@@ -8,8 +8,7 @@ import { CustomButton } from '../buttons';
 import { SectionContainer } from '../containers';
 import LinksList from '../lists/LinksList';
 import { theme } from 'theme';
-import { IListItem } from 'types';
-
+import { IListItem } from '../../types';
 interface Props {
   data: IListItem[];
   title?: string | ReactNode;

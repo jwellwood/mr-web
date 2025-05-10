@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react';
 import Avatar from '@mui/material/Avatar';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import { IMAGE_TYPE } from 'app/constants';
+import { IMAGE_TYPE } from '../../app/constants';
 import AppIcon from '../icons/AppIcon';
 import { IIconType } from '../icons/types';
 import CustomSkeleton from '../loaders/CustomSkeleton';
-import { theme } from 'theme';
-import { getThemeColorByType } from 'utils';
+import { theme } from '../../theme';
+import { getThemeColorByType } from '../../utils';
 
 const {
   typography: { secondaryFont },

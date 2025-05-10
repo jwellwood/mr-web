@@ -15,4 +15,4 @@ export const player_most_goals_and_assists = [
     label: '',
     width: 30,
   },
-];
+] as const;

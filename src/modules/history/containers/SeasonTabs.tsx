@@ -1,6 +1,6 @@
 import React from 'react';
-import { TAB_TYPES } from 'app/constants';
-import { CustomTabs, ITab } from 'components/tabs';
+import { TAB_TYPES } from '../../../app/constants';
+import { CustomTabs, ITab } from '../../../components/tabs';
 import Matches from 'modules/matches/containers/Matches';
 import MatchStats from 'modules/matches/containers/MatchStats';
 import Squad from 'modules/players/containers/Squad';

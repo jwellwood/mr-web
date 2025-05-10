@@ -1,6 +1,6 @@
 import React from 'react';
-import { TAB_TYPES } from 'app/constants';
-import { CustomTabs, ITab } from 'components/tabs';
+import { TAB_TYPES } from '../../../app/constants';
+import { CustomTabs, ITab } from '../../../components/tabs';
 import HallOfFame from './HallOfFame';
 import Seasons from './Seasons';
 import Trophies from './Trophies';

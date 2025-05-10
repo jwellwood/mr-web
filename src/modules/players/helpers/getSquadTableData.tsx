@@ -1,11 +1,9 @@
-import React from 'react';
-import CustomAvatar from 'components/avatars/CustomAvatar';
-import FlagIcon from 'components/icons/FlagIcon';
-import CustomSkeleton from 'components/loaders/CustomSkeleton';
-import StatSkeleton from 'components/loaders/StatSkeleton';
-import NameCell from 'components/tables/NameCell';
-import { IPlayer, IPlayerInMatch } from 'types';
-import { POSITIONS } from '../constants';
+import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import FlagIcon from '../../../components/icons/FlagIcon';
+import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import StatSkeleton from '../../../components/loaders/StatSkeleton';
+import NameCell from '../../../components/tables/NameCell';
+import { IPlayer, IPlayerInMatch } from '../../../types';import { POSITIONS } from '../constants';
 
 interface Args {
   players: IPlayer[];
@@ -37,7 +35,6 @@ export const getSquadTableData = ({
     const {
       _id,
       squadNumber,
-      position,
       nationality,
       image,
       name,
@@ -47,7 +44,7 @@ export const getSquadTableData = ({
     } = player || {};
     return {
       number: squadNumber,
-      position: POSITIONS[position],
+      position: POSITIONS,
 
       nationality: {
         value:

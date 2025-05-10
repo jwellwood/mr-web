@@ -1,38 +1,31 @@
-import {MouseEvent} from 'react';
+import {MouseEvent, ReactNode} from 'react';
 import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
 import { CustomTypography } from '../typography';
 import { theme } from '../../theme';
 
-interface Data {
-  apps: string;
-  goals: number;
-  assists: number;
-  position: string;
-  isPercentage?: boolean;
-}
 
-interface Props {
+type Props<T extends Record<string, string | number | object | ReactNode>> = {
   onRequestSort: (
     event: MouseEvent,
-    property: keyof Data
+    property: keyof T
   ) => void;
   columns: {
-    id: keyof Data,
-    label: string,
-    width: string
+    id: keyof T,
+    label?: ReactNode,
+    width?: number
   }[];
   sortBy?: string;
   isSortable: boolean;
 }
 
-function CustomTableHead({
+function CustomTableHead<T extends Record<string, string | number | object | ReactNode>>({
   columns,
   onRequestSort,
   sortBy,
   isSortable,
-}: Props) {
+}: Props<T>) {
   const createSortHandler =
-    (property: keyof Data) => (event: MouseEvent) => {
+    (property: keyof T) => (event: MouseEvent) => {
       onRequestSort(event, property);
     };
 
@@ -51,11 +44,11 @@ function CustomTableHead({
                 {headCell.label}
               </CustomTypography>
             ) : (
-              headCell.label
+                headCell.label
             );
           return (
             <TableCell
-              key={headCell.id}
+              key={headCell.id as string}
               align="center"
               sx={{
                 padding: '4px',

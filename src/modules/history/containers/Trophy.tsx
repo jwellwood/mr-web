@@ -1,17 +1,17 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, LINK_TYPE } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import EditLinksModal from 'components/modals/EditLinksModal';
-import CustomAppBar from 'components/navigation/CustomAppBar';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useAuth } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import RouteGuard from 'router/RouteGuard';
-import { IListItem } from 'types';
+import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
+import { Spinner } from '../../../components/loaders';
+import EditLinksModal from '../../../components/modals/EditLinksModal';
+import CustomAppBar from '../../../components/navigation/CustomAppBar';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import TrophyDetails from '../components/TrophyDetails';
 import { PAGES } from '../constants';
 import { GET_TROPHY_BY_ID } from '../graphql/getTrophyById.graphql';
+import {useAuth} from "../../../hooks";
+import {IListItem} from "../../../types";
+import RouteGuard from "../../../router/RouteGuard.tsx";
 
 const Trophy: React.FC = () => {
   const { teamId, trophyId } = useCustomParams();
@@ -30,7 +30,7 @@ const Trophy: React.FC = () => {
   });
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (
@@ -39,7 +39,7 @@ const Trophy: React.FC = () => {
         title={PAGES.TROPHY}
         actionButton={isTeamAuth && <EditLinksModal data={links} />}
       >
-        {!loading ? <TrophyDetails trophy={data.trophy} /> : <Spinner />}
+        {!loading ? <TrophyDetails trophy={data?.trophy} /> : <Spinner />}
       </CustomAppBar>
     </RouteGuard>
   );

@@ -1,17 +1,17 @@
 import React from 'react';
-import { SectionContainer } from 'components/containers';
-import AppIcon from 'components/icons/AppIcon';
-import TextList from 'components/lists/TextList';
-import { IListItem, ITeamResponse } from 'types';
+import { SectionContainer } from '../../../components/containers';
+import AppIcon from '../../../components/icons/AppIcon';
+import TextList from '../../../components/lists/TextList';
+import { IListItem, ITeamResponse } from '../../../types';
 import DeleteRole from '../containers/DeleteRole';
 
 type Props = {
-  team: ITeamResponse;
+  team?: ITeamResponse;
 };
 
 const RolesList: React.FC<Props> = ({ team }) => {
   const data: IListItem[] =
-    team.teamRoles?.map((item) => {
+    team?.teamRoles?.map((item) => {
       return {
         label: item.name,
         secondary: item.role,

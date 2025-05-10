@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 
 type Props = {
-  title: string;
+  title?: string;
   children: ReactNode;
   buttonElement: ReactNode;
   closeForm: () => boolean;

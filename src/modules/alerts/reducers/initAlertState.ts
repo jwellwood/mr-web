@@ -1,5 +1,4 @@
-import { IAlert } from 'types';
-
+import { IAlert } from '../../../types';
 export const initAlertState: IAlert = {
   text: '',
   type: 'warning',

@@ -1,15 +1,14 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { SectionContainer } from 'components/containers';
-import FlagIcon from 'components/icons/FlagIcon';
-import CircularImage from 'components/images/CircularImage';
-import LinksList from 'components/lists/LinksList';
-import { Spinner } from 'components/loaders';
-import PositionString from 'components/tables/PositionString';
-import { CustomTypography } from 'components/typography';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { IListItem } from 'types';
-import { GET_HALL_OF_FAME } from '../graphql/getHallOfFame.graphql';
+import { SectionContainer } from '../../../components/containers';
+import FlagIcon from '../../../components/icons/FlagIcon';
+import CircularImage from '../../../components/images/CircularImage';
+import LinksList from '../../../components/lists/LinksList';
+import { Spinner } from '../../../components/loaders';
+import PositionString from '../../../components/tables/PositionString';
+import { CustomTypography } from '../../../components/typography';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { IListItem } from '../../../types';import { GET_HALL_OF_FAME } from '../graphql/getHallOfFame.graphql';
 
 const HallOfFame: React.FC = () => {
   const { teamId } = useCustomParams();

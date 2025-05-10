@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { AUTH_ROLES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import { PageHeader } from 'components/typography';
+import { AUTH_ROLES } from '../../../app/constants';
+import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components/typography';
 import { AppDispatch } from 'reduxStore/rootReducer';
 import RouteGuard from 'router/RouteGuard';
 import ValidatedEmail from '../components/ValidatedEmail.component';

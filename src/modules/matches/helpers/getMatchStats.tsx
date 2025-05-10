@@ -1,5 +1,4 @@
-import { IMatchStats } from 'types';
-
+import { IMatchStats } from '../../../types';
 export const getMatchStats = (stats: IMatchStats) => {
   return [
     {

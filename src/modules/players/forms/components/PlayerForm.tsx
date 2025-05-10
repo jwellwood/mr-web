@@ -1,17 +1,17 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
-import { positionOptions } from 'app/constants';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid, GridItem } from 'components/grids';
-import ControlledDateInput from 'components/inputs/ControlledDateInput';
-import ControlledMultiSelectInput from 'components/inputs/ControlledMultiSelectInput';
-import ControlledSelectInput from 'components/inputs/ControlledSelectInput';
-import ControlledSwitchInput from 'components/inputs/ControlledSwitchInput';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
-import { ISelectOptions } from 'components/inputs/SelectInput';
-import TextList from 'components/lists/TextList';
-import { IListItem, IPlayer } from 'types';
-import { getIntegers } from 'utils/helpers';
+import {Path, useForm} from 'react-hook-form';
+import { positionOptions } from '../../../../app/constants';
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
+import ControlledDateInput from '../../../../components/inputs/ControlledDateInput';
+import ControlledMultiSelectInput from '../../../../components/inputs/ControlledMultiSelectInput';
+import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
+import ControlledSwitchInput from '../../../../components/inputs/ControlledSwitchInput';
+import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
+import { ISelectOptions } from '../../../../components/inputs/SelectInput';
+import TextList from '../../../../components/lists/TextList';
+import {IListItem, IPlayer} from "../../../../types";
+import {getIntegers} from "../../../../utils/helpers";
 
 interface Props {
   onSubmit: (data: Partial<IPlayer>) => void;
@@ -35,12 +35,12 @@ const PlayerForm: React.FC<Props> = ({
     defaultValues,
   });
 
-  const switchComp = (name: string) => {
+  const switchComp = (name: Path<IPlayer>) => {
     return <ControlledSwitchInput control={control} name={name} />;
   };
 
   const seasonIds = watch('seasonIds');
-  const disabled = seasonIds.length < 1;
+  const disabled = (seasonIds?.length || 0) < 1;
 
   const switchList: IListItem[] = [
     {
@@ -125,7 +125,7 @@ const PlayerForm: React.FC<Props> = ({
             rules={{ required: true }}
             options={seasonOptions}
             label="Seasons Played"
-            errors={errors.seasonIds ? [errors.seasonIds] : []}
+            errors={errors.seasonIds?.[0] ? [new Error(errors.seasonIds[0].message)] : []}
           />
         </GridItem>
       </CenteredGrid>

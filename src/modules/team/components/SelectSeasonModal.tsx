@@ -2,11 +2,10 @@ import * as React from 'react';
 import { DialogContent, DialogTitle } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
-import { SectionContainer } from 'components/containers';
-import TextList from 'components/lists/TextList';
-import { CustomTypography } from 'components/typography';
-import { IListItem } from 'types';
-
+import { SectionContainer } from '../../../components/containers';
+import TextList from '../../../components/lists/TextList';
+import { CustomTypography } from '../../../components/typography';
+import { IListItem } from '../../../types';
 export interface SimpleDialogProps {
   data: IListItem[];
   open: boolean;
@@ -57,8 +56,8 @@ function SimpleDialog(props: SimpleDialogProps) {
 }
 
 interface Props {
-  currentSeason: string;
-  seasonId: string;
+  currentSeason?: string;
+  seasonId?: string;
   seasonsList: IListItem[];
   onClick: (seasonId: string) => void;
 }
@@ -74,9 +73,11 @@ const SelectSeasonModal: React.FC<Props> = ({
     setOpen(true);
   };
 
-  const handleClose = (value: string, reason) => {
+  const handleClose = (value: string, reason?: string) => {
     if (reason === 'backdropClick') {
-      onClick(seasonId);
+      if(seasonId) {
+        onClick(seasonId);
+      }
     } else {
       onClick(value);
     }

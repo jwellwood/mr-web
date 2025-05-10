@@ -1,16 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import { CustomButton } from 'components/buttons';
-import { SectionContainer } from 'components/containers';
-import LinksList from 'components/lists/LinksList';
-import { CustomTypography } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { useSeasons } from 'hooks/useSeasons';
+import { AUTH_ROLES } from '../../../app/constants';
+import { CustomButton } from '../../../components/buttons';
+import { SectionContainer } from '../../../components/containers';
+import LinksList from '../../../components/lists/LinksList';
+import { CustomTypography } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useSeasons } from '../../../hooks/useSeasons';
 import RouteGuard from 'router/RouteGuard';
 import { GET_MATCHES_BY_SEASON } from '../graphql';
-import { matchListData } from '../helpers/matchListData';
+import { getMatchListData } from '../helpers/getMatchListData.tsx';
 
 const Matches: React.FC = () => {
   const { orgId, teamId } = useCustomParams();
@@ -34,7 +34,7 @@ const Matches: React.FC = () => {
 
   const listData = useMemo(
     () =>
-      matchListData({
+      getMatchListData({
         data: data?.matches,
         orgId,
         teamId,
@@ -59,7 +59,7 @@ const Matches: React.FC = () => {
   };
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (

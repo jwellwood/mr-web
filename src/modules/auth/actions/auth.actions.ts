@@ -1,4 +1,4 @@
-import { AUTH_ROLES } from 'app/constants';
+import { AUTH_ROLES } from '../../../app/constants';
 
 export const SET_AUTH = 'SET_AUTH';
 

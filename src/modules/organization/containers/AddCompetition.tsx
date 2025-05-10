@@ -23,7 +23,7 @@ const AddCompetition: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const [defaultValues, setDefaultValues] =
-    useState<Partial<ICompetition>>(null);
+    useState<Partial<ICompetition | null>>(null);
 
   const [addCompetition, { error, loading }] = useMutation(ADD_COMPETITION, {
     refetchQueries: [{ query: GET_ORG, variables: { orgId } }],
@@ -32,7 +32,7 @@ const AddCompetition: React.FC = () => {
   useEffect(() => {
     setDefaultValues({ ...initialCompetitionState });
   }, []);
-  const onSubmit = async (formData: ICompetition) => {
+  const onSubmit = async (formData: Partial<ICompetition>) => {
     try {
       return addCompetition({
         variables: { orgId, ...mapCompetitionInput(formData) },
@@ -46,7 +46,7 @@ const AddCompetition: React.FC = () => {
     }
   };
 
-  if (error) return <ErrorGraphql error={[error.message]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.ORG_ADMIN}>

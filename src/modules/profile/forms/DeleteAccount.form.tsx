@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from 'components/containers';
-import { CenteredGrid } from 'components/grids';
-import ControlledTextInput from 'components/inputs/ControlledTextInput';
+import { FormContainer } from '../../../components/containers';
+import { CenteredGrid } from '../../../components/grids';
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { IDeleteAccountForm } from '../types';
 
 interface Props {

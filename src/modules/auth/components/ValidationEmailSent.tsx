@@ -1,6 +1,6 @@
 import React from 'react';
-import { AUTH_ROLES } from 'app/constants';
-import { CustomTypography } from 'components/typography';
+import { AUTH_ROLES } from '../../../app/constants';
+import { CustomTypography } from '../../../components/typography';
 import RouteGuard from 'router/RouteGuard';
 
 interface Props {

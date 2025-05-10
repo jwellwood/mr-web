@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { useSeasons } from 'hooks/useSeasons';
-import { GET_ORG, GET_TEAMS_BY_ORG } from 'modules/organization/graphql';
-import { ICompetition, ITeam } from 'types';
-
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useSeasons } from '../../../hooks/useSeasons';
+import { ICompetition, ITeam } from '../../../types';
+import {GET_ORG, GET_TEAMS_BY_ORG} from "../../organization/graphql";
 export const useMatchDetailsInput = () => {
   const { orgId } = useCustomParams();
   const [opponents, setOpponents] = useState<ITeam[]>([]);

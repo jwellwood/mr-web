@@ -1,10 +1,10 @@
 import React from 'react';
-import { VERSION } from 'app/constants';
+import { VERSION } from '../../app/constants';
 import { LogoutButton } from '../buttons';
 import { CenteredGrid } from '../grids';
 import { CustomTypography } from '../typography';
-import { useAuth } from 'hooks';
-import { useLogout } from 'modules/auth/hooks/useLogout.hook';
+import {useAuth} from "../../hooks";
+import {useLogout} from "../../modules/auth/hooks/useLogout.hook.ts";
 
 const date = new Date().getFullYear();
 

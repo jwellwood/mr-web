@@ -1,6 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeam } from 'types';
-
+import { ITeam } from '../../../types';
 export const GET_TEAMS_BY_ORG: TypedDocumentNode<{
   teams: ITeam[];
 }> = gql`

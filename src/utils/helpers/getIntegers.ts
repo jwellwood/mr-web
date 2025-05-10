@@ -1,8 +1,8 @@
 import {ISelectOptions} from "../../components/inputs/SelectInput.tsx";
 
 export function getIntegers (
-  max: number = 99,
-  min: number = 0
+  max: string | number = 99,
+  min: string | number = 0
 ): ISelectOptions[] {
   if (typeof max !== 'number') max = +max;
   if (typeof min !== 'number') min = +min;

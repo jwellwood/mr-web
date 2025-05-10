@@ -1,6 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IPlayerStats } from 'types';
-
+import { IPlayerStats } from '../../../../types';
 export const GET_PLAYER_SEASON_STATS: TypedDocumentNode<{
   player: IPlayerStats;
 }> = gql`

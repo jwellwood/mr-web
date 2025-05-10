@@ -15,7 +15,9 @@ describe('filterer tests', () => {
     expect(filterer(mockData, 'other')).toBe(1);
   });
   test('should return length 0 when filter by an elem that does not exist or is omitted', () => {
+    // @ts-expect-error test bad data
     expect(filterer(mockData, 'fake')).toBe(0);
+    // @ts-expect-error test bad data
     expect(filterer(mockData, 1)).toBe(0);
     expect(filterer(mockData)).toBe(0);
   });

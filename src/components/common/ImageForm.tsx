@@ -8,10 +8,12 @@ import FileInput from '../inputs/FileInput';
 import {button_text} from "../../i18n";
 
 interface Props {
-  imageUrl: string;
-  setImageUrl: React.Dispatch<React.SetStateAction<string>>;
-  onSubmit: (data: unknown) => void;
-  currentUrl: string;
+  imageUrl?: string;
+  setImageUrl: React.Dispatch<React.SetStateAction<string | null>>;
+  onSubmit: (data: {
+      imageFile: File | null,
+             }) => void;
+  currentUrl?: string;
   removeImage: () => void;
 }
 
@@ -27,7 +29,11 @@ const ImageForm: React.FC<Props> = ({
     control,
     formState: { errors },
     reset,
-  } = useForm({});
+  } = useForm({
+    defaultValues: {
+      imageFile: null,
+    },
+  });
 
   const resetImage = useCallback(() => {
     reset();
@@ -44,12 +50,12 @@ const ImageForm: React.FC<Props> = ({
             return (
               <FileInput
                 inputName={name}
-                defaultValue={value}
+                defaultValue={value || undefined}
                 onChange={(event) => {
-                  onChange(event.target.files[0]);
-                  setImageUrl(URL.createObjectURL(event.target.files[0]));
+                  onChange(event.target?.files?.[0]);
+                  setImageUrl(URL.createObjectURL(event.target?.files?.[0] as File));
                 }}
-                errors={errors.imageFile ? [errors.imageFile] : []}
+                errors={errors.imageFile ? [errors.imageFile.message as string] : []}
               />
             );
           }}
@@ -58,7 +64,11 @@ const ImageForm: React.FC<Props> = ({
         <CustomButton type="reset" onClick={resetImage}>
           {button_text.DEFAULT}
         </CustomButton>
-        <CustomButton onClick={() => setImageUrl(currentUrl)}>
+        <CustomButton onClick={() => {
+          if(currentUrl) {
+            setImageUrl(currentUrl)
+          }
+        }}>
           Cancel
         </CustomButton>
         <CustomButton onClick={removeImage}>Remove image</CustomButton>

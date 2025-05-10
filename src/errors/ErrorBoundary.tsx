@@ -1,8 +1,8 @@
 import React, { Component, ErrorInfo } from 'react';
-import { ROOT_URL } from 'app/constants';
-import { CustomButton, CustomLinkButton } from 'components/buttons';
-import { SectionContainer } from 'components/containers';
-import { CustomTypography } from 'components/typography';
+import { ROOT_URL } from '../app/constants';
+import { CustomButton, CustomLinkButton } from '../components/buttons';
+import { SectionContainer } from '../components/containers';
+import { CustomTypography } from '../components/typography';
 
 interface State {
   errorMessage: string;

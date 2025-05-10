@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { DELETE_ROLE, GET_TEAM } from '../graphql';
-import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
 import {DeleteModal} from "../../../components/modals";
+import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 
 interface Props {
   roleId: string;
@@ -41,7 +41,7 @@ const DeleteRole: React.FC<Props> = ({ roleId }) => {
       });
   };
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <DeleteModal

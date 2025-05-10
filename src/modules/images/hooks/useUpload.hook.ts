@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import {ApolloQueryResult, FetchResult} from "@apollo/client";
 
 interface UseUpload {
   uploadFunc: (fileData: FormData) => Promise<object>;
   removeFunc: (public_id: string) => Promise<void>;
-  url: string;
-  public_id: string;
-  graphqlFunc: (data?: object) => Promise<void>;
-  refetchFunc: (data?: object) =>  Promise<void>;
+  url?: string;
+  public_id?: string;
+  graphqlFunc: (data?: object) => Promise<FetchResult<unknown>>;
+  refetchFunc: (data?: object) =>  Promise<ApolloQueryResult<unknown>>;
 }
 
 export const useUpload = ({
@@ -32,8 +33,9 @@ export const useUpload = ({
   }, [url]);
 
   const onSubmit = (formData: {
-    imageFile: File;
+    imageFile: File | null;
   }) => {
+    if (!formData.imageFile) return;
     setLoading(true);
     const file: File = formData.imageFile;
     const fileData: FormData = new FormData();
@@ -65,6 +67,9 @@ export const useUpload = ({
   };
 
   const removeImage = () => {
+    if(!public_id) {
+      return;
+    }
     setLoading(true);
     removeFunc(public_id)
       .then(() => {

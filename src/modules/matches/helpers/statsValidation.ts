@@ -1,15 +1,14 @@
-import { IPlayerInMatch, ITempMatch } from 'types';
-
+import { IPlayerInMatch, ITempMatch } from '../../../types';
 export const validateStats = (match: ITempMatch, players: IPlayerInMatch[]) => {
   const { teamGoals, opponentGoals, competition } = match;
-  const { playersPerTeam, matchMinutes } = competition;
+  const { playersPerTeam, matchMinutes } = competition || {};
 
-  const getTotalArray = (type: string) => {
+  const getTotalArray = (type: keyof IPlayerInMatch) => {
     return players
-      .map((player) => +player[type])
+      .map((player) => +(player[type] || 0))
       .reduce((prev, curr) => prev + curr, 0);
   };
-  const getTotalTrue = (type: string) => {
+  const getTotalTrue = (type: keyof IPlayerInMatch) => {
     return players.filter((player) => player[type]).length;
   };
 
@@ -19,7 +18,7 @@ export const validateStats = (match: ITempMatch, players: IPlayerInMatch[]) => {
   const ownGoals = getTotalArray('ownGoals');
   const starters = getTotalTrue('isStarter');
   const mins = getTotalArray('minutes');
-  const totalMins = playersPerTeam * matchMinutes;
+  const totalMins = (playersPerTeam || 0) * (matchMinutes || 0);
 
   const validateScored = (stat: number) => {
     return +stat <= +teamGoals;
@@ -32,7 +31,7 @@ export const validateStats = (match: ITempMatch, players: IPlayerInMatch[]) => {
     {
       label: 'Starters',
       value: starters,
-      isValid: starters <= playersPerTeam,
+      isValid: playersPerTeam && starters <= playersPerTeam,
       isExact: +starters === playersPerTeam,
       total: playersPerTeam,
     },

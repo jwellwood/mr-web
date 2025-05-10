@@ -2,8 +2,7 @@ import React from 'react';
 import { Control } from 'react-hook-form';
 import ControlledSwitchInput from '../inputs/ControlledSwitchInput';
 import TextList from '../lists/TextList';
-import { IListItem } from 'types';
-
+import { IListItem } from '../../types';
 type Props = {
   control: Control;
   data: IListItem[];

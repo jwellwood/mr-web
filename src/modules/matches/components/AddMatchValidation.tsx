@@ -1,8 +1,7 @@
 import React from 'react';
-import { DataContainer, SectionContainer } from 'components/containers';
-import { CustomTypography } from 'components/typography';
-import { IPlayerInMatch, ITempMatch } from 'types';
-import { validateStats } from '../helpers/statsValidation';
+import { DataContainer, SectionContainer } from '../../../components/containers';
+import { CustomTypography } from '../../../components/typography';
+import { IPlayerInMatch, ITempMatch } from '../../../types';import { validateStats } from '../helpers/statsValidation';
 
 type Props = {
   match: ITempMatch;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import {ApolloError, useMutation, useQuery} from '@apollo/client';
 
 import { PAGES, TeamError, TeamSuccess } from '../constants';
 import UpdateTeamDetailsForm from '../forms/UpdateTeamDetailsForm.form';
@@ -56,7 +56,7 @@ const UpdateDetailsContainer: React.FC = () => {
   };
 
   if (error || updateError)
-    return <ErrorGraphql error={[error, updateError]} />;
+    return <ErrorGraphql error={(error || updateError) as ApolloError} />;
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN} >
       <PageHeader title={PAGES.EDIT_TEAM} />

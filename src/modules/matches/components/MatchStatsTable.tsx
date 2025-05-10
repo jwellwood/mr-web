@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
-import CustomTable from 'components/tables/CustomTable';
-import { IMatchStats } from 'types';
-import { match_table, match_table_styles } from '../configs';
+import CustomTable from '../../../components/tables/CustomTable';
+import { IMatchStats } from '../../../types';import { match_table, match_table_styles } from '../configs';
 import { getMatchStats } from '../helpers/getMatchStats';
 
 interface Props {

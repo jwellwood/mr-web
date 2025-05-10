@@ -1,5 +1,5 @@
-import { BACKGROUND_STYLE, BORDER_STYLE } from 'app/constants';
-import { CellStyleByIndex } from 'components/tables/types';
+import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
+import { ICellStyleByIndex } from '../../../../components/tables/types';
 
 const { STATIC } = BACKGROUND_STYLE;
 const { STANDARD } = BORDER_STYLE;
@@ -73,7 +73,7 @@ export const opponent_table = [
   },
 ];
 
-export const opponent_table_styles: CellStyleByIndex[] = [
+export const opponent_table_styles: ICellStyleByIndex[] = [
   {
     index: 0,
     background: STATIC,

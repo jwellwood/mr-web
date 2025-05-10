@@ -1,8 +1,8 @@
-import { BORDER_STYLE } from 'app/constants';
+import { BORDER_STYLE } from '../../../app/constants';
 import { ICellStyleByIndex } from '../types';
 
 export const getBorderStyle = (
-  cellIndexStyles: ICellStyleByIndex[],
+  cellIndexStyles: readonly ICellStyleByIndex[],
   i: number
 ) => {
   const cellIndex = cellIndexStyles.map((cell) => cell.index);

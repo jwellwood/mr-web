@@ -1,17 +1,17 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { SectionContainer } from 'components/containers';
-import LinksList from 'components/lists/LinksList';
-import { Spinner } from 'components/loaders';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { IMatchStats } from 'types';
+import { SectionContainer } from '../../../components/containers';
+import LinksList from '../../../components/lists/LinksList';
+import { Spinner } from '../../../components/loaders';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { IMatchStats } from '../../../types';
 import MatchStatsTable from '../components/MatchStatsTable';
 import { GET_MATCHES_BY_OPPONENT } from '../graphql/getMatchesByOpponent.graphql';
-import { matchListData } from '../helpers/matchListData';
+import { getMatchListData } from '../helpers/getMatchListData.tsx';
 
 type Props = {
-  opponentId: string;
+  opponentId?: string;
 };
 
 const HeadToHead: React.FC<Props> = ({ opponentId }) => {
@@ -52,8 +52,16 @@ const HeadToHead: React.FC<Props> = ({ opponentId }) => {
     }
   };
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
+  const matchListData = getMatchListData({
+    data: data?.matches || [],
+    loading,
+    orgId: orgId!,
+    teamId: teamId!,
+    showBadge: false,
+    matchId,
+  });
   return (
     <SectionContainer>
       {!loading ? (
@@ -62,16 +70,11 @@ const HeadToHead: React.FC<Props> = ({ opponentId }) => {
             stats={mapMatchStats() as IMatchStats}
             loading={loading}
           />
-          <LinksList
-            links={matchListData({
-              data: data?.matches,
-              loading,
-              orgId,
-              teamId,
-              showBadge: false,
-              matchId,
-            })}
-          />
+          {getMatchListData && getMatchListData.length > 0 && (
+            <LinksList
+              links={matchListData}
+            />
+          )}
         </SectionContainer>
       ) : (
         <Spinner />

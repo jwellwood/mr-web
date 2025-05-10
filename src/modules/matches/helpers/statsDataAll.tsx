@@ -1,9 +1,8 @@
 import React from 'react';
-import { STAT_ICONS } from 'app/icons';
-import StatIcon from 'components/icons/StatIcon';
-import { CustomTypography } from 'components/typography';
-import { IPlayerInMatch } from 'types';
-import AddStats from '../containers/AddStats';
+import { STAT_ICONS } from '../../../app/icons';
+import StatIcon from '../../../components/icons/StatIcon';
+import { CustomTypography } from '../../../components/typography';
+import { IPlayerInMatch } from '../../../types';import AddStats from '../containers/AddStats';
 
 export const statsDataAll = (
   currentPlayers: Partial<IPlayerInMatch[]>,

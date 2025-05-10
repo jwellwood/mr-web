@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES } from 'app/constants';
-import CustomTable from 'components/tables/CustomTable';
-import { CustomTypography } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useCustomParams } from 'hooks/useCustomParams';
-import { useSeasons } from 'hooks/useSeasons';
-import RouteGuard from 'router/RouteGuard';
+import { AUTH_ROLES } from '../../../app/constants';
+import CustomTable from '../../../components/tables/CustomTable';
+import { CustomTypography } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useSeasons } from '../../../hooks/useSeasons';
+import RouteGuard from '../../../router/RouteGuard';
 import { squad_list, squad_list_styles } from '../configs';
 import {
   GET_PLAYERS_BY_SEASON_ID,
@@ -38,8 +38,8 @@ const Squad: React.FC = () => {
   const tableData = useMemo(
     () =>
       getSquadTableData({
-        players: data?.players,
-        stats: stats?.players,
+        players: data?.players || [],
+        stats: stats?.players || [],
         playersLoading,
         statsLoading,
       }),
@@ -47,7 +47,7 @@ const Squad: React.FC = () => {
   );
 
   if (error) {
-    return <ErrorGraphql error={[error]} />;
+    return <ErrorGraphql error={error} />;
   }
 
   return (

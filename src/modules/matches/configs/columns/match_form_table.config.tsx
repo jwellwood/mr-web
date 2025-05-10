@@ -1,8 +1,8 @@
 import React from 'react';
-import { BACKGROUND_STYLE, BORDER_STYLE } from 'app/constants';
-import { STAT_ICONS } from 'app/icons';
-import StatIcon from 'components/icons/StatIcon';
-import { CellStyleByIndex } from 'components/tables/types';
+import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
+import { STAT_ICONS } from '../../../../app/icons';
+import StatIcon from '../../../../components/icons/StatIcon';
+import { ICellStyleByIndex } from '../../../../components/tables/types';
 
 const { STANDARD } = BORDER_STYLE;
 const { STATIC } = BACKGROUND_STYLE;
@@ -83,7 +83,7 @@ export const match_form_table = [
   },
 ];
 
-export const match_form_table_styles: CellStyleByIndex[] = [
+export const match_form_table_styles: ICellStyleByIndex[] = [
   { index: 0, background: STATIC },
   { index: 1, background: STATIC },
   {

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, LINK_TYPE } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import EditLinksModal from 'components/modals/EditLinksModal';
-import CustomAppBar from 'components/navigation/CustomAppBar';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { ORG, PROFILE } from 'router/paths';
-import RouteGuard from 'router/RouteGuard';
+import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
+import { Spinner } from '../../../components/loaders';
+import EditLinksModal from '../../../components/modals/EditLinksModal';
+import CustomAppBar from '../../../components/navigation/CustomAppBar';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { ORG, PROFILE } from '../../../router/paths';
+import RouteGuard from '../../../router/RouteGuard';
 import ProfileDetails from '../components/Details';
 import Profile from '../components/Profile';
 import { pages } from '../constants';
@@ -41,10 +41,10 @@ const ProfileContainer: React.FC = () => {
       >
         {!loading ? (
           <>
-            <Profile user={data.user} />
+            <Profile user={data?.user} />
             <ProfileOrganizations />
             <ProfileTeams />
-            <ProfileDetails user={data.user} />
+            <ProfileDetails user={data?.user} />
           </>
         ) : (
           <Spinner />

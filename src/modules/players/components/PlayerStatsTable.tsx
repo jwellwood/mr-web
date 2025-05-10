@@ -1,10 +1,9 @@
 import React from 'react';
-import { STAT_ICONS } from 'app/icons';
-import StatIcon from 'components/icons/StatIcon';
-import StatSkeleton from 'components/loaders/StatSkeleton';
-import CustomTable from 'components/tables/CustomTable';
-import { IPlayerStats } from 'types';
-import { getAvg, getPercentage } from 'utils/helpers';
+import { STAT_ICONS } from '../../../app/icons';
+import StatIcon from '../../../components/icons/StatIcon';
+import StatSkeleton from '../../../components/loaders/StatSkeleton';
+import CustomTable from '../../../components/tables/CustomTable';
+import { IPlayerStats } from '../../../types';import { getAvg, getPercentage } from '../../../utils/helpers';
 import { player_stats, player_stats_styles } from '../configs';
 
 type Props = {

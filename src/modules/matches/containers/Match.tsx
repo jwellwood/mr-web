@@ -1,21 +1,21 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, LINK_TYPE, TAB_TYPES } from 'app/constants';
-import { Spinner } from 'components/loaders';
-import EditLinksModal from 'components/modals/EditLinksModal';
-import CustomAppBar from 'components/navigation/CustomAppBar';
-import { CustomTabs, ITab } from 'components/tabs';
-import { CustomTypography } from 'components/typography';
-import ErrorGraphql from 'errors/ErrorGraphql';
-import { useAuth } from 'hooks';
-import { useCustomParams } from 'hooks/useCustomParams';
-import RouteGuard from 'router/RouteGuard';
-import { ITeam } from 'types';
+import { AUTH_ROLES, LINK_TYPE, TAB_TYPES } from '../../../app/constants';
+import { Spinner } from '../../../components/loaders';
+import EditLinksModal from '../../../components/modals/EditLinksModal';
+import CustomAppBar from '../../../components/navigation/CustomAppBar';
+import { CustomTabs, ITab } from '../../../components/tabs';
+import { CustomTypography } from '../../../components/typography';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { useCustomParams } from '../../../hooks/useCustomParams';
 import MatchDetails from '../components/MatchDetails';
 import MatchPlayersTable from '../components/MatchPlayersTable';
 import { PAGES } from '../constants';
 import { GET_MATCH_BY_ID } from '../graphql';
 import HeadToHead from './HeadToHead';
+import {useAuth} from "../../../hooks";
+import {ITeam} from "../../../types";
+import RouteGuard from "../../../router/RouteGuard.tsx";
 
 const Match: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
@@ -56,7 +56,7 @@ const Match: React.FC = () => {
     },
   ];
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>

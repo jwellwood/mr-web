@@ -26,7 +26,7 @@ export const TeamSearch = () => {
     });
   };
 
-  if (error) return <ErrorGraphql error={[error]} />;
+  if (error) return <ErrorGraphql error={error} />;
 
   return (
     <>

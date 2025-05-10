@@ -1,6 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMostGoalsByPlayerMatches } from 'types';
-
+import { IMostGoalsByPlayerMatches } from '../../../../types';
 export const GET_MOST_GOALS_BY_PLAYER_MATCHES: TypedDocumentNode<{
   stats: IMostGoalsByPlayerMatches[];
 }> = gql`

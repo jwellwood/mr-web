@@ -43,7 +43,7 @@ const EditProfileContainer: React.FC = () => {
     })
       .then(() => {
         dispatch(showAlert({text: 'Profile updated!', type: 'success'}))
-        navigate(PROFILE);
+        navigate(PROFILE.PROFILE);
       })
       .catch((err) => {
 
@@ -53,7 +53,7 @@ const EditProfileContainer: React.FC = () => {
   };
 
   if (error || editError) {
-    return <ErrorGraphql error={[error, editError]} />;
+    return <ErrorGraphql error={(error || editError) as Error} />;
   }
 
   return (
