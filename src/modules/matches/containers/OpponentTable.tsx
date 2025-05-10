@@ -5,7 +5,8 @@ import { Spinner } from '../../../components/loaders';
 import CustomTable from '../../../components/tables/CustomTable';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { IOpponentTable } from '../../../types';import { opponent_table, opponent_table_styles } from '../configs';
+import { IOpponentTable } from '../../../types';
+import { opponent_table, opponent_table_styles } from '../configs';
 import { GET_OPPONENT_TABLE } from '../graphql/getOpponentTable.graphql';
 import { mapOpponentStats } from '../helpers/mapOpponentStats';
 
@@ -26,7 +27,6 @@ const OpponentTable: React.FC = () => {
   };
   const tableData = mapOpponentStats(
     filteredStats() as IOpponentTable[],
-    loading
   );
 
   const toggleSwitch = () => {

@@ -8,7 +8,8 @@ import ControlledSwitchInput from '../../../components/inputs/ControlledSwitchIn
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import TextList from '../../../components/lists/TextList';
 import { isFuture } from 'date-fns';
-import { ICompetition, ITempMatch } from '../../../types';import { getIntegers } from 'utils/helpers';
+import { ICompetition, ITempMatch } from '../../../types';
+import { getIntegers } from '../../../utils/helpers';
 import { cupRoundOptions } from '../constants';
 
 interface Props {

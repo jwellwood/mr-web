@@ -5,7 +5,8 @@ import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';
-import { ICompetition, IListItem, IMatchResponse, ITeam } from '../../../types';import { parseDate } from 'utils/helpers';
+import { ICompetition, IListItem, IMatchResponse, ITeam } from '../../../types';
+import { parseDate } from '../../../utils/helpers';
 import { getPoints } from '../helpers';
 import ScoreBox from './ScoreBox';
 
@@ -25,9 +26,9 @@ const MatchDetails: React.FC<Props> = ({ match }) => {
   } = match;
   const matchDate = parseDate(date);
   const team = (teamId as ITeam).teamName;
-  const teamBadge = (teamId as ITeam).teamBadge.url;
-  const opponent = (opponentId as ITeam).teamName;
-  const oppBadge = (opponentId as ITeam).teamBadge.url;
+  const teamBadge = (teamId as ITeam)?.teamBadge?.url;
+  const opponent = (opponentId as ITeam)?.teamName;
+  const oppBadge = (opponentId as ITeam)?.teamBadge?.url;
   const homeTeam = {
     name: isHome ? team : opponent,
     score: isHome ? teamGoals : opponentGoals,

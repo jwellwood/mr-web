@@ -1,5 +1,5 @@
 import { IMatchStats } from '../../../types';
-export const getMatchStats = (stats: IMatchStats) => {
+export const getMatchStats = (stats?: IMatchStats) => {
   return [
     {
       played: stats?.total,

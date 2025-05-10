@@ -71,9 +71,9 @@ export const opponent_table = [
     label: 'Avg',
     width: 40,
   },
-];
+] as const;
 
-export const opponent_table_styles: ICellStyleByIndex[] = [
+export const opponent_table_styles = [
   {
     index: 0,
     background: STATIC,
@@ -88,4 +88,4 @@ export const opponent_table_styles: ICellStyleByIndex[] = [
   },
   { index: 9, textColor: 'label' },
   { index: 10, textColor: 'label' },
-];
+] as const;

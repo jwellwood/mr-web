@@ -1,14 +1,37 @@
-import React from 'react';
 import { STAT_ICONS } from '../../../app/icons';
 import StatIcon from '../../../components/icons/StatIcon';
 import { CustomTypography } from '../../../components/typography';
-import { IPlayerInMatch } from '../../../types';import AddStats from '../containers/AddStats';
+import { IPlayerInMatch } from '../../../types';
+import AddStats from '../containers/AddStats';
+import {ReactNode} from "react";
 
 export const statsDataAll = (
-  currentPlayers: Partial<IPlayerInMatch[]>,
-  isForm: boolean
-) =>
-  currentPlayers?.map((player: IPlayerInMatch) => {
+  currentPlayers?: Partial<IPlayerInMatch[]>,
+  isForm?: boolean
+): {
+    name: {
+        value: ReactNode
+    }
+    isStarter: {
+        value: ReactNode
+    }
+    matchPosition: string
+    goals: string | number
+    assists: string | number
+    mvp: string | number
+    pensScored: string | number
+    pensMissed: string | number
+    ownGoals: string | number
+    conceded: string | number
+    pensSaved: string | number
+    cleanSheet: string | number
+    yellowCards: string | number
+    redCard: string | number
+    minutes: string | number
+}[] => {
+    const players = currentPlayers?.filter(cp => cp !== undefined) || []
+
+  return players.map((player) => {
     const {
       name,
       isStarter,
@@ -30,9 +53,9 @@ export const statsDataAll = (
 
     const nameData = isForm ? (
       <AddStats
-        playerId={_id}
+        playerId={_id as string}
         title={name}
-        currentPlayers={currentPlayers}
+        currentPlayers={players}
         buttonElement={
           <CustomTypography bold size="sm" color="data">
             {name}
@@ -49,7 +72,7 @@ export const statsDataAll = (
       isStarter: {
         value: !isStarter ? <StatIcon icon={STAT_ICONS.SUB_IN} /> : '',
       },
-      position: matchPosition,
+      matchPosition,
       name: { value: nameData },
       goals: goals || '',
       assists: assists || '',
@@ -65,3 +88,4 @@ export const statsDataAll = (
       minutes: minutes || '',
     };
   });
+}

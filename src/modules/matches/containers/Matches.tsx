@@ -8,7 +8,7 @@ import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
-import RouteGuard from 'router/RouteGuard';
+import RouteGuard from '../../../router/RouteGuard';
 import { GET_MATCHES_BY_SEASON } from '../graphql';
 import { getMatchListData } from '../helpers/getMatchListData.tsx';
 

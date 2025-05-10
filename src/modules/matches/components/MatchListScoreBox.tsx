@@ -1,14 +1,14 @@
 import React from 'react';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { theme } from 'theme';
-import { getOpaqueValue } from 'utils/colors/getOpaqueValue';
 import { getPoints } from '../helpers';
+import {theme} from "../../../theme";
+import {getOpaqueValue} from "../../../utils/colors/getOpaqueValue.ts";
 
 type Props = {
   teamGoals: number;
   opponentGoals: number;
-  loading: boolean;
+  loading?: boolean;
 };
 
 const MatchListScoreBox: React.FC<Props> = ({
@@ -16,6 +16,7 @@ const MatchListScoreBox: React.FC<Props> = ({
   opponentGoals,
   loading,
 }) => {
+
   const { palette } = theme;
 
   const points = getPoints(teamGoals, opponentGoals);

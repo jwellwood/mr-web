@@ -8,15 +8,15 @@ import { CustomTypography } from '../typography';
 import { IListItem } from '../../types';
 
 interface Props {
-  data: IListItem[];
+  data?: readonly IListItem[];
   labelSize?: string;
   loading?: boolean;
 }
 
-const TextList: React.FC<Props> = ({ data, labelSize }) => {
+const TextList: React.FC<Props> = ({ data = [], labelSize }) => {
   return (
     <List dense>
-      {data.map((item, i) => {
+      {(data).map((item, i) => {
         const { label, secondary, value, avatar, icon, border, onClick } = item;
 
         const valueDisplay =

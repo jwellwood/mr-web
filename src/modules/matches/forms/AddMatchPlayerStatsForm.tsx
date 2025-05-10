@@ -7,7 +7,7 @@ import ControlledSelectInput from '../../../components/inputs/ControlledSelectIn
 import ControlledSwitchInput from '../../../components/inputs/ControlledSwitchInput';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import TextList from '../../../components/lists/TextList';
-import { IListItem, IPlayerInMatch } from '../../../types';import { getIntegers } from 'utils/helpers';
+import { IListItem, IPlayerInMatch } from '../../../types';import { getIntegers } from '../../../utils/helpers';
 
 interface Props {
   onSubmit: (data: IPlayerInMatch) => void;

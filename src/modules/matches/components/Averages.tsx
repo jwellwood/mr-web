@@ -4,15 +4,23 @@ import { DataContainer, SectionContainer } from '../../../components/containers'
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { IMatchStats } from '../../../types';import { getPercentage } from 'utils/helpers';
+import { IMatchStats } from '../../../types';
+import { getPercentage } from '../../../utils/helpers';
 
 type Props = {
-  stats: IMatchStats;
+  stats?: IMatchStats;
   loading: boolean;
 };
 
 const Averages: React.FC<Props> = ({ stats, loading }) => {
-  const { total, wins, draws, defeats, teamAvg, oppAvg } = stats || {};
+  if(!stats) return (
+    <SectionContainer>
+      <CenteredGrid>
+        <StatSkeleton />
+      </CenteredGrid>
+    </SectionContainer>
+  )
+  const { total, wins, draws, defeats, teamAvg, oppAvg } = stats;
   const avDiff = teamAvg - oppAvg;
   const percentageData = [
     {
@@ -56,9 +64,9 @@ const Averages: React.FC<Props> = ({ stats, loading }) => {
   ];
 
   const pieData = [
-    { value: wins || 0, label: 'Wins' },
-    { value: draws || 0, label: 'Draws' },
-    { value: defeats || 0, label: 'Defeats' },
+    { value: wins || 0, name: 'Wins' },
+    { value: draws || 0, name: 'Draws' },
+    { value: defeats || 0, name: 'Defeats' },
   ];
 
   return (

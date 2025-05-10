@@ -1,12 +1,12 @@
-import React from 'react';
-import { IListItem, IMostMatch } from '../../../types';import MatchListLabelBasic from '../components/MatchListLabelBasic';
+import { IListItem, IMostMatch } from '../../../types';
+import MatchListLabelBasic from '../components/MatchListLabelBasic';
 import MatchListScoreBox from '../components/MatchListScoreBox';
 
 export const mostMatchListData = (
-  data: IMostMatch[],
-  orgId: string,
-  teamId: string,
-  loading: boolean
+  data?: IMostMatch[],
+  orgId?: string,
+  teamId?: string,
+  loading?: boolean
 ): IListItem[] => {
   const arr = new Array(10).fill({});
   const mappedData =

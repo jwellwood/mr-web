@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMatchList } from 'types/IMatchList';
+import {IMatchList} from "../../../types/matchList.ts";
 
 export const GET_MATCHES_BY_SEASON: TypedDocumentNode<{
   matches: IMatchList[];

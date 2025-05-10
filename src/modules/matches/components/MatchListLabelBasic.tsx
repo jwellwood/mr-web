@@ -1,13 +1,13 @@
 import React from 'react';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { parseDate } from 'utils/helpers';
+import { parseDate } from '../../../utils/helpers';
 
 type Props = {
   opponent: string;
-  date: string;
-  isHome: boolean;
-  loading: boolean;
+  date?: string;
+  isHome?: boolean;
+  loading?: boolean;
 };
 
 const MatchListLabelBasic: React.FC<Props> = ({

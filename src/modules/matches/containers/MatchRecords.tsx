@@ -5,9 +5,9 @@ import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { theme } from 'theme';
 import { GET_MATCH_STATS_MOST } from '../graphql/matchStats.graphql';
 import { mostMatchListData } from '../helpers/mostMatchListData';
+import {theme} from "../../../theme";
 
 const MatchRecords: React.FC = () => {
   const { orgId, teamId } = useCustomParams();
@@ -44,7 +44,7 @@ const MatchRecords: React.FC = () => {
                 {item.title}
               </CustomTypography>
               <LinksList
-                links={mostMatchListData(item.stat, orgId, teamId, loading)}
+                links={mostMatchListData(item.stat || [], orgId, teamId, loading)}
               />
             </SectionContainer>
           );

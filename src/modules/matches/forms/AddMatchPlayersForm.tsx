@@ -19,7 +19,9 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   playersOptions,
   players,
 }) => {
-  const [playerList, setPlayerList] = useState([]);
+  const [playerList, setPlayerList] = useState<{
+    label: string;
+  }[]>([]);
   const {
     handleSubmit,
     formState: { errors },
@@ -32,12 +34,12 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   const matchPlayers = watch('matchPlayers');
 
   useEffect(() => {
-    const list = [];
+    const list : { label: string }[] = [];
     matchPlayers.forEach((player) => {
       const selectedPlayer = players.find(
         (p) => p._id === (player as unknown as string)
       );
-      list.push({ label: selectedPlayer?.name });
+      list.push({ label: selectedPlayer?.name || '' });
     });
     setPlayerList(list);
   }, [matchPlayers, players]);
@@ -51,7 +53,7 @@ const AddMatchPlayersForm: React.FC<Props> = ({
             name="matchPlayers"
             label="Players"
             options={playersOptions}
-            errors={errors.matchPlayers ? [errors.matchPlayers] : []}
+            errors={errors.matchPlayers ? [new Error(errors.matchPlayers.message)] : []}
           />
         </GridItem>
         <GridItem>

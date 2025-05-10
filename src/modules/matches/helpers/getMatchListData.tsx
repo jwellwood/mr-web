@@ -5,16 +5,16 @@ import MatchListScoreBox from '../components/MatchListScoreBox';
 import {IMatchList} from "../../../types/matchList.ts";
 
 interface Args {
-  data: IMatchList[];
-  orgId: string;
-  teamId: string;
-  loading: boolean;
-  showBadge: boolean;
+  data?: IMatchList[];
+  orgId?: string;
+  teamId?: string;
+  loading?: boolean;
+  showBadge?: boolean;
   matchId?: string;
 }
 
 export const getMatchListData = ({
-  data,
+  data = [],
   orgId,
   teamId,
   loading,

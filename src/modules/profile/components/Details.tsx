@@ -14,10 +14,11 @@ const ProfileDetails: React.FC<Props> = ({ user }) => {
   }
   const { email, createdAt, updatedAt } = user;
   const details = [
-    { label: 'Email', value: email },
-    { label: 'Created', value: createdAt ? parseDate(createdAt) : '-' },
-    { label: 'Last updated', value: updatedAt ? parseDate(updatedAt) : '-' },
-  ];
+    { label: 'Email', value: email || '-' },
+    { label: 'Created', value: parseDate(createdAt) || '-' },
+    { label: 'Last updated', value: parseDate(updatedAt) || '-' },
+  ] as const;
+
   return (
     <SectionContainer>
       <TextList data={details} />

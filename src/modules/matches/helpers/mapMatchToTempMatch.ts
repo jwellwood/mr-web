@@ -1,5 +1,5 @@
-import { ITeamSeason } from 'modules/history/types';
 import { ICompetition, IMatchResponse, ITeam, ITempMatch } from '../../../types';
+import {ITeamSeason} from "../../history/types.ts";
 export const mapMatchToTempMatch = (match: IMatchResponse): ITempMatch => {
   return {
     _id: match._id,

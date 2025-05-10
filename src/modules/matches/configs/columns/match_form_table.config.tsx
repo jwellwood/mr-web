@@ -1,4 +1,3 @@
-import React from 'react';
 import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
 import { STAT_ICONS } from '../../../../app/icons';
 import StatIcon from '../../../../components/icons/StatIcon';
@@ -81,7 +80,7 @@ export const match_form_table = [
     numeric: true,
     width: 30,
   },
-];
+] as const;
 
 export const match_form_table_styles: ICellStyleByIndex[] = [
   { index: 0, background: STATIC },
@@ -95,4 +94,4 @@ export const match_form_table_styles: ICellStyleByIndex[] = [
   { index: 7, border: STANDARD },
   { index: 8, border: STANDARD },
   { index: 11, border: STANDARD },
-];
+] as const;

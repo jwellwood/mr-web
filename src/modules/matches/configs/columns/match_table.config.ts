@@ -44,10 +44,10 @@ export const match_table = [
     label: '+/-',
     width: 40,
   },
-];
+] as const;
 
 export const match_table_styles: ICellStyleByIndex[] = [
   { index: 0, border: BORDER_STYLE.STANDARD },
   { index: 3, border: BORDER_STYLE.STANDARD },
   { index: 5, border: BORDER_STYLE.STANDARD },
-];
+] as const;
