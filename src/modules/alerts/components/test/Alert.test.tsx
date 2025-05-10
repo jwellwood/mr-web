@@ -1,10 +1,13 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import * as Actions from 'modules/alerts/actions/app.actions';
-import ReduxWrapper from 'utils/test-helpers/ReduxWrapper';
 import AlertMessage from '../AlertMessage';
+import ReduxWrapper from "../../../../utils/test-helpers/ReduxWrapper.tsx";
+import {showAlert} from "../../../../store/features/alerts/alertsSlice.ts";
 
-const setupStore = (text, type) => ({
+jest.mock("../../../../store/features/alerts/alertsSlice.ts", () => ({
+  showAlert: jest.fn(),
+}));
+
+const setupStore = (text: string, type: string) => ({
   alert: { text, type },
 });
 
@@ -40,13 +43,12 @@ describe('AlertMessage tests', () => {
   it('closes on close button', async () => {
     jest.useFakeTimers();
     const mockStore = setupStore('Message', 'success');
-    const mockShowAlert = jest.spyOn(Actions, 'showAlert');
     render(
       <ReduxWrapper storeData={mockStore}>
         <AlertMessage />
       </ReduxWrapper>
     );
     fireEvent.click(await screen.findByLabelText('Close'));
-    expect(mockShowAlert).toHaveBeenCalled();
+    expect(showAlert).toHaveBeenCalled();
   });
 });

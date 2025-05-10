@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material/';
-import { link_text } from 'i18n';
+import {link_text} from "../../i18n";
 
 interface Props {
   onClick: () => void;

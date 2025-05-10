@@ -1,16 +1,16 @@
-import { AlertAction } from 'modules/alerts/types';
-import * as actionIds from '../../actions/actionIds';
-import { alertReducer, AlertState } from '../alert.reducer';
+import { alertsReducer } from '../../../../store/features/alerts/alertsSlice';
 import { initAlertState } from '../initAlertState';
 
 describe('App reducer tests', () => {
   test('alertReducer should return default state', () => {
-    expect(alertReducer(initAlertState, {} as AlertAction)).toEqual(
+    // @ts-expect-error testing init store with unknown action
+    expect(alertsReducer(initAlertState, {})).toEqual(
       initAlertState
     );
   });
   test('alertReducer should use initialState if no state', () => {
-    expect(alertReducer(undefined as AlertState, {} as AlertAction)).toEqual(
+    // @ts-expect-error testing init store with unknown action
+    expect(alertsReducer(undefined, {})).toEqual(
       initAlertState
     );
   });
@@ -20,8 +20,8 @@ describe('App reducer tests', () => {
       type: 'error',
     };
     expect(
-      alertReducer(initAlertState, {
-        type: actionIds.SHOW_ALERT,
+      alertsReducer(initAlertState, {
+        type: "alerts/showAlert",
         payload: {
           text: 'Message',
           type: 'error',

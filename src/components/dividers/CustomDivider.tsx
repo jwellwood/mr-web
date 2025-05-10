@@ -1,6 +1,6 @@
 import React from 'react';
 import Divider from '@mui/material/Divider';
-import { theme } from 'theme';
+import {theme} from "../../theme";
 
 interface Props {
   isVertical?: boolean;

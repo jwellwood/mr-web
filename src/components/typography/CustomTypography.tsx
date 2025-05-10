@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from '@mui/material';
-import { theme } from 'theme';
+import {theme} from "../../theme";
 
 interface Props {
   children: React.ReactNode;
@@ -19,7 +19,6 @@ const CustomTypography: React.FC<Props> = ({
   children,
   color,
   size,
-  font,
   bold,
   div,
   ariaLabel,
@@ -27,7 +26,7 @@ const CustomTypography: React.FC<Props> = ({
   link,
 }) => {
   const {
-    typography: { secondaryFont, fontFamily },
+    typography: { fontFamily },
     palette: {
       primary,
       secondary,
@@ -45,7 +44,7 @@ const CustomTypography: React.FC<Props> = ({
   } = theme;
   let fontSize = '14px';
   let textColor = primary.main;
-  const textFont = font === 'secondary' ? secondaryFont.fontFamily : fontFamily;
+  const textFont = fontFamily;
   const textWeight = bold ? 'bold' : 'normal';
   const componentType = div ? 'div' : 'span';
 
@@ -126,7 +125,7 @@ const CustomTypography: React.FC<Props> = ({
         textDecoration: 'none',
       }}
       component={link ? Link : componentType}
-      to={link || null}
+      to={link}
     >
       {children}
     </Typography>

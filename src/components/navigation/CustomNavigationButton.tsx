@@ -26,8 +26,8 @@ const CustomNavigationButton: React.FC<Props> = ({
     <BottomNavigationAction
       key={link}
       component={Link}
-      to={link}
-      onClick={onClick || null}
+      to={link as string}
+      onClick={onClick}
       showLabel={true}
       label={
         <CustomTypography

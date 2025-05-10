@@ -22,7 +22,7 @@ const CustomCellValue: React.FC<Props> = ({
   if (typeof value === 'number') {
     const formattedValue = isNaN(value) ? 0 : +value;
     return (
-      <CustomTypography bold color={textColor} size="xs">
+      <CustomTypography bold color={textColor || "black"} size="xs">
         {formattedValue}
         {isPercentage && '%'}
       </CustomTypography>
@@ -30,7 +30,7 @@ const CustomCellValue: React.FC<Props> = ({
   }
   if (typeof value === 'string') {
     return (
-      <CustomTypography bold color={textColor} size="xs">
+      <CustomTypography bold color={textColor || "black"} size="xs">
         {value}
         {isPercentage && '%'}
       </CustomTypography>

@@ -4,11 +4,11 @@ import AppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import { setTabIndex } from 'modules/alerts';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import { getTabIndex } from 'selectors';
-import { theme } from 'theme';
 import TabPanel from './TabPanel';
+import {AppDispatch} from "../../store/store.ts";
+import {getTabIndex} from "../../store/features/tabs/tabsSelector.ts";
+import {setTabIndex, TabIndex} from "../../store/features/tabs/tabsSlice.ts";
+import {theme} from "../../theme";
 
 export interface ITab {
   label: string | ReactElement;
@@ -18,7 +18,7 @@ export interface ITab {
 }
 
 interface TabProps {
-  type: string;
+  type: TabIndex;
   tabs: ITab[];
   level: 'primary' | 'secondary';
 }
@@ -28,8 +28,8 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
   const value = useSelector(getTabIndex);
   const tabsToShow = tabs.filter((tab) => !tab.isHidden);
   const isPrimary = level === 'primary';
-  const handleChange = (event: React.ChangeEvent, newValue: number) => {
-    dispatch(setTabIndex(type, newValue));
+  const handleChange = (_: React.ChangeEvent, newValue: number) => {
+    dispatch(setTabIndex(newValue));
   };
 
   interface StyledTabsProps {

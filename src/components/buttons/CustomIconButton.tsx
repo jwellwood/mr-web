@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import AppIcon from '../icons/AppIcon';
 import { IIconType } from '../icons/types';
-import { theme } from 'theme';
+import {theme} from "../../theme";
 
 const PREFIX = 'CustomIconButton';
 const classes = {

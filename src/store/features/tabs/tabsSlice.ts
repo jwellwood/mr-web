@@ -13,6 +13,8 @@ interface ITabsState {
     season: 0 | 1,
 }
 
+export type TabIndex = keyof ITabsState;
+
 const initialState: ITabsState = {
     profile: 0,
     org: 0,
@@ -35,9 +37,15 @@ const tabsSlice = createSlice({
                 ...state,
                 ...action.payload
             };
+        },
+        setTabIndex: (_, action: PayloadAction<number>) => {
+            return {
+                ...initialState,
+                [action.payload]: 1
+            }
         }
     }
 })
 
-export const { setState: setAuth } = tabsSlice.actions;
+export const { setState: setTabState, setTabIndex } = tabsSlice.actions;
 export const { reducer: tabsReducer } = tabsSlice;

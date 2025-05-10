@@ -3,9 +3,9 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { BackButton } from '../buttons';
 import { CustomTypography } from '../typography';
-import { theme } from 'theme';
 import HideOnScroll from './HideOnScroll';
 import SideDrawer from './SideDrawer';
+import {theme} from "../../theme";
 
 interface Props {
   children: React.ReactElement;

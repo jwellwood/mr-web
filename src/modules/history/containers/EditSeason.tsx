@@ -88,7 +88,7 @@ function EditSeason() {
   };
 
   if (error || editError || deleteError || orgError) {
-    return <ErrorGraphql error={[error, editError, deleteError, orgError]} />;
+    return <ErrorGraphql error={(error || editError || deleteError || orgError) as Error} />;
   }
 
   return (

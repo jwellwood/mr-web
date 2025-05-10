@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { form_error_text as errText } from '../../i18n/form-error-text';
 import FormErrorMessage from './FormErrorMessage';

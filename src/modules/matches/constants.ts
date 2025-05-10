@@ -1,5 +1,4 @@
-import { ISelectOptions } from '../../components/inputs/SelectInput';
-import { IMatch, IPlayerInMatch } from '../../../types';
+import {IMatch} from "../../types";
 export const PAGES = {
   MATCH: 'Match',
   ADD_MATCH: 'Add Match',
@@ -7,7 +6,7 @@ export const PAGES = {
   DELETE_MATCH: 'Delete Match',
 };
 
-export const initialMatchState: Partial<IMatch> = {
+export const initialMatchState = {
   opponentId: '',
   competitionId: '',
   seasonId: '',
@@ -18,9 +17,9 @@ export const initialMatchState: Partial<IMatch> = {
   leaguePosition: 1,
   cupRound: '',
   matchPlayers: [],
-};
+} as const  satisfies Partial<IMatch>
 
-export const initPlayerInMatch: Partial<IPlayerInMatch> = {
+export const initPlayerInMatch = {
   isStarter: true,
   minutes: 0,
   goals: 0,
@@ -34,11 +33,11 @@ export const initPlayerInMatch: Partial<IPlayerInMatch> = {
   mvp: false,
   yellowCards: 0,
   redCard: false,
-};
+} as const;
 
-export const emptySelectOption = { label: '', value: '' };
+export const emptySelectOption = { label: '', value: '' } as const;
 
-export const cupRoundOptions: ISelectOptions[] = [
+export const cupRoundOptions= [
   { label: '', value: '' },
   { label: 'Group', value: 'Group' },
   { label: '1', value: 1 },
@@ -53,4 +52,4 @@ export const cupRoundOptions: ISelectOptions[] = [
   { label: 'Quarter-Final', value: 'Quarter-Final' },
   { label: 'Semi-Final', value: 'Semi-Final' },
   { label: 'Final', value: 'Final' },
-];
+] as const;

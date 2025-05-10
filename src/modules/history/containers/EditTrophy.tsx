@@ -83,7 +83,7 @@ const EditTrophy: React.FC = () => {
   };
 
   if (error || editError || deleteError) {
-    return <ErrorGraphql error={[error, editError, deleteError]} />;
+    return <ErrorGraphql error={(error || editError || deleteError) as Error} />;
   }
 
   return (

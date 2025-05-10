@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material';
 import { CustomTypography } from '../typography';
-import { theme } from 'theme';
+import {theme} from "../../theme";
 
 interface Props {
   fullScreen?: boolean;

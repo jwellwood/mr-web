@@ -1,4 +1,4 @@
-import { theme } from 'theme';
+import {theme} from "../../../theme";
 
 export const getIconColor = (color?: string) => {
   const {
@@ -63,7 +63,6 @@ export const getIconColor = (color?: string) => {
       iconColor = bronze.main;
       break;
     default:
-      iconColor = color;
       break;
   }
   return iconColor;

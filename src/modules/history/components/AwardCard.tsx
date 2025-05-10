@@ -16,10 +16,10 @@ const AwardCard: React.FC<Props> = ({ award }) => {
         <CustomTypography color="primary" bold size="xs" div>
           {awardName}
         </CustomTypography>
-        {winners.map((winner, i) => {
+        {winners.map((winner) => {
           return (
-            <CustomTypography key={winner + i} color="data" bold size="md" div>
-              {winner}
+            <CustomTypography key={typeof winner === "object" ? winner._id : winner} color="data" bold size="md" div>
+              {typeof winner === "object" ? winner.name : winner}
             </CustomTypography>
           );
         })}

@@ -54,7 +54,7 @@ const AddTeamSeason: React.FC = () => {
     }
   };
 
-  if (error || orgError) return <ErrorGraphql error={[error, orgError]} />;
+  if (error || orgError) return <ErrorGraphql error={(error || orgError) as Error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>

@@ -7,9 +7,10 @@ import { IIconType } from '../icons/types';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { theme } from '../../theme';
 import { getThemeColorByType } from '../../utils';
+import {TImageType} from "../../constants.ts";
 
 const {
-  typography: { secondaryFont },
+  typography: { fontFamily },
 } = theme;
 
 interface Props {
@@ -24,7 +25,7 @@ interface Props {
   centered?: boolean;
   imageUrl?: string;
   alt?: string;
-  type?: IMAGE_TYPE;
+  type?: TImageType;
   loading?: boolean;
 }
 
@@ -51,14 +52,14 @@ const CustomAvatar = ({
     <CustomSkeleton variant="circular" width={size} height={size} margin="0" />
   ) : (
     <Avatar
-      src={imageUrl || null}
+      src={imageUrl}
       alt={alt}
       onClick={onClick}
       style={{
         width: size || '',
         height: size || '',
         fontWeight: 'bold',
-        fontFamily: secondaryFont.fontFamily,
+        fontFamily: fontFamily,
         backgroundColor,
         margin: centered ? 'auto' : 'inherit',
         border: border ? `2px ${borderColor} solid` : '0px',

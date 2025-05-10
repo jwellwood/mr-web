@@ -7,8 +7,8 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { CustomButton } from '../buttons';
 import { SectionContainer } from '../containers';
 import LinksList from '../lists/LinksList';
-import { theme } from 'theme';
 import { IListItem } from '../../types';
+import {theme} from "../../theme";
 interface Props {
   data: IListItem[];
   title?: string | ReactNode;
@@ -40,7 +40,7 @@ const EditLinksModal: React.FC<Props> = ({ data, title }) => {
 
   return (
     <>
-      <CustomButton onClick={handleClickOpen} color="tertiary">
+      <CustomButton onClick={handleClickOpen} color="secondary">
         Admin
       </CustomButton>
       <Dialog
