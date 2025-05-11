@@ -25,8 +25,11 @@ export const initialPlayerState: Partial<IPlayer> = {
 };
 
 export const POSITIONS = {
-  'GK': 4,
-  'DF': 3,
-  'MF': 2,
-  'FW': 1,
+  'GK': 'GK',
+  'DF': 'DF',
+  'MF': 'MF',
+  'FW': 'FW',
+  'NONE': 'NONE',
 } as const;
+
+export type TPosition = typeof POSITIONS[keyof typeof POSITIONS];

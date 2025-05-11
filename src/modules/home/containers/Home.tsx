@@ -2,8 +2,8 @@ import React from 'react';
 import { AUTH_ROLES } from '../../../app/constants';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography, PageHeader } from '../../../components/typography';
-import RouteGuard from 'router/RouteGuard';
 import { TeamSearch } from './TeamSearch';
+import RouteGuard from "../../../router/RouteGuard.tsx";
 
 const HomeContainer: React.FC = () => {
   return (
