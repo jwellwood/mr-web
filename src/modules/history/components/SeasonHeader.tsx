@@ -3,7 +3,6 @@ import {SectionContainer} from "../../../components/containers";
 
 type Props = {
   title: string;
-  position: number;
   children: ReactElement;
 };
 

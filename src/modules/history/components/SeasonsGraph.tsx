@@ -4,21 +4,21 @@ import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { IListItem } from '../../../types';
-import { generateOrdinals } from 'utils/helpers';
 import { seasonColors } from '../constants';
 import { ILeaguePositions } from '../types';
 import ProgressBar from './ProgressBar';
+import { generateOrdinals } from '../../../utils/helpers';
 
 type Props = {
-  data: ILeaguePositions[];
+  data?: ILeaguePositions[];
 };
 const SeasonsGraph: React.FC<Props> = ({ data }) => {
   const { orgId, teamId } = useCustomParams();
   const getDivisions = () => {
-    const divArray = data.map((item) => item.division).filter(Boolean);
+    const divArray = (data || []).map((item) => item.division).filter(Boolean);
     return [...new Set(divArray)];
   };
-  const mapColorsToDivisions = (division) => {
+  const mapColorsToDivisions = (division?: string) => {
     if (!division) {
       return {
         color: seasonColors[seasonColors.length - 1].color,
@@ -38,7 +38,7 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
     };
   };
 
-  const getIconColor = (position, division) => {
+  const getIconColor = (position: number, division?:string) => {
     let color = 'secondary';
     switch (true) {
       case !division:
@@ -59,7 +59,7 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
     return color;
   };
 
-  const mappedData: IListItem[] = data.map((item) => {
+  const mappedData: IListItem[] = (data || []).map((item) => {
     const { division, position, name } = item;
     return {
       label: (

@@ -5,10 +5,13 @@ import AppIcon from '../../../components/icons/AppIcon';
 import { CustomTypography } from '../../../components/typography';
 import { ITrophyResponse } from '../../../types';
 type Props = {
-  trophy: ITrophyResponse;
+  trophy?: ITrophyResponse;
 };
 
 const TrophyDetails: React.FC<Props> = ({ trophy }) => {
+  if(!trophy) {
+    return null;
+  }
   const { name, isFinal, isWinner, season, opponent, comment } = trophy;
 
   const iconToDisplay = () => {
