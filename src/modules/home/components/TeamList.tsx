@@ -1,4 +1,3 @@
-import React from 'react';
 import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import LinksList from '../../../components/lists/LinksList';
@@ -15,7 +14,7 @@ export const TeamList = ({ teams, isSearchComplete }: Props) => {
       return {
         avatar: (
           <CustomAvatar
-            imageUrl={team.teamBadge.url}
+            imageUrl={team?.teamBadge?.url}
             type={IMAGE_TYPE.TEAM}
             isList
           />
