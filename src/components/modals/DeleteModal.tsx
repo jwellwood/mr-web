@@ -11,7 +11,7 @@ import { CustomTypography } from '../typography';
 
 interface Props {
   title: string;
-  loading: boolean;
+  loading?: boolean;
   onDelete: () => void;
   disabled?: boolean;
   text?: boolean;
@@ -19,7 +19,7 @@ interface Props {
 
 const DeleteModal: React.FC<Props> = ({
   title,
-  loading,
+  loading = false,
   onDelete,
   disabled,
   text,

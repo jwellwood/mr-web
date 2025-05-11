@@ -4,7 +4,7 @@ import {FormError} from "../../types/form.ts";
 
 type Props<T extends object> = {
   control: Control<T>;
-  options: ISelectOptions[];
+  options: readonly ISelectOptions[];
   name: Path<T>;
   label: string;
   rules?: {

@@ -16,7 +16,7 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
   errors?: FormError[]; // TODO
-  options: {
+  options: readonly {
     label: string;
     value: string  | number;
     disabled?: boolean;
