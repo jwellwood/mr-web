@@ -1,5 +1,4 @@
 import packageJSON from '../../package.json';
-import {ISelectOptions} from "../components/inputs/SelectInput.tsx";
 
 const date = new Date();
 
@@ -66,7 +65,7 @@ export const TAB_TYPES = {
   PLAYER: 'player',
   HISTORY: 'history',
   SEASON: 'season',
-};
+} as const;
 
 export type TTabType = typeof TAB_TYPES[keyof typeof TAB_TYPES];
 
