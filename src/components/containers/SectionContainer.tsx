@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Grid, Paper } from '@mui/material';
 import { CustomTypography } from '../typography';
-import { theme } from 'theme';
+import {theme} from "../../theme";
 
 interface Props {
   title?: string | ReactNode;
@@ -23,8 +23,8 @@ const SectionContainer: React.FC<Props> = ({
         padding: theme.spacing(0.5),
         margin: theme.spacing(0.25),
         background: background || theme.palette.secondary.dark,
-        border: border ? `${border} 2px solid` : 0,
-        borderBottom: !border && `0.5px solid ${theme.palette.primary.dark}`,
+        border: border ? `${border} 2px solid` : undefined,
+        borderBottom: border ? undefined : `0.5px solid ${theme.palette.primary.dark}`,
       }}
     >
       <Grid

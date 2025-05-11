@@ -1,13 +1,14 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import FormErrorMessage from '../alerts/FormErrorMessage';
+import {FormError} from "../../types/form.ts";
 
 interface Props {
   inputName?: string;
   defaultValue?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
-  errors?: object; // TODO
+  errors?: FormError[]; // TODO
   isPassword?: boolean;
   isEmail?: boolean;
   multiline?: boolean;
@@ -45,7 +46,7 @@ const TextInput: React.FC<Props> = ({
         disabled={disabled}
         placeholder={placeholder}
       />
-      {errors ? <FormErrorMessage error={errors} /> : null}
+      {errors ? <FormErrorMessage error={ errors[0] } /> : null}
     </>
   );
 };

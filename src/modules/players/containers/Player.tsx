@@ -59,7 +59,7 @@ const Player: React.FC = () => {
     <RouteGuard authorization={AuthRoles.PUBLIC}>
       <CustomAppBar
         title={PAGES.PLAYER}
-        actionButton={isTeamAuth && <EditLinksModal data={links} />}
+        actionButton={isTeamAuth ?? <EditLinksModal data={links} />}
       >
         <SectionContainer>
           <ModuleHeader

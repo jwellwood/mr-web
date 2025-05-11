@@ -6,8 +6,8 @@ import CustomDivider from '../../../components/dividers/CustomDivider';
 import { CenteredGrid } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import LinksList from '../../../components/lists/LinksList';
-import { AUTH } from 'router/paths';
 import { IListItem } from '../../../types';import { ISignInForm } from '../types';
+import {AUTH} from "../../../router/paths.ts";
 
 interface Props {
   defaultValues: ISignInForm;

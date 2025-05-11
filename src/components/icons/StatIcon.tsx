@@ -20,7 +20,7 @@ import { theme } from '../../theme';
 import { IStatIcon } from './types';
 
 interface Props {
-  icon: IStatIcon;
+  icon?: IStatIcon;
   size?: string;
 }
 

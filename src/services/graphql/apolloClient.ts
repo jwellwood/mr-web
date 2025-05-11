@@ -1,6 +1,5 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-// @ts-expect-error types dont work for this lib
-import createUploadLink from "apollo-upload-client/createUploadLink";
+import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
 export const apolloClient = new ApolloClient({
     uri: '/graphql',

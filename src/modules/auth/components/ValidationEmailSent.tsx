@@ -1,7 +1,7 @@
 import React from 'react';
 import { AUTH_ROLES } from '../../../app/constants';
 import { CustomTypography } from '../../../components/typography';
-import RouteGuard from 'router/RouteGuard';
+import RouteGuard from '../../../router/RouteGuard';
 
 interface Props {
   email: string;

@@ -42,7 +42,6 @@ const ResetPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
           rules={{ required: true }}
           isPassword={true}
           label="Confirm New Password"
-          errors={null}
         />
       </CenteredGrid>
       {!isMatch && confirmPasswordInput.length > 2 && (

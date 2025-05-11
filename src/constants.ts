@@ -1,11 +1,4 @@
-import type { ISelectOptions } from './components/inputs/SelectInput';
-import packageJSON from '../package.json';
-
 const date = new Date();
-
-export const API_URL = 'https://madrid-reds-6z4rr5ysna-pd.a.run.app';
-export const GQL_URL = 'https://madrid-reds-6z4rr5ysna-pd.a.run.app';
-export const VERSION: string = packageJSON.version;
 
 export const BASE_YEAR = 2005;
 export const MAX_YEAR = 2050;

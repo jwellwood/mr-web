@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { amber, blue, green, red } from '@mui/material/colors';
 import { CustomTypography } from '../typography';
-import { POSITIONS } from 'modules/players/constants';
+import {POSITIONS, TPosition} from "../../modules/players/constants.ts";
 
 type Props = {
   children: string | number | ReactElement;
@@ -31,7 +31,7 @@ const PositionString: React.FC<Props> = ({ children }) => {
   }
   return (
     <CustomTypography bold size="xs" color={color}>
-      {typeof children === 'number' ? POSITIONS[children] : children}
+      {typeof children === "string" && children in POSITIONS ? POSITIONS[children as TPosition] : children}
     </CustomTypography>
   );
 };

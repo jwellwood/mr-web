@@ -3,13 +3,13 @@ import {
   Link as RouterLink,
   LinkProps as RouterLinkProps,
 } from 'react-router-dom';
-import { ListItemAvatar, ListItemSecondaryAction } from '@mui/material';
+import {ListItemAvatar, ListItemSecondaryAction, SxProps} from '@mui/material';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CustomTypography } from '../typography';
-import { theme } from 'theme';
 import { IListItem } from '../../types';
+import {theme} from "../../theme";
 type Props = {
   data: IListItem;
   onClick?: () => void;
@@ -38,15 +38,15 @@ const ListItemLink: React.FC<Props> = ({ data, onClick }) => {
     <li>
       <ListItemButton
         component={Link}
-        to={link}
+        to={link as string}
         onClick={onClick}
         sx={
-          styles || {
+          (styles || {
             background: theme.palette.dark.main,
             paddingTop: '0px',
             paddingBottom: '0px',
             border: defaultBorder as string,
-          }
+          }) as SxProps
         }
       >
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}

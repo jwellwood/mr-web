@@ -84,7 +84,7 @@ const Team: React.FC = () => {
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.TEAM}
-        actionButton={isTeamAuth && <EditLinksModal data={links} />}
+        actionButton={isTeamAuth ?? <EditLinksModal data={links} />}
       >
         <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
       </CustomAppBar>

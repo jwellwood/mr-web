@@ -59,7 +59,7 @@ const PresentationModal: React.FC<Props> = ({
         ) : null}
         <DialogContent>{children}</DialogContent>
         <DialogActions>
-          <CustomButton onClick={handleClose} variant="text" color="tertiary">
+          <CustomButton onClick={handleClose} variant="text" color="secondary">
             Back
           </CustomButton>
         </DialogActions>

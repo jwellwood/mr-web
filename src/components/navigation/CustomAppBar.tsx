@@ -6,11 +6,12 @@ import { CustomTypography } from '../typography';
 import HideOnScroll from './HideOnScroll';
 import SideDrawer from './SideDrawer';
 import {theme} from "../../theme";
+import {ReactNode} from "react";
 
 interface Props {
   children: React.ReactElement;
   title?: string;
-  actionButton?: React.ReactElement;
+  actionButton?: ReactNode;
 }
 
 const CustomAppBar: React.FC<Props> = ({ title, children, actionButton }) => {

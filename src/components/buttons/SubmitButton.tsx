@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from '@mui/material/Button';
 import { Spinner } from '../loaders';
-import { button_text } from 'i18n';
+import {SxProps} from "@mui/material";
+import {button_text} from "../../i18n";
 
 interface Props {
   children?: React.ReactNode;
@@ -15,7 +16,7 @@ const SubmitButton: React.FC<Props> = ({
   children,
   disabled,
   loading,
-  onClick,
+  onClick = () => {},
 }) => {
   return !loading ? (
     <Button
@@ -24,7 +25,7 @@ const SubmitButton: React.FC<Props> = ({
       variant="contained"
       color="primary"
       disabled={disabled}
-      onClick={onClick ? onClick : null}
+      onClick={onClick}
       sx={{
         position: 'fixed',
         left: 0,
@@ -33,7 +34,7 @@ const SubmitButton: React.FC<Props> = ({
         zIndex: 99,
         height: '56px',
         borderRadius: '0px',
-      }}
+      } as SxProps}
     >
       {children || button_text.SUBMIT}
     </Button>

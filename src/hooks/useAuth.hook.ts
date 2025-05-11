@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import * as Selectors from 'selectors';
+import {getAuth} from "../store/features/auth/authSelector.ts";
 
 export const useAuth = (teamId?: string) => {
   const { isAuth, isTeamAdmin, isSiteAdmin, teamIds, orgIds } = useSelector(
-    Selectors.getAuthState
+    getAuth
   );
 
   const isTeamAuth =

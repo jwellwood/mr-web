@@ -5,7 +5,7 @@ type Props<T extends object> = {
   control: Control<T>;
   name: string;
   label: string;
-  errors: ({ type: string } | Error)[];
+  errors?: ({ type: string } | Error)[];
   rules?: {
     required?: boolean;
     minLength?: number;

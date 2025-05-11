@@ -2,8 +2,8 @@ import React from 'react';
 import Divider from '@mui/material/Divider';
 import { BackButton } from '../buttons';
 import SideDrawer from '../navigation/SideDrawer';
-import { theme } from 'theme';
 import CustomTypography from './CustomTypography';
+import {theme} from "../../theme";
 
 interface Props {
   title: string;

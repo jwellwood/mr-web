@@ -5,9 +5,9 @@ export const initialAuthState: {
   teamIds: string[];
   orgIds: string[];
 } = {
-  isAuth: null,
-  isTeamAdmin: null,
-  isSiteAdmin: null,
+  isAuth: false,
+  isTeamAdmin: false,
+  isSiteAdmin: false,
   teamIds: [],
   orgIds: [],
 };

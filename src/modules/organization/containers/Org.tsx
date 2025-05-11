@@ -36,7 +36,7 @@ const Org: React.FC = () => {
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.ORG}
-        actionButton={isOrgAuth && <EditLinksModal data={links} />}
+        actionButton={isOrgAuth ?? <EditLinksModal data={links} />}
       >
         {!loading ? (
           <>

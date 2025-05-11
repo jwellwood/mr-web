@@ -1,6 +1,6 @@
 import React from 'react';
-import { theme } from 'theme';
-import { getPercentage } from 'utils/helpers';
+import {getPercentage} from "../../../utils/helpers";
+import {theme} from "../../../theme";
 
 type Props = {
   max: number;

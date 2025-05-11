@@ -1,5 +1,5 @@
 import React from 'react';
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import { BASE_YEAR, CURRENT_YEAR } from '../../../app/constants';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
@@ -36,7 +36,7 @@ const TrophyForm: React.FC<Props> = ({
     defaultValues,
   });
 
-  const switchComp = (name: string) => {
+  const switchComp = (name: keyof ITrophy) => {
     return <ControlledSwitchInput control={control} name={name} />;
   };
 

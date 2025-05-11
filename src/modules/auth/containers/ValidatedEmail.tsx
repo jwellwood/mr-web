@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import { AUTH_ROLES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
 import { PageHeader } from '../../../components/typography';
-import { AppDispatch } from 'reduxStore/rootReducer';
-import RouteGuard from 'router/RouteGuard';
 import ValidatedEmail from '../components/ValidatedEmail.component';
 import { VALIDATED_EMAIL_PAGE } from '../constants';
 import { verifyEmail } from '../services/validation';
+import {AppDispatch} from "../../../store/store.ts";
+import RouteGuard from "../../../router/RouteGuard.tsx";
 
 const ValidatedEmailContainer: React.FC = () => {
   const { token } = useParams<{ token: string }>();
@@ -18,6 +18,7 @@ const ValidatedEmailContainer: React.FC = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+      if(!token) return;
     verifyEmail(token)
       .then((res) => {
         setLoading(false);

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { CustomTypography } from '../typography';
-import { shortenString } from 'utils/helpers';
+import {shortenString} from "../../utils/helpers";
 
 interface Props {
   id: string;

@@ -4,9 +4,9 @@ import CustomAvatar from '../avatars/CustomAvatar';
 import AppIcon from '../icons/AppIcon';
 import LinksList from '../lists/LinksList';
 import { useCustomParams } from '../../hooks/useCustomParams';
-import { HOME, PROFILE } from 'router/paths';
-import { theme } from 'theme';
 import Footer from './Footer';
+import {HOME, PROFILE} from "../../router/paths.ts";
+import {theme} from "../../theme";
 
 interface Props {
   toggleDrawer: () => void;
