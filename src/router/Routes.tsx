@@ -58,25 +58,25 @@ function AppRoutes() {
     <Routes>
       <Route path={HOME.HOME} element={<Home />} />
       <Route path="*" element={<NotFound />} />
-      {/*<Route path={AUTH.SIGN_IN} element={<SignIn />} />*/}
-      {/*<Route path={AUTH.SIGN_UP} element={<SignUp />} />*/}
-      {/*<Route path={AUTH.FORGOT} element={<ForgotPassword />} />*/}
-      {/*<Route path={AUTH.RESET} element={<ResetPassword />} />*/}
-      {/*<Route path={AUTH.VERIFY} element={<ValidatedEmail />} />*/}
+      <Route path={AUTH.SIGN_IN} element={<SignIn />} />
+      <Route path={AUTH.SIGN_UP} element={<SignUp />} />
+      <Route path={AUTH.FORGOT} element={<ForgotPassword />} />
+      <Route path={AUTH.RESET} element={<ResetPassword />} />
+      <Route path={AUTH.VERIFY} element={<ValidatedEmail />} />
       {/*<Route path={ORG.ADD} element={<AddOrg />} />*/}
-      {/*<Route path={PROFILE.PROFILE}>*/}
-      {/*  <Route index={true} element={<Profile />} />*/}
-      {/*  <Route path={PROFILE.EDIT} element={<EditProfile />} />*/}
-      {/*  <Route*/}
-      {/*    path={PROFILE.EDIT_IMAGE}*/}
-      {/*    element={<EditUserImage />}*/}
-      {/*  />*/}
-      {/*  <Route*/}
-      {/*    path={PROFILE.CHANGE_PASSWORD}*/}
-      {/*    element={<EditPassword />}*/}
-      {/*  />*/}
-      {/*  <Route path={PROFILE.DELETE} element={<DeleteAccount />} />*/}
-      {/*</Route>*/}
+      <Route path={PROFILE.PROFILE}>
+        <Route index={true} element={<Profile />} />
+        <Route path={PROFILE.EDIT} element={<EditProfile />} />
+        <Route
+          path={PROFILE.EDIT_IMAGE}
+          element={<EditUserImage />}
+        />
+        <Route
+          path={PROFILE.CHANGE_PASSWORD}
+          element={<EditPassword />}
+        />
+        <Route path={PROFILE.DELETE} element={<DeleteAccount />} />
+      </Route>
       {/*<Route path={ORG.ORG}>*/}
       {/*  <Route index={true} element={<Org />} />*/}
       {/*  <Route path={ORG.EDIT} element={<EditOrg />} />*/}

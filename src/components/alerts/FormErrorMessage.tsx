@@ -9,7 +9,7 @@ interface Props {
 function FormErrorMessage({ error }: Props) {
   console.log("FormErrorMessage")
   let message = form_error_text.default;
-  const errType = typeof error === "string" ? error : "type" in error ? error.type : "";
+  const errType = typeof error === "string" ? error : error instanceof Error ? error.message: "type" in error ? error.type : "";
   switch (errType) {
     case 'required':
       message = form_error_text.required;
@@ -36,9 +36,9 @@ function FormErrorMessage({ error }: Props) {
       break;
   }
   return (
-    // <CustomTypography size="xs" color="error" role="alert">
+    <CustomTypography size="xs" color="error" role="alert">
       {message}
-    // </CustomTypography>
+    </CustomTypography>
   );
 };
 

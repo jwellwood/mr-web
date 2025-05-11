@@ -28,7 +28,6 @@ export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
       text="Search"
       disabled={teamNameLength.length < 3}
     >
-      <h1>Searchform</h1>
       <ControlledTextInput
         control={control}
         name="teamName"

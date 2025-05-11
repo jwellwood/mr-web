@@ -30,6 +30,6 @@ export const apolloClient = new ApolloClient({
     }),
 
     link: createUploadLink({
-        uri: 'https://madrid-reds-6z4rr5ysna-pd.a.run.app/graphql',
+        uri: 'https://madrid-reds-1035582858411.northamerica-northeast2.run.app/graphql',
     }),
 });

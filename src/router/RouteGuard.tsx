@@ -19,10 +19,18 @@ const RouteGuard: React.FC<Props> = ({
   teamId,
   orgId,
 }) => {
-  console.log("RouteGuard")
+  console.log("RouteGuard", { authorization, teamId, orgId})
   const dispatch = useDispatch();
   const { isTeamAdmin, isSiteAdmin, isTeamAuth, isAuth } = useAuth(teamId);
   const { isOrgAuth } = useAuth(orgId);
+
+  console.log({
+    isTeamAdmin,
+    isSiteAdmin,
+    isTeamAuth,
+    isAuth,
+    isOrgAuth,
+  })
 
   if (authorization === AUTH_ROLES.USER && !isAuth) {
     return <Navigate to={AUTH.SIGN_IN} replace />;

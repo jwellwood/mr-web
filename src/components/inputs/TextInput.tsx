@@ -48,8 +48,6 @@ const TextInput: React.FC<Props> = ({
         placeholder={placeholder}
       />
       {errors?.[0] ? <FormErrorMessage error={ errors[0] } /> : null}
-      {/*UNCOMMENT ME AND THE PAGE IS FUCKED*/}
-      {/*<FormErrorMessage error={ new Error('Error') } />*/}
     </>
   );
 };

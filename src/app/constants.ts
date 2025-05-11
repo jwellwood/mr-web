@@ -2,7 +2,7 @@ import packageJSON from '../../package.json';
 
 const date = new Date();
 
-export const ROOT_URL = 'https://madrid-reds-6z4rr5ysna-pd.a.run.app';
+export const ROOT_URL = 'https://madrid-reds-1035582858411.northamerica-northeast2.run.app';
 export const VERSION: string = packageJSON.version;
 
 export const BASE_YEAR = 2005;

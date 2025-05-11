@@ -35,11 +35,11 @@ export const TeamSearch = () => {
         defaultValues={{ teamName: searchTerm }}
         onSubmit={onSubmit}
       />
-      {/*{!loading ? (*/}
-      {/*  <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />*/}
-      {/*) : (*/}
-      {/*  <Spinner />*/}
-      {/*)}*/}
+      {!loading ? (
+        <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />
+      ) : (
+        <Spinner />
+      )}
     </>
   );
 };
