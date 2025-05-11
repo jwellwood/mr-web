@@ -1,5 +1,4 @@
 import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
-import { ICellStyleByIndex } from '../../../../components/tables/types';
 
 const { STATIC } = BACKGROUND_STYLE;
 const { STANDARD } = BORDER_STYLE;

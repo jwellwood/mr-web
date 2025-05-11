@@ -4,15 +4,15 @@ import StatIcon from '../../../components/icons/StatIcon';
 import TextList from '../../../components/lists/TextList';
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
-import { IPlayerInMatch } from '../../../types';
+import {IMatchResponse} from '../../../types';
 import AddStats from '../containers/AddStats';
 
 export const statsData = (
-  currentPlayers: Partial<IPlayerInMatch[]>,
+  currentPlayers: IMatchResponse["matchPlayers"],
   isForm: boolean
 ) => {
   const players = currentPlayers?.filter(cp => cp !== undefined) || [];
-  return players?.map((player: IPlayerInMatch) => {
+  return players?.map((player) => {
     const {
       name,
       isStarter,

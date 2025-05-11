@@ -1,7 +1,7 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMatch } from '../../../types';
+import {IMatchResponse} from '../../../types';
 export const GET_MATCH_BY_ID: TypedDocumentNode<{
-  match: IMatch;
+  match: IMatchResponse;
 }> = gql`
   query GetMatchById($matchId: String!) {
     match: matchById(matchId: $matchId) {

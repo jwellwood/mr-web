@@ -42,7 +42,7 @@ export const match_players_table = [
     numeric: false,
     label: 'MVP',
   },
-];
+] as const;
 
 export const match_players_table_styles: ICellStyleByIndex[] = [
   { index: 0, background: STATIC },

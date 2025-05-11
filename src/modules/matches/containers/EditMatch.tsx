@@ -10,7 +10,7 @@ import { PAGES } from '../constants';
 import { EDIT_MATCH, GET_MATCHES_BY_SEASON, GET_MATCH_BY_ID } from '../graphql';
 import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
 import { mapMatch } from '../helpers';
-import { mapMatchToTempMatch } from '../helpers/mapMatchToTempMatch';
+import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch.ts';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
 import {IPlayerInMatch, ITempMatch} from '../../../types';
 import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
@@ -68,7 +68,7 @@ const EditMatch: React.FC = () => {
 
   useEffect(() => {
     if (data?.match) {
-      dispatch(setTempMatch(mapMatchToTempMatch(data.match)));
+      dispatch(setTempMatch(mapMatchResponseToTempMatch(data.match)));
       dispatch(setTempPlayers(data.match?.matchPlayers as IPlayerInMatch[]));
     }
   }, [data, dispatch]);

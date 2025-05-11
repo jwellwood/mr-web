@@ -58,6 +58,10 @@ const Match: React.FC = () => {
 
   if (error) return <ErrorGraphql error={error} />;
 
+  if(!data?.match) {
+    return null
+  }
+
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar

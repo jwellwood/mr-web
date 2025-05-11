@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spinner } from '../../../components/loaders';
 import FormModal from '../../../components/modals/FormModal';
@@ -14,16 +14,16 @@ import {AppDispatch} from "../../../store/store.ts";
 interface Props {
   playerId: string;
   title?: string;
-  currentPlayers?: IPlayerInMatch[];
+  currentPlayers?: (IPlayerInMatch)[];
   buttonElement: ReactNode;
 }
 
-const AddStats: React.FC<Props> = ({
+function AddStats({
   playerId,
   title,
   currentPlayers,
   buttonElement,
-}) => {
+}: Props) {
   const currentMatch = useSelector(getTempMatch);
   const dispatch: AppDispatch = useDispatch();
   const [defaultValues, setDefaultValues] = useState<IPlayerInMatch | null>(null);
