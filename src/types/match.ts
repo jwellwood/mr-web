@@ -1,6 +1,6 @@
 import type { ICompetition } from './organization';
 import type { IPlayer } from './player';
-import type { IPlayerInMatch } from './playerInMatch';
+import type {IPlayerInMatch} from './playerInMatch';
 import type { ITeam } from './team';
 
 export interface IMatch {
@@ -19,6 +19,10 @@ export interface IMatch {
     matchPlayers: Partial<IPlayerInMatch>[];
 }
 
+interface IMatchPlayer extends Omit<IPlayerInMatch, 'playerId'> {
+    playerId: Pick<IPlayer, "_id" | "name" | "position">;
+}
+
 export interface IMatchResponse
     extends Omit<
         IMatch,
@@ -27,7 +31,7 @@ export interface IMatchResponse
     opponentId: string | ITeam;
     teamId: string | ITeam;
     competitionId: string | ICompetition;
-    matchPlayers: Partial<IPlayerInMatch>[] | IPlayerResponse[];
+    matchPlayers: IMatchPlayer[];
 }
 
 export interface IPlayerResponse extends Omit<IPlayerInMatch, 'playerId'> {

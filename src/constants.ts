@@ -47,13 +47,13 @@ export const ApiPaths = {
 
 export type TApiPath = typeof ApiPaths[keyof typeof ApiPaths];
 
-export const positionOptions: ISelectOptions[] = [
+export const positionOptions = [
     { value: '', label: '' },
     { value: 'GK', label: 'Goalkeeper' },
     { value: 'DF', label: 'Defender' },
     { value: 'MF', label: 'Midfielder' },
     { value: 'FW', label: 'Forward' },
-];
+] as const;
 
 export const TabTypes = {
     PROFILE: 'profile',
@@ -67,7 +67,7 @@ export const TabTypes = {
     PLAYER: 'player',
     HISTORY: 'history',
     SEASON: 'season',
-};
+} as const;
 
 export type TTabType = typeof TabTypes[keyof typeof TabTypes];
 

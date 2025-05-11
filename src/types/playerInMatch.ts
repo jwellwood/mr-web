@@ -1,4 +1,5 @@
 import type { IPlayer } from './player';
+import {TPosition} from "../modules/players/constants.ts";
 
 export interface IPlayerInMatch {
   _id?: string;
@@ -6,8 +7,8 @@ export interface IPlayerInMatch {
   name: string;
   matchId: string;
   isStarter: boolean;
-  matchPosition: string;
-  position?: string;
+  matchPosition: TPosition;
+  position?: TPosition;
   apps?: number;
   minutes: number;
   goals: number;
