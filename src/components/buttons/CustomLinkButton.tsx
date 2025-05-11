@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import ErrorBoundary from "../../errors/ErrorBoundary.tsx";
 
 interface Props {
   children: ReactNode | string;
@@ -20,6 +21,8 @@ const CustomLinkButton: React.FC<Props> = ({
   fullWidth = false,
 }) => {
   return (
+      <ErrorBoundary>
+
     <Button
       fullWidth={fullWidth}
       variant={type}
@@ -30,6 +33,7 @@ const CustomLinkButton: React.FC<Props> = ({
     >
       {children}
     </Button>
+      </ErrorBoundary>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement, SyntheticEvent} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
@@ -28,7 +28,7 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
   const value = useSelector(getTabIndex);
   const tabsToShow = tabs.filter((tab) => !tab.isHidden);
   const isPrimary = level === 'primary';
-  const handleChange = (_: React.ChangeEvent, newValue: number) => {
+  const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
     dispatch(setTabIndex(newValue));
   };
 

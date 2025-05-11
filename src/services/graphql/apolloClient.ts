@@ -2,7 +2,7 @@ import { ApolloClient, InMemoryCache } from '@apollo/client';
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
 export const apolloClient = new ApolloClient({
-    uri: '/graphql',
+    uri: 'https://madrid-reds-6z4rr5ysna-pd.a.run.app/graphql',
     credentials: 'include',
     cache: new InMemoryCache({
         typePolicies: {
@@ -29,5 +29,7 @@ export const apolloClient = new ApolloClient({
         },
     }),
 
-    link: createUploadLink(),
+    link: createUploadLink({
+        uri: 'https://madrid-reds-6z4rr5ysna-pd.a.run.app/graphql',
+    }),
 });

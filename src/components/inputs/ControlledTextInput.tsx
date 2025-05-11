@@ -1,9 +1,9 @@
-import { Control, Controller } from 'react-hook-form';
+import { type Control, type Path, useController } from 'react-hook-form';
 import TextInput from './TextInput';
 
 type Props<T extends object> = {
   control: Control<T>;
-  name: string;
+  name: Path<T>;
   label: string;
   errors?: ({ type: string } | Error)[];
   rules?: {
@@ -29,27 +29,27 @@ function ControlledTextInput<T extends object> ({
   isPassword = false,
   placeholder,
 }: Props<T>)  {
-  return (
-    <Controller
-      control={control}
-      name={name as never}
-      rules={rules}
-      render={({ field: { name, value, onChange } }) => {
+  const {
+    field,
+    // fieldState: { invalid, isTouched, isDirty },
+    // formState: { touchedFields, dirtyFields }
+  } = useController({
+    name,
+    control,
+    rules,
+  });
         return (
           <TextInput
             isPassword={isPassword}
             inputName={name}
-            defaultValue={value}
+            defaultValue={field.value}
             label={label}
             multiline={multiline}
-            onChange={onChange}
+            onChange={field.onChange}
             errors={errors}
             placeholder={placeholder}
           />
         );
-      }}
-    />
-  );
 };
 
 export default ControlledTextInput;

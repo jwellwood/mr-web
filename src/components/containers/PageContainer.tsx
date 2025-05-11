@@ -11,6 +11,7 @@ const classes = {
 const StyledContainer = styled(Container)(({ theme }) => ({
   [`&.${classes.container}`]: {
     background: theme.palette.dark.main,
+    color: theme.palette.common.white,
     minHeight: '100vh',
   },
   [`.${classes.offset}`]: theme.mixins.toolbar,

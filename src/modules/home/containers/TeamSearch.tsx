@@ -7,6 +7,7 @@ import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
 import {Spinner} from "../../../components/loaders";
 
 export const TeamSearch = () => {
+  console.log("TeamSearch")
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchComplete, setIsSearchComplete] = useState(false);
 
@@ -34,11 +35,11 @@ export const TeamSearch = () => {
         defaultValues={{ teamName: searchTerm }}
         onSubmit={onSubmit}
       />
-      {!loading ? (
-        <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />
-      ) : (
-        <Spinner />
-      )}
+      {/*{!loading ? (*/}
+      {/*  <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />*/}
+      {/*) : (*/}
+      {/*  <Spinner />*/}
+      {/*)}*/}
     </>
   );
 };

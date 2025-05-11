@@ -1,13 +1,13 @@
-import React from 'react';
 import { CustomTypography } from '../typography';
 import {form_error_text} from "../../i18n";
-import { FormError } from '../../types/form';
+import { type FormError } from '../../types/form';
 
 interface Props {
   error: FormError
 }
 
-const FormErrorMessage: React.FC<Props> = ({ error }) => {
+function FormErrorMessage({ error }: Props) {
+  console.log("FormErrorMessage")
   let message = form_error_text.default;
   const errType = typeof error === "string" ? error : "type" in error ? error.type : "";
   switch (errType) {
@@ -36,9 +36,9 @@ const FormErrorMessage: React.FC<Props> = ({ error }) => {
       break;
   }
   return (
-    <CustomTypography size="xs" color="error" role="alert">
+    // <CustomTypography size="xs" color="error" role="alert">
       {message}
-    </CustomTypography>
+    // </CustomTypography>
   );
 };
 

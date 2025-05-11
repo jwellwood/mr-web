@@ -8,6 +8,7 @@ type Props = {
 };
 
 export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
+  console.log("SearchForm")
   const {
     handleSubmit,
     formState: { errors },
@@ -27,6 +28,7 @@ export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
       text="Search"
       disabled={teamNameLength.length < 3}
     >
+      <h1>Searchform</h1>
       <ControlledTextInput
         control={control}
         name="teamName"

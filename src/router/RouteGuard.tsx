@@ -1,30 +1,54 @@
-import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
-import { HOME } from './paths';
+import React, { ReactNode } from 'react';
+import { useDispatch } from 'react-redux';
+import { Navigate } from 'react-router-dom';
+import { AUTH, PROFILE } from './paths';
+import {useAuth} from "../hooks";
+import {AUTH_ROLES, TAuthRoles} from "../app/constants.ts";
+import {showAlert} from "../store/features/alerts/alertsSlice.ts";
 
 interface Props {
-  children: React.ReactNode;
-  authorization?: string;
+  children: ReactNode;
+  authorization: TAuthRoles;
+  teamId?: string;
+  orgId?: string;
 }
 
-// This component checks if the user has the required authorization to access a route
-// If not, it redirects to the home page
-// For now, it's a simple implementation that allows all access
-const RouteGuard: React.FC<Props> = ({ 
+const RouteGuard: React.FC<Props> = ({
   children,
-   
+  authorization,
+  teamId,
+  orgId,
 }) => {
-  const location = useLocation();
+  console.log("RouteGuard")
+  const dispatch = useDispatch();
+  const { isTeamAdmin, isSiteAdmin, isTeamAuth, isAuth } = useAuth(teamId);
+  const { isOrgAuth } = useAuth(orgId);
 
-  // For now, we'll allow all access since we don't have authentication implemented
-  // In a real app, you would check the user's role against the required authorization
-  const isAuthorized = true;
-
-  if (!isAuthorized) {
-    // Redirect to home page if not authorized, preserving the current location
-    return <Navigate to={HOME.HOME} state={{ from: location }} replace />;
+  if (authorization === AUTH_ROLES.USER && !isAuth) {
+    return <Navigate to={AUTH.SIGN_IN} replace />;
   }
-
+  if (authorization === AUTH_ROLES.ORG_ADMIN && !isOrgAuth) {
+    dispatch(showAlert({ text: 'Only team admin users can access this page!', type: 'info' }));
+    return <Navigate to={PROFILE.PROFILE} replace />;
+  }
+  if (authorization === AUTH_ROLES.TEAM_ADMIN && !isTeamAuth) {
+    dispatch(showAlert({ text: 'You are not an admin for this team', type: 'info' }));
+    return <Navigate to={PROFILE.PROFILE} replace />;
+  }
+  if (authorization === AUTH_ROLES.TEAM_ADMIN && !isTeamAdmin) {
+    dispatch(showAlert({ text: 'Only team admin users can access this page!', type: 'info' }));
+    return <Navigate to={PROFILE.PROFILE} replace />;
+  }
+  if (authorization === AUTH_ROLES.TEAM_ADMIN && !isTeamAuth) {
+    dispatch(showAlert({ text: 'You are not an admin for this team', type: 'info' }));
+    return <Navigate to={PROFILE.PROFILE} replace />;
+  }
+  if (authorization === AUTH_ROLES.SITE_ADMIN && !isSiteAdmin) {
+    dispatch(showAlert({ text: 'Only admin users can access this page!', type: 'info' }));
+    return <Navigate to={PROFILE.PROFILE} replace />;
+  }
+  if (isAuth && authorization === 'none')
+    return <Navigate to={PROFILE.PROFILE} replace />;
   return <>{children}</>;
 };
 
