@@ -7,8 +7,8 @@ import ControlledSelectInput from '../../../components/inputs/ControlledSelectIn
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { DeleteModal } from '../../../components/modals';
-import { getIntegers } from 'utils/helpers';
 import { ITeamSeason } from '../types';
+import {getIntegers} from "../../../utils/helpers";
 
 type Props = {
   onSubmit: (formData: Partial<ITeamSeason>) => void;
