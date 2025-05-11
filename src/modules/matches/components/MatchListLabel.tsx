@@ -1,8 +1,8 @@
 import React from 'react';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { IMatchList } from 'types/IMatchList';
-import { parseDate } from 'utils/helpers';
+import {IMatchList} from "../../../types/matchList.ts";
+import {parseDate} from "../../../utils/helpers";
 
 type Props = {
   match: IMatchList;

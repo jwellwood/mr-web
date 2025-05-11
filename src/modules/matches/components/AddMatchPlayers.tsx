@@ -46,7 +46,7 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
         selectedPlayers.push(mappedPlayer);
       }
     });
-    // is id is not in current players but in form, add it with init
+    // if id is not in current players but in form, add it with init
     const selectedPlayersIds = selectedPlayers.map((player) => player._id);
     matchPlayers.forEach((playerId: string) => {
       const selectedPlayer = players.find((pl) => pl._id === playerId);
@@ -54,7 +54,9 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
         selectedPlayers.push({
           ...initPlayerInMatch,
           _id: playerId,
-          name: selectedPlayer?.name,
+          playerId,
+          matchId: matchId as string,
+          name: selectedPlayer?.name as string,
         });
       }
     });

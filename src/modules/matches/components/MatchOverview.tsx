@@ -2,7 +2,8 @@ import React from 'react';
 import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
-import { ITempMatch } from '../../../types';import { parseDate } from 'utils/helpers';
+import { ITempMatch } from '../../../types';
+import {parseDate} from "../../../utils/helpers";
 
 type Props = {
   currentTempMatch: ITempMatch;
