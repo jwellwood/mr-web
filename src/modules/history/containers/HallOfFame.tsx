@@ -44,7 +44,7 @@ const HallOfFame: React.FC = () => {
 
   return !loading ? (
     <>
-      {!data.players.length ? (
+      {data?.players?.length ? (
         <CustomTypography color="warning">
           No hall of fame players yet
         </CustomTypography>

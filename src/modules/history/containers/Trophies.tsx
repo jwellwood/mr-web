@@ -7,7 +7,8 @@ import LinksList from '../../../components/lists/LinksList';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { IListItem } from '../../../types';import TrophiesTotals from '../components/TrophiesTotals';
+import { IListItem } from '../../../types';
+import TrophiesTotals from '../components/TrophiesTotals';
 import { GET_TROPHIES } from '../graphql/getTrophies.graphql';
 import { GET_TROPHIES_TOTALS } from '../graphql/getTrophiesTotals.graphql';
 
@@ -25,7 +26,7 @@ const Trophies: React.FC = () => {
     }
   );
 
-  const trophies: IListItem[] = data?.trophies.map((trophy) => ({
+  const trophies: IListItem[] = (data?.trophies || []).map((trophy) => ({
     icon: (
       <AppIcon
         size="1.5rem"

@@ -44,7 +44,7 @@ const Season: React.FC = () => {
         title={PAGES.SEASON}
         actionButton={isTeamAuth && <EditLinksModal data={links} />}
       >
-        {!loading ? <SeasonTabs season={data.season} /> : <Spinner />}
+        {!loading ? <SeasonTabs season={data?.season} /> : <Spinner />}
       </CustomAppBar>
     </RouteGuard>
   );
