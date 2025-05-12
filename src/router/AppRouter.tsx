@@ -1,40 +1,45 @@
-import React, { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import React, {lazy, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
+import {useQuery} from '@apollo/client';
 import {GET_ROLES} from "../modules/auth/graphql";
 import {useAuth} from "../hooks";
-import {setAuth} from "../modules/auth";
 import {PageContainer} from "../components/containers";
 import {Spinner} from "../components/loaders";
 import AlertMessage from "../modules/alerts/components/AlertMessage.tsx";
 import AppHead from "../AppHead.tsx";
+import {resetAuth, setAuth} from "../store/features/auth/authSlice.ts";
+
 const AppRoutes = lazy(() => import('./Routes'));
 
 
-function AppRouter () {
+function AppRouter() {
     const dispatch = useDispatch();
-    const { data, loading } = useQuery(GET_ROLES);
-    const { isAuth } = useAuth();
+    const {data, loading} = useQuery(GET_ROLES);
+    const {isAuth} = useAuth();
 
     useEffect(() => {
         if (data && !loading) {
             dispatch(
-                setAuth(data.user?.roles, data.user?.teamIds, data?.user.orgIds)
+                setAuth({
+                    roles: data.user?.roles,
+                    teamIds: data.user?.teamIds,
+                    orgIds: data?.user?.orgIds
+                })
             );
         } else {
-            dispatch(setAuth([''], [], []));
+            dispatch(resetAuth());
         }
     }, [data, dispatch, loading]);
 
     return (
         <BrowserRouter>
-            <AppHead />
+            <AppHead/>
             <PageContainer>
-                <React.Suspense fallback={<Spinner />}>
-                    {isAuth !== null && !loading && <AppRoutes />}
+                <React.Suspense fallback={<Spinner/>}>
+                    {isAuth !== null && !loading && <AppRoutes/>}
                 </React.Suspense>
-                <AlertMessage />
+                <AlertMessage/>
             </PageContainer>
         </BrowserRouter>
     );

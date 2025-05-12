@@ -91,7 +91,7 @@ const TrophyForm: React.FC<Props> = ({
           <GridItem xs={12}>
             <ControlledTextInput
               control={control}
-              name="opponent"
+              name="opponentId"
               label="Opponent"
               errors={errors.opponentId ? [errors.opponentId] : []}
             />

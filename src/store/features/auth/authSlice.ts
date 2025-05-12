@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import {AUTH_ROLES, TAuthRoles} from "../../../app/constants.ts";
 
 interface IAuthState {
     isAuth: boolean;
@@ -20,10 +21,24 @@ const authSlice = createSlice({
     name: 'auth',
     initialState,
     reducers: {
-        setState: (state, action: PayloadAction<IAuthState>) => {
+        setState: (state, action: PayloadAction<{
+            roles?: TAuthRoles[];
+            teamIds?: string[];
+            orgIds?: string[];
+        }>) => {
+            const { roles = [], orgIds = [], teamIds = [] } = action.payload;
+            const isAuth = (roles && roles.includes(AUTH_ROLES.USER)) || false;
+            const isTeamAdmin = (roles && roles.includes(AUTH_ROLES.TEAM_ADMIN)) || false;
+            const isSiteAdmin = (roles && roles.includes(AUTH_ROLES.SITE_ADMIN)) || false;
             return {
                 ...state,
-                ...action.payload
+                ...{
+                    isAuth,
+                    isTeamAdmin,
+                    isSiteAdmin,
+                    teamIds,
+                    orgIds,
+                }
             }
         },
         resetState: () => {

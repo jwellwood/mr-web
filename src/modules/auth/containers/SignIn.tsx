@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { setAuth } from '../actions/auth.actions';
 import { signInFormState } from '../constants';
 import SignInForm from '../forms/SignIn.form';
 import { SIGN_IN } from '../graphql';
@@ -17,6 +16,7 @@ import {PROFILE} from "../../../router/paths.ts";
 import RouteGuard from "../../../router/RouteGuard.tsx";
 import {AUTH_ROLES} from "../../../app/constants.ts";
 import {Spinner} from "../../../components/loaders";
+import {setAuth} from "../../../store/features/auth/authSlice.ts";
 
 const SignInContainer: React.FC = () => {
   const navigate = useNavigate();
@@ -36,11 +36,18 @@ const SignInContainer: React.FC = () => {
   }) => {
     setEmail(formData.email);
     return signInUser({ variables: { ...formData } })
-      .then(({ data }) => {
+      .then((resp) => {
+        console.log(resp)
+        const { data } = resp;
+        console.log("here")
         if (data) {
           const { user } = data;
           dispatch(showAlert({text: `Welcome ${user.username}!`, type: 'success'}))
-          dispatch(setAuth(user.roles, user.teamIds, user.orgIds));
+          dispatch(setAuth({
+            roles: user.roles,
+            teamIds: user.teamIds,
+            orgIds: user.orgIds
+          }));
           if (isAuth) {
             navigate(PROFILE.PROFILE, { replace: false });
           }

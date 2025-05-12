@@ -41,8 +41,8 @@ const Layout: React.FC = () => {
   return (
     <Root className={classes.root}>
       <nav className={classes.nav}>
-        <NavLink to={HOME}>Home</NavLink>
-        <NavLink to={PROFILE}>Profile</NavLink>
+        <NavLink to={HOME.HOME}>Home</NavLink>
+        <NavLink to={PROFILE.PROFILE}>Profile</NavLink>
       </nav>
       <main className={classes.content}>
         <Outlet />

@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "esnext",
     "moduleResolution": "node",
     "types": ["jest", "node", "@testing-library/jest-dom"],
     "esModuleInterop": true

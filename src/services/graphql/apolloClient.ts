@@ -1,9 +1,18 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import {ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
 import createUploadLink from "apollo-upload-client/createUploadLink.mjs";
 
-export const apolloClient = new ApolloClient({
-    uri: 'https://madrid-reds-6z4rr5ysna-pd.a.run.app/graphql',
+const gqlUrl = import.meta.env.PROD ? "https://madrid-reds-1035582858411.northamerica-northeast2.run.app/graphql" : "http://localhost:3002/graphql";
+
+const httpLink = createHttpLink({
+    uri: gqlUrl,
     credentials: 'include',
+})
+
+const uploadLink = createUploadLink({
+    uri: gqlUrl,
+})
+
+export const apolloClient = new ApolloClient({
     cache: new InMemoryCache({
         typePolicies: {
             Query: {
@@ -29,7 +38,5 @@ export const apolloClient = new ApolloClient({
         },
     }),
 
-    link: createUploadLink({
-        uri: 'https://madrid-reds-1035582858411.northamerica-northeast2.run.app/graphql',
-    }),
+    link: httpLink.concat(uploadLink)
 });

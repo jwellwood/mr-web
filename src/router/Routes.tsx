@@ -1,9 +1,8 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
-import { AUTH, ORG, PROFILE } from './paths';
-import { MATCH, TEAM, HOME } from './paths';
+import {AUTH, MATCH, ORG, PROFILE, TEAM} from './paths';
+import { HOME } from './paths';
 import { NotFound } from '../components/navigation';
 import {
     AddTeam,
@@ -63,7 +62,7 @@ function AppRoutes() {
       <Route path={AUTH.FORGOT} element={<ForgotPassword />} />
       <Route path={AUTH.RESET} element={<ResetPassword />} />
       <Route path={AUTH.VERIFY} element={<ValidatedEmail />} />
-      {/*<Route path={ORG.ADD} element={<AddOrg />} />*/}
+      <Route path={ORG.ADD} element={<AddOrg />} />
       <Route path={PROFILE.PROFILE}>
         <Route index={true} element={<Profile />} />
         <Route path={PROFILE.EDIT} element={<EditProfile />} />
@@ -77,71 +76,71 @@ function AppRoutes() {
         />
         <Route path={PROFILE.DELETE} element={<DeleteAccount />} />
       </Route>
-      {/*<Route path={ORG.ORG}>*/}
-      {/*  <Route index={true} element={<Org />} />*/}
-      {/*  <Route path={ORG.EDIT} element={<EditOrg />} />*/}
-      {/*  <Route path={ORG.ADD_TEAM} element={<AddTeam />} />*/}
-      {/*  <Route*/}
-      {/*    path={ORG.ADD_COMPETITION}*/}
-      {/*    element={<AddCompetition />}*/}
-      {/*  />*/}
-      {/*  <Route path={ORG.COMPETITION}>*/}
-      {/*    <Route index={true} element={<Competition />} />*/}
-      {/*    <Route*/}
-      {/*      path={ORG.EDIT_COMPETITION}*/}
-      {/*      element={<EditCompetition />}*/}
-      {/*    />*/}
-      {/*  </Route>*/}
-      {/*  <Route path={ORG.EDIT_BADGE} element={<EditOrgBadge />} />*/}
-      {/*  <Route path={TEAM.TEAM}>*/}
-      {/*    <Route index={true} element={<Team />} />*/}
-      {/*    <Route path={TEAM.ADD_PLAYER} element={<AddPlayer />} />*/}
-      {/*    <Route path={TEAM.SEASON}>*/}
-      {/*      <Route index={true} element={<Season />} />*/}
-      {/*    </Route>*/}
-      {/*    <Route*/}
-      {/*      path={TEAM.ADD_SEASON}*/}
-      {/*      element={<AddTeamSeason />}*/}
-      {/*    />*/}
-      {/*    <Route*/}
-      {/*      path={TEAM.EDIT_SEASON}*/}
-      {/*      element={<EditTeamSeason />}*/}
-      {/*    />*/}
-      {/*    <Route path={TEAM.TROPHY} element={<Trophy />} />*/}
-      {/*    <Route path={TEAM.ADD_TROPHY} element={<AddTrophy />} />*/}
-      {/*    <Route*/}
-      {/*      path={TEAM.EDIT_TROPHY}*/}
-      {/*      element={<EditTrophy />}*/}
-      {/*    />*/}
-      {/*    <Route*/}
-      {/*      path={MATCH.ADD_MATCH}*/}
-      {/*      element={<AddMatch />}*/}
-      {/*      action={async () => {*/}
-      {/*        dispatch(resetTempPlayers());*/}
-      {/*        dispatch(resetTempMatch());*/}
-      {/*      }}*/}
-      {/*    />*/}
-      {/*    <Route path={TEAM.EDIT_BADGE} element={<EditBadge />} />*/}
-      {/*    <Route path={TEAM.EDIT} element={<EditTeam />} />*/}
-      {/*    <Route path={TEAM.EDIT_ROLES} element={<EditRoles />} />*/}
-      {/*    <Route path={TEAM.DELETE_TEAM} element={<DeleteTeam />} />*/}
-      {/*    /!* // ------ *!/*/}
+      <Route path={ORG.ORG}>
+        <Route index={true} element={<Org />} />
+        <Route path={ORG.EDIT} element={<EditOrg />} />
+        <Route path={ORG.ADD_TEAM} element={<AddTeam />} />
+        <Route
+          path={ORG.ADD_COMPETITION}
+          element={<AddCompetition />}
+        />
+        <Route path={ORG.COMPETITION}>
+          <Route index={true} element={<Competition />} />
+          <Route
+            path={ORG.EDIT_COMPETITION}
+            element={<EditCompetition />}
+          />
+        </Route>
+        <Route path={ORG.EDIT_BADGE} element={<EditOrgBadge />} />
+        <Route path={TEAM.TEAM}>
+          <Route index={true} element={<Team />} />
+          <Route path={TEAM.ADD_PLAYER} element={<AddPlayer />} />
+          <Route path={TEAM.SEASON}>
+            <Route index={true} element={<Season />} />
+          </Route>
+          <Route
+            path={TEAM.ADD_SEASON}
+            element={<AddTeamSeason />}
+          />
+          <Route
+            path={TEAM.EDIT_SEASON}
+            element={<EditTeamSeason />}
+          />
+          <Route path={TEAM.TROPHY} element={<Trophy />} />
+          <Route path={TEAM.ADD_TROPHY} element={<AddTrophy />} />
+          <Route
+            path={TEAM.EDIT_TROPHY}
+            element={<EditTrophy />}
+          />
+          <Route
+            path={MATCH.ADD_MATCH}
+            element={<AddMatch />}
+            action={async () => {
+              dispatch(resetTempPlayers());
+              dispatch(resetTempMatch());
+            }}
+          />
+          <Route path={TEAM.EDIT_BADGE} element={<EditBadge />} />
+          <Route path={TEAM.EDIT} element={<EditTeam />} />
+          <Route path={TEAM.EDIT_ROLES} element={<EditRoles />} />
+          <Route path={TEAM.DELETE_TEAM} element={<DeleteTeam />} />
+          {/* // ------ */}
 
-      {/*    <Route path={TEAM.SEASON}>*/}
-      {/*      <Route index={true} element={<Season />} />*/}
-      {/*      <Route path={TEAM.ADD_AWARD} element={<AddAward />} />*/}
-      {/*      <Route*/}
-      {/*        path={TEAM.EDIT_AWARD}*/}
-      {/*        element={<EditAward />}*/}
-      {/*      />*/}
-      {/*      {PLAYER_ROUTES()}*/}
-      {/*      {MATCH_ROUTES()}*/}
-      {/*    </Route>*/}
-      {/*    /!* // --------- *!/*/}
-      {/*    {PLAYER_ROUTES()}*/}
-      {/*    {MATCH_ROUTES()}*/}
-      {/*  </Route>*/}
-      {/*</Route>*/}
+          <Route path={TEAM.SEASON}>
+            <Route index={true} element={<Season />} />
+            <Route path={TEAM.ADD_AWARD} element={<AddAward />} />
+            <Route
+              path={TEAM.EDIT_AWARD}
+              element={<EditAward />}
+            />
+            {PLAYER_ROUTES()}
+            {MATCH_ROUTES()}
+          </Route>
+          {/* // --------- */}
+          {PLAYER_ROUTES()}
+          {MATCH_ROUTES()}
+        </Route>
+      </Route>
     </Routes>
   );
 };
