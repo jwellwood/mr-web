@@ -12,11 +12,11 @@ import { AppDispatch } from '../../../store/store';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { ITrophy } from '../../../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
-import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import {AuthRoles} from "../../../constants.ts";
+import { AuthRoles } from '../../../constants.ts';
 import PageHeader from '../../../components/typography/PageHeader.tsx';
-import {Spinner} from "../../../components/loaders";
+import { Spinner } from '../../../components/loaders';
 
 const AddTrophy: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -36,17 +36,17 @@ const AddTrophy: React.FC = () => {
   const onSubmit = async (formData: Partial<ITrophy>) => {
     try {
       return addTrophy({ variables: { teamId, ...formData } }).then(() => {
-        dispatch(showAlert({text: 'Trophy added successfully', type: 'success'}));
+        dispatch(showAlert({ text: 'Trophy added successfully', type: 'success' }));
         navigate(-1);
       });
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({text: 'There was a problem', type: 'error'}));
+      dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
     }
   };
 
   if (error) {
-    return <ErrorGraphql error={{message: error.message}} />;
+    return <ErrorGraphql error={{ message: error.message }} />;
   }
 
   return (

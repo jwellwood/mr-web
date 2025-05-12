@@ -8,10 +8,10 @@ import { setTempPlayers } from '../actions/players.actions';
 import { initPlayerInMatch } from '../constants';
 import AddMatchPlayersForm from '../forms/AddMatchPlayersForm';
 import { useMatchPlayersInput } from '../hooks/useMatchPlayersInput';
-import {AppDispatch} from "../../../store/store.ts";
-import {getTempMatch} from "../../../store/features/matches/matchesSelector.ts";
-import {getTempPlayers} from "../../../store/features/players/playersSelection.ts";
-import {IPlayerInMatch} from "../../../types";
+import { AppDispatch } from '../../../store/store.ts';
+import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
+import { getTempPlayers } from '../../../store/features/players/playersSelection.ts';
+import { IPlayerInMatch } from '../../../types';
 
 type Props = {
   onNextClick: () => void;
@@ -26,30 +26,27 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   const [values, setValues] = useState<{ matchPlayers: string[] }>({
     matchPlayers: [],
   });
-  const { players, loading, error } = useMatchPlayersInput(
-    teamId,
-    currentMatch.seasonId
-  );
+  const { players, loading, error } = useMatchPlayersInput(teamId, currentMatch.seasonId);
 
   const onSubmit = (formData: { matchPlayers: string[] }) => {
     const { matchPlayers } = formData;
     const selectedPlayers: IPlayerInMatch[] = [];
     // if id is in current players keep current stats, else remove it
-    currentPlayers.forEach((player) => {
-      const id = typeof player.playerId === "object" ? player.playerId?._id : player._id;
+    currentPlayers.forEach(player => {
+      const id = typeof player.playerId === 'object' ? player.playerId?._id : player._id;
       if (id && matchPlayers.includes(id)) {
         const mappedPlayer = {
           ...player,
           _id: id,
-          name: (typeof player.playerId === "object" ?  player.playerId?.name : player.name) || "-",
+          name: (typeof player.playerId === 'object' ? player.playerId?.name : player.name) || '-',
         };
         selectedPlayers.push(mappedPlayer);
       }
     });
     // if id is not in current players but in form, add it with init
-    const selectedPlayersIds = selectedPlayers.map((player) => player._id);
+    const selectedPlayersIds = selectedPlayers.map(player => player._id);
     matchPlayers.forEach((playerId: string) => {
-      const selectedPlayer = players.find((pl) => pl._id === playerId);
+      const selectedPlayer = players.find(pl => pl._id === playerId);
       if (!selectedPlayersIds.includes(playerId)) {
         selectedPlayers.push({
           ...initPlayerInMatch,
@@ -66,7 +63,7 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
 
   const playerOptions: ISelectOptions[] = useMemo(
     () =>
-      players.map((player) => ({
+      players.map(player => ({
         label: player.name,
         value: player._id,
       })),
@@ -75,8 +72,8 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   useEffect(() => {
     const mappedValues = () =>
       currentPlayers
-          .map((player) => typeof player?.playerId === "object" ? player.playerId._id : player._id)
-          .filter(p => p !== undefined)
+        .map(player => (typeof player?.playerId === 'object' ? player.playerId._id : player._id))
+        .filter(p => p !== undefined);
 
     setValues({ matchPlayers: mappedValues() });
   }, [currentPlayers, matchId]);

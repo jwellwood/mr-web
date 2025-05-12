@@ -31,11 +31,7 @@ const PresentationModal: React.FC<Props> = ({
 
   return (
     <div>
-      <span
-        role="button"
-        style={{ cursor: 'pointer' }}
-        onClick={handleClickOpen}
-      >
+      <span role="button" style={{ cursor: 'pointer' }} onClick={handleClickOpen}>
         {buttonElement}
       </span>
       <Dialog

@@ -5,8 +5,8 @@ import { BackButton } from '../buttons';
 import { CustomTypography } from '../typography';
 import HideOnScroll from './HideOnScroll';
 import SideDrawer from './SideDrawer';
-import {theme} from "../../theme";
-import {ReactNode} from "react";
+import { theme } from '../../theme';
+import { ReactNode } from 'react';
 
 interface Props {
   children: React.ReactElement;

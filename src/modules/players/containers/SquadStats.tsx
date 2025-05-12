@@ -10,7 +10,7 @@ import PlayersByNumbers from '../components/PlayersByNumbers';
 import { season_stats_styles, squad_detailed_stats } from '../configs';
 import { GET_SQUAD_SEASON_STATS } from '../graphql';
 import { getSquadSeasonTableData } from '../helpers/getSquadSeasonTableData';
-import {IPlayer} from "../../../types";
+import { IPlayer } from '../../../types';
 
 const SquadStats: React.FC = () => {
   const { teamId } = useCustomParams();

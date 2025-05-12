@@ -8,12 +8,12 @@ const api = {
 
 export const verifyEmail = (token: string) => {
   const route = `${api.VERIFY_EMAIL_ROUTE}${token}`;
-  const request = axios.post(route).then((res) => res.data);
+  const request = axios.post(route).then(res => res.data);
   return request;
 };
 
 export const resendValidationEmail = (email: string) => {
   const route = api.RESEND_VALIDATION_EMAIL;
-  const request = axios.post(route, { email }).then((res) => res.data);
+  const request = axios.post(route, { email }).then(res => res.data);
   return request;
 };

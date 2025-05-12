@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Dialog, DialogTitle, DialogActions, Button } from '@mui/material';
 import { CustomTypography } from '../typography';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   fullScreen?: boolean;
@@ -11,16 +11,10 @@ interface Props {
   title?: string;
 }
 
-const CustomDialog: React.FC<Props> = ({
-  fullScreen = true,
-  isOpen,
-  onClose,
-  children,
-  title,
-}) => {
+const CustomDialog: React.FC<Props> = ({ fullScreen = true, isOpen, onClose, children, title }) => {
   return (
     <Dialog
-      scroll='body'
+      scroll="body"
       fullScreen={fullScreen}
       open={isOpen}
       onClose={onClose}
@@ -31,13 +25,13 @@ const CustomDialog: React.FC<Props> = ({
       }}
     >
       <DialogTitle>
-        <CustomTypography bold size='lg' color='primary'>
+        <CustomTypography bold size="lg" color="primary">
           {title}
         </CustomTypography>
       </DialogTitle>
       {children}
       <DialogActions>
-        <Button autoFocus onClick={onClose} color='secondary'>
+        <Button autoFocus onClick={onClose} color="secondary">
           Cancel
         </Button>
       </DialogActions>

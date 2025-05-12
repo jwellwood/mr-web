@@ -35,10 +35,7 @@ const ProfileContainer: React.FC = () => {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.USER}>
-      <CustomAppBar
-        title={pages.USER_PROFILE_PAGE}
-        actionButton={<EditLinksModal data={links} />}
-      >
+      <CustomAppBar title={pages.USER_PROFILE_PAGE} actionButton={<EditLinksModal data={links} />}>
         {!loading ? (
           <>
             <Profile user={data?.user} />

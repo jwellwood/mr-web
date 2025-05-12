@@ -27,9 +27,9 @@ const PlayerSeasonStats: React.FC = () => {
   }, [playerId, refetch, seasonId]);
 
   const player = data?.player;
-  
+
   if (!player) {
-      return null;
+    return null;
   }
 
   return (

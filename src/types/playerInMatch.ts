@@ -1,5 +1,5 @@
 import type { IPlayer } from './player';
-import {TPosition} from "../modules/players/constants.ts";
+import { TPosition } from '../modules/players/constants.ts';
 
 export interface IPlayerInMatch {
   _id?: string;

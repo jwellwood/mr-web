@@ -5,14 +5,12 @@ import { FormContainer } from '../containers';
 import { CenteredGrid } from '../grids';
 import CircularImage from '../images/CircularImage';
 import FileInput from '../inputs/FileInput';
-import {button_text} from "../../i18n";
+import { button_text } from '../../i18n';
 
 interface Props {
   imageUrl?: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string | null>>;
-  onSubmit: (data: {
-      imageFile: File | null,
-             }) => void;
+  onSubmit: (data: { imageFile: File | null }) => void;
   currentUrl?: string;
   removeImage: () => void;
 }
@@ -51,7 +49,7 @@ const ImageForm: React.FC<Props> = ({
               <FileInput
                 inputName={name}
                 defaultValue={value || undefined}
-                onChange={(event) => {
+                onChange={event => {
                   onChange(event.target?.files?.[0]);
                   setImageUrl(URL.createObjectURL(event.target?.files?.[0] as File));
                 }}
@@ -64,11 +62,13 @@ const ImageForm: React.FC<Props> = ({
         <CustomButton type="reset" onClick={resetImage}>
           {button_text.DEFAULT}
         </CustomButton>
-        <CustomButton onClick={() => {
-          if(currentUrl) {
-            setImageUrl(currentUrl)
-          }
-        }}>
+        <CustomButton
+          onClick={() => {
+            if (currentUrl) {
+              setImageUrl(currentUrl);
+            }
+          }}
+        >
           Cancel
         </CustomButton>
         <CustomButton onClick={removeImage}>Remove image</CustomButton>

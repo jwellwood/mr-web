@@ -7,12 +7,9 @@ import { GET_MOST_ASSISTS_BY_PLAYER_MATCHES } from '../graphql';
 
 const PlayerMatchesWithMostAssists: React.FC = () => {
   const { teamId, playerId, orgId } = useCustomParams();
-  const { data, loading, error } = useQuery(
-    GET_MOST_ASSISTS_BY_PLAYER_MATCHES,
-    {
-      variables: { teamId, playerId },
-    }
-  );
+  const { data, loading, error } = useQuery(GET_MOST_ASSISTS_BY_PLAYER_MATCHES, {
+    variables: { teamId, playerId },
+  });
 
   const { stats } = data || {};
 

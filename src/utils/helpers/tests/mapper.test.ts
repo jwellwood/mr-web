@@ -7,10 +7,10 @@ const length = mockData.length;
 describe('mapper tests', () => {
   test('it returns an empty array when arr is empty', () => {
     const array: {
-      id: number,
-      stringId: string,
-      name: string,
-      number: number
+      id: number;
+      stringId: string;
+      name: string;
+      number: number;
     }[] = [];
     expect(mapper(array, 'id')).toEqual([]);
   });

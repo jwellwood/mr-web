@@ -12,8 +12,7 @@ const ValidationEmailSent: React.FC<Props> = ({ email }) => {
     <>
       <RouteGuard authorization={AUTH_ROLES.NONE}>
         <CustomTypography color="data">
-          An email has been sent to {email}. Click the link to validate your
-          account
+          An email has been sent to {email}. Click the link to validate your account
         </CustomTypography>
       </RouteGuard>
     </>

@@ -15,7 +15,7 @@ type Props = {
 const SeasonsGraph: React.FC<Props> = ({ data }) => {
   const { orgId, teamId } = useCustomParams();
   const getDivisions = () => {
-    const divArray = (data || []).map((item) => item.division).filter(Boolean);
+    const divArray = (data || []).map(item => item.division).filter(Boolean);
     return [...new Set(divArray)];
   };
   const mapColorsToDivisions = (division?: string) => {
@@ -38,7 +38,7 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
     };
   };
 
-  const getIconColor = (position: number, division?:string) => {
+  const getIconColor = (position: number, division?: string) => {
     let color = 'secondary';
     switch (true) {
       case !division:
@@ -59,7 +59,7 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
     return color;
   };
 
-  const mappedData: IListItem[] = (data || []).map((item) => {
+  const mappedData: IListItem[] = (data || []).map(item => {
     const { division, position, name } = item;
     return {
       label: (
@@ -85,10 +85,7 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
         </CustomAvatar>
       ),
       secondary: (
-        <CustomTypography
-          color={mapColorsToDivisions(division).color}
-          size="xs"
-        >
+        <CustomTypography color={mapColorsToDivisions(division).color} size="xs">
           {division}
         </CustomTypography>
       ),

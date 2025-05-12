@@ -13,13 +13,14 @@ type Props = {
 };
 
 const Averages: React.FC<Props> = ({ stats, loading }) => {
-  if(!stats) return (
-    <SectionContainer>
-      <CenteredGrid>
-        <StatSkeleton />
-      </CenteredGrid>
-    </SectionContainer>
-  )
+  if (!stats)
+    return (
+      <SectionContainer>
+        <CenteredGrid>
+          <StatSkeleton />
+        </CenteredGrid>
+      </SectionContainer>
+    );
   const { total, wins, draws, defeats, teamAvg, oppAvg } = stats;
   const avDiff = teamAvg - oppAvg;
   const percentageData = [
@@ -33,11 +34,7 @@ const Averages: React.FC<Props> = ({ stats, loading }) => {
     },
     {
       label: 'Defeat %',
-      value: loading ? (
-        <StatSkeleton />
-      ) : (
-        `${getPercentage(defeats, total, 1)}%`
-      ),
+      value: loading ? <StatSkeleton /> : `${getPercentage(defeats, total, 1)}%`,
     },
     {
       label: 'Av. Goals',
@@ -48,11 +45,7 @@ const Averages: React.FC<Props> = ({ stats, loading }) => {
       value: loading ? (
         <StatSkeleton />
       ) : (
-        <CustomTypography
-          bold
-          size="xs"
-          color={avDiff > 0 ? 'success' : 'error'}
-        >
+        <CustomTypography bold size="xs" color={avDiff > 0 ? 'success' : 'error'}>
           {avDiff.toFixed(2)}
         </CustomTypography>
       ),
@@ -75,11 +68,7 @@ const Averages: React.FC<Props> = ({ stats, loading }) => {
         <GridItem xs={4}>
           <CustomPieChart
             data={pieData}
-            colors={[
-              'rgb(47, 219, 145)',
-              'rgba(255, 159, 64, 1)',
-              'rgba(255, 99, 132, 1)',
-            ]}
+            colors={['rgb(47, 219, 145)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)']}
           />
         </GridItem>
         <GridItem xs={8}>

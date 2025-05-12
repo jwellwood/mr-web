@@ -23,11 +23,9 @@ const OpponentTable: React.FC = () => {
     if (showAllTeams) {
       return stats;
     }
-    return (stats as IOpponentTable[]).filter((team) => team.isActive);
+    return (stats as IOpponentTable[]).filter(team => team.isActive);
   };
-  const tableData = mapOpponentStats(
-    filteredStats() as IOpponentTable[],
-  );
+  const tableData = mapOpponentStats(filteredStats() as IOpponentTable[]);
 
   const toggleSwitch = () => {
     setShowAllTeams(!showAllTeams);

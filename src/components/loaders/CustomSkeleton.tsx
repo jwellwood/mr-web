@@ -8,12 +8,7 @@ type Props = {
   margin?: string;
 };
 
-const CustomSkeleton: React.FC<Props> = ({
-  variant = 'rounded',
-  height,
-  width,
-  margin,
-}) => {
+const CustomSkeleton: React.FC<Props> = ({ variant = 'rounded', height, width, margin }) => {
   return (
     <Skeleton
       variant={variant}

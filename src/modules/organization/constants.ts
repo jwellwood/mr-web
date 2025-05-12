@@ -1,5 +1,5 @@
 import { ISelectOptions } from '../../components/inputs/SelectInput';
-import {ICompetition, IOrganization} from "../../types";
+import { ICompetition, IOrganization } from '../../types';
 
 export const PAGES = {
   ORG: 'Organization',

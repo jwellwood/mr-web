@@ -11,12 +11,9 @@ import PlayerMatchesWithMostGoals from './PlayerMatchesWithMostGoals';
 
 const MostGoalsAndAssistsByPlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
-  const { data, loading, error } = useQuery(
-    GET_MOST_GOALS_AND_MOST_ASSISTS_BY_PLAYER,
-    {
-      variables: { teamId, playerId },
-    }
-  );
+  const { data, loading, error } = useQuery(GET_MOST_GOALS_AND_MOST_ASSISTS_BY_PLAYER, {
+    variables: { teamId, playerId },
+  });
 
   const { stats } = data || {};
   const { maxGoals = 0, maxAssists = 0 } = stats && stats[0] ? stats[0] : {};
@@ -39,11 +36,7 @@ const MostGoalsAndAssistsByPlayer: React.FC = () => {
   }
 
   return !loading ? (
-    <CustomTable
-      columns={player_most_goals_and_assists}
-      rows={rows}
-      isSortable={false}
-    />
+    <CustomTable columns={player_most_goals_and_assists} rows={rows} isSortable={false} />
   ) : (
     <Spinner />
   );

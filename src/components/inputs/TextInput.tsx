@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import FormErrorMessage from '../alerts/FormErrorMessage';
-import {FormError} from "../../types/form.ts";
+import { FormError } from '../../types/form.ts';
 
 interface Props {
   inputName?: string;
@@ -29,7 +29,6 @@ const TextInput: React.FC<Props> = ({
   disabled = false,
   placeholder,
 }) => {
-  console.log("TextInput")
   return (
     <>
       <TextField
@@ -47,7 +46,7 @@ const TextInput: React.FC<Props> = ({
         disabled={disabled}
         placeholder={placeholder}
       />
-      {errors?.[0] ? <FormErrorMessage error={ errors[0] } /> : null}
+      {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };

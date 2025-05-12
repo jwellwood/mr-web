@@ -9,17 +9,11 @@ type Props = {
 };
 
 const OrgList: React.FC<Props> = ({ orgs = [] }) => {
-  const links: IListItem[] = orgs.map((org) => {
+  const links: IListItem[] = orgs.map(org => {
     return {
       label: org.name,
       link: `/org/${org._id}`,
-      avatar: (
-        <CustomAvatar
-          imageUrl={org.badge.url}
-          alt={org.name}
-          type={IMAGE_TYPE.ORG}
-        />
-      ),
+      avatar: <CustomAvatar imageUrl={org.badge.url} alt={org.name} type={IMAGE_TYPE.ORG} />,
     };
   });
   return (

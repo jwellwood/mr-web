@@ -1,7 +1,7 @@
-import {Control, Controller, Path} from 'react-hook-form';
+import { Control, Controller, Path } from 'react-hook-form';
 import MultiSelectInput from './MultiSelectInput';
 import { ISelectOptions } from './SelectInput';
-import {FormError} from "../../types/form.ts";
+import { FormError } from '../../types/form.ts';
 
 type Props<T extends object> = {
   name: Path<T>;
@@ -43,6 +43,6 @@ function ControlledMultiSelectInput<T extends object>({
       }}
     />
   );
-};
+}
 
 export default ControlledMultiSelectInput;

@@ -12,7 +12,7 @@ class MockIntersectionObserver {
 Object.defineProperty(window, 'IntersectionObserver', {
   writable: true,
   configurable: true,
-  value: MockIntersectionObserver
+  value: MockIntersectionObserver,
 });
 
 // Add any other global mocks or setup needed for your tests

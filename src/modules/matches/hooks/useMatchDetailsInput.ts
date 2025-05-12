@@ -3,19 +3,21 @@ import { useLazyQuery } from '@apollo/client';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { ICompetition, ITeam } from '../../../types';
-import {GET_ORG, GET_TEAMS_BY_ORG} from "../../organization/graphql";
+import { GET_ORG, GET_TEAMS_BY_ORG } from '../../organization/graphql';
 export const useMatchDetailsInput = () => {
   const { orgId } = useCustomParams();
   const [opponents, setOpponents] = useState<ITeam[]>([]);
   const [competitions, setCompetitions] = useState<ICompetition[]>([]);
   const { loading: loadingSeasons, seasonOptions } = useSeasons();
-  const [
-    getTeamByOrg,
-    { data: teams, loading: teamsLoading, error: teamsError },
-  ] = useLazyQuery(GET_TEAMS_BY_ORG, { variables: { orgId } });
+  const [getTeamByOrg, { data: teams, loading: teamsLoading, error: teamsError }] = useLazyQuery(
+    GET_TEAMS_BY_ORG,
+    { variables: { orgId } }
+  );
 
-  const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] =
-    useLazyQuery(GET_ORG, { variables: { orgId } });
+  const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] = useLazyQuery(
+    GET_ORG,
+    { variables: { orgId } }
+  );
 
   useEffect(() => {
     if (orgId) {

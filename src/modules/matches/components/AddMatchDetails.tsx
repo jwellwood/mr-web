@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { ICompetition, ITeam, ITempMatch } from '../../../types';import { setTempMatch } from '../actions/matches.actions';
+import { ICompetition, ITeam, ITempMatch } from '../../../types';
+import { setTempMatch } from '../actions/matches.actions';
 import { emptySelectOption } from '../constants';
 import AddMatchDetailsForm from '../forms/AddMatchDetailsForm';
-import {AppDispatch} from "../../../store/store.ts";
-import {getTempMatch} from "../../../store/features/matches/matchesSelector.ts";
+import { AppDispatch } from '../../../store/store.ts';
+import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 
 type Props = {
   onNextClick: () => void;
@@ -29,7 +30,7 @@ const AddMatchDetails: React.FC<Props> = ({
   const opponentOptions: ISelectOptions[] = useMemo(
     () => [
       emptySelectOption,
-      ...opponents.map((opponent) => ({
+      ...opponents.map(opponent => ({
         label: opponent.teamName,
         value: opponent._id as string,
         disabled: opponent._id === teamId,
@@ -41,7 +42,7 @@ const AddMatchDetails: React.FC<Props> = ({
   const competitionOptions: ISelectOptions[] = useMemo(
     () => [
       emptySelectOption,
-      ...competitions.map((competition) => ({
+      ...competitions.map(competition => ({
         label: competition.name,
         value: competition._id as string,
       })),
@@ -49,16 +50,11 @@ const AddMatchDetails: React.FC<Props> = ({
     [competitions]
   );
 
-  const formattedSeasonOptions: ISelectOptions[] = [
-    emptySelectOption,
-    ...seasonOptions,
-  ];
+  const formattedSeasonOptions: ISelectOptions[] = [emptySelectOption, ...seasonOptions];
 
   const onSubmit = (formData: Partial<ITempMatch>) => {
     const team = opponents.find((opp: ITeam) => opp._id === teamId);
-    const opponent = opponents.find(
-      (opp: ITeam) => opp._id === formData.opponentId
-    );
+    const opponent = opponents.find((opp: ITeam) => opp._id === formData.opponentId);
     const competition = competitions.find(
       (comp: ICompetition) => comp._id === formData.competitionId
     );

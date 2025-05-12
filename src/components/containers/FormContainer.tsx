@@ -1,4 +1,4 @@
-import React, {FormEvent} from 'react';
+import React, { FormEvent } from 'react';
 import Container from '@mui/material/Container';
 import { CustomButton, SubmitButton } from '../buttons';
 import SectionContainer from './SectionContainer';
@@ -23,12 +23,7 @@ const FormContainer: React.FC<Props> = ({
       <form onSubmit={onSubmit}>
         <SectionContainer>{children}</SectionContainer>
         {nonAbsoluteSubmit ? (
-          <CustomButton
-            type="submit"
-            variant="contained"
-            disabled={disabled}
-            fullWidth
-          >
+          <CustomButton type="submit" variant="contained" disabled={disabled} fullWidth>
             {text}
           </CustomButton>
         ) : (

@@ -5,7 +5,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   buttonComponent: ReactNode;
@@ -13,11 +13,7 @@ interface Props {
   disabled?: boolean;
 }
 
-const RedirectModal: React.FC<Props> = ({
-  buttonComponent,
-  link,
-  disabled,
-}) => {
+const RedirectModal: React.FC<Props> = ({ buttonComponent, link, disabled }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -35,7 +31,7 @@ const RedirectModal: React.FC<Props> = ({
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby='form-dialog-title'
+        aria-labelledby="form-dialog-title"
         PaperProps={{
           style: {
             background: 'rgba(0,0,0,0.9)',
@@ -43,18 +39,18 @@ const RedirectModal: React.FC<Props> = ({
           },
         }}
       >
-        <DialogTitle id='form-dialog-title'>Redirect</DialogTitle>
+        <DialogTitle id="form-dialog-title">Redirect</DialogTitle>
         <DialogContent>
           <DialogContentText>
             {`You will be redirected to ${link}. Do you want to continue?`}
           </DialogContentText>
 
           <DialogActions>
-            <Button onClick={handleClose} color='secondary'>
+            <Button onClick={handleClose} color="secondary">
               Cancel
             </Button>
-            <Link target='_blank' href={link} rel='noopener'>
-              <Button color='primary' disabled={disabled}>
+            <Link target="_blank" href={link} rel="noopener">
+              <Button color="primary" disabled={disabled}>
                 Yes
               </Button>
             </Link>

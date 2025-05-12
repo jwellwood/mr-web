@@ -50,7 +50,7 @@ const Matches: React.FC = () => {
       variables: {
         offset: data?.matches.length,
       },
-    }).then((res) => {
+    }).then(res => {
       if (res.data.matches.length < LIMIT) {
         setShowLoadMore(false);
       }

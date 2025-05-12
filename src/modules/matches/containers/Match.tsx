@@ -13,9 +13,9 @@ import MatchPlayersTable from '../components/MatchPlayersTable';
 import { PAGES } from '../constants';
 import { GET_MATCH_BY_ID } from '../graphql';
 import HeadToHead from './HeadToHead';
-import {useAuth} from "../../../hooks";
-import {ITeam} from "../../../types";
-import RouteGuard from "../../../router/RouteGuard.tsx";
+import { useAuth } from '../../../hooks';
+import { ITeam } from '../../../types';
+import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const Match: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
@@ -43,9 +43,7 @@ const Match: React.FC = () => {
     {
       label: 'Players',
       component: data?.match?.isForfeit ? (
-        <CustomTypography color="warning">
-          This match was forfeited
-        </CustomTypography>
+        <CustomTypography color="warning">This match was forfeited</CustomTypography>
       ) : (
         <MatchPlayersTable match={data?.match} />
       ),
@@ -58,8 +56,8 @@ const Match: React.FC = () => {
 
   if (error) return <ErrorGraphql error={error} />;
 
-  if(!data?.match) {
-    return null
+  if (!data?.match) {
+    return null;
   }
 
   return (
@@ -71,11 +69,7 @@ const Match: React.FC = () => {
         {!loading ? (
           <>
             <MatchDetails match={data?.match} />
-            <CustomTabs
-              type={TAB_TYPES.MATCHES}
-              tabs={tabs}
-              level="secondary"
-            />
+            <CustomTabs type={TAB_TYPES.MATCHES} tabs={tabs} level="secondary" />
           </>
         ) : (
           <Spinner />

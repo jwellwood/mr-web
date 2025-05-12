@@ -11,11 +11,11 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {AuthRoles} from "../../../constants.ts";
-import {CustomTypography, PageHeader} from "../../../components/typography";
-import {DeleteModal} from "../../../components/modals";
-import {Spinner} from "../../../components/loaders";
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { AuthRoles } from '../../../constants.ts';
+import { CustomTypography, PageHeader } from '../../../components/typography';
+import { DeleteModal } from '../../../components/modals';
+import { Spinner } from '../../../components/loaders';
 
 const DeleteMatch: React.FC = () => {
   const { seasonId } = useSeasons();
@@ -47,23 +47,19 @@ const DeleteMatch: React.FC = () => {
       .then(() => {
         navigate(-2);
         dispatch(
-            showAlert(
-                {
-                  text: 'Match deleted',
-                  type: 'success'
-                }
-            )
-        )
+          showAlert({
+            text: 'Match deleted',
+            type: 'success',
+          })
+        );
       })
-      .catch((err) => {
+      .catch(err => {
         dispatch(
-            showAlert(
-                {
-                  text: err,
-                  type: 'error'
-                }
-            )
-        )
+          showAlert({
+            text: err,
+            type: 'error',
+          })
+        );
       });
   };
 
@@ -76,11 +72,7 @@ const DeleteMatch: React.FC = () => {
           <CustomTypography color="warning">
             This will remove the match and all associated stats
           </CustomTypography>
-          <DeleteModal
-            title="Match"
-            loading={loading}
-            onDelete={onDeleteMatch}
-          />
+          <DeleteModal title="Match" loading={loading} onDelete={onDeleteMatch} />
         </>
       ) : (
         <Spinner />

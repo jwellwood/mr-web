@@ -15,9 +15,9 @@ import { IPlayer } from '../../../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
-import {AuthRoles} from "../../../constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { AuthRoles } from '../../../constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const AddPlayer: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -29,9 +29,7 @@ const AddPlayer: React.FC = () => {
   const [defaultValues, setDefaultValues] = useState<Partial<IPlayer>>({});
 
   const [addPlayer, { error, loading: addLoading }] = useMutation(ADD_PLAYER, {
-    refetchQueries: [
-      { query: GET_PLAYERS_BY_SEASON_ID, variables: { teamId, seasonId } },
-    ],
+    refetchQueries: [{ query: GET_PLAYERS_BY_SEASON_ID, variables: { teamId, seasonId } }],
   });
 
   useEffect(() => {
@@ -39,15 +37,13 @@ const AddPlayer: React.FC = () => {
   }, []);
   const onSubmit = async (formData: Partial<IPlayer>) => {
     try {
-      return addPlayer({ variables: { teamId: teamId, ...formData } }).then(
-        () => {
-          dispatch(showAlert({text: 'Player added successfully!', type: 'success'}))
-          navigate(-1);
-        }
-      );
+      return addPlayer({ variables: { teamId: teamId, ...formData } }).then(() => {
+        dispatch(showAlert({ text: 'Player added successfully!', type: 'success' }));
+        navigate(-1);
+      });
     } catch (error) {
-      console.error("Couldn't add player: ", error)
-      dispatch(showAlert({text: 'Something went wrong', type: 'error'}))
+      console.error("Couldn't add player: ", error);
+      dispatch(showAlert({ text: 'Something went wrong', type: 'error' }));
     }
   };
 

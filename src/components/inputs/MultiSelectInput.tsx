@@ -8,7 +8,7 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormErrorMessage from '../alerts/FormErrorMessage';
 import { ISelectOptions } from './SelectInput';
-import {FormError} from "../../types/form.ts";
+import { FormError } from '../../types/form.ts';
 
 interface Props {
   options: ISelectOptions[];
@@ -16,7 +16,7 @@ interface Props {
   label: string;
   onChange: (event: SelectChangeEvent<string>) => void;
   showLabels?: boolean;
-  errors: FormError[]
+  errors: FormError[];
 }
 
 const MultipleSelectInput: React.FC<Props> = ({
@@ -29,12 +29,8 @@ const MultipleSelectInput: React.FC<Props> = ({
 }) => {
   const renderValue = (selected: string) => {
     if (showLabels) {
-      const label = options.filter((option) =>
-        selected.includes(option.value as string)
-      );
-      return label.map(
-        (item, i) => `${item.label}${i !== label.length - 1 ? ', ' : ''}`
-      );
+      const label = options.filter(option => selected.includes(option.value as string));
+      return label.map((item, i) => `${item.label}${i !== label.length - 1 ? ', ' : ''}`);
     }
     return `${selected.length} ${label}`;
   };
@@ -49,9 +45,9 @@ const MultipleSelectInput: React.FC<Props> = ({
           value={value}
           onChange={onChange}
           input={<OutlinedInput label={label} />}
-          renderValue={(selected) => renderValue(selected)}
+          renderValue={selected => renderValue(selected)}
         >
-          {options?.map((option) => (
+          {options?.map(option => (
             <MenuItem key={option.label} value={option.value as string}>
               <Checkbox checked={value.indexOf(option.value as string) > -1} />
               <ListItemText primary={option.label} />

@@ -1,12 +1,8 @@
-export function sortArr<T>(
-  arr: T[],
-  stat: keyof T
-): T[] {
+export function sortArr<T>(arr: T[], stat: keyof T): T[] {
   return [...arr].sort((a, b) => {
-      const aVal = Number(a[stat])
-      const bVal = Number(b[stat])
+    const aVal = Number(a[stat]);
+    const bVal = Number(b[stat]);
 
-      return aVal - bVal
-
+    return aVal - bVal;
   });
 }

@@ -8,12 +8,12 @@ import ForgotPasswordForm from '../forms/ForgotPassword.form';
 import { FORGOT_PASSWORD } from '../graphql';
 import { IForgotPasswordForm } from '../types';
 import { AppDispatch } from '../../../store/store';
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { AUTH } from '../../../router/paths.ts';
-import {AuthRoles} from "../../../constants.ts";
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { AuthRoles } from '../../../constants.ts';
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const ForgotPasswordContainer: React.FC = () => {
   const [forgotPassword, { loading }] = useMutation(FORGOT_PASSWORD);
@@ -25,15 +25,14 @@ const ForgotPasswordContainer: React.FC = () => {
       .then(({ data }) => {
         dispatch(
           showAlert({
-
             text: `Password reset email sent to ${data?.user?.email}`,
-            type: 'success'
-              })
+            type: 'success',
+          })
         );
         navigate(AUTH.SIGN_IN);
       })
-      .catch((err) => {
-        dispatch(showAlert({text: err.message, type: 'error'}));
+      .catch(err => {
+        dispatch(showAlert({ text: err.message, type: 'error' }));
       });
   };
 
@@ -41,10 +40,7 @@ const ForgotPasswordContainer: React.FC = () => {
     <RouteGuard authorization={AuthRoles.NONE}>
       <PageHeader title={FORGOT_PASSWORD_PAGE} />
       {!loading ? (
-        <ForgotPasswordForm
-          defaultValues={forgotPasswordFormState}
-          onSubmit={onSubmit}
-        />
+        <ForgotPasswordForm defaultValues={forgotPasswordFormState} onSubmit={onSubmit} />
       ) : (
         <Spinner />
       )}

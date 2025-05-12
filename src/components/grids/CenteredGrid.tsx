@@ -4,12 +4,7 @@ import Grid, { GridDirection, GridSpacing } from '@mui/material/Grid';
 interface Props {
   children: React.ReactNode;
   dir?: GridDirection;
-  just?:
-    | 'center'
-    | 'flex-start'
-    | 'flex-end'
-    | 'space-evenly'
-    | 'space-between';
+  just?: 'center' | 'flex-start' | 'flex-end' | 'space-evenly' | 'space-between';
   cont?: 'center' | 'flex-start' | 'flex-end';
   item?: 'center' | 'flex-start' | 'flex-end' | 'stretch';
   spacing?: GridSpacing;

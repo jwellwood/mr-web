@@ -10,8 +10,8 @@ import SwitchList from '../../../components/common/SwitchList';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import ControlledColorInput from "../../../components/inputs/ControlledColorInput.tsx";
-import {ISelectOptions} from "../../../components/inputs/SelectInput.tsx";
+import ControlledColorInput from '../../../components/inputs/ControlledColorInput.tsx';
+import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
 
 interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
@@ -19,11 +19,7 @@ interface Props {
   countryOptions: ISelectOptions[];
 }
 
-const UpdateTeamDetailsForm: React.FC<Props> = ({
-  onSubmit,
-  defaultValues,
-  countryOptions,
-}) => {
+const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) => {
   const {
     handleSubmit,
     formState: { errors },

@@ -1,11 +1,4 @@
-import {
-  green,
-  blueGrey,
-  teal,
-  pink,
-  yellow,
-  amber,
-} from '@mui/material/colors';
+import { green, blueGrey, teal, pink, yellow, amber } from '@mui/material/colors';
 import { createTheme } from '@mui/material/styles';
 
 const main = blueGrey[900];

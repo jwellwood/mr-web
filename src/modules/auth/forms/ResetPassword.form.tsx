@@ -22,8 +22,7 @@ const ResetPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
 
   const passwordInput = watch('password');
   const confirmPasswordInput = watch('confirmPassword');
-  const isMatch =
-    passwordInput.length > 1 && passwordInput === confirmPasswordInput;
+  const isMatch = passwordInput.length > 1 && passwordInput === confirmPasswordInput;
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={!isMatch}>

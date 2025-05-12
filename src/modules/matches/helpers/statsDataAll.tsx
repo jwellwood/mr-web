@@ -3,35 +3,35 @@ import StatIcon from '../../../components/icons/StatIcon';
 import { CustomTypography } from '../../../components/typography';
 import { IPlayerInMatch } from '../../../types';
 import AddStats from '../containers/AddStats';
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 
 export const statsDataAll = (
   currentPlayers?: Partial<IPlayerInMatch[]>,
   isForm?: boolean
 ): {
-    name: {
-        value: ReactNode
-    }
-    isStarter: {
-        value: ReactNode
-    }
-    matchPosition: string
-    goals: string | number
-    assists: string | number
-    mvp: string | number
-    pensScored: string | number
-    pensMissed: string | number
-    ownGoals: string | number
-    conceded: string | number
-    pensSaved: string | number
-    cleanSheet: string | number
-    yellowCards: string | number
-    redCard: string | number
-    minutes: string | number
+  name: {
+    value: ReactNode;
+  };
+  isStarter: {
+    value: ReactNode;
+  };
+  matchPosition: string;
+  goals: string | number;
+  assists: string | number;
+  mvp: string | number;
+  pensScored: string | number;
+  pensMissed: string | number;
+  ownGoals: string | number;
+  conceded: string | number;
+  pensSaved: string | number;
+  cleanSheet: string | number;
+  yellowCards: string | number;
+  redCard: string | number;
+  minutes: string | number;
 }[] => {
-    const players = currentPlayers?.filter(cp => cp !== undefined) || []
+  const players = currentPlayers?.filter(cp => cp !== undefined) || [];
 
-  return players.map((player) => {
+  return players.map(player => {
     const {
       name,
       isStarter,
@@ -88,4 +88,4 @@ export const statsDataAll = (
       minutes: minutes || '',
     };
   });
-}
+};

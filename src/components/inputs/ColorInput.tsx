@@ -7,7 +7,7 @@ interface Props {
   defaultValue?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
-  errors?: {type: string}[]; // TODO
+  errors?: { type: string }[]; // TODO
   isPassword?: boolean;
   isEmail?: boolean;
   multiline?: boolean;

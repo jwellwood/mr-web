@@ -32,11 +32,7 @@ const AllTimeSquadStats: React.FC = () => {
         <CustomTypography color="warning">No players yet</CustomTypography>
       ) : (
         <>
-          <PlayersByNumbers
-            players={data?.stats || []}
-            loading={loading}
-            showAge={false}
-          />
+          <PlayersByNumbers players={data?.stats || []} loading={loading} showAge={false} />
           <CustomTable
             columns={squad_detailed_stats}
             rows={rows || []}

@@ -9,7 +9,7 @@ import { TfiMenu } from 'react-icons/tfi';
 import * as icons from '.';
 import { IIconType } from './types';
 import { getIconColor } from './utils/getIconColor';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   icon: IIconType;
@@ -18,11 +18,7 @@ interface Props {
   bold?: boolean;
 }
 
-const NavIcon: React.FC<Props> = ({
-  icon,
-  size = '1rem',
-  color = theme.palette.primary.main,
-}) => {
+const NavIcon: React.FC<Props> = ({ icon, size = '1rem', color = theme.palette.primary.main }) => {
   const iconColor = getIconColor(color);
 
   switch (icon) {

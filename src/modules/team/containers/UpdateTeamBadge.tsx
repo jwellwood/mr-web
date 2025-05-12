@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
-import {ApolloError, useMutation, useQuery} from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { PAGES } from '../constants';
 import { GET_TEAM, EDIT_TEAM_BADGE } from '../graphql';
-import {useCustomParams} from "../../../hooks/useCustomParams";
-import {useUpload} from "../../../modules/images/hooks";
-import {removeTeamBadge, uploadTeamBadge} from "../../../modules/images/services";
-import ErrorGraphql from "../../../errors/ErrorGraphql";
-import RouteGuard from "../../../router/RouteGuard";
-import {AUTH_ROLES} from "../../../app/constants";
-import {PageHeader} from "../../../components/typography";
-import ImageForm from "../../../components/common/ImageForm";
-import {Spinner} from "../../../components/loaders";
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useUpload } from '../../../modules/images/hooks';
+import { removeTeamBadge, uploadTeamBadge } from '../../../modules/images/services';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
+import RouteGuard from '../../../router/RouteGuard';
+import { AUTH_ROLES } from '../../../app/constants';
+import { PageHeader } from '../../../components/typography';
+import ImageForm from '../../../components/common/ImageForm';
+import { Spinner } from '../../../components/loaders';
 
 const UpdateTeamBadge: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -24,8 +24,9 @@ const UpdateTeamBadge: React.FC = () => {
     variables: { teamId },
     notifyOnNetworkStatusChange: true,
   });
-  const [editTeamBadge, { loading: editLoading, error: editError }] =
-    useMutation(EDIT_TEAM_BADGE, { variables: { teamId } });
+  const [editTeamBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_TEAM_BADGE, {
+    variables: { teamId },
+  });
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadTeamBadge,
     removeFunc: removeTeamBadge,
@@ -48,7 +49,7 @@ const UpdateTeamBadge: React.FC = () => {
   }
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN} >
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_BADGE} />
       {!loadingState && imageUrl ? (
         <ImageForm

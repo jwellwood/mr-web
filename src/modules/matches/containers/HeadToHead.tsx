@@ -24,21 +24,11 @@ const HeadToHead: React.FC<Props> = ({ opponentId }) => {
     if (data?.matches) {
       const { matches } = data;
       const total = matches.length;
-      const wins = matches.filter(
-        (match) => match.teamGoals > match.opponentGoals
-      ).length;
-      const draws = matches.filter(
-        (match) => match.teamGoals === match.opponentGoals
-      ).length;
-      const defeats = matches.filter(
-        (match) => match.teamGoals < match.opponentGoals
-      ).length;
-      const scored = matches
-        .map((match) => match.teamGoals)
-        .reduce((a, b) => a + b, 0);
-      const conceded = matches
-        .map((match) => match.opponentGoals)
-        .reduce((a, b) => a + b, 0);
+      const wins = matches.filter(match => match.teamGoals > match.opponentGoals).length;
+      const draws = matches.filter(match => match.teamGoals === match.opponentGoals).length;
+      const defeats = matches.filter(match => match.teamGoals < match.opponentGoals).length;
+      const scored = matches.map(match => match.teamGoals).reduce((a, b) => a + b, 0);
+      const conceded = matches.map(match => match.opponentGoals).reduce((a, b) => a + b, 0);
       const difference = scored - conceded;
       return {
         total,
@@ -66,15 +56,8 @@ const HeadToHead: React.FC<Props> = ({ opponentId }) => {
     <SectionContainer>
       {!loading ? (
         <SectionContainer>
-          <MatchStatsTable
-            stats={mapMatchStats() as IMatchStats}
-            loading={loading}
-          />
-          {getMatchListData && getMatchListData.length > 0 && (
-            <LinksList
-              links={matchListData}
-            />
-          )}
+          <MatchStatsTable stats={mapMatchStats() as IMatchStats} loading={loading} />
+          {getMatchListData && getMatchListData.length > 0 && <LinksList links={matchListData} />}
         </SectionContainer>
       ) : (
         <Spinner />

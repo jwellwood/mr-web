@@ -1,14 +1,14 @@
-import React, {ReactElement, SyntheticEvent} from 'react';
+import React, { ReactElement, SyntheticEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import TabPanel from './TabPanel';
-import {AppDispatch} from "../../store/store.ts";
-import {getTabIndex} from "../../store/features/tabs/tabsSelector.ts";
-import {setTabIndex, TabIndex} from "../../store/features/tabs/tabsSlice.ts";
-import {theme} from "../../theme";
+import { AppDispatch } from '../../store/store.ts';
+import { getTabIndex } from '../../store/features/tabs/tabsSelector.ts';
+import { setTabIndex, TabIndex } from '../../store/features/tabs/tabsSlice.ts';
+import { theme } from '../../theme';
 
 export interface ITab {
   label: string | ReactElement;
@@ -26,7 +26,7 @@ interface TabProps {
 const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
   const dispatch: AppDispatch = useDispatch();
   const value = useSelector(getTabIndex);
-  const tabsToShow = tabs.filter((tab) => !tab.isHidden);
+  const tabsToShow = tabs.filter(tab => !tab.isHidden);
   const isPrimary = level === 'primary';
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
     dispatch(setTabIndex(newValue));
@@ -69,27 +69,27 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
     icon?: string | ReactElement;
   }
 
-  const StyledTab = styled((props: StyledTabProps) => (
-    <Tab disableRipple {...props} />
-  ))(({ theme }) => ({
-    textTransform: 'none',
-    fontWeight: 'bold',
-    fontSize: '12px',
-    marginRight: theme.spacing(1),
-    color: 'rgba(255, 255, 255, 0.7)',
-    '&.Mui-selected': {
-      color: '#fff',
-      fontSize: '14px',
-    },
-    '&.MuiTab-fullWidth': {
-      padding: '0px',
-      marginRight: '0px',
-    },
-    '&.MuiTab-root': {
-      padding: '0px',
-      marginRight: '0px',
-    },
-  }));
+  const StyledTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} />)(
+    ({ theme }) => ({
+      textTransform: 'none',
+      fontWeight: 'bold',
+      fontSize: '12px',
+      marginRight: theme.spacing(1),
+      color: 'rgba(255, 255, 255, 0.7)',
+      '&.Mui-selected': {
+        color: '#fff',
+        fontSize: '14px',
+      },
+      '&.MuiTab-fullWidth': {
+        padding: '0px',
+        marginRight: '0px',
+      },
+      '&.MuiTab-root': {
+        padding: '0px',
+        marginRight: '0px',
+      },
+    })
+  );
 
   return (
     <>
@@ -99,9 +99,7 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
           elevation={10}
           sx={{
             marginBottom: '4px',
-            background: isPrimary
-              ? theme.palette.dark.main
-              : theme.palette.secondary.dark,
+            background: isPrimary ? theme.palette.dark.main : theme.palette.secondary.dark,
           }}
         >
           <StyledTabs value={value[type]} onChange={handleChange}>

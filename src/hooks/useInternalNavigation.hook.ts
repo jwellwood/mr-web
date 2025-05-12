@@ -10,8 +10,7 @@ export const useInternalNavigation = () => {
 
   const navValues = [HOME.HOME, PROFILE.PROFILE];
 
-  if (!navValues.filter((value) => pathname === value).length)
-    pathname = 'Home';
+  if (!navValues.filter(value => pathname === value).length) pathname = 'Home';
 
   useEffect(() => {
     setValue(pathname);

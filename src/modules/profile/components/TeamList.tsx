@@ -9,15 +9,13 @@ type Props = {
 };
 
 const TeamList: React.FC<Props> = ({ teams = [] }) => {
-  const links = teams.map((team) => {
+  const links = teams.map(team => {
     const { teamName, teamBadge, _id, orgId } = team;
 
     return {
       label: teamName,
       link: `/org/${orgId?._id}/team/${_id}`,
-      avatar: (
-        <CustomAvatar imageUrl={teamBadge?.url} type={IMAGE_TYPE.TEAM} isList />
-      ),
+      avatar: <CustomAvatar imageUrl={teamBadge?.url} type={IMAGE_TYPE.TEAM} isList />,
     };
   });
   return (

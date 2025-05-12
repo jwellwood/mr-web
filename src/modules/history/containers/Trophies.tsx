@@ -19,14 +19,11 @@ const Trophies: React.FC = () => {
     variables: { teamId },
   });
 
-  const { loading: totalsLoading, data: totals } = useQuery(
-    GET_TROPHIES_TOTALS,
-    {
-      variables: { teamId },
-    }
-  );
+  const { loading: totalsLoading, data: totals } = useQuery(GET_TROPHIES_TOTALS, {
+    variables: { teamId },
+  });
 
-  const trophies: IListItem[] = (data?.trophies || []).map((trophy) => ({
+  const trophies: IListItem[] = (data?.trophies || []).map(trophy => ({
     icon: (
       <AppIcon
         size="1.5rem"

@@ -19,7 +19,7 @@ export const AUTH_ROLES = {
   SITE_ADMIN: 'site_admin',
 } as const;
 
-export type TAuthRoles = typeof AUTH_ROLES[keyof typeof AUTH_ROLES];
+export type TAuthRoles = (typeof AUTH_ROLES)[keyof typeof AUTH_ROLES];
 
 export const IMAGE_TYPE = {
   USER: 'user',
@@ -27,7 +27,7 @@ export const IMAGE_TYPE = {
   ORG: 'org',
 } as const;
 
-export type TImageType = typeof IMAGE_TYPE[keyof typeof IMAGE_TYPE];
+export type TImageType = (typeof IMAGE_TYPE)[keyof typeof IMAGE_TYPE];
 
 export const LINK_TYPE = {
   ADD: 'add',
@@ -35,7 +35,7 @@ export const LINK_TYPE = {
   DELETE: 'delete',
 } as const;
 
-export type TLinkType = typeof LINK_TYPE[keyof typeof LINK_TYPE];
+export type TLinkType = (typeof LINK_TYPE)[keyof typeof LINK_TYPE];
 
 export const API_PATH = {
   USER: '/api/users',
@@ -43,7 +43,7 @@ export const API_PATH = {
   PUBLIC: '/api/public',
 } as const;
 
-export type TApiPath = typeof API_PATH[keyof typeof API_PATH];
+export type TApiPath = (typeof API_PATH)[keyof typeof API_PATH];
 
 export const positionOptions = [
   { value: '', label: '' },
@@ -67,7 +67,7 @@ export const TAB_TYPES = {
   SEASON: 'season',
 } as const;
 
-export type TTabType = typeof TAB_TYPES[keyof typeof TAB_TYPES];
+export type TTabType = (typeof TAB_TYPES)[keyof typeof TAB_TYPES];
 
 export const BORDER_STYLE = {
   STANDARD: 'standard' as const,

@@ -3,7 +3,7 @@ import Divider from '@mui/material/Divider';
 import { BackButton } from '../buttons';
 import SideDrawer from '../navigation/SideDrawer';
 import CustomTypography from './CustomTypography';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   title: string;
@@ -35,9 +35,7 @@ const PageHeader: React.FC<Props> = ({ title, backButton = true }) => {
         <SideDrawer />
       </div>
 
-      <Divider
-        sx={{ background: theme.palette.label.main, marginBottom: '10px' }}
-      />
+      <Divider sx={{ background: theme.palette.label.main, marginBottom: '10px' }} />
     </>
   );
 };

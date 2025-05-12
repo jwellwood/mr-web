@@ -7,7 +7,7 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { GET_MATCH_STATS_MOST } from '../graphql/matchStats.graphql';
 import { mostMatchListData } from '../helpers/mostMatchListData';
-import {theme} from "../../../theme";
+import { theme } from '../../../theme';
 
 const MatchRecords: React.FC = () => {
   const { orgId, teamId } = useCustomParams();
@@ -30,22 +30,16 @@ const MatchRecords: React.FC = () => {
 
   return (
     <SectionContainer>
-      {(data?.stats && !data?.stats.maxDiff) ||
-      (data?.stats && !data?.stats?.minDiff) ? (
+      {(data?.stats && !data?.stats.maxDiff) || (data?.stats && !data?.stats?.minDiff) ? (
         <CustomTypography color="warning">No matches yet</CustomTypography>
       ) : (
-        listData.map((item) => {
+        listData.map(item => {
           return (
-            <SectionContainer
-              key={item.title}
-              background={theme.palette.dark.main}
-            >
+            <SectionContainer key={item.title} background={theme.palette.dark.main}>
               <CustomTypography color="label" bold size="xs">
                 {item.title}
               </CustomTypography>
-              <LinksList
-                links={mostMatchListData(item.stat || [], orgId, teamId, loading)}
-              />
+              <LinksList links={mostMatchListData(item.stat || [], orgId, teamId, loading)} />
             </SectionContainer>
           );
         })

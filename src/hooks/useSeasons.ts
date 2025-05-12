@@ -2,8 +2,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useCustomParams } from './useCustomParams.tsx';
-import {GET_TEAM_SEASONS} from "../modules/history/graphql/getTeamSeasons.graphql.ts";
-import {ISelectOptions} from "../components/inputs/SelectInput.tsx";
+import { GET_TEAM_SEASONS } from '../modules/history/graphql/getTeamSeasons.graphql.ts';
+import { ISelectOptions } from '../components/inputs/SelectInput.tsx';
 
 export const useSeasons = () => {
   const [seasonToUse, setSeasonToUse] = useState('');
@@ -18,7 +18,7 @@ export const useSeasons = () => {
   const seasonOptions: ISelectOptions[] = [];
 
   if (data && data.seasons.length) {
-    data.seasons.forEach((season) => {
+    data.seasons.forEach(season => {
       let label = season.name;
       const value = season._id;
       if (season._id === data.seasons[0]._id) {
@@ -50,8 +50,7 @@ export const useSeasons = () => {
   );
 
   const seasonEndDate =
-    data?.seasons?.find((season) => season._id === seasonToUse)?.yearEnded ||
-    null;
+    data?.seasons?.find(season => season._id === seasonToUse)?.yearEnded || null;
 
   return {
     seasonId: seasonToUse,

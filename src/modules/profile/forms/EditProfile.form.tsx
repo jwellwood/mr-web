@@ -1,13 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { IEditProfileForm } from '../types';
-import {useNationality} from "../../../hooks";
+import { useNationality } from '../../../hooks';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
-import ControlledTextInput from "../../../components/inputs/ControlledTextInput.tsx";
-import ControlledDateInput from "../../../components/inputs/ControlledDateInput.tsx";
-import ControlledSelectInput
-    from "../../../components/inputs/ControlledSelectInput.tsx";
+import ControlledTextInput from '../../../components/inputs/ControlledTextInput.tsx';
+import ControlledDateInput from '../../../components/inputs/ControlledDateInput.tsx';
+import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput.tsx';
 
 interface Props {
   onSubmit: (event: IEditProfileForm) => Promise<void> | void;
@@ -51,7 +50,7 @@ const EditProfileForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
           name="dateOfBirth"
           label="Date of Birth"
           view="year"
-          errors={errors.dateOfBirth ?  [errors.dateOfBirth] : []}
+          errors={errors.dateOfBirth ? [errors.dateOfBirth] : []}
         />
         <ControlledSelectInput
           control={control}

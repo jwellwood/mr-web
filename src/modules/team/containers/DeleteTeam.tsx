@@ -13,7 +13,7 @@ import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
 import DeleteTeamForm from '../forms/DeleteTeamForm';
 import { DELETE_TEAM, GET_TEAM } from '../graphql';
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 
 const DeleteTeam: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -30,11 +30,11 @@ const DeleteTeam: React.FC = () => {
     return deleteTeam({ variables: { teamId } })
       .then(() => {
         refetch();
-        dispatch(showAlert({text: 'Team deleted', type: 'success'}));
+        dispatch(showAlert({ text: 'Team deleted', type: 'success' }));
         navigate(PROFILE.PROFILE);
       })
       .catch(() => {
-        dispatch(showAlert({text: 'Something went wrong', type: 'error'}));
+        dispatch(showAlert({ text: 'Something went wrong', type: 'error' }));
       });
   };
 

@@ -2,9 +2,9 @@ import React, { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { AUTH, PROFILE } from './paths';
-import {useAuth} from "../hooks";
-import {AUTH_ROLES, TAuthRoles} from "../app/constants.ts";
-import {showAlert} from "../store/features/alerts/alertsSlice.ts";
+import { useAuth } from '../hooks';
+import { AUTH_ROLES, TAuthRoles } from '../app/constants.ts';
+import { showAlert } from '../store/features/alerts/alertsSlice.ts';
 
 interface Props {
   children: ReactNode;
@@ -13,24 +13,10 @@ interface Props {
   orgId?: string;
 }
 
-const RouteGuard: React.FC<Props> = ({
-  children,
-  authorization,
-  teamId,
-  orgId,
-}) => {
-  console.log("RouteGuard", { authorization, teamId, orgId})
+const RouteGuard: React.FC<Props> = ({ children, authorization, teamId, orgId }) => {
   const dispatch = useDispatch();
   const { isTeamAdmin, isSiteAdmin, isTeamAuth, isAuth } = useAuth(teamId);
   const { isOrgAuth } = useAuth(orgId);
-
-  console.log({
-    isTeamAdmin,
-    isSiteAdmin,
-    isTeamAuth,
-    isAuth,
-    isOrgAuth,
-  })
 
   if (authorization === AUTH_ROLES.USER && !isAuth) {
     return <Navigate to={AUTH.SIGN_IN} replace />;
@@ -55,8 +41,7 @@ const RouteGuard: React.FC<Props> = ({
     dispatch(showAlert({ text: 'Only admin users can access this page!', type: 'info' }));
     return <Navigate to={PROFILE.PROFILE} replace />;
   }
-  if (isAuth && authorization === 'none')
-    return <Navigate to={PROFILE.PROFILE} replace />;
+  if (isAuth && authorization === 'none') return <Navigate to={PROFILE.PROFILE} replace />;
   return <>{children}</>;
 };
 

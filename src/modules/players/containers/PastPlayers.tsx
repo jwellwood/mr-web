@@ -20,11 +20,7 @@ const PastPlayers: React.FC = () => {
         <CustomTypography color="warning">No past players yet</CustomTypography>
       ) : (
         <>
-          <PlayersByNumbers
-            players={data?.players || []}
-            showAge={false}
-            loading={loading}
-          />
+          <PlayersByNumbers players={data?.players || []} showAge={false} loading={loading} />
           <PastPlayersTable players={data?.players || []} />
         </>
       )}

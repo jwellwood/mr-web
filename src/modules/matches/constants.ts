@@ -1,5 +1,5 @@
-import {IMatch, IPlayerInMatch} from "../../types";
-import {POSITIONS} from "../players/constants.ts";
+import { IMatch, IPlayerInMatch } from '../../types';
+import { POSITIONS } from '../players/constants.ts';
 export const PAGES = {
   MATCH: 'Match',
   ADD_MATCH: 'Add Match',
@@ -18,7 +18,7 @@ export const initialMatchState = {
   leaguePosition: 1,
   cupRound: '',
   matchPlayers: [],
-} as const  satisfies Partial<IMatch>
+} as const satisfies Partial<IMatch>;
 
 export const initPlayerInMatch = {
   name: '',
@@ -37,11 +37,11 @@ export const initPlayerInMatch = {
   mvp: false,
   yellowCards: 0,
   redCard: false,
-} as const satisfies Omit<IPlayerInMatch, "matchId" | "playerId">;
+} as const satisfies Omit<IPlayerInMatch, 'matchId' | 'playerId'>;
 
 export const emptySelectOption = { label: '', value: '' } as const;
 
-export const cupRoundOptions= [
+export const cupRoundOptions = [
   { label: '', value: '' },
   { label: 'Group', value: 'Group' },
   { label: '1', value: 1 },

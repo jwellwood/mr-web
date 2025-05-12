@@ -1,15 +1,7 @@
 import { useParams } from 'react-router-dom';
 
 export const useCustomParams = () => {
-  const {
-    orgId,
-    teamId,
-    matchId,
-    playerId,
-    seasonId,
-    trophyId,
-    competitionId,
-  } = useParams<{
+  const { orgId, teamId, matchId, playerId, seasonId, trophyId, competitionId } = useParams<{
     orgId?: string;
     teamId?: string;
     matchId?: string;

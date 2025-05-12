@@ -28,11 +28,7 @@ const MostInMatchStats: React.FC = () => {
   return (
     <>
       <MostInGame title="Most Goals in Match" data={stats || []} loading={loading} />
-      <MostInGame
-        title="Most Assists in Match"
-        data={assistStats || []}
-        loading={assistLoading}
-      />
+      <MostInGame title="Most Assists in Match" data={assistStats || []} loading={assistLoading} />
     </>
   );
 };

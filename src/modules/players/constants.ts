@@ -1,4 +1,4 @@
-import {IPlayer} from "../../types";
+import { IPlayer } from '../../types';
 
 export const PAGES = {
   PLAYER: 'Player',
@@ -25,11 +25,11 @@ export const initialPlayerState: Partial<IPlayer> = {
 };
 
 export const POSITIONS = {
-  'GK': 'GK',
-  'DF': 'DF',
-  'MF': 'MF',
-  'FW': 'FW',
-  'NONE': 'NONE',
+  GK: 'GK',
+  DF: 'DF',
+  MF: 'MF',
+  FW: 'FW',
+  NONE: 'NONE',
 } as const;
 
-export type TPosition = typeof POSITIONS[keyof typeof POSITIONS];
+export type TPosition = (typeof POSITIONS)[keyof typeof POSITIONS];

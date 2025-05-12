@@ -3,7 +3,7 @@ import { DataContainer } from '../../../components/containers';
 import { IListItem, IPlayer } from '../../../types';
 import { getAverageAge } from '../helpers/getAverageAge';
 import ByNationality from './ByNationality';
-import {IPastPlayer} from "../../../types/pastPlayer.ts";
+import { IPastPlayer } from '../../../types/pastPlayer.ts';
 
 type Props = {
   players: IPlayer[] | IPastPlayer[];
@@ -12,18 +12,12 @@ type Props = {
   showAge?: boolean;
 };
 
-const PlayersByNumbers: React.FC<Props> = ({
-  players,
-  loading,
-  season,
-  showAge,
-}) => {
+const PlayersByNumbers: React.FC<Props> = ({ players, loading, season, showAge }) => {
   const numberOfPlayers = players.length;
-  const nationalities = new Set(players.map((player) => player.nationality))
-    .size;
+  const nationalities = new Set(players.map(player => player.nationality)).size;
   const ages: string[] = players
-      .map((player) => "dateOfBirth" in player && player.dateOfBirth)
-      .filter(age => typeof age === 'string')
+    .map(player => 'dateOfBirth' in player && player.dateOfBirth)
+    .filter(age => typeof age === 'string');
   const averageAge = getAverageAge(ages, season);
 
   const data: IListItem[] = [
@@ -40,10 +34,8 @@ const PlayersByNumbers: React.FC<Props> = ({
       ),
     },
     { label: 'Average Age', value: averageAge.toFixed(1), hidden: !showAge },
-  ].filter((elem) => !elem.hidden);
-  return (
-    <DataContainer data={data} loading={loading} width={showAge ? 4 : 6} />
-  );
+  ].filter(elem => !elem.hidden);
+  return <DataContainer data={data} loading={loading} width={showAge ? 4 : 6} />;
 };
 
 export default PlayersByNumbers;

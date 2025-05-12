@@ -1,4 +1,4 @@
-import {createSelector} from "@reduxjs/toolkit";
-import {selectSelf} from "../../store.ts";
+import { createSelector } from '@reduxjs/toolkit';
+import { selectSelf } from '../../store.ts';
 
-export const getTabIndex = createSelector(selectSelf, ({tabsReducer}) => tabsReducer);
+export const getTabIndex = createSelector(selectSelf, ({ tabsReducer }) => tabsReducer);

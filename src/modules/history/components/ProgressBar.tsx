@@ -1,6 +1,6 @@
 import React from 'react';
-import {getPercentage} from "../../../utils/helpers";
-import {theme} from "../../../theme";
+import { getPercentage } from '../../../utils/helpers';
+import { theme } from '../../../theme';
 
 type Props = {
   max: number;
@@ -24,8 +24,7 @@ const ProgressBar: React.FC<Props> = ({ max, value }) => {
         style={{
           width: `${100 - calcPercentage()}%`,
           height: '8px',
-          background:
-            value === 1 ? theme.palette.gold.main : theme.palette.primary.light,
+          background: value === 1 ? theme.palette.gold.main : theme.palette.primary.light,
         }}
       />
     </div>

@@ -8,11 +8,11 @@ import SignUpForm from '../forms/SignUp.form';
 import { REGISTER_USER } from '../graphql';
 import { ISignUpForm } from '../types';
 import { AppDispatch } from '../../../store/store';
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
-import {PageHeader} from "../../../components/typography";
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
+import { PageHeader } from '../../../components/typography';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import {AuthRoles} from "../../../constants.ts";
-import {Spinner} from "../../../components/loaders";
+import { AuthRoles } from '../../../constants.ts';
+import { Spinner } from '../../../components/loaders';
 
 const SignUpContainer: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -34,12 +34,12 @@ const SignUpContainer: React.FC = () => {
       .then(({ data }) => {
         if (data) {
           const { user } = data;
-          dispatch(showAlert({text: `Welcome ${user.username}!`, type: 'success'}))
+          dispatch(showAlert({ text: `Welcome ${user.username}!`, type: 'success' }));
           setEmail(user.email);
         }
       })
-      .catch((err) => {
-        dispatch(showAlert({text: err.message, type: 'error'}));
+      .catch(err => {
+        dispatch(showAlert({ text: err.message, type: 'error' }));
       });
   return (
     <>

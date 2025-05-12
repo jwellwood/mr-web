@@ -2,17 +2,8 @@ import React from 'react';
 import { blue, cyan, green, orange, yellow } from '@mui/material/colors';
 import { STAT_ICONS } from '../../app/icons';
 import { BiCheckCircle, BiChevronRight, BiChevronLeft } from 'react-icons/bi';
-import {
-  BsFillArrowDownCircleFill,
-  BsPCircleFill,
-  BsFillXCircleFill,
-} from 'react-icons/bs';
-import {
-  FaPlayCircle,
-  FaCircle,
-  FaStar,
-  FaRegStopCircle,
-} from 'react-icons/fa';
+import { BsFillArrowDownCircleFill, BsPCircleFill, BsFillXCircleFill } from 'react-icons/bs';
+import { FaPlayCircle, FaCircle, FaStar, FaRegStopCircle } from 'react-icons/fa';
 import { ImStopwatch } from 'react-icons/im';
 import { IoHandLeftSharp } from 'react-icons/io5';
 import { RiStickyNote2Fill } from 'react-icons/ri';

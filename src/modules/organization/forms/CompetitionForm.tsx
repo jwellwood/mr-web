@@ -8,7 +8,7 @@ import ControlledTextInput from '../../../components/inputs/ControlledTextInput'
 import { getMinutesOptions } from '../../matches/helpers';
 import { ICompetition, IListItem } from '../../../types';
 import { competitionOptions } from '../constants';
-import {getIntegers} from "../../../utils/helpers";
+import { getIntegers } from '../../../utils/helpers';
 
 interface Props {
   onSubmit: (data: Partial<ICompetition>) => void;

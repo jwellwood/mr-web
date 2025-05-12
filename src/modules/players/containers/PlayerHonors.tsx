@@ -12,7 +12,7 @@ import { IListItem } from '../../../types';
 import { GET_TROPHIES_BY_PLAYER } from '../graphql';
 import { getTrophyListItem } from '../helpers/getTrophyListItem';
 import { usePlayerData } from '../hooks/usePlayerData';
-import {theme} from "../../../theme";
+import { theme } from '../../../theme';
 
 const PlayerHonors: React.FC = () => {
   const { playerId } = useCustomParams();
@@ -26,11 +26,11 @@ const PlayerHonors: React.FC = () => {
     getTrophiesByPlayer,
     { data: trophiesData, loading: trophiesLoading, error: trophiesError },
   ] = useLazyQuery(GET_TROPHIES_BY_PLAYER, {
-    variables: { seasonIds: seasonIds?.map((season) => season._id) },
+    variables: { seasonIds: seasonIds?.map(season => season._id) },
   });
 
   const awardsData: IListItem[] =
-    data?.awards.map((award) => {
+    data?.awards.map(award => {
       return {
         icon: <StatIcon icon="mvp" />,
         label: (
@@ -53,14 +53,13 @@ const PlayerHonors: React.FC = () => {
   }, [getTrophiesByPlayer, seasonIds]);
 
   const trophies: IListItem[] = (trophiesData?.trophies || [])
-    .filter((trophy) => trophy.isWinner)
-    .map((trophy) => getTrophyListItem(trophy));
+    .filter(trophy => trophy.isWinner)
+    .map(trophy => getTrophyListItem(trophy));
   const runnerUp: IListItem[] = (trophiesData?.trophies || [])
-    .filter((trophy) => !trophy.isWinner)
-    .map((trophy) => getTrophyListItem(trophy));
+    .filter(trophy => !trophy.isWinner)
+    .map(trophy => getTrophyListItem(trophy));
 
-  if (error || trophiesError)
-    return <ErrorGraphql error={(error || trophiesError) as Error} />;
+  if (error || trophiesError) return <ErrorGraphql error={(error || trophiesError) as Error} />;
 
   return (
     <>

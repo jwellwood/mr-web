@@ -36,7 +36,7 @@ const SquadRecords: React.FC = () => {
             <CustomTypography color="warning">No players yet</CustomTypography>
           ) : (
             <>
-              {dataToDisplay.map((item) => {
+              {dataToDisplay.map(item => {
                 return (
                   <RecordsTable
                     key={item.label}

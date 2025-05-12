@@ -4,15 +4,11 @@ import { initAlertState } from '../initAlertState';
 describe('App reducer tests', () => {
   test('alertReducer should return default state', () => {
     // @ts-expect-error testing init store with unknown action
-    expect(alertsReducer(initAlertState, {})).toEqual(
-      initAlertState
-    );
+    expect(alertsReducer(initAlertState, {})).toEqual(initAlertState);
   });
   test('alertReducer should use initialState if no state', () => {
     // @ts-expect-error testing init store with unknown action
-    expect(alertsReducer(undefined, {})).toEqual(
-      initAlertState
-    );
+    expect(alertsReducer(undefined, {})).toEqual(initAlertState);
   });
   test('alertReducer should update the state', () => {
     const expected = {
@@ -21,7 +17,7 @@ describe('App reducer tests', () => {
     };
     expect(
       alertsReducer(initAlertState, {
-        type: "alerts/showAlert",
+        type: 'alerts/showAlert',
         payload: {
           text: 'Message',
           type: 'error',

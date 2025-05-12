@@ -8,11 +8,7 @@ interface Props {
   isList?: boolean;
 }
 
-const OpponentAvatar: React.FC<Props> = ({
-  primaryColor,
-  secondaryColor,
-  isList,
-}) => {
+const OpponentAvatar: React.FC<Props> = ({ primaryColor, secondaryColor, isList }) => {
   const avatar = (
     <Avatar
       style={{
@@ -20,7 +16,7 @@ const OpponentAvatar: React.FC<Props> = ({
         border: `2px solid ${secondaryColor}`,
       }}
     >
-      <AppIcon icon='team' color={secondaryColor} />
+      <AppIcon icon="team" color={secondaryColor} />
     </Avatar>
   );
 

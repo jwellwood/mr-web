@@ -1,18 +1,18 @@
-import {IListItem} from "../../../types";
-import {CustomTypography} from "../../../components/typography";
-import {parseDate} from "../../../utils/helpers";
-import {PresentationModal} from "../../../components/modals";
-import {CustomButton} from "../../../components/buttons";
-import LinksList from "../../../components/lists/LinksList.tsx";
-import {Spinner} from "../../../components/loaders";
+import { IListItem } from '../../../types';
+import { CustomTypography } from '../../../components/typography';
+import { parseDate } from '../../../utils/helpers';
+import { PresentationModal } from '../../../components/modals';
+import { CustomButton } from '../../../components/buttons';
+import LinksList from '../../../components/lists/LinksList.tsx';
+import { Spinner } from '../../../components/loaders';
 
 interface Props {
   data: {
-      teamGoals: number;
-      opponentGoals: number;
-      opponent: string;
-      date: string;
-      _id: string;
+    teamGoals: number;
+    opponentGoals: number;
+    opponent: string;
+    date: string;
+    _id: string;
   }[];
   loading: boolean;
   orgId?: string;
@@ -20,21 +20,15 @@ interface Props {
   title?: string;
 }
 
-function MostInMatchesModal ({
-  data,
-  loading,
-  orgId,
-  teamId,
-  title,
-}: Props) {
+function MostInMatchesModal({ data, loading, orgId, teamId, title }: Props) {
   const listData: IListItem[] =
-    data?.map((item) => {
+    data?.map(item => {
       const labelColor =
         item.teamGoals > item.opponentGoals
           ? 'primary'
           : item.teamGoals === item.opponentGoals
-          ? 'warning'
-          : 'error';
+            ? 'warning'
+            : 'error';
       return {
         label: (
           <CustomTypography bold color="data">
@@ -67,6 +61,6 @@ function MostInMatchesModal ({
       {!loading ? <LinksList links={listData} /> : <Spinner />}
     </PresentationModal>
   );
-};
+}
 
 export default MostInMatchesModal;

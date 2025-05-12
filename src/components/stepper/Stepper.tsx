@@ -1,11 +1,11 @@
-import React, {ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import { MobileStepper } from '@mui/material';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 interface Props {
   steps: {
-    component: ReactNode
+    component: ReactNode;
   }[];
   step: number;
   handleBackClick: () => void;
@@ -29,9 +29,9 @@ const Stepper: React.FC<Props> = ({ steps, step, handleBackClick }) => {
   return (
     <div>
       <StyledMobileStepper
-        variant='dots'
+        variant="dots"
         steps={steps.length}
-        position='static'
+        position="static"
         activeStep={step}
         sx={{ flexGrow: 1, background: 'transparent' }}
         nextButton={null}

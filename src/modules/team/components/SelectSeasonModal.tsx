@@ -19,15 +19,11 @@ function SimpleDialog(props: SimpleDialogProps) {
   const handleListItemClick = (value: string) => {
     onClose(value);
   };
-  const listData: IListItem[] = data.map((item) => {
+  const listData: IListItem[] = data.map(item => {
     const isCurrentSeason = item.label === selectedValue;
     return {
       label: (
-        <CustomTypography
-          size="sm"
-          bold
-          color={isCurrentSeason ? 'primary' : 'data'}
-        >
+        <CustomTypography size="sm" bold color={isCurrentSeason ? 'primary' : 'data'}>
           {item.label}
         </CustomTypography>
       ),
@@ -62,12 +58,7 @@ interface Props {
   onClick: (seasonId: string) => void;
 }
 
-const SelectSeasonModal: React.FC<Props> = ({
-  seasonsList,
-  onClick,
-  seasonId,
-  currentSeason,
-}) => {
+const SelectSeasonModal: React.FC<Props> = ({ seasonsList, onClick, seasonId, currentSeason }) => {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -75,7 +66,7 @@ const SelectSeasonModal: React.FC<Props> = ({
 
   const handleClose = (value: string, reason?: string) => {
     if (reason === 'backdropClick') {
-      if(seasonId) {
+      if (seasonId) {
         onClick(seasonId);
       }
     } else {

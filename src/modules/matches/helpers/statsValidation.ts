@@ -1,24 +1,25 @@
 import { IPlayerInMatch, ITempMatch } from '../../../types';
-export const validateStats = (match: ITempMatch, players: IPlayerInMatch[]): {
-  isValid: boolean,
+export const validateStats = (
+  match: ITempMatch,
+  players: IPlayerInMatch[]
+): {
+  isValid: boolean;
   validationArray: readonly {
-    label: 'Starters' | 'Minutes' | 'Goals' | 'Assists' | 'Own Goals' | 'Conceded'
-    value: number
-    isValid: boolean
-    isExact: boolean
-    total: number
-  }[]
+    label: 'Starters' | 'Minutes' | 'Goals' | 'Assists' | 'Own Goals' | 'Conceded';
+    value: number;
+    isValid: boolean;
+    isExact: boolean;
+    total: number;
+  }[];
 } => {
   const { teamGoals, opponentGoals, competition } = match;
   const { playersPerTeam, matchMinutes } = competition || {};
 
   const getTotalArray = (type: keyof IPlayerInMatch) => {
-    return players
-      .map((player) => +(player[type] || 0))
-      .reduce((prev, curr) => prev + curr, 0);
+    return players.map(player => +(player[type] || 0)).reduce((prev, curr) => prev + curr, 0);
   };
   const getTotalTrue = (type: keyof IPlayerInMatch) => {
-    return players.filter((player) => player[type]).length;
+    return players.filter(player => player[type]).length;
   };
 
   const goals = getTotalArray('goals');
@@ -47,7 +48,7 @@ export const validateStats = (match: ITempMatch, players: IPlayerInMatch[]): {
     {
       label: 'Minutes',
       value: mins,
-      isValid: (mins <= totalMins) || false,
+      isValid: mins <= totalMins || false,
       isExact: +mins === totalMins,
       total: totalMins,
     },
@@ -69,19 +70,19 @@ export const validateStats = (match: ITempMatch, players: IPlayerInMatch[]): {
       label: 'Own Goals',
       value: ownGoals,
       isValid: validateConceded(ownGoals) || false,
-      isExact: (+ownGoals === +opponentGoals) || false,
+      isExact: +ownGoals === +opponentGoals || false,
       total: opponentGoals,
     },
     {
       label: 'Conceded',
       value: conceded,
       isValid: validateConceded(conceded) || false,
-      isExact: (+conceded === +opponentGoals) || false,
+      isExact: +conceded === +opponentGoals || false,
       total: opponentGoals,
     },
   ] as const;
 
-  const isValid = validationArray.every((arr) => arr.isValid);
+  const isValid = validationArray.every(arr => arr.isValid);
 
   return { validationArray, isValid };
 };

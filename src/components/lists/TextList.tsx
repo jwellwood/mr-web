@@ -16,7 +16,7 @@ interface Props {
 const TextList: React.FC<Props> = ({ data = [], labelSize }) => {
   return (
     <List dense>
-      {(data).map((item, i) => {
+      {data.map((item, i) => {
         const { label, secondary, value, avatar, icon, border, onClick } = item;
 
         const valueDisplay =
@@ -42,17 +42,12 @@ const TextList: React.FC<Props> = ({ data = [], labelSize }) => {
             <ListItemText
               sx={{ marginTop: 0, marginBottom: 0 }}
               primary={
-                <CustomTypography
-                  color={secondary ? 'data' : 'label'}
-                  size={labelSize}
-                >
+                <CustomTypography color={secondary ? 'data' : 'label'} size={labelSize}>
                   {label}
                 </CustomTypography>
               }
               secondary={
-                <CustomTypography color={label ? 'label' : 'data'}>
-                  {secondary}
-                </CustomTypography>
+                <CustomTypography color={label ? 'label' : 'data'}>{secondary}</CustomTypography>
               }
             />
           </ListItem>

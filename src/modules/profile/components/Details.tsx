@@ -9,7 +9,7 @@ type Props = {
 };
 
 const ProfileDetails: React.FC<Props> = ({ user }) => {
-  if(!user) {
+  if (!user) {
     return null;
   }
   const { email, createdAt, updatedAt } = user;

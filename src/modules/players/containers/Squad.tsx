@@ -8,10 +8,7 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import RouteGuard from '../../../router/RouteGuard';
 import { squad_list, squad_list_styles } from '../configs';
-import {
-  GET_PLAYERS_BY_SEASON_ID,
-  GET_SQUAD_LIST_SEASON_STATS,
-} from '../graphql';
+import { GET_PLAYERS_BY_SEASON_ID, GET_SQUAD_LIST_SEASON_STATS } from '../graphql';
 import { getSquadTableData } from '../helpers';
 
 const Squad: React.FC = () => {
@@ -27,13 +24,10 @@ const Squad: React.FC = () => {
     skip: !seasonId,
   });
 
-  const { loading: statsLoading, data: stats } = useQuery(
-    GET_SQUAD_LIST_SEASON_STATS,
-    {
-      variables: { teamId, seasonId },
-      skip: !seasonId,
-    }
-  );
+  const { loading: statsLoading, data: stats } = useQuery(GET_SQUAD_LIST_SEASON_STATS, {
+    variables: { teamId, seasonId },
+    skip: !seasonId,
+  });
 
   const tableData = useMemo(
     () =>

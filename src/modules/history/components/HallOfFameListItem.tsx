@@ -1,10 +1,7 @@
-import LinksList from "../../../components/lists/LinksList.tsx";
-
+import LinksList from '../../../components/lists/LinksList.tsx';
 
 function HallOfFamePlayer() {
-  return (
-    <LinksList links={[]} />
-  );
-};
+  return <LinksList links={[]} />;
+}
 
 export default HallOfFamePlayer;

@@ -1,21 +1,21 @@
-import {Control, Controller, Path} from 'react-hook-form';
+import { Control, Controller, Path } from 'react-hook-form';
 import DateInput from './DateInput';
-import {DateView} from "@mui/x-date-pickers";
+import { DateView } from '@mui/x-date-pickers';
 
 type Props<T extends object> = {
   control: Control<T>;
   name: Path<T>;
   label: string;
-  errors: {type: string}[];
+  errors: { type: string }[];
   rules?: {
     required?: boolean;
-  }
+  };
   view?: string;
   openTo?: DateView;
   disableFuture?: boolean;
 };
 
-function ControlledDateInput <T extends object>({
+function ControlledDateInput<T extends object>({
   control,
   name,
   label,
@@ -45,6 +45,6 @@ function ControlledDateInput <T extends object>({
       }}
     />
   );
-};
+}
 
 export default ControlledDateInput;

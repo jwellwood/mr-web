@@ -8,17 +8,17 @@ type Props = {
 };
 
 const OrgTeamsList: React.FC<Props> = ({ teams }) => {
-  const activeTeams = teams.filter((team) => team.isActive);
-  const inactiveTeams = teams.filter((team) => !team.isActive);
+  const activeTeams = teams.filter(team => team.isActive);
+  const inactiveTeams = teams.filter(team => !team.isActive);
 
-  const activeLinks: IListItem[] = activeTeams.map((team) => {
+  const activeLinks: IListItem[] = activeTeams.map(team => {
     return {
       label: team.teamName,
       link: `team/${team._id}`,
     };
   });
 
-  const inactiveLinks: IListItem[] = inactiveTeams.map((team) => {
+  const inactiveLinks: IListItem[] = inactiveTeams.map(team => {
     return {
       label: team.teamName,
       link: `team/${team._id}`,
@@ -29,9 +29,7 @@ const OrgTeamsList: React.FC<Props> = ({ teams }) => {
     { label: 'Previous', component: <LinksList links={inactiveLinks} /> },
   ];
 
-  return (
-    <CustomTabs type={TAB_TYPES.ORG_TEAMS} tabs={tabs} level="secondary" />
-  );
+  return <CustomTabs type={TAB_TYPES.ORG_TEAMS} tabs={tabs} level="secondary" />;
 };
 
 export default OrgTeamsList;

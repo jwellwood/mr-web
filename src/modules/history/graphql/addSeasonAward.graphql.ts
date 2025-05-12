@@ -15,12 +15,7 @@ export const ADD_SEASON_AWARD: TypedDocumentNode<{
     addSeasonAward(
       teamId: $teamId
       seasonId: $seasonId
-      data: {
-        winners: $winners
-        awardName: $awardName
-        awardValue: $awardValue
-        comment: $comment
-      }
+      data: { winners: $winners, awardName: $awardName, awardValue: $awardValue, comment: $comment }
     ) {
       _id
     }

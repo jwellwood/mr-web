@@ -9,7 +9,7 @@ type Props = {
 };
 
 const TrophyDetails: React.FC<Props> = ({ trophy }) => {
-  if(!trophy) {
+  if (!trophy) {
     return null;
   }
   const { name, isFinal, isWinner, season, opponent, comment } = trophy;
@@ -36,13 +36,9 @@ const TrophyDetails: React.FC<Props> = ({ trophy }) => {
           </GridItem>
         </GridItem>
         <GridItem>
-          {isFinal ? (
-            <CustomTypography color="label">vs {opponent}</CustomTypography>
-          ) : null}
+          {isFinal ? <CustomTypography color="label">vs {opponent}</CustomTypography> : null}
         </GridItem>
-        {comment && (
-          <CustomTypography color="label">{comment}</CustomTypography>
-        )}
+        {comment && <CustomTypography color="label">{comment}</CustomTypography>}
       </CenteredGrid>
     </SectionContainer>
   );

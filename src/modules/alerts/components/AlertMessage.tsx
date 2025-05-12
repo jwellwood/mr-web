@@ -1,7 +1,7 @@
 import React from 'react';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import {useAlert} from "../hooks/useAlert.hook.ts";
+import { useAlert } from '../hooks/useAlert.hook.ts';
 
 const AlertMessage: React.FC = () => {
   const { handleClose, alert } = useAlert();

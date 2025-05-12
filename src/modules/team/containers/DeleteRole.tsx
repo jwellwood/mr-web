@@ -4,8 +4,8 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import { DELETE_ROLE, GET_TEAM } from '../graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
-import {DeleteModal} from "../../../components/modals";
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import { DeleteModal } from '../../../components/modals';
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 
 interface Props {
@@ -21,35 +21,32 @@ const DeleteRole: React.FC<Props> = ({ roleId }) => {
     notifyOnNetworkStatusChange: true,
   });
 
-  const [deleteTeamRole, { error, loading: deleteLoading }] =
-    useMutation(DELETE_ROLE);
+  const [deleteTeamRole, { error, loading: deleteLoading }] = useMutation(DELETE_ROLE);
 
   const onDeleteRole = () => {
     deleteTeamRole({ variables: { teamId, roleId } })
       .then(() => {
         refetch({ teamId });
-        dispatch(showAlert({
-          text: 'Deleted role',
-          type: 'success'
-        }));
+        dispatch(
+          showAlert({
+            text: 'Deleted role',
+            type: 'success',
+          })
+        );
       })
       .catch(() => {
-        dispatch(showAlert({
-          text: 'Error deleting role',
-          type: 'error'
-        }));
+        dispatch(
+          showAlert({
+            text: 'Error deleting role',
+            type: 'error',
+          })
+        );
       });
   };
 
   if (error) return <ErrorGraphql error={error} />;
 
-  return (
-    <DeleteModal
-      title="Role"
-      loading={loading || deleteLoading}
-      onDelete={onDeleteRole}
-    />
-  );
+  return <DeleteModal title="Role" loading={loading || deleteLoading} onDelete={onDeleteRole} />;
 };
 
 export default DeleteRole;

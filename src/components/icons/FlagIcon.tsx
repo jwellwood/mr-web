@@ -8,11 +8,7 @@ interface Props {
   size?: string;
 }
 
-const FlagIcon: React.FC<Props> = ({
-  nationality,
-  countryName,
-  size = '1.2rem',
-}) => {
+const FlagIcon: React.FC<Props> = ({ nationality, countryName, size = '1.2rem' }) => {
   return nationality && nationality !== '' ? (
     <ReactCountryFlag
       countryCode={nationality}

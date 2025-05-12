@@ -13,18 +13,17 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {AuthRoles} from "../../../constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { AuthRoles } from '../../../constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const AddTeamSeason: React.FC = () => {
   const { orgId, teamId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] =
-    useState<Partial<ITeamSeason>>({});
+  const [defaultValues, setDefaultValues] = useState<Partial<ITeamSeason>>({});
 
   const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
@@ -45,12 +44,12 @@ const AddTeamSeason: React.FC = () => {
           leaguePosition: +(formData.leaguePosition || 0),
         },
       }).then(() => {
-        dispatch(showAlert({text: 'Season added successfully', type: 'success'}));
+        dispatch(showAlert({ text: 'Season added successfully', type: 'success' }));
         navigate(-1);
       });
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({text: 'There was a problem', type: 'error'}));
+      dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
     }
   };
 

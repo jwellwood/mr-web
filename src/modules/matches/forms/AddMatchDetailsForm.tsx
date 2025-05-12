@@ -41,9 +41,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
   const isFutureMatch = isFuture(new Date(date));
 
   const competitionId = watch('competitionId');
-  const selectedCompetition = competitions.find(
-    (comp) => comp._id === competitionId
-  );
+  const selectedCompetition = competitions.find(comp => comp._id === competitionId);
   const isCup =
     selectedCompetition?.competitionType === 'Cup' ||
     selectedCompetition?.competitionType === 'Tournament';
@@ -95,9 +93,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             data={[
               {
                 label: 'Home?',
-                value: (
-                  <ControlledSwitchInput control={control} name="isHome" />
-                ),
+                value: <ControlledSwitchInput control={control} name="isHome" />,
               },
             ]}
           />
@@ -128,12 +124,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 data={[
                   {
                     label: 'Forfeit?',
-                    value: (
-                      <ControlledSwitchInput
-                        control={control}
-                        name="isForfeit"
-                      />
-                    ),
+                    value: <ControlledSwitchInput control={control} name="isForfeit" />,
                   },
                 ]}
               />

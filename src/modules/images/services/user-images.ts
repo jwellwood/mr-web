@@ -8,12 +8,12 @@ const api = {
 
 export const uploadUserImage = (dataToSubmit: FormData) => {
   const route = api.UPLOAD_USER_IMAGE_ROUTE;
-  const request = axios.post(route, dataToSubmit).then((res) => res.data);
+  const request = axios.post(route, dataToSubmit).then(res => res.data);
   return request;
 };
 
 export const removeUserImage = (public_id: string) => {
   const route = `${api.REMOVE_USER_IMAGE_ROUTE}${public_id}`;
-  const request = axios.delete(route).then((res) => res.data);
+  const request = axios.delete(route).then(res => res.data);
   return request;
 };

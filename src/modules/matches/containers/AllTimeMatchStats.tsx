@@ -5,8 +5,8 @@ import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { GET_ALL_TIME_MATCH_STATS } from '../graphql/getAllTimeMatchStats.graphql';
-import MatchStatsTable from "../components/MatchStatsTable.tsx";
-import Averages from "../components/Averages.tsx";
+import MatchStatsTable from '../components/MatchStatsTable.tsx';
+import Averages from '../components/Averages.tsx';
 
 const AllTimeMatchStats: React.FC = () => {
   const { teamId } = useCustomParams();

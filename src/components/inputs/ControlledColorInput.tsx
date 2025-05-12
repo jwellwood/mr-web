@@ -9,12 +9,7 @@ type Props = {
   errors: { type: string }[];
 };
 
-const ControlledColorInput: React.FC<Props> = ({
-  control,
-  name,
-  label,
-  errors,
-}) => {
+const ControlledColorInput: React.FC<Props> = ({ control, name, label, errors }) => {
   return (
     <Controller
       control={control}

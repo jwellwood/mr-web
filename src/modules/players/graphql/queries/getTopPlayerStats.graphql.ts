@@ -1,12 +1,12 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 
 type TStatField = {
-  value: number,
-  disabled: boolean
+  value: number;
+  disabled: boolean;
   names: {
-    name: string,
-    id: string
-  }[]
+    name: string;
+    id: string;
+  }[];
 }[];
 
 export const GET_TOP_PLAYER_STATS: TypedDocumentNode<{

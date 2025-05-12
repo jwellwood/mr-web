@@ -12,17 +12,17 @@ import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
 import { mapMatch } from '../helpers';
 import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch.ts';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
-import {IPlayerInMatch, ITempMatch} from '../../../types';
-import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import { IPlayerInMatch, ITempMatch } from '../../../types';
+import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 import { getTempPlayers } from '../../../store/features/players/playersSelection.ts';
-import {GET_PLAYERS_BY_SEASON_ID} from "../../players/graphql";
-import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {AuthRoles} from "../../../constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { AuthRoles } from '../../../constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const EditMatch: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
@@ -41,30 +41,27 @@ const EditMatch: React.FC = () => {
 
   const { opponents, competitions, seasonOptions } = useMatchDetailsInput();
 
-  const [editMatch, { error: editError, loading: editLoading }] = useMutation(
-    EDIT_MATCH,
-    {
-      refetchQueries: [
-        {
-          query: GET_MATCHES_BY_SEASON,
-          variables: {
-            limit: 5,
-            offset: 0,
-            teamId,
-            seasonId: currentTempMatch.seasonId,
-          },
+  const [editMatch, { error: editError, loading: editLoading }] = useMutation(EDIT_MATCH, {
+    refetchQueries: [
+      {
+        query: GET_MATCHES_BY_SEASON,
+        variables: {
+          limit: 5,
+          offset: 0,
+          teamId,
+          seasonId: currentTempMatch.seasonId,
         },
-        {
-          query: GET_PLAYERS_BY_SEASON_ID,
-          variables: { teamId, seasonId: currentTempMatch.seasonId },
-        },
-        {
-          query: GET_MATCH_STATS,
-          variables: { teamId, seasonId: currentTempMatch.seasonId },
-        },
-      ],
-    }
-  );
+      },
+      {
+        query: GET_PLAYERS_BY_SEASON_ID,
+        variables: { teamId, seasonId: currentTempMatch.seasonId },
+      },
+      {
+        query: GET_MATCH_STATS,
+        variables: { teamId, seasonId: currentTempMatch.seasonId },
+      },
+    ],
+  });
 
   useEffect(() => {
     if (data?.match) {
@@ -82,8 +79,8 @@ const EditMatch: React.FC = () => {
   }, [currentTempPlayers]);
 
   const onSubmit = () => {
-    if(!teamId) {
-      console.error("Missing team id")
+    if (!teamId) {
+      console.error('Missing team id');
       return;
     }
     const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
@@ -93,8 +90,8 @@ const EditMatch: React.FC = () => {
         dispatch(resetTempPlayers());
         navigate(-1);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        console.error(err);
       });
   };
 

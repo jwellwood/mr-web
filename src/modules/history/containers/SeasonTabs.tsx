@@ -5,9 +5,9 @@ import { CustomTabs, ITab } from '../../../components/tabs';
 import SeasonHeader from '../components/SeasonHeader';
 import { ITeamSeason } from '../types';
 import Awards from './Awards';
-import MatchStats from "../../matches/containers/MatchStats.tsx";
-import {Matches} from "../../matches/routes.ts";
-import {Squad} from "../../players/routes.ts";
+import MatchStats from '../../matches/containers/MatchStats.tsx';
+import { Matches } from '../../matches/routes.ts';
+import { Squad } from '../../players/routes.ts';
 
 interface Props {
   season?: ITeamSeason;
@@ -21,7 +21,7 @@ const SeasonTabs: React.FC<Props> = ({ season }) => {
     { label: 'Awards', component: <Awards /> },
   ] as const;
 
-  if(!season) {
+  if (!season) {
     return null;
   }
 

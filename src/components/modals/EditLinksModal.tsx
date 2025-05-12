@@ -8,16 +8,16 @@ import { CustomButton } from '../buttons';
 import { SectionContainer } from '../containers';
 import LinksList from '../lists/LinksList';
 import { IListItem } from '../../types';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 interface Props {
   data: IListItem[];
   title?: string | ReactNode;
 }
 
 const EditLinksModal: React.FC<Props> = ({ data, title }) => {
-  const addLinks = data.filter((item) => item.type === 'add');
-  const editLinks = data.filter((item) => item.type === 'edit');
-  const deleteLinks = data.filter((item) => item.type === 'delete');
+  const addLinks = data.filter(item => item.type === 'add');
+  const editLinks = data.filter(item => item.type === 'edit');
+  const deleteLinks = data.filter(item => item.type === 'delete');
   const {
     palette: { success, warning, error },
   } = theme;
@@ -57,7 +57,7 @@ const EditLinksModal: React.FC<Props> = ({ data, title }) => {
         ) : null}
         <DialogContent>
           {sections.map(
-            (section) =>
+            section =>
               section.links.length > 0 && (
                 <SectionContainer key={section.color} border={section.color}>
                   <LinksList links={section.links} />

@@ -22,8 +22,7 @@ const EditPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
 
   const newPasswordInput = watch('newPassword');
   const confirmPasswordInput = watch('confirmPassword');
-  const isMatch =
-    newPasswordInput.length > 1 && newPasswordInput === confirmPasswordInput;
+  const isMatch = newPasswordInput.length > 1 && newPasswordInput === confirmPasswordInput;
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={!isMatch}>

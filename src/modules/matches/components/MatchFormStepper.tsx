@@ -3,12 +3,13 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { ICompetition, IPlayerInMatch, ITeam, ITempMatch } from '../../../types';import AddMatchDetails from '../components/AddMatchDetails';
+import { ICompetition, IPlayerInMatch, ITeam, ITempMatch } from '../../../types';
+import AddMatchDetails from '../components/AddMatchDetails';
 import AddMatchPlayers from '../components/AddMatchPlayers';
 import AddMatchStats from '../components/AddMatchStats';
 import SubmitMatch from '../components/SubmitMatch';
 import MatchOverview from './MatchOverview';
-import {theme} from "../../../theme";
+import { theme } from '../../../theme';
 
 interface Props {
   defaultValues: ITempMatch;
@@ -32,11 +33,11 @@ const MatchFormStepper: React.FC<Props> = ({
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
   };
 
   const steps = [
@@ -73,12 +74,7 @@ const MatchFormStepper: React.FC<Props> = ({
         activeStep={activeStep}
         nextButton={false}
         backButton={
-          <Button
-            size="small"
-            onClick={handleBack}
-            disabled={activeStep === 0}
-            color="warning"
-          >
+          <Button size="small" onClick={handleBack} disabled={activeStep === 0} color="warning">
             Back
           </Button>
         }

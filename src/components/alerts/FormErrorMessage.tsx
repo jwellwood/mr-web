@@ -1,15 +1,21 @@
 import { CustomTypography } from '../typography';
-import {form_error_text} from "../../i18n";
+import { form_error_text } from '../../i18n';
 import { type FormError } from '../../types/form';
 
 interface Props {
-  error: FormError
+  error: FormError;
 }
 
 function FormErrorMessage({ error }: Props) {
-  console.log("FormErrorMessage")
   let message = form_error_text.default;
-  const errType = typeof error === "string" ? error : error instanceof Error ? error.message: "type" in error ? error.type : "";
+  const errType =
+    typeof error === 'string'
+      ? error
+      : error instanceof Error
+        ? error.message
+        : 'type' in error
+          ? error.type
+          : '';
   switch (errType) {
     case 'required':
       message = form_error_text.required;
@@ -40,6 +46,6 @@ function FormErrorMessage({ error }: Props) {
       {message}
     </CustomTypography>
   );
-};
+}
 
 export default FormErrorMessage;

@@ -8,7 +8,8 @@ import { Spinner } from '../../../components/loaders';
 import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { IListItem } from '../../../types';import { GET_HALL_OF_FAME } from '../graphql/getHallOfFame.graphql';
+import { IListItem } from '../../../types';
+import { GET_HALL_OF_FAME } from '../graphql/getHallOfFame.graphql';
 
 const HallOfFame: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -18,7 +19,7 @@ const HallOfFame: React.FC = () => {
   });
 
   const links: IListItem[] =
-    data?.players.map((player) => {
+    data?.players.map(player => {
       return {
         avatar: <CircularImage size="40px" image={player.image.url} />,
         link: `player/${player._id}`,
@@ -45,9 +46,7 @@ const HallOfFame: React.FC = () => {
   return !loading ? (
     <>
       {data?.players?.length ? (
-        <CustomTypography color="warning">
-          No hall of fame players yet
-        </CustomTypography>
+        <CustomTypography color="warning">No hall of fame players yet</CustomTypography>
       ) : (
         <SectionContainer>
           <LinksList links={links} />

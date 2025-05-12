@@ -8,9 +8,9 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { PAGES } from '../constants';
 import { EDIT_ORG_BADGE, GET_ORG } from '../graphql';
-import {removeOrgBadge, uploadOrgBadge} from "../../images/services";
-import {useUpload} from "../../images/hooks";
-import RouteGuard from "../../../router/RouteGuard.tsx";
+import { removeOrgBadge, uploadOrgBadge } from '../../images/services';
+import { useUpload } from '../../images/hooks';
+import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const UpdateOrgBadge: React.FC = () => {
   const { orgId } = useCustomParams();
@@ -23,8 +23,9 @@ const UpdateOrgBadge: React.FC = () => {
     variables: { orgId },
     notifyOnNetworkStatusChange: true,
   });
-  const [editOrgBadge, { loading: editLoading, error: editError }] =
-    useMutation(EDIT_ORG_BADGE, { variables: { orgId: orgId } });
+  const [editOrgBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_ORG_BADGE, {
+    variables: { orgId: orgId },
+  });
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadOrgBadge,
     removeFunc: removeOrgBadge,

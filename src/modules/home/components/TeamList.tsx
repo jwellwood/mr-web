@@ -10,15 +10,9 @@ type Props = {
 
 export const TeamList = ({ teams, isSearchComplete }: Props) => {
   const links: IListItem[] =
-    teams?.map((team) => {
+    teams?.map(team => {
       return {
-        avatar: (
-          <CustomAvatar
-            imageUrl={team?.teamBadge?.url}
-            type={IMAGE_TYPE.TEAM}
-            isList
-          />
-        ),
+        avatar: <CustomAvatar imageUrl={team?.teamBadge?.url} type={IMAGE_TYPE.TEAM} isList />,
         label: team.teamName,
         link: `/org/${team.orgId._id}/team/${team._id}`,
       };
@@ -26,8 +20,6 @@ export const TeamList = ({ teams, isSearchComplete }: Props) => {
   return teams?.length ? (
     <LinksList links={links} />
   ) : (
-    isSearchComplete && (
-      <CustomTypography color="warning">No teams found</CustomTypography>
-    )
+    isSearchComplete && <CustomTypography color="warning">No teams found</CustomTypography>
   );
 };

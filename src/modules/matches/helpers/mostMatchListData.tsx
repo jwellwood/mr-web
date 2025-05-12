@@ -10,9 +10,7 @@ export const mostMatchListData = (
 ): IListItem[] => {
   const arr = new Array(10).fill({});
   const mappedData =
-    loading || !data
-      ? arr.map((_item, i) => ({ link: i } as unknown as IMostMatch))
-      : data;
+    loading || !data ? arr.map((_item, i) => ({ link: i }) as unknown as IMostMatch) : data;
   return mappedData.map((match: IMostMatch) => {
     return {
       label: (

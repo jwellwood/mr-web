@@ -8,26 +8,13 @@ interface Props {
   onChange: () => void;
   checked: boolean;
   label: string | ReactNode;
-  color?: "primary" | "secondary" | "success" | "error" | "info" | "warning";
+  color?: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
 }
 
-const ToggleSwitch: React.FC<Props> = ({
-  name,
-  onChange,
-  checked,
-  label,
-  color = 'primary',
-}) => {
+const ToggleSwitch: React.FC<Props> = ({ name, onChange, checked, label, color = 'primary' }) => {
   return (
     <FormControlLabel
-      control={
-        <Switch
-          color={color}
-          checked={checked}
-          onChange={onChange}
-          name={name}
-        />
-      }
+      control={<Switch color={color} checked={checked} onChange={onChange} name={name} />}
       label={label}
     />
   );

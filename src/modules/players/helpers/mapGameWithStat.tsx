@@ -3,13 +3,8 @@ import { IListItem, IPlayerStats } from '../../../types';
 import { getPercentage } from '../../../utils/helpers';
 
 export const mapGameWithStat = (player: IPlayerStats) => {
-  const {
-    apps,
-    gamesWithGoal,
-    gamesWithAssist,
-    gamesWithGoalAndAssist,
-    gamesWithGoalOrAssist,
-  } = player;
+  const { apps, gamesWithGoal, gamesWithAssist, gamesWithGoalAndAssist, gamesWithGoalOrAssist } =
+    player;
 
   const data: IListItem[] = [
     {
@@ -32,8 +27,7 @@ export const mapGameWithStat = (player: IPlayerStats) => {
       label: 'Scored and Assisted in',
       value: (
         <CustomTypography color="data" bold>
-          ({gamesWithGoalAndAssist}){' '}
-          {getPercentage(gamesWithGoalAndAssist, apps, 1)}%
+          ({gamesWithGoalAndAssist}) {getPercentage(gamesWithGoalAndAssist, apps, 1)}%
         </CustomTypography>
       ),
     },
@@ -41,8 +35,7 @@ export const mapGameWithStat = (player: IPlayerStats) => {
       label: 'Scored or Assisted in',
       value: (
         <CustomTypography color="data" bold>
-          ({gamesWithGoalOrAssist}){' '}
-          {getPercentage(gamesWithGoalOrAssist, apps, 1)}%
+          ({gamesWithGoalOrAssist}) {getPercentage(gamesWithGoalOrAssist, apps, 1)}%
         </CustomTypography>
       ),
     },

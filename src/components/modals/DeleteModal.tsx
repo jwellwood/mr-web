@@ -17,13 +17,7 @@ interface Props {
   text?: boolean;
 }
 
-const DeleteModal: React.FC<Props> = ({
-  title,
-  loading = false,
-  onDelete,
-  disabled,
-  text,
-}) => {
+const DeleteModal: React.FC<Props> = ({ title, loading = false, onDelete, disabled, text }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -47,9 +41,7 @@ const DeleteModal: React.FC<Props> = ({
         ) : null}
       </div>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle id="form-dialog-title">
-          Permanently Delete {title}?
-        </DialogTitle>
+        <DialogTitle id="form-dialog-title">Permanently Delete {title}?</DialogTitle>
         <>
           <DialogContent>
             {!loading ? (
@@ -64,12 +56,7 @@ const DeleteModal: React.FC<Props> = ({
             <Button onClick={handleClose} color="secondary">
               Cancel
             </Button>
-            <Button
-              type="submit"
-              color="primary"
-              onClick={onDelete}
-              disabled={disabled || loading}
-            >
+            <Button type="submit" color="primary" onClick={onDelete} disabled={disabled || loading}>
               Confirm
             </Button>
           </DialogActions>

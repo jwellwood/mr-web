@@ -10,13 +10,13 @@ import { ISignInForm } from '../types';
 import ResendVerification from './ResendVerification';
 import PageHeader from '../../../components/typography/PageHeader';
 import { AppDispatch } from '../../../store/store';
-import {useAuth} from "../../../hooks";
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
-import {PROFILE} from "../../../router/paths.ts";
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {AUTH_ROLES} from "../../../app/constants.ts";
-import {Spinner} from "../../../components/loaders";
-import {setAuth} from "../../../store/features/auth/authSlice.ts";
+import { useAuth } from '../../../hooks';
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
+import { PROFILE } from '../../../router/paths.ts';
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { AUTH_ROLES } from '../../../app/constants.ts';
+import { Spinner } from '../../../components/loaders';
+import { setAuth } from '../../../store/features/auth/authSlice.ts';
 
 const SignInContainer: React.FC = () => {
   const navigate = useNavigate();
@@ -31,33 +31,31 @@ const SignInContainer: React.FC = () => {
     setDefaultValues({ ...signInFormState });
   }, []);
 
-  const onSubmit = async (formData: {
-    email: string;
-  }) => {
+  const onSubmit = async (formData: { email: string }) => {
     setEmail(formData.email);
     return signInUser({ variables: { ...formData } })
-      .then((resp) => {
-        console.log(resp)
+      .then(resp => {
         const { data } = resp;
-        console.log("here")
         if (data) {
           const { user } = data;
-          dispatch(showAlert({text: `Welcome ${user.username}!`, type: 'success'}))
-          dispatch(setAuth({
-            roles: user.roles,
-            teamIds: user.teamIds,
-            orgIds: user.orgIds
-          }));
+          dispatch(showAlert({ text: `Welcome ${user.username}!`, type: 'success' }));
+          dispatch(
+            setAuth({
+              roles: user.roles,
+              teamIds: user.teamIds,
+              orgIds: user.orgIds,
+            })
+          );
           if (isAuth) {
             navigate(PROFILE.PROFILE, { replace: false });
           }
         }
       })
-      .catch((err) => {
+      .catch(err => {
         if (err.message === 'Unverified User') {
           setShowResendLink(true);
         }
-        dispatch(showAlert({text: err.message, type: 'error'}));
+        dispatch(showAlert({ text: err.message, type: 'error' }));
       });
   };
 

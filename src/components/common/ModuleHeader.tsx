@@ -1,13 +1,13 @@
-import React, {Fragment, ReactNode} from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { SectionContainer } from '../containers';
 import { CenteredGrid, GridItem } from '../grids';
 import FlagIcon from '../icons/FlagIcon';
 import CircularImage from '../images/CircularImage';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
-import {TImageType} from "../../constants.ts";
-import {useNationality} from "../../hooks";
-import {theme} from "../../theme";
+import { TImageType } from '../../constants.ts';
+import { useNationality } from '../../hooks';
+import { theme } from '../../theme';
 
 type Props = {
   title?: string;
@@ -19,15 +19,7 @@ type Props = {
   loading?: boolean;
 };
 
-const ModuleHeader: React.FC<Props> = ({
-  title,
-  badge,
-  data,
-  city,
-  country,
-  type,
-  loading,
-}) => {
+const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type, loading }) => {
   const { countryName } = useNationality(country);
 
   return (
@@ -35,12 +27,7 @@ const ModuleHeader: React.FC<Props> = ({
       <CenteredGrid dir="row">
         <GridItem xs={4}>
           {loading ? (
-            <CustomSkeleton
-              variant="circular"
-              height="90px"
-              width="90px"
-              margin="8px"
-            />
+            <CustomSkeleton variant="circular" height="90px" width="90px" margin="8px" />
           ) : (
             <CircularImage image={badge} type={type} size="90px" />
           )}
@@ -66,11 +53,7 @@ const ModuleHeader: React.FC<Props> = ({
               return (
                 <Fragment key={item.label + i}>
                   {loading ? (
-                    <CustomSkeleton
-                      width="30px"
-                      height="24px"
-                      margin="0px 2px 0px 0px"
-                    />
+                    <CustomSkeleton width="30px" height="24px" margin="0px 2px 0px 0px" />
                   ) : (
                     <div
                       style={{

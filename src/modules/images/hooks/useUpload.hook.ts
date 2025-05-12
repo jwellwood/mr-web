@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
-import {ApolloQueryResult, FetchResult} from "@apollo/client";
+import { ApolloQueryResult, FetchResult } from '@apollo/client';
 
 interface UseUpload {
   uploadFunc: (fileData: FormData) => Promise<object>;
@@ -10,7 +10,7 @@ interface UseUpload {
   url?: string;
   public_id?: string;
   graphqlFunc: (data?: object) => Promise<FetchResult<unknown>>;
-  refetchFunc: (data?: object) =>  Promise<ApolloQueryResult<unknown>>;
+  refetchFunc: (data?: object) => Promise<ApolloQueryResult<unknown>>;
 }
 
 export const useUpload = ({
@@ -32,9 +32,7 @@ export const useUpload = ({
     }
   }, [url]);
 
-  const onSubmit = (formData: {
-    imageFile: File | null;
-  }) => {
+  const onSubmit = (formData: { imageFile: File | null }) => {
     if (!formData.imageFile) return;
     setLoading(true);
     const file: File = formData.imageFile;
@@ -42,32 +40,34 @@ export const useUpload = ({
     fileData.append('file', file);
     fileData.append('upload_preset', 'image');
     uploadFunc(fileData)
-      .then((res) => {
+      .then(res => {
         setLoading(false);
 
         graphqlFunc({ variables: { ...res } })
           .then(() => {
             // refetchFunc();
-            dispatch(showAlert({
-              text: 'Image updated!',
-              type: 'success'
-            }));
+            dispatch(
+              showAlert({
+                text: 'Image updated!',
+                type: 'success',
+              })
+            );
             navigate(-1);
           })
-          .catch((err) => {
+          .catch(err => {
             console.error(err);
-            dispatch(showAlert({text: 'There was a problem', type: 'error'}))
+            dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
           });
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err);
-        dispatch(showAlert({text: 'There was a problem', type: 'error'}))
+        dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
         setLoading(false);
       });
   };
 
   const removeImage = () => {
-    if(!public_id) {
+    if (!public_id) {
       return;
     }
     setLoading(true);
@@ -76,17 +76,17 @@ export const useUpload = ({
         graphqlFunc({ variables: { public_id: '0', url: 'default' } })
           .then(() => {
             refetchFunc();
-            dispatch(showAlert({text: 'Image removed successfully!', type: 'success'}))
+            dispatch(showAlert({ text: 'Image removed successfully!', type: 'success' }));
             navigate(-1);
           })
-          .catch((err) => {
+          .catch(err => {
             console.error(err);
             setLoading(false);
-            dispatch(showAlert({text: 'There was a problem', type: 'error'}))
+            dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
           });
         setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.error(err));
   };
 
   return {

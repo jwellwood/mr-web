@@ -21,7 +21,7 @@ const Awards: React.FC = () => {
     <>
       <CenteredGrid dir="row">
         {!loading &&
-          data?.awards.map((item) => {
+          data?.awards.map(item => {
             return <AwardCard key={item.awardName} award={item} />;
           })}
       </CenteredGrid>

@@ -8,12 +8,12 @@ const api = {
 
 export const uploadTeamBadge = (dataToSubmit: FormData) => {
   const route = api.UPLOAD_TEAM_BADGE_ROUTE;
-  const request = axios.post(route, dataToSubmit).then((res) => res.data);
+  const request = axios.post(route, dataToSubmit).then(res => res.data);
   return request;
 };
 
 export const removeTeamBadge = (public_id: string) => {
   const route = `${api.REMOVE_TEAM_BADGE_ROUTE}${public_id}`;
-  const request = axios.delete(route).then((res) => res.data);
+  const request = axios.delete(route).then(res => res.data);
   return request;
 };

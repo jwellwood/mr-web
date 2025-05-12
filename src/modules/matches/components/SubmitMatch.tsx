@@ -3,7 +3,8 @@ import { useForm } from 'react-hook-form';
 import { FormContainer, SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList';
 import CustomTable from '../../../components/tables/CustomTable';
-import { IListItem, IPlayerInMatch, ITempMatch } from '../../../types';import { match_form_table, match_form_table_styles } from '../configs';
+import { IListItem, IPlayerInMatch, ITempMatch } from '../../../types';
+import { match_form_table, match_form_table_styles } from '../configs';
 import { statsDataAll } from '../helpers';
 
 type Props = {
@@ -12,11 +13,7 @@ type Props = {
   currentTempPlayers: IPlayerInMatch[];
 };
 
-const SubmitMatch: React.FC<Props> = ({
-  onSubmit,
-  currentTempMatch,
-  currentTempPlayers,
-}) => {
+const SubmitMatch: React.FC<Props> = ({ onSubmit, currentTempMatch, currentTempPlayers }) => {
   const { handleSubmit } = useForm();
   const tableData = statsDataAll(currentTempPlayers, false);
   const data: IListItem[] = [

@@ -2,25 +2,25 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import type { IAlert } from '../../../types';
 
 const initialState: IAlert = {
-    text: '',
-    type: 'warning',
+  text: '',
+  type: 'warning',
 };
 
 const alertsSlice = createSlice({
-    name: 'alert',
-    initialState,
-    reducers: {
-        showAlert: (state, action: PayloadAction<IAlert>) => {
-            return {
-                ...state,
-                ...action.payload
-            };
-        }
-    }
+  name: 'alert',
+  initialState,
+  reducers: {
+    showAlert: (state, action: PayloadAction<IAlert>) => {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    },
+  },
 });
 
 // Export the action creators
 export const { showAlert } = alertsSlice.actions;
 
 // Export the reducer
-export const { reducer: alertsReducer } =  alertsSlice;
+export const { reducer: alertsReducer } = alertsSlice;

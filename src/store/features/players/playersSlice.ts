@@ -1,30 +1,30 @@
-import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-import type {IPlayerInMatch} from "../../../types";
+import type { IPlayerInMatch } from '../../../types';
 
 interface IPlayerState {
-    players: IPlayerInMatch[]
+  players: IPlayerInMatch[];
 }
 
 const initialState: IPlayerState = {
-    players: []
-}
+  players: [],
+};
 
 const playersSlice = createSlice({
-    name: 'players',
-    initialState,
-    reducers: {
-        setState: (state, action: PayloadAction<IPlayerState>) => {
-            return {
-                ...state,
-                ...action.payload
-            }
-        },
-        resetState: () => {
-            return initialState;
-        }
-    }
-})
+  name: 'players',
+  initialState,
+  reducers: {
+    setState: (state, action: PayloadAction<IPlayerState>) => {
+      return {
+        ...state,
+        ...action.payload,
+      };
+    },
+    resetState: () => {
+      return initialState;
+    },
+  },
+});
 
-export const {setState: setPlayers, resetState: resetPlayers} = playersSlice.actions;
-export const {reducer: playersReducer} = playersSlice;
+export const { setState: setPlayers, resetState: resetPlayers } = playersSlice.actions;
+export const { reducer: playersReducer } = playersSlice;

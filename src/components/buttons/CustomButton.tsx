@@ -4,10 +4,10 @@ import Button from '@mui/material/Button';
 interface Props {
   children?: string | ReactElement;
   onClick?: () => void;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
-  variant?: "outlined" | "text" | "contained";
-  color?: "primary" | "inherit" | "secondary" | "success" | "error" | "info" | "warning";
+  variant?: 'outlined' | 'text' | 'contained';
+  color?: 'primary' | 'inherit' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
   fullWidth?: boolean;
   padding?: string;
 }

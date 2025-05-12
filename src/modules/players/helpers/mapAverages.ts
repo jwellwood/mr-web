@@ -1,4 +1,4 @@
-import {getAvg} from "../../../utils/helpers";
+import { getAvg } from '../../../utils/helpers';
 
 export const mapAverages = (player: {
   apps: number;

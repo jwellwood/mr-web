@@ -7,14 +7,14 @@ import PlayerTabs from './PlayerTabs';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useAuth, useDateOfBirth } from '../../../hooks';
 import { IListItem } from '../../../types';
-import {AuthRoles, ImageTypes, LinkTypes} from "../../../constants.ts";
+import { AuthRoles, ImageTypes, LinkTypes } from '../../../constants.ts';
 import PositionString from '../../../components/tables/PositionString.tsx';
-import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import EditLinksModal from '../../../components/modals/EditLinksModal.tsx';
-import {SectionContainer} from "../../../components/containers";
-import ModuleHeader from "../../../components/common/ModuleHeader.tsx";
+import { SectionContainer } from '../../../components/containers';
+import ModuleHeader from '../../../components/common/ModuleHeader.tsx';
 
 const Player: React.FC = () => {
   const { teamId, playerId } = useCustomParams();

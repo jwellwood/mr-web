@@ -1,31 +1,32 @@
-import CustomSkeleton from "../../../components/loaders/CustomSkeleton";
-import NameCell from "../../../components/tables/NameCell";
-import { returnStatAsZero } from "../../../utils/helpers/returnZero";
-import {ReactNode} from "react";
+import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import NameCell from '../../../components/tables/NameCell';
+import { returnStatAsZero } from '../../../utils/helpers/returnZero';
+import { ReactNode } from 'react';
 
-export const getSquadSeasonTableData = (data: {
-  stats: object[];
-}, loading: boolean): readonly {
+export const getSquadSeasonTableData = (
+  data: {
+    stats: object[];
+  },
+  loading: boolean
+): readonly {
   name: {
     value: ReactNode;
-  }
-  apps: number | ReactNode
-  goals: number | ReactNode
-  goalsPerGame: number | ReactNode
-  assists: number | ReactNode
-  assistsPerGame: number | ReactNode
-  mvp: number | ReactNode
-  mvpPerGame: number | ReactNode
-  conceded: number | ReactNode
-  concededPerGame: number | ReactNode
-  cleanSheets: number | ReactNode
+  };
+  apps: number | ReactNode;
+  goals: number | ReactNode;
+  goalsPerGame: number | ReactNode;
+  assists: number | ReactNode;
+  assistsPerGame: number | ReactNode;
+  mvp: number | ReactNode;
+  mvpPerGame: number | ReactNode;
+  conceded: number | ReactNode;
+  concededPerGame: number | ReactNode;
+  cleanSheets: number | ReactNode;
 }[] => {
   const arr = new Array(15).fill({});
-  const dataToMap = loading
-    ? arr.map((stat) => stat)
-    : data?.stats?.map((stat) => stat);
+  const dataToMap = loading ? arr.map(stat => stat) : data?.stats?.map(stat => stat);
 
-  return dataToMap.map((stats) => {
+  return dataToMap.map(stats => {
     const {
       name,
       apps,
@@ -41,11 +42,7 @@ export const getSquadSeasonTableData = (data: {
     } = stats || {};
     return {
       name: {
-        value: (
-          <NameCell id={stats._id}>
-            {name || <CustomSkeleton width="90px" />}
-          </NameCell>
-        ),
+        value: <NameCell id={stats._id}>{name || <CustomSkeleton width="90px" />}</NameCell>,
       },
       apps: returnStatAsZero(apps),
       goals: returnStatAsZero(goals),

@@ -1,6 +1,6 @@
 import { theme } from '../../theme';
 import { IAward, ITeamSeason } from './types';
-import {ITrophy} from "../../types";
+import { ITrophy } from '../../types';
 
 // Replace the enum with this const object
 export const PAGES = {
@@ -15,7 +15,7 @@ export const PAGES = {
 } as const;
 
 // Add this type to get the same type safety as an enum
-export type PAGES_TYPE = typeof PAGES[keyof typeof PAGES];
+export type PAGES_TYPE = (typeof PAGES)[keyof typeof PAGES];
 
 export const initialTrophyFormState: Partial<ITrophy> = {
   name: '',

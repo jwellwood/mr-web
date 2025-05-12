@@ -6,19 +6,14 @@ import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import ControlledMultiSelectInput
-  from "../../../components/inputs/ControlledMultiSelectInput.tsx";
+import ControlledMultiSelectInput from '../../../components/inputs/ControlledMultiSelectInput.tsx';
 
 interface Props {
   onSubmit: (data: Partial<IAward>) => void;
   defaultValues: Partial<IAward>;
   playersOptions: ISelectOptions[];
 }
-const AwardForm: React.FC<Props> = ({
-  onSubmit,
-  defaultValues,
-  playersOptions,
-}) => {
+const AwardForm: React.FC<Props> = ({ onSubmit, defaultValues, playersOptions }) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -45,7 +40,13 @@ const AwardForm: React.FC<Props> = ({
             name="winners"
             label="Winners"
             options={playersOptions}
-            errors={errors.winners && "name" in errors.winners ? typeof errors.winners.name === "string" ? [errors.winners.name] : [] : []}
+            errors={
+              errors.winners && 'name' in errors.winners
+                ? typeof errors.winners.name === 'string'
+                  ? [errors.winners.name]
+                  : []
+                : []
+            }
             showLabels
           />
         </GridItem>

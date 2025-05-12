@@ -10,11 +10,7 @@ interface Props {
   defaultValues: IDeleteAccountForm;
   username: string;
 }
-const DeleteAccountForm: React.FC<Props> = ({
-  onSubmit,
-  defaultValues,
-  username,
-}) => {
+const DeleteAccountForm: React.FC<Props> = ({ onSubmit, defaultValues, username }) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -27,10 +23,7 @@ const DeleteAccountForm: React.FC<Props> = ({
   const candidateName = watch('username');
 
   return (
-    <FormContainer
-      onSubmit={handleSubmit(onSubmit)}
-      disabled={candidateName !== username}
-    >
+    <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={candidateName !== username}>
       <CenteredGrid dir="row">
         <ControlledTextInput
           control={control}

@@ -1,4 +1,4 @@
-export function getStringColorByNumber (number: number | string): string{
+export function getStringColorByNumber(number: number | string): string {
   let color: string;
   if (typeof number !== 'number' && number) number = +number;
   switch (number) {
@@ -15,4 +15,4 @@ export function getStringColorByNumber (number: number | string): string{
       color = 'secondary';
   }
   return color;
-};
+}

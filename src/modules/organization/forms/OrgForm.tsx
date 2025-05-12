@@ -4,11 +4,9 @@ import { IOrganization } from '../../../types';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import ControlledDateInput from "../../../components/inputs/ControlledDateInput.tsx";
-import ControlledSelectInput
-  from "../../../components/inputs/ControlledSelectInput.tsx";
-import {ISelectOptions} from "../../../components/inputs/SelectInput.tsx";
-
+import ControlledDateInput from '../../../components/inputs/ControlledDateInput.tsx';
+import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput.tsx';
+import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
 
 interface Props {
   onSubmit: (data: Partial<IOrganization>) => void;
@@ -16,11 +14,7 @@ interface Props {
   countryOptions: ISelectOptions[];
 }
 
-const OrgForm: React.FC<Props> = ({
-  onSubmit,
-  defaultValues,
-  countryOptions,
-}) => {
+const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) => {
   const {
     handleSubmit,
     formState: { errors },

@@ -7,8 +7,8 @@ import { PageHeader } from '../../../components/typography';
 import ValidatedEmail from '../components/ValidatedEmail.component';
 import { VALIDATED_EMAIL_PAGE } from '../constants';
 import { verifyEmail } from '../services/validation';
-import {AppDispatch} from "../../../store/store.ts";
-import RouteGuard from "../../../router/RouteGuard.tsx";
+import { AppDispatch } from '../../../store/store.ts';
+import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const ValidatedEmailContainer: React.FC = () => {
   const { token } = useParams<{ token: string }>();
@@ -18,15 +18,15 @@ const ValidatedEmailContainer: React.FC = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-      if(!token) return;
+    if (!token) return;
     verifyEmail(token)
-      .then((res) => {
+      .then(res => {
         setLoading(false);
         if (res.email) {
           setSuccessfulValidation(true);
         }
       })
-      .catch((err) => {
+      .catch(err => {
         setError(err?.response?.data?.message || 'Something went wrong');
         setLoading(false);
       });

@@ -1,4 +1,4 @@
-import {useState, MouseEvent, useMemo, ReactNode} from 'react';
+import { useState, MouseEvent, useMemo, ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -24,7 +24,7 @@ type Props<T extends Record<string, number | object | ReactNode>> = {
   isSortable: boolean;
   sortByString?: string;
   cellIndexStyles?: readonly ICellStyleByIndex[];
-}
+};
 
 function CustomTable<T extends Record<string, number | object | ReactNode>>({
   rows = [],
@@ -35,18 +35,12 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
 }: Props<T>) {
   const [sortBy, setSortBy] = useState(sortByString);
 
-  const handleRequestSort = (
-    _: MouseEvent,
-    property: keyof T
-  ) => {
+  const handleRequestSort = (_: MouseEvent, property: keyof T) => {
     setSortBy(String(property));
   };
 
   const visibleRows = useMemo(
-    () => stableSort(
-        rows,
-        getComparator('desc', sortBy)
-    ),
+    () => stableSort(rows, getComparator('desc', sortBy)),
     [sortBy, rows]
   );
 
@@ -56,7 +50,7 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
         <Table stickyHeader aria-labelledby="tableTitle" size={'small'}>
           <CustomTableHead
             onRequestSort={handleRequestSort}
-            columns={columns.filter((column) => column.id !== 'isPercentage')}
+            columns={columns.filter(column => column.id !== 'isPercentage')}
             sortBy={sortBy}
             isSortable={isSortable}
           />
@@ -65,23 +59,26 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
               return (
                 <TableRow hover key={i} sx={{ cursor: 'pointer' }}>
                   {Object.entries(row).map((item, i) => {
-                    const cellIndex = cellIndexStyles.map((cell) => cell.index);
+                    const cellIndex = cellIndexStyles.map(cell => cell.index);
 
                     const textColor = cellIndex.includes(i)
-                      ? cellIndexStyles.find((cell) => cell.index === i)
-                          ?.textColor || 'data'
+                      ? cellIndexStyles.find(cell => cell.index === i)?.textColor || 'data'
                       : 'data';
 
                     const customCellValue = () => {
                       if (item[0] === 'position') {
                         return (
                           <PositionString>
-                            {(typeof item[1] === "object" && item[1] !== null && 'value' in item[1] ? item[1].value : item[1]) as string}
+                            {
+                              (typeof item[1] === 'object' && item[1] !== null && 'value' in item[1]
+                                ? item[1].value
+                                : item[1]) as string
+                            }
                           </PositionString>
                         );
                       }
 
-                      return typeof item[1] === 'object' && item[1] !== null  && 'value' in item[1]
+                      return typeof item[1] === 'object' && item[1] !== null && 'value' in item[1]
                         ? item[1]?.value
                         : item[1];
                     };
@@ -90,21 +87,12 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
                       <TableCell
                         className="custom-table-cell"
                         size="small"
-                        align={
-                          item[0] === 'name' || item[0] === 'label'
-                            ? 'left'
-                            : 'center'
-                        }
+                        align={item[0] === 'name' || item[0] === 'label' ? 'left' : 'center'}
                         key={item[0]}
                         id={item[0]}
                         sx={{
                           position: item[0] === 'name' ? 'sticky' : 'relative',
-                          backgroundColor: getBackgroundColor(
-                            item,
-                            i,
-                            sortBy,
-                            cellIndexStyles
-                          ),
+                          backgroundColor: getBackgroundColor(item, i, sortBy, cellIndexStyles),
                           zIndex: item[0] === 'name' ? 1 : 0,
                           left: 0,
                           padding: '0px',
@@ -115,7 +103,13 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
                       >
                         <CustomCellValue
                           isDifference={item[0] === 'difference'}
-                          isPercentage={typeof item[1] === "object" && item[1] !== null && "isPercentage" in item[1] ? item[1].isPercentage as boolean : false}
+                          isPercentage={
+                            typeof item[1] === 'object' &&
+                            item[1] !== null &&
+                            'isPercentage' in item[1]
+                              ? (item[1].isPercentage as boolean)
+                              : false
+                          }
                           textColor={textColor}
                           value={customCellValue()}
                         />
@@ -130,6 +124,6 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
       </TableContainer>
     </Box>
   );
-};
+}
 
 export default CustomTable;

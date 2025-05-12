@@ -14,9 +14,9 @@ import SquadTabs from '../../../modules/players/containers/SquadTabs';
 import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
 import TeamOverview from './TeamOverview';
-import {IIconType} from "../../../components/icons/types";
-import {getTabIndex} from "../../../store/features/tabs/tabsSelector";
-import {NAV_ICONS} from "../../../app/icons";
+import { IIconType } from '../../../components/icons/types';
+import { getTabIndex } from '../../../store/features/tabs/tabsSelector';
+import { NAV_ICONS } from '../../../app/icons';
 
 const Team: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -25,11 +25,7 @@ const Team: React.FC = () => {
   const { team } = useSelector(getTabIndex);
 
   const getIcon = (name: IIconType, index: number) => (
-    <NavIcon
-      icon={name}
-      size="20px"
-      color={index === team ? 'primary' : 'label'}
-    />
+    <NavIcon icon={name} size="20px" color={index === team ? 'primary' : 'label'} />
   );
 
   const tabs: ITab[] = [
@@ -82,10 +78,7 @@ const Team: React.FC = () => {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.TEAM}
-        actionButton={isTeamAuth ?? <EditLinksModal data={links} />}
-      >
+      <CustomAppBar title={PAGES.TEAM} actionButton={isTeamAuth ?? <EditLinksModal data={links} />}>
         <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
       </CustomAppBar>
     </RouteGuard>

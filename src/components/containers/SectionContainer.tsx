@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { Grid, Paper } from '@mui/material';
 import { CustomTypography } from '../typography';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   title?: string | ReactNode;
@@ -10,12 +10,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-const SectionContainer: React.FC<Props> = ({
-  title,
-  children,
-  border,
-  background,
-}) => {
+const SectionContainer: React.FC<Props> = ({ title, children, border, background }) => {
   return (
     <Paper
       elevation={1}
@@ -27,12 +22,7 @@ const SectionContainer: React.FC<Props> = ({
         borderBottom: border ? undefined : `0.5px solid ${theme.palette.primary.dark}`,
       }}
     >
-      <Grid
-        container
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Grid container direction="row" justifyContent="space-between" alignItems="center">
         <CustomTypography color="data" size="sm" bold>
           {title}
         </CustomTypography>

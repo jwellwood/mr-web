@@ -10,8 +10,7 @@ export interface ITrophy {
   comment?: string;
 }
 
-export interface ITrophyResponse
-  extends Omit<ITrophy, 'opponentId' | 'seasonId'> {
+export interface ITrophyResponse extends Omit<ITrophy, 'opponentId' | 'seasonId'> {
   opponent: string;
   season: string;
 }

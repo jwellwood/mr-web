@@ -7,7 +7,7 @@ import { IIconType } from '../icons/types';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { theme } from '../../theme';
 import { getThemeColorByType } from '../../utils';
-import {TImageType} from "../../constants.ts";
+import { TImageType } from '../../constants.ts';
 
 const {
   typography: { fontFamily },
@@ -79,19 +79,14 @@ const CustomAvatar = ({
         sx={{ display: 'flex' }}
         style={{
           background: 'transparent',
-          border:
-            icon === 'team' ? `${theme.palette.secondary.main} 2px solid` : '',
+          border: icon === 'team' ? `${theme.palette.secondary.main} 2px solid` : '',
           color: theme.palette.secondary.light,
           margin: centered ? 'auto' : '',
           width: size || '',
           height: size || '',
         }}
       >
-        <AppIcon
-          icon={icon}
-          size={iconSize || ''}
-          color={theme.palette.label.main}
-        />
+        <AppIcon icon={icon} size={iconSize || ''} color={theme.palette.label.main} />
       </Avatar>
     );
   }

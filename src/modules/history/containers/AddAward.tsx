@@ -15,9 +15,9 @@ import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
-import {AuthRoles} from "../../../constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { AuthRoles } from '../../../constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const AddAward: React.FC = () => {
   const { teamId, seasonId } = useCustomParams();
@@ -32,7 +32,7 @@ const AddAward: React.FC = () => {
 
   const playerOptions: ISelectOptions[] = useMemo(
     () =>
-      players?.map((player) => ({
+      players?.map(player => ({
         label: player.name,
         value: player._id,
       })),
@@ -57,17 +57,16 @@ const AddAward: React.FC = () => {
           awardValue: +(formData.awardValue || 0),
         },
       }).then(() => {
-        dispatch(showAlert({text: 'Award added successfully', type: 'success'}));
+        dispatch(showAlert({ text: 'Award added successfully', type: 'success' }));
         navigate(-1);
       });
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({text: 'There was a problem', type: 'error'}));
+      dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
     }
   };
 
-  if (error || playersError)
-    return <ErrorGraphql error={(error || playersError) as Error} />;
+  if (error || playersError) return <ErrorGraphql error={(error || playersError) as Error} />;
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>

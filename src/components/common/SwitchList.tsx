@@ -13,7 +13,7 @@ const SwitchList: React.FC<Props> = ({ control, data }) => {
     return <ControlledSwitchInput control={control} name={name} />;
   };
 
-  const switchList: IListItem[] = data.map((item) => {
+  const switchList: IListItem[] = data.map(item => {
     return {
       label: item.label,
       value: switchComp(item.value as string),

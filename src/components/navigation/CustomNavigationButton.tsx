@@ -30,22 +30,12 @@ const CustomNavigationButton: React.FC<Props> = ({
       onClick={onClick}
       showLabel={true}
       label={
-        <CustomTypography
-          size="xs"
-          bold
-          color={current === value ? 'data' : 'label'}
-        >
+        <CustomTypography size="xs" bold color={current === value ? 'data' : 'label'}>
           {label}
         </CustomTypography>
       }
       value={value}
-      icon={
-        <AppIcon
-          size={current === value ? '1.4rem' : '1.2rem'}
-          icon={icon}
-          color="primary"
-        />
-      }
+      icon={<AppIcon size={current === value ? '1.4rem' : '1.2rem'} icon={icon} color="primary" />}
     />
   );
 };

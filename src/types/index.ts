@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import type {TLinkType} from "../constants.ts";
+import type { TLinkType } from '../constants.ts';
 
 export * from './team.ts';
 export * from './trophy';

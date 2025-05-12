@@ -1,6 +1,6 @@
-import {navbarText, sidebarText} from "../../../i18n";
-import {HOME, PROFILE} from '../../../router/paths';
-import {IIconType} from "../../icons/types";
+import { navbarText, sidebarText } from '../../../i18n';
+import { HOME, PROFILE } from '../../../router/paths';
+import { IIconType } from '../../icons/types';
 
 export const sidebarLinks: {
   link: string;

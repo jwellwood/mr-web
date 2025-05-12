@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid, { GridSize } from '@mui/material/Grid';
-import {SxProps} from "@mui/material";
+import { SxProps } from '@mui/material';
 
 interface Props {
   children: React.ReactNode;
@@ -38,14 +38,16 @@ const GridItem: React.FC<Props> = ({
       // md={md}
       // lg={lg}
       // xl={xl}
-      sx={{
-        textAlign,
-        alignContent,
-        alignItems,
-        justifyContent,
-        paddingTop: '4px !important',
-        margin: margin,
-      } as SxProps}
+      sx={
+        {
+          textAlign,
+          alignContent,
+          alignItems,
+          justifyContent,
+          paddingTop: '4px !important',
+          margin: margin,
+        } as SxProps
+      }
     >
       {children}
     </Grid>

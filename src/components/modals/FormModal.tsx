@@ -1,11 +1,5 @@
 import React, { ReactNode, useEffect, useState } from 'react';
-import {
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
 type Props = {
   title?: string;
@@ -14,12 +8,7 @@ type Props = {
   closeForm: () => boolean;
 };
 
-const FormModal: React.FC<Props> = ({
-  title,
-  children,
-  buttonElement,
-  closeForm,
-}) => {
+const FormModal: React.FC<Props> = ({ title, children, buttonElement, closeForm }) => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -40,11 +29,7 @@ const FormModal: React.FC<Props> = ({
       <span role="button" style={{ cursor: 'pointer' }} onClick={handleOpen}>
         {buttonElement}
       </span>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
-      >
+      <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
         {title ? (
           <DialogTitle id="responsive-dialog-title" color="primary">
             {title}

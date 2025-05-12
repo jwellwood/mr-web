@@ -17,9 +17,7 @@ const Stadium: React.FC<Props> = ({ team, loading }) => {
       value: (
         <PresentationModal
           title="Location"
-          buttonElement={
-            <AppIcon icon="location" size="1.1rem" color="white" />
-          }
+          buttonElement={<AppIcon icon="location" size="1.1rem" color="white" />}
         >
           {
             <SectionContainer>
@@ -34,9 +32,7 @@ const Stadium: React.FC<Props> = ({ team, loading }) => {
                       aria-hidden="false"
                     ></iframe>
                   ) : (
-                    <CustomTypography color="warning">
-                      No map available yet!
-                    </CustomTypography>
+                    <CustomTypography color="warning">No map available yet!</CustomTypography>
                   )}
                 </GridItem>
               </CenteredGrid>

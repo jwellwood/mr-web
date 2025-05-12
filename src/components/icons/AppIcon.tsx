@@ -29,34 +29,20 @@ import {
   BiReset,
 } from 'react-icons/bi';
 import { BsShieldShaded } from 'react-icons/bs';
-import {
-  FaUserShield,
-  FaTshirt,
-  FaMonument,
-  FaUserCircle,
-} from 'react-icons/fa';
+import { FaUserShield, FaTshirt, FaMonument, FaUserCircle } from 'react-icons/fa';
 import { FiLock } from 'react-icons/fi';
-import {
-  GiPieChart,
-  GiSoccerField,
-  GiLaurelsTrophy,
-  GiTrophyCup,
-} from 'react-icons/gi';
+import { GiPieChart, GiSoccerField, GiLaurelsTrophy, GiTrophyCup } from 'react-icons/gi';
 import { GrInstagram } from 'react-icons/gr';
 import { HiHome, HiViewGrid } from 'react-icons/hi';
 import { IoMdPodium, IoMdPeople } from 'react-icons/io';
 import { LiaMedalSolid } from 'react-icons/lia';
 import { MdLocationOn } from 'react-icons/md';
-import {
-  RiBarChartHorizontalFill,
-  RiArrowUpDownLine,
-  RiUserStarLine,
-} from 'react-icons/ri';
+import { RiBarChartHorizontalFill, RiArrowUpDownLine, RiUserStarLine } from 'react-icons/ri';
 import { TfiMenu } from 'react-icons/tfi';
 import * as icons from '.';
 import { IIconType } from './types';
 import { getIconColor } from './utils/getIconColor';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   icon: IIconType;
@@ -65,11 +51,7 @@ interface Props {
   bold?: boolean;
 }
 
-const AppIcon: React.FC<Props> = ({
-  icon,
-  size = '1rem',
-  color = theme.palette.primary.main,
-}) => {
+const AppIcon: React.FC<Props> = ({ icon, size = '1rem', color = theme.palette.primary.main }) => {
   const iconColor = getIconColor(color);
 
   switch (icon) {
@@ -158,9 +140,7 @@ const AppIcon: React.FC<Props> = ({
     case icons.doneIcon:
       return <BiCheck size={size} color={iconColor} />;
     case icons.checkIcon:
-      return (
-        <BiCheck size={size} color={theme.palette.success.main || iconColor} />
-      );
+      return <BiCheck size={size} color={theme.palette.success.main || iconColor} />;
     case icons.todoIcon:
       return <BiX size={size} color={iconColor} />;
     case icons.lockedIcon:

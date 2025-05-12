@@ -1,9 +1,9 @@
-import {IListItem, IMostGoalsInMatch} from "../../../types";
-import {CustomTypography} from "../../../components/typography";
-import {parseDate} from "../../../utils/helpers";
-import {SectionContainer} from "../../../components/containers";
-import {theme} from "../../../theme";
-import LinksList from "../../../components/lists/LinksList.tsx";
+import { IListItem, IMostGoalsInMatch } from '../../../types';
+import { CustomTypography } from '../../../components/typography';
+import { parseDate } from '../../../utils/helpers';
+import { SectionContainer } from '../../../components/containers';
+import { theme } from '../../../theme';
+import LinksList from '../../../components/lists/LinksList.tsx';
 
 type Props = {
   title: string;
@@ -13,13 +13,13 @@ type Props = {
 
 function MostInGame({ data, title }: Props) {
   const listData: IListItem[] =
-    data?.map((item) => {
+    data?.map(item => {
       const labelColor =
         item.teamGoals > item.opponentGoals
           ? 'primary'
           : item.teamGoals === item.opponentGoals
-          ? 'warning'
-          : 'error';
+            ? 'warning'
+            : 'error';
       return {
         label: (
           <CustomTypography bold color="data">
@@ -52,6 +52,6 @@ function MostInGame({ data, title }: Props) {
       <LinksList links={listData} />
     </SectionContainer>
   );
-};
+}
 
 export default MostInGame;

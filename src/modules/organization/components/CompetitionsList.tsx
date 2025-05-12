@@ -7,13 +7,14 @@ type Props = {
 };
 
 const CompetitionsList: React.FC<Props> = ({ competitions }) => {
-  const data: IListItem[] = competitions?.map((comp) => {
-    return {
-      label: comp.name,
-      value: comp.competitionType,
-      link: `competition/${comp._id}`,
-    };
-  }) || [];
+  const data: IListItem[] =
+    competitions?.map(comp => {
+      return {
+        label: comp.name,
+        value: comp.competitionType,
+        link: `competition/${comp._id}`,
+      };
+    }) || [];
 
   return (
     <SectionContainer title="Competitions">

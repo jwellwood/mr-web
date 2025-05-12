@@ -5,7 +5,7 @@ import { CenteredGrid, GridItem } from '../grids';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
 import { IListItem } from '../../types';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 interface Props {
   data: IListItem[];
   loading?: boolean;
@@ -13,14 +13,10 @@ interface Props {
   width?: number;
 }
 
-const DataContainer: React.FC<Props> = ({
-  data,
-  loading,
-  direction = 'row',
-}) => {
+const DataContainer: React.FC<Props> = ({ data, loading, direction = 'row' }) => {
   return (
     <CenteredGrid dir={direction}>
-      {data.map((item) => {
+      {data.map(item => {
         return (
           <Grid sx={{ width: '100%' }} key={String(item.value)}>
             <Paper
@@ -41,11 +37,7 @@ const DataContainer: React.FC<Props> = ({
                 {item.icon && <GridItem>{item.icon}</GridItem>}
                 <GridItem>
                   <CustomTypography bold color="data" size="xs">
-                    {loading ? (
-                      <CustomSkeleton height="20px" width="50px" />
-                    ) : (
-                      item.value
-                    )}
+                    {loading ? <CustomSkeleton height="20px" width="50px" /> : item.value}
                   </CustomTypography>
                 </GridItem>
               </CenteredGrid>

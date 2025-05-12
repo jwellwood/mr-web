@@ -15,15 +15,7 @@ type Props = {
 };
 
 const MatchDetails: React.FC<Props> = ({ match }) => {
-  const {
-    date,
-    teamId,
-    teamGoals,
-    opponentId,
-    opponentGoals,
-    isHome,
-    competitionId,
-  } = match;
+  const { date, teamId, teamGoals, opponentId, opponentGoals, isHome, competitionId } = match;
   const matchDate = parseDate(date);
   const team = (teamId as ITeam).teamName;
   const teamBadge = (teamId as ITeam)?.teamBadge?.url;
@@ -48,12 +40,7 @@ const MatchDetails: React.FC<Props> = ({ match }) => {
           {homeTeam.name}
         </CustomTypography>
       ),
-      value: (
-        <ScoreBox
-          points={getPoints(teamGoals, opponentGoals)}
-          goals={homeTeam.score}
-        />
-      ),
+      value: <ScoreBox points={getPoints(teamGoals, opponentGoals)} goals={homeTeam.score} />,
     },
     {
       avatar: <CustomAvatar imageUrl={awayTeam.badge} type={IMAGE_TYPE.TEAM} />,
@@ -62,12 +49,7 @@ const MatchDetails: React.FC<Props> = ({ match }) => {
           {awayTeam.name}
         </CustomTypography>
       ),
-      value: (
-        <ScoreBox
-          points={getPoints(teamGoals, opponentGoals)}
-          goals={awayTeam.score}
-        />
-      ),
+      value: <ScoreBox points={getPoints(teamGoals, opponentGoals)} goals={awayTeam.score} />,
     },
   ];
 
@@ -77,9 +59,7 @@ const MatchDetails: React.FC<Props> = ({ match }) => {
         <CustomTypography size="xs" color="label">
           {matchDate}
         </CustomTypography>
-        <CustomTypography color="label">
-          {(competitionId as ICompetition)?.name}
-        </CustomTypography>
+        <CustomTypography color="label">{(competitionId as ICompetition)?.name}</CustomTypography>
       </CenteredGrid>
       <TextList data={scoreData} />
     </SectionContainer>

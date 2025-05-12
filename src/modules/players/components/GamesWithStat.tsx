@@ -1,7 +1,7 @@
 import { game_with_stat_styles, player_games_with_stat } from '../configs';
-import {IPlayerStats} from "../../../types";
-import {getPercentage} from "../../../utils/helpers";
-import CustomTable from "../../../components/tables/CustomTable.tsx";
+import { IPlayerStats } from '../../../types';
+import { getPercentage } from '../../../utils/helpers';
+import CustomTable from '../../../components/tables/CustomTable.tsx';
 
 type Props = {
   player: IPlayerStats;
@@ -9,13 +9,8 @@ type Props = {
 };
 
 function GamesWithStat({ player }: Props) {
-  const {
-    apps,
-    gamesWithGoal,
-    gamesWithAssist,
-    gamesWithGoalAndAssist,
-    gamesWithGoalOrAssist,
-  } = player;
+  const { apps, gamesWithGoal, gamesWithAssist, gamesWithGoalAndAssist, gamesWithGoalOrAssist } =
+    player;
 
   const rows = [
     {
@@ -60,6 +55,6 @@ function GamesWithStat({ player }: Props) {
       cellIndexStyles={game_with_stat_styles}
     />
   );
-};
+}
 
 export default GamesWithStat;

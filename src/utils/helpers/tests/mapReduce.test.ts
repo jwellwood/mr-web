@@ -9,11 +9,11 @@ describe('map reduce tests', () => {
     expect(mapReduce(array)).toBe(0);
   });
   test('should sum all the numbers of given stat from array', () => {
-    const array = mockData.filter((a) => a.number);
+    const array = mockData.filter(a => a.number);
     expect(mapReduce(array, 'number')).toBe(3);
   });
   test('should work for strings too', () => {
-    const array = mockData.filter((a) => +a.stringId < 4);
+    const array = mockData.filter(a => +a.stringId < 4);
     expect(mapReduce(array, 'stringId')).toBe(5);
   });
   test('should return NaN when stat does not exits', () => {

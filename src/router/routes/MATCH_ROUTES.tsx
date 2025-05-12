@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom';
 import { MATCH } from '../paths';
 
-import {AddMatch, DeleteMatch, EditMatch, Match} from "../../modules/matches/routes.ts";
+import { AddMatch, DeleteMatch, EditMatch, Match } from '../../modules/matches/routes.ts';
 
 export const MATCH_ROUTES = () => (
   <>

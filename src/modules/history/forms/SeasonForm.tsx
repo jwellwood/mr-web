@@ -8,7 +8,7 @@ import ControlledTextInput from '../../../components/inputs/ControlledTextInput'
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { DeleteModal } from '../../../components/modals';
 import { ITeamSeason } from '../types';
-import {getIntegers} from "../../../utils/helpers";
+import { getIntegers } from '../../../utils/helpers';
 
 type Props = {
   onSubmit: (formData: Partial<ITeamSeason>) => void;
@@ -83,13 +83,7 @@ const SeasonForm: React.FC<Props> = ({
           />
         </GridItem>
       </CenteredGrid>
-      {onDelete && (
-        <DeleteModal
-          onDelete={onDelete}
-          title="Season"
-          loading={deleteLoading}
-        />
-      )}
+      {onDelete && <DeleteModal onDelete={onDelete} title="Season" loading={deleteLoading} />}
     </FormContainer>
   );
 };

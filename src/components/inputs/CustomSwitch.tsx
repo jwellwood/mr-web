@@ -7,12 +7,12 @@ interface Props {
   name?: string;
   onCheck?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string | ReactElement;
-  placement?: "top" | "end" | "start" | "bottom";
+  placement?: 'top' | 'end' | 'start' | 'bottom';
   checked?: boolean;
   defaultChecked?: boolean;
   disabled?: boolean;
   isList?: boolean;
-  color?: "primary" | "secondary" | "success" | "error" | "info" | "warning";
+  color?: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
 }
 
 const CustomSwitch: React.FC<Props> = ({

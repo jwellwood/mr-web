@@ -9,9 +9,9 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import CompetitionDetails from '../components/CompetitionDetails';
 import { PAGES } from '../constants';
 import { GET_COMPETITION_BY_ID } from '../graphql';
-import {ORG} from "../../../router/paths.ts";
-import {useAuth} from "../../../hooks";
-import RouteGuard from "../../../router/RouteGuard.tsx";
+import { ORG } from '../../../router/paths.ts';
+import { useAuth } from '../../../hooks';
+import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const links = [
   { label: 'Add New Winner', type: LINK_TYPE.ADD, link: ORG.ADD_TEAM },

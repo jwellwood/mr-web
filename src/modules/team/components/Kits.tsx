@@ -2,11 +2,11 @@ import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
-import {ITeamResponse} from "../../../types";
+import { ITeamResponse } from '../../../types';
 import { SectionContainer } from '../../../components/containers';
-import {CenteredGrid, GridItem} from '../../../components/grids';
+import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
-import CustomSkeleton from "../../../components/loaders/CustomSkeleton.tsx";
+import CustomSkeleton from '../../../components/loaders/CustomSkeleton.tsx';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useStyles = makeStyles(() => ({
@@ -35,15 +35,8 @@ interface Props {
 const Kits: React.FC<Props> = ({ team, loading }) => {
   const classes = useStyles();
 
-  const {
-    homeShirt,
-    homeShorts,
-    homeSocks,
-    awayShirt,
-    awayShorts,
-    awaySocks,
-    kitsBackground,
-  } = team || {};
+  const { homeShirt, homeShorts, homeSocks, awayShirt, awayShorts, awaySocks, kitsBackground } =
+    team || {};
 
   const items = [
     {
@@ -59,24 +52,17 @@ const Kits: React.FC<Props> = ({ team, loading }) => {
   return (
     <SectionContainer title="Kits">
       <CenteredGrid dir="row">
-        {items.map((item) => (
+        {items.map(item => (
           <GridItem xs={6} key={item.title}>
             <CustomTypography bold color="primary" size="sm">
               {item.title}
             </CustomTypography>
-            <div
-              style={{ background: kitsBackground }}
-              className={classes.container}
-            >
+            <div style={{ background: kitsBackground }} className={classes.container}>
               {loading ? (
                 <CustomSkeleton height="75px" />
               ) : (
                 <CenteredGrid>
-                  <FaTshirt
-                    size="3.5rem"
-                    color={item.kit.shirt}
-                    className={classes.shirt}
-                  />
+                  <FaTshirt size="3.5rem" color={item.kit.shirt} className={classes.shirt} />
 
                   <GiUnderwearShorts
                     size="2.4rem"

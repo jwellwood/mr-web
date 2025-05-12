@@ -1,22 +1,18 @@
-import {MouseEvent, ReactNode} from 'react';
+import { MouseEvent, ReactNode } from 'react';
 import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
 import { CustomTypography } from '../typography';
 import { theme } from '../../theme';
 
-
 type Props<T extends Record<string, string | number | object | ReactNode>> = {
-  onRequestSort: (
-    event: MouseEvent,
-    property: keyof T
-  ) => void;
+  onRequestSort: (event: MouseEvent, property: keyof T) => void;
   columns: {
-    id: keyof T,
-    label?: ReactNode,
-    width?: number
+    id: keyof T;
+    label?: ReactNode;
+    width?: number;
   }[];
   sortBy?: string;
   isSortable: boolean;
-}
+};
 
 function CustomTableHead<T extends Record<string, string | number | object | ReactNode>>({
   columns,
@@ -24,27 +20,22 @@ function CustomTableHead<T extends Record<string, string | number | object | Rea
   sortBy,
   isSortable,
 }: Props<T>) {
-  const createSortHandler =
-    (property: keyof T) => (event: MouseEvent) => {
-      onRequestSort(event, property);
-    };
+  const createSortHandler = (property: keyof T) => (event: MouseEvent) => {
+    onRequestSort(event, property);
+  };
 
   return (
     <TableHead sx={{ background: theme.palette.dark.main }}>
       <TableRow>
-        {columns.map((headCell) => {
+        {columns.map(headCell => {
           const renderSort = sortBy === headCell.id && sortBy !== 'position';
           const stringCell = () =>
             typeof headCell.label === 'string' && headCell.label !== '' ? (
-              <CustomTypography
-                bold
-                color={renderSort ? 'secondary' : 'label'}
-                size="xs"
-              >
+              <CustomTypography bold color={renderSort ? 'secondary' : 'label'} size="xs">
                 {headCell.label}
               </CustomTypography>
             ) : (
-                headCell.label
+              headCell.label
             );
           return (
             <TableCell
@@ -54,9 +45,7 @@ function CustomTableHead<T extends Record<string, string | number | object | Rea
                 padding: '4px',
                 minWidth: headCell.width,
                 lineHeight: '0',
-                background: renderSort
-                  ? theme.palette.primary.main
-                  : theme.palette.secondary.dark,
+                background: renderSort ? theme.palette.primary.main : theme.palette.secondary.dark,
               }}
               sortDirection={renderSort ? 'desc' : false}
             >
@@ -82,6 +71,6 @@ function CustomTableHead<T extends Record<string, string | number | object | Rea
       </TableRow>
     </TableHead>
   );
-};
+}
 
 export default CustomTableHead;

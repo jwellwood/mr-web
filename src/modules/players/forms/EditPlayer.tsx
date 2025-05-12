@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {ApolloError, useMutation, useQuery} from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import { PAGES } from '../constants';
 import { GET_PLAYER_BY_ID, UPDATE_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
@@ -10,12 +10,12 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { useNationality } from '../../../hooks';
 import { AppDispatch } from '../../../store/store';
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import {AuthRoles} from "../../../constants.ts";
-import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { AuthRoles } from '../../../constants.ts';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const EditPlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
@@ -27,8 +27,7 @@ const EditPlayer: React.FC = () => {
     variables: { playerId },
     notifyOnNetworkStatusChange: true,
   });
-  const [updatePlayer, { loading: updateLoading, error: updateError }] =
-    useMutation(UPDATE_PLAYER);
+  const [updatePlayer, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_PLAYER);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
   const [defaultValues, setDefaultValues] = useState<Partial<IPlayer>>({});
@@ -51,18 +50,22 @@ const EditPlayer: React.FC = () => {
         },
       }).then(() => {
         refetch({ playerId });
-        dispatch(showAlert({
-          text: "Player updated",
-          type: "success"
-        }));
+        dispatch(
+          showAlert({
+            text: 'Player updated',
+            type: 'success',
+          })
+        );
         navigate(-1);
       });
     } catch (error) {
-      console.error("Couldn't update player: ", error)
-      dispatch(showAlert({
-        text: "Couldn't update player",
-        type: "error"
-      }));
+      console.error("Couldn't update player: ", error);
+      dispatch(
+        showAlert({
+          text: "Couldn't update player",
+          type: 'error',
+        })
+      );
     }
   };
 

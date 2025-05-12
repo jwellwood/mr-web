@@ -2,9 +2,9 @@ import React from 'react';
 
 import Kits from '../components/Kits';
 import Stadium from '../components/Stadium';
-import {CustomTabs, ITab} from '../../../components/tabs';
-import {ITeamResponse} from "../../../types";
-import {TAB_TYPES} from "../../../app/constants.ts";
+import { CustomTabs, ITab } from '../../../components/tabs';
+import { ITeamResponse } from '../../../types';
+import { TAB_TYPES } from '../../../app/constants.ts';
 
 type Props = { team?: ITeamResponse; loading: boolean };
 

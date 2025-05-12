@@ -16,11 +16,7 @@ const SquadStatsContainer: React.FC = () => {
         checked={showAllTimeStats}
         onCheck={toggleView}
       />
-      {showAllTimeStats ? (
-        <AllTimeSquadStats key="allTime" />
-      ) : (
-        <SquadStats key="season" />
-      )}
+      {showAllTimeStats ? <AllTimeSquadStats key="allTime" /> : <SquadStats key="season" />}
     </>
   );
 };

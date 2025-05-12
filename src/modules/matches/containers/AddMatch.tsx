@@ -13,15 +13,15 @@ import { mapMatch } from '../helpers';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
-import {IPlayerInMatch, ITempMatch } from '../../../types';
+import { IPlayerInMatch, ITempMatch } from '../../../types';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector';
-import {getTempPlayers} from "../../../store/features/players/playersSelection.ts";
-import {GET_PLAYERS_BY_SEASON_ID} from "../../players/graphql";
+import { getTempPlayers } from '../../../store/features/players/playersSelection.ts';
+import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import {AuthRoles} from "../../../constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { AuthRoles } from '../../../constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const AddMatch: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -67,8 +67,8 @@ const AddMatch: React.FC = () => {
   }, [currentTempPlayers]);
 
   const onSubmit = () => {
-    if(!teamId) {
-      console.error("Missing team id")
+    if (!teamId) {
+      console.error('Missing team id');
       return;
     }
     const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
@@ -78,8 +78,8 @@ const AddMatch: React.FC = () => {
         dispatch(resetTempPlayers());
         navigate(-1);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        console.error('Add match error', err);
       });
   };
 

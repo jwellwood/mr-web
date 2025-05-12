@@ -11,9 +11,9 @@ import CompetitionsList from '../components/CompetitionsList';
 import { PAGES } from '../constants';
 import { GET_ORG } from '../graphql';
 import OrgTeams from './OrgTeams';
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {ORG} from "../../../router/paths.ts";
-import {useAuth} from "../../../hooks";
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { ORG } from '../../../router/paths.ts';
+import { useAuth } from '../../../hooks';
 
 const Org: React.FC = () => {
   const { orgId } = useCustomParams();
@@ -34,10 +34,7 @@ const Org: React.FC = () => {
   if (error) return <ErrorGraphql error={error} />;
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.ORG}
-        actionButton={isOrgAuth ?? <EditLinksModal data={links} />}
-      >
+      <CustomAppBar title={PAGES.ORG} actionButton={isOrgAuth ?? <EditLinksModal data={links} />}>
         {!loading ? (
           <>
             <ModuleHeader

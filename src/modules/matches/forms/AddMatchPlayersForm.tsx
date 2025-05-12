@@ -19,9 +19,11 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   playersOptions,
   players,
 }) => {
-  const [playerList, setPlayerList] = useState<{
-    label: string;
-  }[]>([]);
+  const [playerList, setPlayerList] = useState<
+    {
+      label: string;
+    }[]
+  >([]);
   const {
     handleSubmit,
     formState: { errors },
@@ -34,11 +36,9 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   const matchPlayers = watch('matchPlayers');
 
   useEffect(() => {
-    const list : { label: string }[] = [];
-    matchPlayers.forEach((player) => {
-      const selectedPlayer = players.find(
-        (p) => p._id === (player as unknown as string)
-      );
+    const list: { label: string }[] = [];
+    matchPlayers.forEach(player => {
+      const selectedPlayer = players.find(p => p._id === (player as unknown as string));
       list.push({ label: selectedPlayer?.name || '' });
     });
     setPlayerList(list);

@@ -1,4 +1,4 @@
-import {BASE_YEAR, MAX_YEAR} from "../../constants.ts";
+import { BASE_YEAR, MAX_YEAR } from '../../constants.ts';
 
 interface IYearOptions {
   label: string;
@@ -15,5 +15,5 @@ export function yearOptions(
   for (let i: number = minYear; i <= maxYear; i++) {
     years.push(i);
   }
-  return years.map((year) => ({ label: year.toString(), value: year }));
-};
+  return years.map(year => ({ label: year.toString(), value: year }));
+}

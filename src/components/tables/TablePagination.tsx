@@ -9,20 +9,12 @@ type Props = {
   rows: object[];
 };
 
-const Pagination: React.FC<Props> = ({
-  page,
-  setPage,
-  rowsPerPage,
-  setRowsPerPage,
-  rows,
-}) => {
+const Pagination: React.FC<Props> = ({ page, setPage, rowsPerPage, setRowsPerPage, rows }) => {
   const handleChangePage = (_: unknown, newPage: number) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };

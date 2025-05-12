@@ -8,7 +8,6 @@ type Props = {
 };
 
 export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
-  console.log("SearchForm")
   const {
     handleSubmit,
     formState: { errors },

@@ -8,30 +8,23 @@ import { initPlayerInMatch } from '../constants';
 import AddMatchPlayerStatsForm from '../forms/AddMatchPlayerStatsForm';
 import { getGoalsOptions } from '../helpers';
 import { getMinutesOptions } from '../helpers';
-import {getTempMatch} from "../../../store/features/matches/matchesSelector.ts";
-import {AppDispatch} from "../../../store/store.ts";
+import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
+import { AppDispatch } from '../../../store/store.ts';
 
 interface Props {
   playerId: string;
   title?: string;
-  currentPlayers?: (IPlayerInMatch)[];
+  currentPlayers?: IPlayerInMatch[];
   buttonElement: ReactNode;
 }
 
-function AddStats({
-  playerId,
-  title,
-  currentPlayers,
-  buttonElement,
-}: Props) {
+function AddStats({ playerId, title, currentPlayers, buttonElement }: Props) {
   const currentMatch = useSelector(getTempMatch);
   const dispatch: AppDispatch = useDispatch();
   const [defaultValues, setDefaultValues] = useState<IPlayerInMatch | null>(null);
 
   useEffect(() => {
-    const selectedPlayer = currentPlayers?.find(
-      (player) => player._id === playerId
-    );
+    const selectedPlayer = currentPlayers?.find(player => player._id === playerId);
     if (selectedPlayer) {
       setDefaultValues({
         ...selectedPlayer,
@@ -45,12 +38,8 @@ function AddStats({
   const closeForm = () => true;
 
   const onSubmit = async (formData: IPlayerInMatch) => {
-    const playerIndex = currentPlayers?.findIndex(
-      (player) => player._id === playerId
-    );
-    const selectedPlayer = currentPlayers?.find(
-      (player) => player._id === playerId
-    );
+    const playerIndex = currentPlayers?.findIndex(player => player._id === playerId);
+    const selectedPlayer = currentPlayers?.find(player => player._id === playerId);
 
     const matchPlayersToUpdate = currentPlayers;
 
@@ -68,18 +57,12 @@ function AddStats({
 
   const goalOptions = getGoalsOptions(currentMatch.teamGoals);
   const concededOptions = getGoalsOptions(currentMatch.opponentGoals);
-  const minuteOptions = getMinutesOptions(
-    currentMatch.competition?.matchMinutes
-  );
+  const minuteOptions = getMinutesOptions(currentMatch.competition?.matchMinutes);
 
   return (
     <>
       {defaultValues && currentPlayers?.length ? (
-        <FormModal
-          buttonElement={buttonElement}
-          title={title}
-          closeForm={closeForm}
-        >
+        <FormModal buttonElement={buttonElement} title={title} closeForm={closeForm}>
           <AddMatchPlayerStatsForm
             defaultValues={defaultValues}
             onSubmit={onSubmit}
@@ -93,6 +76,6 @@ function AddStats({
       )}
     </>
   );
-};
+}
 
 export default AddStats;

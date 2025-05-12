@@ -1,5 +1,5 @@
 import { ITeamDetailsInput } from './types';
-import {ISelectOptions} from "../../components/inputs/SelectInput.tsx";
+import { ISelectOptions } from '../../components/inputs/SelectInput.tsx';
 
 export const initialTeamDetailsState: ITeamDetailsInput = {
   teamName: '',

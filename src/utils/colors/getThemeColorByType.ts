@@ -1,19 +1,10 @@
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 const {
-  palette: {
-    primary,
-    secondary,
-    success,
-    warning,
-    error,
-    gold,
-    silver,
-    bronze,
-  },
+  palette: { primary, secondary, success, warning, error, gold, silver, bronze },
 } = theme;
 
-export function getThemeColorByType (background?: string): string {
+export function getThemeColorByType(background?: string): string {
   let backgroundColor = 'transparent';
   switch (background) {
     case 'primary':
@@ -44,4 +35,4 @@ export function getThemeColorByType (background?: string): string {
       break;
   }
   return backgroundColor;
-};
+}

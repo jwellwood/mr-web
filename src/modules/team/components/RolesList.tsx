@@ -11,7 +11,7 @@ type Props = {
 
 const RolesList: React.FC<Props> = ({ team }) => {
   const data: IListItem[] =
-    team?.teamRoles?.map((item) => {
+    team?.teamRoles?.map(item => {
       return {
         label: item.name,
         secondary: item.role,

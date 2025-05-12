@@ -1,9 +1,9 @@
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { IOpponentTable } from '../../../types';
-import {getAvg, getPercentage} from '../../../utils/helpers';
+import { getAvg, getPercentage } from '../../../utils/helpers';
 import HeadToHead from '../containers/HeadToHead';
-import {ImageTypes} from "../../../constants.ts";
-import {PresentationModal} from "../../../components/modals";
+import { ImageTypes } from '../../../constants.ts';
+import { PresentationModal } from '../../../components/modals';
 import CustomTypography from '../../../components/typography/CustomTypography.tsx';
 
 export const mapOpponentStats = (stats: IOpponentTable[]) => {
@@ -27,11 +27,7 @@ export const mapOpponentStats = (stats: IOpponentTable[]) => {
             alignItems: 'center',
           }}
         >
-          <CustomAvatar
-            size="24px"
-            imageUrl={item?.opponentBadge}
-            type={ImageTypes.TEAM}
-          />
+          <CustomAvatar size="24px" imageUrl={item?.opponentBadge} type={ImageTypes.TEAM} />
           <div style={{ marginRight: '4px' }} />
           <PresentationModal
             title="Head to Head"
@@ -56,10 +52,6 @@ export const mapOpponentStats = (stats: IOpponentTable[]) => {
     difference: item?.totalGoalDifference,
     points: getPoints(item?.wins, item?.draws),
     winPercentage: getPercentage(item?.wins, item?.total, 1),
-    avgScore: getAvgScore(
-      item?.total,
-      item?.totalGoalsScored,
-      item?.totalGoalsConceded
-    ),
+    avgScore: getAvgScore(item?.total, item?.totalGoalsScored, item?.totalGoalsConceded),
   }));
 };

@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import {IMatchList} from "../../../types/matchList.ts";
+import { IMatchList } from '../../../types/matchList.ts';
 
 export const GET_MATCHES_BY_OPPONENT: TypedDocumentNode<{
   matches: IMatchList[];

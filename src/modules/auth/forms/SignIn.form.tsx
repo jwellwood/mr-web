@@ -6,8 +6,9 @@ import CustomDivider from '../../../components/dividers/CustomDivider';
 import { CenteredGrid } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import LinksList from '../../../components/lists/LinksList';
-import { IListItem } from '../../../types';import { ISignInForm } from '../types';
-import {AUTH} from "../../../router/paths.ts";
+import { IListItem } from '../../../types';
+import { ISignInForm } from '../types';
+import { AUTH } from '../../../router/paths.ts';
 
 interface Props {
   defaultValues: ISignInForm;
@@ -42,10 +43,7 @@ const SignInForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
 
   return (
     <>
-      <FormContainer
-        onSubmit={handleSubmit(onSubmit)}
-        disabled={!email.length || !password.length}
-      >
+      <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={!email.length || !password.length}>
         <CenteredGrid dir="row">
           <ControlledTextInput
             control={control}

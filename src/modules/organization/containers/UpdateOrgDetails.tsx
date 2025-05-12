@@ -8,14 +8,14 @@ import OrgForm from '../forms/OrgForm';
 import { GET_ORG, UPDATE_ORG } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
-import {useNationality} from "../../../hooks";
-import {IOrganization} from "../../../types";
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
-import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {AUTH_ROLES} from "../../../app/constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { useNationality } from '../../../hooks';
+import { IOrganization } from '../../../types';
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { AUTH_ROLES } from '../../../app/constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const UpdateDetailsContainer: React.FC = () => {
   const { orgId } = useCustomParams();
@@ -41,21 +41,18 @@ const UpdateDetailsContainer: React.FC = () => {
 
   const onSubmit = (formData: Partial<IOrganization>) => {
     try {
-      updateOrganization({ variables: { orgId: orgId, ...formData } }).then(
-        () => {
-          refetch({ orgId });
-          dispatch(showAlert({text: 'Organization updated!', type: 'success'}))
-          navigate(`/org/${orgId}`);
-        }
-      );
+      updateOrganization({ variables: { orgId: orgId, ...formData } }).then(() => {
+        refetch({ orgId });
+        dispatch(showAlert({ text: 'Organization updated!', type: 'success' }));
+        navigate(`/org/${orgId}`);
+      });
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({text: 'There was a problem', type: 'error'}))
+      dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
     }
   };
 
-  if (error || updateError)
-    return <ErrorGraphql error={(error || updateError) as Error} />;
+  if (error || updateError) return <ErrorGraphql error={(error || updateError) as Error} />;
   return (
     <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.EDIT} />

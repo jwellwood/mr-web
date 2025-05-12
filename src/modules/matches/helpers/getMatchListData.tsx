@@ -2,7 +2,7 @@ import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import MatchListLabel from '../components/MatchListLabel';
 import MatchListScoreBox from '../components/MatchListScoreBox';
-import {IMatchList} from "../../../types/matchList.ts";
+import { IMatchList } from '../../../types/matchList.ts';
 
 interface Args {
   data?: IMatchList[];
@@ -24,7 +24,7 @@ export const getMatchListData = ({
   const arr = new Array(5).fill({});
   const mappedData =
     loading || data === undefined
-      ? arr.map((_item, i) => ({ link: i } as unknown as IMatchList))
+      ? arr.map((_item, i) => ({ link: i }) as unknown as IMatchList)
       : data;
   return mappedData.map((match: IMatchList) => {
     return {

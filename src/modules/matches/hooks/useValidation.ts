@@ -1,5 +1,5 @@
-import {IMatch, IPlayerInMatch} from "../../../types";
-import {KeysOfType} from "../../../utils/types.ts";
+import { IMatch, IPlayerInMatch } from '../../../types';
+import { KeysOfType } from '../../../utils/types.ts';
 
 export const useValidation = (match: IMatch, players: IPlayerInMatch[]) => {
   const { teamGoals, opponentGoals } = match;
@@ -10,7 +10,7 @@ export const useValidation = (match: IMatch, players: IPlayerInMatch[]) => {
   };
 
   const getTotalTrue = (type: KeysOfType<IPlayerInMatch, boolean>) => {
-    return players.filter((player) => player[type]).length;
+    return players.filter(player => player[type]).length;
   };
 
   const goals = getTotalArray('goals');
@@ -59,7 +59,7 @@ export const useValidation = (match: IMatch, players: IPlayerInMatch[]) => {
     },
   ];
 
-  const isInvalid = validationMessages.some((message) => message.isInvalid);
+  const isInvalid = validationMessages.some(message => message.isInvalid);
 
   return { isInvalid, validationMessages };
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Divider from '@mui/material/Divider';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   isVertical?: boolean;
@@ -10,17 +10,13 @@ interface Props {
 const CustomDivider: React.FC<Props> = ({ isVertical, hasMargin }) => {
   return isVertical ? (
     <Divider
-      orientation='vertical'
+      orientation="vertical"
       sx={{ background: theme.palette.primary.dark, width: '3px' }}
       flexItem
     />
   ) : (
     <Divider
-      sx={
-        hasMargin
-          ? { marginTop: theme.spacing(1), marginBottom: theme.spacing(1) }
-          : {}
-      }
+      sx={hasMargin ? { marginTop: theme.spacing(1), marginBottom: theme.spacing(1) } : {}}
     />
   );
 };

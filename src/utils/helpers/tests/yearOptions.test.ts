@@ -1,5 +1,5 @@
 import { yearOptions } from '..';
-import {BASE_YEAR, MAX_YEAR} from "../../../constants.ts";
+import { BASE_YEAR, MAX_YEAR } from '../../../constants.ts';
 
 describe('year options tests', () => {
   test('should return an array when years are zero', () => {
@@ -10,9 +10,7 @@ describe('year options tests', () => {
   test('should return an array when years are equal', () => {
     const base = 2020;
     const max = 2020;
-    expect(yearOptions(base, max)).toStrictEqual([
-      { label: '2020', value: 2020 },
-    ]);
+    expect(yearOptions(base, max)).toStrictEqual([{ label: '2020', value: 2020 }]);
   });
   test('should return an array of two when years are one year apart', () => {
     const base = 2020;
@@ -27,9 +25,7 @@ describe('year options tests', () => {
   test('should work even if args are not numbers', () => {
     const base = '2020';
     const max = '2020';
-    expect(yearOptions(base, max)).toStrictEqual([
-      { label: '2020', value: 2020 },
-    ]);
+    expect(yearOptions(base, max)).toStrictEqual([{ label: '2020', value: 2020 }]);
   });
   test('should work even without args', () => {
     expect(yearOptions()).toHaveLength(MAX_YEAR - BASE_YEAR + 1);

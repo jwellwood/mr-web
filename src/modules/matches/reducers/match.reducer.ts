@@ -25,10 +25,7 @@ export const tempMatchReducer = (
   }
 };
 
-const handleAction = (
-  state: TempMatchState,
-  payload: TempMatchState
-): TempMatchState => ({
+const handleAction = (state: TempMatchState, payload: TempMatchState): TempMatchState => ({
   ...state,
   ...payload,
 });

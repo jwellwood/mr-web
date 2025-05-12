@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import { ReactNode } from 'react';
 
 export type SortOrder = 'asc' | 'desc';
 
@@ -17,17 +17,14 @@ export function getComparator(
   orderBy: string
 ): (
   a: Record<string, number | object | ReactNode>,
-  b: Record<string, number | object | ReactNode>,
+  b: Record<string, number | object | ReactNode>
 ) => number {
   return order === 'desc'
     ? (a, b) => descendingComparator(a, b, orderBy)
     : (a, b) => -descendingComparator(a, b, orderBy);
 }
 
-export function stableSort<T>(
-  array: readonly T[],
-  comparator: (a: T, b: T) => number
-) {
+export function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
   const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
 
   stabilizedThis.sort((a, b) => {
@@ -37,5 +34,5 @@ export function stableSort<T>(
     }
     return a[1] - b[1];
   });
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map(el => el[0]);
 }

@@ -23,7 +23,7 @@ const PlayerAllTimeStats: React.FC = () => {
 
   const player = data?.player;
   if (!player) {
-      return null;
+    return null;
   }
   return (
     <>

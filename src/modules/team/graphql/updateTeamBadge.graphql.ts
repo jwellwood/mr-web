@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import {ITeam} from "../../../types";
+import { ITeam } from '../../../types';
 
 export const EDIT_TEAM_BADGE: TypedDocumentNode<{
   team: ITeam;

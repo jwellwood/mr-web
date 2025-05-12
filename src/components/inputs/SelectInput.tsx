@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 
 import FormErrorMessage from '../alerts/FormErrorMessage';
-import {FormError} from "../../types/form.ts";
+import { FormError } from '../../types/form.ts';
 
 export interface ISelectOptions {
   label: string;
@@ -18,7 +18,7 @@ interface Props {
   errors?: FormError[]; // TODO
   options: readonly {
     label: string;
-    value: string  | number;
+    value: string | number;
     disabled?: boolean;
   }[];
   data_id?: string;

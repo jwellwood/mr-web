@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {ApolloError, useMutation, useQuery} from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { PAGES, TeamError, TeamSuccess } from '../constants';
 import UpdateTeamDetailsForm from '../forms/UpdateTeamDetailsForm.form';
@@ -11,11 +11,11 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useNationality } from '../../../hooks';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
-import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import {AuthRoles} from "../../../constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { AuthRoles } from '../../../constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const UpdateDetailsContainer: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -43,22 +43,23 @@ const UpdateDetailsContainer: React.FC = () => {
     try {
       updateTeamDetails({ variables: { teamId, ...formData } }).then(() => {
         refetch({ teamId });
-        dispatch(showAlert({
-          text: TeamSuccess.edit,
-          type: 'success'
-        }));
+        dispatch(
+          showAlert({
+            text: TeamSuccess.edit,
+            type: 'success',
+          })
+        );
         navigate(-1);
       });
     } catch (error) {
-      console.error(error)
-      dispatch(showAlert({text: TeamError.edit, type: 'error'}));
+      console.error(error);
+      dispatch(showAlert({ text: TeamError.edit, type: 'error' }));
     }
   };
 
-  if (error || updateError)
-    return <ErrorGraphql error={(error || updateError) as ApolloError} />;
+  if (error || updateError) return <ErrorGraphql error={(error || updateError) as ApolloError} />;
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN} >
+    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_TEAM} />
       {!loading && !updateLoading && defaultValues ? (
         <UpdateTeamDetailsForm

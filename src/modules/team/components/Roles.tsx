@@ -8,7 +8,7 @@ type Props = {
 
 const Roles: React.FC<Props> = ({ team, loading }) => {
   const data =
-    team.teamRoles?.map((item) => {
+    team.teamRoles?.map(item => {
       return {
         label: item.role,
         value: item.name,

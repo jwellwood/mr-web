@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import {IPastPlayer} from "../../../../types/pastPlayer.ts";
+import { IPastPlayer } from '../../../../types/pastPlayer.ts';
 
 export const GET_PAST_PLAYERS: TypedDocumentNode<{
   players: IPastPlayer[];

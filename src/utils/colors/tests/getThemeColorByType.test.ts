@@ -1,5 +1,5 @@
 import { getThemeColorByType } from '..';
-import {theme} from "../../../theme";
+import { theme } from '../../../theme';
 
 describe('get theme color by type tests', () => {
   const { success, warning, error, secondary } = theme.palette;

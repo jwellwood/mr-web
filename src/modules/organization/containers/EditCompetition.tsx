@@ -7,15 +7,15 @@ import { PAGES } from '../constants';
 import CompetitionForm from '../forms/CompetitionForm';
 import { GET_COMPETITION_BY_ID, UPDATE_COMPETITION } from '../graphql';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
-import {useCustomParams} from "../../../hooks/useCustomParams.tsx";
+import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { ICompetition } from '../../../types';
-import {showAlert} from "../../../store/features/alerts/alertsSlice.ts";
-import ErrorGraphql from "../../../errors/ErrorGraphql.tsx";
-import RouteGuard from "../../../router/RouteGuard.tsx";
-import {AuthRoles} from "../../../constants.ts";
-import {PageHeader} from "../../../components/typography";
-import {Spinner} from "../../../components/loaders";
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import RouteGuard from '../../../router/RouteGuard.tsx';
+import { AuthRoles } from '../../../constants.ts';
+import { PageHeader } from '../../../components/typography';
+import { Spinner } from '../../../components/loaders';
 
 const EditCompetition: React.FC = () => {
   const { orgId, competitionId } = useCustomParams();
@@ -25,12 +25,12 @@ const EditCompetition: React.FC = () => {
   const { loading, error, data } = useQuery(GET_COMPETITION_BY_ID, {
     variables: { compId: competitionId },
   });
-  const [updateCompetition, { loading: updateLoading, error: updateError }] =
-    useMutation(UPDATE_COMPETITION, {
-      refetchQueries: [
-        { query: GET_COMPETITION_BY_ID, variables: { compId: competitionId } },
-      ],
-    });
+  const [updateCompetition, { loading: updateLoading, error: updateError }] = useMutation(
+    UPDATE_COMPETITION,
+    {
+      refetchQueries: [{ query: GET_COMPETITION_BY_ID, variables: { compId: competitionId } }],
+    }
+  );
   const [defaultValues, setDefaultValues] = useState<ICompetition | null>(null);
 
   useEffect(() => {
@@ -50,20 +50,20 @@ const EditCompetition: React.FC = () => {
           ...mapCompetitionInput(formData),
         },
       }).then(() => {
-        dispatch(showAlert({text: 'Competition updated successfully!', type: 'success'}))
+        dispatch(showAlert({ text: 'Competition updated successfully!', type: 'success' }));
         navigate(-1);
       });
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({text: 'Something went wrong', type: 'error'}))
+      dispatch(showAlert({ text: 'Something went wrong', type: 'error' }));
     }
   };
 
-  if (error){
+  if (error) {
     return <ErrorGraphql error={error} />;
   }
-  if (updateError){
-    return <ErrorGraphql error={new Error(updateError.message)} />
+  if (updateError) {
+    return <ErrorGraphql error={new Error(updateError.message)} />;
   }
 
   return (

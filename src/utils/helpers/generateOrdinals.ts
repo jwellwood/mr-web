@@ -1,4 +1,4 @@
-export function generateOrdinals (num: number | string): string {
+export function generateOrdinals(num: number | string): string {
   if (typeof num !== 'number') {
     num = Number(num);
     if (isNaN(num)) {
@@ -27,4 +27,4 @@ export function generateOrdinals (num: number | string): string {
     }
   }
   return '';
-};
+}

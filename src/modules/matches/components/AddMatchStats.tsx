@@ -8,7 +8,7 @@ import { match_form_table, match_form_table_styles } from '../configs';
 import { statsDataAll } from '../helpers';
 import { validateStats } from '../helpers/statsValidation';
 import AddMatchValidation from './AddMatchValidation';
-import {getTempMatch} from "../../../store/features/matches/matchesSelector.ts";
+import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 
 type Props = {
   onNextClick: () => void;

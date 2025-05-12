@@ -12,11 +12,7 @@ const SideDrawer: React.FC = () => {
 
   return (
     <>
-      <CustomIconButton
-        onClick={toggleDrawer}
-        icon={NAV_ICONS.MENU}
-        size="20px"
-      />
+      <CustomIconButton onClick={toggleDrawer} icon={NAV_ICONS.MENU} size="20px" />
       <Drawer
         open={open}
         onClose={toggleDrawer}

@@ -9,9 +9,9 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import TrophyDetails from '../components/TrophyDetails';
 import { PAGES } from '../constants';
 import { GET_TROPHY_BY_ID } from '../graphql/getTrophyById.graphql';
-import {useAuth} from "../../../hooks";
-import {IListItem} from "../../../types";
-import RouteGuard from "../../../router/RouteGuard.tsx";
+import { useAuth } from '../../../hooks';
+import { IListItem } from '../../../types';
+import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const Trophy: React.FC = () => {
   const { teamId, trophyId } = useCustomParams();

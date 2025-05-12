@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import AlertMessage from '../AlertMessage';
-import ReduxWrapper from "../../../../utils/test-helpers/ReduxWrapper.tsx";
-import {showAlert} from "../../../../store/features/alerts/alertsSlice.ts";
+import ReduxWrapper from '../../../../utils/test-helpers/ReduxWrapper.tsx';
+import { showAlert } from '../../../../store/features/alerts/alertsSlice.ts';
 
-jest.mock("../../../../store/features/alerts/alertsSlice.ts", () => ({
+jest.mock('../../../../store/features/alerts/alertsSlice.ts', () => ({
   showAlert: jest.fn(),
 }));
 

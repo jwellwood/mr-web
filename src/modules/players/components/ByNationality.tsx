@@ -1,41 +1,40 @@
 import countryList from 'react-select-country-list';
 
-import { IPlayer } from "../../../types";
-import {IPastPlayer} from "../../../types/pastPlayer.ts";
-import {SectionContainer} from "../../../components/containers";
-import {CustomTypography} from "../../../components/typography";
-import FlagIcon from "../../../components/icons/FlagIcon.tsx";
-import TextList from "../../../components/lists/TextList.tsx";
-import {PresentationModal} from "../../../components/modals";
-import {CustomButton} from "../../../components/buttons";
+import { IPlayer } from '../../../types';
+import { IPastPlayer } from '../../../types/pastPlayer.ts';
+import { SectionContainer } from '../../../components/containers';
+import { CustomTypography } from '../../../components/typography';
+import FlagIcon from '../../../components/icons/FlagIcon.tsx';
+import TextList from '../../../components/lists/TextList.tsx';
+import { PresentationModal } from '../../../components/modals';
+import { CustomButton } from '../../../components/buttons';
 
 type Props = {
   players: IPlayer[] | IPastPlayer[];
   title: string;
-  variant?: "text" | "outlined" | "contained";
+  variant?: 'text' | 'outlined' | 'contained';
   padding?: string;
   textColor?: string;
 };
 
-function ByNationality({
-  players,
-  title,
-  variant,
-  padding,
-  textColor = 'primary',
-}: Props) {
-  const countryName = (code: string) =>
-    code ? countryList().getLabel(code) : null;
+function ByNationality({ players, title, variant, padding, textColor = 'primary' }: Props) {
+  const countryName = (code: string) => (code ? countryList().getLabel(code) : null);
   const groupNationalities = () => {
-    const playersMap = (players as IPlayer[]).reduce((acc: {
-      [key: string]: IPlayer[];
-    }, cur) => {
-      acc[cur.nationality] = acc[cur.nationality] || [];
-      acc[cur.nationality].push(cur);
-      return acc;
-    }, {});
+    const playersMap = (players as IPlayer[]).reduce(
+      (
+        acc: {
+          [key: string]: IPlayer[];
+        },
+        cur
+      ) => {
+        acc[cur.nationality] = acc[cur.nationality] || [];
+        acc[cur.nationality].push(cur);
+        return acc;
+      },
+      {}
+    );
     return Object.entries(playersMap)
-      .map((item) => {
+      .map(item => {
         return { key: item[0], players: item[1] as IPlayer[] };
       })
       .sort((a, b) => {
@@ -53,11 +52,8 @@ function ByNationality({
       });
   };
 
-  const playersByNationality = (item: {
-    key: string;
-    players: IPlayer[];
-  }) => {
-    const listData = item?.players?.map((player) => ({ label: player.name }));
+  const playersByNationality = (item: { key: string; players: IPlayer[] }) => {
+    const listData = item?.players?.map(player => ({ label: player.name }));
 
     return (
       <SectionContainer key={item.key}>
@@ -85,11 +81,11 @@ function ByNationality({
         </CustomButton>
       }
     >
-      {groupNationalities().map((item) => {
+      {groupNationalities().map(item => {
         return playersByNationality(item);
       })}
     </PresentationModal>
   );
-};
+}
 
 export default ByNationality;

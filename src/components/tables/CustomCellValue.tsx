@@ -9,12 +9,7 @@ type Props = {
   textColor?: string;
 };
 
-const CustomCellValue: React.FC<Props> = ({
-  value,
-  isDifference,
-  isPercentage,
-  textColor,
-}) => {
+const CustomCellValue: React.FC<Props> = ({ value, isDifference, isPercentage, textColor }) => {
   if (isDifference) {
     return <DifferenceText stat={value as number} />;
   }
@@ -22,7 +17,7 @@ const CustomCellValue: React.FC<Props> = ({
   if (typeof value === 'number') {
     const formattedValue = isNaN(value) ? 0 : +value;
     return (
-      <CustomTypography bold color={textColor || "black"} size="xs">
+      <CustomTypography bold color={textColor || 'black'} size="xs">
         {formattedValue}
         {isPercentage && '%'}
       </CustomTypography>
@@ -30,7 +25,7 @@ const CustomCellValue: React.FC<Props> = ({
   }
   if (typeof value === 'string') {
     return (
-      <CustomTypography bold color={textColor || "black"} size="xs">
+      <CustomTypography bold color={textColor || 'black'} size="xs">
         {value}
         {isPercentage && '%'}
       </CustomTypography>

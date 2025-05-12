@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import {SectionContainer} from "../../../components/containers";
+import { SectionContainer } from '../../../components/containers';
 
 type Props = {
   title: string;

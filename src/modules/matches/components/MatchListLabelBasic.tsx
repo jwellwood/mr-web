@@ -10,12 +10,7 @@ type Props = {
   loading?: boolean;
 };
 
-const MatchListLabelBasic: React.FC<Props> = ({
-  opponent,
-  date,
-  isHome,
-  loading,
-}) => {
+const MatchListLabelBasic: React.FC<Props> = ({ opponent, date, isHome, loading }) => {
   return loading ? (
     <CustomSkeleton width="175px" height="42px" margin="0" />
   ) : (

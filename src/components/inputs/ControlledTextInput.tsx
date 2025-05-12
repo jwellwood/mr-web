@@ -19,7 +19,7 @@ type Props<T extends object> = {
   placeholder?: string;
 };
 
-function ControlledTextInput<T extends object> ({
+function ControlledTextInput<T extends object>({
   control,
   name,
   label,
@@ -28,7 +28,7 @@ function ControlledTextInput<T extends object> ({
   multiline = false,
   isPassword = false,
   placeholder,
-}: Props<T>)  {
+}: Props<T>) {
   const {
     field,
     // fieldState: { invalid, isTouched, isDirty },
@@ -38,18 +38,18 @@ function ControlledTextInput<T extends object> ({
     control,
     rules,
   });
-        return (
-          <TextInput
-            isPassword={isPassword}
-            inputName={name}
-            defaultValue={field.value}
-            label={label}
-            multiline={multiline}
-            onChange={field.onChange}
-            errors={errors}
-            placeholder={placeholder}
-          />
-        );
-};
+  return (
+    <TextInput
+      isPassword={isPassword}
+      inputName={name}
+      defaultValue={field.value}
+      label={label}
+      multiline={multiline}
+      onChange={field.onChange}
+      errors={errors}
+      placeholder={placeholder}
+    />
+  );
+}
 
 export default ControlledTextInput;
