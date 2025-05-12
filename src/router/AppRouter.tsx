@@ -7,7 +7,6 @@ import {useAuth} from "../hooks";
 import {PageContainer} from "../components/containers";
 import {Spinner} from "../components/loaders";
 import AlertMessage from "../modules/alerts/components/AlertMessage.tsx";
-import AppHead from "../AppHead.tsx";
 import {resetAuth, setAuth} from "../store/features/auth/authSlice.ts";
 
 const AppRoutes = lazy(() => import('./Routes'));
@@ -34,7 +33,6 @@ function AppRouter() {
 
     return (
         <BrowserRouter>
-            <AppHead/>
             <PageContainer>
                 <React.Suspense fallback={<Spinner/>}>
                     {isAuth !== null && !loading && <AppRoutes/>}
