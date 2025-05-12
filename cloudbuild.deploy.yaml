@@ -1,7 +1,7 @@
 steps:
   - id: 'build docker image'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'madrid-reds-web:$COMMIT_SHA', '.',  '--build-arg']
+    args: [ 'build', '-t', 'madrid-reds-web:$COMMIT_SHA', '.']
 
   - id: 'tag docker image'
     name: 'gcr.io/cloud-builders/docker'
