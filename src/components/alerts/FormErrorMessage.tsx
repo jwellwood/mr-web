@@ -1,3 +1,4 @@
+import { CustomTypography } from '../typography';
 import { form_error_text } from '../../i18n';
 import { type FormError } from '../../types/form';
 
@@ -40,7 +41,11 @@ function FormErrorMessage({ error }: Props) {
     default:
       break;
   }
-  return message;
+  return (
+    <CustomTypography size="xs" color="error" role="alert">
+      {message}
+    </CustomTypography>
+  );
 }
 
 export default FormErrorMessage;

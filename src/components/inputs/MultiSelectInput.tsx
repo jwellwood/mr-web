@@ -54,7 +54,7 @@ const MultipleSelectInput: React.FC<Props> = ({
             </MenuItem>
           ))}
         </Select>
-        {errors ? <FormErrorMessage error={errors[0]} /> : null}
+        {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}
       </FormControl>
     </>
   );

@@ -24,7 +24,7 @@ const FileInput: React.FC<Props> = ({ inputName, defaultValue, onChange, errors 
         fullWidth
       />
 
-      {errors ? <FormErrorMessage error={errors[0]} /> : null}
+      {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };

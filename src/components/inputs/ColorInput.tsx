@@ -37,7 +37,7 @@ const ColorInput: React.FC<Props> = ({
         inputProps={{ style: { height: '75px' } }}
         disabled={disabled}
       />
-      {errors ? <FormErrorMessage error={errors[0]} /> : null}
+      {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };
