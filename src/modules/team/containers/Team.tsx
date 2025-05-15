@@ -21,9 +21,8 @@ import { NAV_ICONS } from '../../../app/icons';
 const Team: React.FC = () => {
   const { teamId } = useCustomParams();
   const { search } = useLocation();
-  const { isTeamAuth } = useAuth(teamId);
+  const { isTeamAuth } = useAuth('team', teamId);
   const { team } = useSelector(getTabIndex);
-
   const getIcon = (name: IIconType, index: number) => (
     <NavIcon icon={name} size="20px" color={index === team ? 'primary' : 'label'} />
   );
@@ -78,7 +77,10 @@ const Team: React.FC = () => {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar title={PAGES.TEAM} actionButton={isTeamAuth ?? <EditLinksModal data={links} />}>
+      <CustomAppBar
+        title={PAGES.TEAM}
+        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
+      >
         <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
       </CustomAppBar>
     </RouteGuard>

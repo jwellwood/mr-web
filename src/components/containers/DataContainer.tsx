@@ -8,24 +8,24 @@ import { IListItem } from '../../types';
 import { theme } from '../../theme';
 interface Props {
   data: IListItem[];
+  size?: number;
   loading?: boolean;
   direction?: GridDirection;
   width?: number;
 }
 
-const DataContainer: React.FC<Props> = ({ data, loading, direction = 'row' }) => {
+const DataContainer: React.FC<Props> = ({ data, loading, direction = 'row', size = 4 }) => {
   return (
     <CenteredGrid dir={direction}>
-      {data.map(item => {
+      {data.map((item, i) => {
         return (
-          <Grid sx={{ width: '100%' }} key={String(item.value)}>
+          <Grid key={String(item.value) + i} size={size}>
             <Paper
               elevation={1}
               sx={{
                 textAlign: 'center',
                 padding: theme.spacing(0.5),
                 background: theme.palette.secondary.main,
-                borderBottom: `0.5px solid ${theme.palette.common.white}`,
               }}
             >
               <CenteredGrid>

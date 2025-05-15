@@ -1,9 +1,8 @@
 import React from 'react';
 import { Button } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { styled, useTheme } from '@mui/material/styles';
 import AppIcon from '../icons/AppIcon';
 import { IIconType } from '../icons/types';
-import { theme } from '../../theme';
 
 const PREFIX = 'CustomIconButton';
 const classes = {
@@ -25,15 +24,12 @@ interface Props {
   onClick: () => void;
 }
 
-const CustomIconButton: React.FC<Props> = ({
-  icon,
-  size = '1rem',
-  color = theme.palette.common.white,
-  onClick,
-}) => {
+const CustomIconButton: React.FC<Props> = ({ icon, size = '1rem', color, onClick }) => {
+  const theme = useTheme();
+  const colorToDisplay = color || theme.palette.common.white;
   return (
     <StyledButton onClick={onClick} className={classes.button}>
-      <AppIcon icon={icon} size={size} color={color} />
+      <AppIcon icon={icon} size={size} color={colorToDisplay} />
     </StyledButton>
   );
 };

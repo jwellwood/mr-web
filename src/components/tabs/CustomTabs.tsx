@@ -29,7 +29,7 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
   const tabsToShow = tabs.filter(tab => !tab.isHidden);
   const isPrimary = level === 'primary';
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
-    dispatch(setTabIndex(newValue));
+    dispatch(setTabIndex({ type, newValue }));
   };
 
   interface StyledTabsProps {

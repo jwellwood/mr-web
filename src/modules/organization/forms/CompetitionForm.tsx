@@ -33,7 +33,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="name"
@@ -42,7 +42,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="competitionType"
@@ -51,7 +51,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             errors={errors.competitionType ? [errors.competitionType] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="playersPerTeam"
@@ -60,7 +60,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             errors={errors.playersPerTeam ? [errors.playersPerTeam] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="matchMinutes"
@@ -69,7 +69,7 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             errors={errors.matchMinutes ? [errors.matchMinutes] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="numberOfTeams"

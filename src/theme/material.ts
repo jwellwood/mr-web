@@ -26,15 +26,15 @@ declare module '@mui/material/styles' {
   }
 }
 
-declare module '@mui/material/styles' {
-  interface SecondaryFont {
-    fontFamily: string;
-  }
-  interface FontStyle {
-    secondaryFont: SecondaryFont;
-    color: string;
-  }
-}
+// declare module '@mui/material/styles' {
+//   interface SecondaryFont {
+//     fontFamily: string;
+//   }
+//   interface FontStyle {
+//     secondaryFont: SecondaryFont;
+//     color: string;
+//   }
+// }
 
 declare module '@mui/material/styles' {
   // interface Palette {

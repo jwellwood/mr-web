@@ -1,5 +1,5 @@
 import React from 'react';
-import Grid, { GridDirection, GridSpacing } from '@mui/material/Grid';
+import { Grid, GridDirection, GridSpacing } from '@mui/material';
 
 interface Props {
   children: React.ReactNode;
@@ -22,9 +22,12 @@ const CenteredGrid: React.FC<Props> = ({
     <Grid
       container
       direction={dir}
-      justifyContent={just}
-      alignContent={cont}
-      alignItems={item}
+      columns={12}
+      sx={{
+        justifyContent: just,
+        alignItems: item,
+        alignContent: cont,
+      }}
       spacing={spacing}
     >
       {children}

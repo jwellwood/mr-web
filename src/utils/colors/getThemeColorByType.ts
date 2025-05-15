@@ -1,7 +1,7 @@
 import { theme } from '../../theme';
 
 const {
-  palette: { primary, secondary, success, warning, error, gold, silver, bronze },
+  palette: { primary, secondary, tertiary, success, warning, error, gold, silver, bronze },
 } = theme;
 
 export function getThemeColorByType(background?: string): string {
@@ -12,6 +12,9 @@ export function getThemeColorByType(background?: string): string {
       break;
     case 'secondary':
       backgroundColor = secondary.light;
+      break;
+    case 'tertiary':
+      backgroundColor = tertiary.main;
       break;
     case 'success':
       backgroundColor = success.main;

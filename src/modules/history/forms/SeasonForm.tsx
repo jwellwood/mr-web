@@ -36,7 +36,7 @@ const SeasonForm: React.FC<Props> = ({
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledDateInput
             control={control}
             name="yearStarted"
@@ -45,7 +45,7 @@ const SeasonForm: React.FC<Props> = ({
             errors={errors.yearStarted ? [errors.yearStarted] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledDateInput
             control={control}
             name="yearEnded"
@@ -55,7 +55,7 @@ const SeasonForm: React.FC<Props> = ({
             errors={errors.yearEnded ? [errors.yearEnded] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="division"
@@ -64,7 +64,7 @@ const SeasonForm: React.FC<Props> = ({
             options={competitionOptions}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="leaguePosition"
@@ -73,7 +73,7 @@ const SeasonForm: React.FC<Props> = ({
             options={getIntegers(50, 1)}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             multiline
             control={control}
