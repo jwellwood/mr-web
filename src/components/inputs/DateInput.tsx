@@ -1,5 +1,3 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
 import { MobileDatePicker, LocalizationProvider, DateView } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import FormErrorMessage from '../alerts/FormErrorMessage';
@@ -16,16 +14,7 @@ interface Props {
   errors?: { type: string }[];
 }
 
-function DateInput({
-  inputName,
-  defaultValue,
-  onChange,
-  label,
-  openTo,
-  errors,
-  view,
-  disableFuture,
-}: Props) {
+function DateInput({ defaultValue, onChange, label, openTo, errors, view, disableFuture }: Props) {
   let views = ['year', 'month', 'day'] as DateView[];
   if (view === 'year') {
     views = ['year'];

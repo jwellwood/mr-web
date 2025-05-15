@@ -26,15 +26,18 @@ declare module '@mui/material/styles' {
   }
 }
 
-// declare module '@mui/material/styles' {
-//   interface SecondaryFont {
-//     fontFamily: string;
-//   }
-//   interface FontStyle {
-//     secondaryFont: SecondaryFont;
-//     color: string;
-//   }
-// }
+declare module '@mui/material/styles' {
+  export interface TypographyVariants {
+    secondaryFont: React.CSSProperties['fontFamily'];
+  }
+  interface SecondaryFont {
+    fontFamily: string;
+  }
+  interface FontStyle {
+    secondaryFont: SecondaryFont;
+    color: string;
+  }
+}
 
 declare module '@mui/material/styles' {
   // interface Palette {

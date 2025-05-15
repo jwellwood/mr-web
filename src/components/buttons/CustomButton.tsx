@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import Button from '@mui/material/Button';
 import { getThemeColorByType } from '../../utils';
+import {theme} from "../../theme";
 
 interface Props {
   children?: string | ReactElement;
@@ -42,6 +43,7 @@ const CustomButton: React.FC<Props> = ({
         padding: padding,
         color: getThemeColorByType(color),
         border: variant === 'outlined' ? `solid 1px ${getThemeColorByType(color)}` : 0,
+        fontFamily: theme.typography.secondaryFont,
       }}
     >
       {children}
