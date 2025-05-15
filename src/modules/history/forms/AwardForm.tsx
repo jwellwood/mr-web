@@ -25,7 +25,7 @@ const AwardForm: React.FC<Props> = ({ onSubmit, defaultValues, playersOptions })
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="awardName"
@@ -50,7 +50,7 @@ const AwardForm: React.FC<Props> = ({ onSubmit, defaultValues, playersOptions })
             showLabels
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="awardValue"
@@ -58,7 +58,7 @@ const AwardForm: React.FC<Props> = ({ onSubmit, defaultValues, playersOptions })
             errors={errors.awardValue ? [errors.awardValue] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="comment"

@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import Averages from '../../../modules/matches/components/Averages';
 import MatchStatsTable from '../../../modules/matches/components/MatchStatsTable';
-import { IMatchStats } from '../../../types';
+import { IMatchStats, IPlayerStats } from '../../../types';
 import GamesWithStat from '../components/GamesWithStat';
 import PlayerStatsTable from '../components/PlayerStatsTable';
 import { GET_PLAYER_ALL_TIME_STATS } from '../graphql';
@@ -21,16 +21,11 @@ const PlayerAllTimeStats: React.FC = () => {
     refetch();
   }, [playerId, refetch]);
 
-  const player = data?.player;
-  if (!player) {
-    return null;
-  }
+  const player = data?.player[0] || ({} as IPlayerStats);
+
   return (
     <>
-      <MatchStatsTable
-        stats={mapPlayerMatchStats(player, loading) as unknown as IMatchStats}
-        loading={loading}
-      />
+      <MatchStatsTable stats={mapPlayerMatchStats(player, loading) as unknown as IMatchStats} />
       <Averages stats={mapPlayerAverages(player)} loading={loading} />
       <PlayerStatsTable stats={player} loading={loading} />
       <GamesWithStat player={player} loading={loading} />

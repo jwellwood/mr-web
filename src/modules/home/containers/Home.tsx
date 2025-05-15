@@ -9,12 +9,12 @@ function HomeContainer() {
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <PageHeader title={''} />
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <CustomTypography size="lg" color="primary">
             Football Stats
           </CustomTypography>
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <TeamSearch />
         </GridItem>
       </CenteredGrid>

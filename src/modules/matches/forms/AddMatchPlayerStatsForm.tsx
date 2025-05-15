@@ -71,10 +71,10 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} text="Add" nonAbsoluteSubmit>
       <CenteredGrid dir="row">
-        <GridItem xs={8}>
+        <GridItem size={8}>
           <TextList data={starterData} />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledSelectInput
             control={control}
             name="minutes"
@@ -83,7 +83,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.minutes ? [errors.minutes] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="matchPosition"
@@ -92,7 +92,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.matchPosition ? [errors.matchPosition] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="goals"
@@ -101,7 +101,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.goals ? [errors.goals] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="pensScored"
@@ -111,7 +111,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             disabled={+goalsScored === 0}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="assists"
@@ -120,7 +120,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.assists ? [errors.assists] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="ownGoals"
@@ -129,7 +129,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.ownGoals ? [errors.ownGoals] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="pensMissed"
@@ -138,7 +138,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.pensMissed ? [errors.pensMissed] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="pensSaved"
@@ -148,7 +148,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
           />
         </GridItem>
 
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="conceded"
@@ -157,7 +157,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.conceded ? [errors.conceded] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="yellowCards"

@@ -19,7 +19,7 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const Match: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
-  const { isTeamAuth } = useAuth(teamId);
+  const { isTeamAuth } = useAuth('match', teamId);
 
   const links = [
     {
@@ -64,7 +64,7 @@ const Match: React.FC = () => {
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.MATCH}
-        actionButton={isTeamAuth ?? <EditLinksModal data={links} />}
+        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
         {!loading ? (
           <>

@@ -25,7 +25,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="name"
@@ -34,7 +34,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
             errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="website"
@@ -43,7 +43,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
             errors={errors.website ? [errors.website] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="yearFounded"
@@ -52,7 +52,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
             errors={errors.yearFounded ? [errors.yearFounded] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledTextInput
             control={control}
             name="city"
@@ -61,7 +61,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
             errors={errors.city ? [errors.city] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="country"

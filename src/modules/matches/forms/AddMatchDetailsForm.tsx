@@ -59,7 +59,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             options={opponentOptions}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="competitionId"
@@ -69,7 +69,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             options={competitionOptions}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="seasonId"
@@ -79,7 +79,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             options={seasonOptions}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledDateInput
             control={control}
             name="date"
@@ -88,7 +88,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             disableFuture={false}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <TextList
             data={[
               {
@@ -101,7 +101,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
 
         {!isFutureMatch && (
           <>
-            <GridItem xs={6}>
+            <GridItem size={6}>
               <ControlledSelectInput
                 control={control}
                 name="teamGoals"
@@ -110,7 +110,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 options={getIntegers(selectedCompetition?.matchMinutes)}
               />
             </GridItem>
-            <GridItem xs={6}>
+            <GridItem size={6}>
               <ControlledSelectInput
                 control={control}
                 name="opponentGoals"
@@ -119,7 +119,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 options={getIntegers(selectedCompetition?.matchMinutes)}
               />
             </GridItem>
-            <GridItem xs={6}>
+            <GridItem size={6}>
               <TextList
                 data={[
                   {
@@ -130,7 +130,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
               />
             </GridItem>
             {selectedCompetition?.competitionType === 'League' && (
-              <GridItem xs={6}>
+              <GridItem size={6}>
                 <ControlledSelectInput
                   control={control}
                   name="leaguePosition"
@@ -141,7 +141,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
               </GridItem>
             )}
             {isCup && (
-              <GridItem xs={6}>
+              <GridItem size={6}>
                 <ControlledSelectInput
                   control={control}
                   name="cupRound"

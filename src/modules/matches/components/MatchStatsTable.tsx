@@ -6,7 +6,6 @@ import { getMatchStats } from '../helpers/getMatchStats';
 
 interface Props {
   stats?: IMatchStats;
-  loading: boolean;
 }
 const MatchStatsTable: React.FC<Props> = ({ stats }) => {
   const rows = useMemo(() => getMatchStats(stats), [stats]);

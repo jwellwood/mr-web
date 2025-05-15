@@ -11,7 +11,7 @@ interface Props {
 const AwardCard: React.FC<Props> = ({ award }) => {
   const { awardName, awardValue, winners, comment } = award;
   return (
-    <GridItem xs={12}>
+    <GridItem size={12}>
       <SectionContainer>
         <CustomTypography color="primary" bold size="xs" div>
           {awardName}

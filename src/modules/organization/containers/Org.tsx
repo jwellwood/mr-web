@@ -17,7 +17,7 @@ import { useAuth } from '../../../hooks';
 
 const Org: React.FC = () => {
   const { orgId } = useCustomParams();
-  const { isOrgAuth } = useAuth(orgId);
+  const { isOrgAuth } = useAuth('org', orgId);
   const { data, error, loading } = useQuery(GET_ORG, { variables: { orgId } });
 
   const links = [
@@ -34,7 +34,10 @@ const Org: React.FC = () => {
   if (error) return <ErrorGraphql error={error} />;
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar title={PAGES.ORG} actionButton={isOrgAuth ?? <EditLinksModal data={links} />}>
+      <CustomAppBar
+        title={PAGES.ORG}
+        actionButton={isOrgAuth ? <EditLinksModal data={links} /> : null}
+      >
         {!loading ? (
           <>
             <ModuleHeader

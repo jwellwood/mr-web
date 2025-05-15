@@ -18,7 +18,7 @@ import ModuleHeader from '../../../components/common/ModuleHeader.tsx';
 
 const Player: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
-  const { isTeamAuth } = useAuth(teamId);
+  const { isTeamAuth } = useAuth('player', teamId);
 
   const { loading, error, data } = useQuery(GET_PLAYER_BY_ID, {
     variables: { playerId: playerId },
@@ -59,7 +59,7 @@ const Player: React.FC = () => {
     <RouteGuard authorization={AuthRoles.PUBLIC}>
       <CustomAppBar
         title={PAGES.PLAYER}
-        actionButton={isTeamAuth ?? <EditLinksModal data={links} />}
+        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
         <SectionContainer>
           <ModuleHeader

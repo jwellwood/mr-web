@@ -36,7 +36,7 @@ const AddTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="teamName"
@@ -45,7 +45,7 @@ const AddTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions 
             errors={errors.teamName ? [errors.teamName] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="yearFounded"
@@ -54,7 +54,7 @@ const AddTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions 
             errors={errors.yearFounded ? [errors.yearFounded] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledTextInput
             control={control}
             name="location"
@@ -63,7 +63,7 @@ const AddTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions 
             errors={errors.location ? [errors.location] : []}
           />
         </GridItem>
-        <GridItem xs={6}>
+        <GridItem size={6}>
           <ControlledSelectInput
             control={control}
             name="country"

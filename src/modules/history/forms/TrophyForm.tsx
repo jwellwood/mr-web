@@ -56,7 +56,7 @@ const TrophyForm: React.FC<Props> = ({
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="name"
@@ -65,7 +65,7 @@ const TrophyForm: React.FC<Props> = ({
             errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="seasonId"
@@ -75,7 +75,7 @@ const TrophyForm: React.FC<Props> = ({
             errors={errors.seasonId ? [errors.seasonId] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="year"
@@ -88,7 +88,7 @@ const TrophyForm: React.FC<Props> = ({
           <TextList data={switchList} />
         </GridItem>
         {isFinal && (
-          <GridItem xs={12}>
+          <GridItem size={12}>
             <ControlledTextInput
               control={control}
               name="opponentId"

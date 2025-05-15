@@ -65,13 +65,13 @@ const Averages: React.FC<Props> = ({ stats, loading }) => {
   return (
     <SectionContainer>
       <CenteredGrid dir="row">
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <CustomPieChart
             data={pieData}
             colors={['rgb(47, 219, 145)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)']}
           />
         </GridItem>
-        <GridItem xs={8}>
+        <GridItem size={8}>
           <DataContainer data={percentageData} loading={loading} />
         </GridItem>
       </CenteredGrid>

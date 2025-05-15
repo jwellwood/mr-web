@@ -28,11 +28,11 @@ export const getSquadTableData = ({ players, stats, playersLoading, statsLoading
         });
 
   return mappedPlayers.map(player => {
-    const { _id, squadNumber, nationality, image, name, apps, goals, assists } = player || {};
+    const { _id, squadNumber, position, nationality, image, name, apps, goals, assists } =
+      player || {};
     return {
       number: squadNumber,
-      position: POSITIONS,
-
+      position: POSITIONS[position as keyof typeof POSITIONS],
       nationality: {
         value:
           nationality !== undefined ? <FlagIcon nationality={nationality} /> : <StatSkeleton />,

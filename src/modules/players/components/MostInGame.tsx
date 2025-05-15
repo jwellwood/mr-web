@@ -41,7 +41,7 @@ function MostInGame({ data, title }: Props) {
             {data && data[0] ? data[0]?.total : ''}
           </CustomTypography>
         ),
-        link: item.matchId,
+        link: `match/${item.matchId}`,
       };
     }) || [];
   return (

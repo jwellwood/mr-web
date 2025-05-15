@@ -40,7 +40,7 @@ const EditLinksModal: React.FC<Props> = ({ data, title }) => {
 
   return (
     <>
-      <CustomButton onClick={handleClickOpen} color="secondary">
+      <CustomButton onClick={handleClickOpen} color="tertiary">
         Admin
       </CustomButton>
       <Dialog

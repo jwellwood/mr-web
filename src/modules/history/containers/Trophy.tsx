@@ -15,7 +15,7 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const Trophy: React.FC = () => {
   const { teamId, trophyId } = useCustomParams();
-  const { isTeamAuth } = useAuth(teamId);
+  const { isTeamAuth } = useAuth('trophy', teamId);
 
   const links: IListItem[] = [
     {
@@ -37,7 +37,7 @@ const Trophy: React.FC = () => {
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.TROPHY}
-        actionButton={isTeamAuth && <EditLinksModal data={links} />}
+        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
         {!loading ? <TrophyDetails trophy={data?.trophy} /> : <Spinner />}
       </CustomAppBar>

@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import Button from '@mui/material/Button';
+import { getThemeColorByType } from '../../utils';
 
 interface Props {
   children?: string | ReactElement;
@@ -7,7 +8,15 @@ interface Props {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   variant?: 'outlined' | 'text' | 'contained';
-  color?: 'primary' | 'inherit' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
+  color?:
+    | 'primary'
+    | 'inherit'
+    | 'secondary'
+    | 'success'
+    | 'error'
+    | 'info'
+    | 'warning'
+    | 'tertiary';
   fullWidth?: boolean;
   padding?: string;
 }
@@ -28,10 +37,11 @@ const CustomButton: React.FC<Props> = ({
       onClick={onClick}
       type={type}
       disabled={disabled}
-      color={color}
       fullWidth={fullWidth}
       sx={{
         padding: padding,
+        color: getThemeColorByType(color),
+        border: variant === 'outlined' ? `solid 1px ${getThemeColorByType(color)}` : 0,
       }}
     >
       {children}

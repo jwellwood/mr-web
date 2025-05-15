@@ -1,14 +1,10 @@
 import React from 'react';
-import Grid, { GridSize } from '@mui/material/Grid';
+import { Grid } from '@mui/material';
 import { SxProps } from '@mui/material';
 
 interface Props {
   children: React.ReactNode;
-  xs?: GridSize;
-  sm?: GridSize;
-  md?: GridSize;
-  lg?: GridSize;
-  xl?: GridSize;
+  size?: number;
   textAlign?: string;
   alignContent?: string;
   alignItems?: string;
@@ -19,11 +15,7 @@ interface Props {
 // TODO: Im clueless here, some mui shit
 const GridItem: React.FC<Props> = ({
   children,
-  // xs = 12,
-  // sm = 6,
-  // md = 6,
-  // lg = 6,
-  // xl = 6,
+  size,
   textAlign = 'center',
   alignContent = 'center',
   alignItems = 'center',
@@ -32,12 +24,7 @@ const GridItem: React.FC<Props> = ({
 }) => {
   return (
     <Grid
-      // item
-      // xs={xs}
-      // sm={sm}
-      // md={md}
-      // lg={lg}
-      // xl={xl}
+      size={size}
       sx={
         {
           textAlign,

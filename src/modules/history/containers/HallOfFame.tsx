@@ -10,11 +10,12 @@ import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { IListItem } from '../../../types';
 import { GET_HALL_OF_FAME } from '../graphql/getHallOfFame.graphql';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
 
 const HallOfFame: React.FC = () => {
   const { teamId } = useCustomParams();
 
-  const { loading, data } = useQuery(GET_HALL_OF_FAME, {
+  const { loading, data, error } = useQuery(GET_HALL_OF_FAME, {
     variables: { teamId },
   });
 
@@ -43,9 +44,11 @@ const HallOfFame: React.FC = () => {
       };
     }) || [];
 
+  if (error) return <ErrorGraphql error={error} />;
+
   return !loading ? (
     <>
-      {data?.players?.length ? (
+      {!data?.players?.length ? (
         <CustomTypography color="warning">No hall of fame players yet</CustomTypography>
       ) : (
         <SectionContainer>

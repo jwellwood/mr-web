@@ -53,7 +53,7 @@ const Kits: React.FC<Props> = ({ team, loading }) => {
     <SectionContainer title="Kits">
       <CenteredGrid dir="row">
         {items.map(item => (
-          <GridItem xs={6} key={item.title}>
+          <GridItem size={6} key={item.title}>
             <CustomTypography bold color="primary" size="sm">
               {item.title}
             </CustomTypography>
