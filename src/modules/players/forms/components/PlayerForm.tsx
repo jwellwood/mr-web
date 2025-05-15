@@ -64,7 +64,7 @@ const PlayerForm: React.FC<Props> = ({
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={disabled}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="name"
@@ -73,7 +73,7 @@ const PlayerForm: React.FC<Props> = ({
             errors={errors.name ? [errors.name] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="nationality"
@@ -82,7 +82,7 @@ const PlayerForm: React.FC<Props> = ({
             errors={errors.nationality ? [errors.nationality] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="dateOfBirth"
@@ -91,7 +91,7 @@ const PlayerForm: React.FC<Props> = ({
             errors={errors.dateOfBirth ? [errors.dateOfBirth] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="yearJoined"
@@ -100,7 +100,7 @@ const PlayerForm: React.FC<Props> = ({
             errors={errors.yearJoined ? [errors.yearJoined] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="position"
@@ -109,7 +109,7 @@ const PlayerForm: React.FC<Props> = ({
             errors={errors.position ? [errors.position] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="squadNumber"
@@ -118,7 +118,7 @@ const PlayerForm: React.FC<Props> = ({
             errors={errors.squadNumber ? [errors.squadNumber] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledMultiSelectInput
             control={control}
             name="seasonIds"

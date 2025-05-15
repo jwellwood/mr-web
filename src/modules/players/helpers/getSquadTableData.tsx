@@ -4,7 +4,6 @@ import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
 import NameCell from '../../../components/tables/NameCell';
 import { IPlayer, IPlayerInMatch } from '../../../types';
-import { POSITIONS } from '../constants';
 
 interface Args {
   players: IPlayer[];
@@ -28,10 +27,11 @@ export const getSquadTableData = ({ players, stats, playersLoading, statsLoading
         });
 
   return mappedPlayers.map(player => {
-    const { _id, squadNumber, nationality, image, name, apps, goals, assists } = player || {};
+    const { _id, squadNumber, position, nationality, image, name, apps, goals, assists } =
+      player || {};
     return {
       number: squadNumber,
-      position: POSITIONS,
+      position: position,
 
       nationality: {
         value:

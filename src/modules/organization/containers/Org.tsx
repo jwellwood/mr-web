@@ -17,7 +17,7 @@ import { useAuth } from '../../../hooks';
 
 const Org: React.FC = () => {
   const { orgId } = useCustomParams();
-  const { isOrgAuth } = useAuth(orgId);
+  const { isOrgAuth } = useAuth('org', orgId);
   const { data, error, loading } = useQuery(GET_ORG, { variables: { orgId } });
 
   const links = [

@@ -24,7 +24,11 @@ const Squad: React.FC = () => {
     skip: !seasonId,
   });
 
-  const { loading: statsLoading, data: stats } = useQuery(GET_SQUAD_LIST_SEASON_STATS, {
+  const {
+    loading: statsLoading,
+    data: stats,
+    error: statsError,
+  } = useQuery(GET_SQUAD_LIST_SEASON_STATS, {
     variables: { teamId, seasonId },
     skip: !seasonId,
   });
@@ -40,8 +44,8 @@ const Squad: React.FC = () => {
     [data?.players, playersLoading, stats?.players, statsLoading]
   );
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
+  if (error || statsError) {
+    return <ErrorGraphql error={error || (statsError as Error)} />;
   }
 
   return (

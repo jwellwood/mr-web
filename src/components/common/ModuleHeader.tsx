@@ -25,14 +25,14 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
   return (
     <SectionContainer>
       <CenteredGrid dir="row">
-        <GridItem xs={4}>
+        <GridItem size={4}>
           {loading ? (
             <CustomSkeleton variant="circular" height="90px" width="90px" margin="8px" />
           ) : (
             <CircularImage image={badge} type={type} size="90px" />
           )}
         </GridItem>
-        <GridItem xs={8} textAlign="left">
+        <GridItem size={8} textAlign="left">
           <CustomTypography size="lg" bold color="data">
             {loading ? <CustomSkeleton height="32px" /> : title}
           </CustomTypography>

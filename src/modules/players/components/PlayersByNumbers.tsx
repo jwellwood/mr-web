@@ -35,7 +35,7 @@ const PlayersByNumbers: React.FC<Props> = ({ players, loading, season, showAge }
     },
     { label: 'Average Age', value: averageAge.toFixed(1), hidden: !showAge },
   ].filter(elem => !elem.hidden);
-  return <DataContainer data={data} loading={loading} width={showAge ? 4 : 6} />;
+  return <DataContainer data={data} loading={loading} size={showAge ? 4 : 6} />;
 };
 
 export default PlayersByNumbers;

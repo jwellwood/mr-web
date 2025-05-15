@@ -22,7 +22,11 @@ const SectionContainer: React.FC<Props> = ({ title, children, border, background
         borderBottom: border ? undefined : `0.5px solid ${theme.palette.primary.dark}`,
       }}
     >
-      <Grid container direction="row" justifyContent="space-between" alignItems="center">
+      <Grid
+        container
+        direction="row"
+        sx={{ justifyContent: 'space-between', alignItems: 'center' }}
+      >
         <CustomTypography color="data" size="sm" bold>
           {title}
         </CustomTypography>

@@ -25,7 +25,7 @@ const DeletePlayerForm: React.FC<Props> = ({ onSubmit, defaultValues, playerName
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={name !== playerName}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="name"

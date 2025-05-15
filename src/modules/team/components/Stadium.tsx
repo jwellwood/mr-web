@@ -22,7 +22,7 @@ const Stadium: React.FC<Props> = ({ team, loading }) => {
           {
             <SectionContainer>
               <CenteredGrid dir="row">
-                <GridItem xs={12}>
+                <GridItem size={4}>
                   {team?.stadiumLocation ? (
                     <iframe
                       title="map"

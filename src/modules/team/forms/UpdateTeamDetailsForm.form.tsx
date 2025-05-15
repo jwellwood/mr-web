@@ -41,7 +41,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
         <GridItem>
           <SwitchList data={switchList} control={control} />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="teamName"
@@ -50,7 +50,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.teamName ? [errors.teamName] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="yearFounded"
@@ -59,7 +59,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             view="year"
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="location"
@@ -68,7 +68,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.location ? [errors.location] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="country"
@@ -77,7 +77,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.country ? [errors.country] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="stadiumName"
@@ -86,7 +86,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.stadiumName ? [errors.stadiumName] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="stadiumLocation"
@@ -95,7 +95,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             multiline
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             options={surfaceOptions}
@@ -104,7 +104,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.stadiumSurface ? [errors.stadiumSurface] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="stadiumCapacity"
@@ -113,7 +113,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.stadiumCapacity ? [errors.stadiumCapacity] : []}
           />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledColorInput
             control={control}
             name="homeShirt"
@@ -121,7 +121,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.homeShirt ? [errors.homeShirt] : []}
           />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledColorInput
             control={control}
             name="homeShorts"
@@ -129,7 +129,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.homeShorts ? [errors.homeShorts] : []}
           />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledColorInput
             control={control}
             name="homeSocks"
@@ -137,7 +137,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.homeSocks ? [errors.homeSocks] : []}
           />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledColorInput
             control={control}
             name="awayShirt"
@@ -145,7 +145,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.awayShirt ? [errors.awayShirt] : []}
           />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledColorInput
             control={control}
             name="awayShorts"
@@ -153,7 +153,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.awayShorts ? [errors.awayShorts] : []}
           />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledColorInput
             control={control}
             name="awaySocks"
@@ -161,7 +161,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
             errors={errors.awaySocks ? [errors.awaySocks] : []}
           />
         </GridItem>
-        <GridItem xs={4}>
+        <GridItem size={4}>
           <ControlledColorInput
             control={control}
             name="kitsBackground"

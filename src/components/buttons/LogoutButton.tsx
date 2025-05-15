@@ -8,7 +8,7 @@ interface Props {
 
 const LogoutButton: React.FC<Props> = ({ onClick }) => {
   return (
-    <Button variant="outlined" color="primary" onClick={onClick}>
+    <Button variant="outlined" color="warning" onClick={onClick}>
       {link_text.sign_out}
     </Button>
   );

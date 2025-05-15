@@ -21,7 +21,7 @@ const UpdateTeamRolesForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="name"
@@ -30,7 +30,7 @@ const UpdateTeamRolesForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             rules={{ required: true, minLength: 2, maxLength: 50 }}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="role"
@@ -38,7 +38,7 @@ const UpdateTeamRolesForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             errors={errors.role ? [errors.role] : []}
           />
         </GridItem>
-        <GridItem xs={12}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="contact"

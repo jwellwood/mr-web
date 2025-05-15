@@ -4,13 +4,13 @@ interface ITabsState {
   profile: 0 | 1;
   org: 0 | 1;
   orgTeams: 0 | 1;
-  team: 0 | 1;
+  team: 0 | 1 | 2 | 3;
   overview: 0 | 1;
   matches: 0 | 1;
   squad: 0 | 1;
   player: 0 | 1;
-  history: 0 | 1;
-  season: 0 | 1;
+  history: 0 | 1 | 2;
+  season: 0 | 1 | 2 | 3;
 }
 
 export type TabIndex = keyof ITabsState;
@@ -38,10 +38,10 @@ const tabsSlice = createSlice({
         ...action.payload,
       };
     },
-    setTabIndex: (_, action: PayloadAction<number>) => {
+    setTabIndex: (state, action: PayloadAction<{ type: TabIndex; newValue: number }>) => {
       return {
-        ...initialState,
-        [action.payload]: 1,
+        ...state,
+        [action.payload.type]: action.payload.newValue,
       };
     },
   },
