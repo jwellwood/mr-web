@@ -5,8 +5,8 @@ import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import ControlledDateInput from '../../../components/inputs/ControlledDateInput.tsx';
-import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput.tsx';
 import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
+import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput.tsx';
 
 interface Props {
   onSubmit: (data: Partial<IOrganization>) => void;
@@ -40,7 +40,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
             name="website"
             rules={{ required: true, minLength: 2, maxLength: 50 }}
             label="Website"
-            errors={errors.name ? [errors.name] : []}
+            errors={errors.website ? [errors.website] : []}
           />
         </GridItem>
         <GridItem xs={12}>

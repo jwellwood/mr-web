@@ -20,7 +20,13 @@ const FormContainer: React.FC<Props> = ({
 }) => {
   return (
     <Container maxWidth="sm" disableGutters style={{ marginBottom: '4px' }}>
-      <form onSubmit={onSubmit}>
+      <form
+        onSubmit={ev => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          onSubmit(ev);
+        }}
+      >
         <SectionContainer>{children}</SectionContainer>
         {nonAbsoluteSubmit ? (
           <CustomButton type="submit" variant="contained" disabled={disabled} fullWidth>

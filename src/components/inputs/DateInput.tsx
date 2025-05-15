@@ -16,7 +16,7 @@ interface Props {
   errors?: { type: string }[];
 }
 
-const DateInput: React.FC<Props> = ({
+function DateInput({
   inputName,
   defaultValue,
   onChange,
@@ -25,12 +25,10 @@ const DateInput: React.FC<Props> = ({
   errors,
   view,
   disableFuture,
-}) => {
+}: Props) {
   let views = ['year', 'month', 'day'] as DateView[];
-  let inputFormat = 'dd/MM/yy';
   if (view === 'year') {
     views = ['year'];
-    inputFormat = 'yyyy';
   }
 
   return (
@@ -43,17 +41,11 @@ const DateInput: React.FC<Props> = ({
           openTo={openTo || views[views.length - 1]}
           disableFuture={disableFuture}
           views={views}
-          slotProps={{ calendarHeader: { format: inputFormat } }}
-          slots={{
-            textField: params => (
-              <TextField name={inputName} variant="filled" margin="normal" fullWidth {...params} />
-            ),
-          }}
         />
       </LocalizationProvider>
-      {errors ? <FormErrorMessage error={errors[0]} /> : null}
+      {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
-};
+}
 
 export default DateInput;
