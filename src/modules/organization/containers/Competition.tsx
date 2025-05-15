@@ -38,7 +38,7 @@ const Competition: React.FC = () => {
       {!loading ? (
         <>
           <>
-            {isOrgAuth && <EditLinksModal data={links} />}
+            {isOrgAuth ? <EditLinksModal data={links} /> : null}
             <CompetitionDetails competition={data?.competition} />
           </>
         </>

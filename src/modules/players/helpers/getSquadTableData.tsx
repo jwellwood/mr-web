@@ -4,6 +4,7 @@ import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
 import NameCell from '../../../components/tables/NameCell';
 import { IPlayer, IPlayerInMatch } from '../../../types';
+import { POSITIONS } from '../constants';
 
 interface Args {
   players: IPlayer[];
@@ -31,8 +32,7 @@ export const getSquadTableData = ({ players, stats, playersLoading, statsLoading
       player || {};
     return {
       number: squadNumber,
-      position: position,
-
+      position: POSITIONS[position as keyof typeof POSITIONS],
       nationality: {
         value:
           nationality !== undefined ? <FlagIcon nationality={nationality} /> : <StatSkeleton />,

@@ -42,7 +42,7 @@ const Season: React.FC = () => {
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.SEASON}
-        actionButton={isTeamAuth && <EditLinksModal data={links} />}
+        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
         {!loading ? <SeasonTabs season={data?.season} /> : <Spinner />}
       </CustomAppBar>

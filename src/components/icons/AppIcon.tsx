@@ -157,6 +157,7 @@ const AppIcon: React.FC<Props> = ({ icon, size = '1rem', color = theme.palette.p
       return <BiReset size={size} color={iconColor} />;
     case icons.menuIcon:
       return <TfiMenu size={size} color={iconColor} />;
+
     default:
       break;
   }

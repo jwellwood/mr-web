@@ -64,7 +64,7 @@ const Match: React.FC = () => {
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.MATCH}
-        actionButton={isTeamAuth ?? <EditLinksModal data={links} />}
+        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
         {!loading ? (
           <>
