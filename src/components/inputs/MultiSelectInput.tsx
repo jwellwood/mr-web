@@ -4,7 +4,6 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormErrorMessage from '../alerts/FormErrorMessage';
 import { ISelectOptions } from './SelectInput';
@@ -35,28 +34,25 @@ const MultipleSelectInput: React.FC<Props> = ({
     return `${selected.length} ${label}`;
   };
   return (
-    <>
-      <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="seasons-played">{label}</InputLabel>
-        <Select
-          labelId="seasons-played"
-          id="demo-multiple-checkbox"
-          multiple
-          value={value}
-          onChange={onChange}
-          input={<OutlinedInput label={label} />}
-          renderValue={selected => renderValue(selected)}
-        >
-          {options?.map(option => (
-            <MenuItem key={option.label} value={option.value as string}>
-              <Checkbox checked={value.indexOf(option.value as string) > -1} />
-              <ListItemText primary={option.label} />
-            </MenuItem>
-          ))}
-        </Select>
-        {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}
-      </FormControl>
-    </>
+    <FormControl fullWidth variant="standard">
+      <InputLabel id="seasons-played">{label}</InputLabel>
+      <Select
+        labelId="seasons-played"
+        id="multiple-checkbox"
+        multiple
+        value={value}
+        onChange={onChange}
+        renderValue={selected => renderValue(selected)}
+      >
+        {options?.map(option => (
+          <MenuItem key={option.label} value={option.value as string}>
+            <Checkbox checked={value.indexOf(option.value as string) > -1} />
+            <ListItemText primary={option.label} />
+          </MenuItem>
+        ))}
+      </Select>
+      {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
+    </FormControl>
   );
 };
 

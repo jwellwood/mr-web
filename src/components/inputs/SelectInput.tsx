@@ -1,8 +1,7 @@
 import React from 'react';
-import TextField from '@mui/material/TextField';
-
 import FormErrorMessage from '../alerts/FormErrorMessage';
 import { FormError } from '../../types/form.ts';
+import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
 
 export interface ISelectOptions {
   label: string;
@@ -12,16 +11,15 @@ export interface ISelectOptions {
 
 interface Props {
   inputName: string;
-  defaultValue?: string | boolean | number;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  defaultValue?: string | number;
+  onChange: (event: SelectChangeEvent<string | number>) => void;
   label?: string;
-  errors?: FormError[]; // TODO
+  errors: FormError[];
   options: readonly {
     label: string;
     value: string | number;
     disabled?: boolean;
   }[];
-  data_id?: string;
   disabled?: boolean;
   multiple?: boolean;
 }
@@ -33,34 +31,29 @@ const SelectInput: React.FC<Props> = ({
   label,
   errors,
   options,
-  data_id,
   disabled,
 }) => {
   return (
     <>
-      <TextField
-        select
-        SelectProps={{
-          native: true,
-        }}
-        data-id={data_id}
-        color="primary"
-        name={inputName}
-        defaultValue={defaultValue}
-        onChange={onChange}
-        label={label}
-        variant="filled"
-        margin="normal"
-        fullWidth
-        disabled={disabled}
-      >
-        {options.map((option, i) => (
-          <option key={i} disabled={option?.disabled} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </TextField>
-      {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}
+      <FormControl fullWidth variant="standard">
+        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          name={inputName}
+          value={defaultValue}
+          label={label}
+          onChange={onChange}
+          disabled={disabled}
+        >
+          {options.map(opt => (
+            <MenuItem disabled={opt.disabled} value={opt.value}>
+              {opt.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+      {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
     </>
   );
 };

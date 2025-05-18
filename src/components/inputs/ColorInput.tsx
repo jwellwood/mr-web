@@ -34,7 +34,11 @@ const ColorInput: React.FC<Props> = ({
         variant="filled"
         margin="normal"
         fullWidth
-        inputProps={{ style: { height: '75px' } }}
+        slotProps={{
+          htmlInput: {
+            style: { height: '75px' },
+          },
+        }}
         disabled={disabled}
       />
       {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}

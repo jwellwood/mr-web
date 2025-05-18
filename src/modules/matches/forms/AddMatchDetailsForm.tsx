@@ -49,37 +49,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} text="Next">
       <CenteredGrid dir="row">
-        <GridItem>
-          <ControlledSelectInput
-            control={control}
-            name="opponentId"
-            label="Opponent"
-            rules={{ required: true }}
-            errors={errors.opponentId ? [errors.opponentId] : []}
-            options={opponentOptions}
-          />
-        </GridItem>
-        <GridItem size={6}>
-          <ControlledSelectInput
-            control={control}
-            name="competitionId"
-            label="Competition"
-            rules={{ required: true }}
-            errors={errors.competitionId ? [errors.competitionId] : []}
-            options={competitionOptions}
-          />
-        </GridItem>
-        <GridItem size={6}>
-          <ControlledSelectInput
-            control={control}
-            name="seasonId"
-            label="Season"
-            rules={{ required: true }}
-            errors={errors.seasonId ? [errors.seasonId] : []}
-            options={seasonOptions}
-          />
-        </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="date"
@@ -88,7 +58,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             disableFuture={false}
           />
         </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <TextList
             data={[
               {
@@ -98,10 +68,40 @@ const AddMatchDetailsForm: React.FC<Props> = ({
             ]}
           />
         </GridItem>
+        <GridItem size={12}>
+          <ControlledSelectInput
+            control={control}
+            name="opponentId"
+            label="Opponent"
+            rules={{ required: true }}
+            errors={errors.opponentId ? [errors.opponentId] : []}
+            options={opponentOptions}
+          />
+        </GridItem>
+        <GridItem size={12}>
+          <ControlledSelectInput
+            control={control}
+            name="competitionId"
+            label="Competition"
+            rules={{ required: true }}
+            errors={errors.competitionId ? [errors.competitionId] : []}
+            options={competitionOptions}
+          />
+        </GridItem>
+        <GridItem size={12}>
+          <ControlledSelectInput
+            control={control}
+            name="seasonId"
+            label="Season"
+            rules={{ required: true }}
+            errors={errors.seasonId ? [errors.seasonId] : []}
+            options={seasonOptions}
+          />
+        </GridItem>
 
         {!isFutureMatch && (
           <>
-            <GridItem size={6}>
+            <GridItem size={12}>
               <ControlledSelectInput
                 control={control}
                 name="teamGoals"
@@ -110,7 +110,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 options={getIntegers(selectedCompetition?.matchMinutes)}
               />
             </GridItem>
-            <GridItem size={6}>
+            <GridItem size={12}>
               <ControlledSelectInput
                 control={control}
                 name="opponentGoals"
@@ -119,7 +119,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 options={getIntegers(selectedCompetition?.matchMinutes)}
               />
             </GridItem>
-            <GridItem size={6}>
+            <GridItem size={12}>
               <TextList
                 data={[
                   {
@@ -130,7 +130,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
               />
             </GridItem>
             {selectedCompetition?.competitionType === 'League' && (
-              <GridItem size={6}>
+              <GridItem size={12}>
                 <ControlledSelectInput
                   control={control}
                   name="leaguePosition"
@@ -141,7 +141,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
               </GridItem>
             )}
             {isCup && (
-              <GridItem size={6}>
+              <GridItem size={12}>
                 <ControlledSelectInput
                   control={control}
                   name="cupRound"

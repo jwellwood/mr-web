@@ -47,7 +47,7 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} text="Next">
       <CenteredGrid dir="row">
-        <GridItem>
+        <GridItem size={12}>
           <ControlledMultiSelectInput
             control={control}
             name="matchPlayers"

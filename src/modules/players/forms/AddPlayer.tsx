@@ -18,6 +18,7 @@ import RouteGuard from '../../../router/RouteGuard';
 import { AuthRoles } from '../../../constants.ts';
 import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 
 const AddPlayer: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -26,7 +27,7 @@ const AddPlayer: React.FC = () => {
   const { nationalityOptions } = useNationality();
   const { seasonOptions, seasonId, loading } = useSeasons();
 
-  const [defaultValues, setDefaultValues] = useState<Partial<IPlayer>>({});
+  const [defaultValues, setDefaultValues] = useState<Partial<IPlayer | null>>(null);
 
   const [addPlayer, { error, loading: addLoading }] = useMutation(ADD_PLAYER, {
     refetchQueries: [{ query: GET_PLAYERS_BY_SEASON_ID, variables: { teamId, seasonId } }],
@@ -37,7 +38,7 @@ const AddPlayer: React.FC = () => {
   }, []);
   const onSubmit = async (formData: Partial<IPlayer>) => {
     try {
-      return addPlayer({ variables: { teamId: teamId, ...formData } }).then(() => {
+      return addPlayer({ variables: { teamId: teamId, ...mapPlayerForm(formData) } }).then(() => {
         dispatch(showAlert({ text: 'Player added successfully!', type: 'success' }));
         navigate(-1);
       });

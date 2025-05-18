@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@mui/material/TextField';
 import FormErrorMessage from '../alerts/FormErrorMessage';
 import { FormError } from '../../types/form.ts';
+import { FormControl } from '@mui/material';
 
 interface Props {
   inputName?: string;
@@ -30,8 +31,9 @@ const TextInput: React.FC<Props> = ({
   placeholder,
 }) => {
   return (
-    <>
+    <FormControl fullWidth variant="standard">
       <TextField
+        variant="standard"
         role={role}
         type={isPassword ? 'password' : 'text'}
         multiline={multiline}
@@ -40,14 +42,12 @@ const TextInput: React.FC<Props> = ({
         defaultValue={defaultValue}
         onChange={onChange}
         label={label}
-        variant="filled"
-        margin="normal"
         fullWidth
         disabled={disabled}
         placeholder={placeholder}
       />
       {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
-    </>
+    </FormControl>
   );
 };
 

@@ -1,6 +1,11 @@
 import type { IImage } from './image';
 import { TPosition } from '../modules/players/constants.ts';
 
+export interface ISeasonID {
+  _id: string;
+  name: string;
+}
+
 export interface IPlayer {
   _id: string;
   name: string;
@@ -14,8 +19,5 @@ export interface IPlayer {
   isCaptain?: boolean;
   isViceCaptain?: boolean;
   isHallOfFame?: boolean;
-  seasonIds?: {
-    _id: string;
-    name: string;
-  }[];
+  seasonIds?: ISeasonID[];
 }

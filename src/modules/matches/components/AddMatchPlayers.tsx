@@ -27,7 +27,6 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
     matchPlayers: [],
   });
   const { players, loading, error } = useMatchPlayersInput(teamId, currentMatch.seasonId);
-
   const onSubmit = (formData: { matchPlayers: string[] }) => {
     const { matchPlayers } = formData;
     const selectedPlayers: IPlayerInMatch[] = [];

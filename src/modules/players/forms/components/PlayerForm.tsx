@@ -125,7 +125,19 @@ const PlayerForm: React.FC<Props> = ({
             rules={{ required: true }}
             options={seasonOptions}
             label="Seasons Played"
-            errors={errors.seasonIds?.[0] ? [new Error(errors.seasonIds[0].message)] : []}
+            errors={
+              errors.seasonIds
+                ? [
+                    {
+                      name: 'seasonIds',
+                      message:
+                        (Array.isArray(errors.seasonIds)
+                          ? errors.seasonIds[0]?.message
+                          : errors.seasonIds?.message) || 'This field is required',
+                    },
+                  ]
+                : []
+            }
           />
         </GridItem>
       </CenteredGrid>

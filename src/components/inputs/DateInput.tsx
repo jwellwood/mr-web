@@ -2,6 +2,7 @@ import { MobileDatePicker, LocalizationProvider, DateView } from '@mui/x-date-pi
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import FormErrorMessage from '../alerts/FormErrorMessage';
 import { PickerValue } from '@mui/x-date-pickers/internals';
+import { FormControl } from '@mui/material';
 
 interface Props {
   inputName: string;
@@ -21,7 +22,7 @@ function DateInput({ defaultValue, onChange, label, openTo, errors, view, disabl
   }
 
   return (
-    <>
+    <FormControl fullWidth variant="standard">
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <MobileDatePicker
           label={label}
@@ -30,10 +31,14 @@ function DateInput({ defaultValue, onChange, label, openTo, errors, view, disabl
           openTo={openTo || views[views.length - 1]}
           disableFuture={disableFuture}
           views={views}
+          slotProps={{
+            textField: { variant: 'standard' },
+            inputAdornment: { style: { color: 'white' } },
+          }}
         />
       </LocalizationProvider>
       {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
-    </>
+    </FormControl>
   );
 }
 

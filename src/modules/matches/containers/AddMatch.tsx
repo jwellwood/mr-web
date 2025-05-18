@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
 import { resetTempMatch } from '../actions/matches.actions';
 import { resetTempPlayers } from '../actions/players.actions';
 import MatchFormStepper from '../components/MatchFormStepper';

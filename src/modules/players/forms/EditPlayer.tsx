@@ -5,7 +5,7 @@ import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import { PAGES } from '../constants';
 import { GET_PLAYER_BY_ID, UPDATE_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
-import { IPlayer } from '../../../types';
+import { IPlayer, ISeasonID } from '../../../types';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { useNationality } from '../../../hooks';
@@ -16,6 +16,7 @@ import { AuthRoles } from '../../../constants.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 
 const EditPlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
@@ -30,12 +31,13 @@ const EditPlayer: React.FC = () => {
   const [updatePlayer, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_PLAYER);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<Partial<IPlayer>>({});
+  const [defaultValues, setDefaultValues] = useState<Partial<IPlayer | null>>(null);
 
   useEffect(() => {
     if (data) {
       const { player } = data;
-      setDefaultValues({ ...player });
+      const mapSeasonIds = player?.seasonIds?.map(season => season._id);
+      setDefaultValues({ ...player, seasonIds: mapSeasonIds as unknown as ISeasonID[] });
     }
   }, [data]);
 
@@ -45,8 +47,7 @@ const EditPlayer: React.FC = () => {
         variables: {
           teamId,
           playerId,
-          ...formData,
-          dateOfBirth: formData.dateOfBirth,
+          ...mapPlayerForm(formData),
         },
       }).then(() => {
         refetch({ playerId });
@@ -72,7 +73,6 @@ const EditPlayer: React.FC = () => {
   if (error || updateError) {
     return <ErrorGraphql error={(error || updateError) as ApolloError} />;
   }
-
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_PLAYER} />
