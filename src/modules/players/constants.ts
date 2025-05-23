@@ -29,7 +29,7 @@ export const POSITIONS = {
   DF: 'DF',
   MF: 'MF',
   FW: 'FW',
-  NONE: 'NONE',
+  NONE: '',
 } as const;
 
 export type TPosition = (typeof POSITIONS)[keyof typeof POSITIONS];

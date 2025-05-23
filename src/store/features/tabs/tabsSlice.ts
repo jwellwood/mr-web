@@ -5,7 +5,6 @@ interface ITabsState {
   org: 0 | 1;
   orgTeams: 0 | 1;
   team: 0 | 1 | 2 | 3;
-  overview: 0 | 1;
   matches: 0 | 1;
   squad: 0 | 1;
   player: 0 | 1;
@@ -20,7 +19,6 @@ const initialState: ITabsState = {
   org: 0,
   orgTeams: 0,
   team: 0,
-  overview: 0,
   matches: 0,
   squad: 0,
   player: 0,

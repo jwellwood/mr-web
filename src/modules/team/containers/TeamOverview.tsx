@@ -7,7 +7,8 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
 import Organization from '../components/Organization';
 import { GET_TEAM } from '../graphql';
-import TeamTabs from './TeamTabs';
+import Kits from '../components/Kits';
+import Stadium from '../components/Stadium';
 
 const TeamOverview: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -29,7 +30,8 @@ const TeamOverview: React.FC = () => {
         loading={loading}
       />
       <Organization team={data?.team} loading={loading} />
-      <TeamTabs team={data?.team} loading={loading} />
+      <Kits team={data?.team} loading={loading} />
+      <Stadium team={data?.team} loading={loading} />
     </RouteGuard>
   );
 };

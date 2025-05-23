@@ -38,7 +38,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem>
+        <GridItem size={12}>
           <SwitchList data={switchList} control={control} />
         </GridItem>
         <GridItem size={12}>

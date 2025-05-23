@@ -26,5 +26,5 @@ const playersSlice = createSlice({
   },
 });
 
-export const { setState: setPlayers, resetState: resetPlayers } = playersSlice.actions;
+export const { setState: setTmpPlayers, resetState: resetTmpPlayers } = playersSlice.actions;
 export const { reducer: playersReducer } = playersSlice;

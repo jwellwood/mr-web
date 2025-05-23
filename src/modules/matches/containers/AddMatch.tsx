@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { resetTempMatch } from '../actions/matches.actions';
-import { resetTempPlayers } from '../actions/players.actions';
 import MatchFormStepper from '../components/MatchFormStepper';
 import { PAGES } from '../constants';
 import { ADD_MATCH, GET_MATCHES_BY_SEASON } from '../graphql';
@@ -14,13 +12,15 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { IPlayerInMatch, ITempMatch } from '../../../types';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector';
-import { getTempPlayers } from '../../../store/features/players/playersSelection.ts';
+import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
 import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import { resetTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
+import { resetTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 
 const AddMatch: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -73,8 +73,8 @@ const AddMatch: React.FC = () => {
     const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
     addMatch({ variables: { ...data } })
       .then(() => {
-        dispatch(resetTempMatch());
-        dispatch(resetTempPlayers());
+        dispatch(resetTmpMatch());
+        dispatch(resetTmpPlayers());
         navigate(-1);
       })
       .catch(err => {
@@ -89,7 +89,7 @@ const AddMatch: React.FC = () => {
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_MATCH} />
-      {!addLoading && defaultValues && currentPlayers ? (
+      {!addLoading && defaultValues ? (
         <MatchFormStepper
           defaultValues={defaultValues}
           currentPlayers={currentPlayers}

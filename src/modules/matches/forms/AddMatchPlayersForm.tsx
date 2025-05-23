@@ -19,11 +19,7 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   playersOptions,
   players,
 }) => {
-  const [playerList, setPlayerList] = useState<
-    {
-      label: string;
-    }[]
-  >([]);
+  const [playerList, setPlayerList] = useState<{ label: string }[]>([]);
   const {
     handleSubmit,
     formState: { errors },
@@ -34,7 +30,6 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   });
 
   const matchPlayers = watch('matchPlayers');
-
   useEffect(() => {
     const list: { label: string }[] = [];
     matchPlayers.forEach(player => {
@@ -45,8 +40,8 @@ const AddMatchPlayersForm: React.FC<Props> = ({
   }, [matchPlayers, players]);
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} text="Next">
-      <CenteredGrid dir="row">
+    <>
+      <FormContainer onSubmit={handleSubmit(onSubmit)} text="Next">
         <GridItem size={12}>
           <ControlledMultiSelectInput
             control={control}
@@ -56,6 +51,8 @@ const AddMatchPlayersForm: React.FC<Props> = ({
             errors={errors.matchPlayers ? [new Error(errors.matchPlayers.message)] : []}
           />
         </GridItem>
+      </FormContainer>
+      <CenteredGrid dir="row">
         <GridItem>
           {playerList.length ? (
             <TextList data={playerList} />
@@ -64,7 +61,7 @@ const AddMatchPlayersForm: React.FC<Props> = ({
           )}
         </GridItem>
       </CenteredGrid>
-    </FormContainer>
+    </>
   );
 };
 

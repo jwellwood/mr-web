@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
 import { PAGES, initialTrophyFormState } from '../constants';
 import TrophyForm from '../forms/TrophyForm';
 import { ADD_TROPHY } from '../graphql/addTrophy.graphql';
@@ -34,8 +33,9 @@ const AddTrophy: React.FC = () => {
   });
 
   const onSubmit = async (formData: Partial<ITrophy>) => {
+    const mappedFormData = { ...formData, year: String(formData.year) };
     try {
-      return addTrophy({ variables: { teamId, ...formData } }).then(() => {
+      return addTrophy({ variables: { teamId, ...mappedFormData } }).then(() => {
         dispatch(showAlert({ text: 'Trophy added successfully', type: 'success' }));
         navigate(-1);
       });
@@ -45,14 +45,12 @@ const AddTrophy: React.FC = () => {
     }
   };
 
-  if (error) {
-    return <ErrorGraphql error={{ message: error.message }} />;
-  }
-
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_TROPHY} />
-      {!loading && !loadingSeasons && defaultValues && seasonOptions ? (
+      {error?.message ? (
+        <ErrorGraphql error={{ message: error.message }} />
+      ) : !loading && !loadingSeasons && defaultValues && seasonOptions ? (
         <TrophyForm
           defaultValues={defaultValues}
           onSubmit={onSubmit}

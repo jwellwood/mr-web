@@ -1,6 +1,4 @@
-import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-
 import { AUTH, MATCH, ORG, PROFILE, TEAM } from './paths';
 import { HOME } from './paths';
 import { NotFound } from '../components/navigation';
@@ -22,8 +20,6 @@ import {
   Season,
   Trophy,
 } from '../modules/history/routes.ts';
-import { resetTempMatch } from '../modules/matches/actions/matches.actions.ts';
-import { resetTempPlayers } from '../modules/matches/actions/players.actions.ts';
 import { AddMatch } from '../modules/matches/routes.ts';
 import { PLAYER_ROUTES } from './routes/PLAYER_ROUTES.tsx';
 import { MATCH_ROUTES } from './routes/MATCH_ROUTES.tsx';
@@ -48,7 +44,6 @@ import {
 import Home from '../modules/home/containers/Home.tsx';
 
 function AppRoutes() {
-  const dispatch = useDispatch();
   return (
     <Routes>
       <Route path={HOME.HOME} element={<Home />} />
@@ -87,14 +82,7 @@ function AppRoutes() {
           <Route path={TEAM.TROPHY} element={<Trophy />} />
           <Route path={TEAM.ADD_TROPHY} element={<AddTrophy />} />
           <Route path={TEAM.EDIT_TROPHY} element={<EditTrophy />} />
-          <Route
-            path={MATCH.ADD_MATCH}
-            element={<AddMatch />}
-            action={async () => {
-              dispatch(resetTempPlayers());
-              dispatch(resetTempMatch());
-            }}
-          />
+          <Route path={MATCH.ADD_MATCH} element={<AddMatch />} />
           <Route path={TEAM.EDIT_BADGE} element={<EditBadge />} />
           <Route path={TEAM.EDIT} element={<EditTeam />} />
           <Route path={TEAM.EDIT_ROLES} element={<EditRoles />} />

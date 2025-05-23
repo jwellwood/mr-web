@@ -30,7 +30,6 @@ export const statsDataAll = (
   minutes: string | number;
 }[] => {
   const players = currentPlayers?.filter(cp => cp !== undefined) || [];
-
   return players.map(player => {
     const {
       name,

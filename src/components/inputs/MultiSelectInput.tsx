@@ -44,8 +44,8 @@ const MultipleSelectInput: React.FC<Props> = ({
         onChange={onChange}
         renderValue={selected => renderValue(selected)}
       >
-        {options?.map(option => (
-          <MenuItem key={option.label} value={option.value as string}>
+        {options?.map((option, i) => (
+          <MenuItem key={(option.label, i)} value={option.value as string}>
             <Checkbox checked={value.indexOf(option.value as string) > -1} />
             <ListItemText primary={option.label} />
           </MenuItem>

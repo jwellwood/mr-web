@@ -32,7 +32,6 @@ const AddOrg: React.FC = () => {
   }, []);
 
   const onSubmit = async (data: Partial<IOrganization>) => {
-    console.log('dsasdasd');
     try {
       return addOrg({ variables: { ...data } }).then(res => {
         dispatch(showAlert({ text: 'Organization added successfully!', type: 'success' }));
@@ -53,7 +52,6 @@ const AddOrg: React.FC = () => {
         <OrgForm
           defaultValues={defaultValues}
           onSubmit={e => {
-            console.log('dasdasdsa');
             onSubmit(e);
           }}
           countryOptions={nationalityOptions}

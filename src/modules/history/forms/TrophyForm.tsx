@@ -84,7 +84,7 @@ const TrophyForm: React.FC<Props> = ({
             errors={errors.year ? [errors.year] : []}
           />
         </GridItem>
-        <GridItem>
+        <GridItem size={12}>
           <TextList data={switchList} />
         </GridItem>
         {isFinal && (

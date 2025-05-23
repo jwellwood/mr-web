@@ -34,7 +34,7 @@ const AwardForm: React.FC<Props> = ({ onSubmit, defaultValues, playersOptions })
             placeholder="e.g. Player of the Season"
           />
         </GridItem>
-        <GridItem>
+        <GridItem size={12}>
           <ControlledMultiSelectInput
             control={control}
             name="winners"

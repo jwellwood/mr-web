@@ -2,7 +2,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 import type { ITempMatch } from '../../../types';
 
-const initialMatchState: ITempMatch = {
+export const initialMatchState: ITempMatch = {
   _id: '',
   teamId: '',
   seasonId: '',
@@ -37,5 +37,5 @@ const matchesSlice = createSlice({
   },
 });
 
-export const { setState: setTmpMatch, resetState: resetTmpState } = matchesSlice.actions;
+export const { setState: setTmpMatch, resetState: resetTmpMatch } = matchesSlice.actions;
 export const { reducer: matchesReducer } = matchesSlice;

@@ -71,9 +71,6 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} text="Add" nonAbsoluteSubmit>
       <CenteredGrid dir="row">
-        <GridItem size={8}>
-          <TextList data={starterData} />
-        </GridItem>
         <GridItem size={4}>
           <ControlledSelectInput
             control={control}
@@ -83,7 +80,7 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.minutes ? [errors.minutes] : []}
           />
         </GridItem>
-        <GridItem size={12}>
+        <GridItem size={8}>
           <ControlledSelectInput
             control={control}
             name="matchPosition"
@@ -166,7 +163,8 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
             errors={errors.yellowCards ? [errors.yellowCards] : []}
           />
         </GridItem>
-        <GridItem>
+        <GridItem size={12}>
+          <TextList data={starterData} />
           <TextList data={cleanSheetData} />
           <TextList data={redCardData} />
           <TextList data={mvpData} />

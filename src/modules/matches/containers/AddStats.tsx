@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Spinner } from '../../../components/loaders';
 import FormModal from '../../../components/modals/FormModal';
 import { IPlayer, IPlayerInMatch } from '../../../types';
-import { setTempPlayers } from '../actions/players.actions';
 import { initPlayerInMatch } from '../constants';
 import AddMatchPlayerStatsForm from '../forms/AddMatchPlayerStatsForm';
 import { getGoalsOptions } from '../helpers';
 import { getMinutesOptions } from '../helpers';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 import { AppDispatch } from '../../../store/store.ts';
+import { setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 
 interface Props {
   playerId: string;
@@ -28,7 +28,8 @@ function AddStats({ playerId, title, currentPlayers, buttonElement }: Props) {
     if (selectedPlayer) {
       setDefaultValues({
         ...selectedPlayer,
-        matchPosition: (selectedPlayer.playerId as IPlayer)?.position,
+        matchPosition:
+          (selectedPlayer.playerId as IPlayer)?.position || selectedPlayer.matchPosition,
       });
     } else {
       setDefaultValues(initPlayerInMatch as IPlayerInMatch);
@@ -40,10 +41,12 @@ function AddStats({ playerId, title, currentPlayers, buttonElement }: Props) {
   const onSubmit = async (formData: IPlayerInMatch) => {
     const playerIndex = currentPlayers?.findIndex(player => player._id === playerId);
     const selectedPlayer = currentPlayers?.find(player => player._id === playerId);
-
     const matchPlayersToUpdate = currentPlayers;
 
-    if (!matchPlayersToUpdate || !playerIndex) return;
+    if (!matchPlayersToUpdate || playerIndex === undefined) {
+      closeForm();
+      return;
+    }
 
     matchPlayersToUpdate[playerIndex] = {
       ...formData,
@@ -51,8 +54,8 @@ function AddStats({ playerId, title, currentPlayers, buttonElement }: Props) {
       name: selectedPlayer?.name || formData.name,
       matchPosition: (selectedPlayer?.playerId as IPlayer)?.position || formData.matchPosition,
     };
+    dispatch(setTmpPlayers({ players: matchPlayersToUpdate }));
     closeForm();
-    await dispatch(setTempPlayers(matchPlayersToUpdate));
   };
 
   const goalOptions = getGoalsOptions(currentMatch.teamGoals);

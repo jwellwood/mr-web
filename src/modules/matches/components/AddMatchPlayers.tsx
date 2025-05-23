@@ -4,14 +4,14 @@ import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { setTempPlayers } from '../actions/players.actions';
 import { initPlayerInMatch } from '../constants';
 import AddMatchPlayersForm from '../forms/AddMatchPlayersForm';
 import { useMatchPlayersInput } from '../hooks/useMatchPlayersInput';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
-import { getTempPlayers } from '../../../store/features/players/playersSelection.ts';
+import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
 import { IPlayerInMatch } from '../../../types';
+import { setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 
 type Props = {
   onNextClick: () => void;
@@ -23,9 +23,7 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   const dispatch: AppDispatch = useDispatch();
   const currentPlayers = useSelector(getTempPlayers);
   const currentMatch = useSelector(getTempMatch);
-  const [values, setValues] = useState<{ matchPlayers: string[] }>({
-    matchPlayers: [],
-  });
+  const [values, setValues] = useState<{ matchPlayers: string[] } | null>(null);
   const { players, loading, error } = useMatchPlayersInput(teamId, currentMatch.seasonId);
   const onSubmit = (formData: { matchPlayers: string[] }) => {
     const { matchPlayers } = formData;
@@ -56,7 +54,7 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
         });
       }
     });
-    dispatch(setTempPlayers(selectedPlayers));
+    dispatch(setTmpPlayers({ players: selectedPlayers }));
     onNextClick();
   };
 
@@ -80,7 +78,6 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   if (error) {
     return <ErrorGraphql error={error} />;
   }
-
   return !loading && values ? (
     <AddMatchPlayersForm
       onSubmit={onSubmit}

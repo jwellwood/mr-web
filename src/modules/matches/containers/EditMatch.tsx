@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-
-import { resetTempMatch, setTempMatch } from '../actions/matches.actions';
-import { resetTempPlayers, setTempPlayers } from '../actions/players.actions';
 import MatchFormStepper from '../components/MatchFormStepper';
 import { PAGES } from '../constants';
 import { EDIT_MATCH, GET_MATCHES_BY_SEASON, GET_MATCH_BY_ID } from '../graphql';
@@ -16,13 +13,15 @@ import { IPlayerInMatch, ITempMatch } from '../../../types';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
-import { getTempPlayers } from '../../../store/features/players/playersSelection.ts';
+import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
 import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
+import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 
 const EditMatch: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
@@ -65,8 +64,8 @@ const EditMatch: React.FC = () => {
 
   useEffect(() => {
     if (data?.match) {
-      dispatch(setTempMatch(mapMatchResponseToTempMatch(data.match)));
-      dispatch(setTempPlayers(data.match?.matchPlayers as IPlayerInMatch[]));
+      dispatch(setTmpMatch(mapMatchResponseToTempMatch(data.match)));
+      dispatch(setTmpPlayers({ players: data.match?.matchPlayers as IPlayerInMatch[] }));
     }
   }, [data, dispatch]);
 
@@ -86,8 +85,8 @@ const EditMatch: React.FC = () => {
     const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
     editMatch({ variables: { matchId, ...data } })
       .then(() => {
-        dispatch(resetTempMatch());
-        dispatch(resetTempPlayers());
+        dispatch(resetTmpMatch());
+        dispatch(resetTmpPlayers());
         navigate(-1);
       })
       .catch(err => {

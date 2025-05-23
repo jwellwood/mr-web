@@ -2,11 +2,11 @@ import React, { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { ICompetition, ITeam, ITempMatch } from '../../../types';
-import { setTempMatch } from '../actions/matches.actions';
 import { emptySelectOption } from '../constants';
 import AddMatchDetailsForm from '../forms/AddMatchDetailsForm';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
+import { setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 
 type Props = {
   onNextClick: () => void;
@@ -60,7 +60,7 @@ const AddMatchDetails: React.FC<Props> = ({
     );
 
     dispatch(
-      setTempMatch({
+      setTmpMatch({
         ...formData,
         teamName: team?.teamName,
         opponentName: opponent?.teamName,
