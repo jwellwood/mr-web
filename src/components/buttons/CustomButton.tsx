@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import Button from '@mui/material/Button';
 import { getThemeColorByType } from '../../utils';
-import {theme} from "../../theme";
+import { theme } from '../../theme';
 
 interface Props {
   children?: string | ReactElement;
