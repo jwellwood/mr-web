@@ -25,7 +25,7 @@ const SignInContainer: React.FC = () => {
   const [email, setEmail] = useState<string | null>(null);
   const [signInUser, { loading }] = useMutation(SIGN_IN);
   const [showResendLink, setShowResendLink] = useState(false);
-  const { isAuth } = useAuth('Sign in');
+  const { isAuth } = useAuth();
 
   useEffect(() => {
     setDefaultValues({ ...signInFormState });

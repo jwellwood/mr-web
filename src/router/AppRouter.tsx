@@ -14,7 +14,7 @@ const AppRoutes = lazy(() => import('./Routes'));
 function AppRouter() {
   const dispatch = useDispatch();
   const { data, loading } = useQuery(GET_ROLES);
-  const { isAuth } = useAuth('router');
+  const { isAuth } = useAuth();
 
   useEffect(() => {
     if (data && !loading) {

@@ -21,7 +21,7 @@ import { NAV_ICONS } from '../../../app/icons';
 const Team: React.FC = () => {
   const { teamId } = useCustomParams();
   const { search } = useLocation();
-  const { isTeamAuth } = useAuth('team', teamId);
+  const { isTeamAuth } = useAuth(teamId);
   const { team } = useSelector(getTabIndex);
   const getIcon = (name: IIconType, index: number) => (
     <NavIcon icon={name} size="20px" color={index === team ? 'primary' : 'label'} />

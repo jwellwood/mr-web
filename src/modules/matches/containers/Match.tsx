@@ -19,7 +19,7 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const Match: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
-  const { isTeamAuth } = useAuth('match', teamId);
+  const { isTeamAuth } = useAuth(teamId);
 
   const links = [
     {

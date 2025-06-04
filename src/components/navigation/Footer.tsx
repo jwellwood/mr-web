@@ -13,7 +13,7 @@ interface Props {
 }
 
 const Footer: React.FC<Props> = ({ toggleDrawer }) => {
-  const { isAuth } = useAuth('Footer');
+  const { isAuth } = useAuth();
   const { onLogout } = useLogout(toggleDrawer);
 
   return (

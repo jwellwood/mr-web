@@ -15,7 +15,7 @@ import SeasonTabs from './SeasonTabs';
 
 const Season: React.FC = () => {
   const { teamId, seasonId } = useCustomParams();
-  const { isTeamAuth } = useAuth('season', teamId);
+  const { isTeamAuth } = useAuth(teamId);
 
   const links: IListItem[] = [
     {

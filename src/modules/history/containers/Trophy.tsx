@@ -15,7 +15,7 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 
 const Trophy: React.FC = () => {
   const { teamId, trophyId } = useCustomParams();
-  const { isTeamAuth } = useAuth('trophy', teamId);
+  const { isTeamAuth } = useAuth(teamId);
 
   const links: IListItem[] = [
     {

@@ -18,7 +18,7 @@ import ModuleHeader from '../../../components/common/ModuleHeader.tsx';
 
 const Player: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
-  const { isTeamAuth } = useAuth('player', teamId);
+  const { isTeamAuth } = useAuth(teamId);
 
   const { loading, error, data } = useQuery(GET_PLAYER_BY_ID, {
     variables: { playerId: playerId },

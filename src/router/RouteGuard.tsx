@@ -15,11 +15,7 @@ interface Props {
 const RouteGuard: React.FC<Props> = ({ children, authorization }) => {
   const dispatch = useDispatch();
   const { teamId, orgId } = useCustomParams();
-  const { isTeamAdmin, isSiteAdmin, isTeamAuth, isOrgAuth, isAuth } = useAuth(
-    'guard',
-    teamId,
-    orgId
-  );
+  const { isTeamAdmin, isSiteAdmin, isTeamAuth, isOrgAuth, isAuth } = useAuth(teamId, orgId);
 
   if (authorization === AUTH_ROLES.USER && !isAuth) {
     return <Navigate to={AUTH.SIGN_IN} replace />;
