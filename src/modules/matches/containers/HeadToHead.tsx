@@ -56,7 +56,7 @@ const HeadToHead: React.FC<Props> = ({ opponentId }) => {
     <SectionContainer>
       {!loading ? (
         <SectionContainer>
-          <MatchStatsTable stats={mapMatchStats() as IMatchStats} loading={loading} />
+          <MatchStatsTable stats={mapMatchStats() as IMatchStats} />
           {getMatchListData && getMatchListData.length > 0 && <LinksList links={matchListData} />}
         </SectionContainer>
       ) : (

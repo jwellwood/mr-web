@@ -25,7 +25,7 @@ const AllTimeMatchStats: React.FC = () => {
         <CustomTypography color="warning">No matches yet</CustomTypography>
       ) : (
         <>
-          <MatchStatsTable stats={data?.stats} loading={loading} />
+          <MatchStatsTable stats={data?.stats} />
           <Averages stats={data?.stats} loading={loading} />
         </>
       )}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SectionContainer } from '../../../components/containers';
 import CustomTable from '../../../components/tables/CustomTable';
-import { IMatchResponse, IPlayer } from '../../../types';
+import { IMatchResponse, IPlayer, IPlayerInMatch } from '../../../types';
 import { match_players_table, match_players_table_styles } from '../configs';
 import { statsData } from '../helpers';
 import { POSITIONS } from '../../players/constants.ts';
@@ -10,17 +10,21 @@ type Props = {
   match?: IMatchResponse;
 };
 
-const MatchPlayersTable: React.FC<Props> = ({ match = {} }) => {
-  const { matchPlayers = [] } = match || {};
-  const mappedPlayers = matchPlayers.map(player => {
+const MatchPlayersTable: React.FC<Props> = ({ match }) => {
+  const { matchPlayers = [] as IPlayerInMatch[] } = match || {};
+  const mappedPlayers = matchPlayers?.map(player => {
     return {
       ...player,
       name: (player.playerId as IPlayer).name,
-      position: POSITIONS[player.matchPosition || (player.playerId as IPlayer).position],
+      position:
+        POSITIONS[
+          (player.matchPosition || (player.playerId as IPlayer).position) as keyof typeof POSITIONS
+        ],
     };
   });
 
-  const playersData = statsData(mappedPlayers, false);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const playersData = statsData(mappedPlayers as any, false);
 
   return (
     <SectionContainer>
