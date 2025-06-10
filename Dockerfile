@@ -18,7 +18,7 @@ RUN yarn build
 
 # Step 2: Serve the app using Nginx
 FROM nginx:alpine
-COPY nginx.conf /etc/nginx/conf.d/configfile.template
+COPY default.nginx.conf /etc/nginx/conf.d/configfile.template
 
 COPY --from=vite-build /app/dist /usr/share/nginx/html
 
