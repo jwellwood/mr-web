@@ -16,8 +16,8 @@ import { ORG } from '../../../router/paths.ts';
 import { useAuth } from '../../../hooks';
 
 const Org: React.FC = () => {
-  const { orgId } = useCustomParams();
-  const { isOrgAuth } = useAuth(orgId);
+  const { teamId, orgId } = useCustomParams();
+  const { isOrgAuth } = useAuth(teamId, orgId);
   const { data, error, loading } = useQuery(GET_ORG, { variables: { orgId } });
 
   const links = [

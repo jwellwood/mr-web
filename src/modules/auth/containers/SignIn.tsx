@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
 import { signInFormState } from '../constants';
 import SignInForm from '../forms/SignIn.form';
 import { SIGN_IN } from '../graphql';
@@ -34,8 +33,7 @@ const SignInContainer: React.FC = () => {
   const onSubmit = async (formData: { email: string }) => {
     setEmail(formData.email);
     return signInUser({ variables: { ...formData } })
-      .then(resp => {
-        const { data } = resp;
+      .then(({ data }) => {
         if (data) {
           const { user } = data;
           dispatch(showAlert({ text: `Welcome ${user.username}!`, type: 'success' }));

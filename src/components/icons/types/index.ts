@@ -52,7 +52,6 @@ export type IIconType =
   | 'past'
   | 'hall-of-fame'
   | 'signin'
-  | 'signout'
   | 'photo'
   | 'video'
   | 'settings'

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BiLogIn, BiLogOut, BiCog, BiArrowBack } from 'react-icons/bi';
+import { BiLogIn, BiCog, BiArrowBack } from 'react-icons/bi';
 import { FaUserCircle } from 'react-icons/fa';
 import { HiHome } from 'react-icons/hi';
 import { IoShieldSharp } from 'react-icons/io5';
@@ -36,8 +36,6 @@ const NavIcon: React.FC<Props> = ({ icon, size = '1rem', color = theme.palette.p
       return <PiTrophyBold size={size} color={iconColor} />;
     case icons.signinIcon:
       return <BiLogIn size={size} color={iconColor} />;
-    case icons.signoutIcon:
-      return <BiLogOut size={size} color={iconColor} />;
     case icons.settingsIcon:
       return <BiCog size={size} color={iconColor} />;
     case icons.backIcon:

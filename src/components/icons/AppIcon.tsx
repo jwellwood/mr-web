@@ -13,7 +13,6 @@ import {
   BiTrophy,
   BiTime,
   BiLogIn,
-  BiLogOut,
   BiCheck,
   BiX,
   BiCog,
@@ -122,8 +121,6 @@ const AppIcon: React.FC<Props> = ({ icon, size = '1rem', color = theme.palette.p
       return <GrInstagram size={size} color={iconColor} />;
     case icons.signinIcon:
       return <BiLogIn size={size} color={iconColor} />;
-    case icons.signoutIcon:
-      return <BiLogOut size={size} color={iconColor} />;
     case icons.settingsIcon:
       return <BiCog size={size} color={iconColor} />;
     case icons.addIcon:

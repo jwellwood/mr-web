@@ -17,15 +17,17 @@ const ErrorGraphql: React.FC<Props> = ({ error }) => {
       })
     : [];
   return (
-    <SectionContainer border={theme.palette.error.main} background={theme.palette.error.dark}>
-      <CustomTypography bold color="secondary">
+    <SectionContainer border={theme.palette.dark.main} background={theme.palette.warning.light}>
+      <CustomTypography bold size="md" color="secondary">
         Something went wrong
       </CustomTypography>
-      {data.length ? (
-        <TextList data={data} />
-      ) : (
-        <CustomTypography color="warning">{error.message}</CustomTypography>
-      )}
+      <>
+        {data.length ? (
+          <TextList data={data} />
+        ) : (
+          <CustomTypography color="secondary">{error.message}</CustomTypography>
+        )}
+      </>
     </SectionContainer>
   );
 };

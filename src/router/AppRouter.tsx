@@ -17,12 +17,12 @@ function AppRouter() {
   const { isAuth } = useAuth();
 
   useEffect(() => {
-    if (data && !loading) {
+    if (data?.user && !loading) {
       dispatch(
         setAuth({
           roles: data.user?.roles,
           teamIds: data.user?.teamIds,
-          orgIds: data?.user?.orgIds,
+          orgIds: data.user?.orgIds,
         })
       );
     } else {

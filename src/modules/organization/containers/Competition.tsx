@@ -24,8 +24,8 @@ const links = [
 ];
 
 const Competition: React.FC = () => {
-  const { orgId, competitionId } = useCustomParams();
-  const { isOrgAuth } = useAuth(orgId);
+  const { teamId, orgId, competitionId } = useCustomParams();
+  const { isOrgAuth } = useAuth(teamId, orgId);
   const { data, loading, error } = useQuery(GET_COMPETITION_BY_ID, {
     variables: { compId: competitionId },
   });
