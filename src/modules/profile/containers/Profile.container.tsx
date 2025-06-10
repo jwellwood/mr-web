@@ -17,10 +17,6 @@ import ProfileTeams from './ProfileTeams.container';
 const ProfileContainer: React.FC = () => {
   const { data, loading, error } = useQuery(GET_USER);
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
-
   const links = [
     { label: 'Add New Organization', type: LINK_TYPE.ADD, link: ORG.ADD },
     { label: 'Edit Profile', type: LINK_TYPE.EDIT, link: PROFILE.EDIT },
@@ -36,16 +32,19 @@ const ProfileContainer: React.FC = () => {
   return (
     <RouteGuard authorization={AUTH_ROLES.USER}>
       <CustomAppBar title={pages.USER_PROFILE_PAGE} actionButton={<EditLinksModal data={links} />}>
-        {!loading ? (
-          <>
-            <Profile user={data?.user} />
-            <ProfileOrganizations />
-            <ProfileTeams />
-            <ProfileDetails user={data?.user} />
-          </>
-        ) : (
-          <Spinner />
-        )}
+        <>
+          {error && <ErrorGraphql error={error} />}
+          {!loading ? (
+            <>
+              <Profile user={data?.user} />
+              <ProfileOrganizations />
+              <ProfileTeams />
+              <ProfileDetails user={data?.user} />
+            </>
+          ) : (
+            <Spinner />
+          )}
+        </>
       </CustomAppBar>
     </RouteGuard>
   );

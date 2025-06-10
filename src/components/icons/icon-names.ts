@@ -35,7 +35,6 @@ export const pastIcon = 'past';
 export const hallOfFameIcon = 'hall-of-fame';
 // App Icons
 export const signinIcon = 'signin';
-export const signoutIcon = 'signout';
 export const photoIcon = 'photo';
 export const videoIcon = 'video';
 export const settingsIcon = 'settings';
