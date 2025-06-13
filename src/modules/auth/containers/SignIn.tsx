@@ -33,10 +33,13 @@ const SignInContainer: React.FC = () => {
   const onSubmit = async (formData: { email: string }) => {
     setEmail(formData.email);
     return signInUser({ variables: { ...formData } })
-      .then(({ data }) => {
-        if (data) {
-          const { user } = data;
+      .then(res => {
+        if (res.data) {
+          const { user } = res.data;
           dispatch(showAlert({ text: `Welcome ${user.username}!`, type: 'success' }));
+          if (user?.token) {
+            localStorage.setItem('token', user.token);
+          }
           dispatch(
             setAuth({
               roles: user.roles,

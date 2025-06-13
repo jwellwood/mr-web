@@ -13,6 +13,7 @@ export const useLogout = (toggleDrawer: () => void) => {
   const onLogout = () => {
     dispatch(resetAuth());
     logOutUser().then(() => {
+      localStorage.removeItem('token');
       toggleDrawer();
       apolloClient.resetStore().then(() => {
         dispatch(showAlert({ text: 'You have logged out. Bye!', type: 'success' }));

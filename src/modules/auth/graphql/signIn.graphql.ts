@@ -7,6 +7,7 @@ export const SIGN_IN: TypedDocumentNode<{ user: IUser }> = gql`
       username
       email
       roles
+      token
     }
   }
 `;

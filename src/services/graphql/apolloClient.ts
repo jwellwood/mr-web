@@ -1,4 +1,5 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import createUploadLink from 'apollo-upload-client/createUploadLink.mjs';
 
 const gqlUrl = import.meta.env.PROD
@@ -8,6 +9,16 @@ const gqlUrl = import.meta.env.PROD
 const httpLink = createHttpLink({
   uri: gqlUrl,
   credentials: 'include',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? token : '',
+    },
+  };
 });
 
 const uploadLink = createUploadLink({
@@ -40,5 +51,5 @@ export const apolloClient = new ApolloClient({
     },
   }),
 
-  link: httpLink.concat(uploadLink),
+  link: authLink.concat(httpLink).concat(uploadLink),
 });
