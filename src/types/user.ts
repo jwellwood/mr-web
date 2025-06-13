@@ -15,4 +15,5 @@ export interface IUser {
   orgIds: string[];
   createdAt: string;
   updatedAt: string;
+  token?: string;
 }
