@@ -1,7 +1,6 @@
 import React from 'react';
 import { TAB_TYPES } from '../../../app/constants';
 import { CustomTabs, ITab } from '../../../components/tabs';
-
 import SeasonHeader from '../components/SeasonHeader';
 import { ITeamSeason } from '../types';
 import Awards from './Awards';

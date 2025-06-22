@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-
 import { IAward } from '../types';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { FormContainer } from '../../../components/containers';

@@ -11,6 +11,7 @@ export const GET_TROPHIES: TypedDocumentNode<{
       season
       isWinner
       isFinal
+      year
     }
   }
 `;

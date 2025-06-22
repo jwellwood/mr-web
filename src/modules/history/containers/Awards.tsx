@@ -1,10 +1,9 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { CenteredGrid } from '../../../components/grids';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import AwardCard from '../components/AwardCard';
 import { GET_SEASON_AWARDS } from '../graphql/season';
+import AwardList from '../components/AwardList';
 
 const Awards: React.FC = () => {
   const { seasonId } = useCustomParams();
@@ -17,16 +16,7 @@ const Awards: React.FC = () => {
     return <ErrorGraphql error={error} />;
   }
 
-  return (
-    <>
-      <CenteredGrid dir="row">
-        {!loading &&
-          data?.awards.map(item => {
-            return <AwardCard key={item.awardName} award={item} />;
-          })}
-      </CenteredGrid>
-    </>
-  );
+  return !loading && <AwardList awards={data?.awards || []} />;
 };
 
 export default Awards;

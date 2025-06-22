@@ -47,6 +47,7 @@ const ListItemLink: React.FC<Props> = ({ data, onClick }) => {
         <ListItemText
           primary={<CustomTypography color="label">{label}</CustomTypography>}
           secondary={secondary}
+          slotProps={{ secondary: { component: 'div' } }}
         />
         <ListItemSecondaryAction>{valueDisplay}</ListItemSecondaryAction>
       </ListItemButton>
