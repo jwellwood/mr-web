@@ -1,7 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { HISTORY_ICONS } from '../../../app/icons';
-import SectionContainer from '../../../components/containers/SectionContainer';
 import AppIcon from '../../../components/icons/AppIcon';
 import LinksList from '../../../components/lists/LinksList';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
@@ -9,17 +8,21 @@ import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { IListItem } from '../../../types';
 import TrophiesTotals from '../components/TrophiesTotals';
-import { GET_TROPHIES } from '../graphql/getTrophies.graphql';
-import { GET_TROPHIES_TOTALS } from '../graphql/getTrophiesTotals.graphql';
+import { GET_TROPHIES, GET_TROPHIES_TOTALS } from '../graphql/trophy';
+import ErrorGraphql from '../../../errors/ErrorGraphql';
 
 const Trophies: React.FC = () => {
   const { teamId } = useCustomParams();
 
-  const { loading, data } = useQuery(GET_TROPHIES, {
+  const { error, loading, data } = useQuery(GET_TROPHIES, {
     variables: { teamId },
   });
 
-  const { loading: totalsLoading, data: totals } = useQuery(GET_TROPHIES_TOTALS, {
+  const {
+    error: totalsError,
+    loading: totalsLoading,
+    data: totalsData,
+  } = useQuery(GET_TROPHIES_TOTALS, {
     variables: { teamId },
   });
 
@@ -40,14 +43,26 @@ const Trophies: React.FC = () => {
     value: trophy.name,
   }));
 
+  const totals = totalsError ? (
+    <ErrorGraphql error={totalsError} />
+  ) : (
+    <TrophiesTotals data={totalsData?.trophyTotals} loading={totalsLoading} />
+  );
+
+  const list = error ? (
+    <ErrorGraphql error={error} />
+  ) : !loading ? (
+    <LinksList links={trophies} />
+  ) : (
+    <CustomSkeleton />
+  );
+
   return trophies?.length === 0 ? (
     <CustomTypography color="warning">No trophies yet</CustomTypography>
   ) : (
     <>
-      <TrophiesTotals data={totals?.trophyTotals} loading={totalsLoading} />
-      <SectionContainer>
-        {!loading ? <LinksList links={trophies} /> : <CustomSkeleton />}
-      </SectionContainer>
+      {totals}
+      {list}
     </>
   );
 };

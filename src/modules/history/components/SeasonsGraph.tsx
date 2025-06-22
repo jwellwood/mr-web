@@ -7,7 +7,6 @@ import { IListItem } from '../../../types';
 import { seasonColors } from '../constants';
 import { ILeaguePositions } from '../types';
 import ProgressBar from './ProgressBar';
-import { generateOrdinals } from '../../../utils/helpers';
 
 type Props = {
   data?: ILeaguePositions[];
@@ -38,12 +37,9 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
     };
   };
 
-  const getIconColor = (position: number, division?: string) => {
+  const getIconColor = (position: number) => {
     let color = 'secondary';
     switch (true) {
-      case !division:
-        color = '';
-        break;
       case position === 1:
         color = 'gold';
         break;
@@ -69,14 +65,14 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
       ),
       avatar: (
         <CustomAvatar
-          border={getIconColor(position, division)}
-          shadow={position < 4 ? getIconColor(position, division) : ''}
+          border={getIconColor(position)}
+          shadow={position < 4 ? getIconColor(position) : ''}
         >
-          {division ? (
+          {position ? (
             <CustomTypography color="data" bold>
               {position}
               <CustomTypography color="label" size="xs">
-                {generateOrdinals(position)}
+                /{item.totalFinalPositions || 10}
               </CustomTypography>
             </CustomTypography>
           ) : (
@@ -86,10 +82,10 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
       ),
       secondary: (
         <CustomTypography color={mapColorsToDivisions(division).color} size="xs">
-          {division}
+          {division || '-'}
         </CustomTypography>
       ),
-      value: position && division && <ProgressBar max={10} value={position} />,
+      value: position && <ProgressBar max={item.totalFinalPositions || 10} value={position} />,
       link: `/org/${orgId}/team/${teamId}/season/${item.seasonId}`,
     };
   });

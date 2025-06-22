@@ -1,30 +1,31 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeamSeason } from '../types';
+import { ITeamSeason } from '../../types';
 
-export const EDIT_SEASON: TypedDocumentNode<{
+export const ADD_TEAM_SEASON: TypedDocumentNode<{
   season: ITeamSeason;
 }> = gql`
-  mutation EditSeason(
+  mutation AddTeamSeason(
     $teamId: String!
-    $seasonId: String!
     $yearStarted: String!
     $yearEnded: String!
-    $leaguePosition: Float
     $division: String
+    $leaguePosition: Float
+    $totalFinalPositions: Float
     $comment: String
   ) {
-    season: editSeason(
+    season: addTeamSeason(
       teamId: $teamId
-      seasonId: $seasonId
       data: {
         yearStarted: $yearStarted
         yearEnded: $yearEnded
-        leaguePosition: $leaguePosition
         division: $division
+        leaguePosition: $leaguePosition
+        totalFinalPositions: $totalFinalPositions
         comment: $comment
       }
     ) {
       _id
+      name
     }
   }
 `;

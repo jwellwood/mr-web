@@ -4,14 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 import { PAGES } from '../constants';
 import TrophyForm from '../forms/TrophyForm';
-import { DELETE_TROPHY } from '../graphql/deleteTrophy.graphql';
-import { EDIT_TROPHY } from '../graphql/editTrophy.graphql';
-import { GET_TROPHIES } from '../graphql/getTrophies.graphql';
-import { GET_TROPHY_BY_ID } from '../graphql/getTrophyById.graphql';
+import { GET_TROPHY_BY_ID, EDIT_TROPHY, DELETE_TROPHY, GET_TROPHIES } from '../graphql/trophy';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { useSeasons } from '../../../hooks/useSeasons';
-import { ITrophy } from '../../../types';
+import { ITrophy } from '../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
@@ -24,7 +21,7 @@ const EditTrophy: React.FC = () => {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
   const { seasonOptions, loading: loadingSeasons } = useSeasons();
-  const [defaultValues, setDefaultValues] = useState<Partial<ITrophy>>({});
+  const [defaultValues, setDefaultValues] = useState<Partial<ITrophy | null>>(null);
 
   const { loading, error, data, refetch } = useQuery(GET_TROPHY_BY_ID, {
     variables: { trophyId },
@@ -43,15 +40,17 @@ const EditTrophy: React.FC = () => {
   );
 
   useEffect(() => {
-    if (data && seasonOptions) {
+    if (data?.trophy && seasonOptions.length) {
       const { trophy } = data;
+      const seasonId =
+        (seasonOptions?.find(season => season.label === trophy.season)?.value as string) || '';
       setDefaultValues({
-        seasonId:
-          (seasonOptions?.find(season => season.label === trophy.season)?.value as string) || '',
-        ...(trophy as Partial<ITrophy>),
+        ...trophy,
+        seasonId,
       });
     }
-  }, [data, seasonOptions]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   const onDelete = async () => {
     try {
@@ -70,7 +69,7 @@ const EditTrophy: React.FC = () => {
       return editTrophy({ variables: { teamId, trophyId, ...formData } }).then(() => {
         refetch();
         dispatch(showAlert({ text: 'Trophy updated successfully', type: 'success' }));
-        navigate(-2);
+        navigate(-1);
       });
     } catch (error) {
       console.error(error);
@@ -78,24 +77,27 @@ const EditTrophy: React.FC = () => {
     }
   };
 
-  if (error || editError || deleteError) {
-    return <ErrorGraphql error={(error || editError || deleteError) as Error} />;
-  }
+  const hasError = error || editError || deleteError;
+  const isLoading = loading || editLoading || loadingSeasons;
+
+  const children = hasError ? (
+    <ErrorGraphql error={(error || editError || deleteError) as Error} />
+  ) : !isLoading && defaultValues ? (
+    <TrophyForm
+      defaultValues={defaultValues}
+      seasonOptions={seasonOptions}
+      onSubmit={onSubmit}
+      onDelete={onDelete}
+      deleteLoading={deleteLoading}
+    />
+  ) : (
+    <Spinner />
+  );
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_TROPHY} />
-      {!loading && !editLoading && !loadingSeasons && defaultValues ? (
-        <TrophyForm
-          defaultValues={defaultValues}
-          seasonOptions={seasonOptions}
-          onSubmit={onSubmit}
-          onDelete={onDelete}
-          deleteLoading={deleteLoading}
-        />
-      ) : (
-        <Spinner />
-      )}
+      {children}
     </RouteGuard>
   );
 };

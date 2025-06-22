@@ -21,13 +21,13 @@ const ErrorGraphql: React.FC<Props> = ({ error }) => {
       <CustomTypography bold size="md" color="secondary">
         Something went wrong
       </CustomTypography>
-      <>
+      <div>
         {data.length ? (
           <TextList data={data} />
         ) : (
           <CustomTypography color="secondary">{error.message}</CustomTypography>
         )}
-      </>
+      </div>
     </SectionContainer>
   );
 };

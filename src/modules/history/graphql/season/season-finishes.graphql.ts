@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ILeaguePositions } from '../types';
+import { ILeaguePositions } from '../../types';
 
 export const GET_POSITION_FINISHES: TypedDocumentNode<{
   position: ILeaguePositions[];
@@ -9,6 +9,7 @@ export const GET_POSITION_FINISHES: TypedDocumentNode<{
       seasonId
       name
       position
+      totalFinalPositions
       division
     }
   }

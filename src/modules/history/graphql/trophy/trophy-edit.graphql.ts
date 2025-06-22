@@ -1,10 +1,12 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITrophy } from '../../../types';
-export const ADD_TROPHY: TypedDocumentNode<{
+import { ITrophy } from '../../types';
+
+export const EDIT_TROPHY: TypedDocumentNode<{
   trophy: ITrophy;
 }> = gql`
-  mutation AddTrophy(
+  mutation EditTrophy(
     $teamId: String!
+    $trophyId: String!
     $seasonId: String!
     $name: String!
     $year: String!
@@ -13,8 +15,9 @@ export const ADD_TROPHY: TypedDocumentNode<{
     $opponent: String
     $comment: String
   ) {
-    trophy: addTrophy(
+    trophy: editTrophy(
       teamId: $teamId
+      trophyId: $trophyId
       data: {
         name: $name
         seasonId: $seasonId

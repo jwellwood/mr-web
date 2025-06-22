@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeamSeason } from '../types';
+import { ITeamSeason } from '../../types';
 
 export const GET_TEAM_SEASONS: TypedDocumentNode<{
   seasons: ITeamSeason[];
@@ -11,6 +11,7 @@ export const GET_TEAM_SEASONS: TypedDocumentNode<{
       yearStarted
       yearEnded
       leaguePosition
+      totalFinalPositions
       division
     }
   }

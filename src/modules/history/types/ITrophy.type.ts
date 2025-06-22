@@ -6,12 +6,11 @@ export interface ITrophy {
   year?: string;
   isWinner: boolean;
   isFinal: boolean;
-  opponentId?: string;
+  opponent?: string;
   comment?: string;
 }
 
 export interface ITrophyResponse extends Omit<ITrophy, 'opponentId' | 'seasonId'> {
-  opponent: string;
   season: string;
 }
 

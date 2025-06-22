@@ -7,12 +7,12 @@ import ControlledSelectInput from '../../../components/inputs/ControlledSelectIn
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { DeleteModal } from '../../../components/modals';
-import { ITeamSeason } from '../types';
+import { ITeamSeasonInput } from '../types';
 import { getIntegers } from '../../../utils/helpers';
 
 type Props = {
-  onSubmit: (formData: Partial<ITeamSeason>) => void;
-  defaultValues: Partial<ITeamSeason>;
+  onSubmit: (formData: ITeamSeasonInput) => void;
+  defaultValues: ITeamSeasonInput;
   competitionOptions: ISelectOptions[];
   onDelete?: () => void;
   deleteLoading?: boolean;
@@ -29,33 +29,37 @@ const SeasonForm: React.FC<Props> = ({
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<Partial<ITeamSeason>>({
+    watch,
+  } = useForm<ITeamSeasonInput>({
     defaultValues,
   });
 
+  const totalTeams = watch('totalFinalPositions');
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="yearStarted"
             label="Year Started"
             view="year"
+            rules={{ required: true }}
             errors={errors.yearStarted ? [errors.yearStarted] : []}
           />
         </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledDateInput
             control={control}
             name="yearEnded"
             label="Year Ended"
             view="year"
             disableFuture={false}
+            rules={{ required: true }}
             errors={errors.yearEnded ? [errors.yearEnded] : []}
           />
         </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="division"
@@ -64,15 +68,27 @@ const SeasonForm: React.FC<Props> = ({
             options={competitionOptions}
           />
         </GridItem>
-        <GridItem size={6}>
+
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
-            name="leaguePosition"
-            label="Final Position"
-            errors={errors.leaguePosition ? [errors.leaguePosition] : []}
+            name="totalFinalPositions"
+            label="Number of Teams"
+            errors={errors.totalFinalPositions ? [errors.totalFinalPositions] : []}
             options={getIntegers(50, 1)}
           />
         </GridItem>
+        {totalTeams ? (
+          <GridItem size={12}>
+            <ControlledSelectInput
+              control={control}
+              name="leaguePosition"
+              label="Final Position"
+              errors={errors.leaguePosition ? [errors.leaguePosition] : []}
+              options={getIntegers(totalTeams, 1)}
+            />
+          </GridItem>
+        ) : null}
         <GridItem size={12}>
           <ControlledTextInput
             multiline

@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeamSeason } from '../types';
+import { ITeamSeason } from '../../types';
 
 export const DELETE_SEASON: TypedDocumentNode<{
   season: ITeamSeason;

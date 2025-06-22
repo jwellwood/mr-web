@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IAward } from '../types';
+import { IAward } from '../../types';
 
 export const ADD_SEASON_AWARD: TypedDocumentNode<{
   award: IAward;

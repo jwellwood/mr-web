@@ -2,11 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-
 import { PAGES, initialAwardState } from '../constants';
 import AwardForm from '../forms/AwardForm';
-import { ADD_SEASON_AWARD } from '../graphql/addSeasonAward.graphql';
-import { GET_SEASON_AWARDS } from '../graphql/getSeasonAwards.graphql';
+import { ADD_SEASON_AWARD, GET_SEASON_AWARDS } from '../graphql/season';
 import { IAward } from '../types';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';

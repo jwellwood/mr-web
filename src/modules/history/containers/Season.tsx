@@ -10,7 +10,7 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
 import { IListItem } from '../../../types';
 import { PAGES } from '../constants';
-import { GET_TEAM_SEASON_BY_ID } from '../graphql/getTeamSeasonById.graphql';
+import { GET_TEAM_SEASON_BY_ID } from '../graphql/season';
 import SeasonTabs from './SeasonTabs';
 
 const Season: React.FC = () => {
@@ -34,9 +34,13 @@ const Season: React.FC = () => {
     variables: { seasonId },
   });
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
+  const children = error ? (
+    <ErrorGraphql error={error} />
+  ) : loading ? (
+    <Spinner />
+  ) : (
+    <SeasonTabs season={data?.season} />
+  );
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
@@ -44,7 +48,7 @@ const Season: React.FC = () => {
         title={PAGES.SEASON}
         actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
-        {!loading ? <SeasonTabs season={data?.season} /> : <Spinner />}
+        {children}
       </CustomAppBar>
     </RouteGuard>
   );

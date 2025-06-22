@@ -33,7 +33,6 @@ function DateInput({ defaultValue, onChange, label, openTo, errors, view, disabl
           views={views}
           slotProps={{
             textField: { variant: 'standard' },
-            inputAdornment: { style: { color: 'white' } },
           }}
         />
       </LocalizationProvider>

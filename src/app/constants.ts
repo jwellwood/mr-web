@@ -57,6 +57,7 @@ export const TAB_TYPES = {
   PROFILE: 'profile',
   ORG: 'org',
   ORG_TEAMS: 'orgTeams',
+  PROFILE_TEAMS: 'profileTeams',
   TEAM: 'team',
   OVERVIEW: 'overview',
   MATCHES: 'matches',

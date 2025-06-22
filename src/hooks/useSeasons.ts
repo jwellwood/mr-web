@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { useCustomParams } from './useCustomParams.tsx';
-import { GET_TEAM_SEASONS } from '../modules/history/graphql/getTeamSeasons.graphql.ts';
+import { GET_TEAM_SEASONS } from '../modules/history/graphql/season';
 import { ISelectOptions } from '../components/inputs/SelectInput.tsx';
 
 export const useSeasons = () => {
@@ -22,7 +22,7 @@ export const useSeasons = () => {
       let label = season.name;
       const value = season._id;
       if (season._id === data.seasons[0]._id) {
-        label = `${season.name} *`;
+        label = season.name;
       }
       seasonOptions.push({ label, value });
     });

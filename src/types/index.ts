@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import type { TLinkType } from '../constants.ts';
 
 export * from './team.ts';
-export * from './trophy';
 export * from './user';
 export * from './match';
 export * from './matchStats.ts';

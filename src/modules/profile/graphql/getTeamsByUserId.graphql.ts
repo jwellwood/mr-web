@@ -8,6 +8,7 @@ export const GET_TEAMS_BY_USER_ID: TypedDocumentNode<{
       _id
       teamName
       country
+      isActive
       teamBadge {
         public_id
         url

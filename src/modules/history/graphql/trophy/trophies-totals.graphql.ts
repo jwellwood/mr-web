@@ -1,5 +1,6 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITrophyTotals } from '../../../types';
+import { ITrophyTotals } from '../../types';
+
 export const GET_TROPHIES_TOTALS: TypedDocumentNode<{
   trophyTotals: ITrophyTotals;
 }> = gql`

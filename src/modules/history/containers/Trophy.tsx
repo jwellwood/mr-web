@@ -8,7 +8,7 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import TrophyDetails from '../components/TrophyDetails';
 import { PAGES } from '../constants';
-import { GET_TROPHY_BY_ID } from '../graphql/getTrophyById.graphql';
+import { GET_TROPHY_BY_ID } from '../graphql/trophy';
 import { useAuth } from '../../../hooks';
 import { IListItem } from '../../../types';
 import RouteGuard from '../../../router/RouteGuard.tsx';
@@ -29,9 +29,13 @@ const Trophy: React.FC = () => {
     variables: { trophyId },
   });
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
+  const children = error ? (
+    <ErrorGraphql error={error} />
+  ) : !loading ? (
+    <TrophyDetails trophy={data?.trophy} />
+  ) : (
+    <Spinner />
+  );
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
@@ -39,7 +43,7 @@ const Trophy: React.FC = () => {
         title={PAGES.TROPHY}
         actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
-        {!loading ? <TrophyDetails trophy={data?.trophy} /> : <Spinner />}
+        {children}
       </CustomAppBar>
     </RouteGuard>
   );

@@ -1,6 +1,5 @@
 import { theme } from '../../theme';
-import { IAward, ITeamSeason } from './types';
-import { ITrophy } from '../../types';
+import { IAward, ITrophy } from './types';
 
 // Replace the enum with this const object
 export const PAGES = {
@@ -23,15 +22,7 @@ export const initialTrophyFormState: Partial<ITrophy> = {
   year: '',
   isFinal: false,
   isWinner: true,
-  opponentId: '',
-  comment: '',
-};
-
-export const initialTeamSeasonState: Partial<ITeamSeason> = {
-  yearStarted: '',
-  yearEnded: '',
-  leaguePosition: 1,
-  division: '',
+  opponent: '',
   comment: '',
 };
 

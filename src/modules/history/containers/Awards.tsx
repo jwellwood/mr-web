@@ -4,7 +4,7 @@ import { CenteredGrid } from '../../../components/grids';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import AwardCard from '../components/AwardCard';
-import { GET_SEASON_AWARDS } from '../graphql/getSeasonAwards.graphql';
+import { GET_SEASON_AWARDS } from '../graphql/season';
 
 const Awards: React.FC = () => {
   const { seasonId } = useCustomParams();

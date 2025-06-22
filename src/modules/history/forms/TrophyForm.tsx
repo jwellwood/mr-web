@@ -9,8 +9,9 @@ import ControlledTextInput from '../../../components/inputs/ControlledTextInput'
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import TextList from '../../../components/lists/TextList';
 import { DeleteModal } from '../../../components/modals';
-import { IListItem, ITrophy } from '../../../types';
+import { IListItem } from '../../../types';
 import { yearOptions } from '../../../utils/helpers';
+import { ITrophy } from '../types';
 
 interface Props {
   onSubmit: (data: Partial<ITrophy>) => void;
@@ -80,6 +81,7 @@ const TrophyForm: React.FC<Props> = ({
             control={control}
             name="year"
             label="Year"
+            rules={{ required: true }}
             options={yearOptions(BASE_YEAR, CURRENT_YEAR)}
             errors={errors.year ? [errors.year] : []}
           />
@@ -91,13 +93,13 @@ const TrophyForm: React.FC<Props> = ({
           <GridItem size={12}>
             <ControlledTextInput
               control={control}
-              name="opponentId"
+              name="opponent"
               label="Opponent"
-              errors={errors.opponentId ? [errors.opponentId] : []}
+              errors={errors.opponent ? [errors.opponent] : []}
             />
           </GridItem>
         )}
-        <GridItem>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="comment"

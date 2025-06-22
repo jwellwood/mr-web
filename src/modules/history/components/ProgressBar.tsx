@@ -1,13 +1,15 @@
 import React from 'react';
 import { getPercentage } from '../../../utils/helpers';
 import { theme } from '../../../theme';
+import { CustomTypography } from '../../../components/typography';
 
 type Props = {
   max: number;
   value: number;
+  text?: string;
 };
 
-const ProgressBar: React.FC<Props> = ({ max, value }) => {
+const ProgressBar: React.FC<Props> = ({ max, value, text }) => {
   const calcPercentage = () => {
     if (value === max) {
       return 95;
@@ -19,7 +21,12 @@ const ProgressBar: React.FC<Props> = ({ max, value }) => {
   };
 
   return (
-    <div style={{ width: '130px', background: theme.palette.secondary.main }}>
+    <div
+      style={{
+        width: '130px',
+        background: theme.palette.secondary.main,
+      }}
+    >
       <div
         style={{
           width: `${100 - calcPercentage()}%`,
@@ -27,6 +34,9 @@ const ProgressBar: React.FC<Props> = ({ max, value }) => {
           background: value === 1 ? theme.palette.gold.main : theme.palette.primary.light,
         }}
       />
+      <CustomTypography size="xxs" color="data">
+        {text}
+      </CustomTypography>
     </div>
   );
 };
