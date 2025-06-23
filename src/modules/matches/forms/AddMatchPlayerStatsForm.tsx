@@ -9,6 +9,7 @@ import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import TextList from '../../../components/lists/TextList';
 import { IListItem, IPlayerInMatch } from '../../../types';
 import { getIntegers } from '../../../utils/helpers';
+import { theme } from '../../../theme';
 
 interface Props {
   onSubmit: (data: IPlayerInMatch) => void;
@@ -69,7 +70,12 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
   ];
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} text="Add" nonAbsoluteSubmit>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      text="Add"
+      nonAbsoluteSubmit
+      background={theme.palette.dark.main}
+    >
       <CenteredGrid dir="row">
         <GridItem size={4}>
           <ControlledSelectInput

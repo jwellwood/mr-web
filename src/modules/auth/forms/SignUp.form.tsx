@@ -1,14 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { CustomButton } from '../../../components/buttons';
 import { FormContainer } from '../../../components/containers';
 import { CustomSwitch } from '../../../components/inputs';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import { AUTH } from '../../../router/paths';
 import { IListItem } from '../../../types';
 import { ISignUpForm } from '../types';
+import AuthorizationLinks from '../components/AuthorizationLinks';
+import { CenteredGrid } from '../../../components/grids';
 
 interface Props {
   onSubmit: (data: ISignUpForm) => void;
@@ -41,7 +41,7 @@ const SignUpForm: React.FC<Props> = ({
   const links: IListItem[] = [
     {
       label: 'Already have an account?',
-      value: <CustomButton>Sign in here</CustomButton>,
+      value: 'Sign in here',
       link: AUTH.SIGN_IN,
     },
   ];
@@ -78,24 +78,23 @@ const SignUpForm: React.FC<Props> = ({
           label="Password"
           errors={errors.password ? [errors.password] : []}
         />
-
-        <div style={{ marginLeft: '10px' }}>
-          <CustomSwitch
-            name="acceptTerms"
-            checked={acceptTerms}
-            onCheck={onAcceptTermsToggle}
-            label={
-              <>
-                <CustomTypography color="label" size="xs">
-                  I accept the terms of use
-                </CustomTypography>{' '}
-              </>
-            }
-            placement="end"
-          />
-        </div>
       </FormContainer>
-      <LinksList links={links} />
+      <CenteredGrid>
+        <CustomSwitch
+          name="acceptTerms"
+          checked={acceptTerms}
+          onCheck={onAcceptTermsToggle}
+          label={
+            <>
+              <CustomTypography color="label" size="xs">
+                I accept the terms of use
+              </CustomTypography>
+            </>
+          }
+          placement="end"
+        />
+      </CenteredGrid>
+      <AuthorizationLinks links={links} />
     </>
   );
 };

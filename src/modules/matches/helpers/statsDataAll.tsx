@@ -1,9 +1,10 @@
 import { STAT_ICONS } from '../../../app/icons';
 import StatIcon from '../../../components/icons/StatIcon';
+import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
 import { IPlayerInMatch } from '../../../types';
 import AddStats from '../containers/AddStats';
-import { ReactNode } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export const statsDataAll = (
   currentPlayers?: Partial<IPlayerInMatch[]>,
@@ -15,7 +16,7 @@ export const statsDataAll = (
   isStarter: {
     value: ReactNode;
   };
-  matchPosition: string;
+  matchPosition: string | ReactElement;
   goals: string | number;
   assists: string | number;
   mvp: string | number;
@@ -71,7 +72,7 @@ export const statsDataAll = (
       isStarter: {
         value: !isStarter ? <StatIcon icon={STAT_ICONS.SUB_IN} /> : '',
       },
-      matchPosition,
+      matchPosition: <PositionString>{matchPosition}</PositionString>,
       name: { value: nameData },
       goals: goals || '',
       assists: assists || '',

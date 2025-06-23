@@ -8,6 +8,8 @@ export const SIGN_IN: TypedDocumentNode<{ user: IUser }> = gql`
       email
       roles
       token
+      teamIds
+      orgIds
     }
   }
 `;

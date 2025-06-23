@@ -8,6 +8,7 @@ interface Props {
   onSubmit: (formData: FormEvent) => void;
   children: React.ReactNode;
   disabled?: boolean;
+  background?: string;
   text?: string;
   nonAbsoluteSubmit?: boolean;
 }
@@ -16,6 +17,7 @@ const FormContainer: React.FC<Props> = ({
   children,
   onSubmit,
   disabled,
+  background = 'transparent',
   text = 'Submit',
   nonAbsoluteSubmit = false,
 }) => {
@@ -28,7 +30,7 @@ const FormContainer: React.FC<Props> = ({
           onSubmit(ev);
         }}
       >
-        <SectionContainer>{children}</SectionContainer>
+        <SectionContainer background={background}>{children}</SectionContainer>
         {nonAbsoluteSubmit ? (
           <CustomButton type="submit" variant="contained" disabled={disabled} fullWidth>
             <CustomTypography color="secondary" bold>

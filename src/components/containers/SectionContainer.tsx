@@ -18,8 +18,8 @@ const SectionContainer: React.FC<Props> = ({ title, children, border, background
         padding: theme.spacing(0.5),
         margin: theme.spacing(0.25),
         background: background || theme.palette.secondary.dark,
-        border: border ? `${border} 2px solid` : undefined,
-        borderBottom: border ? undefined : `0.5px solid ${theme.palette.primary.dark}`,
+        border: border ? `${border} 0.5px solid` : undefined,
+        borderBottom: border ? undefined : `0.5px solid ${theme.palette.grey[900]}`,
       }}
     >
       <Grid

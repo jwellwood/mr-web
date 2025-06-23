@@ -25,7 +25,6 @@ const MatchPlayersTable: React.FC<Props> = ({ match }) => {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const playersData = statsData(mappedPlayers as any, false);
-
   return (
     <SectionContainer>
       <CustomTable

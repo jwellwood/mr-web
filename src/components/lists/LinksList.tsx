@@ -6,11 +6,12 @@ import ListItemLink from './ListItemLink';
 interface Props {
   links: IListItem[];
   onClick?: () => void;
+  dense?: boolean;
 }
 
-const LinksList: React.FC<Props> = ({ links, onClick }) => {
+const LinksList: React.FC<Props> = ({ links, onClick, dense = true }) => {
   return (
-    <List dense>
+    <List dense={dense}>
       {links
         .filter(link => !link.disabled)
         .map((item, i) => {

@@ -1,14 +1,13 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { CustomButton } from '../../../components/buttons';
 import { FormContainer } from '../../../components/containers';
 import CustomDivider from '../../../components/dividers/CustomDivider';
 import { CenteredGrid } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import LinksList from '../../../components/lists/LinksList';
-import { IListItem } from '../../../types';
 import { ISignInForm } from '../types';
 import { AUTH } from '../../../router/paths.ts';
+import AuthorizationLinks from '../components/AuthorizationLinks.tsx';
+import { IListItem } from '../../../types/index.ts';
 
 interface Props {
   defaultValues: ISignInForm;
@@ -31,12 +30,12 @@ const SignInForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
   const links: IListItem[] = [
     {
       label: "Don't have an account yet?",
-      value: <CustomButton>Sign up here</CustomButton>,
+      value: 'Sign up here',
       link: AUTH.SIGN_UP,
     },
     {
       label: 'Forgotten you password?',
-      value: <CustomButton>Reset here</CustomButton>,
+      value: 'Reset here',
       link: AUTH.FORGOT,
     },
   ];
@@ -67,7 +66,7 @@ const SignInForm: React.FC<Props> = ({ defaultValues, onSubmit }) => {
         </CenteredGrid>
       </FormContainer>
       <CustomDivider hasMargin />
-      <LinksList links={links} />
+      <AuthorizationLinks links={links} />
     </>
   );
 };

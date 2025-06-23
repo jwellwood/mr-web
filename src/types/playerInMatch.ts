@@ -1,5 +1,6 @@
 import type { IPlayer } from './player';
 import { TPosition } from '../modules/players/constants.ts';
+import { ReactElement } from 'react';
 
 export interface IPlayerInMatch {
   _id?: string;
@@ -7,7 +8,7 @@ export interface IPlayerInMatch {
   name: string;
   matchId: string;
   isStarter: boolean;
-  matchPosition: TPosition;
+  matchPosition: TPosition | ReactElement;
   position?: TPosition;
   apps?: number;
   minutes: number;
