@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { AUTH, MATCH, ORG, PROFILE, TEAM } from './paths';
+import { AUTH, AWARD, MATCH, ORG, PROFILE, TEAM } from './paths';
 import { HOME } from './paths';
 import { NotFound } from '../components/navigation';
 import {
@@ -14,6 +14,7 @@ import {
   AddAward,
   AddTeamSeason,
   AddTrophy,
+  Award,
   EditAward,
   EditTeamSeason,
   EditTrophy,
@@ -24,7 +25,13 @@ import { AddMatch } from '../modules/matches/routes.ts';
 import { PLAYER_ROUTES } from './routes/PLAYER_ROUTES.tsx';
 import { MATCH_ROUTES } from './routes/MATCH_ROUTES.tsx';
 import { AddPlayer } from '../modules/players/routes.ts';
-import { ForgotPassword, ResetPassword, SignIn, SignUp, ValidatedEmail } from '../modules/auth';
+import {
+  ForgotPassword,
+  ResetPassword,
+  SignIn,
+  SignUp,
+  ValidatedEmail,
+} from '../modules/auth/routes.tsx';
 import {
   AddCompetition,
   AddOrg,
@@ -76,6 +83,11 @@ function AppRoutes() {
           <Route path={TEAM.ADD_PLAYER} element={<AddPlayer />} />
           <Route path={TEAM.SEASON}>
             <Route index={true} element={<Season />} />
+            <Route path={AWARD.AWARD} element={<Award />} />
+            <Route path={AWARD.ADD_AWARD} element={<AddAward />} />
+            <Route path={AWARD.EDIT_AWARD} element={<EditAward />} />
+            {PLAYER_ROUTES()}
+            {MATCH_ROUTES()}
           </Route>
           <Route path={TEAM.ADD_SEASON} element={<AddTeamSeason />} />
           <Route path={TEAM.EDIT_SEASON} element={<EditTeamSeason />} />
@@ -87,16 +99,6 @@ function AppRoutes() {
           <Route path={TEAM.EDIT} element={<EditTeam />} />
           <Route path={TEAM.EDIT_ROLES} element={<EditRoles />} />
           <Route path={TEAM.DELETE_TEAM} element={<DeleteTeam />} />
-          {/* // ------ */}
-
-          <Route path={TEAM.SEASON}>
-            <Route index={true} element={<Season />} />
-            <Route path={TEAM.ADD_AWARD} element={<AddAward />} />
-            <Route path={TEAM.EDIT_AWARD} element={<EditAward />} />
-            {PLAYER_ROUTES()}
-            {MATCH_ROUTES()}
-          </Route>
-          {/* // --------- */}
           {PLAYER_ROUTES()}
           {MATCH_ROUTES()}
         </Route>

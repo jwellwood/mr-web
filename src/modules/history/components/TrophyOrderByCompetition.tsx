@@ -10,7 +10,16 @@ type Props = {
 };
 
 const TrophyOrderByCompetition = ({ trophies }: Props) => {
-  const getComps = Object.groupBy(trophies, ({ name }) => name);
+  // const getComps = Object.groupBy(trophies, ({ name }) => name); // TODO add this when 
+  const getComps = trophies.reduce<Record<string, ITrophyResponse[]>>((acc, trophy) => {
+    const { name } = trophy
+    if (!acc[name]) {
+      acc[name] = [];
+    }
+
+    acc[name].push(trophy);
+    return acc;
+  }, {})
 
   return Object.entries(getComps).map(comp => {
     const compList = comp[1]?.map(value => getTrophyListItemTeam(value));

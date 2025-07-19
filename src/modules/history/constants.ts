@@ -9,6 +9,7 @@ export const PAGES = {
   SEASON: 'Season',
   EDIT_SEASON: 'Edit Season',
   ADD_SEASON: 'Add New Season',
+  AWARD: 'Award',
   ADD_AWARD: 'Add Season Award',
   EDIT_AWARD: 'Edit Season Award',
 } as const;

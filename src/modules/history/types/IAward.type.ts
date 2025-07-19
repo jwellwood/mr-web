@@ -1,7 +1,8 @@
 export interface IAward {
+  _id: string;
   seasonId: string;
   awardName: string;
-  winners: string[] | { name: string; _id: string }[];
+  winners: { name?: string; _id: string }[] | string[];
   awardValue?: number;
   comment?: string;
 }

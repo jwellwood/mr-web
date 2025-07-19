@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { GET_SEASON_AWARDS } from '../graphql/season';
+import { GET_SEASON_AWARDS } from '../graphql/award';
 import AwardList from '../components/AwardList';
 
 const Awards: React.FC = () => {

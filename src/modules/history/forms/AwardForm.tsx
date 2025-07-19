@@ -6,13 +6,22 @@ import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import ControlledMultiSelectInput from '../../../components/inputs/ControlledMultiSelectInput.tsx';
+import DeleteModal from '../../../components/modals/DeleteModal.tsx';
 
 interface Props {
   onSubmit: (data: Partial<IAward>) => void;
   defaultValues: Partial<IAward>;
   playersOptions: ISelectOptions[];
+  onDelete?: () => void;
+  deleteLoading?: boolean;
 }
-const AwardForm: React.FC<Props> = ({ onSubmit, defaultValues, playersOptions }) => {
+const AwardForm: React.FC<Props> = ({
+  onSubmit,
+  defaultValues,
+  playersOptions,
+  onDelete,
+  deleteLoading,
+}) => {
   const {
     handleSubmit,
     formState: { errors },
@@ -66,6 +75,7 @@ const AwardForm: React.FC<Props> = ({ onSubmit, defaultValues, playersOptions })
           />
         </GridItem>
       </CenteredGrid>
+      {onDelete && <DeleteModal onDelete={onDelete} title="Award" loading={deleteLoading} />}
     </FormContainer>
   );
 };

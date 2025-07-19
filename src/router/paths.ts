@@ -31,8 +31,7 @@ export const TEAM = {
   TROPHY: 'trophy/:trophyId',
   ADD_TROPHY: 'add_trophy',
   EDIT_TROPHY: 'trophy/:trophyId/edit',
-  ADD_AWARD: 'add_award',
-  EDIT_AWARD: 'award/:awardId/edit',
+
 } as const;
 
 export const PLAYER = {
@@ -58,4 +57,10 @@ export const MATCH = {
   EDIT_MATCH: 'edit',
   MATCH: 'match/:matchId',
   DELETE_MATCH: 'delete',
+} as const;
+
+export const AWARD = {
+  ADD_AWARD: 'add_award',
+  AWARD: 'award/:awardId',
+  EDIT_AWARD: 'award/:awardId/edit',
 } as const;

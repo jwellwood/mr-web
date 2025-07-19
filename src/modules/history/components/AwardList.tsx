@@ -42,6 +42,7 @@ const AwardList = ({ awards }: Props) => {
               {award.awardValue || ''}
             </CustomTypography>
           ),
+          link: `award/${award._id}`,
         };
       })
     : [];

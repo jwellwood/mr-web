@@ -6,8 +6,12 @@ export const GET_SEASON_AWARDS: TypedDocumentNode<{
 }> = gql`
   query GetSeasonAwards($seasonId: String!) {
     awards: awardsBySeason(seasonId: $seasonId) {
+      _id
       awardName
-      winners
+      winners {
+        name
+        _id
+      }
       awardValue
       comment
     }
