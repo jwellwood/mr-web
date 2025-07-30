@@ -112,6 +112,9 @@ const CustomTypography: React.FC<Props> = ({
     case 'lg':
       fontSize = '24px';
       break;
+    case 'xl':
+      fontSize = '32px';
+      break;
     default:
       break;
   }

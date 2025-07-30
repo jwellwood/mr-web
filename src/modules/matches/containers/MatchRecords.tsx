@@ -7,7 +7,6 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { GET_MATCH_STATS_MOST } from '../graphql/matchStats.graphql';
 import { mostMatchListData } from '../helpers/mostMatchListData';
-import { theme } from '../../../theme';
 
 const MatchRecords: React.FC = () => {
   const { orgId, teamId } = useCustomParams();
@@ -35,7 +34,7 @@ const MatchRecords: React.FC = () => {
       ) : (
         listData.map(item => {
           return (
-            <SectionContainer key={item.title} background={theme.palette.dark.main}>
+            <SectionContainer key={item.title}>
               <CustomTypography color="label" bold size="xs">
                 {item.title}
               </CustomTypography>

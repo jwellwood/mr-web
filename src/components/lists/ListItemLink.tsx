@@ -6,7 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CustomTypography } from '../typography';
 import { IListItem } from '../../types';
-import { theme } from '../../theme';
+
 type Props = {
   data: IListItem;
   onClick?: () => void;
@@ -35,7 +35,7 @@ const ListItemLink: React.FC<Props> = ({ data, onClick }) => {
         onClick={onClick}
         sx={
           (styles || {
-            background: theme.palette.dark.main,
+            background: 'transparent',
             paddingTop: '0px',
             paddingBottom: '0px',
             border: defaultBorder as string,

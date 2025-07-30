@@ -4,7 +4,6 @@ import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem } from '../../../types';
 import RecordPlayers from './RecordPlayers';
-import { theme } from '../../../theme';
 
 type ValueType = object & {
   [key: string]: {
@@ -37,7 +36,7 @@ type Props<
 function RecordsTable<T extends ValueType>({ label, stat, value }: Props<T>) {
   const statField = value[stat];
   return (
-    <SectionContainer background={theme.palette.dark.main}>
+    <SectionContainer>
       <CustomTypography color="label" bold size="xs">
         {label}
       </CustomTypography>

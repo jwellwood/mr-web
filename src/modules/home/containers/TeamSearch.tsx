@@ -4,7 +4,10 @@ import { SearchForm } from '../components/SearchForm';
 import { TeamList } from '../components/TeamList';
 import { GET_TEAM_BY_SEARCH } from '../graphql/searchByTeam.graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
-import { Spinner } from '../../../components/loaders';
+import PresentationModal from '../../../components/modals/PresentationModal.tsx';
+import CustomButton from '../../../components/buttons/CustomButton.tsx';
+import SectionContainer from '../../../components/containers/SectionContainer.tsx';
+import LoadingList from '../../../components/lists/LoadingList.tsx';
 
 export const TeamSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,23 +17,41 @@ export const TeamSearch = () => {
     variables: { filter: searchTerm },
   });
 
-  const onSubmit = (data: { teamName: string }) => {
+  const onSubmit = async (data: { teamName: string }) => {
     setSearchTerm(data.teamName);
-    getTeamBySearch().finally(() => {
-      setIsSearchComplete(true);
+
+    const team = await getTeamBySearch({
+      variables: { filter: data.teamName },
     });
+
+    if (team.data?.team) {
+      setIsSearchComplete(true);
+    }
   };
 
   if (error) return <ErrorGraphql error={error} />;
 
+  const children = () => {
+    if (error) return <ErrorGraphql error={error} />;
+
+    return !loading ? (
+      <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />
+    ) : (
+      <LoadingList avatar label secondary />
+    );
+  };
+
   return (
     <>
-      <SearchForm defaultValues={{ teamName: searchTerm }} onSubmit={onSubmit} />
-      {!loading ? (
-        <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />
-      ) : (
-        <Spinner />
-      )}
+      <PresentationModal
+        title="Find your team"
+        buttonElement={<CustomButton>Find your team</CustomButton>}
+      >
+        <SectionContainer>
+          <SearchForm defaultValues={{ teamName: searchTerm }} onSubmit={onSubmit} />
+          {children()}
+        </SectionContainer>
+      </PresentationModal>
     </>
   );
 };

@@ -7,6 +7,8 @@ export const GET_TEAM_BY_SEARCH: TypedDocumentNode<{
     team: teamBySearch(filter: $filter) {
       _id
       teamName
+      location
+      country
       teamBadge {
         url
         public_id

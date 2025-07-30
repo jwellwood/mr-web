@@ -2,7 +2,6 @@ import { IListItem, IMostGoalsInMatch } from '../../../types';
 import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
 import { SectionContainer } from '../../../components/containers';
-import { theme } from '../../../theme';
 import LinksList from '../../../components/lists/LinksList.tsx';
 
 type Props = {
@@ -45,7 +44,7 @@ function MostInGame({ data, title }: Props) {
       };
     }) || [];
   return (
-    <SectionContainer background={theme.palette.dark.main}>
+    <SectionContainer>
       <CustomTypography color="label" bold size="xs">
         {title}
       </CustomTypography>

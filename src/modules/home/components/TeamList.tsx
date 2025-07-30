@@ -1,5 +1,6 @@
 import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import FlagIcon from '../../../components/icons/FlagIcon';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem, ITeamResponse } from '../../../types';
@@ -13,7 +14,16 @@ export const TeamList = ({ teams, isSearchComplete }: Props) => {
     teams?.map(team => {
       return {
         avatar: <CustomAvatar imageUrl={team?.teamBadge?.url} type={IMAGE_TYPE.TEAM} isList />,
-        label: team.teamName,
+        label: (
+          <CustomTypography bold size="sm" color="data">
+            {team.teamName}
+          </CustomTypography>
+        ),
+        secondary: (
+          <CustomTypography bold size="sm" color="label">
+            {team.location} <FlagIcon nationality={team.country} />
+          </CustomTypography>
+        ),
         link: `/org/${team.orgId._id}/team/${team._id}`,
       };
     }) || [];

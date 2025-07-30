@@ -17,7 +17,7 @@ const SectionContainer: React.FC<Props> = ({ title, children, border, background
       sx={{
         padding: theme.spacing(0.5),
         margin: theme.spacing(0.25),
-        background: background || theme.palette.secondary.dark,
+        background: background || theme.palette.dark.main,
         border: border ? `${border} 0.5px solid` : undefined,
         borderBottom: border ? undefined : `0.5px solid ${theme.palette.grey[900]}`,
       }}

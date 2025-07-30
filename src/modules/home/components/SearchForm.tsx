@@ -31,7 +31,7 @@ export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
         control={control}
         name="teamName"
         rules={{ minLength: 3 }}
-        label="Search Team"
+        label="Team Name"
         errors={errors.teamName ? [errors.teamName] : []}
       />
     </FormContainer>

@@ -5,6 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { CustomButton } from '../buttons';
 import { CustomTypography } from '../typography';
+import { SectionContainer } from '../containers';
 
 interface Props {
   children: ReactNode;
@@ -40,11 +41,6 @@ const PresentationModal: React.FC<Props> = ({
         open={open}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        PaperProps={{
-          style: {
-            // background: 'rgba(0,0,0,0.9)',
-          },
-        }}
       >
         {title ? (
           <DialogTitle id="responsive-dialog-title">
@@ -53,7 +49,9 @@ const PresentationModal: React.FC<Props> = ({
             </CustomTypography>
           </DialogTitle>
         ) : null}
-        <DialogContent>{children}</DialogContent>
+        <DialogContent>
+          <SectionContainer>{children}</SectionContainer>
+        </DialogContent>
         <DialogActions>
           <CustomButton onClick={handleClose} variant="text" color="secondary">
             Back
