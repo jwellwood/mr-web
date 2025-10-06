@@ -30,7 +30,7 @@ const Match: React.FC = () => {
     {
       label: 'Delete Match',
       type: LINK_TYPE.DELETE,
-      link: `team/${teamId}/match/${matchId}/delete`,
+      link: 'edit',
     },
   ];
 
