@@ -34,7 +34,7 @@ function ControlledSelectInput<T extends object>({
             inputName={name}
             label={label}
             onChange={onChange}
-            defaultValue={value}
+            defaultValue={value || ''}
             options={options}
             errors={errors}
             disabled={disabled}

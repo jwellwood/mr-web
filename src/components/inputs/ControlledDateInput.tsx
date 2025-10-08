@@ -29,7 +29,7 @@ function ControlledDateInput<T extends object>({
       control={control}
       name={name}
       render={({ field: { name, value, onChange } }) => {
-        const date = new Date(value);
+        const date = value ? new Date(value) : new Date();
         return (
           <DateInput
             inputName={name}

@@ -4,13 +4,12 @@ import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import ControlledSwitchInput from '../../../components/inputs/ControlledSwitchInput';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import TextList from '../../../components/lists/TextList';
 import { isFuture } from 'date-fns';
-import { ICompetition, ITempMatch } from '../../../types';
+import { ICompetition, IListItem, ITempMatch } from '../../../types';
 import { getIntegers } from '../../../utils/helpers';
 import { cupRoundOptions } from '../constants';
+import SwitchButtonList from '../../../components/common/SwitchButtonList';
 
 interface Props {
   onSubmit: (data: ITempMatch) => void;
@@ -33,7 +32,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
     formState: { errors },
     control,
     watch,
-  } = useForm({
+  } = useForm<ITempMatch>({
     defaultValues,
   });
 
@@ -45,6 +44,17 @@ const AddMatchDetailsForm: React.FC<Props> = ({
   const isCup =
     selectedCompetition?.competitionType === 'Cup' ||
     selectedCompetition?.competitionType === 'Tournament';
+
+  const switchList: IListItem[] = [
+    {
+      label: 'Home?',
+      value: 'isHome',
+    },
+    {
+      label: 'Forfeit?',
+      value: 'isForfeit',
+    },
+  ];
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} text="Next">
@@ -59,14 +69,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
           />
         </GridItem>
         <GridItem size={12}>
-          <TextList
-            data={[
-              {
-                label: 'Home?',
-                value: <ControlledSwitchInput control={control} name="isHome" />,
-              },
-            ]}
-          />
+          <SwitchButtonList control={control} data={switchList} />
         </GridItem>
         <GridItem size={12}>
           <ControlledSelectInput
@@ -119,16 +122,7 @@ const AddMatchDetailsForm: React.FC<Props> = ({
                 options={getIntegers(selectedCompetition?.matchMinutes)}
               />
             </GridItem>
-            <GridItem size={12}>
-              <TextList
-                data={[
-                  {
-                    label: 'Forfeit?',
-                    value: <ControlledSwitchInput control={control} name="isForfeit" />,
-                  },
-                ]}
-              />
-            </GridItem>
+
             {selectedCompetition?.competitionType === 'League' && (
               <GridItem size={12}>
                 <ControlledSelectInput

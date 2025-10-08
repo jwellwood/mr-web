@@ -27,7 +27,11 @@ export const mapOpponentStats = (stats: IOpponentTable[]) => {
             alignItems: 'center',
           }}
         >
-          <CustomAvatar size="24px" imageUrl={item?.opponentBadge} type={ImageTypes.TEAM} />
+          <CustomAvatar
+            size="24px"
+            imageUrl={item?.opponentBadge || 'default'}
+            type={ImageTypes.TEAM}
+          />
           <div style={{ marginRight: '4px' }} />
           <PresentationModal
             title="Head to Head"

@@ -1,52 +1,37 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
+
+import { FETCH_COMPETITION } from '../graphql';
+
+import { AUTH_ROLES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
 import EditLinksModal from '../../../components/modals/EditLinksModal';
-import { PageHeader } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import CompetitionDetails from '../components/CompetitionDetails';
-import { PAGES } from '../constants';
-import { GET_COMPETITION_BY_ID } from '../graphql';
-import { ORG } from '../../../router/paths.ts';
+import { COMP_ADMIN_LINKS, PAGES } from '../constants';
 import { useAuth } from '../../../hooks';
 import RouteGuard from '../../../router/RouteGuard.tsx';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 
-const links = [
-  { label: 'Add New Winner', type: LINK_TYPE.ADD, link: ORG.ADD_TEAM },
-  {
-    label: 'Edit Competition',
-    type: LINK_TYPE.EDIT,
-    link: ORG.EDIT_COMPETITION,
-  },
-  { label: 'Delete Competition', type: LINK_TYPE.DELETE, link: ORG.EDIT_BADGE },
-];
-
-const Competition: React.FC = () => {
+export default function Competition() {
   const { teamId, orgId, competitionId } = useCustomParams();
   const { isOrgAuth } = useAuth(teamId, orgId);
-  const { data, loading, error } = useQuery(GET_COMPETITION_BY_ID, {
+  const { data, loading, error } = useQuery(FETCH_COMPETITION, {
     variables: { compId: competitionId },
   });
 
-  if (error) return <ErrorGraphql error={error} />;
-  if (!data) return <Spinner />;
+  const renderContent = () => {
+    return !loading ? <CompetitionDetails competition={data?.competition || null} /> : <Spinner />;
+  };
+
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <PageHeader title={PAGES.COMP} />
-      {!loading ? (
-        <>
-          <>
-            {isOrgAuth ? <EditLinksModal data={links} /> : null}
-            <CompetitionDetails competition={data?.competition} />
-          </>
-        </>
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar
+        title={PAGES.COMP}
+        actionButton={isOrgAuth ? <EditLinksModal data={COMP_ADMIN_LINKS} /> : null}
+      >
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default Competition;
+}

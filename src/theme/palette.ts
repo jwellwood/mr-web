@@ -20,7 +20,7 @@ export const palette = {
     main: '#fff',
   },
   label: {
-    main: blueGrey[200],
+    main: blueGrey[300],
   },
   gold: {
     main: yellow[600],

@@ -10,7 +10,7 @@ import { ITeamDetailsInput } from '../types';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { useNationality } from '../../../hooks';
-import { GET_TEAMS_BY_ORG } from '../../organization/graphql';
+import { FETCH_ORG_TEAMS } from '../../organization/graphql';
 import { GET_TEAMS_BY_USER_ID } from '../../profile/graphql';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
@@ -30,7 +30,7 @@ const AddTeamSeason: React.FC = () => {
   const [addTeam, { error, loading }] = useMutation(ADD_TEAM, {
     refetchQueries: [
       {
-        query: GET_TEAMS_BY_ORG,
+        query: FETCH_ORG_TEAMS,
         variables: { teamId },
       },
       { query: GET_TEAMS_BY_USER_ID },

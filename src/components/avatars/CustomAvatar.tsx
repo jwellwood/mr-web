@@ -72,8 +72,8 @@ const CustomAvatar = ({
 
   if (imageUrl === 'default') {
     let icon: IIconType = 'user';
-    if (type === IMAGE_TYPE.TEAM) icon = 'team';
-    if (type === IMAGE_TYPE.ORG) icon = 'profile';
+    if (type === IMAGE_TYPE.TEAM || type === IMAGE_TYPE.ORG) icon = 'team';
+
     return (
       <Avatar
         sx={{ display: 'flex' }}

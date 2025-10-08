@@ -1,12 +1,12 @@
-import React from 'react';
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList';
 import { ICompetition, IListItem } from '../../../types';
+
 type Props = {
   competitions?: ICompetition[];
 };
 
-const CompetitionsList: React.FC<Props> = ({ competitions }) => {
+export default function CompetitionsList({ competitions }: Props) {
   const data: IListItem[] =
     competitions?.map(comp => {
       return {
@@ -21,6 +21,4 @@ const CompetitionsList: React.FC<Props> = ({ competitions }) => {
       <LinksList links={data} />
     </SectionContainer>
   );
-};
-
-export default CompetitionsList;
+}

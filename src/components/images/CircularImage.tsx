@@ -37,7 +37,7 @@ const CircularImage: React.FC<Props> = ({ image, size, alt, type }) => {
   if (image === 'default') {
     let icon: IIconType = 'user';
     if (type === ImageTypes.TEAM) icon = 'team';
-    if (type === ImageTypes.ORG) icon = 'profile';
+    if (type === ImageTypes.ORG) icon = 'team';
     return (
       <div style={{ margin: '8px' }}>
         <CustomAvatar size={size} centered>

@@ -107,7 +107,7 @@ const CustomTypography: React.FC<Props> = ({
       fontSize = '14px';
       break;
     case 'md':
-      fontSize = '18px';
+      fontSize = '16px';
       break;
     case 'lg':
       fontSize = '24px';

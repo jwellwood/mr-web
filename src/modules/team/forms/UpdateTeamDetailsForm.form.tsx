@@ -6,12 +6,12 @@ import { ITeamDetailsInput } from '../types';
 import { IListItem } from '../../../types';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
-import SwitchList from '../../../components/common/SwitchList';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
 import ControlledColorInput from '../../../components/inputs/ControlledColorInput.tsx';
 import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
+import SwitchButtonList from '../../../components/common/SwitchButtonList.tsx';
 
 interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
@@ -39,7 +39,7 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
         <GridItem size={12}>
-          <SwitchList data={switchList} control={control} />
+          <SwitchButtonList data={switchList} control={control} />
         </GridItem>
         <GridItem size={12}>
           <ControlledTextInput

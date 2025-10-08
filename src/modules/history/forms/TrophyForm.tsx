@@ -4,14 +4,13 @@ import { BASE_YEAR, CURRENT_YEAR } from '../../../app/constants';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import ControlledSwitchInput from '../../../components/inputs/ControlledSwitchInput';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import TextList from '../../../components/lists/TextList';
 import { DeleteModal } from '../../../components/modals';
 import { IListItem } from '../../../types';
 import { yearOptions } from '../../../utils/helpers';
 import { ITrophy } from '../types';
+import SwitchButtonList from '../../../components/common/SwitchButtonList';
 
 interface Props {
   onSubmit: (data: Partial<ITrophy>) => void;
@@ -37,20 +36,16 @@ const TrophyForm: React.FC<Props> = ({
     defaultValues,
   });
 
-  const switchComp = (name: keyof ITrophy) => {
-    return <ControlledSwitchInput control={control} name={name} />;
-  };
-
   const isFinal = watch('isFinal');
 
   const switchList: IListItem[] = [
     {
       label: 'Is Winner?',
-      value: switchComp('isWinner'),
+      value: 'isWinner',
     },
     {
       label: 'Is a final?',
-      value: switchComp('isFinal'),
+      value: 'isFinal',
     },
   ];
 
@@ -87,7 +82,7 @@ const TrophyForm: React.FC<Props> = ({
           />
         </GridItem>
         <GridItem size={12}>
-          <TextList data={switchList} />
+          <SwitchButtonList control={control} data={switchList} />
         </GridItem>
         {isFinal && (
           <GridItem size={12}>

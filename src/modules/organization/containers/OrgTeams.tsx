@@ -1,24 +1,26 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_ORG_TEAMS } from '../graphql';
+
 import { SectionContainer } from '../../../components/containers';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import OrgTeamsList from '../components/OrgTeamsList';
-import { GET_TEAMS_BY_ORG } from '../graphql';
 
-const OrgTeams: React.FC = () => {
+export default function OrgTeams() {
   const { orgId } = useCustomParams();
-  const { data, error, loading } = useQuery(GET_TEAMS_BY_ORG, {
+  const { data, error, loading } = useQuery(FETCH_ORG_TEAMS, {
     variables: { orgId },
   });
 
-  if (error) return <ErrorGraphql error={error} />;
+  const renderContent = () => {
+    return !loading ? <OrgTeamsList teams={data?.teams || []} /> : <Spinner />;
+  };
+
   return (
     <SectionContainer title="Teams">
-      {!loading ? <OrgTeamsList teams={data?.teams || []} /> : <Spinner />}
+      {error ? <ErrorGraphql error={error} /> : renderContent()}
     </SectionContainer>
   );
-};
-
-export default OrgTeams;
+}

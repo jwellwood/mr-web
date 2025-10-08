@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { PAGES, initialOrgDetailsState } from '../constants';
-import OrgForm from '../forms/OrgForm';
+
 import { ADD_ORG } from '../graphql';
+import { GET_ORGS_BY_USER_ID } from '../../profile/graphql/getOrgsByUserId.graphql.ts';
+import { GET_USER } from '../../profile/graphql/getUser.graphql.ts';
+
+import { PAGES } from '../constants';
+import OrgForm from '../forms/OrgForm';
 import { AppDispatch } from '../../../store/store.ts';
 import { useNationality } from '../../../hooks';
 import { IOrganization } from '../../../types';
-import { GET_USER } from '../../profile/graphql/getUser.graphql.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import PageHeader from '../../../components/typography/PageHeader.tsx';
 import { Spinner } from '../../../components/loaders';
+import { initialOrgDetailsState } from '../forms/state.ts';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 
-const AddOrg: React.FC = () => {
+export default function AddOrg() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
   const { nationalityOptions } = useNationality();
@@ -24,7 +28,7 @@ const AddOrg: React.FC = () => {
   const [defaultValues, setDefaultValues] = useState<Partial<IOrganization>>({});
 
   const [addOrg, { error, loading }] = useMutation(ADD_ORG, {
-    refetchQueries: [{ query: GET_USER }],
+    refetchQueries: [{ query: GET_USER }, { query: GET_ORGS_BY_USER_ID }],
   });
 
   useEffect(() => {
@@ -43,24 +47,25 @@ const AddOrg: React.FC = () => {
     }
   };
 
-  if (error) return <ErrorGraphql error={error} />;
+  const renderContent = () => {
+    return !loading && defaultValues ? (
+      <OrgForm
+        defaultValues={defaultValues}
+        onSubmit={e => {
+          onSubmit(e);
+        }}
+        countryOptions={nationalityOptions}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>
-      <PageHeader title={PAGES.ADD} />
-      {!loading && defaultValues ? (
-        <OrgForm
-          defaultValues={defaultValues}
-          onSubmit={e => {
-            onSubmit(e);
-          }}
-          countryOptions={nationalityOptions}
-        />
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar title={PAGES.ADD}>
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default AddOrg;
+}

@@ -31,7 +31,6 @@ export const TEAM = {
   TROPHY: 'trophy/:trophyId',
   ADD_TROPHY: 'add_trophy',
   EDIT_TROPHY: 'trophy/:trophyId/edit',
-
 } as const;
 
 export const PLAYER = {

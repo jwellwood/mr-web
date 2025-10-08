@@ -1,17 +1,16 @@
 import React from 'react';
-import { Path, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { positionOptions } from '../../../../app/constants';
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledDateInput from '../../../../components/inputs/ControlledDateInput';
 import ControlledMultiSelectInput from '../../../../components/inputs/ControlledMultiSelectInput';
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
-import ControlledSwitchInput from '../../../../components/inputs/ControlledSwitchInput';
 import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
-import TextList from '../../../../components/lists/TextList';
 import { IListItem, IPlayer } from '../../../../types';
 import { getIntegers } from '../../../../utils/helpers';
+import SwitchButtonList from '../../../../components/common/SwitchButtonList';
 
 interface Props {
   onSubmit: (data: Partial<IPlayer>) => void;
@@ -35,29 +34,25 @@ const PlayerForm: React.FC<Props> = ({
     defaultValues,
   });
 
-  const switchComp = (name: Path<IPlayer>) => {
-    return <ControlledSwitchInput control={control} name={name} />;
-  };
-
   const seasonIds = watch('seasonIds');
   const disabled = (seasonIds?.length || 0) < 1;
 
   const switchList: IListItem[] = [
     {
       label: 'Is player active?',
-      value: switchComp('isActive'),
+      value: 'isActive',
     },
     {
       label: 'Is player team captain?',
-      value: switchComp('isCaptain'),
+      value: 'isCaptain',
     },
     {
       label: 'Is player team vice captain?',
-      value: switchComp('isViceCaptain'),
+      value: 'isViceCaptain',
     },
     {
       label: 'Is player in the hall of fame?',
-      value: switchComp('isHallOfFame'),
+      value: 'isHallOfFame',
     },
   ];
 
@@ -140,8 +135,10 @@ const PlayerForm: React.FC<Props> = ({
             }
           />
         </GridItem>
+        <GridItem size={12}>
+          <SwitchButtonList control={control} data={switchList} />
+        </GridItem>
       </CenteredGrid>
-      <TextList data={switchList} />
     </FormContainer>
   );
 };

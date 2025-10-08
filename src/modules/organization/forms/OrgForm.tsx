@@ -1,5 +1,5 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
+
 import { IOrganization } from '../../../types';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
@@ -14,7 +14,7 @@ interface Props {
   countryOptions: ISelectOptions[];
 }
 
-const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) => {
+export default function OrgForm({ onSubmit, defaultValues, countryOptions }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -52,7 +52,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
             errors={errors.yearFounded ? [errors.yearFounded] : []}
           />
         </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="city"
@@ -61,7 +61,7 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
             errors={errors.city ? [errors.city] : []}
           />
         </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="country"
@@ -73,6 +73,4 @@ const OrgForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) =
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default OrgForm;
+}

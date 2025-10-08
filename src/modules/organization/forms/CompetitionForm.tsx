@@ -1,6 +1,5 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import SwitchList from '../../../components/common/SwitchList';
+
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
@@ -9,13 +8,14 @@ import { getMinutesOptions } from '../../matches/helpers';
 import { ICompetition, IListItem } from '../../../types';
 import { competitionOptions } from '../constants';
 import { getIntegers } from '../../../utils/helpers';
+import SwitchButtonList from '../../../components/common/SwitchButtonList';
 
 interface Props {
   onSubmit: (data: Partial<ICompetition>) => void;
   defaultValues: Partial<ICompetition>;
 }
 
-const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
+export default function CompetitionForm({ onSubmit, defaultValues }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -26,10 +26,11 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
 
   const switchList: IListItem[] = [
     {
-      label: 'Is competition active?',
+      label: 'Currently active?',
       value: 'isActive',
     },
   ];
+
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <CenteredGrid dir="row">
@@ -78,10 +79,10 @@ const CompetitionForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
             errors={errors.numberOfTeams ? [errors.numberOfTeams] : []}
           />
         </GridItem>
+        <GridItem size={12}>
+          <SwitchButtonList data={switchList} control={control} />
+        </GridItem>
       </CenteredGrid>
-      <SwitchList data={switchList} control={control} />
     </FormContainer>
   );
-};
-
-export default CompetitionForm;
+}

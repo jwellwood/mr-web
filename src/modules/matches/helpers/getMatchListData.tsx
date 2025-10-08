@@ -34,7 +34,7 @@ export const getMatchListData = ({
           size="40px"
           type={IMAGE_TYPE.TEAM}
           loading={loading || !data}
-          imageUrl={match.opponentBadge}
+          imageUrl={match.opponentBadge || 'default'}
           isList
         />
       ) : null,

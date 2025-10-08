@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
+import { FETCH_COMPETITION, EDIT_COMPETITION } from '../graphql';
+
 import { PAGES } from '../constants';
 import CompetitionForm from '../forms/CompetitionForm';
-import { GET_COMPETITION_BY_ID, UPDATE_COMPETITION } from '../graphql';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
@@ -14,21 +15,21 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 
-const EditCompetition: React.FC = () => {
+export default function EditCompetition() {
   const { orgId, competitionId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const { loading, error, data } = useQuery(GET_COMPETITION_BY_ID, {
+  const { loading, error, data } = useQuery(FETCH_COMPETITION, {
     variables: { compId: competitionId },
   });
   const [updateCompetition, { loading: updateLoading, error: updateError }] = useMutation(
-    UPDATE_COMPETITION,
+    EDIT_COMPETITION,
     {
-      refetchQueries: [{ query: GET_COMPETITION_BY_ID, variables: { compId: competitionId } }],
+      refetchQueries: [{ query: FETCH_COMPETITION, variables: { compId: competitionId } }],
     }
   );
   const [defaultValues, setDefaultValues] = useState<ICompetition | null>(null);
@@ -59,23 +60,25 @@ const EditCompetition: React.FC = () => {
     }
   };
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
-  if (updateError) {
-    return <ErrorGraphql error={new Error(updateError.message)} />;
-  }
+  const renderContent = () => {
+    return !loading && !updateLoading && defaultValues ? (
+      <CompetitionForm defaultValues={defaultValues} onSubmit={onSubmit} />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
-      <PageHeader title={PAGES.EDIT_COMP} />
-      {!loading && !updateLoading && defaultValues ? (
-        <CompetitionForm defaultValues={defaultValues} onSubmit={onSubmit} />
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar title={PAGES.EDIT_COMP}>
+        {error || updateError ? (
+          <ErrorGraphql
+            error={{ message: [error?.message, updateError?.message].filter(Boolean) as string[] }}
+          />
+        ) : (
+          renderContent()
+        )}
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default EditCompetition;
+}

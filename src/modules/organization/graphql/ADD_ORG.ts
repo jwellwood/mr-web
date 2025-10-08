@@ -1,18 +1,17 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 import { IOrganization } from '../../../types';
-export const UPDATE_ORG: TypedDocumentNode<{
+
+export const ADD_ORG: TypedDocumentNode<{
   org: IOrganization;
 }> = gql`
-  mutation UpdateOrg(
-    $orgId: String!
+  mutation AddOrganization(
     $name: String!
     $website: String
     $yearFounded: String
     $city: String
     $country: String
   ) {
-    updateOrganization(
-      orgId: $orgId
+    org: addOrganization(
       data: {
         name: $name
         website: $website

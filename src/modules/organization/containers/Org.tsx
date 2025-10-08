@@ -1,58 +1,51 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, IMAGE_TYPE, LINK_TYPE } from '../../../app/constants';
-import ModuleHeader from '../../../components/common/ModuleHeader';
-import { Spinner } from '../../../components/loaders';
-import EditLinksModal from '../../../components/modals/EditLinksModal';
-import CustomAppBar from '../../../components/navigation/CustomAppBar';
+
+import { FETCH_ORG } from '../graphql';
+
+import { AUTH_ROLES, IMAGE_TYPE } from '../../../app/constants';
+import { ORG_ADMIN_LINKS, PAGES } from '../constants';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import CompetitionsList from '../components/CompetitionsList';
-import { PAGES } from '../constants';
-import { GET_ORG } from '../graphql';
-import OrgTeams from './OrgTeams';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { ORG } from '../../../router/paths.ts';
 import { useAuth } from '../../../hooks';
+import EditLinksModal from '../../../components/modals/EditLinksModal';
+import CustomAppBar from '../../../components/navigation/CustomAppBar';
+import ModuleHeader from '../../../components/common/ModuleHeader';
+import { Spinner } from '../../../components/loaders';
+import CompetitionsList from '../components/CompetitionsList';
+import OrgTeams from './OrgTeams';
 
 const Org: React.FC = () => {
   const { teamId, orgId } = useCustomParams();
   const { isOrgAuth } = useAuth(teamId, orgId);
-  const { data, error, loading } = useQuery(GET_ORG, { variables: { orgId } });
+  const { data, error, loading } = useQuery(FETCH_ORG, { variables: { orgId } });
 
-  const links = [
-    { label: 'Add New Team', type: LINK_TYPE.ADD, link: ORG.ADD_TEAM },
-    {
-      label: 'Add Competition',
-      type: LINK_TYPE.ADD,
-      link: ORG.ADD_COMPETITION,
-    },
-    { label: 'Edit Organization', type: LINK_TYPE.EDIT, link: ORG.EDIT },
-    { label: 'Edit Org Badge', type: LINK_TYPE.EDIT, link: ORG.EDIT_BADGE },
-  ];
+  const renderContent = () => {
+    return error ? (
+      <ErrorGraphql error={error} />
+    ) : (
+      <>
+        <ModuleHeader
+          title={data?.org.name}
+          badge={data?.org.badge.url}
+          country={data?.org.country}
+          city={data?.org.city}
+          type={IMAGE_TYPE.ORG}
+        />
+        <CompetitionsList competitions={data?.org.competitions} />
+        <OrgTeams />
+      </>
+    );
+  };
 
-  if (error) return <ErrorGraphql error={error} />;
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.ORG}
-        actionButton={isOrgAuth ? <EditLinksModal data={links} /> : null}
+        actionButton={isOrgAuth ? <EditLinksModal data={ORG_ADMIN_LINKS} /> : null}
       >
-        {!loading ? (
-          <>
-            <ModuleHeader
-              title={data?.org.name}
-              badge={data?.org.badge.url}
-              country={data?.org.country}
-              city={data?.org.city}
-              type={IMAGE_TYPE.ORG}
-            />
-            <CompetitionsList competitions={data?.org.competitions} />
-            <OrgTeams />
-          </>
-        ) : (
-          <Spinner />
-        )}
+        {!loading ? renderContent() : <Spinner />}
       </CustomAppBar>
     </RouteGuard>
   );

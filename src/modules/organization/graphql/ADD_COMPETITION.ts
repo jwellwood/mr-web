@@ -1,37 +1,30 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ICompetition } from '../../../types';
-export const UPDATE_COMPETITION: TypedDocumentNode<{
-  org: ICompetition;
+import { IOrganization } from '../../../types';
+
+export const ADD_COMPETITION: TypedDocumentNode<{
+  org: IOrganization;
 }> = gql`
-  mutation UpdateCompetition(
-    $compId: String!
+  mutation AddCompetition(
     $orgId: String!
     $name: String!
     $matchMinutes: Float!
-    $playersPerTeam: Float!
     $numberOfTeams: Float!
+    $playersPerTeam: Float!
     $competitionType: String!
     $isActive: Boolean!
   ) {
-    updateCompetition(
-      compId: $compId
+    addCompetition(
       orgId: $orgId
       data: {
         name: $name
+        competitionType: $competitionType
         matchMinutes: $matchMinutes
         playersPerTeam: $playersPerTeam
         numberOfTeams: $numberOfTeams
-        competitionType: $competitionType
         isActive: $isActive
       }
     ) {
       _id
-      name
-      matchMinutes
-      playersPerTeam
-      numberOfTeams
-      competitionType
-      isActive
     }
   }
 `;

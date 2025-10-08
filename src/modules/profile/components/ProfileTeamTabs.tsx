@@ -1,9 +1,10 @@
 import React from 'react';
-import { TAB_TYPES } from '../../../app/constants';
+import { IMAGE_TYPE, TAB_TYPES } from '../../../app/constants';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { IListItem, ITeamResponse } from '../../../types';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import { SectionContainer } from '../../../components/containers';
 type Props = {
   teams: ITeamResponse[];
 };
@@ -17,7 +18,7 @@ const ProfileTeamTabs: React.FC<Props> = ({ teams }) => {
     return {
       label: teamName,
       link: `/org/${orgId?._id}/team/${_id}`,
-      avatar: <CustomAvatar imageUrl={teamBadge?.url} />,
+      avatar: <CustomAvatar imageUrl={teamBadge?.url || 'default'} type={IMAGE_TYPE.TEAM} />,
     };
   });
 
@@ -33,7 +34,11 @@ const ProfileTeamTabs: React.FC<Props> = ({ teams }) => {
     { label: 'Previous', component: <LinksList links={inactiveLinks} /> },
   ];
 
-  return <CustomTabs type={TAB_TYPES.PROFILE_TEAMS} tabs={tabs} level="secondary" />;
+  return (
+    <SectionContainer title="Teams">
+      <CustomTabs type={TAB_TYPES.PROFILE_TEAMS} tabs={tabs} level="secondary" />
+    </SectionContainer>
+  );
 };
 
 export default ProfileTeamTabs;

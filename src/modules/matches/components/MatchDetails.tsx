@@ -18,9 +18,9 @@ const MatchDetails: React.FC<Props> = ({ match }) => {
   const { date, teamId, teamGoals, opponentId, opponentGoals, isHome, competitionId } = match;
   const matchDate = parseDate(date);
   const team = (teamId as ITeam).teamName;
-  const teamBadge = (teamId as ITeam)?.teamBadge?.url;
+  const teamBadge = (teamId as ITeam)?.teamBadge?.url || 'default';
   const opponent = (opponentId as ITeam)?.teamName;
-  const oppBadge = (opponentId as ITeam)?.teamBadge?.url;
+  const oppBadge = (opponentId as ITeam)?.teamBadge?.url || 'default';
   const homeTeam = {
     name: isHome ? team : opponent,
     score: isHome ? teamGoals : opponentGoals,

@@ -1,6 +1,7 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 import { ITeam } from '../../../types';
-export const GET_TEAMS_BY_ORG: TypedDocumentNode<{
+
+export const FETCH_ORG_TEAMS: TypedDocumentNode<{
   teams: ITeam[];
 }> = gql`
   query GetTeamsByOrg($orgId: String!) {

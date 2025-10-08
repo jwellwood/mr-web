@@ -1,40 +1,48 @@
-import React from 'react';
 import { DataContainer, SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList';
+import { CustomTypography } from '../../../components/typography';
 import { ICompetition, IListItem } from '../../../types';
+
 interface Props {
-  competition: ICompetition;
+  competition: ICompetition | null;
 }
 
-const CompetitionDetails: React.FC<Props> = ({ competition }) => {
+export default function CompetitionDetails({ competition }: Props) {
+  if (!competition) {
+    return (
+      <CustomTypography size="md" color="label">
+        No competition data available
+      </CustomTypography>
+    );
+  }
   const data: IListItem[] = [
     {
       label: 'Name',
-      value: competition.name,
+      value: competition?.name,
     },
     {
       label: 'Type',
-      value: competition.competitionType,
+      value: competition?.competitionType,
     },
 
     {
       label: 'Currently Active',
-      value: competition.isActive ? 'Yes' : 'No',
+      value: competition?.isActive ? 'Yes' : 'No',
     },
   ];
 
   const numbersData = [
     {
       label: 'Players / Team',
-      value: competition.playersPerTeam,
+      value: competition?.playersPerTeam,
     },
     {
       label: 'Match Length',
-      value: competition.matchMinutes,
+      value: competition?.matchMinutes,
     },
     {
       label: 'Teams',
-      value: competition.numberOfTeams,
+      value: competition?.numberOfTeams,
     },
   ];
 
@@ -44,6 +52,4 @@ const CompetitionDetails: React.FC<Props> = ({ competition }) => {
       <DataContainer data={numbersData} />
     </SectionContainer>
   );
-};
-
-export default CompetitionDetails;
+}

@@ -9,7 +9,7 @@ import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput.tsx';
 import { FormContainer } from '../../../components/containers';
 import ControlledDateInput from '../../../components/inputs/ControlledDateInput.tsx';
-import SwitchList from '../../../components/common/SwitchList.tsx';
+import SwitchButtonList from '../../../components/common/SwitchButtonList.tsx';
 
 interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
@@ -54,7 +54,7 @@ const AddTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions 
             errors={errors.yearFounded ? [errors.yearFounded] : []}
           />
         </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledTextInput
             control={control}
             name="location"
@@ -63,7 +63,7 @@ const AddTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions 
             errors={errors.location ? [errors.location] : []}
           />
         </GridItem>
-        <GridItem size={6}>
+        <GridItem size={12}>
           <ControlledSelectInput
             control={control}
             name="country"
@@ -73,8 +73,8 @@ const AddTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions 
             errors={errors.country ? [errors.country] : []}
           />
         </GridItem>
-        <GridItem>
-          <SwitchList data={switchList} control={control} />
+        <GridItem size={12}>
+          <SwitchButtonList data={switchList} control={control} />
         </GridItem>
       </CenteredGrid>
     </FormContainer>

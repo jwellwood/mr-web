@@ -1,5 +1,6 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 import { IOrganization } from '../../../types';
+
 export const EDIT_ORG_BADGE: TypedDocumentNode<{
   org: IOrganization;
 }> = gql`

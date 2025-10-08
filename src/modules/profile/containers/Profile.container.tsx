@@ -37,9 +37,9 @@ const ProfileContainer: React.FC = () => {
           {!loading ? (
             <>
               <Profile user={data?.user} />
+              <ProfileDetails user={data?.user} />
               <ProfileOrganizations />
               <ProfileTeams />
-              <ProfileDetails user={data?.user} />
             </>
           ) : (
             <Spinner />
