@@ -1,14 +1,13 @@
-import React from 'react';
 import { SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList';
 import { IUser } from '../../../types';
 import { parseDate } from '../../../utils/helpers';
 
 type Props = {
-  user?: IUser;
+  user: IUser | null;
 };
 
-const ProfileDetails: React.FC<Props> = ({ user }) => {
+export default function ProfileDetails({ user }: Props) {
   if (!user) {
     return null;
   }
@@ -24,6 +23,4 @@ const ProfileDetails: React.FC<Props> = ({ user }) => {
       <TextList data={details} />
     </SectionContainer>
   );
-};
-
-export default ProfileDetails;
+}

@@ -1,20 +1,20 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
+
 import { ITeamResponse } from '../../../types';
 
-export const GET_TEAM_BY_SEARCH: TypedDocumentNode<{
-  team: ITeamResponse[];
+export const FETCH_TEAMS_BY_USER: TypedDocumentNode<{
+  teams: ITeamResponse[];
 }> = gql`
-  query GetTeamBySearch($filter: String!) {
-    team: teamBySearch(filter: $filter) {
+  query FetchTeamsByUser {
+    teams: userTeams {
       _id
       teamName
-      location
       country
-      teamBadge {
-        url
-        public_id
-      }
       isActive
+      teamBadge {
+        public_id
+        url
+      }
       orgId {
         _id
       }

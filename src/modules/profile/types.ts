@@ -1,16 +1,16 @@
-export interface IChangePasswordForm {
+export interface IChangePasswordInput {
   password: string;
   newPassword: string;
   confirmPassword: string;
 }
 
-export interface IDeleteAccountForm {
-  username: string;
-}
-
-export interface IEditProfileForm {
+export interface IEditProfileInput {
   username: string;
   email: string;
   dateOfBirth: string;
   nationality: string;
+}
+
+export interface IDeleteAccountInput {
+  username: string;
 }

@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { signInFormState } from '../constants';
+
+import { SIGN_IN_LINKS, pages } from '../constants';
 import SignInForm from '../forms/SignIn.form';
-import { SIGN_IN } from '../graphql';
-import { ISignInForm } from '../types';
+import { SIGN_IN_USER } from '../graphql';
+import { ISignInInput } from '../types';
 import ResendVerification from './ResendVerification';
-import PageHeader from '../../../components/typography/PageHeader';
 import { AppDispatch } from '../../../store/store';
 import { useAuth } from '../../../hooks';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
@@ -16,13 +16,17 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { setAuth } from '../../../store/features/auth/authSlice.ts';
+import AuthLayout from '../components/AuthLayout.tsx';
+import AuthorizationLinks from '../components/AuthorizationLinks.tsx';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { signInFormState } from '../forms/state.ts';
 
-const SignInContainer: React.FC = () => {
+export default function SignInContainer() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<ISignInForm | null>(null);
+  const [defaultValues, setDefaultValues] = useState<ISignInInput | null>(null);
   const [email, setEmail] = useState<string | null>(null);
-  const [signInUser, { loading }] = useMutation(SIGN_IN);
+  const [signInUser, { loading }] = useMutation(SIGN_IN_USER);
   const [showResendLink, setShowResendLink] = useState(false);
   const { isAuth } = useAuth();
 
@@ -62,17 +66,21 @@ const SignInContainer: React.FC = () => {
 
   return (
     <>
-      <PageHeader title="Sign In" />
       <RouteGuard authorization={AUTH_ROLES.NONE}>
-        {!loading && defaultValues ? (
-          <SignInForm defaultValues={defaultValues} onSubmit={onSubmit} />
-        ) : (
-          <Spinner />
-        )}
-        {showResendLink && <ResendVerification email={email} />}
+        <CustomAppBar title={pages.SIGN_IN_PAGE}>
+          <AuthLayout>
+            <>
+              {!loading && defaultValues ? (
+                <SignInForm defaultValues={defaultValues} onSubmit={onSubmit} />
+              ) : (
+                <Spinner />
+              )}
+              {showResendLink && <ResendVerification email={email} />}
+              <AuthorizationLinks links={SIGN_IN_LINKS} />
+            </>
+          </AuthLayout>
+        </CustomAppBar>
       </RouteGuard>
     </>
   );
-};
-
-export default SignInContainer;
+}

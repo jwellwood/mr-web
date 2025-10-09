@@ -1,9 +1,11 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
+
 import { IUser } from '../../../types';
+
 export const EDIT_PROFILE: TypedDocumentNode<{
   user: IUser;
 }> = gql`
-  mutation EditUser(
+  mutation EditProfile(
     $username: String!
     $email: String!
     $dateOfBirth: String

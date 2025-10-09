@@ -10,7 +10,7 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { useNationality } from '../../../hooks';
 import { FETCH_ORG_TEAMS } from '../../organization/graphql';
-import { GET_TEAMS_BY_USER_ID } from '../../profile/graphql';
+import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import PageHeader from '../../../components/typography/PageHeader.tsx';
@@ -35,7 +35,7 @@ const AddTeamContainer: React.FC = () => {
         query: FETCH_ORG_TEAMS,
         variables: { orgId },
       },
-      { query: GET_TEAMS_BY_USER_ID },
+      { query: FETCH_TEAMS_BY_USER },
     ],
   });
 

@@ -1,18 +1,19 @@
-import React from 'react';
 import { useMutation, useQuery } from '@apollo/client';
+
+import { EDIT_PROFILE_IMAGE, FETCH_USER } from '../graphql';
+
 import { AUTH_ROLES } from '../../../app/constants';
 import ImageForm from '../../../components/common/ImageForm';
 import { Spinner } from '../../../components/loaders';
-import { PageHeader } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useUpload } from '../../images/hooks';
 import { removeUserImage, uploadUserImage } from '../../images/services';
 import RouteGuard from '../../../router/RouteGuard';
 import { pages } from '../constants';
-import { EDIT_PROFILE_IMAGE, GET_USER } from '../graphql';
+import { CustomAppBar } from '../../../components/navigation';
 
-const EditUserImage: React.FC = () => {
-  const { data, error, loading: loadingUser, refetch } = useQuery(GET_USER);
+export default function EditUserImage() {
+  const { data, error, loading: loadingUser, refetch } = useQuery(FETCH_USER);
   const [editProfileImage, { loading: editLoading, error: editError }] =
     useMutation(EDIT_PROFILE_IMAGE);
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
@@ -26,26 +27,28 @@ const EditUserImage: React.FC = () => {
 
   const loadingState = loading || loadingUser || editLoading;
 
-  if (error || editError) {
-    return <ErrorGraphql error={(error || editError) as Error} />;
-  }
+  const renderContent = () =>
+    !loadingState && imageUrl ? (
+      <ImageForm
+        imageUrl={imageUrl}
+        setImageUrl={setImageUrl}
+        onSubmit={onSubmit}
+        currentUrl={data?.user?.image?.url}
+        removeImage={removeImage}
+      />
+    ) : (
+      <Spinner />
+    );
 
   return (
     <RouteGuard authorization={AUTH_ROLES.USER}>
-      <PageHeader title={pages.EDIT_USER_IMAGE_PAGE} />
-      {!loadingState && imageUrl ? (
-        <ImageForm
-          imageUrl={imageUrl}
-          setImageUrl={setImageUrl}
-          onSubmit={onSubmit}
-          currentUrl={data?.user?.image?.url}
-          removeImage={removeImage}
-        />
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar title={pages.EDIT_USER_IMAGE_PAGE}>
+        {error || editError ? (
+          <ErrorGraphql error={(error || editError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default EditUserImage;
+}

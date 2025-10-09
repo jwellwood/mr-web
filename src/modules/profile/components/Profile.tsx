@@ -1,4 +1,3 @@
-import React from 'react';
 import { IMAGE_TYPE } from '../../../app/constants';
 import ModuleHeader from '../../../components/common/ModuleHeader';
 import { IUser } from '../../../types';
@@ -6,11 +5,15 @@ import { useDateOfBirth } from '../../../hooks';
 import { parseDate } from '../../../utils/helpers';
 
 interface Props {
-  user?: IUser;
+  user: IUser | null;
 }
 
-const Profile: React.FC<Props> = ({ user: { image, username, dateOfBirth, nationality } = {} }) => {
+export default function Profile({ user }: Props) {
+  const { image, username, dateOfBirth, nationality } = user || {};
   const { age } = useDateOfBirth(dateOfBirth);
+  if (!user) {
+    return null;
+  }
   return (
     <>
       <ModuleHeader
@@ -25,6 +28,4 @@ const Profile: React.FC<Props> = ({ user: { image, username, dateOfBirth, nation
       />
     </>
   );
-};
-
-export default Profile;
+}

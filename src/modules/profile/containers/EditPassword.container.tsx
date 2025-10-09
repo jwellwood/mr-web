@@ -3,26 +3,28 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { pages, changePasswordFormState } from '../constants';
+import { EDIT_PASSWORD, FETCH_USER } from '../graphql';
+
+import { pages } from '../constants';
 import EditPasswordForm from '../forms/EditPassword.form';
-import { EDIT_PASSWORD, GET_USER } from '../graphql';
-import { IChangePasswordForm } from '../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { PROFILE } from '../../../router/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import PageHeader from '../../../components/typography/PageHeader.tsx';
 import { Spinner } from '../../../components/loaders';
 import { AuthRoles } from '../../../constants.ts';
+import { IChangePasswordInput } from '../types.ts';
+import { changePasswordFormState } from '../forms/state.ts';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 
 const ChangePasswordContainer: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [editPassword, { loading }] = useMutation(EDIT_PASSWORD, {
-    refetchQueries: [{ query: GET_USER }],
+    refetchQueries: [{ query: FETCH_USER }],
   });
 
-  const onSubmit = async (data: IChangePasswordForm) => {
+  const onSubmit = async (data: IChangePasswordInput) => {
     return editPassword({
       variables: { password: data.password, newPassword: data.newPassword },
     })
@@ -38,12 +40,13 @@ const ChangePasswordContainer: React.FC = () => {
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>
-      <PageHeader title={pages.CHANGE_PASSWORD_PAGE} />
-      {!loading ? (
-        <EditPasswordForm onSubmit={onSubmit} defaultValues={changePasswordFormState} />
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar title={pages.CHANGE_PASSWORD_PAGE}>
+        {!loading ? (
+          <EditPasswordForm onSubmit={onSubmit} defaultValues={changePasswordFormState} />
+        ) : (
+          <Spinner />
+        )}
+      </CustomAppBar>
     </RouteGuard>
   );
 };

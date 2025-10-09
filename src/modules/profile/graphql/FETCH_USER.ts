@@ -1,9 +1,11 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
+
 import { IUser } from '../../../types';
-export const GET_USER: TypedDocumentNode<{
+
+export const FETCH_USER: TypedDocumentNode<{
   user: IUser;
 }> = gql`
-  query GetUser {
+  query FetchUser {
     user {
       _id
       isVerified

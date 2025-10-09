@@ -1,16 +1,16 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
+
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { CustomTypography } from '../../../components/typography';
-import { IChangePasswordForm } from '../types';
+import { IChangePasswordInput } from '../types';
 
 interface Props {
-  onSubmit: (data: IChangePasswordForm) => void;
-  defaultValues: IChangePasswordForm;
+  onSubmit: (data: IChangePasswordInput) => void;
+  defaultValues: IChangePasswordInput;
 }
-const EditPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
+export default function EditPasswordForm({ onSubmit, defaultValues }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -59,6 +59,4 @@ const EditPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
       )}
     </FormContainer>
   );
-};
-
-export default EditPasswordForm;
+}

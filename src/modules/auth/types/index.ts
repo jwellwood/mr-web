@@ -1,18 +1,18 @@
-export interface IForgotPasswordForm {
+export interface IForgotPasswordInput {
   email: string;
 }
 
-export interface IResetPasswordForm {
+export interface IResetPasswordInput {
   password: string;
   confirmPassword: string;
 }
 
-export interface ISignInForm {
+export interface ISignInInput {
   email: string;
   password: string;
 }
 
-export interface ISignUpForm {
+export interface ISignUpInput {
   username: string;
   email: string;
   password: string;

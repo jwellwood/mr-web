@@ -1,8 +1,9 @@
-import { CenteredGrid, GridItem } from '../../../components/grids';
 import { Typography } from '@mui/material';
+
+import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
 
-const AppTitle = () => {
+export default function AppTitle() {
   return (
     <div style={{ textAlign: 'center', marginTop: '200px' }}>
       <CenteredGrid dir="row">
@@ -30,6 +31,4 @@ const AppTitle = () => {
       </CenteredGrid>
     </div>
   );
-};
-
-export default AppTitle;
+}

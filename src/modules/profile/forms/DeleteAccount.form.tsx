@@ -1,16 +1,17 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
+
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import { IDeleteAccountForm } from '../types';
+import { IDeleteAccountInput } from '../types';
 
 interface Props {
-  onSubmit: (data: IDeleteAccountForm) => void;
-  defaultValues: IDeleteAccountForm;
+  onSubmit: (data: IDeleteAccountInput) => void;
+  defaultValues: IDeleteAccountInput;
   username: string;
 }
-const DeleteAccountForm: React.FC<Props> = ({ onSubmit, defaultValues, username }) => {
+
+export default function DeleteAccountForm({ onSubmit, defaultValues, username }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -39,6 +40,4 @@ const DeleteAccountForm: React.FC<Props> = ({ onSubmit, defaultValues, username 
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default DeleteAccountForm;
+}

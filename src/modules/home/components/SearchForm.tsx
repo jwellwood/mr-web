@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+
 import { FormContainer } from '../../../components/containers';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 
@@ -7,7 +8,7 @@ type Props = {
   onSubmit: (data: { teamName: string }) => void;
 };
 
-export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
+export default function SearchForm({ defaultValues, onSubmit }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -18,14 +19,14 @@ export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
   }>({
     defaultValues,
   });
-  const teamNameLength = watch('teamName');
+  const teamName = watch('teamName');
 
   return (
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       nonAbsoluteSubmit
       text="Search"
-      disabled={teamNameLength.length < 3}
+      disabled={teamName.length < 3}
     >
       <ControlledTextInput
         control={control}
@@ -36,4 +37,4 @@ export const SearchForm = ({ defaultValues, onSubmit }: Props) => {
       />
     </FormContainer>
   );
-};
+}

@@ -7,7 +7,7 @@ import { Spinner } from '../../../components/loaders';
 import { PageHeader } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { GET_TEAMS_BY_USER_ID } from '../../profile/graphql';
+import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
 import { PROFILE } from '../../../router/paths';
 import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
@@ -17,7 +17,7 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 
 const DeleteTeam: React.FC = () => {
   const { teamId } = useCustomParams();
-  const { refetch } = useQuery(GET_TEAMS_BY_USER_ID);
+  const { refetch } = useQuery(FETCH_TEAMS_BY_USER);
   const { loading, error, data } = useQuery(GET_TEAM, {
     variables: { teamId },
     notifyOnNetworkStatusChange: true,

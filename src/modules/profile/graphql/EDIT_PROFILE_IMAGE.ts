@@ -1,5 +1,7 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
+
 import { IUser } from '../../../types';
+
 export const EDIT_PROFILE_IMAGE: TypedDocumentNode<{
   user: IUser;
 }> = gql`

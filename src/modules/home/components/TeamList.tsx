@@ -4,12 +4,13 @@ import FlagIcon from '../../../components/icons/FlagIcon';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem, ITeamResponse } from '../../../types';
+
 type Props = {
   teams: ITeamResponse[];
   isSearchComplete: boolean;
 };
 
-export const TeamList = ({ teams, isSearchComplete }: Props) => {
+export default function TeamList({ teams, isSearchComplete }: Props) {
   const links: IListItem[] =
     teams?.map(team => {
       return {
@@ -32,4 +33,4 @@ export const TeamList = ({ teams, isSearchComplete }: Props) => {
   ) : (
     isSearchComplete && <CustomTypography color="warning">No teams found</CustomTypography>
   );
-};
+}

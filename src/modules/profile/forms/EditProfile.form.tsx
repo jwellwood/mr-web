@@ -1,18 +1,19 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import { IEditProfileForm } from '../types';
+
 import { useNationality } from '../../../hooks';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput.tsx';
 import ControlledDateInput from '../../../components/inputs/ControlledDateInput.tsx';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput.tsx';
+import { IEditProfileInput } from '../types.ts';
 
 interface Props {
-  onSubmit: (event: IEditProfileForm) => Promise<void> | void;
-  defaultValues: IEditProfileForm;
+  onSubmit: (event: IEditProfileInput) => Promise<void> | void;
+  defaultValues: IEditProfileInput;
 }
-const EditProfileForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
+
+export default function EditProfileForm({ onSubmit, defaultValues }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -62,6 +63,4 @@ const EditProfileForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default EditProfileForm;
+}

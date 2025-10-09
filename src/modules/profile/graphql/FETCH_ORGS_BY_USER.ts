@@ -1,10 +1,11 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
+
 import { IOrganization } from '../../organization/types';
 
-export const GET_ORGS_BY_USER_ID: TypedDocumentNode<{
+export const FETCH_ORGS_BY_USER: TypedDocumentNode<{
   orgs: IOrganization[];
 }> = gql`
-  query GetOrgsByUserId {
+  query FetchOrgsByUser {
     orgs: userOrganizations {
       _id
       name

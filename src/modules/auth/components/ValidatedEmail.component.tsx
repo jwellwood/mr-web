@@ -1,4 +1,3 @@
-import React from 'react';
 import { CustomLinkButton } from '../../../components/buttons';
 import { CenteredGrid } from '../../../components/grids';
 import StatIcon from '../../../components/icons/StatIcon';
@@ -10,7 +9,7 @@ interface Props {
   errorMessage: null | string;
 }
 
-const ValidatedEmail: React.FC<Props> = ({ success, errorMessage }) => {
+export default function ValidatedEmail({ success, errorMessage }: Props) {
   return (
     <CenteredGrid>
       {success ? (
@@ -33,6 +32,4 @@ const ValidatedEmail: React.FC<Props> = ({ success, errorMessage }) => {
       </CustomLinkButton>
     </CenteredGrid>
   );
-};
-
-export default ValidatedEmail;
+}

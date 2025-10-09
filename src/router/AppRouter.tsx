@@ -2,7 +2,7 @@ import React, { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { GET_ROLES } from '../modules/auth/graphql';
+import { FETCH_ROLES } from '../modules/auth/graphql';
 import { useAuth } from '../hooks';
 import { PageContainer } from '../components/containers';
 import { Spinner } from '../components/loaders';
@@ -13,7 +13,7 @@ const AppRoutes = lazy(() => import('./Routes'));
 
 function AppRouter() {
   const dispatch = useDispatch();
-  const { data, loading } = useQuery(GET_ROLES);
+  const { data, loading } = useQuery(FETCH_ROLES);
   const { isAuth } = useAuth();
 
   useEffect(() => {

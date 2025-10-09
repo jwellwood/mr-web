@@ -1,4 +1,3 @@
-import React from 'react';
 import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { SectionContainer } from '../../../components/containers';
@@ -10,7 +9,7 @@ type Props = {
   orgs?: IOrganization[];
 };
 
-const OrgList: React.FC<Props> = ({ orgs = [] }) => {
+export default function OrgList({ orgs = [] }: Props) {
   const links: IListItem[] = orgs.map(org => {
     return {
       label: org.name,
@@ -23,6 +22,4 @@ const OrgList: React.FC<Props> = ({ orgs = [] }) => {
       <LinksList links={links} />
     </SectionContainer>
   );
-};
-
-export default OrgList;
+}

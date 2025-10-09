@@ -1,29 +1,30 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { RESET_PASSWORD_PAGE, resetPasswordFormState } from '../constants';
+import { pages } from '../constants';
 import ResetPassword from '../forms/ResetPassword.form';
 import { RESET_PASSWORD } from '../graphql';
-import { IResetPasswordForm } from '../types';
+import { IResetPasswordInput } from '../types';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { AUTH } from '../../../router/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
-import { PageHeader } from '../../../components/typography';
 import Spinner from '../../../components/loaders/Spinner.tsx';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import { resetPasswordFormState } from '../forms/state.ts';
 
-const ResetPasswordContainer: React.FC = () => {
+export default function ResetPasswordContainer() {
   const { token } = useParams<{ token: string }>();
 
-  const [resetPassword, { loading }] = useMutation(RESET_PASSWORD);
+  const [resetPassword, { loading, error }] = useMutation(RESET_PASSWORD);
 
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = (formData: IResetPasswordForm) => {
+  const onSubmit = (formData: IResetPasswordInput) => {
     resetPassword({ variables: { password: formData.password, token } })
       .then(() => {
         dispatch(
@@ -39,16 +40,19 @@ const ResetPasswordContainer: React.FC = () => {
       });
   };
 
+  const renderContent = () => {
+    return !loading ? (
+      <ResetPassword defaultValues={resetPasswordFormState} onSubmit={onSubmit} />
+    ) : (
+      <Spinner />
+    );
+  };
+
   return (
     <RouteGuard authorization={AUTH_ROLES.NONE}>
-      <PageHeader title={RESET_PASSWORD_PAGE} />
-      {!loading ? (
-        <ResetPassword defaultValues={resetPasswordFormState} onSubmit={onSubmit} />
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar title={pages.RESET_PASSWORD_PAGE}>
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default ResetPasswordContainer;
+}

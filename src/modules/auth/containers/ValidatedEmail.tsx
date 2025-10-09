@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
 import { AUTH_ROLES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
-import { PageHeader } from '../../../components/typography';
 import ValidatedEmail from '../components/ValidatedEmail.component';
-import { VALIDATED_EMAIL_PAGE } from '../constants';
+import { pages } from '../constants';
 import { verifyEmail } from '../services/validation';
 import { AppDispatch } from '../../../store/store.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 
-const ValidatedEmailContainer: React.FC = () => {
+export default function ValidatedEmailContainer() {
   const { token } = useParams<{ token: string }>();
   const dispatch: AppDispatch = useDispatch();
   const [loading, setLoading] = useState<boolean>(true);
@@ -36,12 +37,9 @@ const ValidatedEmailContainer: React.FC = () => {
     <Spinner />
   ) : (
     <RouteGuard authorization={AUTH_ROLES.NONE}>
-      <>
-        <PageHeader title={VALIDATED_EMAIL_PAGE} />
+      <CustomAppBar title={pages.VALIDATED_EMAIL_PAGE}>
         <ValidatedEmail success={successfulValidation} errorMessage={error} />
-      </>
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default ValidatedEmailContainer;
+}

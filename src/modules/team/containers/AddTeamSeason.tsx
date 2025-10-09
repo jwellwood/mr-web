@@ -11,7 +11,7 @@ import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { useNationality } from '../../../hooks';
 import { FETCH_ORG_TEAMS } from '../../organization/graphql';
-import { GET_TEAMS_BY_USER_ID } from '../../profile/graphql';
+import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
@@ -33,7 +33,7 @@ const AddTeamSeason: React.FC = () => {
         query: FETCH_ORG_TEAMS,
         variables: { teamId },
       },
-      { query: GET_TEAMS_BY_USER_ID },
+      { query: FETCH_TEAMS_BY_USER },
     ],
   });
 

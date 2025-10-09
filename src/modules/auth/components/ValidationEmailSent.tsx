@@ -1,4 +1,3 @@
-import React from 'react';
 import { AUTH_ROLES } from '../../../app/constants';
 import { CustomTypography } from '../../../components/typography';
 import RouteGuard from '../../../router/RouteGuard';
@@ -7,7 +6,7 @@ interface Props {
   email: string;
 }
 
-const ValidationEmailSent: React.FC<Props> = ({ email }) => {
+export default function ValidationEmailSent({ email }: Props) {
   return (
     <>
       <RouteGuard authorization={AUTH_ROLES.NONE}>
@@ -17,6 +16,4 @@ const ValidationEmailSent: React.FC<Props> = ({ email }) => {
       </RouteGuard>
     </>
   );
-};
-
-export default ValidationEmailSent;
+}

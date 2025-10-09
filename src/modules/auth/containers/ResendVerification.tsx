@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ interface Props {
   email: string | null;
 }
 
-const ResendVerification: React.FC<Props> = ({ email }) => {
+export default function ResendVerification({ email }: Props) {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
@@ -38,6 +38,4 @@ const ResendVerification: React.FC<Props> = ({ email }) => {
   ) : (
     <CustomButton onClick={onSubmit}>Resend Verification Link</CustomButton>
   );
-};
-
-export default ResendVerification;
+}

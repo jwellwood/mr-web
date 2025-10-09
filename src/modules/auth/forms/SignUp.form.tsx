@@ -4,15 +4,12 @@ import { FormContainer } from '../../../components/containers';
 import { CustomSwitch } from '../../../components/inputs';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { CustomTypography } from '../../../components/typography';
-import { AUTH } from '../../../router/paths';
-import { IListItem } from '../../../types';
-import { ISignUpForm } from '../types';
-import AuthorizationLinks from '../components/AuthorizationLinks';
+import { ISignUpInput } from '../types';
 import { CenteredGrid } from '../../../components/grids';
 
 interface Props {
-  onSubmit: (data: ISignUpForm) => void;
-  defaultValues: ISignUpForm;
+  onSubmit: (data: ISignUpInput) => void;
+  defaultValues: ISignUpInput;
   acceptTerms?: boolean;
   onAcceptTermsToggle: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -28,7 +25,7 @@ const SignUpForm: React.FC<Props> = ({
     formState: { errors },
     control,
     watch,
-  } = useForm<ISignUpForm>({
+  } = useForm<ISignUpInput>({
     defaultValues,
   });
 
@@ -38,16 +35,9 @@ const SignUpForm: React.FC<Props> = ({
 
   const disabled = !acceptTerms || !email.length || !username.length || !password.length;
 
-  const links: IListItem[] = [
-    {
-      label: 'Already have an account?',
-      value: 'Sign in here',
-      link: AUTH.SIGN_IN,
-    },
-  ];
   return (
     <>
-      <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={disabled}>
+      <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={disabled} nonAbsoluteSubmit>
         <ControlledTextInput
           control={control}
           name="username"
@@ -94,7 +84,6 @@ const SignUpForm: React.FC<Props> = ({
           placement="end"
         />
       </CenteredGrid>
-      <AuthorizationLinks links={links} />
     </>
   );
 };

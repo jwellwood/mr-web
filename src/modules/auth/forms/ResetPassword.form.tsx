@@ -1,16 +1,17 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
+
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { CustomTypography } from '../../../components/typography';
-import { IResetPasswordForm } from '../types';
+import { IResetPasswordInput } from '../types';
 
 interface Props {
-  onSubmit: (data: IResetPasswordForm) => void;
-  defaultValues: IResetPasswordForm;
+  onSubmit: (data: IResetPasswordInput) => void;
+  defaultValues: IResetPasswordInput;
 }
-const ResetPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
+
+export default function ResetPasswordForm({ onSubmit, defaultValues }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -50,6 +51,4 @@ const ResetPasswordForm: React.FC<Props> = ({ onSubmit, defaultValues }) => {
       )}
     </FormContainer>
   );
-};
-
-export default ResetPasswordForm;
+}

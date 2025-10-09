@@ -1,41 +1,41 @@
 import { useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { SearchForm } from '../components/SearchForm';
-import { TeamList } from '../components/TeamList';
-import { GET_TEAM_BY_SEARCH } from '../graphql/searchByTeam.graphql';
+
+import { FETCH_TEAMS_BY_SEARCH } from '../graphql';
+
+import SearchForm from '../components/SearchForm';
+import TeamList from '../components/TeamList';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import PresentationModal from '../../../components/modals/PresentationModal.tsx';
 import CustomButton from '../../../components/buttons/CustomButton.tsx';
 import SectionContainer from '../../../components/containers/SectionContainer.tsx';
 import LoadingList from '../../../components/lists/LoadingList.tsx';
 
-export const TeamSearch = () => {
+export default function TeamSearch() {
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearchComplete, setIsSearchComplete] = useState(false);
 
-  const [getTeamBySearch, { loading, error, data }] = useLazyQuery(GET_TEAM_BY_SEARCH, {
+  const [fetchTeamsBySearch, { loading, error, data }] = useLazyQuery(FETCH_TEAMS_BY_SEARCH, {
     variables: { filter: searchTerm },
   });
 
   const onSubmit = async (data: { teamName: string }) => {
     setSearchTerm(data.teamName);
 
-    const team = await getTeamBySearch({
+    const fetchedTeams = await fetchTeamsBySearch({
       variables: { filter: data.teamName },
     });
 
-    if (team.data?.team) {
+    if (fetchedTeams.data?.teams) {
       setIsSearchComplete(true);
     }
   };
 
-  if (error) return <ErrorGraphql error={error} />;
-
-  const children = () => {
+  const renderContent = () => {
     if (error) return <ErrorGraphql error={error} />;
 
     return !loading ? (
-      <TeamList teams={data?.team || []} isSearchComplete={isSearchComplete} />
+      <TeamList teams={data?.teams || []} isSearchComplete={isSearchComplete} />
     ) : (
       <LoadingList avatar label secondary />
     );
@@ -49,9 +49,9 @@ export const TeamSearch = () => {
       >
         <SectionContainer>
           <SearchForm defaultValues={{ teamName: searchTerm }} onSubmit={onSubmit} />
-          {children()}
+          {renderContent()}
         </SectionContainer>
       </PresentationModal>
     </>
   );
-};
+}

@@ -1,39 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
+import { EDIT_PROFILE, FETCH_USER } from '../graphql';
+
 import { pages } from '../constants';
 import EditProfileForm from '../forms/EditProfile.form';
-import { EDIT_PROFILE, GET_USER } from '../graphql';
-import { IEditProfileForm } from '../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { PROFILE } from '../../../router/paths.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import PageHeader from '../../../components/typography/PageHeader.tsx';
 import { Spinner } from '../../../components/loaders';
+import { IEditProfileInput } from '../types.ts';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 
-const EditProfileContainer: React.FC = () => {
+export default function EditProfileContainer() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [defaultValues, setDefaultValues] = useState<IEditProfileForm | null>(null);
-  const { loading, error, data } = useQuery(GET_USER);
+  const [defaultValues, setDefaultValues] = useState<IEditProfileInput | null>(null);
+  const { loading, error, data } = useQuery(FETCH_USER);
   const [editUser, { loading: editLoading, error: editError }] = useMutation(EDIT_PROFILE, {
-    refetchQueries: [{ query: GET_USER }],
+    refetchQueries: [{ query: FETCH_USER }],
   });
 
   useEffect(() => {
     if (data) {
       const { user } = data;
       setDefaultValues({
-        ...(user as IEditProfileForm),
+        ...(user as IEditProfileInput),
       });
     }
   }, [data]);
 
-  const onSubmit = async (formData: IEditProfileForm) => {
+  const onSubmit = async (formData: IEditProfileInput) => {
     const dob = new Date(formData.dateOfBirth);
     return await editUser({
       variables: { ...formData, dateOfBirth: dob },
@@ -48,20 +49,22 @@ const EditProfileContainer: React.FC = () => {
       });
   };
 
-  if (error || editError) {
-    return <ErrorGraphql error={(error || editError) as Error} />;
-  }
+  const renderContent = () =>
+    !loading && !editLoading && defaultValues ? (
+      <EditProfileForm onSubmit={onSubmit} defaultValues={defaultValues} />
+    ) : (
+      <Spinner />
+    );
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>
-      <PageHeader title={pages.EDIT_PROFILE_PAGE} />
-      {!loading && !editLoading && defaultValues ? (
-        <EditProfileForm onSubmit={onSubmit} defaultValues={defaultValues} />
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar title={pages.EDIT_PROFILE_PAGE}>
+        {error || editError ? (
+          <ErrorGraphql error={(error || editError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default EditProfileContainer;
+}

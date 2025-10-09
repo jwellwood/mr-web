@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_ORG } from '../graphql';
-import { GET_ORGS_BY_USER_ID } from '../../profile/graphql/getOrgsByUserId.graphql.ts';
-import { GET_USER } from '../../profile/graphql/getUser.graphql.ts';
+import { FETCH_USER, FETCH_ORGS_BY_USER } from '../../profile/graphql';
 
 import { PAGES } from '../constants';
 import OrgForm from '../forms/OrgForm';
@@ -28,7 +27,7 @@ export default function AddOrg() {
   const [defaultValues, setDefaultValues] = useState<IOrganizationInput | null>(null);
 
   const [addOrg, { error, loading }] = useMutation(ADD_ORG, {
-    refetchQueries: [{ query: GET_USER }, { query: GET_ORGS_BY_USER_ID }],
+    refetchQueries: [{ query: FETCH_USER }, { query: FETCH_ORGS_BY_USER }],
   });
 
   useEffect(() => {

@@ -1,11 +1,11 @@
 import { AUTH_ROLES } from '../../../app/constants';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { PageHeader } from '../../../components/typography';
-import { TeamSearch } from './TeamSearch';
+import TeamSearch from './TeamSearch';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import AppTitle from '../components/AppTitle.tsx';
 
-function HomeContainer() {
+export default function HomeContainer() {
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <PageHeader title={''} backButton={false} />
@@ -18,5 +18,3 @@ function HomeContainer() {
     </RouteGuard>
   );
 }
-
-export default HomeContainer;

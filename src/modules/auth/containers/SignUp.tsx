@@ -1,22 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 
 import ValidationEmailSent from '../components/ValidationEmailSent';
-import { signUpFormState } from '../constants';
+import { pages, SIGN_UP_LINKS } from '../constants';
 import SignUpForm from '../forms/SignUp.form';
 import { REGISTER_USER } from '../graphql';
-import { ISignUpForm } from '../types';
+import { ISignUpInput } from '../types';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PageHeader } from '../../../components/typography';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
+import AuthLayout from '../components/AuthLayout.tsx';
+import AuthorizationLinks from '../components/AuthorizationLinks.tsx';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { signUpFormState } from '../forms/state.ts';
 
-const SignUpContainer: React.FC = () => {
+export default function SignUpContainer() {
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<ISignUpForm | null>(null);
+  const [defaultValues, setDefaultValues] = useState<ISignUpInput | null>(null);
   const [acceptTerms, setAcceptTerms] = useState<boolean>(false);
   const [email, setEmail] = useState<string | null>(null);
   const [registerUser, { loading }] = useMutation(REGISTER_USER);
@@ -29,7 +32,7 @@ const SignUpContainer: React.FC = () => {
     setAcceptTerms(!acceptTerms);
   };
 
-  const onSubmit = (formData: ISignUpForm) =>
+  const onSubmit = (formData: ISignUpInput) =>
     registerUser({ variables: { ...formData } })
       .then(({ data }) => {
         if (data) {
@@ -43,22 +46,26 @@ const SignUpContainer: React.FC = () => {
       });
   return (
     <>
-      <PageHeader title="Sign Up" />
       <RouteGuard authorization={AuthRoles.NONE}>
-        {!loading && defaultValues ? (
-          <SignUpForm
-            onSubmit={onSubmit}
-            defaultValues={defaultValues}
-            onAcceptTermsToggle={onAcceptTermsToggle}
-            acceptTerms={acceptTerms}
-          />
-        ) : (
-          <Spinner />
-        )}
-        {email ? <ValidationEmailSent email={email} /> : null}
+        <CustomAppBar title={pages.SIGN_UP_PAGE}>
+          <AuthLayout>
+            <>
+              {!loading && defaultValues ? (
+                <SignUpForm
+                  onSubmit={onSubmit}
+                  defaultValues={defaultValues}
+                  onAcceptTermsToggle={onAcceptTermsToggle}
+                  acceptTerms={acceptTerms}
+                />
+              ) : (
+                <Spinner />
+              )}
+              {email ? <ValidationEmailSent email={email} /> : null}
+              <AuthorizationLinks links={SIGN_UP_LINKS} />
+            </>
+          </AuthLayout>
+        </CustomAppBar>
       </RouteGuard>
     </>
   );
-};
-
-export default SignUpContainer;
+}

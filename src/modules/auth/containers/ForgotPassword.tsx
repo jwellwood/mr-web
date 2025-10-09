@@ -1,26 +1,28 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { FORGOT_PASSWORD_PAGE, forgotPasswordFormState } from '../constants';
+import { pages } from '../constants';
 import ForgotPasswordForm from '../forms/ForgotPassword.form';
 import { FORGOT_PASSWORD } from '../graphql';
-import { IForgotPasswordForm } from '../types';
+import { IForgotPasswordInput } from '../types';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { AUTH } from '../../../router/paths.ts';
 import { AuthRoles } from '../../../constants.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import AuthLayout from '../components/AuthLayout.tsx';
+import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import { forgotPasswordFormState } from '../forms/state.ts';
 
-const ForgotPasswordContainer: React.FC = () => {
-  const [forgotPassword, { loading }] = useMutation(FORGOT_PASSWORD);
+export default function ForgotPasswordContainer() {
+  const [forgotPassword, { loading, error }] = useMutation(FORGOT_PASSWORD);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = (formData: IForgotPasswordForm) => {
+  const onSubmit = (formData: IForgotPasswordInput) => {
     forgotPassword({ variables: { email: formData.email } })
       .then(({ data }) => {
         dispatch(
@@ -36,16 +38,19 @@ const ForgotPasswordContainer: React.FC = () => {
       });
   };
 
+  const renderContent = () => {
+    return !loading ? (
+      <ForgotPasswordForm defaultValues={forgotPasswordFormState} onSubmit={onSubmit} />
+    ) : (
+      <Spinner />
+    );
+  };
+
   return (
     <RouteGuard authorization={AuthRoles.NONE}>
-      <PageHeader title={FORGOT_PASSWORD_PAGE} />
-      {!loading ? (
-        <ForgotPasswordForm defaultValues={forgotPasswordFormState} onSubmit={onSubmit} />
-      ) : (
-        <Spinner />
-      )}
+      <CustomAppBar title={pages.FORGOT_PASSWORD_PAGE}>
+        <AuthLayout>{error ? <ErrorGraphql error={error} /> : renderContent()}</AuthLayout>
+      </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default ForgotPasswordContainer;
+}
