@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IOrganization } from '../../../types';
+import { IOrganization } from '../types';
 
 export const FETCH_ORG: TypedDocumentNode<{
   org: IOrganization;

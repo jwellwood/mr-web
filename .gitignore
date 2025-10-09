@@ -28,3 +28,6 @@ coverage
 *.sln
 *.sw?
 .qodo
+
+*storybook.log
+storybook-static

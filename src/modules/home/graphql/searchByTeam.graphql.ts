@@ -1,5 +1,6 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 import { ITeamResponse } from '../../../types';
+
 export const GET_TEAM_BY_SEARCH: TypedDocumentNode<{
   team: ITeamResponse[];
 }> = gql`

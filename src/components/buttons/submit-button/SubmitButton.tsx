@@ -1,8 +1,8 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { Spinner } from '../loaders';
+import { Spinner } from '../../loaders';
 import { SxProps } from '@mui/material';
-import { button_text } from '../../i18n';
+import { button_text } from '../../../i18n';
 
 interface Props {
   children?: React.ReactNode;

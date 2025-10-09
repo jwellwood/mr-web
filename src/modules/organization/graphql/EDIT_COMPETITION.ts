@@ -1,8 +1,8 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ICompetition } from '../../../types';
+import { ICompetition } from '../types';
 
 export const EDIT_COMPETITION: TypedDocumentNode<{
-  org: ICompetition;
+  comp: ICompetition;
 }> = gql`
   mutation UpdateCompetition(
     $compId: String!

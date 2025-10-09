@@ -11,7 +11,6 @@ import { PAGES } from '../constants';
 import OrgForm from '../forms/OrgForm';
 import { AppDispatch } from '../../../store/store.ts';
 import { useNationality } from '../../../hooks';
-import { IOrganization } from '../../../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
@@ -19,13 +18,14 @@ import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { initialOrgDetailsState } from '../forms/state.ts';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { IOrganizationInput } from '../types.ts';
 
 export default function AddOrg() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
   const { nationalityOptions } = useNationality();
 
-  const [defaultValues, setDefaultValues] = useState<Partial<IOrganization>>({});
+  const [defaultValues, setDefaultValues] = useState<IOrganizationInput | null>(null);
 
   const [addOrg, { error, loading }] = useMutation(ADD_ORG, {
     refetchQueries: [{ query: GET_USER }, { query: GET_ORGS_BY_USER_ID }],
@@ -35,7 +35,7 @@ export default function AddOrg() {
     setDefaultValues({ ...initialOrgDetailsState });
   }, []);
 
-  const onSubmit = async (data: Partial<IOrganization>) => {
+  const onSubmit = async (data: IOrganizationInput) => {
     try {
       return addOrg({ variables: { ...data } }).then(res => {
         dispatch(showAlert({ text: 'Organization added successfully!', type: 'success' }));

@@ -1,5 +1,6 @@
-import { ICompetition, IMatchResponse, ITeam, ITempMatch } from '../../../types';
+import { IMatchResponse, ITeam, ITempMatch } from '../../../types';
 import { ITeamSeason } from '../../history/types';
+import { ICompetition } from '../../organization/types';
 
 export const mapMatchResponseToTempMatch = (match: IMatchResponse): ITempMatch => {
   return {

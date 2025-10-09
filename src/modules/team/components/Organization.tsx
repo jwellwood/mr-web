@@ -5,6 +5,7 @@ import LinksList from '../../../components/lists/LinksList';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem, ITeamResponse } from '../../../types';
+
 type Props = {
   team?: ITeamResponse;
   loading: boolean;

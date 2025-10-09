@@ -5,14 +5,15 @@ import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { getMinutesOptions } from '../../matches/helpers';
-import { ICompetition, IListItem } from '../../../types';
+import { IListItem } from '../../../types';
 import { competitionOptions } from '../constants';
 import { getIntegers } from '../../../utils/helpers';
 import SwitchButtonList from '../../../components/common/SwitchButtonList';
+import { ICompetitionInput } from '../types';
 
 interface Props {
-  onSubmit: (data: Partial<ICompetition>) => void;
-  defaultValues: Partial<ICompetition>;
+  onSubmit: (data: ICompetitionInput) => void;
+  defaultValues: ICompetitionInput;
 }
 
 export default function CompetitionForm({ onSubmit, defaultValues }: Props) {
@@ -20,7 +21,7 @@ export default function CompetitionForm({ onSubmit, defaultValues }: Props) {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<Partial<ICompetition>>({
+  } = useForm<ICompetitionInput>({
     defaultValues,
   });
 

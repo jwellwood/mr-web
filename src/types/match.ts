@@ -1,4 +1,4 @@
-import type { ICompetition } from './organization';
+import { ICompetition } from '../modules/organization/types';
 import type { IPlayer } from './player';
 import type { IPlayerInMatch } from './playerInMatch';
 import type { ITeam } from './team';

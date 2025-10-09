@@ -1,5 +1,5 @@
+import { IOrganization } from '../modules/organization/types.ts';
 import type { IImage } from './image.ts';
-import type { IOrganization } from './organization.ts';
 
 export interface ITeamRoles {
   name: string;

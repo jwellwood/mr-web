@@ -1,9 +1,6 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IOrganization } from '../../../types';
 
-export const ADD_COMPETITION: TypedDocumentNode<{
-  org: IOrganization;
-}> = gql`
+export const ADD_COMPETITION: TypedDocumentNode = gql`
   mutation AddCompetition(
     $orgId: String!
     $name: String!

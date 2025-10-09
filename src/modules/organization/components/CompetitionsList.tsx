@@ -1,6 +1,7 @@
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList';
-import { ICompetition, IListItem } from '../../../types';
+import { IListItem } from '../../../types';
+import { ICompetition } from '../types';
 
 type Props = {
   competitions?: ICompetition[];

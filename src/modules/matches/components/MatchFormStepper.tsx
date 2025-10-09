@@ -3,13 +3,14 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { ICompetition, IPlayerInMatch, ITeam, ITempMatch } from '../../../types';
+import { IPlayerInMatch, ITeam, ITempMatch } from '../../../types';
 import AddMatchDetails from '../components/AddMatchDetails';
 import AddMatchPlayers from '../components/AddMatchPlayers';
 import AddMatchStats from '../components/AddMatchStats';
 import SubmitMatch from '../components/SubmitMatch';
 import MatchOverview from './MatchOverview';
 import { theme } from '../../../theme';
+import { ICompetition } from '../../organization/types';
 
 interface Props {
   defaultValues: ITempMatch;

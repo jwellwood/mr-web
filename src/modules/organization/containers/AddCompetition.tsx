@@ -8,7 +8,7 @@ import { PAGES } from '../constants';
 import { initialCompetitionState } from '../forms/state.ts';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
-import { ICompetition } from '../../../types/organization.ts';
+
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { AppDispatch } from '../../../store/store.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
@@ -17,13 +17,14 @@ import { ADD_COMPETITION, FETCH_ORG } from '../graphql';
 import Spinner from '../../../components/loaders/Spinner.tsx';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import CompetitionForm from '../forms/CompetitionForm';
+import { ICompetitionInput } from '../types.ts';
 
 export default function AddCompetition() {
   const { orgId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<Partial<ICompetition | null>>(null);
+  const [defaultValues, setDefaultValues] = useState<ICompetitionInput | null>(null);
 
   const [addCompetition, { error, loading }] = useMutation(ADD_COMPETITION, {
     refetchQueries: [{ query: FETCH_ORG, variables: { orgId } }],
@@ -32,7 +33,7 @@ export default function AddCompetition() {
   useEffect(() => {
     setDefaultValues({ ...initialCompetitionState });
   }, []);
-  const onSubmit = async (formData: Partial<ICompetition>) => {
+  const onSubmit = async (formData: ICompetitionInput) => {
     try {
       return addCompetition({
         variables: { orgId, ...mapCompetitionInput(formData) },

@@ -10,13 +10,13 @@ import OrgForm from '../forms/OrgForm';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { useNationality } from '../../../hooks';
-import { IOrganization } from '../../../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { IOrganizationInput } from '../types.ts';
 
 export default function UpdateDetailsContainer() {
   const { orgId } = useCustomParams();
@@ -29,18 +29,18 @@ export default function UpdateDetailsContainer() {
     useMutation(EDIT_ORG);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<IOrganization | null>(null);
+  const [defaultValues, setDefaultValues] = useState<IOrganizationInput | null>(null);
 
   useEffect(() => {
     if (data) {
       const { org } = data;
       setDefaultValues({
-        ...(org as IOrganization),
+        ...(org as IOrganizationInput),
       });
     }
   }, [data]);
 
-  const onSubmit = (formData: Partial<IOrganization>) => {
+  const onSubmit = (formData: IOrganizationInput) => {
     try {
       updateOrganization({ variables: { orgId: orgId, ...formData } }).then(() => {
         refetch({ orgId });

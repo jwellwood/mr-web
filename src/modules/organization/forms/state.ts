@@ -1,6 +1,6 @@
-import { ICompetition, IOrganization } from '../../../types';
+import { ICompetitionInput, IOrganizationInput } from '../types';
 
-export const initialOrgDetailsState: Partial<IOrganization> = {
+export const initialOrgDetailsState: IOrganizationInput = {
   name: '',
   website: '',
   yearFounded: '',
@@ -8,8 +8,11 @@ export const initialOrgDetailsState: Partial<IOrganization> = {
   country: '',
 };
 
-export const initialCompetitionState: Partial<ICompetition> = {
+export const initialCompetitionState: ICompetitionInput = {
   name: '',
   competitionType: '',
   isActive: true,
+  matchMinutes: 0,
+  playersPerTeam: 0,
+  numberOfTeams: 0,
 };

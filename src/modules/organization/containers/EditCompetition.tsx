@@ -10,13 +10,13 @@ import CompetitionForm from '../forms/CompetitionForm';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
-import { ICompetition } from '../../../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { ICompetitionInput } from '../types.ts';
 
 export default function EditCompetition() {
   const { orgId, competitionId } = useCustomParams();
@@ -32,17 +32,17 @@ export default function EditCompetition() {
       refetchQueries: [{ query: FETCH_COMPETITION, variables: { compId: competitionId } }],
     }
   );
-  const [defaultValues, setDefaultValues] = useState<ICompetition | null>(null);
+  const [defaultValues, setDefaultValues] = useState<ICompetitionInput | null>(null);
 
   useEffect(() => {
     if (data) {
       const { competition } = data;
       setDefaultValues({
-        ...(competition as ICompetition),
+        ...(competition as ICompetitionInput),
       });
     }
   }, [data]);
-  const onSubmit = async (formData: Partial<ICompetition>) => {
+  const onSubmit = async (formData: ICompetitionInput) => {
     try {
       return updateCompetition({
         variables: {

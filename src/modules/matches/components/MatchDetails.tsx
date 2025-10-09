@@ -5,10 +5,11 @@ import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';
-import { ICompetition, IListItem, IMatchResponse, ITeam } from '../../../types';
+import { IListItem, IMatchResponse, ITeam } from '../../../types';
 import { parseDate } from '../../../utils/helpers';
 import { getPoints } from '../helpers';
 import ScoreBox from './ScoreBox';
+import { ICompetition } from '../../organization/types';
 
 type Props = {
   match: IMatchResponse;

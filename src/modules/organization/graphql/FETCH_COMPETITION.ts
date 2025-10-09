@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ICompetition } from '../../../types';
+import { ICompetition } from '../types';
 
 export const FETCH_COMPETITION: TypedDocumentNode<{
   competition: ICompetition;

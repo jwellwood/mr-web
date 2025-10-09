@@ -1,16 +1,16 @@
 import { useForm } from 'react-hook-form';
 
-import { IOrganization } from '../../../types';
 import { FormContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import ControlledDateInput from '../../../components/inputs/ControlledDateInput.tsx';
 import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
 import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput.tsx';
+import { IOrganizationInput } from '../types.ts';
 
 interface Props {
-  onSubmit: (data: Partial<IOrganization>) => void;
-  defaultValues: Partial<IOrganization>;
+  onSubmit: (data: IOrganizationInput) => void;
+  defaultValues: IOrganizationInput;
   countryOptions: ISelectOptions[];
 }
 
@@ -19,7 +19,7 @@ export default function OrgForm({ onSubmit, defaultValues, countryOptions }: Pro
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<Partial<IOrganization>>({
+  } = useForm<IOrganizationInput>({
     defaultValues,
   });
   return (

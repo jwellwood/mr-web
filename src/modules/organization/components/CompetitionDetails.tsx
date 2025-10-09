@@ -1,7 +1,8 @@
 import { DataContainer, SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';
-import { ICompetition, IListItem } from '../../../types';
+import { IListItem } from '../../../types';
+import { ICompetition } from '../types';
 
 interface Props {
   competition: ICompetition | null;
