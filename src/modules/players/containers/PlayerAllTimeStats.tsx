@@ -9,6 +9,7 @@ import PlayerStatsTable from '../components/PlayerStatsTable';
 import { GET_PLAYER_ALL_TIME_STATS } from '../graphql';
 import { mapPlayerAverages } from '../helpers/mapPlayerAverages';
 import { mapPlayerMatchStats } from '../helpers/mapPlayerMatchStats';
+import PlayerGameStreaks from './PlayerGameStreaks';
 
 const PlayerAllTimeStats: React.FC = () => {
   const { playerId } = useCustomParams();
@@ -29,6 +30,7 @@ const PlayerAllTimeStats: React.FC = () => {
       <Averages stats={mapPlayerAverages(player)} loading={loading} />
       <PlayerStatsTable stats={player} loading={loading} />
       <GamesWithStat player={player} loading={loading} />
+      <PlayerGameStreaks />
     </>
   );
 };
