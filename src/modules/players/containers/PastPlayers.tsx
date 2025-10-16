@@ -6,12 +6,14 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import PastPlayersTable from '../components/PastPlayersTable';
 import PlayersByNumbers from '../components/PlayersByNumbers';
 import { GET_PAST_PLAYERS } from '../graphql';
+import { useSeasons } from '../../../hooks/useSeasons';
 
 const PastPlayers: React.FC = () => {
   const { teamId } = useCustomParams();
+  const { seasonId } = useSeasons();
 
   const { loading, data } = useQuery(GET_PAST_PLAYERS, {
-    variables: { teamId },
+    variables: { teamId, seasonId },
   });
 
   return !loading ? (

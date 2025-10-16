@@ -15,7 +15,6 @@ export interface IPlayer {
   nationality: string;
   dateOfBirth: string;
   yearJoined: string;
-  isActive: boolean;
   isCaptain?: boolean;
   isViceCaptain?: boolean;
   isHallOfFame?: boolean;

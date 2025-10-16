@@ -39,10 +39,6 @@ const PlayerForm: React.FC<Props> = ({
 
   const switchList: IListItem[] = [
     {
-      label: 'Is player active?',
-      value: 'isActive',
-    },
-    {
       label: 'Is player team captain?',
       value: 'isCaptain',
     },

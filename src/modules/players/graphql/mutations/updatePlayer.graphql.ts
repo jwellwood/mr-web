@@ -12,7 +12,6 @@ export const UPDATE_PLAYER: TypedDocumentNode<{
     $squadNumber: String!
     $position: String!
     $yearJoined: String!
-    $isActive: Boolean!
     $isCaptain: Boolean!
     $isViceCaptain: Boolean!
     $isHallOfFame: Boolean!
@@ -28,7 +27,6 @@ export const UPDATE_PLAYER: TypedDocumentNode<{
         squadNumber: $squadNumber
         position: $position
         yearJoined: $yearJoined
-        isActive: $isActive
         isCaptain: $isCaptain
         isViceCaptain: $isViceCaptain
         isHallOfFame: $isHallOfFame

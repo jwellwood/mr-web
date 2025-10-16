@@ -1,10 +1,10 @@
-import { ICellStyleByIndex, IHeadCell } from '../../../../components/tables/types';
+import { ICellStyleByIndex } from '../../../../components/tables/types';
 import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants.ts';
 
 const { STATIC } = BACKGROUND_STYLE;
 const { STANDARD } = BORDER_STYLE;
 
-export const all_time_stats_config: IHeadCell[] = [
+export const all_time_stats_config = [
   {
     id: 'name',
     numeric: false,
@@ -50,9 +50,15 @@ export const all_time_stats_config: IHeadCell[] = [
     label: 'C/S',
     width: 50,
   },
-];
+  {
+    id: 'playedStreak',
+    numeric: true,
+    label: 'Streak',
+    width: 50,
+  },
+] as const;
 
-export const all_time_stats_styles = (): ICellStyleByIndex[] => [
+export const all_time_stats_styles: ICellStyleByIndex[] = [
   {
     index: 0,
     background: STATIC,

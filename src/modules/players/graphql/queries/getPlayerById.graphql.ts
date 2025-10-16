@@ -12,7 +12,6 @@ export const GET_PLAYER_BY_ID: TypedDocumentNode<{
       squadNumber
       position
       nationality
-      isActive
       isCaptain
       isViceCaptain
       isHallOfFame

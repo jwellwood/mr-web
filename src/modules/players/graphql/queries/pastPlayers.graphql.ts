@@ -4,8 +4,8 @@ import { IPastPlayer } from '../../../../types/pastPlayer.ts';
 export const GET_PAST_PLAYERS: TypedDocumentNode<{
   players: IPastPlayer[];
 }> = gql`
-  query GetPastPlayers($teamId: String!) {
-    players: pastPlayers(teamId: $teamId) {
+  query GetPastPlayers($teamId: String!, $seasonId: String!) {
+    players: pastPlayers(teamId: $teamId, seasonId: $seasonId) {
       _id
       name
       nationality

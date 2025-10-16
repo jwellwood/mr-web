@@ -17,7 +17,6 @@ export const initialPlayerState: Partial<IPlayer> = {
   position: 'DF',
   squadNumber: '1',
   dateOfBirth: date.toDateString(),
-  isActive: true,
   isCaptain: false,
   isViceCaptain: false,
   isHallOfFame: false,

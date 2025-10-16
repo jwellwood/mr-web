@@ -14,3 +14,8 @@ export type StreakTypes = {
   assistStreak: Streak;
   contributionStreak: Streak;
 };
+
+export type AllPlayerStreaks = {
+  playerId: string;
+  longestPlayedStreak: number;
+};
