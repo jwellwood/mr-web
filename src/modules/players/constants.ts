@@ -1,4 +1,5 @@
-import { IPlayer } from '../../types';
+import { LinkTypes } from '../../constants';
+import { IListItem, IPlayer } from '../../types';
 
 export const PAGES = {
   PLAYER: 'Player',
@@ -9,6 +10,24 @@ export const PAGES = {
 } as const;
 
 const date = new Date();
+
+export const PLAYER_ADMIN_LINKS: IListItem[] = [
+  {
+    label: 'Edit Player',
+    type: LinkTypes.EDIT,
+    link: 'edit',
+  },
+  {
+    label: 'Edit Photo',
+    type: LinkTypes.EDIT,
+    link: 'edit_photo',
+  },
+  {
+    label: 'Delete Player',
+    type: LinkTypes.DELETE,
+    link: 'delete',
+  },
+];
 
 export const initialPlayerState: Partial<IPlayer> = {
   name: '',

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import { PAGES } from '../constants';
-import { GET_PLAYER_BY_ID, UPDATE_PLAYER } from '../graphql';
+import { FETCH_PLAYER, EDIT_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
 import { IPlayer, ISeasonID } from '../../../types';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -24,11 +24,11 @@ const EditPlayer: React.FC = () => {
   const { seasonOptions, loading: seasonLoading } = useSeasons();
 
   const navigate = useNavigate();
-  const { loading, error, data, refetch } = useQuery(GET_PLAYER_BY_ID, {
+  const { loading, error, data, refetch } = useQuery(FETCH_PLAYER, {
     variables: { playerId },
     notifyOnNetworkStatusChange: true,
   });
-  const [updatePlayer, { loading: updateLoading, error: updateError }] = useMutation(UPDATE_PLAYER);
+  const [updatePlayer, { loading: updateLoading, error: updateError }] = useMutation(EDIT_PLAYER);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
   const [defaultValues, setDefaultValues] = useState<Partial<IPlayer | null>>(null);

@@ -4,7 +4,7 @@ import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { useSeasons } from '../../../hooks/useSeasons';
 import SelectSeasonModal from '../components/SelectSeasonModal';
 import { IListItem } from '../../../types';
-import { GET_PLAYER_BY_ID } from '../../players/graphql';
+import { FETCH_PLAYER } from '../../players/graphql';
 
 interface Props {
   playerId?: string;
@@ -17,7 +17,7 @@ const SelectSeason: React.FC<Props> = ({ playerId }) => {
 
   const currentSeason = seasonOptions.find(s => s.value === seasonId)?.label;
 
-  const { loading, data } = useQuery(GET_PLAYER_BY_ID, {
+  const { loading, data } = useQuery(FETCH_PLAYER, {
     variables: { playerId },
   });
   useEffect(() => {

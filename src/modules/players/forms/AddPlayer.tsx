@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
+import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
 import { PAGES, initialPlayerState } from '../constants';
-import { GET_PLAYERS_BY_SEASON_ID } from '../graphql';
 import { ADD_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -30,7 +30,7 @@ const AddPlayer: React.FC = () => {
   const [defaultValues, setDefaultValues] = useState<Partial<IPlayer | null>>(null);
 
   const [addPlayer, { error, loading: addLoading }] = useMutation(ADD_PLAYER, {
-    refetchQueries: [{ query: GET_PLAYERS_BY_SEASON_ID, variables: { teamId, seasonId } }],
+    refetchQueries: [{ query: FETCH_SQUAD_BY_SEASON, variables: { teamId, seasonId } }],
   });
 
   useEffect(() => {

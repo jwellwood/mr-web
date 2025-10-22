@@ -14,7 +14,6 @@ import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
-import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
@@ -22,6 +21,7 @@ import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
+import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
 
 const EditMatch: React.FC = () => {
   const { teamId, matchId } = useCustomParams();
@@ -52,7 +52,7 @@ const EditMatch: React.FC = () => {
         },
       },
       {
-        query: GET_PLAYERS_BY_SEASON_ID,
+        query: FETCH_SQUAD_BY_SEASON,
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
       {

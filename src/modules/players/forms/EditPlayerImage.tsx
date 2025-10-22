@@ -7,7 +7,7 @@ import { PageHeader } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { PAGES } from '../constants';
-import { EDIT_PLAYER_PHOTO, GET_PLAYER_BY_ID } from '../graphql';
+import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../graphql';
 import { removePlayerPhoto, uploadPlayerPhoto } from '../../images/services';
 import { useUpload } from '../../images/hooks';
 import RouteGuard from '../../../router/RouteGuard.tsx';
@@ -19,7 +19,7 @@ const EditPlayerPhoto: React.FC = () => {
     error,
     loading: loadingTeam,
     refetch,
-  } = useQuery(GET_PLAYER_BY_ID, {
+  } = useQuery(FETCH_PLAYER, {
     variables: { playerId: playerId },
     notifyOnNetworkStatusChange: true,
   });

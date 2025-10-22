@@ -6,7 +6,7 @@ import { ITeamSeason } from '../types';
 import Awards from './Awards';
 import MatchStats from '../../matches/containers/MatchStats.tsx';
 import { Matches } from '../../matches/routes.ts';
-import { Squad } from '../../players/routes.ts';
+import { Squad } from '../../squad/routes.ts';
 
 interface Props {
   season?: ITeamSeason;

@@ -10,13 +10,14 @@ import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import History from '../../../modules/history/containers/History';
 import MatchesTabs from '../../../modules/matches/containers/MatchesTabs';
-import SquadTabs from '../../../modules/players/containers/SquadTabs';
+
 import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
 import TeamOverview from './TeamOverview';
 import { IIconType } from '../../../components/icons/types';
 import { getTabIndex } from '../../../store/features/tabs/tabsSelector';
 import { NAV_ICONS } from '../../../app/icons';
+import SquadTabs from '../../squad/main';
 
 const Team: React.FC = () => {
   const { teamId } = useCustomParams();

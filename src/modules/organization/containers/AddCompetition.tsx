@@ -3,17 +3,16 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
+import { ADD_COMPETITION, FETCH_ORG } from '../graphql';
 import { AuthRoles } from '../../../constants.ts';
 import { PAGES } from '../constants';
 import { initialCompetitionState } from '../forms/state.ts';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
-
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { AppDispatch } from '../../../store/store.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { ADD_COMPETITION, FETCH_ORG } from '../graphql';
 import Spinner from '../../../components/loaders/Spinner.tsx';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import CompetitionForm from '../forms/CompetitionForm';

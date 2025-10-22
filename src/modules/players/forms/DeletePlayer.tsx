@@ -3,13 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
+import { DELETE_PLAYER, FETCH_PLAYER } from '../graphql';
+import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
 import { PAGES } from '../constants';
-import {
-  DELETE_PLAYER,
-  GET_PLAYERS_BY_SEASON_ID,
-  GET_PLAYERS_BY_TEAM_ID,
-  GET_PLAYER_BY_ID,
-} from '../graphql';
 import DeletePlayerForm from './components/DeletePlayerForm';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
@@ -21,16 +17,15 @@ import { Spinner } from '../../../components/loaders';
 
 const DeletePlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
-  const { data, loading, error } = useQuery(GET_PLAYER_BY_ID, {
+  const { data, loading, error } = useQuery(FETCH_PLAYER, {
     variables: { playerId: playerId },
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [deletePlayer, { loading: deleteLoading }] = useMutation(DELETE_PLAYER, {
     refetchQueries: [
-      { query: GET_PLAYERS_BY_TEAM_ID, variables: { teamId } },
       {
-        query: GET_PLAYERS_BY_SEASON_ID,
+        query: FETCH_SQUAD_BY_SEASON,
         variables: { teamId, seasonId: 'all' },
       },
     ],

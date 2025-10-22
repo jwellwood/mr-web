@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { IPlayer } from '../../../types';
-import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
+import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
 
 export const useMatchPlayersInput = (teamId: string | undefined, seasonId: string | undefined) => {
   const [players, setPlayers] = useState<IPlayer[]>([]);
 
-  const { data, loading, error } = useQuery(GET_PLAYERS_BY_SEASON_ID, {
+  const { data, loading, error } = useQuery(FETCH_SQUAD_BY_SEASON, {
     variables: { teamId, seasonId },
   });
 

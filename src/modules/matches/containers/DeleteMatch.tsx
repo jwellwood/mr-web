@@ -8,7 +8,6 @@ import { DELETE_MATCH, GET_MATCHES_BY_SEASON } from '../graphql';
 import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { GET_PLAYERS_BY_SEASON_ID } from '../../players/graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import RouteGuard from '../../../router/RouteGuard.tsx';
@@ -16,6 +15,7 @@ import { AuthRoles } from '../../../constants.ts';
 import { CustomTypography, PageHeader } from '../../../components/typography';
 import { DeleteModal } from '../../../components/modals';
 import { Spinner } from '../../../components/loaders';
+import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
 
 const DeleteMatch: React.FC = () => {
   const { seasonId } = useSeasons();
@@ -30,7 +30,7 @@ const DeleteMatch: React.FC = () => {
         variables: { limit: 5, offset: 0, teamId, seasonId: seasonId },
       },
       {
-        query: GET_PLAYERS_BY_SEASON_ID,
+        query: FETCH_SQUAD_BY_SEASON,
         variables: { teamId, seasonId: seasonId },
       },
       {
