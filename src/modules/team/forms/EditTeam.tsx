@@ -1,31 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { ApolloError, useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 
-import { PAGES, TeamError, TeamSuccess } from '../constants';
-import UpdateTeamDetailsForm from '../forms/UpdateTeamDetailsForm.form';
-import { GET_TEAM, UPDATE_TEAM_DETAILS } from '../graphql';
+import { FETCH_TEAM, EDIT_TEAM } from '../graphql';
+import { PAGES, TeamError, TeamSuccess } from '../constants.ts';
+import EditTeamForm from './components/EditTeamForm.tsx';
 import { ITeamDetailsInput } from '../types';
-import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { useNationality } from '../../../hooks';
-import { AppDispatch } from '../../../store/store';
-import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import { AppDispatch } from '../../../store/store.ts';
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 
-const UpdateDetailsContainer: React.FC = () => {
+export default function EditTeam() {
   const { teamId } = useCustomParams();
   const navigate = useNavigate();
-  const { loading, error, data, refetch } = useQuery(GET_TEAM, {
+  const { loading, error, data, refetch } = useQuery(FETCH_TEAM, {
     variables: { teamId },
     notifyOnNetworkStatusChange: true,
   });
   const [updateTeamDetails, { loading: updateLoading, error: updateError }] =
-    useMutation(UPDATE_TEAM_DETAILS);
+    useMutation(EDIT_TEAM);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
   const [defaultValues, setDefaultValues] = useState<ITeamDetailsInput | null>(null);
@@ -57,21 +57,26 @@ const UpdateDetailsContainer: React.FC = () => {
     }
   };
 
-  if (error || updateError) return <ErrorGraphql error={(error || updateError) as ApolloError} />;
+  const renderContent = () => {
+    return !loading && !updateLoading && defaultValues ? (
+      <EditTeamForm
+        defaultValues={defaultValues}
+        onSubmit={onSubmit}
+        countryOptions={nationalityOptions}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
+
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_TEAM} />
-      {!loading && !updateLoading && defaultValues ? (
-        <UpdateTeamDetailsForm
-          defaultValues={defaultValues}
-          onSubmit={onSubmit}
-          countryOptions={nationalityOptions}
-        />
+      {error || updateError ? (
+        <ErrorGraphql error={error || (updateError as Error)} />
       ) : (
-        <Spinner />
+        renderContent()
       )}
     </RouteGuard>
   );
-};
-
-export default UpdateDetailsContainer;
+}

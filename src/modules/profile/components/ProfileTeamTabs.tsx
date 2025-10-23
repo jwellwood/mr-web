@@ -1,9 +1,10 @@
 import { IMAGE_TYPE, TAB_TYPES } from '../../../app/constants';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTabs, ITab } from '../../../components/tabs';
-import { IListItem, ITeamResponse } from '../../../types';
+import { IListItem } from '../../../types';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { SectionContainer } from '../../../components/containers';
+import { ITeamResponse } from '../../team/types';
 
 type Props = {
   teams: ITeamResponse[];

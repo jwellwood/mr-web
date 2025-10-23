@@ -1,5 +1,28 @@
-import { IOrganization } from '../modules/organization/types.ts';
-import type { IImage } from './image.ts';
+import { IImage } from '../../types/image.ts';
+import { IOrganization } from '../organization/types.ts';
+
+export interface ITeamDetailsInput {
+  teamName: string;
+  yearFounded: number | string;
+  location: string;
+  country: string;
+  stadiumName?: string;
+  stadiumLocation?: string;
+  stadiumCapacity?: string;
+  stadiumSurface?: string;
+  homeShirt: string;
+  homeShorts: string;
+  homeSocks: string;
+  awayShirt: string;
+  awayShorts: string;
+  awaySocks: string;
+  kitsBackground: string;
+  isActive: boolean;
+}
+
+export interface IDeleteTeamForm {
+  teamName: string;
+}
 
 export interface ITeamRoles {
   name: string;

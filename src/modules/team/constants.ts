@@ -1,38 +1,36 @@
-import { ITeamDetailsInput } from './types';
 import { ISelectOptions } from '../../components/inputs/SelectInput.tsx';
+import { LINK_TYPE } from '../../app/constants.ts';
 
-export const initialTeamDetailsState: ITeamDetailsInput = {
-  teamName: '',
-  yearFounded: '',
-  location: '',
-  country: '',
-  stadiumName: '',
-  stadiumLocation: '',
-  stadiumCapacity: '',
-  stadiumSurface: '',
-  homeShirt: '#ffffff',
-  homeShorts: '#ffffff',
-  homeSocks: '#ffffff',
-  awayShirt: '#000000',
-  awayShorts: '#000000',
-  awaySocks: '#000000',
-  kitsBackground: '#808080',
-  isActive: true,
-};
-
-export const initialRoleState = {
-  name: '',
-  role: '',
-  contact: '',
-} as const;
+export const TEAM_ADMIN_LINKS = [
+  {
+    label: 'Add Match',
+    type: LINK_TYPE.ADD,
+    link: 'add_match',
+  },
+  { label: 'Add New Season', type: LINK_TYPE.ADD, link: `add_season` },
+  {
+    label: 'Add Player',
+    type: LINK_TYPE.ADD,
+    link: `add_player`,
+  },
+  {
+    label: 'Add Trophy',
+    type: LINK_TYPE.ADD,
+    link: `add_trophy`,
+  },
+  { label: 'Edit Team', type: LINK_TYPE.EDIT, link: `edit` },
+  {
+    label: 'Edit Badge',
+    type: LINK_TYPE.EDIT,
+    link: `edit_badge`,
+  },
+];
 
 export const PAGES = {
   TEAM: 'Team',
   ADD_TEAM: 'Add Team',
   EDIT_TEAM: 'Edit Team',
   EDIT_BADGE: 'Edit Team Badge',
-  EDIT_ROLES: 'Add Team Role',
-  TROPHIES_ADMIN_PAGE: 'Trophies Admin',
   DELETE_TEAM: 'Delete Team',
 } as const;
 

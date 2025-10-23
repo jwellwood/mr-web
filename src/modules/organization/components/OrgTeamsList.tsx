@@ -1,7 +1,8 @@
 import { TAB_TYPES } from '../../../app/constants';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTabs, ITab } from '../../../components/tabs';
-import { IListItem, ITeam } from '../../../types';
+import { IListItem } from '../../../types';
+import { ITeam } from '../../team/types';
 
 type Props = {
   teams: ITeam[];

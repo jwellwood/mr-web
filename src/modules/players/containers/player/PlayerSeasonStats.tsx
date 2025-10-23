@@ -6,7 +6,7 @@ import { useCustomParams } from '../../../../hooks/useCustomParams';
 import { useSeasons } from '../../../../hooks/useSeasons';
 import Averages from '../../../matches/components/Averages';
 import MatchStatsTable from '../../../matches/components/MatchStatsTable';
-import SelectSeason from '../../../team/containers/SelectSeason';
+import SelectSeason from '../SelectSeason';
 import { IMatchStats, IPlayerStats } from '../../../../types';
 import GamesWithStat from '../../components/GamesWithStat';
 import PlayerStatsTable from '../../components/PlayerStatsTable';

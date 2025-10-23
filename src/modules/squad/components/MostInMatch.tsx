@@ -1,7 +1,7 @@
-import { IListItem, IMostGoalsInMatch } from '../../../types/index.ts';
-import { CustomTypography } from '../../../components/typography/index.ts';
-import { parseDate } from '../../../utils/helpers/index.ts';
-import { SectionContainer } from '../../../components/containers/index.ts';
+import { IListItem, IMostGoalsInMatch } from '../../../types';
+import { CustomTypography } from '../../../components/typography';
+import { parseDate } from '../../../utils/helpers';
+import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList.tsx';
 
 interface Props {

@@ -1,9 +1,10 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeam } from '../../../types';
-export const UPDATE_TEAM_DETAILS: TypedDocumentNode<{
+import { ITeam } from '../types';
+
+export const EDIT_TEAM: TypedDocumentNode<{
   team: ITeam;
 }> = gql`
-  mutation UpdateTeamDetails(
+  mutation EDIT_TEAM(
     $teamId: String!
     $teamName: String!
     $yearFounded: String

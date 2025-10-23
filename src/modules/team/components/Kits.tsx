@@ -1,15 +1,14 @@
-import React from 'react';
 import { makeStyles } from '@mui/styles';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
-import { ITeamResponse } from '../../../types';
+
+import { ITeamResponse } from '../types';
 import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton.tsx';
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(() => ({
   container: {
     borderRadius: '4px',
     marginTop: '8px',
@@ -32,7 +31,7 @@ interface Props {
   loading: boolean;
 }
 
-const Kits: React.FC<Props> = ({ team, loading }) => {
+export default function Kits({ team, loading }: Props) {
   const classes = useStyles();
 
   const { homeShirt, homeShorts, homeSocks, awayShirt, awayShorts, awaySocks, kitsBackground } =
@@ -77,6 +76,4 @@ const Kits: React.FC<Props> = ({ team, loading }) => {
       </CenteredGrid>
     </SectionContainer>
   );
-};
-
-export default Kits;
+}

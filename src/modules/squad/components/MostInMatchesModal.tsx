@@ -1,10 +1,10 @@
-import { IListItem } from '../../../types/index.ts';
-import { CustomTypography } from '../../../components/typography/index.ts';
-import { parseDate } from '../../../utils/helpers/index.ts';
-import { PresentationModal } from '../../../components/modals/index.ts';
-import { CustomButton } from '../../../components/buttons/index.ts';
+import { IListItem } from '../../../types';
+import { CustomTypography } from '../../../components/typography';
+import { parseDate } from '../../../utils/helpers';
+import { PresentationModal } from '../../../components/modals';
+import { CustomButton } from '../../../components/buttons';
 import LinksList from '../../../components/lists/LinksList.tsx';
-import { Spinner } from '../../../components/loaders/index.ts';
+import { Spinner } from '../../../components/loaders';
 
 interface Props {
   data: {

@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+
 import { AUTH, PROFILE } from './paths';
 import { useAuth } from '../hooks';
 import { AUTH_ROLES, TAuthRoles } from '../app/constants.ts';
@@ -12,7 +13,7 @@ interface Props {
   authorization: TAuthRoles;
 }
 
-const RouteGuard: React.FC<Props> = ({ children, authorization }) => {
+export default function RouteGuard({ children, authorization }: Props) {
   const dispatch = useDispatch();
   const { teamId, orgId } = useCustomParams();
   const { isTeamAdmin, isSiteAdmin, isTeamAuth, isOrgAuth, isAuth } = useAuth(teamId, orgId);
@@ -38,6 +39,4 @@ const RouteGuard: React.FC<Props> = ({ children, authorization }) => {
   }
   if (isAuth && authorization === 'none') return <Navigate to={PROFILE.PROFILE} replace />;
   return <>{children}</>;
-};
-
-export default RouteGuard;
+}

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
+
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { useSeasons } from '../../../hooks/useSeasons';
 import SelectSeasonModal from '../components/SelectSeasonModal';
 import { IListItem } from '../../../types';
-import { FETCH_PLAYER } from '../../players/graphql';
+import { FETCH_PLAYER } from '../graphql';
 
 interface Props {
   playerId?: string;

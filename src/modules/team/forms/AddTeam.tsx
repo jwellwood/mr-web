@@ -1,27 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { PAGES, initialTeamDetailsState, TeamError, TeamSuccess } from '../constants';
-import AddTeamForm from '../forms/AddTeamForm';
+
 import { ADD_TEAM } from '../graphql';
+import { FETCH_ORG_TEAMS } from '../../organization/graphql';
+import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
+import { PAGES, TeamError, TeamSuccess } from '../constants';
+import AddTeamForm from './components/AddTeamForm';
 import { ITeamDetailsInput } from '../types';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { useNationality } from '../../../hooks';
-import { FETCH_ORG_TEAMS } from '../../organization/graphql';
-import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import PageHeader from '../../../components/typography/PageHeader.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import { initialTeamDetailsState } from './state.ts';
 
-function ErrorGraphql() {
-  return null;
-}
-
-const AddTeamContainer: React.FC = () => {
+export default function AddTeam() {
   const { orgId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
@@ -61,22 +60,22 @@ const AddTeamContainer: React.FC = () => {
     }
   };
 
-  if (error) return <ErrorGraphql />;
+  const renderContent = () => {
+    return !loading && defaultValues ? (
+      <AddTeamForm
+        defaultValues={defaultValues}
+        onSubmit={onSubmit}
+        countryOptions={nationalityOptions}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AUTH_ROLES.USER}>
       <PageHeader title={PAGES.ADD_TEAM} />
-      {!loading && defaultValues ? (
-        <AddTeamForm
-          defaultValues={defaultValues}
-          onSubmit={onSubmit}
-          countryOptions={nationalityOptions}
-        />
-      ) : (
-        <Spinner />
-      )}
+      {error ? <ErrorGraphql error={error} /> : renderContent()}
     </RouteGuard>
   );
-};
-
-export default AddTeamContainer;
+}

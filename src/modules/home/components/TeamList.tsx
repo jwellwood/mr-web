@@ -3,7 +3,8 @@ import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
-import { IListItem, ITeamResponse } from '../../../types';
+import { IListItem } from '../../../types';
+import { ITeamResponse } from '../../team/types';
 
 type Props = {
   teams: ITeamResponse[];

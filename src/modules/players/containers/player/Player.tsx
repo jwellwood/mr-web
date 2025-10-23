@@ -1,17 +1,17 @@
 import { useQuery } from '@apollo/client';
 
-import { FETCH_PLAYER } from '../../graphql/index.ts';
+import { FETCH_PLAYER } from '../../graphql';
 import { PAGES, PLAYER_ADMIN_LINKS } from '../../constants.ts';
 import PlayerTabs from './PlayerTabs.tsx';
 import { useCustomParams } from '../../../../hooks/useCustomParams.tsx';
-import { useAuth, useDateOfBirth } from '../../../../hooks/index.ts';
+import { useAuth, useDateOfBirth } from '../../../../hooks';
 import { AuthRoles, ImageTypes } from '../../../../constants.ts';
 import PositionString from '../../../../components/tables/PositionString.tsx';
 import ErrorGraphql from '../../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../../router/RouteGuard.tsx';
 import CustomAppBar from '../../../../components/navigation/CustomAppBar.tsx';
 import EditLinksModal from '../../../../components/modals/EditLinksModal.tsx';
-import { SectionContainer } from '../../../../components/containers/index.ts';
+import { SectionContainer } from '../../../../components/containers';
 import ModuleHeader from '../../../../components/common/ModuleHeader.tsx';
 
 export default function Player() {

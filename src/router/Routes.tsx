@@ -2,14 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { AUTH, AWARD, MATCH, ORG, PROFILE, TEAM } from './paths';
 import { HOME } from './paths';
 import { NotFound } from '../components/navigation';
-import {
-  AddTeam,
-  DeleteTeam,
-  EditBadge,
-  EditRoles,
-  EditTeam,
-  Team,
-} from '../modules/team/routes.ts';
+import { AddTeam, DeleteTeam, EditBadge, EditTeam, Team } from '../modules/team/routes.ts';
 import {
   AddAward,
   AddTeamSeason,
@@ -97,7 +90,6 @@ function AppRoutes() {
           <Route path={MATCH.ADD_MATCH} element={<AddMatch />} />
           <Route path={TEAM.EDIT_BADGE} element={<EditBadge />} />
           <Route path={TEAM.EDIT} element={<EditTeam />} />
-          <Route path={TEAM.EDIT_ROLES} element={<EditRoles />} />
           <Route path={TEAM.DELETE_TEAM} element={<DeleteTeam />} />
           {PLAYER_ROUTES()}
           {MATCH_ROUTES()}

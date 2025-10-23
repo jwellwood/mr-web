@@ -1,7 +1,7 @@
 import { ICompetition } from '../modules/organization/types';
+import { ITeam } from '../modules/team/types';
 import type { IPlayer } from './player';
 import type { IPlayerInMatch } from './playerInMatch';
-import type { ITeam } from './team';
 
 export interface IMatch {
   _id: string;

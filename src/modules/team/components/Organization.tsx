@@ -1,17 +1,17 @@
-import React from 'react';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { IListItem, ITeamResponse } from '../../../types';
+import { IListItem } from '../../../types';
+import { ITeamResponse } from '../types';
 
-type Props = {
+interface Props {
   team?: ITeamResponse;
   loading: boolean;
-};
+}
 
-const Organization: React.FC<Props> = ({ team, loading }) => {
+export default function Organization({ team, loading }: Props) {
   const { orgId } = team || {};
   const links: IListItem[] = [
     {
@@ -36,6 +36,4 @@ const Organization: React.FC<Props> = ({ team, loading }) => {
       <LinksList links={links} />
     </SectionContainer>
   );
-};
-
-export default Organization;
+}

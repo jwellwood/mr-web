@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { IPlayerInMatch, ITeam, ITempMatch } from '../../../types';
+import { IPlayerInMatch, ITempMatch } from '../../../types';
 import AddMatchDetails from '../components/AddMatchDetails';
 import AddMatchPlayers from '../components/AddMatchPlayers';
 import AddMatchStats from '../components/AddMatchStats';
@@ -11,6 +11,7 @@ import SubmitMatch from '../components/SubmitMatch';
 import MatchOverview from './MatchOverview';
 import { theme } from '../../../theme';
 import { ICompetition } from '../../organization/types';
+import { ITeam } from '../../team/types';
 
 interface Props {
   defaultValues: ITempMatch;

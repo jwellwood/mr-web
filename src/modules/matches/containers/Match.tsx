@@ -14,8 +14,8 @@ import { PAGES } from '../constants';
 import { GET_MATCH_BY_ID } from '../graphql';
 import HeadToHead from './HeadToHead';
 import { useAuth } from '../../../hooks';
-import { ITeam } from '../../../types';
 import RouteGuard from '../../../router/RouteGuard.tsx';
+import { ITeam } from '../../team/types.ts';
 
 const Match: React.FC = () => {
   const { teamId, matchId } = useCustomParams();

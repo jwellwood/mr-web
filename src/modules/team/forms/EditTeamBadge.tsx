@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-import { ApolloError, useMutation, useQuery } from '@apollo/client';
+import { useEffect } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 
+import { FETCH_TEAM, EDIT_TEAM_BADGE } from '../graphql';
 import { PAGES } from '../constants';
-import { GET_TEAM, EDIT_TEAM_BADGE } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { useUpload } from '../../../modules/images/hooks';
-import { removeTeamBadge, uploadTeamBadge } from '../../../modules/images/services';
+import { useUpload } from '../../images/hooks';
+import { removeTeamBadge, uploadTeamBadge } from '../../images/services';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../app/constants';
@@ -13,14 +13,14 @@ import { PageHeader } from '../../../components/typography';
 import ImageForm from '../../../components/common/ImageForm';
 import { Spinner } from '../../../components/loaders';
 
-const UpdateTeamBadge: React.FC = () => {
+export default function EditTeamBadge() {
   const { teamId } = useCustomParams();
   const {
     data,
     error,
     loading: loadingTeam,
     refetch,
-  } = useQuery(GET_TEAM, {
+  } = useQuery(FETCH_TEAM, {
     variables: { teamId },
     notifyOnNetworkStatusChange: true,
   });
@@ -44,26 +44,28 @@ const UpdateTeamBadge: React.FC = () => {
 
   const loadingState = loading || loadingTeam || editLoading;
 
-  if (error || editError) {
-    return <ErrorGraphql error={(error || editError) as ApolloError} />;
-  }
+  const renderContent = () => {
+    return !loadingState && imageUrl ? (
+      <ImageForm
+        imageUrl={imageUrl}
+        setImageUrl={setImageUrl}
+        onSubmit={onSubmit}
+        currentUrl={data?.team.teamBadge?.url as string}
+        removeImage={removeImage}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_BADGE} />
-      {!loadingState && imageUrl ? (
-        <ImageForm
-          imageUrl={imageUrl}
-          setImageUrl={setImageUrl}
-          onSubmit={onSubmit}
-          currentUrl={data?.team.teamBadge?.url as string}
-          removeImage={removeImage}
-        />
+      {error || editError ? (
+        <ErrorGraphql error={(error || editError) as Error} />
       ) : (
-        <Spinner />
+        renderContent()
       )}
     </RouteGuard>
   );
-};
-
-export default UpdateTeamBadge;
+}

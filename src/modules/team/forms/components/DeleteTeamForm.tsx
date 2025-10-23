@@ -1,17 +1,16 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import { IDeleteTeamForm } from '../types';
-import { FormContainer } from '../../../components/containers';
-import { CenteredGrid } from '../../../components/grids';
-import ControlledTextInput from '../../../components/inputs/ControlledTextInput.tsx';
+import { IDeleteTeamForm } from '../../types';
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid } from '../../../../components/grids';
+import ControlledTextInput from '../../../../components/inputs/ControlledTextInput.tsx';
 
 interface Props {
   onSubmit: (data: IDeleteTeamForm) => void;
   defaultValues?: IDeleteTeamForm;
   teamName: string;
 }
-const DeleteTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, teamName }) => {
+export default function DeleteTeamForm({ onSubmit, defaultValues, teamName }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -36,6 +35,4 @@ const DeleteTeamForm: React.FC<Props> = ({ onSubmit, defaultValues, teamName }) 
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default DeleteTeamForm;
+}

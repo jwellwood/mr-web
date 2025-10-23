@@ -3,7 +3,7 @@ import { MATCH, TEAM } from '../paths';
 import { AWARD_ROUTES } from './AWARD_ROUTES.tsx';
 import { PLAYER_ROUTES } from './PLAYER_ROUTES.tsx';
 import { MATCH_ROUTES } from './MATCH_ROUTES.tsx';
-import { DeleteTeam, EditBadge, EditRoles, EditTeam, Team } from '../../modules/team/routes.ts';
+import { DeleteTeam, EditBadge, EditTeam, Team } from '../../modules/team/routes.ts';
 import { AddPlayer } from '../../modules/players/routes.ts';
 import {
   AddTeamSeason,
@@ -33,7 +33,6 @@ export const TEAM_ROUTES = () => (
     <Route path={MATCH.ADD_MATCH} element={<AddMatch />} />
     <Route path={TEAM.EDIT_BADGE} element={<EditBadge />} />
     <Route path={TEAM.EDIT} element={<EditTeam />} />
-    <Route path={TEAM.EDIT_ROLES} element={<EditRoles />} />
     <Route path={TEAM.DELETE_TEAM} element={<DeleteTeam />} />
   </>
 );

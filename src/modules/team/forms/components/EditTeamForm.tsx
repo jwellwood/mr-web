@@ -1,17 +1,16 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
 
-import { surfaceOptions } from '../constants';
-import { ITeamDetailsInput } from '../types';
-import { IListItem } from '../../../types';
-import { FormContainer } from '../../../components/containers';
-import { CenteredGrid, GridItem } from '../../../components/grids';
-import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
-import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import ControlledColorInput from '../../../components/inputs/ControlledColorInput.tsx';
-import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
-import SwitchButtonList from '../../../components/common/SwitchButtonList.tsx';
+import { surfaceOptions } from '../../constants.ts';
+import { ITeamDetailsInput } from '../../types';
+import { IListItem } from '../../../../types';
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
+import ControlledTextInput from '../../../../components/inputs/ControlledTextInput.tsx';
+import ControlledDateInput from '../../../../components/inputs/ControlledDateInput.tsx';
+import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput.tsx';
+import ControlledColorInput from '../../../../components/inputs/ControlledColorInput.tsx';
+import { ISelectOptions } from '../../../../components/inputs/SelectInput.tsx';
+import SwitchButtonList from '../../../../components/common/SwitchButtonList.tsx';
 
 interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
@@ -19,7 +18,7 @@ interface Props {
   countryOptions: ISelectOptions[];
 }
 
-const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, countryOptions }) => {
+export default function EditTeamForm({ onSubmit, defaultValues, countryOptions }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -172,6 +171,4 @@ const UpdateTeamDetailsForm: React.FC<Props> = ({ onSubmit, defaultValues, count
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default UpdateTeamDetailsForm;
+}

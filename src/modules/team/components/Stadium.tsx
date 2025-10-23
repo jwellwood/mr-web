@@ -1,16 +1,16 @@
-import React from 'react';
 import { DataContainer, SectionContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import AppIcon from '../../../components/icons/AppIcon';
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
-import { ITeamResponse } from '../../../types';
-type Props = {
+import { ITeamResponse } from '../types';
+
+interface Props {
   team?: ITeamResponse;
   loading: boolean;
-};
+}
 
-const Stadium: React.FC<Props> = ({ team, loading }) => {
+export default function Stadium({ team, loading }: Props) {
   const data = [
     {
       label: 'Location',
@@ -56,6 +56,4 @@ const Stadium: React.FC<Props> = ({ team, loading }) => {
       <DataContainer data={data} loading={loading} />
     </SectionContainer>
   );
-};
-
-export default Stadium;
+}
