@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
-import MatchFormStepper from '../components/MatchFormStepper';
-import { PAGES } from '../constants';
-import { EDIT_MATCH, GET_MATCHES_BY_SEASON, GET_MATCH_BY_ID } from '../graphql';
-import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
-import { mapMatch } from '../helpers';
+
+import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
+import MatchFormStepper from './components/MatchFormStepper.tsx';
+import { PAGES } from '../constants.ts';
+import { mapMatch } from '../helpers/index.ts';
 import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch.ts';
-import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
-import { IPlayerInMatch, ITempMatch } from '../../../types';
+import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput.ts';
+import { IPlayerInMatch } from '../../../types/index.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
@@ -17,13 +17,14 @@ import { getTempPlayers } from '../../../store/features/players/playersSelector.
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography';
-import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components/typography/index.ts';
+import { Spinner } from '../../../components/loaders/index.ts';
 import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
+import { ITempMatch } from '../types.ts';
 
-const EditMatch: React.FC = () => {
+export default function EditMatch() {
   const { teamId, matchId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
@@ -31,7 +32,7 @@ const EditMatch: React.FC = () => {
   const [defaultValues, setDefaultValues] = useState<ITempMatch | null>(null);
   const [currentPlayers, setCurrentPlayers] = useState<IPlayerInMatch[]>([]);
 
-  const { data, loading, error } = useQuery(GET_MATCH_BY_ID, {
+  const { data, loading, error } = useQuery(FETCH_MATCH, {
     variables: { matchId },
   });
 
@@ -43,7 +44,7 @@ const EditMatch: React.FC = () => {
   const [editMatch, { error: editError, loading: editLoading }] = useMutation(EDIT_MATCH, {
     refetchQueries: [
       {
-        query: GET_MATCHES_BY_SEASON,
+        query: FETCH_MATCHES,
         variables: {
           limit: 5,
           offset: 0,
@@ -56,7 +57,7 @@ const EditMatch: React.FC = () => {
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
       {
-        query: GET_MATCH_STATS,
+        query: FETCH_MATCHES_STATS,
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
     ],
@@ -94,35 +95,33 @@ const EditMatch: React.FC = () => {
       });
   };
 
-  if (error || editError) {
-    return <ErrorGraphql error={(error || editError) as Error} />;
-  }
+  const renderContent = () => {
+    const isLoading = loading && editLoading;
+    const hasValues = defaultValues?._id && currentPlayers;
+    const hasOptions = competitions.length && seasonOptions.length && opponents.length;
+    return !isLoading && hasValues && hasOptions ? (
+      <MatchFormStepper
+        defaultValues={defaultValues}
+        currentPlayers={currentPlayers}
+        teamId={teamId as string}
+        seasonOptions={seasonOptions}
+        opponents={opponents}
+        competitions={competitions}
+        onSubmit={onSubmit}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_MATCH} backButton />
-
-      {!loading &&
-      !editLoading &&
-      defaultValues?._id &&
-      currentPlayers &&
-      competitions.length &&
-      seasonOptions.length &&
-      opponents.length ? (
-        <MatchFormStepper
-          defaultValues={defaultValues}
-          currentPlayers={currentPlayers}
-          teamId={teamId as string}
-          seasonOptions={seasonOptions}
-          opponents={opponents}
-          competitions={competitions}
-          onSubmit={onSubmit}
-        />
+      {error || editError ? (
+        <ErrorGraphql error={(error || editError) as Error} />
       ) : (
-        <Spinner />
+        renderContent()
       )}
     </RouteGuard>
   );
-};
-
-export default EditMatch;
+}

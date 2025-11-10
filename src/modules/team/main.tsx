@@ -1,5 +1,5 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
+
 import { AUTH_ROLES, TAB_TYPES } from '../../app/constants';
 import NavIcon from '../../components/icons/NavIcon';
 import EditLinksModal from '../../components/modals/EditLinksModal';
@@ -8,8 +8,6 @@ import { CustomTabs, ITab } from '../../components/tabs';
 import { useAuth } from '../../hooks';
 import { useCustomParams } from '../../hooks/useCustomParams';
 import History from '../../modules/history/containers/History';
-import MatchesTabs from '../../modules/matches/containers/MatchesTabs';
-
 import RouteGuard from '../../router/RouteGuard';
 import { PAGES, TEAM_ADMIN_LINKS } from './constants';
 import TeamOverview from './containers/TeamOverview';
@@ -17,8 +15,9 @@ import { IIconType } from '../../components/icons/types';
 import { getTabIndex } from '../../store/features/tabs/tabsSelector';
 import { NAV_ICONS } from '../../app/icons';
 import SquadTabs from '../squad/main';
+import MatchesTabs from '../matches/main';
 
-const Team: React.FC = () => {
+export default function Team() {
   const { teamId } = useCustomParams();
 
   const { isTeamAuth } = useAuth(teamId);
@@ -60,6 +59,4 @@ const Team: React.FC = () => {
       </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default Team;
+}

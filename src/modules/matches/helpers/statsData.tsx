@@ -4,8 +4,9 @@ import StatIcon from '../../../components/icons/StatIcon';
 import TextList from '../../../components/lists/TextList';
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
-import { IMatchResponse } from '../../../types';
-import AddStats from '../containers/AddStats';
+
+import AddStats from '../forms/AddStats';
+import { IMatchResponse } from '../types';
 
 export const statsData = (currentPlayers: IMatchResponse['matchPlayers'], isForm: boolean) => {
   const players = currentPlayers?.filter(cp => cp !== undefined) || [];

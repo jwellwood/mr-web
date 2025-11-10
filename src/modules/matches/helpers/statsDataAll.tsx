@@ -3,7 +3,7 @@ import StatIcon from '../../../components/icons/StatIcon';
 import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
 import { IPlayerInMatch } from '../../../types';
-import AddStats from '../containers/AddStats';
+import AddStats from '../forms/AddStats';
 import { ReactElement, ReactNode } from 'react';
 
 export const statsDataAll = (

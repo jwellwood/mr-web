@@ -1,4 +1,5 @@
-import { IMatch, IPlayerInMatch, ITempMatch } from '../../../types';
+import { IPlayerInMatch } from '../../../types';
+import { IMatch, ITempMatch } from '../types';
 
 export const mapMatch = (
   teamId: string,

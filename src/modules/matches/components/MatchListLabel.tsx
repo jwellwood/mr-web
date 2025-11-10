@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { IMatchList } from '../../../types/matchList.ts';
@@ -9,7 +8,7 @@ type Props = {
   loading: boolean;
 };
 
-const MatchListLabel: React.FC<Props> = ({ match, loading }) => {
+export default function MatchListLabel({ match, loading }: Props) {
   const { date, isHome, opponentName, competition, isForfeit } = match || {};
 
   const homeOrAway = (
@@ -45,6 +44,4 @@ const MatchListLabel: React.FC<Props> = ({ match, loading }) => {
       </>
     </>
   );
-};
-
-export default MatchListLabel;
+}

@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomPieChart from '../../../components/charts/CustomPieChart';
 import { DataContainer, SectionContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
@@ -12,7 +11,7 @@ type Props = {
   loading: boolean;
 };
 
-const Averages: React.FC<Props> = ({ stats, loading }) => {
+export default function Averages({ stats, loading }: Props) {
   if (!stats)
     return (
       <SectionContainer>
@@ -77,6 +76,4 @@ const Averages: React.FC<Props> = ({ stats, loading }) => {
       </CenteredGrid>
     </SectionContainer>
   );
-};
-
-export default Averages;
+}

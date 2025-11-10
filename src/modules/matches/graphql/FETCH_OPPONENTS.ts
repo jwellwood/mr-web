@@ -1,9 +1,10 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 import { IOpponentTable } from '../../../types';
-export const GET_OPPONENT_TABLE: TypedDocumentNode<{
+
+export const FETCH_OPPONENTS: TypedDocumentNode<{
   stats: IOpponentTable;
 }> = gql`
-  query GetOpponentTableStats($teamId: String!) {
+  query FETCH_OPPONENTS($teamId: String!) {
     stats: opponentTable(teamId: $teamId) {
       _id
       isActive

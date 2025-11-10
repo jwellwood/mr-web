@@ -1,5 +1,6 @@
-import { IMatch, IPlayerInMatch } from '../../../types';
+import { IPlayerInMatch } from '../../../types';
 import { KeysOfType } from '../../../utils/types.ts';
+import { IMatch } from '../types.ts';
 
 export const useValidation = (match: IMatch, players: IPlayerInMatch[]) => {
   const { teamGoals, opponentGoals } = match;

@@ -1,36 +1,32 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_MATCHES_ALL_TIME_STATS } from '../graphql';
 import { SectionContainer } from '../../../components/containers';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { GET_ALL_TIME_MATCH_STATS } from '../graphql/getAllTimeMatchStats.graphql';
 import MatchStatsTable from '../components/MatchStatsTable.tsx';
 import Averages from '../components/Averages.tsx';
 
-const AllTimeMatchStats: React.FC = () => {
+export default function AllTimeMatchStats() {
   const { teamId } = useCustomParams();
 
-  const { data, loading, error } = useQuery(GET_ALL_TIME_MATCH_STATS, {
+  const { data, loading, error } = useQuery(FETCH_MATCHES_ALL_TIME_STATS, {
     variables: { teamId },
   });
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
+  const renderContent = () => {
+    return data?.stats && !data?.stats?.total ? (
+      <CustomTypography color="warning">No matches yet</CustomTypography>
+    ) : (
+      <>
+        <MatchStatsTable stats={data?.stats} />
+        <Averages stats={data?.stats} loading={loading} />
+      </>
+    );
+  };
 
   return (
-    <SectionContainer>
-      {data?.stats && !data?.stats?.total ? (
-        <CustomTypography color="warning">No matches yet</CustomTypography>
-      ) : (
-        <>
-          <MatchStatsTable stats={data?.stats} />
-          <Averages stats={data?.stats} loading={loading} />
-        </>
-      )}
-    </SectionContainer>
+    <SectionContainer>{error ? <ErrorGraphql error={error} /> : renderContent()}</SectionContainer>
   );
-};
-
-export default AllTimeMatchStats;
+}

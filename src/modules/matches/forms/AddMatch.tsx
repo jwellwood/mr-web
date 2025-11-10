@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import MatchFormStepper from '../components/MatchFormStepper';
+
+import { ADD_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
+import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/';
 import { PAGES } from '../constants';
-import { ADD_MATCH, GET_MATCHES_BY_SEASON } from '../graphql';
-import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
 import { mapMatch } from '../helpers';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
-import { IPlayerInMatch, ITempMatch } from '../../../types';
+import { IPlayerInMatch } from '../../../types';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector';
 import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
@@ -20,9 +20,10 @@ import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import { resetTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers } from '../../../store/features/players/playersSlice.ts';
-import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
+import MatchFormStepper from './components/MatchFormStepper.tsx';
+import { ITempMatch } from '../types.ts';
 
-const AddMatch: React.FC = () => {
+export default function AddMatch() {
   const { teamId } = useCustomParams();
   const navigate = useNavigate();
   const currentTempMatch = useSelector(getTempMatch);
@@ -36,7 +37,7 @@ const AddMatch: React.FC = () => {
   const [addMatch, { error, loading: addLoading }] = useMutation(ADD_MATCH, {
     refetchQueries: [
       {
-        query: GET_MATCHES_BY_SEASON,
+        query: FETCH_MATCHES,
         variables: {
           limit: 5,
           offset: 0,
@@ -49,7 +50,7 @@ const AddMatch: React.FC = () => {
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
       {
-        query: GET_MATCH_STATS,
+        query: FETCH_MATCHES_STATS,
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
     ],
@@ -82,28 +83,26 @@ const AddMatch: React.FC = () => {
       });
   };
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
+  const renderContent = () => {
+    return !addLoading && defaultValues ? (
+      <MatchFormStepper
+        defaultValues={defaultValues}
+        currentPlayers={currentPlayers}
+        teamId={teamId as string}
+        seasonOptions={seasonOptions}
+        opponents={opponents}
+        competitions={competitions}
+        onSubmit={onSubmit}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_MATCH} />
-      {!addLoading && defaultValues ? (
-        <MatchFormStepper
-          defaultValues={defaultValues}
-          currentPlayers={currentPlayers}
-          teamId={teamId as string}
-          seasonOptions={seasonOptions}
-          opponents={opponents}
-          competitions={competitions}
-          onSubmit={onSubmit}
-        />
-      ) : (
-        <Spinner />
-      )}
+      {error ? <ErrorGraphql error={error} /> : renderContent()}
     </RouteGuard>
   );
-};
-
-export default AddMatch;
+}

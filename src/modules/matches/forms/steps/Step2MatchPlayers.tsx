@@ -1,24 +1,25 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { Spinner } from '../../../components/loaders';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
-import { useCustomParams } from '../../../hooks/useCustomParams';
-import { initPlayerInMatch } from '../constants';
-import AddMatchPlayersForm from '../forms/AddMatchPlayersForm';
-import { useMatchPlayersInput } from '../hooks/useMatchPlayersInput';
-import { AppDispatch } from '../../../store/store.ts';
-import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
-import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
-import { IPlayerInMatch } from '../../../types';
-import { setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 
-type Props = {
+import { ISelectOptions } from '../../../../components/inputs/SelectInput.tsx';
+import { Spinner } from '../../../../components/loaders';
+import ErrorGraphql from '../../../../errors/ErrorGraphql.tsx';
+import { useCustomParams } from '../../../../hooks/useCustomParams.tsx';
+import AddMatchPlayersForm from '../components/AddMatchPlayersForm.tsx';
+import { useMatchPlayersInput } from '../../hooks/useMatchPlayersInput.ts';
+import { AppDispatch } from '../../../../store/store.ts';
+import { getTempMatch } from '../../../../store/features/matches/matchesSelector.ts';
+import { getTempPlayers } from '../../../../store/features/players/playersSelector.ts';
+import { IPlayerInMatch } from '../../../../types';
+import { setTmpPlayers } from '../../../../store/features/players/playersSlice.ts';
+import { initPlayerInMatch } from '../state.ts';
+
+interface Props {
   onNextClick: () => void;
   teamId: string;
-};
+}
 
-const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
+export default function Step2MatchPlayers({ onNextClick, teamId }: Props) {
   const { matchId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
   const currentPlayers = useSelector(getTempPlayers);
@@ -88,6 +89,4 @@ const AddMatchPlayers: React.FC<Props> = ({ onNextClick, teamId }) => {
   ) : (
     <Spinner />
   );
-};
-
-export default AddMatchPlayers;
+}

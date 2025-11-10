@@ -2,13 +2,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
-import { DELETE_TEAM, FETCH_TEAM } from '../graphql/index.ts';
+import { DELETE_TEAM, FETCH_TEAM } from '../graphql';
 import { AUTH_ROLES } from '../../../app/constants.ts';
-import { Spinner } from '../../../components/loaders/index.ts';
-import { PageHeader } from '../../../components/typography/index.ts';
+import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
-import { FETCH_TEAMS_BY_USER } from '../../profile/graphql/index.ts';
+import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
 import { PROFILE } from '../../../router/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { PAGES } from '../constants.ts';

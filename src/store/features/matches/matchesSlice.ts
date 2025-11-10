@@ -1,6 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-
-import type { ITempMatch } from '../../../types';
+import { ITempMatch } from '../../../modules/matches/types';
 
 export const initialMatchState: ITempMatch = {
   _id: '',

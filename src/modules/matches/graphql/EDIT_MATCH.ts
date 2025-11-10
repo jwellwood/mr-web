@@ -1,9 +1,11 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMatch } from '../../../types';
-export const ADD_MATCH: TypedDocumentNode<{
+import { IMatch } from '../types';
+
+export const EDIT_MATCH: TypedDocumentNode<{
   match: IMatch;
 }> = gql`
-  mutation AddMatch(
+  mutation EDIT_MATCH(
+    $matchId: String!
     $teamId: ID!
     $seasonId: ID!
     $opponentId: ID!
@@ -17,7 +19,8 @@ export const ADD_MATCH: TypedDocumentNode<{
     $cupRound: String
     $matchPlayers: [PlayerInMatchInput!]!
   ) {
-    match: addMatch(
+    editMatch(
+      matchId: $matchId
       data: {
         teamId: $teamId
         seasonId: $seasonId

@@ -1,24 +1,7 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMatchStats, IMostMatch } from '../../../types';
-export const GET_MATCH_STATS: TypedDocumentNode<{
-  stats: IMatchStats;
-}> = gql`
-  query GetMatchStats($teamId: String!, $seasonId: String!) {
-    stats: matchStats(teamId: $teamId, seasonId: $seasonId) {
-      total
-      wins
-      draws
-      defeats
-      scored
-      conceded
-      teamAvg
-      oppAvg
-      difference
-    }
-  }
-`;
+import { gql, TypedDocumentNode } from '@apollo/client';
+import { IMostMatch } from '../../../types';
 
-export const GET_MATCH_STATS_MOST: TypedDocumentNode<{
+export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
   stats: {
     maxDiff: IMostMatch[];
     minDiff: IMostMatch[];
@@ -26,7 +9,7 @@ export const GET_MATCH_STATS_MOST: TypedDocumentNode<{
     maxConceded: IMostMatch[];
   };
 }> = gql`
-  query GetMatchStats($teamId: String!) {
+  query FETCH_MATCHES_RECORDS($teamId: String!) {
     stats: highLowStats(teamId: $teamId) {
       maxDiff {
         _id

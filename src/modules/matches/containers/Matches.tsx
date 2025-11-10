@@ -1,5 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { useQuery } from '@apollo/client';
+import { useEffect, useState } from 'react';
+import { NetworkStatus, useQuery } from '@apollo/client';
+
+import { FETCH_MATCHES } from '../graphql';
+
 import { AUTH_ROLES } from '../../../app/constants';
 import { CustomButton } from '../../../components/buttons';
 import { SectionContainer } from '../../../components/containers';
@@ -9,77 +12,70 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import RouteGuard from '../../../router/RouteGuard';
-import { GET_MATCHES_BY_SEASON } from '../graphql';
 import { getMatchListData } from '../helpers/getMatchListData.tsx';
+import Spinner from '../../../components/loaders/Spinner.tsx';
 
-const Matches: React.FC = () => {
+export default function Matches() {
   const { orgId, teamId } = useCustomParams();
   const { seasonId } = useSeasons();
-  const [isLoading, setIsLoading] = useState(true);
-  const [showLoadMore, setShowLoadMore] = useState(false);
-  const [isFirstLoad, setIsFirstLoad] = useState(true);
+  const [showLoadAll, setShowLoadAll] = useState(false);
+
   const LIMIT = 5;
-  const { data, loading, error, fetchMore } = useQuery(GET_MATCHES_BY_SEASON, {
+  const { data, error, fetchMore, networkStatus } = useQuery(FETCH_MATCHES, {
     variables: { limit: LIMIT, offset: 0, teamId, seasonId },
     skip: !seasonId,
     notifyOnNetworkStatusChange: true,
   });
 
+  const isLoadingMore = networkStatus === NetworkStatus.fetchMore;
+
   useEffect(() => {
-    setIsLoading(loading);
-    if (data?.matches.length === LIMIT && isFirstLoad) {
-      setShowLoadMore(true);
-    }
-  }, [data?.matches.length, isFirstLoad, loading]);
+    const x = data?.matches?.length && data?.matches?.length <= LIMIT;
+    setShowLoadAll(x as boolean);
+  }, [data?.matches?.length]);
 
-  const listData = useMemo(
-    () =>
-      getMatchListData({
-        data: data?.matches,
-        orgId,
-        teamId,
-        loading: isLoading,
-        showBadge: true,
-      }),
-    [data?.matches, isLoading, orgId, teamId]
-  );
+  const listData = getMatchListData({
+    data: data?.matches,
+    orgId,
+    teamId,
+    // loading: loading,
+    showBadge: true,
+  });
 
-  const loadMore = () => {
-    setIsFirstLoad(false);
-    fetchMore({
-      variables: {
-        offset: data?.matches.length,
+  const loadAll = async () => {
+    await fetchMore({
+      variables: { limit: LIMIT * 100, offset: data?.matches.length },
+      updateQuery: (previousResult, { fetchMoreResult }) => {
+        if (!fetchMoreResult) return previousResult;
+        return {
+          matches: [...previousResult.matches, ...fetchMoreResult.matches],
+        };
       },
-    }).then(res => {
-      if (res.data.matches.length < LIMIT) {
-        setShowLoadMore(false);
-      }
-      setIsLoading(false);
     });
+    setShowLoadAll(false);
   };
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
+  const renderContent = () => {
+    return data?.matches && data?.matches.length === 0 ? (
+      <CustomTypography color="warning">No matches yet</CustomTypography>
+    ) : (
+      <>
+        <LinksList links={listData} />
+        {isLoadingMore && <Spinner isSecondary />}
+        {showLoadAll && (
+          <CustomButton fullWidth variant="text" onClick={loadAll}>
+            Load All
+          </CustomButton>
+        )}
+      </>
+    );
+  };
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <SectionContainer>
-        {data?.matches && data?.matches.length === 0 ? (
-          <CustomTypography color="warning">No matches yet</CustomTypography>
-        ) : (
-          <>
-            <LinksList links={listData} />
-            {showLoadMore && (
-              <CustomButton fullWidth variant="text" onClick={loadMore}>
-                Load More
-              </CustomButton>
-            )}
-          </>
-        )}
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
       </SectionContainer>
     </RouteGuard>
   );
-};
-
-export default Matches;
+}

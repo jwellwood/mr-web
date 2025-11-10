@@ -1,15 +1,15 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { Spinner } from '../../../components/loaders';
-import FormModal from '../../../components/modals/FormModal';
+import FormModal from '../../../components/modals/FormModal.tsx';
 import { IPlayer, IPlayerInMatch } from '../../../types';
-import { initPlayerInMatch } from '../constants';
-import AddMatchPlayerStatsForm from '../forms/AddMatchPlayerStatsForm';
-import { getGoalsOptions } from '../helpers';
-import { getMinutesOptions } from '../helpers';
+import AddMatchPlayerStatsForm from './components/AddMatchPlayerStatsForm.tsx';
+import { getGoalsOptions, getMinutesOptions } from '../helpers';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 import { AppDispatch } from '../../../store/store.ts';
 import { setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
+import { initPlayerInMatch } from './state.ts';
 
 interface Props {
   playerId: string;
@@ -18,7 +18,7 @@ interface Props {
   buttonElement: ReactNode;
 }
 
-function AddStats({ playerId, title, currentPlayers, buttonElement }: Props) {
+export default function AddStats({ playerId, title, currentPlayers, buttonElement }: Props) {
   const currentMatch = useSelector(getTempMatch);
   const dispatch: AppDispatch = useDispatch();
   const [defaultValues, setDefaultValues] = useState<IPlayerInMatch | null>(null);
@@ -80,5 +80,3 @@ function AddStats({ playerId, title, currentPlayers, buttonElement }: Props) {
     </>
   );
 }
-
-export default AddStats;

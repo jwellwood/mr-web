@@ -7,13 +7,13 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import Averages from '../components/Averages';
 import MatchStatsTable from '../components/MatchStatsTable';
-import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
+import { FETCH_MATCHES_STATS } from '../graphql';
 
 const MatchStats: React.FC = () => {
   const { teamId } = useCustomParams();
   const { seasonId } = useSeasons();
 
-  const [matchStats, { loading, error, data }] = useLazyQuery(GET_MATCH_STATS, {
+  const [matchStats, { loading, error, data }] = useLazyQuery(FETCH_MATCHES_STATS, {
     variables: { teamId, seasonId },
   });
 

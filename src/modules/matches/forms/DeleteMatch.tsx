@@ -1,23 +1,21 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { PAGES } from '../constants';
-import { DELETE_MATCH, GET_MATCHES_BY_SEASON } from '../graphql';
-import { GET_MATCH_STATS } from '../graphql/matchStats.graphql';
-import { useSeasons } from '../../../hooks/useSeasons';
-import { useCustomParams } from '../../../hooks/useCustomParams';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
-import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import { DELETE_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
+import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
+import { PAGES } from '../constants.ts';
+import { useSeasons } from '../../../hooks/useSeasons.ts';
+import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
+import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { CustomTypography, PageHeader } from '../../../components/typography';
 import { DeleteModal } from '../../../components/modals';
 import { Spinner } from '../../../components/loaders';
-import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
 
-const DeleteMatch: React.FC = () => {
+export default function DeleteMatch() {
   const { seasonId } = useSeasons();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +24,7 @@ const DeleteMatch: React.FC = () => {
     variables: { teamId, matchId },
     refetchQueries: [
       {
-        query: GET_MATCHES_BY_SEASON,
+        query: FETCH_MATCHES,
         variables: { limit: 5, offset: 0, teamId, seasonId: seasonId },
       },
       {
@@ -34,13 +32,11 @@ const DeleteMatch: React.FC = () => {
         variables: { teamId, seasonId: seasonId },
       },
       {
-        query: GET_MATCH_STATS,
+        query: FETCH_MATCHES_STATS,
         variables: { teamId, seasonId: seasonId },
       },
     ],
   });
-
-  if (error) return <ErrorGraphql error={error} />;
 
   const onDeleteMatch = () => {
     deleteMatch()
@@ -63,22 +59,23 @@ const DeleteMatch: React.FC = () => {
       });
   };
 
+  const renderContent = () => {
+    return !loading ? (
+      <>
+        <CustomTypography color="warning">
+          This will remove the match and all associated stats
+        </CustomTypography>
+        <DeleteModal title="Match" loading={loading} onDelete={onDeleteMatch} />
+      </>
+    ) : (
+      <Spinner />
+    );
+  };
+
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
       <PageHeader title={PAGES.DELETE_MATCH} backButton />
-
-      {!loading ? (
-        <>
-          <CustomTypography color="warning">
-            This will remove the match and all associated stats
-          </CustomTypography>
-          <DeleteModal title="Match" loading={loading} onDelete={onDeleteMatch} />
-        </>
-      ) : (
-        <Spinner />
-      )}
+      {error ? <ErrorGraphql error={error} /> : renderContent()}
     </RouteGuard>
   );
-};
-
-export default DeleteMatch;
+}

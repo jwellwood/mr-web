@@ -1,16 +1,17 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer } from '../../../components/containers';
-import { CenteredGrid, GridItem } from '../../../components/grids';
-import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
-import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { isFuture } from 'date-fns';
-import { IListItem, ITempMatch } from '../../../types';
-import { getIntegers } from '../../../utils/helpers';
-import { cupRoundOptions } from '../constants';
-import SwitchButtonList from '../../../components/common/SwitchButtonList';
-import { ICompetition } from '../../organization/types';
+
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
+import ControlledDateInput from '../../../../components/inputs/ControlledDateInput';
+import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
+import { ISelectOptions } from '../../../../components/inputs/SelectInput';
+import { IListItem } from '../../../../types';
+import { getIntegers } from '../../../../utils/helpers';
+import { cupRoundOptions } from '../../constants';
+import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import { ICompetition } from '../../../organization/types';
+import { ITempMatch } from '../../types';
 
 interface Props {
   onSubmit: (data: ITempMatch) => void;
@@ -20,14 +21,15 @@ interface Props {
   competitionOptions: ISelectOptions[];
   competitions: ICompetition[];
 }
-const AddMatchDetailsForm: React.FC<Props> = ({
+
+export default function AddMatchDetailsForm({
   onSubmit,
   defaultValues,
   seasonOptions,
   opponentOptions,
   competitions,
   competitionOptions,
-}) => {
+}: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -151,6 +153,4 @@ const AddMatchDetailsForm: React.FC<Props> = ({
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default AddMatchDetailsForm;
+}

@@ -1,15 +1,15 @@
-import React from 'react';
-import { DataContainer, SectionContainer } from '../../../components/containers';
-import { CustomTypography } from '../../../components/typography';
-import { IListItem, IPlayerInMatch, ITempMatch } from '../../../types';
-import { validateStats } from '../helpers/statsValidation';
+import { DataContainer, SectionContainer } from '../../../../components/containers';
+import { CustomTypography } from '../../../../components/typography';
+import { IListItem, IPlayerInMatch } from '../../../../types';
+import { validateStats } from '../../helpers/statsValidation';
+import { ITempMatch } from '../../types';
 
 type Props = {
   match: ITempMatch;
   players: IPlayerInMatch[];
 };
 
-const AddMatchValidation: React.FC<Props> = ({ match, players }) => {
+export default function AddMatchValidation({ match, players }: Props) {
   const { validationArray } = validateStats(match, players);
   const data: IListItem[] = [];
 
@@ -48,6 +48,4 @@ const AddMatchValidation: React.FC<Props> = ({ match, players }) => {
       <DataContainer data={data} />
     </SectionContainer>
   );
-};
-
-export default AddMatchValidation;
+}

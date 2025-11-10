@@ -1,5 +1,5 @@
 import { LinkTypes } from '../../constants';
-import { IListItem, IPlayer } from '../../types';
+import { IListItem } from '../../types';
 
 export const PAGES = {
   PLAYER: 'Player',
@@ -8,8 +8,6 @@ export const PAGES = {
   EDIT_PLAYER_PHOTO: 'Edit Player Photo',
   DELETE_PLAYER: 'Delete Player',
 } as const;
-
-const date = new Date();
 
 export const PLAYER_ADMIN_LINKS: IListItem[] = [
   {
@@ -28,19 +26,6 @@ export const PLAYER_ADMIN_LINKS: IListItem[] = [
     link: 'delete',
   },
 ];
-
-export const initialPlayerState: Partial<IPlayer> = {
-  name: '',
-  yearJoined: new Date().getFullYear().toString(),
-  nationality: '',
-  position: 'DF',
-  squadNumber: '1',
-  dateOfBirth: date.toDateString(),
-  isCaptain: false,
-  isViceCaptain: false,
-  isHallOfFame: false,
-  seasonIds: [],
-};
 
 export const POSITIONS = {
   GK: 'GK',

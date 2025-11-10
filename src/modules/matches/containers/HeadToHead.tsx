@@ -1,5 +1,6 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_MATCHES_BY_OPPONENT } from '../graphql';
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList';
 import { Spinner } from '../../../components/loaders';
@@ -7,16 +8,15 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { IMatchStats } from '../../../types';
 import MatchStatsTable from '../components/MatchStatsTable';
-import { GET_MATCHES_BY_OPPONENT } from '../graphql/getMatchesByOpponent.graphql';
 import { getMatchListData } from '../helpers/getMatchListData.tsx';
 
 type Props = {
   opponentId?: string;
 };
 
-const HeadToHead: React.FC<Props> = ({ opponentId }) => {
+export default function HeadToHead({ opponentId }: Props) {
   const { orgId, teamId, matchId } = useCustomParams();
-  const { data, loading, error } = useQuery(GET_MATCHES_BY_OPPONENT, {
+  const { data, loading, error } = useQuery(FETCH_MATCHES_BY_OPPONENT, {
     variables: { teamId, opponentId },
   });
 
@@ -42,8 +42,6 @@ const HeadToHead: React.FC<Props> = ({ opponentId }) => {
     }
   };
 
-  if (error) return <ErrorGraphql error={error} />;
-
   const matchListData = getMatchListData({
     data: data?.matches || [],
     loading,
@@ -52,18 +50,19 @@ const HeadToHead: React.FC<Props> = ({ opponentId }) => {
     showBadge: false,
     matchId,
   });
-  return (
-    <SectionContainer>
-      {!loading ? (
-        <SectionContainer>
-          <MatchStatsTable stats={mapMatchStats() as IMatchStats} />
-          {getMatchListData && getMatchListData.length > 0 && <LinksList links={matchListData} />}
-        </SectionContainer>
-      ) : (
-        <Spinner />
-      )}
-    </SectionContainer>
-  );
-};
 
-export default HeadToHead;
+  const renderContent = () => {
+    return !loading ? (
+      <SectionContainer>
+        <MatchStatsTable stats={mapMatchStats() as IMatchStats} />
+        {getMatchListData && getMatchListData.length > 0 && <LinksList links={matchListData} />}
+      </SectionContainer>
+    ) : (
+      <Spinner />
+    );
+  };
+
+  return (
+    <SectionContainer>{error ? <ErrorGraphql error={error} /> : renderContent()}</SectionContainer>
+  );
+}

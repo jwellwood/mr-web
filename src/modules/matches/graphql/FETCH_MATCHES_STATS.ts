@@ -1,10 +1,11 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 import { IMatchStats } from '../../../types';
-export const GET_ALL_TIME_MATCH_STATS: TypedDocumentNode<{
+
+export const FETCH_MATCHES_STATS: TypedDocumentNode<{
   stats: IMatchStats;
 }> = gql`
-  query GetAllTimeMatchStats($teamId: String!) {
-    stats: allTimeMatchStats(teamId: $teamId) {
+  query FETCH_MATCHES_STATS($teamId: String!, $seasonId: String!) {
+    stats: matchStats(teamId: $teamId, seasonId: $seasonId) {
       total
       wins
       draws

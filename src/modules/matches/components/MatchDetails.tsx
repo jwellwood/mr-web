@@ -1,22 +1,22 @@
-import React from 'react';
 import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';
-import { IListItem, IMatchResponse } from '../../../types';
+import { IListItem } from '../../../types';
 import { parseDate } from '../../../utils/helpers';
 import { getPoints } from '../helpers';
 import ScoreBox from './ScoreBox';
 import { ICompetition } from '../../organization/types';
 import { ITeam } from '../../team/types';
+import { IMatchResponse } from '../types';
 
 type Props = {
   match: IMatchResponse;
 };
 
-const MatchDetails: React.FC<Props> = ({ match }) => {
+export default function MatchDetails({ match }: Props) {
   const { date, teamId, teamGoals, opponentId, opponentGoals, isHome, competitionId } = match;
   const matchDate = parseDate(date);
   const team = (teamId as ITeam).teamName;
@@ -66,6 +66,4 @@ const MatchDetails: React.FC<Props> = ({ match }) => {
       <TextList data={scoreData} />
     </SectionContainer>
   );
-};
-
-export default MatchDetails;
+}

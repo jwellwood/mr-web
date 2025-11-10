@@ -6,7 +6,8 @@ interface ITabsState {
   orgTeams: 0 | 1;
   profileTeams: 0 | 1;
   team: 0 | 1 | 2 | 3;
-  matches: 0 | 1;
+  matches: 0 | 1 | 2 | 3;
+  match: 0 | 1;
   squad: 0 | 1;
   player: 0 | 1;
   history: 0 | 1 | 2;
@@ -22,6 +23,7 @@ const initialState: ITabsState = {
   profileTeams: 0,
   team: 0,
   matches: 0,
+  match: 0,
   squad: 0,
   player: 0,
   history: 0,

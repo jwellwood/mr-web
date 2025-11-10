@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
-import { PAGES, initialPlayerState } from '../constants';
+import { PAGES } from '../constants';
 import { ADD_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -19,6 +19,7 @@ import { AuthRoles } from '../../../constants.ts';
 import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
+import { initialPlayerState } from './state.ts';
 
 const AddPlayer: React.FC = () => {
   const { teamId } = useCustomParams();

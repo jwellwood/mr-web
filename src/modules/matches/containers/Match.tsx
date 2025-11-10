@@ -1,6 +1,8 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, LINK_TYPE, TAB_TYPES } from '../../../app/constants';
+
+import { FETCH_MATCH } from '../graphql';
+
+import { AUTH_ROLES, TAB_TYPES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
 import EditLinksModal from '../../../components/modals/EditLinksModal';
 import CustomAppBar from '../../../components/navigation/CustomAppBar';
@@ -10,31 +12,17 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import MatchDetails from '../components/MatchDetails';
 import MatchPlayersTable from '../components/MatchPlayersTable';
-import { PAGES } from '../constants';
-import { GET_MATCH_BY_ID } from '../graphql';
+import { MATCH_ADMIN_LINKS, PAGES } from '../constants';
 import HeadToHead from './HeadToHead';
 import { useAuth } from '../../../hooks';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { ITeam } from '../../team/types.ts';
 
-const Match: React.FC = () => {
+export default function Match() {
   const { teamId, matchId } = useCustomParams();
   const { isTeamAuth } = useAuth(teamId);
 
-  const links = [
-    {
-      label: 'Edit Match',
-      type: LINK_TYPE.EDIT,
-      link: 'edit',
-    },
-    {
-      label: 'Delete Match',
-      type: LINK_TYPE.DELETE,
-      link: 'edit',
-    },
-  ];
-
-  const { data, loading, error } = useQuery(GET_MATCH_BY_ID, {
+  const { data, loading, error } = useQuery(FETCH_MATCH, {
     variables: { matchId },
   });
 
@@ -54,29 +42,25 @@ const Match: React.FC = () => {
     },
   ];
 
-  if (error) return <ErrorGraphql error={error} />;
-
-  if (!data?.match) {
-    return null;
-  }
+  const renderContent = () => {
+    return !loading && data?.match ? (
+      <>
+        <MatchDetails match={data?.match} />
+        <CustomTabs type={TAB_TYPES.MATCH} tabs={tabs} level="secondary" />
+      </>
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.MATCH}
-        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
+        actionButton={isTeamAuth ? <EditLinksModal data={MATCH_ADMIN_LINKS} /> : null}
       >
-        {!loading ? (
-          <>
-            <MatchDetails match={data?.match} />
-            <CustomTabs type={TAB_TYPES.MATCHES} tabs={tabs} level="secondary" />
-          </>
-        ) : (
-          <Spinner />
-        )}
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
       </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default Match;
+}

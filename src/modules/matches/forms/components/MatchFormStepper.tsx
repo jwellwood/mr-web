@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { IPlayerInMatch, ITempMatch } from '../../../types';
-import AddMatchDetails from '../components/AddMatchDetails';
-import AddMatchPlayers from '../components/AddMatchPlayers';
-import AddMatchStats from '../components/AddMatchStats';
-import SubmitMatch from '../components/SubmitMatch';
-import MatchOverview from './MatchOverview';
-import { theme } from '../../../theme';
-import { ICompetition } from '../../organization/types';
-import { ITeam } from '../../team/types';
 
-interface Props {
+import { ISelectOptions } from '../../../../components/inputs/SelectInput';
+import { IPlayerInMatch } from '../../../../types';
+import Step1MatchDetails from '../steps/Step1MatchDetails';
+import Step2AddPlayers from '../steps/Step2MatchPlayers';
+import Step3MatchStats from '../steps/Step3MatchStats';
+import Step4SubmitMatch from '../steps/Step4SubmitMatch';
+import MatchOverview from '../../components/MatchOverview';
+import { theme } from '../../../../theme';
+import { ICompetition } from '../../../organization/types';
+import { ITeam } from '../../../team/types';
+import { ITempMatch } from '../../types';
+
+type Props = {
   defaultValues: ITempMatch;
   currentPlayers: IPlayerInMatch[];
   seasonOptions: ISelectOptions[];
@@ -21,9 +23,9 @@ interface Props {
   teamId: string;
   opponents: ITeam[];
   competitions: ICompetition[];
-}
+};
 
-const MatchFormStepper: React.FC<Props> = ({
+export default function MatchFormStepper({
   defaultValues,
   currentPlayers,
   seasonOptions,
@@ -31,7 +33,7 @@ const MatchFormStepper: React.FC<Props> = ({
   teamId,
   opponents,
   competitions,
-}) => {
+}: Props) {
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -43,7 +45,7 @@ const MatchFormStepper: React.FC<Props> = ({
   };
 
   const steps = [
-    <AddMatchDetails
+    <Step1MatchDetails
       onNextClick={handleNext}
       defaultValues={defaultValues}
       teamId={teamId}
@@ -51,9 +53,9 @@ const MatchFormStepper: React.FC<Props> = ({
       competitions={competitions}
       opponents={opponents}
     />,
-    <AddMatchPlayers onNextClick={handleNext} teamId={teamId} />,
-    <AddMatchStats onNextClick={handleNext} currentPlayers={currentPlayers} />,
-    <SubmitMatch
+    <Step2AddPlayers onNextClick={handleNext} teamId={teamId} />,
+    <Step3MatchStats onNextClick={handleNext} currentPlayers={currentPlayers} />,
+    <Step4SubmitMatch
       onSubmit={onSubmit}
       currentTempMatch={defaultValues}
       currentTempPlayers={currentPlayers}
@@ -83,6 +85,4 @@ const MatchFormStepper: React.FC<Props> = ({
       />
     </Box>
   );
-};
-
-export default MatchFormStepper;
+}

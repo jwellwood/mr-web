@@ -1,15 +1,14 @@
-import React from 'react';
 import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
-import { ITempMatch } from '../../../types';
 import { parseDate } from '../../../utils/helpers';
+import { ITempMatch } from '../types';
 
 type Props = {
   currentTempMatch: ITempMatch;
 };
 
-const MatchOverview: React.FC<Props> = ({ currentTempMatch }) => {
+export default function MatchOverview({ currentTempMatch }: Props) {
   const { teamName, opponentName, teamGoals, opponentGoals, date, isHome, competition } =
     currentTempMatch;
   const homeTeam = isHome ? teamName : opponentName;
@@ -30,6 +29,4 @@ const MatchOverview: React.FC<Props> = ({ currentTempMatch }) => {
       </CenteredGrid>
     </SectionContainer>
   );
-};
-
-export default MatchOverview;
+}

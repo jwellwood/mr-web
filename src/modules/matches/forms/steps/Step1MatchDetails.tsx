@@ -1,31 +1,32 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { ITempMatch } from '../../../types';
-import { emptySelectOption } from '../constants';
-import AddMatchDetailsForm from '../forms/AddMatchDetailsForm';
-import { AppDispatch } from '../../../store/store.ts';
-import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
-import { setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
-import { ICompetition } from '../../organization/types.ts';
-import { ITeam } from '../../team/types.ts';
 
-type Props = {
+import { ISelectOptions } from '../../../../components/inputs/SelectInput.tsx';
+import { emptySelectOption } from '../../constants.ts';
+import { AppDispatch } from '../../../../store/store.ts';
+import { getTempMatch } from '../../../../store/features/matches/matchesSelector.ts';
+import { setTmpMatch } from '../../../../store/features/matches/matchesSlice.ts';
+import { ICompetition } from '../../../organization/types.ts';
+import { ITeam } from '../../../team/types.ts';
+import AddMatchDetailsForm from '../components/AddMatchDetailsForm.tsx';
+import { ITempMatch } from '../../types.ts';
+
+interface Props {
   onNextClick: () => void;
   defaultValues: ITempMatch;
   teamId: string;
   seasonOptions: ISelectOptions[];
   competitions: ICompetition[];
   opponents: ITeam[];
-};
+}
 
-const AddMatchDetails: React.FC<Props> = ({
+export default function Step1MatchDetails({
   onNextClick,
   teamId,
   seasonOptions,
   competitions,
   opponents,
-}) => {
+}: Props) {
   const dispatch: AppDispatch = useDispatch();
   const currentTempMatch = useSelector(getTempMatch);
 
@@ -82,6 +83,4 @@ const AddMatchDetails: React.FC<Props> = ({
       competitionOptions={competitionOptions}
     />
   );
-};
-
-export default AddMatchDetails;
+}

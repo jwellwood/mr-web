@@ -1,24 +1,20 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_MATCHES_RECORDS } from '../graphql';
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { GET_MATCH_STATS_MOST } from '../graphql/matchStats.graphql';
 import { mostMatchListData } from '../helpers/mostMatchListData';
 
-const MatchRecords: React.FC = () => {
+export default function MatchRecords() {
   const { orgId, teamId } = useCustomParams();
-  const { data, loading, error } = useQuery(GET_MATCH_STATS_MOST, {
+  const { data, loading, error } = useQuery(FETCH_MATCHES_RECORDS, {
     variables: { teamId },
   });
 
   const { stats } = data || {};
-
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
 
   const listData = [
     { title: 'Most Goals Scored', stat: stats?.maxGoals },
@@ -27,24 +23,24 @@ const MatchRecords: React.FC = () => {
     { title: 'Worst Goal Difference', stat: stats?.minDiff },
   ];
 
-  return (
-    <SectionContainer>
-      {(data?.stats && !data?.stats.maxDiff) || (data?.stats && !data?.stats?.minDiff) ? (
-        <CustomTypography color="warning">No matches yet</CustomTypography>
-      ) : (
-        listData.map(item => {
-          return (
-            <SectionContainer key={item.title}>
-              <CustomTypography color="label" bold size="xs">
-                {item.title}
-              </CustomTypography>
-              <LinksList links={mostMatchListData(item.stat || [], orgId, teamId, loading)} />
-            </SectionContainer>
-          );
-        })
-      )}
-    </SectionContainer>
-  );
-};
+  const renderContent = () => {
+    return (data?.stats && !data?.stats.maxDiff) || (data?.stats && !data?.stats?.minDiff) ? (
+      <CustomTypography color="warning">No matches yet</CustomTypography>
+    ) : (
+      listData.map(item => {
+        return (
+          <SectionContainer key={item.title}>
+            <CustomTypography color="label" bold size="xs">
+              {item.title}
+            </CustomTypography>
+            <LinksList links={mostMatchListData(item.stat || [], orgId, teamId, loading)} />
+          </SectionContainer>
+        );
+      })
+    );
+  };
 
-export default MatchRecords;
+  return (
+    <SectionContainer>{error ? <ErrorGraphql error={error} /> : renderContent()}</SectionContainer>
+  );
+}

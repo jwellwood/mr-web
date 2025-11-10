@@ -1,19 +1,24 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import { FormContainer, SectionContainer } from '../../../components/containers';
-import TextList from '../../../components/lists/TextList';
-import CustomTable from '../../../components/tables/CustomTable';
-import { IListItem, IPlayerInMatch, ITempMatch } from '../../../types';
-import { match_form_table, match_form_table_styles } from '../configs';
-import { statsDataAll } from '../helpers';
 
-type Props = {
+import { FormContainer, SectionContainer } from '../../../../components/containers';
+import TextList from '../../../../components/lists/TextList';
+import CustomTable from '../../../../components/tables/CustomTable';
+import { IListItem, IPlayerInMatch } from '../../../../types';
+import { match_form_table, match_form_table_styles } from '../../configs';
+import { statsDataAll } from '../../helpers';
+import { ITempMatch } from '../../types';
+
+interface Props {
   onSubmit: () => void;
   currentTempMatch: ITempMatch;
   currentTempPlayers: IPlayerInMatch[];
-};
+}
 
-const SubmitMatch: React.FC<Props> = ({ onSubmit, currentTempMatch, currentTempPlayers }) => {
+export default function Step4SubmitMatch({
+  onSubmit,
+  currentTempMatch,
+  currentTempPlayers,
+}: Props) {
   const { handleSubmit } = useForm();
   const tableData = statsDataAll(currentTempPlayers, false);
   const data: IListItem[] = [
@@ -41,6 +46,4 @@ const SubmitMatch: React.FC<Props> = ({ onSubmit, currentTempMatch, currentTempP
       </SectionContainer>
     </FormContainer>
   );
-};
-
-export default SubmitMatch;
+}

@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
@@ -10,7 +9,7 @@ type Props = {
   loading?: boolean;
 };
 
-const MatchListLabelBasic: React.FC<Props> = ({ opponent, date, isHome, loading }) => {
+export default function MatchListLabelBasic({ opponent, date, isHome, loading }: Props) {
   return loading ? (
     <CustomSkeleton width="175px" height="42px" margin="0" />
   ) : (
@@ -32,6 +31,4 @@ const MatchListLabelBasic: React.FC<Props> = ({ opponent, date, isHome, loading 
       </>
     </>
   );
-};
-
-export default MatchListLabelBasic;
+}

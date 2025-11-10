@@ -1,14 +1,14 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import { positionOptions } from '../../../app/constants';
-import { FormContainer } from '../../../components/containers';
-import { CenteredGrid, GridItem } from '../../../components/grids';
-import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { IPlayerInMatch } from '../../../types';
-import { getIntegers } from '../../../utils/helpers';
-import { theme } from '../../../theme';
-import SwitchButtonList from '../../../components/common/SwitchButtonList';
+
+import { positionOptions } from '../../../../app/constants';
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
+import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
+import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import { ISelectOptions } from '../../../../components/inputs/SelectInput';
+import { IPlayerInMatch } from '../../../../types';
+import { getIntegers } from '../../../../utils/helpers';
+import { theme } from '../../../../theme';
 
 interface Props {
   onSubmit: (data: IPlayerInMatch) => void;
@@ -17,13 +17,14 @@ interface Props {
   concededOptions: ISelectOptions[];
   minuteOptions: ISelectOptions[];
 }
-const AddMatchPlayerStatsForm: React.FC<Props> = ({
+
+export default function AddMatchPlayerStatsForm({
   onSubmit,
   defaultValues,
   goalOptions,
   concededOptions,
   minuteOptions,
-}) => {
+}: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -162,6 +163,4 @@ const AddMatchPlayerStatsForm: React.FC<Props> = ({
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default AddMatchPlayerStatsForm;
+}

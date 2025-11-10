@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import CustomTable from '../../../components/tables/CustomTable';
 import { IMatchStats } from '../../../types';
 import { match_table, match_table_styles } from '../configs';
@@ -7,7 +7,7 @@ import { getMatchStats } from '../helpers/getMatchStats';
 interface Props {
   stats?: IMatchStats;
 }
-const MatchStatsTable: React.FC<Props> = ({ stats }) => {
+export default function MatchStatsTable({ stats }: Props) {
   const rows = useMemo(() => getMatchStats(stats), [stats]);
 
   return (
@@ -18,6 +18,4 @@ const MatchStatsTable: React.FC<Props> = ({ stats }) => {
       cellIndexStyles={match_table_styles}
     />
   );
-};
-
-export default MatchStatsTable;
+}

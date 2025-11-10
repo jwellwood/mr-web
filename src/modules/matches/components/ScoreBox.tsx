@@ -1,5 +1,5 @@
-import React from 'react';
 import { Avatar } from '@mui/material';
+
 import { CustomTypography } from '../../../components/typography';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   goals: number;
 };
 
-const ScoreBox: React.FC<Props> = ({ goals }) => {
+export default function ScoreBox({ goals }: Props) {
   return (
     <Avatar
       variant="square"
@@ -20,6 +20,4 @@ const ScoreBox: React.FC<Props> = ({ goals }) => {
       </CustomTypography>
     </Avatar>
   );
-};
-
-export default ScoreBox;
+}

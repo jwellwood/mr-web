@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { getPoints } from '../helpers';
@@ -11,7 +10,7 @@ type Props = {
   loading?: boolean;
 };
 
-const MatchListScoreBox: React.FC<Props> = ({ teamGoals, opponentGoals, loading }) => {
+export default function MatchListScoreBox({ teamGoals, opponentGoals, loading }: Props) {
   const { palette } = theme;
 
   const points = getPoints(teamGoals, opponentGoals);
@@ -54,6 +53,4 @@ const MatchListScoreBox: React.FC<Props> = ({ teamGoals, opponentGoals, loading 
       </CustomTypography>
     </div>
   );
-};
-
-export default MatchListScoreBox;
+}
