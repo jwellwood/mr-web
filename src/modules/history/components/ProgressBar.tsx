@@ -1,4 +1,3 @@
-import React from 'react';
 import { getPercentage } from '../../../utils/helpers';
 import { theme } from '../../../theme';
 import { CustomTypography } from '../../../components/typography';
@@ -9,7 +8,7 @@ type Props = {
   text?: string;
 };
 
-const ProgressBar: React.FC<Props> = ({ max, value, text }) => {
+export default function ProgressBar({ max, value, text }: Props) {
   const calcPercentage = () => {
     if (value === max) {
       return 95;
@@ -39,6 +38,4 @@ const ProgressBar: React.FC<Props> = ({ max, value, text }) => {
       </CustomTypography>
     </div>
   );
-};
-
-export default ProgressBar;
+}

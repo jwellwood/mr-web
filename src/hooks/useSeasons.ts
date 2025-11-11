@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_SEASONS } from '../modules/history/graphql/FETCH_SEASONS.ts';
 import { useCustomParams } from './useCustomParams.tsx';
-import { GET_TEAM_SEASONS } from '../modules/history/graphql/season';
 import { ISelectOptions } from '../components/inputs/SelectInput.tsx';
 
 export const useSeasons = () => {
@@ -11,7 +12,7 @@ export const useSeasons = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const seasonParam = searchParams.get('season');
 
-  const { data, loading, error } = useQuery(GET_TEAM_SEASONS, {
+  const { data, loading, error } = useQuery(FETCH_SEASONS, {
     variables: { teamId },
   });
 

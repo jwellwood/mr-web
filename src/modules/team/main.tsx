@@ -7,15 +7,16 @@ import CustomAppBar from '../../components/navigation/CustomAppBar';
 import { CustomTabs, ITab } from '../../components/tabs';
 import { useAuth } from '../../hooks';
 import { useCustomParams } from '../../hooks/useCustomParams';
-import History from '../../modules/history/containers/History';
 import RouteGuard from '../../router/RouteGuard';
 import { PAGES, TEAM_ADMIN_LINKS } from './constants';
 import TeamOverview from './containers/TeamOverview';
 import { IIconType } from '../../components/icons/types';
 import { getTabIndex } from '../../store/features/tabs/tabsSelector';
 import { NAV_ICONS } from '../../app/icons';
+
 import SquadTabs from '../squad/main';
 import MatchesTabs from '../matches/main';
+import HistoryTabs from '../history/main';
 
 export default function Team() {
   const { teamId } = useCustomParams();
@@ -45,7 +46,7 @@ export default function Team() {
     {
       label: 'History',
       icon: getIcon(NAV_ICONS.HISTORY, 3),
-      component: <History />,
+      component: <HistoryTabs />,
     },
   ];
 

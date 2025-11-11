@@ -1,9 +1,12 @@
+import { lazy } from 'react';
+
 import { TAB_TYPES } from '../../app/constants';
 import { CustomTabs, ITab } from '../../components/tabs';
-import Matches from './containers/Matches';
-import MatchRecords from './containers/MatchRecords';
-import OpponentTable from './containers/OpponentTable';
-import StatsContainer from './containers/StatsContainer';
+
+const Matches = lazy(() => import('./containers/Matches'));
+const MatchRecords = lazy(() => import('./containers/MatchRecords'));
+const OpponentTable = lazy(() => import('./containers/OpponentTable'));
+const StatsContainer = lazy(() => import('./containers/StatsContainer'));
 
 export default function MatchesTabs() {
   const tabs: ITab[] = [

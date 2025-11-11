@@ -1,22 +1,21 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_AWARDS } from '../graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { GET_SEASON_AWARDS } from '../graphql/award';
+import { Spinner } from '../../../components/loaders';
 import AwardList from '../components/AwardList';
 
-const Awards: React.FC = () => {
+export default function Awards() {
   const { seasonId } = useCustomParams();
 
-  const { data, loading, error } = useQuery(GET_SEASON_AWARDS, {
+  const { data, loading, error } = useQuery(FETCH_AWARDS, {
     variables: { seasonId },
   });
 
-  if (error) {
-    return <ErrorGraphql error={error} />;
-  }
+  const renderContent = () => {
+    return !loading ? <AwardList awards={data?.awards || []} /> : <Spinner />;
+  };
 
-  return !loading && <AwardList awards={data?.awards || []} />;
-};
-
-export default Awards;
+  return error ? <ErrorGraphql error={error} /> : renderContent();
+}

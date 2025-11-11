@@ -1,5 +1,7 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_AWARD } from '../graphql';
+
 import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
 import EditLinksModal from '../../../components/modals/EditLinksModal';
@@ -10,12 +12,11 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
 import { IListItem } from '../../../types';
 import { PAGES } from '../constants';
-import { AWARD_BY_ID } from '../graphql/award';
 import TextList from '../../../components/lists/TextList';
 import { SectionContainer } from '../../../components/containers';
 import { CustomTypography } from '../../../components/typography';
 
-const Award: React.FC = () => {
+export default function Award() {
   const { teamId, awardId } = useCustomParams();
   const { isTeamAuth } = useAuth(teamId);
 
@@ -27,7 +28,7 @@ const Award: React.FC = () => {
     },
   ];
 
-  const { data, loading, error } = useQuery(AWARD_BY_ID, {
+  const { data, loading, error } = useQuery(FETCH_AWARD, {
     variables: { awardId },
   });
 
@@ -46,16 +47,15 @@ const Award: React.FC = () => {
       ]
     : [];
 
-  const children = error ? (
-    <ErrorGraphql error={error} />
-  ) : loading ? (
-    <Spinner />
-  ) : (
-    <SectionContainer title={data?.award?.awardName || 'Details'}>
-      <TextList data={listData} />
-      <CustomTypography color="data">{data?.award?.comment || ''}</CustomTypography>
-    </SectionContainer>
-  );
+  const renderContent = () =>
+    loading ? (
+      <Spinner />
+    ) : (
+      <SectionContainer title={data?.award?.awardName || 'Details'}>
+        <TextList data={listData} />
+        <CustomTypography color="data">{data?.award?.comment || ''}</CustomTypography>
+      </SectionContainer>
+    );
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
@@ -63,10 +63,8 @@ const Award: React.FC = () => {
         title={PAGES.AWARD}
         actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
       >
-        {children}
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
       </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default Award;
+}

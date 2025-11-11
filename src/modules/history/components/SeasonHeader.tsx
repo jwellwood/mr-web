@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { SectionContainer } from '../../../components/containers';
 
 type Props = {
@@ -6,8 +6,6 @@ type Props = {
   children: ReactElement;
 };
 
-const SeasonHeader: React.FC<Props> = ({ children, title }) => {
+export default function SeasonHeader({ children, title }: Props) {
   return <SectionContainer title={title}>{children}</SectionContainer>;
-};
-
-export default SeasonHeader;
+}

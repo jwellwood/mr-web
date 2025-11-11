@@ -7,7 +7,7 @@ import LinksList from '../../../components/lists/LinksList';
 
 type Props = { awards: IAward[] };
 
-const AwardList = ({ awards }: Props) => {
+export default function AwardList({ awards }: Props) {
   const list: IListItem[] = awards
     ? awards.map(award => {
         return {
@@ -47,6 +47,4 @@ const AwardList = ({ awards }: Props) => {
       })
     : [];
   return <LinksList links={list} />;
-};
-
-export default AwardList;
+}

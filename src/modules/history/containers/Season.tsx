@@ -1,6 +1,7 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
-import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
+
+import { FETCH_SEASON } from '../graphql';
+import { AUTH_ROLES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
 import EditLinksModal from '../../../components/modals/EditLinksModal';
 import CustomAppBar from '../../../components/navigation/CustomAppBar';
@@ -8,50 +9,27 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
-import { IListItem } from '../../../types';
-import { PAGES } from '../constants';
-import { GET_TEAM_SEASON_BY_ID } from '../graphql/season';
-import SeasonTabs from './SeasonTabs';
+import { PAGES, SEASON_ADMIN_LINKS } from '../constants';
+import SeasonTabs from '../components/SeasonTabs';
 
-const Season: React.FC = () => {
+export default function Season() {
   const { teamId, seasonId } = useCustomParams();
   const { isTeamAuth } = useAuth(teamId);
 
-  const links: IListItem[] = [
-    {
-      label: 'Add Award',
-      type: LINK_TYPE.ADD,
-      link: 'add_award',
-    },
-    {
-      label: 'Edit Season',
-      type: LINK_TYPE.EDIT,
-      link: 'edit',
-    },
-  ];
-
-  const { data, loading, error } = useQuery(GET_TEAM_SEASON_BY_ID, {
+  const { data, loading, error } = useQuery(FETCH_SEASON, {
     variables: { seasonId },
   });
 
-  const children = error ? (
-    <ErrorGraphql error={error} />
-  ) : loading ? (
-    <Spinner />
-  ) : (
-    <SeasonTabs season={data?.season} />
-  );
+  const renderContent = () => (loading ? <Spinner /> : <SeasonTabs season={data?.season} />);
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <CustomAppBar
         title={PAGES.SEASON}
-        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
+        actionButton={isTeamAuth ? <EditLinksModal data={SEASON_ADMIN_LINKS} /> : null}
       >
-        {children}
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
       </CustomAppBar>
     </RouteGuard>
   );
-};
-
-export default Season;
+}

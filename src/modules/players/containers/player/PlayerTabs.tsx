@@ -1,9 +1,11 @@
+import { lazy } from 'react';
 import { TAB_TYPES } from '../../../../app/constants';
 import { CustomTabs, ITab } from '../../../../components/tabs';
-import PlayerAllTimeStats from './PlayerAllTimeStats';
-import PlayerHonors from './PlayerHonors';
-import PlayerSeasonStats from './PlayerSeasonStats';
-import PlayerVersus from './PlayerVersus';
+
+const PlayerAllTimeStats = lazy(() => import('./PlayerAllTimeStats'));
+const PlayerHonors = lazy(() => import('./PlayerHonors'));
+const PlayerSeasonStats = lazy(() => import('./PlayerSeasonStats'));
+const PlayerVersus = lazy(() => import('./PlayerVersus'));
 
 export default function PlayerTabs() {
   const tabs: ITab[] = [

@@ -1,5 +1,6 @@
+import { LINK_TYPE } from '../../app/constants';
 import { theme } from '../../theme';
-import { IAward, ITrophy } from './types';
+import { IListItem } from '../../types';
 
 // Replace the enum with this const object
 export const PAGES = {
@@ -17,21 +18,18 @@ export const PAGES = {
 // Add this type to get the same type safety as an enum
 export type PAGES_TYPE = (typeof PAGES)[keyof typeof PAGES];
 
-export const initialTrophyFormState: Partial<ITrophy> = {
-  name: '',
-  seasonId: '',
-  year: '',
-  isFinal: false,
-  isWinner: true,
-  opponent: '',
-  comment: '',
-};
-
-export const initialAwardState: Partial<IAward> = {
-  awardName: '',
-  winners: [],
-  comment: '',
-};
+export const SEASON_ADMIN_LINKS: IListItem[] = [
+  {
+    label: 'Add Award',
+    type: LINK_TYPE.ADD,
+    link: 'add_award',
+  },
+  {
+    label: 'Edit Season',
+    type: LINK_TYPE.EDIT,
+    link: 'edit',
+  },
+];
 
 export const seasonColors = [
   {

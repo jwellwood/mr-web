@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { FETCH_AWARDS_BY_PLAYER } from '../../../history/graphql';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { SectionContainer } from '../../../../components/containers';
 import StatIcon from '../../../../components/icons/StatIcon';
@@ -7,7 +8,6 @@ import { Spinner } from '../../../../components/loaders';
 import { CustomTypography } from '../../../../components/typography';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
-import { GET_AWARDS_BY_PLAYER } from '../../../history/graphql/getAwardsByPlayer.graphql.ts';
 import { IListItem } from '../../../../types';
 import { FETCH_PLAYER_TROPHIES } from '../../graphql';
 import { getTrophyListItem } from '../../helpers';
@@ -18,7 +18,7 @@ const PlayerHonors: React.FC = () => {
   const { playerId } = useCustomParams();
   const { data: playerData } = usePlayerData(playerId);
   const { seasonIds } = playerData || {};
-  const { data, loading, error } = useQuery(GET_AWARDS_BY_PLAYER, {
+  const { data, loading, error } = useQuery(FETCH_AWARDS_BY_PLAYER, {
     variables: { playerId },
   });
 

@@ -1,13 +1,13 @@
-import React from 'react';
 import { DataContainer, SectionContainer } from '../../../components/containers';
 import { IListItem } from '../../../types';
 import { ITrophyTotals } from '../types';
+
 type Props = {
   data?: ITrophyTotals;
   loading: boolean;
 };
 
-const TrophiesTotals: React.FC<Props> = ({ data, loading }) => {
+export default function TrophiesTotals({ data, loading }: Props) {
   const listData: IListItem[] = [
     { label: 'Total', value: data?.total },
     { label: 'Wins', value: data?.winner },
@@ -18,6 +18,4 @@ const TrophiesTotals: React.FC<Props> = ({ data, loading }) => {
       <DataContainer data={listData} loading={loading} />
     </SectionContainer>
   );
-};
-
-export default TrophiesTotals;
+}

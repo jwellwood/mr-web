@@ -1,5 +1,7 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_HALL_OF_FAME } from '../graphql';
+
 import { SectionContainer } from '../../../components/containers';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import CircularImage from '../../../components/images/CircularImage';
@@ -9,13 +11,12 @@ import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { IListItem } from '../../../types';
-import { GET_HALL_OF_FAME } from '../graphql/getHallOfFame.graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 
-const HallOfFame: React.FC = () => {
+export default function HallOfFame() {
   const { teamId } = useCustomParams();
 
-  const { loading, data, error } = useQuery(GET_HALL_OF_FAME, {
+  const { loading, data, error } = useQuery(FETCH_HALL_OF_FAME, {
     variables: { teamId },
   });
 
@@ -44,21 +45,21 @@ const HallOfFame: React.FC = () => {
       };
     }) || [];
 
-  if (error) return <ErrorGraphql error={error} />;
+  const renderContent = () => {
+    return !loading ? (
+      <>
+        {!data?.players?.length ? (
+          <CustomTypography color="warning">No hall of fame players yet</CustomTypography>
+        ) : (
+          <SectionContainer>
+            <LinksList links={links} />
+          </SectionContainer>
+        )}
+      </>
+    ) : (
+      <Spinner />
+    );
+  };
 
-  return !loading ? (
-    <>
-      {!data?.players?.length ? (
-        <CustomTypography color="warning">No hall of fame players yet</CustomTypography>
-      ) : (
-        <SectionContainer>
-          <LinksList links={links} />
-        </SectionContainer>
-      )}
-    </>
-  ) : (
-    <Spinner />
-  );
-};
-
-export default HallOfFame;
+  return error ? <ErrorGraphql error={error} /> : renderContent();
+}

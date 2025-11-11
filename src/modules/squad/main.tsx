@@ -1,10 +1,12 @@
+import { lazy } from 'react';
+
 import { TAB_TYPES } from '../../app/constants';
 import { CustomTabs, ITab } from '../../components/tabs';
 
-import Squad from './containers/Squad';
-import StatsTypeToggle from './components/StatsTypeToggle';
-import SquadRecords from './containers/SquadRecords';
-import PastPlayers from './containers/PastPlayers';
+const Squad = lazy(() => import('./containers/Squad'));
+const StatsTypeToggle = lazy(() => import('./components/StatsTypeToggle'));
+const SquadRecords = lazy(() => import('./containers/SquadRecords'));
+const PastPlayers = lazy(() => import('./containers/PastPlayers'));
 
 export default function SquadTabs() {
   const tabs: ITab[] = [

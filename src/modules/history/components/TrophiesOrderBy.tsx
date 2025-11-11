@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+
 import { SelectInput } from '../../../components/inputs';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { ITrophyResponse } from '../types';
 import LinksList from '../../../components/lists/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
-import TrophiesOrderByCompetition from './TrophyOrderByCompetition';
+import TrophiesOrderByCompetition from './TrophiesOrderByCompetition';
 import TrophiesOrderByType from './TrophiesOrderByType';
 
 type Props = {
   trophies: ITrophyResponse[];
 };
 
-const TrophiesOrderBy: React.FC<Props> = ({ trophies }) => {
+export default function TrophiesOrderBy({ trophies }: Props) {
   const [order, setOrder] = useState('date');
   const options: ISelectOptions[] = [
     { label: 'Date', value: 'date' },
@@ -47,6 +48,4 @@ const TrophiesOrderBy: React.FC<Props> = ({ trophies }) => {
       {componentToRender()}
     </>
   );
-};
-
-export default TrophiesOrderBy;
+}

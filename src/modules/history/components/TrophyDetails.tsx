@@ -1,4 +1,3 @@
-import React from 'react';
 import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import AppIcon from '../../../components/icons/AppIcon';
@@ -9,7 +8,7 @@ type Props = {
   trophy?: ITrophyResponse;
 };
 
-const TrophyDetails: React.FC<Props> = ({ trophy }) => {
+export default function TrophyDetails({ trophy }: Props) {
   if (!trophy) {
     return null;
   }
@@ -43,6 +42,4 @@ const TrophyDetails: React.FC<Props> = ({ trophy }) => {
       </CenteredGrid>
     </SectionContainer>
   );
-};
-
-export default TrophyDetails;
+}

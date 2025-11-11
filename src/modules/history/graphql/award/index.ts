@@ -1,5 +1,0 @@
-export * from './awards.graphql'
-export * from './award-add.graphql'
-export * from './award-edit.graphql'
-export * from './award-by-id.graphql'
-export * from './award-delete.graphql'

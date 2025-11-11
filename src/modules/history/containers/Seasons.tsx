@@ -1,36 +1,32 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
+import { FETCH_SEASONS_POSITION } from '../graphql';
 import { SectionContainer } from '../../../components/containers';
 import { Spinner } from '../../../components/loaders';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import SeasonsGraph from '../components/SeasonsGraph';
-import { GET_POSITION_FINISHES } from '../graphql/season';
 
-const Seasons: React.FC = () => {
+export default function Seasons() {
   const { teamId } = useCustomParams();
-  const { data, loading, error } = useQuery(GET_POSITION_FINISHES, {
+  const { data, loading, error } = useQuery(FETCH_SEASONS_POSITION, {
     variables: { teamId },
   });
 
-  const children = error ? (
-    <ErrorGraphql error={error} />
-  ) : !loading ? (
-    data?.position.length === 0 ? (
-      <CustomTypography color="warning">No seasons yet</CustomTypography>
+  const renderContent = () => {
+    return !loading ? (
+      data?.position.length === 0 ? (
+        <CustomTypography color="warning">No seasons yet</CustomTypography>
+      ) : (
+        <SeasonsGraph data={data?.position} />
+      )
     ) : (
-      <SeasonsGraph data={data?.position} />
-    )
-  ) : (
-    <Spinner />
-  );
+      <Spinner />
+    );
+  };
 
   return (
-    <>
-      <SectionContainer>{children}</SectionContainer>
-    </>
+    <SectionContainer>{error ? <ErrorGraphql error={error} /> : renderContent()}</SectionContainer>
   );
-};
-
-export default Seasons;
+}

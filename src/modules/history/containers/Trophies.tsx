@@ -1,17 +1,17 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
+
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import TrophiesTotals from '../components/TrophiesTotals';
-import { GET_TROPHIES, GET_TROPHIES_TOTALS } from '../graphql/trophy';
+import { FETCH_TROPHIES, FETCH_TROPHIES_TOTALS } from '../graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import TrophiesOrderBy from '../components/TrophiesOrderBy';
 
-const Trophies: React.FC = () => {
+export default function Trophies() {
   const { teamId } = useCustomParams();
 
-  const { error, loading, data } = useQuery(GET_TROPHIES, {
+  const { error, loading, data } = useQuery(FETCH_TROPHIES, {
     variables: { teamId },
   });
 
@@ -19,7 +19,7 @@ const Trophies: React.FC = () => {
     error: totalsError,
     loading: totalsLoading,
     data: totalsData,
-  } = useQuery(GET_TROPHIES_TOTALS, {
+  } = useQuery(FETCH_TROPHIES_TOTALS, {
     variables: { teamId },
   });
 
@@ -45,6 +45,4 @@ const Trophies: React.FC = () => {
       {list}
     </>
   );
-};
-
-export default Trophies;
+}

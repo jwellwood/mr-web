@@ -1,7 +1,7 @@
+import { lazy } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { FETCH_MATCH } from '../graphql';
-
 import { AUTH_ROLES, TAB_TYPES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
 import EditLinksModal from '../../../components/modals/EditLinksModal';
@@ -10,13 +10,14 @@ import { CustomTabs, ITab } from '../../../components/tabs';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import MatchDetails from '../components/MatchDetails';
-import MatchPlayersTable from '../components/MatchPlayersTable';
 import { MATCH_ADMIN_LINKS, PAGES } from '../constants';
-import HeadToHead from './HeadToHead';
 import { useAuth } from '../../../hooks';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { ITeam } from '../../team/types.ts';
+
+const MatchDetails = lazy(() => import('../components/MatchDetails'));
+const MatchPlayersTable = lazy(() => import('../components/MatchPlayersTable'));
+const HeadToHead = lazy(() => import('./HeadToHead'));
 
 export default function Match() {
   const { teamId, matchId } = useCustomParams();

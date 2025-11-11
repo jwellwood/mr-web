@@ -1,11 +1,10 @@
-import React, { lazy, useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { FETCH_ROLES } from '../modules/auth/graphql';
 import { useAuth } from '../hooks';
 import { PageContainer } from '../components/containers';
-import { Spinner } from '../components/loaders';
 import AlertMessage from '../modules/alerts/components/AlertMessage.tsx';
 import { resetAuth, setAuth } from '../store/features/auth/authSlice.ts';
 
@@ -33,9 +32,7 @@ function AppRouter() {
   return (
     <BrowserRouter>
       <PageContainer>
-        <React.Suspense fallback={<Spinner />}>
-          {isAuth !== null && !loading && <AppRoutes />}
-        </React.Suspense>
+        {isAuth !== null && !loading && <AppRoutes />}
         <AlertMessage />
       </PageContainer>
     </BrowserRouter>

@@ -10,7 +10,7 @@ type Props = {
   trophies: ITrophyResponse[];
 };
 
-const TrophiesOrderByType = ({ trophies }: Props) => {
+export default function TrophiesOrderByType({ trophies }: Props) {
   const winner: IListItem[] = (trophies || [])
     .filter(trophy => trophy.isWinner)
     .map(trophy => getTrophyListItemTeam(trophy));
@@ -33,6 +33,4 @@ const TrophiesOrderByType = ({ trophies }: Props) => {
       </SectionContainer>
     </>
   );
-};
-
-export default TrophiesOrderByType;
+}

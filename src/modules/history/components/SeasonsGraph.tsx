@@ -1,4 +1,3 @@
-import React from 'react';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
@@ -11,7 +10,8 @@ import ProgressBar from './ProgressBar';
 type Props = {
   data?: ILeaguePositions[];
 };
-const SeasonsGraph: React.FC<Props> = ({ data }) => {
+
+export default function SeasonsGraph({ data }: Props) {
   const { orgId, teamId } = useCustomParams();
   const getDivisions = () => {
     const divArray = (data || []).map(item => item.division).filter(Boolean);
@@ -91,6 +91,4 @@ const SeasonsGraph: React.FC<Props> = ({ data }) => {
   });
 
   return <LinksList links={mappedData} />;
-};
-
-export default SeasonsGraph;
+}
