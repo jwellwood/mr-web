@@ -8,7 +8,7 @@ import { FORGOT_PASSWORD } from '../graphql';
 import { IForgotPasswordInput } from '../types';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { AUTH } from '../../../router/paths.ts';
+import { AUTH } from '../../../router/routes/paths.ts';
 import { AuthRoles } from '../../../constants.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { Spinner } from '../../../components/loaders';

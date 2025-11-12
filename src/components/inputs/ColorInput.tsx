@@ -1,6 +1,6 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
-import FormErrorMessage from '../alerts/FormErrorMessage';
+import FormErrorMessage from './FormErrorMessage';
 
 interface Props {
   inputName: string;

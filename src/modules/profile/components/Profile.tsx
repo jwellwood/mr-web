@@ -1,8 +1,9 @@
 import { IMAGE_TYPE } from '../../../app/constants';
 import ModuleHeader from '../../../components/common/ModuleHeader';
-import { IUser } from '../../../types';
+
 import { useDateOfBirth } from '../../../hooks';
 import { parseDate } from '../../../utils/helpers';
+import { IUser } from '../../auth/types';
 
 interface Props {
   user: IUser | null;

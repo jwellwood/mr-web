@@ -1,5 +1,4 @@
-import { IPlayerInMatch } from '../../../types';
-import { ITempMatch } from '../types';
+import { IPlayerInMatch, ITempMatch } from '../types';
 
 export const validateStats = (
   match: ITempMatch,

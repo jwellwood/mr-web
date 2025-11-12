@@ -1,8 +1,46 @@
 import { ReactElement } from 'react';
-import { IPlayer } from '../../types';
+
 import { ICompetition } from '../organization/types';
 import { TPosition } from '../players/constants';
 import { ITeam } from '../team/types';
+import { IPlayer } from '../players/types';
+
+export interface IPlayerInMatch {
+  _id?: string;
+  playerId: string | Partial<IPlayer>;
+  name: string;
+  matchId: string;
+  isStarter: boolean;
+  matchPosition: TPosition | ReactElement;
+  position?: TPosition;
+  apps?: number;
+  minutes: number;
+  goals: number;
+  assists: number;
+  conceded: number;
+  pensScored: number;
+  pensMissed: number;
+  pensSaved: number;
+  ownGoals: number;
+  yellowCards: number;
+  mvp: boolean;
+  redCard: boolean;
+  cleanSheet: boolean;
+}
+
+export interface IPlayerResponse extends Omit<IPlayerInMatch, 'playerId'> {
+  playerId: string | IPlayer;
+}
+
+export interface IMostMatch {
+  _id: string;
+  opponent: string;
+  opponentId: string;
+  teamGoals: number;
+  opponentGoals: number;
+  date: string;
+  isHome: boolean;
+}
 
 export type IMatchList = {
   _id: string;
@@ -100,4 +138,64 @@ export interface IMatchResponse
   teamId: string | ITeam;
   competitionId: string | ICompetition;
   matchPlayers: IMatchPlayer[];
+}
+
+export interface IMatchStats {
+  total: number;
+  wins: number;
+  draws: number;
+  defeats: number;
+  scored: number;
+  conceded: number;
+  difference: number;
+  teamAvg: number;
+  oppAvg: number;
+}
+
+export interface IMostGoalsInMatch {
+  matchId: string;
+  player: string;
+  date: string;
+  opponentName: string;
+  teamGoals: number;
+  opponentGoals: number;
+  total: number;
+}
+
+export interface IMostGoalsAndAssistsByPlayer {
+  maxGoals: number;
+  maxAssists: number;
+}
+
+export interface IMostGoalsByPlayerMatches {
+  _id: string;
+  date: string;
+  opponent: string;
+  teamGoals: number;
+  opponentGoals: number;
+  total: number;
+}
+
+export interface IOpponentTable {
+  _id: string;
+  isActive: boolean;
+  opponentName: string;
+  opponentBadge: string;
+  total: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  totalGoalsScored: number;
+  totalGoalsConceded: number;
+  totalGoalDifference: number;
+}
+
+export interface IPlayerVsStats {
+  opponentId: string;
+  opponent: string;
+  opponentBadge: string;
+  matches: number;
+  goals: number;
+  assists: number;
+  conceded: number;
 }

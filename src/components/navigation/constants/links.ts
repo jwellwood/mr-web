@@ -1,5 +1,5 @@
 import { navbarText, sidebarText } from '../../../i18n';
-import { HOME, PROFILE } from '../../../router/paths';
+import { HOME, PROFILE } from '../../../router/routes/paths';
 import { IIconType } from '../../icons/types';
 
 export const sidebarLinks: {

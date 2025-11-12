@@ -1,8 +1,9 @@
-import { IListItem, IMostGoalsInMatch } from '../../../types';
 import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList.tsx';
+import { IMostGoalsInMatch } from '../../matches/types.ts';
+import { IListItem } from '../../../components/lists/types.ts';
 
 interface Props {
   title: string;

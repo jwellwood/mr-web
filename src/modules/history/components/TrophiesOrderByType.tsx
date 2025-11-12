@@ -3,8 +3,8 @@ import { CustomTypography } from '../../../components/typography';
 import { theme } from '../../../theme';
 import LinksList from '../../../components/lists/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
-import { IListItem } from '../../../types';
 import { ITrophyResponse } from '../types';
+import { IListItem } from '../../../components/lists/types';
 
 type Props = {
   trophies: ITrophyResponse[];

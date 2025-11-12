@@ -1,5 +1,5 @@
-import { API_PATH } from '../../../app/constants';
 import axios from 'axios';
+import { API_PATH } from '../../app/constants';
 
 const api = {
   UPLOAD_USER_IMAGE_ROUTE: `${API_PATH.USER}/upload_user_image`,

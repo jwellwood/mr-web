@@ -1,4 +1,4 @@
-import { STAT_ICONS } from '../../../app/icons';
+import { STAT_ICONS } from '../../../components/icons/icons';
 import { SectionContainer } from '../../../components/containers';
 import StatIcon from '../../../components/icons/StatIcon';
 import TextList from '../../../components/lists/TextList';

@@ -1,8 +1,8 @@
 import { DataContainer, SectionContainer } from '../../../../components/containers';
+import { IListItem } from '../../../../components/lists/types';
 import { CustomTypography } from '../../../../components/typography';
-import { IListItem, IPlayerInMatch } from '../../../../types';
 import { validateStats } from '../../helpers/statsValidation';
-import { ITempMatch } from '../../types';
+import { IPlayerInMatch, ITempMatch } from '../../types';
 
 type Props = {
   match: ITempMatch;

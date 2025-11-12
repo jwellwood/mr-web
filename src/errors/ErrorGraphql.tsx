@@ -1,9 +1,9 @@
 import React from 'react';
-import { IListItem } from '../types';
 import { SectionContainer } from '../components/containers';
 import { theme } from '../theme';
 import { CustomTypography } from '../components/typography';
 import TextList from '../components/lists/TextList';
+import { IListItem } from '../components/lists/types';
 
 type Props = {
   error: { message: string } | { message: string[] };

@@ -7,10 +7,10 @@ import ControlledSelectInput from '../../../../components/inputs/ControlledSelec
 import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { DeleteModal } from '../../../../components/modals';
-import { IListItem } from '../../../../types';
 import { yearOptions } from '../../../../utils/helpers';
 import { ITrophy } from '../../types';
 import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import { IListItem } from '../../../../components/lists/types';
 
 interface Props {
   onSubmit: (data: Partial<ITrophy>) => void;

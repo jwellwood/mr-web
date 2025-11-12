@@ -1,5 +1,5 @@
 import { DataContainer, SectionContainer } from '../../../components/containers';
-import { IListItem } from '../../../types';
+import { IListItem } from '../../../components/lists/types';
 import { ITrophyTotals } from '../types';
 
 type Props = {

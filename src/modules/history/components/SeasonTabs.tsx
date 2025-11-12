@@ -1,11 +1,11 @@
 import { lazy } from 'react';
 
-import { TAB_TYPES } from '../../../app/constants.ts';
-import { CustomTabs, ITab } from '../../../components/tabs/index.ts';
-import SeasonHeader from './SeasonHeader.tsx';
-import { ITeamSeason } from '../types/index.ts';
-import { Matches } from '../../matches/routes.ts';
-import { Squad } from '../../squad/routes.ts';
+import { TAB_TYPES } from '../../../app/constants';
+import { CustomTabs, ITab } from '../../../components/tabs';
+import SeasonHeader from './SeasonHeader';
+import { ITeamSeason } from '../types/index';
+import { Matches } from '../../matches/routes';
+import { Squad } from '../../squad/routes';
 
 const MatchStats = lazy(() => import('../../matches/containers/MatchStats.tsx'));
 const Awards = lazy(() => import('../containers/Awards.tsx'));

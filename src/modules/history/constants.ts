@@ -1,6 +1,6 @@
 import { LINK_TYPE } from '../../app/constants';
+import { IListItem } from '../../components/lists/types';
 import { theme } from '../../theme';
-import { IListItem } from '../../types';
 
 // Replace the enum with this const object
 export const PAGES = {

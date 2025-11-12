@@ -4,8 +4,9 @@ import { GridDirection } from '@mui/system';
 import { CenteredGrid, GridItem } from '../grids';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
-import { IListItem } from '../../types';
 import { theme } from '../../theme';
+import { IListItem } from '../lists/types';
+
 interface Props {
   data: IListItem[];
   size?: number;

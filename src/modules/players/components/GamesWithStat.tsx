@@ -1,7 +1,7 @@
 import { game_with_stat_styles, player_games_with_stat } from '../configs';
-import { IPlayerStats } from '../../../types';
 import { getPercentage } from '../../../utils/helpers';
 import CustomTable from '../../../components/tables/CustomTable.tsx';
+import { IPlayerStats } from '../types.ts';
 
 type Props = {
   player: IPlayerStats;

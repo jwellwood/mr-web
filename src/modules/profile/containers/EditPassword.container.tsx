@@ -8,7 +8,7 @@ import { EDIT_PASSWORD, FETCH_USER } from '../graphql';
 import { pages } from '../constants';
 import EditPasswordForm from '../forms/EditPassword.form';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PROFILE } from '../../../router/paths.ts';
+import { PROFILE } from '../../../router/routes/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { Spinner } from '../../../components/loaders';
 import { AuthRoles } from '../../../constants.ts';

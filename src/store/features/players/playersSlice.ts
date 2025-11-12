@@ -1,6 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-
-import type { IPlayerInMatch } from '../../../types';
+import { IPlayerInMatch } from '../../../modules/matches/types';
 
 interface IPlayerState {
   players: IPlayerInMatch[];

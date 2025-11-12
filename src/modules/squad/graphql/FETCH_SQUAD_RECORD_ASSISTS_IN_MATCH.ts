@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMostGoalsInMatch } from '../../../types';
+import { IMostGoalsInMatch } from '../../matches/types';
 
 export const FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH: TypedDocumentNode<{
   assistStats: IMostGoalsInMatch[];

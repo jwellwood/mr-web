@@ -6,9 +6,9 @@ import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
 import SwitchButtonList from '../../../../components/common/SwitchButtonList';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
-import { IPlayerInMatch } from '../../../../types';
 import { getIntegers } from '../../../../utils/helpers';
 import { theme } from '../../../../theme';
+import { IPlayerInMatch } from '../../types';
 
 interface Props {
   onSubmit: (data: IPlayerInMatch) => void;

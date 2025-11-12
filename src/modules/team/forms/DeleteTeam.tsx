@@ -9,7 +9,7 @@ import { PageHeader } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
-import { PROFILE } from '../../../router/paths.ts';
+import { PROFILE } from '../../../router/routes/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { PAGES } from '../constants.ts';
 import DeleteTeamForm from './components/DeleteTeamForm.tsx';

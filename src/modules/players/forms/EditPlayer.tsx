@@ -5,7 +5,7 @@ import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import { PAGES } from '../constants';
 import { FETCH_PLAYER, EDIT_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
-import { IPlayer, ISeasonID } from '../../../types';
+
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { useNationality } from '../../../hooks';
@@ -17,6 +17,7 @@ import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
+import { IPlayer, ISeasonID } from '../types.ts';
 
 const EditPlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();

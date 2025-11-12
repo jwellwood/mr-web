@@ -8,7 +8,7 @@ import { EDIT_PROFILE, FETCH_USER } from '../graphql';
 import { pages } from '../constants';
 import EditProfileForm from '../forms/EditProfile.form';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PROFILE } from '../../../router/paths.ts';
+import { PROFILE } from '../../../router/routes/paths.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';

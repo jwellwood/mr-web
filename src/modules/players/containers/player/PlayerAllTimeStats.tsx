@@ -5,13 +5,14 @@ import { FETCH_PLAYER_ALL_TIME_STATS } from '../../graphql';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
 import Averages from '../../../matches/components/Averages';
 import MatchStatsTable from '../../../matches/components/MatchStatsTable';
-import { IMatchStats, IPlayerStats } from '../../../../types';
 import GamesWithStat from '../../components/GamesWithStat';
 import PlayerStatsTable from '../../components/PlayerStatsTable';
 import { mapPlayerAverages } from '../../helpers/mapPlayerAverages';
 import { mapPlayerMatchStats } from '../../helpers/mapPlayerMatchStats';
 import PlayerGameStreaks from './PlayerGameStreaks';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';
+import { IPlayerStats } from '../../types';
+import { IMatchStats } from '../../../matches/types';
 
 export default function PlayerAllTimeStats() {
   const { playerId } = useCustomParams();

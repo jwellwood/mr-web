@@ -3,8 +3,9 @@ import FlagIcon from '../../../components/icons/FlagIcon';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
 import NameCell from '../../../components/tables/NameCell';
-import { IPlayer, IPlayerInMatch } from '../../../types';
+import { IPlayerInMatch } from '../../matches/types';
 import { POSITIONS } from '../../players/constants';
+import { IPlayer } from '../../players/types';
 
 interface Args {
   players: IPlayer[];

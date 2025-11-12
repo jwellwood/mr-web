@@ -1,7 +1,12 @@
 import { Route } from 'react-router-dom';
-import { PLAYER, TEAM } from '../paths';
-import { DeletePlayer, EditPlayer, EditPlayerPhoto, Player } from '../../modules/players/routes.ts';
-import { Trophy } from '../../modules/history/routes.ts';
+import { PLAYER, TEAM } from './paths.ts';
+import {
+  DeletePlayer,
+  EditPlayer,
+  EditPlayerPhoto,
+  Player,
+} from '../../modules/players/routes.tsx';
+import { Trophy } from '../../modules/history/routes.tsx';
 
 export const PLAYER_ROUTES = () => (
   <>

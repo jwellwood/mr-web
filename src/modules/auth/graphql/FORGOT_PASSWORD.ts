@@ -1,8 +1,8 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IUser } from '../../../types';
+import { IUser } from '../types';
 
 export const FORGOT_PASSWORD: TypedDocumentNode<{ user: IUser }> = gql`
-  mutation ForgotPassword($email: String!) {
+  mutation FORGOT_PASSWORD($email: String!) {
     user: forgotPassword(data: { email: $email }) {
       _id
       email

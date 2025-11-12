@@ -6,9 +6,9 @@ import LinksList from '../../../components/lists/LinksList';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { IMatchStats } from '../../../types';
 import MatchStatsTable from '../components/MatchStatsTable';
 import { getMatchListData } from '../helpers/getMatchListData.tsx';
+import { IMatchStats } from '../types.ts';
 
 type Props = {
   opponentId?: string;

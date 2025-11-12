@@ -2,7 +2,7 @@ import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import MatchListLabel from '../components/MatchListLabel';
 import MatchListScoreBox from '../components/MatchListScoreBox';
-import { IMatchList } from '../../../types/matchList.ts';
+import { IMatchList } from '../types';
 
 interface Args {
   data?: IMatchList[];

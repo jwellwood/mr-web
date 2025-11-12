@@ -1,4 +1,4 @@
-import { IPlayer } from '../../../types';
+import { IPlayer } from '../types';
 
 export const mapPlayerForm = (formData: Partial<IPlayer>) => {
   return {

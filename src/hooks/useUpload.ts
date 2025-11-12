@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { showAlert } from '../../../store/features/alerts/alertsSlice';
+import { showAlert } from '../store/features/alerts/alertsSlice';
 import { ApolloQueryResult, FetchResult } from '@apollo/client';
 
 interface UseUpload {

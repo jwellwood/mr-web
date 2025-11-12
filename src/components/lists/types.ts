@@ -1,13 +1,5 @@
 import type { ReactElement } from 'react';
-import type { TLinkType } from '../constants.ts';
-
-export * from './user';
-export * from './match';
-export * from './matchStats.ts';
-export * from './player';
-export * from './playerInMatch';
-export * from './image';
-export * from './alert.ts';
+import { TLinkType } from '../../constants';
 
 export interface IListItem {
   label: string | ReactElement;
@@ -22,9 +14,4 @@ export interface IListItem {
   disabled?: boolean;
   hidden?: boolean;
   onClick?: () => void;
-}
-
-export interface ITabIndex {
-  primary: number;
-  secondary: number;
 }

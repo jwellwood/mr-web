@@ -1,4 +1,4 @@
-import { IPlayer } from '../../../types';
+import { IPlayer } from '../types';
 
 const date = new Date();
 

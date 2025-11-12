@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { FormContainer } from '../../../components/containers';
 import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
 import { IForgotPasswordInput } from '../types';
-import CustomDivider from '../../../components/dividers/CustomDivider';
 
 interface Props {
   defaultValues: IForgotPasswordInput;
@@ -24,7 +23,6 @@ export default function ForgotPasswordForm({ defaultValues, onSubmit }: Props) {
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={!email.length}>
-      <CustomDivider />
       <ControlledTextInput
         control={control}
         name="email"

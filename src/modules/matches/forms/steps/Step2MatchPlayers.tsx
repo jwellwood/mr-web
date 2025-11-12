@@ -10,9 +10,9 @@ import { useMatchPlayersInput } from '../../hooks/useMatchPlayersInput.ts';
 import { AppDispatch } from '../../../../store/store.ts';
 import { getTempMatch } from '../../../../store/features/matches/matchesSelector.ts';
 import { getTempPlayers } from '../../../../store/features/players/playersSelector.ts';
-import { IPlayerInMatch } from '../../../../types';
 import { setTmpPlayers } from '../../../../store/features/players/playersSlice.ts';
 import { initPlayerInMatch } from '../state.ts';
+import { IPlayerInMatch } from '../../types.ts';
 
 interface Props {
   onNextClick: () => void;

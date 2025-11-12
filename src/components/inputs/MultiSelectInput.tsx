@@ -5,9 +5,9 @@ import InputLabel from '@mui/material/InputLabel';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import FormErrorMessage from '../alerts/FormErrorMessage';
+import FormErrorMessage from './FormErrorMessage';
 import { ISelectOptions } from './SelectInput';
-import { FormError } from '../../types/form.ts';
+import { FormError } from './types';
 
 interface Props {
   options: ISelectOptions[];

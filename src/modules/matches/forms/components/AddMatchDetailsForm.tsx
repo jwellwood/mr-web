@@ -6,12 +6,12 @@ import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledDateInput from '../../../../components/inputs/ControlledDateInput';
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
-import { IListItem } from '../../../../types';
 import { getIntegers } from '../../../../utils/helpers';
 import { cupRoundOptions } from '../../constants';
 import SwitchButtonList from '../../../../components/common/SwitchButtonList';
 import { ICompetition } from '../../../organization/types';
 import { ITempMatch } from '../../types';
+import { IListItem } from '../../../../components/lists/types';
 
 interface Props {
   onSubmit: (data: ITempMatch) => void;

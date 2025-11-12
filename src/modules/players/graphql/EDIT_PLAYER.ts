@@ -1,9 +1,10 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IPlayer } from '../../../types';
+import { IPlayer } from '../types';
+
 export const EDIT_PLAYER: TypedDocumentNode<{
   player: IPlayer;
 }> = gql`
-  mutation EditPlayer(
+  mutation EDIT_PLAYER(
     $teamId: String!
     $playerId: String!
     $name: String!

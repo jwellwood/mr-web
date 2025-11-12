@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Spinner } from '../../../components/loaders';
 import FormModal from '../../../components/modals/FormModal.tsx';
-import { IPlayer, IPlayerInMatch } from '../../../types';
 import AddMatchPlayerStatsForm from './components/AddMatchPlayerStatsForm.tsx';
 import { getGoalsOptions, getMinutesOptions } from '../helpers';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 import { AppDispatch } from '../../../store/store.ts';
 import { setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 import { initPlayerInMatch } from './state.ts';
+import { IPlayer } from '../../players/types.ts';
+import { IPlayerInMatch } from '../types.ts';
 
 interface Props {
   playerId: string;

@@ -10,8 +10,8 @@ import { Spinner } from '../../../components/loaders';
 import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { IListItem } from '../../../types';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
+import { IListItem } from '../../../components/lists/types';
 
 export default function HallOfFame() {
   const { teamId } = useCustomParams();

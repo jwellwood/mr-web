@@ -8,11 +8,11 @@ import { Spinner } from '../../../../components/loaders';
 import { CustomTypography } from '../../../../components/typography';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
-import { IListItem } from '../../../../types';
 import { FETCH_PLAYER_TROPHIES } from '../../graphql';
 import { getTrophyListItem } from '../../helpers';
 import { usePlayerData } from '../../hooks/usePlayerData';
 import { theme } from '../../../../theme';
+import { IListItem } from '../../../../components/lists/types';
 
 const PlayerHonors: React.FC = () => {
   const { playerId } = useCustomParams();

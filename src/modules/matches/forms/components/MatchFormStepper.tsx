@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
 
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
-import { IPlayerInMatch } from '../../../../types';
+
 import Step1MatchDetails from '../steps/Step1MatchDetails';
 import Step2AddPlayers from '../steps/Step2MatchPlayers';
 import Step3MatchStats from '../steps/Step3MatchStats';
@@ -13,7 +13,7 @@ import MatchOverview from '../../components/MatchOverview';
 import { theme } from '../../../../theme';
 import { ICompetition } from '../../../organization/types';
 import { ITeam } from '../../../team/types';
-import { ITempMatch } from '../../types';
+import { IPlayerInMatch, ITempMatch } from '../../types';
 
 type Props = {
   defaultValues: ITempMatch;

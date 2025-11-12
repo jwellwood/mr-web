@@ -7,9 +7,9 @@ import { Spinner } from '../../../components/loaders';
 import CustomTable from '../../../components/tables/CustomTable';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { IOpponentTable } from '../../../types';
 import { opponent_table, opponent_table_styles } from '../configs';
 import { mapOpponentStats } from '../helpers/mapOpponentStats';
+import { IOpponentTable } from '../types';
 
 export default function OpponentTable() {
   const { teamId } = useCustomParams();

@@ -1,5 +1,5 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import { IMostMatch } from '../../../types';
+import { IMostMatch } from '../types';
 
 export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
   stats: {

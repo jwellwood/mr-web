@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IOpponentTable } from '../../../types';
+import { IOpponentTable } from '../types';
 
 export const FETCH_OPPONENTS: TypedDocumentNode<{
   stats: IOpponentTable;

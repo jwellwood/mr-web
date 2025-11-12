@@ -1,8 +1,8 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IUser } from '../../../types';
+import { IUser } from '../types';
 
 export const SIGN_IN_USER: TypedDocumentNode<{ user: IUser }> = gql`
-  mutation SignInUser($email: String!, $password: String!) {
+  mutation SIGN_IN_USER($email: String!, $password: String!) {
     user: signInUser(data: { email: $email, password: $password }) {
       username
       email

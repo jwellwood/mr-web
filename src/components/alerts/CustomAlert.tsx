@@ -1,9 +1,9 @@
-import React from 'react';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { useAlert } from '../hooks/useAlert.hook.ts';
 
-const AlertMessage: React.FC = () => {
+import { useAlert } from './hooks/useAlert';
+
+export default function CustomAlert() {
   const { handleClose, alert } = useAlert();
 
   return alert ? (
@@ -21,6 +21,4 @@ const AlertMessage: React.FC = () => {
       </Alert>
     </Snackbar>
   ) : null;
-};
-
-export default AlertMessage;
+}

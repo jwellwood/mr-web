@@ -11,7 +11,7 @@ import { useSeasons } from '../../../hooks/useSeasons';
 import PlayersByNumbers from '../components/PlayersByNumbers';
 import { squad_stats_season, season_styles } from '../configs';
 import { getSquadSeasonTableData } from '../helpers';
-import { IPlayer } from '../../../types';
+import { IPlayer } from '../../players/types';
 
 export default function SquadStatsSeason() {
   const { teamId } = useCustomParams();

@@ -1,5 +1,5 @@
+import { IListItem } from '../../components/lists/types';
 import { LinkTypes } from '../../constants';
-import { IListItem } from '../../types';
 
 export const PAGES = {
   PLAYER: 'Player',

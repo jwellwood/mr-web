@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { resendValidationEmail } from '../services/validation';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PROFILE } from '../../../router/paths.ts';
+import { PROFILE } from '../../../router/routes/paths.ts';
 import { Spinner } from '../../../components/loaders';
 import { CustomButton } from '../../../components/buttons';
 

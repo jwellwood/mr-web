@@ -7,12 +7,13 @@ import { useSeasons } from '../../../../hooks/useSeasons';
 import Averages from '../../../matches/components/Averages';
 import MatchStatsTable from '../../../matches/components/MatchStatsTable';
 import SelectSeason from '../SelectSeason';
-import { IMatchStats, IPlayerStats } from '../../../../types';
 import GamesWithStat from '../../components/GamesWithStat';
 import PlayerStatsTable from '../../components/PlayerStatsTable';
 import { mapPlayerAverages } from '../../helpers/mapPlayerAverages';
 import { mapPlayerMatchStats } from '../../helpers/mapPlayerMatchStats';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';
+import { IPlayerStats } from '../../types';
+import { IMatchStats } from '../../../matches/types';
 
 export default function PlayerSeasonStats() {
   const { seasonId } = useSeasons();

@@ -1,8 +1,8 @@
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList';
+import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
-import { IListItem } from '../../../types';
 import RecordPlayers from './RecordPlayers';
 
 type ValueType = object & {

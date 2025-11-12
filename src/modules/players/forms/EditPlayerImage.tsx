@@ -8,9 +8,10 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { PAGES } from '../constants';
 import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../graphql';
-import { removePlayerPhoto, uploadPlayerPhoto } from '../../images/services';
-import { useUpload } from '../../images/hooks';
+
 import RouteGuard from '../../../router/RouteGuard.tsx';
+import { removePlayerPhoto, uploadPlayerPhoto } from '../../../services/images/player-images.ts';
+import { useUpload } from '../../../hooks/useUpload.ts';
 
 const EditPlayerPhoto: React.FC = () => {
   const { teamId, playerId } = useCustomParams();

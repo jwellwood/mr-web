@@ -1,5 +1,6 @@
 import { DataContainer } from '../../../components/containers';
-import { IListItem, IPlayer } from '../../../types';
+import { IListItem } from '../../../components/lists/types.ts';
+import { IPlayer } from '../../players/types.ts';
 import { getAverageAge } from '../helpers';
 import { IPastPlayer } from '../types.ts';
 import ByNationality from './ByNationality.tsx';

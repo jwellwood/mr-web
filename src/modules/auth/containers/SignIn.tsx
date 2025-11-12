@@ -11,7 +11,7 @@ import ResendVerification from './ResendVerification';
 import { AppDispatch } from '../../../store/store';
 import { useAuth } from '../../../hooks';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PROFILE } from '../../../router/paths.ts';
+import { PROFILE } from '../../../router/routes/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';

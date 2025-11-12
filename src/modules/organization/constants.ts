@@ -1,7 +1,7 @@
 import { LINK_TYPE } from '../../app/constants';
 import { ISelectOptions } from '../../components/inputs/SelectInput';
-import { IListItem } from '../../types';
-import { ORG } from '../../router/paths.ts';
+import { IListItem } from '../../components/lists/types.ts';
+import { ORG } from '../../router/routes/paths.ts';
 
 export const PAGES = {
   ORG: 'Organization',

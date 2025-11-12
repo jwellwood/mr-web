@@ -2,8 +2,8 @@ import { IMAGE_TYPE } from '../../../app/constants';
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import LinksList from '../../../components/lists/LinksList';
+import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
-import { IListItem } from '../../../types';
 import { ITeamResponse } from '../../team/types';
 
 type Props = {

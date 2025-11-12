@@ -13,7 +13,7 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { apolloClient } from '../../../services/graphql/apolloClient.ts';
-import { AUTH } from '../../../router/paths.ts';
+import { AUTH } from '../../../router/routes/paths.ts';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 
 export default function DeleteAccountContainer() {

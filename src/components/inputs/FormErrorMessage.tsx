@@ -1,12 +1,12 @@
 import { CustomTypography } from '../typography';
 import { form_error_text } from '../../i18n';
-import { type FormError } from '../../types/form';
+import { FormError } from './types';
 
 interface Props {
   error: FormError;
 }
 
-function FormErrorMessage({ error }: Props) {
+export default function FormErrorMessage({ error }: Props) {
   let message = form_error_text.default;
   const errType =
     typeof error === 'string'
@@ -47,5 +47,3 @@ function FormErrorMessage({ error }: Props) {
     </CustomTypography>
   );
 }
-
-export default FormErrorMessage;

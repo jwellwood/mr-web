@@ -1,6 +1,5 @@
 import countryList from 'react-select-country-list';
 
-import { IPlayer } from '../../../types';
 import { IPastPlayer } from '../types.ts';
 import { SectionContainer } from '../../../components/containers';
 import { CustomTypography } from '../../../components/typography';
@@ -8,6 +7,7 @@ import FlagIcon from '../../../components/icons/FlagIcon.tsx';
 import TextList from '../../../components/lists/TextList.tsx';
 import { PresentationModal } from '../../../components/modals';
 import { CustomButton } from '../../../components/buttons';
+import { IPlayer } from '../../players/types.ts';
 
 interface Props {
   players: IPlayer[] | IPastPlayer[];

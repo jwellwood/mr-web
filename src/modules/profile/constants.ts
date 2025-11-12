@@ -1,5 +1,5 @@
 import { LINK_TYPE } from '../../app/constants';
-import { ORG, PROFILE } from '../../router/paths';
+import { ORG, PROFILE } from '../../router/routes/paths';
 
 export const pages = {
   USER_PROFILE_PAGE: 'Profile',

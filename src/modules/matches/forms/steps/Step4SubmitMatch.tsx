@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { FormContainer, SectionContainer } from '../../../../components/containers';
 import TextList from '../../../../components/lists/TextList';
 import CustomTable from '../../../../components/tables/CustomTable';
-import { IListItem, IPlayerInMatch } from '../../../../types';
 import { match_form_table, match_form_table_styles } from '../../configs';
 import { statsDataAll } from '../../helpers';
-import { ITempMatch } from '../../types';
+import { IPlayerInMatch, ITempMatch } from '../../types';
+import { IListItem } from '../../../../components/lists/types';
 
 interface Props {
   onSubmit: () => void;

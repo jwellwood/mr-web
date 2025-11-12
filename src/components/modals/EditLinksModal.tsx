@@ -7,8 +7,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { CustomButton } from '../buttons';
 import { SectionContainer } from '../containers';
 import LinksList from '../lists/LinksList';
-import { IListItem } from '../../types';
 import { theme } from '../../theme';
+import { IListItem } from '../lists/types';
+
 interface Props {
   data: IListItem[];
   title?: string | ReactNode;

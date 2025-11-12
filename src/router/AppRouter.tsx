@@ -2,13 +2,14 @@ import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+
 import { FETCH_ROLES } from '../modules/auth/graphql';
 import { useAuth } from '../hooks';
-import { PageContainer } from '../components/containers';
-import AlertMessage from '../modules/alerts/components/AlertMessage.tsx';
 import { resetAuth, setAuth } from '../store/features/auth/authSlice.ts';
+import { PageContainer } from '../components/containers';
+import CustomAlert from '../components/alerts/CustomAlert.tsx';
 
-const AppRoutes = lazy(() => import('./Routes'));
+const AppRoutes = lazy(() => import('./routes/Routes.tsx'));
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function AppRouter() {
     <BrowserRouter>
       <PageContainer>
         {isAuth !== null && !loading && <AppRoutes />}
-        <AlertMessage />
+        <CustomAlert />
       </PageContainer>
     </BrowserRouter>
   );

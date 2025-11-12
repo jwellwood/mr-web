@@ -8,9 +8,10 @@ import ControlledMultiSelectInput from '../../../../components/inputs/Controlled
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
 import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
-import { IListItem, IPlayer } from '../../../../types';
 import { getIntegers } from '../../../../utils/helpers';
 import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import { IPlayer } from '../../types';
+import { IListItem } from '../../../../components/lists/types';
 
 interface Props {
   onSubmit: (data: Partial<IPlayer>) => void;

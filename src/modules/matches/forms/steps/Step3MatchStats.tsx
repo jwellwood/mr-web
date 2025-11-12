@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 import { SubmitButton } from '../../../../components/buttons';
 import { Spinner } from '../../../../components/loaders';
 import CustomTable from '../../../../components/tables/CustomTable.tsx';
-import { IPlayerInMatch } from '../../../../types';
 import { match_form_table, match_form_table_styles } from '../../configs';
 import { statsDataAll } from '../../helpers';
 import { validateStats } from '../../helpers/statsValidation.ts';
 import AddMatchValidation from '../components/AddMatchValidation.tsx';
 import { getTempMatch } from '../../../../store/features/matches/matchesSelector.ts';
+import { IPlayerInMatch } from '../../types.ts';
 
 interface Props {
   onNextClick: () => void;

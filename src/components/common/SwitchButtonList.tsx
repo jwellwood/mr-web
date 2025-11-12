@@ -1,10 +1,10 @@
 import { Control, FieldValues, Path } from 'react-hook-form';
 import ControlledSwitchInput from '../inputs/ControlledSwitchInput';
-import { IListItem } from '../../types';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import { CustomTypography } from '../typography';
+import { IListItem } from '../lists/types';
 
 type Props<T extends FieldValues = FieldValues> = {
   control: Control<T>;

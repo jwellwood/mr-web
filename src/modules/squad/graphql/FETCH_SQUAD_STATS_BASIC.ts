@@ -1,6 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-
-import { IPlayerInMatch } from '../../../types';
+import { IPlayerInMatch } from '../../matches/types';
 
 export const FETCH_SQUAD_STATS_BASIC: TypedDocumentNode<{
   players: IPlayerInMatch[];

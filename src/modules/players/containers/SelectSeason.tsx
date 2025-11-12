@@ -4,8 +4,8 @@ import { useQuery } from '@apollo/client';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { useSeasons } from '../../../hooks/useSeasons';
 import SelectSeasonModal from '../components/SelectSeasonModal';
-import { IListItem } from '../../../types';
 import { FETCH_PLAYER } from '../graphql';
+import { IListItem } from '../../../components/lists/types';
 
 interface Props {
   playerId?: string;

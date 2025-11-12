@@ -7,7 +7,7 @@ import ControlledMultiSelectInput from '../../../../components/inputs/Controlled
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import TextList from '../../../../components/lists/TextList';
 import { CustomTypography } from '../../../../components/typography';
-import { IPlayer } from '../../../../types';
+import { IPlayer } from '../../../players/types';
 
 interface Props {
   onSubmit: (data: { matchPlayers: string[] }) => void;

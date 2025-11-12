@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { IAlert } from '../../../types';
+import { IAlert } from '../../../components/alerts/types';
 
 const initialState: IAlert = {
   text: '',

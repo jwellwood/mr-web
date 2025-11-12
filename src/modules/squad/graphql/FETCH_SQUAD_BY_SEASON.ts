@@ -1,5 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-import { IPlayer } from '../../../types';
+import { IPlayer } from '../../players/types';
 
 export const FETCH_SQUAD_BY_SEASON: TypedDocumentNode<{
   players: IPlayer[];

@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { AUTH, PROFILE } from './paths';
+import { AUTH, PROFILE } from './routes/paths.ts';
 import { useAuth } from '../hooks';
 import { AUTH_ROLES, TAuthRoles } from '../app/constants.ts';
 import { showAlert } from '../store/features/alerts/alertsSlice.ts';

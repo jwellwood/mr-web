@@ -10,11 +10,11 @@ import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
-import { IListItem } from '../../../types';
 import { PAGES } from '../constants';
 import TextList from '../../../components/lists/TextList';
 import { SectionContainer } from '../../../components/containers';
 import { CustomTypography } from '../../../components/typography';
+import { IListItem } from '../../../components/lists/types';
 
 export default function Award() {
   const { teamId, awardId } = useCustomParams();

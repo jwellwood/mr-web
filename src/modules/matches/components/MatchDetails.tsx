@@ -4,13 +4,13 @@ import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';
-import { IListItem } from '../../../types';
 import { parseDate } from '../../../utils/helpers';
 import { getPoints } from '../helpers';
 import ScoreBox from './ScoreBox';
 import { ICompetition } from '../../organization/types';
 import { ITeam } from '../../team/types';
 import { IMatchResponse } from '../types';
+import { IListItem } from '../../../components/lists/types';
 
 type Props = {
   match: IMatchResponse;

@@ -4,14 +4,15 @@ import { useMutation, useQuery } from '@apollo/client';
 import { FETCH_TEAM, EDIT_TEAM_BADGE } from '../graphql';
 import { PAGES } from '../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { useUpload } from '../../images/hooks';
-import { removeTeamBadge, uploadTeamBadge } from '../../images/services';
+
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../app/constants';
 import { PageHeader } from '../../../components/typography';
 import ImageForm from '../../../components/common/ImageForm';
 import { Spinner } from '../../../components/loaders';
+import { removeTeamBadge, uploadTeamBadge } from '../../../services/images';
+import { useUpload } from '../../../hooks';
 
 export default function EditTeamBadge() {
   const { teamId } = useCustomParams();

@@ -6,11 +6,12 @@ import { AUTH_ROLES } from '../../../app/constants';
 import ImageForm from '../../../components/common/ImageForm';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
-import { useUpload } from '../../images/hooks';
-import { removeUserImage, uploadUserImage } from '../../images/services';
+
 import RouteGuard from '../../../router/RouteGuard';
 import { pages } from '../constants';
 import { CustomAppBar } from '../../../components/navigation';
+import { removeUserImage, uploadUserImage } from '../../../services/images';
+import { useUpload } from '../../../hooks';
 
 export default function EditUserImage() {
   const { data, error, loading: loadingUser, refetch } = useQuery(FETCH_USER);

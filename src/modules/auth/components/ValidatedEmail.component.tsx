@@ -2,7 +2,7 @@ import { CustomLinkButton } from '../../../components/buttons';
 import { CenteredGrid } from '../../../components/grids';
 import StatIcon from '../../../components/icons/StatIcon';
 import { CustomTypography } from '../../../components/typography';
-import { AUTH } from '../../../router/paths';
+import { AUTH } from '../../../router/routes/paths';
 
 interface Props {
   success: boolean;

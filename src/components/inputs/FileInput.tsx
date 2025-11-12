@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
 import TextField from '@mui/material/TextField';
-import FormErrorMessage from '../alerts/FormErrorMessage';
-import { FormError } from '../../types/form';
+import FormErrorMessage from './FormErrorMessage';
+import { FormError } from './types';
 
 interface Props {
   inputName: string;

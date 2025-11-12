@@ -1,7 +1,7 @@
 import React from 'react';
 import List from '@mui/material/List';
-import { IListItem } from '../../types';
 import ListItemLink from './ListItemLink';
+import { IListItem } from './types';
 
 interface Props {
   links: IListItem[];

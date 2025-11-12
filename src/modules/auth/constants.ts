@@ -1,5 +1,5 @@
-import { AUTH } from '../../router/paths';
-import { IListItem } from '../../types';
+import { IListItem } from '../../components/lists/types';
+import { AUTH } from '../../router/routes/paths';
 
 export const pages = {
   SIGN_IN_PAGE: 'Sign In',

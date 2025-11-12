@@ -1,10 +1,10 @@
 import { SectionContainer } from '../../../components/containers';
 import CustomTable from '../../../components/tables/CustomTable';
-import { IPlayer, IPlayerInMatch } from '../../../types';
 import { match_players_table, match_players_table_styles } from '../configs';
 import { statsData } from '../helpers';
 import { POSITIONS } from '../../players/constants.ts';
-import { IMatchResponse } from '../types.ts';
+import { IMatchResponse, IPlayerInMatch } from '../types.ts';
+import { IPlayer } from '../../players/types.ts';
 
 type Props = {
   match?: IMatchResponse;

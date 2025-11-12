@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useMediaQuery } from '@mui/material';
-import { HOME, PROFILE } from '../router/paths';
+import { HOME, PROFILE } from '../router/routes/paths';
 
 export const useInternalNavigation = () => {
   let { pathname } = useLocation();

@@ -2,8 +2,8 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 
 import { CustomTypography } from '../../../components/typography';
-import { IListItem } from '../../../types';
 import SimpleDialog from '../../../components/modals/SimpleDialog';
+import { IListItem } from '../../../components/lists/types';
 
 interface Props {
   currentSeason?: string;

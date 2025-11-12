@@ -1,10 +1,10 @@
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
-import { IOpponentTable } from '../../../types';
 import { getAvg, getPercentage } from '../../../utils/helpers';
 import HeadToHead from '../containers/HeadToHead';
 import { ImageTypes } from '../../../constants.ts';
 import { PresentationModal } from '../../../components/modals';
 import CustomTypography from '../../../components/typography/CustomTypography.tsx';
+import { IOpponentTable } from '../types.ts';
 
 export const mapOpponentStats = (stats: IOpponentTable[]) => {
   const getPoints = (wins: number, draws: number) => {

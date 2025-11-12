@@ -1,8 +1,8 @@
 import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import LinksList from '../../../components/lists/LinksList';
+import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { IListItem } from '../../../types';
 import { seasonColors } from '../constants';
 import { ILeaguePositions } from '../types';
 import ProgressBar from './ProgressBar';

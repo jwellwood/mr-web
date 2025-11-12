@@ -10,8 +10,8 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import TrophyDetails from '../components/TrophyDetails';
 import { PAGES } from '../constants';
 import { useAuth } from '../../../hooks';
-import { IListItem } from '../../../types';
 import RouteGuard from '../../../router/RouteGuard.tsx';
+import { IListItem } from '../../../components/lists/types.ts';
 
 export default function Trophy() {
   const { teamId, trophyId } = useCustomParams();

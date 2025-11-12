@@ -1,6 +1,7 @@
-import { IListItem, IMostMatch } from '../../../types';
+import { IListItem } from '../../../components/lists/types';
 import MatchListLabelBasic from '../components/MatchListLabelBasic';
 import MatchListScoreBox from '../components/MatchListScoreBox';
+import { IMostMatch } from '../types';
 
 export const mostMatchListData = (
   data?: IMostMatch[],

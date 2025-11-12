@@ -11,7 +11,6 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { useNationality } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
-import { IPlayer } from '../../../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
@@ -20,6 +19,7 @@ import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 import { initialPlayerState } from './state.ts';
+import { IPlayer } from '../types.ts';
 
 const AddPlayer: React.FC = () => {
   const { teamId } = useCustomParams();

@@ -12,7 +12,7 @@ import { PAGES, TEAM_ADMIN_LINKS } from './constants';
 import TeamOverview from './containers/TeamOverview';
 import { IIconType } from '../../components/icons/types';
 import { getTabIndex } from '../../store/features/tabs/tabsSelector';
-import { NAV_ICONS } from '../../app/icons';
+import { NAV_ICONS } from '../../components/icons/icons';
 
 import SquadTabs from '../squad/main';
 import MatchesTabs from '../matches/main';

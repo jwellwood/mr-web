@@ -1,5 +1,5 @@
-import { API_PATH } from '../../../app/constants';
 import axios from 'axios';
+import { API_PATH } from '../../app/constants';
 
 const api = {
   UPLOAD_TEAM_BADGE_ROUTE: `${API_PATH.ADMIN}/upload_team_badge`,

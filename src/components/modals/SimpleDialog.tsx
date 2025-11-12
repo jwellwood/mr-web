@@ -1,9 +1,9 @@
 import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 
-import { IListItem } from '../../types';
 import { CustomTypography } from '../typography';
 import { SectionContainer } from '../containers';
 import TextList from '../lists/TextList';
+import { IListItem } from '../lists/types';
 
 interface SimpleDialogProps {
   data: IListItem[];

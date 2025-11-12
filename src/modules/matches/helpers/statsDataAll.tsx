@@ -1,10 +1,11 @@
-import { STAT_ICONS } from '../../../app/icons';
+import { ReactElement, ReactNode } from 'react';
+
+import { STAT_ICONS } from '../../../components/icons/icons';
 import StatIcon from '../../../components/icons/StatIcon';
 import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
-import { IPlayerInMatch } from '../../../types';
 import AddStats from '../forms/AddStats';
-import { ReactElement, ReactNode } from 'react';
+import { IPlayerInMatch } from '../types';
 
 export const statsDataAll = (
   currentPlayers?: Partial<IPlayerInMatch[]>,

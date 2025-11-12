@@ -1,7 +1,8 @@
 import { SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList';
-import { IUser } from '../../../types';
+
 import { parseDate } from '../../../utils/helpers';
+import { IUser } from '../../auth/types';
 
 type Props = {
   user: IUser | null;

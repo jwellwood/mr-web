@@ -1,9 +1,9 @@
-import { IPlayerVsStats } from '../../../types';
 import { ImageTypes } from '../../../constants.ts';
 import CustomAvatar from '../../../components/avatars/CustomAvatar.tsx';
 import PresentationModal from '../../../components/modals/PresentationModal.tsx';
 import CustomTypography from '../../../components/typography/CustomTypography.tsx';
 import { getAvg } from '../../../utils/helpers';
+import { IPlayerVsStats } from '../../matches/types.ts';
 
 export const mapPlayerVsStats = (stats: IPlayerVsStats[]) => {
   return stats?.map((item: IPlayerVsStats) => ({

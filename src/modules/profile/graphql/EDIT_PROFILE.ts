@@ -1,6 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-
-import { IUser } from '../../../types';
+import { IUser } from '../../auth/types';
 
 export const EDIT_PROFILE: TypedDocumentNode<{
   user: IUser;

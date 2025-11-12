@@ -1,7 +1,7 @@
 import React from 'react';
-import FormErrorMessage from '../alerts/FormErrorMessage';
-import { FormError } from '../../types/form.ts';
 import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import FormErrorMessage from './FormErrorMessage';
+import { FormError } from './types';
 
 export interface ISelectOptions {
   label: string;

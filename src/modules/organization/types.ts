@@ -1,4 +1,4 @@
-import { IImage } from '../../types';
+import { IImage } from '../../components/images/types';
 
 export type IOrganization = {
   _id?: string;

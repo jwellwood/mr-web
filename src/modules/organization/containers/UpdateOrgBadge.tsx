@@ -9,10 +9,11 @@ import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { PAGES } from '../constants';
-import { removeOrgBadge, uploadOrgBadge } from '../../images/services';
-import { useUpload } from '../../images/hooks';
+import { removeOrgBadge, uploadOrgBadge } from '../../../services/images';
+
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { useUpload } from '../../../hooks/useUpload.ts';
 
 export default function UpdateOrgBadge() {
   const { orgId } = useCustomParams();

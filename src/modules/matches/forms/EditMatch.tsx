@@ -9,7 +9,6 @@ import { PAGES } from '../constants.ts';
 import { mapMatch } from '../helpers/index.ts';
 import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch.ts';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput.ts';
-import { IPlayerInMatch } from '../../../types/index.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
@@ -22,7 +21,7 @@ import { Spinner } from '../../../components/loaders/index.ts';
 import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
-import { ITempMatch } from '../types.ts';
+import { IPlayerInMatch, ITempMatch } from '../types.ts';
 
 export default function EditMatch() {
   const { teamId, matchId } = useCustomParams();

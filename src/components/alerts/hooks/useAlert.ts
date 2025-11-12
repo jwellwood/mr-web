@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { IAlert } from '../../../types';
-import { AppDispatch } from '../../../store/store';
+
+import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { getAlert } from '../../../store/features/alerts/alertSelector.ts';
+import { IAlert } from '../types.ts';
 
 export const useAlert = () => {
   const alert: IAlert = useSelector(getAlert);

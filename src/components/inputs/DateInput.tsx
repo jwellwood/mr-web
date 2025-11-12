@@ -1,6 +1,6 @@
 import { MobileDatePicker, LocalizationProvider, DateView } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import FormErrorMessage from '../alerts/FormErrorMessage';
+import FormErrorMessage from './FormErrorMessage';
 import { PickerValue } from '@mui/x-date-pickers/internals';
 import { FormControl } from '@mui/material';
 

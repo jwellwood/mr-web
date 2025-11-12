@@ -10,7 +10,6 @@ import { mapMatch } from '../helpers';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
-import { IPlayerInMatch } from '../../../types';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector';
 import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
@@ -21,7 +20,7 @@ import { Spinner } from '../../../components/loaders';
 import { resetTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 import MatchFormStepper from './components/MatchFormStepper.tsx';
-import { ITempMatch } from '../types.ts';
+import { IPlayerInMatch, ITempMatch } from '../types.ts';
 
 export default function AddMatch() {
   const { teamId } = useCustomParams();

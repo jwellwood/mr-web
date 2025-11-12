@@ -3,8 +3,8 @@ import { DataContainer, SectionContainer } from '../../../components/containers'
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { IMatchStats } from '../../../types';
 import { getPercentage } from '../../../utils/helpers';
+import { IMatchStats } from '../types';
 
 type Props = {
   stats?: IMatchStats;

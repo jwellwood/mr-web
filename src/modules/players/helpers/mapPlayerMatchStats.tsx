@@ -1,5 +1,6 @@
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
-import { IPlayerStats } from '../../../types';
+import { IPlayerStats } from '../types';
+
 export const mapPlayerMatchStats = (player: IPlayerStats, loading: boolean) => {
   const genValue = (value: number) => (!loading ? value : <StatSkeleton />);
 

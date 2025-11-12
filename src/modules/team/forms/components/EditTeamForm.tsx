@@ -2,7 +2,6 @@ import { useForm } from 'react-hook-form';
 
 import { surfaceOptions } from '../../constants.ts';
 import { ITeamDetailsInput } from '../../types';
-import { IListItem } from '../../../../types';
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledTextInput from '../../../../components/inputs/ControlledTextInput.tsx';
@@ -11,6 +10,7 @@ import ControlledSelectInput from '../../../../components/inputs/ControlledSelec
 import ControlledColorInput from '../../../../components/inputs/ControlledColorInput.tsx';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput.tsx';
 import SwitchButtonList from '../../../../components/common/SwitchButtonList.tsx';
+import { IListItem } from '../../../../components/lists/types.ts';
 
 interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
