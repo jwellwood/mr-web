@@ -1,9 +1,7 @@
 import React, { FormEvent } from 'react';
 import Container from '@mui/material/Container';
-import { CustomButton, SubmitButton } from '../buttons';
+import { SubmitButton } from '../buttons';
 import SectionContainer from './SectionContainer';
-import { CustomTypography } from '../typography';
-
 interface Props {
   onSubmit: (formData: FormEvent) => void;
   children: React.ReactNode;
@@ -31,15 +29,10 @@ const FormContainer: React.FC<Props> = ({
         }}
       >
         <SectionContainer background={background}>{children}</SectionContainer>
-        {nonAbsoluteSubmit ? (
-          <CustomButton type="submit" variant="contained" disabled={disabled} fullWidth>
-            <CustomTypography color="secondary" bold>
-              {text}
-            </CustomTypography>
-          </CustomButton>
-        ) : (
-          <SubmitButton disabled={disabled}>{text}</SubmitButton>
-        )}
+
+        <SubmitButton disabled={disabled} nonFixed={nonAbsoluteSubmit}>
+          {text}
+        </SubmitButton>
       </form>
     </Container>
   );

@@ -1,13 +1,13 @@
 import React, { Fragment, ReactNode } from 'react';
-import { SectionContainer } from '../containers';
-import { CenteredGrid, GridItem } from '../grids';
-import FlagIcon from '../icons/FlagIcon';
-import CircularImage from '../images/CircularImage';
-import CustomSkeleton from '../loaders/CustomSkeleton';
-import { CustomTypography } from '../typography';
-import { TImageType } from '../../constants.ts';
-import { useNationality } from '../../hooks';
-import { theme } from '../../theme';
+import { SectionContainer } from '../../containers';
+import { CenteredGrid, GridItem } from '../../grids';
+import FlagIcon from '../../icons/FlagIcon.tsx';
+import CustomSkeleton from '../../loaders/CustomSkeleton.tsx';
+import { CustomTypography } from '../../typography';
+import { TImageType } from '../../../constants.ts';
+import { useNationality } from '../../../hooks';
+import { theme } from '../../../theme';
+import ImageAvatar from '../../avatars/image-avatar/ImageAvatar.tsx';
 
 type Props = {
   title?: string;
@@ -26,11 +26,13 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
     <SectionContainer>
       <CenteredGrid dir="row">
         <GridItem size={4}>
-          {loading ? (
-            <CustomSkeleton variant="circular" height="90px" width="90px" margin="8px" />
-          ) : (
-            <CircularImage image={badge} type={type} size="90px" />
-          )}
+          <ImageAvatar
+            imageUrl={badge}
+            fallbackIcon={type}
+            size="90px"
+            loading={loading}
+            centered
+          />
         </GridItem>
         <GridItem size={8} textAlign="left">
           <CustomTypography size="lg" bold color="data">

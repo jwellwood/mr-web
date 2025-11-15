@@ -7,7 +7,7 @@ import SearchForm from '../components/SearchForm';
 import TeamList from '../components/TeamList';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import PresentationModal from '../../../components/modals/PresentationModal.tsx';
-import CustomButton from '../../../components/buttons/CustomButton.tsx';
+import CustomButton from '../../../components/buttons/custom-button/CustomButton.tsx';
 import SectionContainer from '../../../components/containers/SectionContainer.tsx';
 import LoadingList from '../../../components/lists/LoadingList.tsx';
 

@@ -24,14 +24,7 @@ export default function PlayersByNumbers({ players, loading, season, showAge }: 
     { label: 'Number of Players', value: numberOfPlayers },
     {
       label: 'Nationalities',
-      value: (
-        <ByNationality
-          players={players}
-          title={nationalities.toString()}
-          padding="3px"
-          variant="text"
-        />
-      ),
+      value: <ByNationality players={players} title={nationalities.toString()} variant="text" />,
     },
     { label: 'Average Age', value: averageAge.toFixed(1), hidden: !showAge },
   ].filter(elem => !elem.hidden);

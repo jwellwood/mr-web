@@ -1,4 +1,4 @@
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import CustomTable from '../../../components/tables/CustomTable';
 import NameCell from '../../../components/tables/NameCell';
@@ -16,11 +16,12 @@ export default function PastPlayersTable({ players }: Props) {
       nationality: { value: <FlagIcon nationality={player.nationality} /> },
       image: {
         value: (
-          <CustomAvatar
+          <ImageAvatar
             size="30px"
             centered
-            imageUrl={player.image}
+            imageUrl={player.image || ''}
             alt={`${player.name} profile`}
+            fallbackIcon="user"
           />
         ),
       },

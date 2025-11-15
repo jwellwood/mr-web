@@ -12,9 +12,9 @@ import { AUTH } from '../../../router/routes/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import Spinner from '../../../components/loaders/Spinner.tsx';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { resetPasswordFormState } from '../forms/state.ts';
+import { PageHeader } from '../../../components';
 
 export default function ResetPasswordContainer() {
   const { token } = useParams<{ token: string }>();
@@ -50,9 +50,9 @@ export default function ResetPasswordContainer() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.NONE}>
-      <CustomAppBar title={pages.RESET_PASSWORD_PAGE}>
+      <PageHeader title={pages.RESET_PASSWORD_PAGE}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

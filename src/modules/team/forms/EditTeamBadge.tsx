@@ -8,11 +8,11 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../app/constants';
-import { PageHeader } from '../../../components/typography';
-import ImageForm from '../../../components/common/ImageForm';
+import ImageForm from '../../../components/forms/ImageForm';
 import { Spinner } from '../../../components/loaders';
 import { removeTeamBadge, uploadTeamBadge } from '../../../services/images';
 import { useUpload } from '../../../hooks';
+import { PageHeader } from '../../../components';
 
 export default function EditTeamBadge() {
   const { teamId } = useCustomParams();
@@ -61,12 +61,13 @@ export default function EditTeamBadge() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_BADGE} />
-      {error || editError ? (
-        <ErrorGraphql error={(error || editError) as Error} />
-      ) : (
-        renderContent()
-      )}
+      <PageHeader title={PAGES.EDIT_BADGE}>
+        {error || editError ? (
+          <ErrorGraphql error={(error || editError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 }

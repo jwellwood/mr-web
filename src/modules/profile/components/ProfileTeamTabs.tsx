@@ -1,10 +1,10 @@
 import { IMAGE_TYPE, TAB_TYPES } from '../../../app/constants';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTabs, ITab } from '../../../components/tabs';
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { SectionContainer } from '../../../components/containers';
 import { ITeamResponse } from '../../team/types';
 import { IListItem } from '../../../components/lists/types';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 
 type Props = {
   teams: ITeamResponse[];
@@ -19,7 +19,7 @@ export default function ProfileTeamTabs({ teams }: Props) {
     return {
       label: teamName,
       link: `/org/${orgId?._id}/team/${_id}`,
-      avatar: <CustomAvatar imageUrl={teamBadge?.url || 'default'} type={IMAGE_TYPE.TEAM} />,
+      avatar: <ImageAvatar imageUrl={teamBadge?.url || ''} fallbackIcon={IMAGE_TYPE.TEAM} />,
     };
   });
 

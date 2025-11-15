@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_PROFILE, FETCH_USER } from '../graphql';
-
 import { pages } from '../constants';
 import EditProfileForm from '../forms/EditProfile.form';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
@@ -14,7 +13,7 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { IEditProfileInput } from '../types.ts';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { PageHeader } from '../../../components';
 
 export default function EditProfileContainer() {
   const dispatch = useDispatch();
@@ -58,13 +57,13 @@ export default function EditProfileContainer() {
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>
-      <CustomAppBar title={pages.EDIT_PROFILE_PAGE}>
+      <PageHeader title={pages.EDIT_PROFILE_PAGE}>
         {error || editError ? (
           <ErrorGraphql error={(error || editError) as Error} />
         ) : (
           renderContent()
         )}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

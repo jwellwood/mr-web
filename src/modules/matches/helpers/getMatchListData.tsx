@@ -1,5 +1,5 @@
 import { IMAGE_TYPE } from '../../../app/constants';
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import MatchListLabel from '../components/MatchListLabel';
 import MatchListScoreBox from '../components/MatchListScoreBox';
 import { IMatchList } from '../types';
@@ -29,13 +29,11 @@ export const getMatchListData = ({
   return mappedData.map((match: IMatchList) => {
     return {
       avatar: showBadge ? (
-        <CustomAvatar
-          iconSize="24px"
+        <ImageAvatar
           size="40px"
-          type={IMAGE_TYPE.TEAM}
+          fallbackIcon={IMAGE_TYPE.TEAM}
           loading={loading || !data}
-          imageUrl={match.opponentBadge || 'default'}
-          isList
+          imageUrl={match.opponentBadge || ''}
         />
       ) : null,
       label: <MatchListLabel match={match} loading={loading || !data} />,

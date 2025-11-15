@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { FETCH_USER, DELETE_USER } from '../graphql';
-
 import { pages } from '../constants';
 import DeleteAccountForm from '../forms/DeleteAccount.form';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
@@ -14,7 +13,7 @@ import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { apolloClient } from '../../../services/graphql/apolloClient.ts';
 import { AUTH } from '../../../router/routes/paths.ts';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { PageHeader } from '../../../components';
 
 export default function DeleteAccountContainer() {
   const navigate = useNavigate();
@@ -50,13 +49,13 @@ export default function DeleteAccountContainer() {
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>
-      <CustomAppBar title={pages.DELETE_ACCOUNT}>
+      <PageHeader title={pages.DELETE_ACCOUNT}>
         {error || deleteError ? (
           <ErrorGraphql error={(error || deleteError) as Error} />
         ) : (
           renderContent()
         )}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

@@ -9,7 +9,7 @@ import * as HISTORY_ROUTES from '../../modules/history/routes.tsx';
 import { AddMatch } from '../../modules/matches/routes.tsx';
 import { AddPlayer } from '../../modules/players/routes.tsx';
 import Home from '../../modules/home/containers/Home.tsx';
-import { NotFound } from '../../components/navigation/index.ts';
+import { NotFound } from '../../components/navigation';
 import { PLAYER_ROUTES } from './PLAYER_ROUTES.tsx';
 import { MATCH_ROUTES } from './MATCH_ROUTES.tsx';
 

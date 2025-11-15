@@ -14,9 +14,9 @@ import { AppDispatch } from '../../../store/store.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import Spinner from '../../../components/loaders/Spinner.tsx';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import CompetitionForm from '../forms/CompetitionForm';
 import { ICompetitionInput } from '../types.ts';
+import { PageHeader } from '../../../components';
 
 export default function AddCompetition() {
   const { orgId } = useCustomParams();
@@ -56,9 +56,9 @@ export default function AddCompetition() {
 
   return (
     <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
-      <CustomAppBar title={PAGES.ADD_COMPETITION}>
+      <PageHeader title={PAGES.ADD_COMPETITION}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

@@ -13,18 +13,18 @@ import {
 } from '../graphql';
 
 import { useSeasonInput } from '../hooks/useSeasonInput.ts';
-import { ITeamSeasonInput } from '../types/index.ts';
+import { ITeamSeasonInput } from '../types';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { Spinner } from '../../../components/loaders/index.ts';
-import PageHeader from '../../../components/typography/PageHeader.tsx';
+import { Spinner } from '../../../components/loaders';
 import { PAGES } from '../constants.ts';
 import { mapFormDataToSeason, mapSeasonToFormData } from './seasons.mapper.ts';
 import SeasonForm from './components/SeasonForm.tsx';
+import { PageHeader } from '../../../components';
 
 export default function EditSeason() {
   const { teamId, seasonId, orgId } = useCustomParams();
@@ -113,12 +113,13 @@ export default function EditSeason() {
   };
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_SEASON} />
-      {hasError ? (
-        <ErrorGraphql error={(error || editError || deleteError || orgError) as Error} />
-      ) : (
-        renderContent()
-      )}
+      <PageHeader title={PAGES.EDIT_SEASON}>
+        {hasError ? (
+          <ErrorGraphql error={(error || editError || deleteError || orgError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 }

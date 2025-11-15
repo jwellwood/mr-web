@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_TEAM } from '../graphql';
 import { AUTH_ROLES, IMAGE_TYPE } from '../../../app/constants';
-import ModuleHeader from '../../../components/common/ModuleHeader';
+import ModuleHeader from '../../../components/shared/module-header/ModuleHeader';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';

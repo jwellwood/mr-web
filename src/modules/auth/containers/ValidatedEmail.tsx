@@ -9,7 +9,7 @@ import { pages } from '../constants';
 import { verifyEmail } from '../services/validation';
 import { AppDispatch } from '../../../store/store.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { PageHeader } from '../../../components';
 
 export default function ValidatedEmailContainer() {
   const { token } = useParams<{ token: string }>();
@@ -37,9 +37,9 @@ export default function ValidatedEmailContainer() {
     <Spinner />
   ) : (
     <RouteGuard authorization={AUTH_ROLES.NONE}>
-      <CustomAppBar title={pages.VALIDATED_EMAIL_PAGE}>
+      <PageHeader title={pages.VALIDATED_EMAIL_PAGE}>
         <ValidatedEmail success={successfulValidation} errorMessage={error} />
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

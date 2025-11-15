@@ -9,16 +9,16 @@ import { PAGES } from '../constants.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { useSeasons } from '../../../hooks/useSeasons.ts';
-import { IAward } from '../types/index.ts';
+import { IAward } from '../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography/index.ts';
-import { Spinner } from '../../../components/loaders/index.ts';
+import { Spinner } from '../../../components/loaders';
 import { useMatchPlayersInput } from '../../matches/hooks/useMatchPlayersInput.ts';
 import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
 import AwardForm from './components/AwardForm.tsx';
+import { PageHeader } from '../../../components';
 
 export default function EditAward() {
   const { awardId, teamId, seasonId } = useCustomParams();
@@ -122,12 +122,13 @@ export default function EditAward() {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_AWARD} />
-      {hasError ? (
-        <ErrorGraphql error={(error || editError || deleteError || playersError) as Error} />
-      ) : (
-        renderContent()
-      )}
+      <PageHeader title={PAGES.EDIT_AWARD}>
+        {hasError ? (
+          <ErrorGraphql error={(error || editError || deleteError || playersError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 }

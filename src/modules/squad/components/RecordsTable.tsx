@@ -1,4 +1,4 @@
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import { CustomAvatar } from '../../../components/';
 import { SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList';
 import { IListItem } from '../../../components/lists/types';
@@ -59,7 +59,7 @@ export default function RecordsTable<T extends ValueType>({ label, stat, value }
         const data: IListItem[] = [
           {
             avatar: (
-              <CustomAvatar size="24px" isList border={getBackground()} shadow={getBackground()}>
+              <CustomAvatar size="24px" border={getBackground()} shadow={getBackground()}>
                 <CustomTypography bold size="xs" color="data">
                   {i + 1}
                 </CustomTypography>

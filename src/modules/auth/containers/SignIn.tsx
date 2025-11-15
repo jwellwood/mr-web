@@ -18,8 +18,8 @@ import { Spinner } from '../../../components/loaders';
 import { setAuth } from '../../../store/features/auth/authSlice.ts';
 import AuthLayout from '../components/AuthLayout.tsx';
 import AuthorizationLinks from '../components/AuthorizationLinks.tsx';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import { signInFormState } from '../forms/state.ts';
+import { PageHeader } from '../../../components';
 
 export default function SignInContainer() {
   const navigate = useNavigate();
@@ -67,7 +67,7 @@ export default function SignInContainer() {
   return (
     <>
       <RouteGuard authorization={AUTH_ROLES.NONE}>
-        <CustomAppBar title={pages.SIGN_IN_PAGE}>
+        <PageHeader title={pages.SIGN_IN_PAGE}>
           <AuthLayout>
             <>
               {!loading && defaultValues ? (
@@ -79,7 +79,7 @@ export default function SignInContainer() {
               <AuthorizationLinks links={SIGN_IN_LINKS} />
             </>
           </AuthLayout>
-        </CustomAppBar>
+        </PageHeader>
       </RouteGuard>
     </>
   );

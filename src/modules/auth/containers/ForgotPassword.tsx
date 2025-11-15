@@ -13,9 +13,9 @@ import { AuthRoles } from '../../../constants.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { Spinner } from '../../../components/loaders';
 import AuthLayout from '../components/AuthLayout.tsx';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { forgotPasswordFormState } from '../forms/state.ts';
+import { PageHeader } from '../../../components';
 
 export default function ForgotPasswordContainer() {
   const [forgotPassword, { loading, error }] = useMutation(FORGOT_PASSWORD);
@@ -48,9 +48,9 @@ export default function ForgotPasswordContainer() {
 
   return (
     <RouteGuard authorization={AuthRoles.NONE}>
-      <CustomAppBar title={pages.FORGOT_PASSWORD_PAGE}>
+      <PageHeader title={pages.FORGOT_PASSWORD_PAGE}>
         <AuthLayout>{error ? <ErrorGraphql error={error} /> : renderContent()}</AuthLayout>
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

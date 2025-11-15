@@ -5,7 +5,6 @@ import { useMutation, useQuery } from '@apollo/client';
 import { DELETE_TEAM, FETCH_TEAM } from '../graphql';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';
-import { PageHeader } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
@@ -14,6 +13,7 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 import { PAGES } from '../constants.ts';
 import DeleteTeamForm from './components/DeleteTeamForm.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
+import { PageHeader } from '../../../components';
 
 export default function DeleteTeam() {
   const { teamId } = useCustomParams();
@@ -48,8 +48,9 @@ export default function DeleteTeam() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.DELETE_TEAM} />
-      {error ? <ErrorGraphql error={error} /> : renderContent()}
+      <PageHeader title={PAGES.DELETE_TEAM}>
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
+      </PageHeader>
     </RouteGuard>
   );
 }

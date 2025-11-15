@@ -7,7 +7,7 @@ import { ISelectOptions } from '../../../../components/inputs/SelectInput.tsx';
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput.tsx';
 import { FormContainer } from '../../../../components/containers';
 import ControlledDateInput from '../../../../components/inputs/ControlledDateInput.tsx';
-import SwitchButtonList from '../../../../components/common/SwitchButtonList.tsx';
+import SwitchButtonList from '../../../../components/forms/SwitchButtonList.tsx';
 import { IListItem } from '../../../../components/lists/types.ts';
 
 interface Props {

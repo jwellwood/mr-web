@@ -4,8 +4,6 @@ import { FETCH_USER } from '../graphql';
 
 import { AUTH_ROLES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
-import EditLinksModal from '../../../components/modals/EditLinksModal';
-import CustomAppBar from '../../../components/navigation/CustomAppBar';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import ProfileDetails from '../components/Details';
@@ -13,6 +11,7 @@ import Profile from '../components/Profile';
 import { pages, PROFILE_ADMIN_LINKS } from '../constants';
 import ProfileOrganizations from './ProfileOrganization';
 import ProfileTeams from './ProfileTeams.container';
+import { PageHeader } from '../../../components';
 
 export default function ProfileContainer() {
   const { data, loading, error } = useQuery(FETCH_USER);
@@ -32,12 +31,9 @@ export default function ProfileContainer() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.USER}>
-      <CustomAppBar
-        title={pages.USER_PROFILE_PAGE}
-        actionButton={<EditLinksModal data={PROFILE_ADMIN_LINKS} />}
-      >
+      <PageHeader title={pages.USER_PROFILE_PAGE} links={PROFILE_ADMIN_LINKS}>
         <>{error ? <ErrorGraphql error={error} /> : renderContent()}</>
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

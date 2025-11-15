@@ -9,7 +9,7 @@ import ControlledSelectInput from '../../../../components/inputs/ControlledSelec
 import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { getIntegers } from '../../../../utils/helpers';
-import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
 import { IPlayer } from '../../types';
 import { IListItem } from '../../../../components/lists/types';
 

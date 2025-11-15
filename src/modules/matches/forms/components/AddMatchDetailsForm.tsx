@@ -8,7 +8,7 @@ import ControlledSelectInput from '../../../../components/inputs/ControlledSelec
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { getIntegers } from '../../../../utils/helpers';
 import { cupRoundOptions } from '../../constants';
-import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
 import { ICompetition } from '../../../organization/types';
 import { ITempMatch } from '../../types';
 import { IListItem } from '../../../../components/lists/types';

@@ -11,7 +11,7 @@ const meta: Meta<typeof LogoutButton> = {
 export default meta;
 type Story = StoryObj<typeof LogoutButton>;
 
-export const FirstStory: Story = {
+export const Basic: Story = {
   args: {
     //👇 The args you need here will depend on your component
     onClick: () => alert('You clicked the button!'),

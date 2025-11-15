@@ -3,8 +3,6 @@ import { useQuery } from '@apollo/client';
 import { FETCH_TROPHY } from '../graphql';
 import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
-import EditLinksModal from '../../../components/modals/EditLinksModal';
-import CustomAppBar from '../../../components/navigation/CustomAppBar';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import TrophyDetails from '../components/TrophyDetails';
@@ -12,6 +10,7 @@ import { PAGES } from '../constants';
 import { useAuth } from '../../../hooks';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { IListItem } from '../../../components/lists/types.ts';
+import { PageHeader } from '../../../components';
 
 export default function Trophy() {
   const { teamId, trophyId } = useCustomParams();
@@ -35,12 +34,9 @@ export default function Trophy() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.TROPHY}
-        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
-      >
+      <PageHeader title={PAGES.TROPHY} links={isTeamAuth ? links : undefined}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

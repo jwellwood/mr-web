@@ -3,9 +3,9 @@ import { Controller, useForm } from 'react-hook-form';
 import { CustomButton } from '../buttons';
 import { FormContainer } from '../containers';
 import { CenteredGrid } from '../grids';
-import CircularImage from '../images/CircularImage';
 import FileInput from '../inputs/FileInput';
 import { button_text } from '../../i18n';
+import ImageAvatar from '../avatars/image-avatar/ImageAvatar';
 
 interface Props {
   imageUrl?: string;
@@ -58,7 +58,7 @@ const ImageForm: React.FC<Props> = ({
             );
           }}
         />
-        <CircularImage image={imageUrl} />
+        <ImageAvatar imageUrl={imageUrl} />
         <CustomButton type="reset" onClick={resetImage}>
           {button_text.DEFAULT}
         </CustomButton>

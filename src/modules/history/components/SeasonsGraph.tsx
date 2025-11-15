@@ -1,4 +1,4 @@
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import { CustomAvatar } from '../../../components';
 import LinksList from '../../../components/lists/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';

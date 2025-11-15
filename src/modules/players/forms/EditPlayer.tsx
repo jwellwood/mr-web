@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
+
 import { PAGES } from '../constants';
 import { FETCH_PLAYER, EDIT_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
-
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { useNationality } from '../../../hooks';
@@ -14,10 +14,10 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
-import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 import { IPlayer, ISeasonID } from '../types.ts';
+import { PageHeader } from '../../../components';
 
 const EditPlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
@@ -76,17 +76,18 @@ const EditPlayer: React.FC = () => {
   }
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_PLAYER} />
-      {!loading && !seasonLoading && !updateLoading && defaultValues ? (
-        <PlayerForm
-          defaultValues={defaultValues}
-          onSubmit={onSubmit}
-          countryOptions={nationalityOptions}
-          seasonOptions={seasonOptions}
-        />
-      ) : (
-        <Spinner />
-      )}
+      <PageHeader title={PAGES.EDIT_PLAYER}>
+        {!loading && !seasonLoading && !updateLoading && defaultValues ? (
+          <PlayerForm
+            defaultValues={defaultValues}
+            onSubmit={onSubmit}
+            countryOptions={nationalityOptions}
+            seasonOptions={seasonOptions}
+          />
+        ) : (
+          <Spinner />
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 };

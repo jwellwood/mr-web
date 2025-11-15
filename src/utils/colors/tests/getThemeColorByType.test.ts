@@ -16,7 +16,7 @@ describe('get theme color by type tests', () => {
   });
 
   test('should return secondary as secondary', () => {
-    expect(getThemeColorByType('secondary')).toBe(secondary.light);
+    expect(getThemeColorByType('secondary')).toBe(secondary.main);
   });
   test('should return success as success', () => {
     expect(getThemeColorByType('success')).toBe(success.main);

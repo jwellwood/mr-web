@@ -9,7 +9,7 @@ import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { DeleteModal } from '../../../../components/modals';
 import { yearOptions } from '../../../../utils/helpers';
 import { ITrophy } from '../../types';
-import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
 import { IListItem } from '../../../../components/lists/types';
 
 interface Props {

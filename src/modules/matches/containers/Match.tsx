@@ -4,8 +4,6 @@ import { useQuery } from '@apollo/client';
 import { FETCH_MATCH } from '../graphql';
 import { AUTH_ROLES, TAB_TYPES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
-import EditLinksModal from '../../../components/modals/EditLinksModal';
-import CustomAppBar from '../../../components/navigation/CustomAppBar';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
@@ -14,6 +12,7 @@ import { MATCH_ADMIN_LINKS, PAGES } from '../constants';
 import { useAuth } from '../../../hooks';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { ITeam } from '../../team/types.ts';
+import { PageHeader } from '../../../components';
 
 const MatchDetails = lazy(() => import('../components/MatchDetails'));
 const MatchPlayersTable = lazy(() => import('../components/MatchPlayersTable'));
@@ -56,12 +55,9 @@ export default function Match() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.MATCH}
-        actionButton={isTeamAuth ? <EditLinksModal data={MATCH_ADMIN_LINKS} /> : null}
-      >
+      <PageHeader title={PAGES.MATCH} links={isTeamAuth ? MATCH_ADMIN_LINKS : undefined}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

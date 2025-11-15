@@ -1,4 +1,4 @@
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
@@ -40,13 +40,7 @@ export const getSquadTableData = ({ players, stats, playersLoading, statsLoading
       },
       image: {
         value: image?.url ? (
-          <CustomAvatar
-            size="28px"
-            iconSize="24px"
-            centered
-            imageUrl={image?.url}
-            alt={`${name} profile`}
-          />
+          <ImageAvatar size="28px" centered imageUrl={image?.url} alt={`${name} profile`} />
         ) : (
           <CustomSkeleton variant="circular" width="28px" height="28px" />
         ),

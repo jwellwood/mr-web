@@ -12,8 +12,8 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components';
 
 const DeletePlayer: React.FC = () => {
   const { teamId, playerId } = useCustomParams();
@@ -46,16 +46,17 @@ const DeletePlayer: React.FC = () => {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.DELETE_PLAYER} />
-      {!loading && !deleteLoading ? (
-        <DeletePlayerForm
-          onSubmit={onDelete}
-          defaultValues={{}}
-          playerName={data?.player?.name || ''}
-        />
-      ) : (
-        <Spinner />
-      )}
+      <PageHeader title={PAGES.DELETE_PLAYER}>
+        {!loading && !deleteLoading ? (
+          <DeletePlayerForm
+            onSubmit={onDelete}
+            defaultValues={{}}
+            playerName={data?.player?.name || ''}
+          />
+        ) : (
+          <Spinner />
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 };

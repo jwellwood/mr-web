@@ -4,8 +4,6 @@ import { FETCH_AWARD } from '../graphql';
 
 import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
-import EditLinksModal from '../../../components/modals/EditLinksModal';
-import CustomAppBar from '../../../components/navigation/CustomAppBar';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -15,6 +13,7 @@ import TextList from '../../../components/lists/TextList';
 import { SectionContainer } from '../../../components/containers';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem } from '../../../components/lists/types';
+import { PageHeader } from '../../../components';
 
 export default function Award() {
   const { teamId, awardId } = useCustomParams();
@@ -59,12 +58,9 @@ export default function Award() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.AWARD}
-        actionButton={isTeamAuth ? <EditLinksModal data={links} /> : null}
-      >
+      <PageHeader title={PAGES.AWARD} links={isTeamAuth ? links : undefined}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

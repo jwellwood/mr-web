@@ -4,7 +4,7 @@ import { positionOptions } from '../../../../app/constants';
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
-import SwitchButtonList from '../../../../components/common/SwitchButtonList';
+import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { getIntegers } from '../../../../utils/helpers';
 import { theme } from '../../../../theme';

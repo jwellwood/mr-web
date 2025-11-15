@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
 
-import { IAward } from '../../types/index.ts';
+import { IAward } from '../../types';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput.tsx';
-import { FormContainer } from '../../../../components/containers/index.ts';
-import { CenteredGrid, GridItem } from '../../../../components/grids/index.ts';
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledTextInput from '../../../../components/inputs/ControlledTextInput.tsx';
 import ControlledMultiSelectInput from '../../../../components/inputs/ControlledMultiSelectInput.tsx';
 import DeleteModal from '../../../../components/modals/DeleteModal.tsx';

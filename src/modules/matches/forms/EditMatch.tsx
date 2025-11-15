@@ -6,7 +6,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
 import MatchFormStepper from './components/MatchFormStepper.tsx';
 import { PAGES } from '../constants.ts';
-import { mapMatch } from '../helpers/index.ts';
+import { mapMatch } from '../helpers';
 import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch.ts';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
@@ -16,12 +16,12 @@ import { getTempPlayers } from '../../../store/features/players/playersSelector.
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography/index.ts';
-import { Spinner } from '../../../components/loaders/index.ts';
+import { Spinner } from '../../../components/loaders';
 import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
 import { IPlayerInMatch, ITempMatch } from '../types.ts';
+import { PageHeader } from '../../../components';
 
 export default function EditMatch() {
   const { teamId, matchId } = useCustomParams();
@@ -115,12 +115,13 @@ export default function EditMatch() {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_MATCH} backButton />
-      {error || editError ? (
-        <ErrorGraphql error={(error || editError) as Error} />
-      ) : (
-        renderContent()
-      )}
+      <PageHeader title={PAGES.EDIT_MATCH}>
+        {error || editError ? (
+          <ErrorGraphql error={(error || editError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 }

@@ -16,8 +16,8 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { initialOrgDetailsState } from '../forms/state.ts';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import { IOrganizationInput } from '../types.ts';
+import { PageHeader } from '../../../components';
 
 export default function AddOrg() {
   const navigate = useNavigate();
@@ -62,9 +62,9 @@ export default function AddOrg() {
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>
-      <CustomAppBar title={PAGES.ADD}>
+      <PageHeader title={PAGES.ADD}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

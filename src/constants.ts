@@ -19,7 +19,6 @@ export type TAuthRole = (typeof AuthRoles)[keyof typeof AuthRoles];
 export const ImageTypes = {
   USER: 'user',
   TEAM: 'team',
-  ORG: 'org',
 } as const;
 
 export type TImageType = (typeof ImageTypes)[keyof typeof ImageTypes];

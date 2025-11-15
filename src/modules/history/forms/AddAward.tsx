@@ -15,10 +15,10 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import AwardForm from './components/AwardForm.tsx';
 import { initialAwardState } from './state.ts';
+import { PageHeader } from '../../../components';
 
 export default function AddAward() {
   const { teamId, seasonId } = useCustomParams();
@@ -77,12 +77,13 @@ export default function AddAward() {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.ADD_AWARD} />
-      {error || playersError ? (
-        <ErrorGraphql error={(error || playersError) as Error} />
-      ) : (
-        renderContent()
-      )}
+      <PageHeader title={PAGES.ADD_AWARD}>
+        {error || playersError ? (
+          <ErrorGraphql error={(error || playersError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 }

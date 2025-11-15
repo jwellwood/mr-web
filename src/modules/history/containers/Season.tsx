@@ -3,14 +3,13 @@ import { useQuery } from '@apollo/client';
 import { FETCH_SEASON } from '../graphql';
 import { AUTH_ROLES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
-import EditLinksModal from '../../../components/modals/EditLinksModal';
-import CustomAppBar from '../../../components/navigation/CustomAppBar';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
 import { PAGES, SEASON_ADMIN_LINKS } from '../constants';
 import SeasonTabs from '../components/SeasonTabs';
+import { PageHeader } from '../../../components';
 
 export default function Season() {
   const { teamId, seasonId } = useCustomParams();
@@ -24,12 +23,9 @@ export default function Season() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.SEASON}
-        actionButton={isTeamAuth ? <EditLinksModal data={SEASON_ADMIN_LINKS} /> : null}
-      >
+      <PageHeader title={PAGES.SEASON} links={isTeamAuth ? SEASON_ADMIN_LINKS : undefined}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

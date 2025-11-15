@@ -9,10 +9,9 @@ import { AuthRoles, ImageTypes } from '../../../../constants.ts';
 import PositionString from '../../../../components/tables/PositionString.tsx';
 import ErrorGraphql from '../../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../../router/RouteGuard.tsx';
-import CustomAppBar from '../../../../components/navigation/CustomAppBar.tsx';
-import EditLinksModal from '../../../../components/modals/EditLinksModal.tsx';
 import { SectionContainer } from '../../../../components/containers';
-import ModuleHeader from '../../../../components/common/ModuleHeader.tsx';
+import ModuleHeader from '../../../../components/shared/module-header/ModuleHeader.tsx';
+import { PageHeader } from '../../../../components';
 
 export default function Player() {
   const { teamId, playerId } = useCustomParams();
@@ -48,15 +47,12 @@ export default function Player() {
 
   return (
     <RouteGuard authorization={AuthRoles.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.PLAYER}
-        actionButton={isTeamAuth ? <EditLinksModal data={PLAYER_ADMIN_LINKS} /> : null}
-      >
+      <PageHeader title={PAGES.PLAYER} links={isTeamAuth ? PLAYER_ADMIN_LINKS : undefined}>
         <SectionContainer>
           {error ? <ErrorGraphql error={error} /> : renderContent()}
           <PlayerTabs />
         </SectionContainer>
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

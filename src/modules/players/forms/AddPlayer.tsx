@@ -15,11 +15,11 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 import { initialPlayerState } from './state.ts';
 import { IPlayer } from '../types.ts';
+import { PageHeader } from '../../../components';
 
 const AddPlayer: React.FC = () => {
   const { teamId } = useCustomParams();
@@ -53,17 +53,18 @@ const AddPlayer: React.FC = () => {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.ADD_PLAYER} />
-      {!loading && !addLoading && defaultValues ? (
-        <PlayerForm
-          defaultValues={defaultValues}
-          onSubmit={onSubmit}
-          countryOptions={nationalityOptions}
-          seasonOptions={seasonOptions}
-        />
-      ) : (
-        <Spinner />
-      )}
+      <PageHeader title={PAGES.ADD_PLAYER}>
+        {!loading && !addLoading && defaultValues ? (
+          <PlayerForm
+            defaultValues={defaultValues}
+            onSubmit={onSubmit}
+            countryOptions={nationalityOptions}
+            seasonOptions={seasonOptions}
+          />
+        ) : (
+          <Spinner />
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 };

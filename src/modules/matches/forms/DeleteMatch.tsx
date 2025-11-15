@@ -11,9 +11,10 @@ import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { CustomTypography, PageHeader } from '../../../components/typography';
+import { CustomTypography } from '../../../components/typography';
 import { DeleteModal } from '../../../components/modals';
 import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components';
 
 export default function DeleteMatch() {
   const { seasonId } = useSeasons();
@@ -74,8 +75,9 @@ export default function DeleteMatch() {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.DELETE_MATCH} backButton />
-      {error ? <ErrorGraphql error={error} /> : renderContent()}
+      <PageHeader title={PAGES.DELETE_MATCH}>
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
+      </PageHeader>
     </RouteGuard>
   );
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import { Spinner } from '../../loaders';
 import { SxProps } from '@mui/material';
+
+import { Spinner } from '../../loaders';
 import { button_text } from '../../../i18n';
 
 interface Props {
@@ -9,11 +10,17 @@ interface Props {
   disabled?: boolean;
   onClick?: () => void;
   loading?: boolean;
-  isInModal?: boolean;
+  nonFixed?: boolean;
 }
 
-const SubmitButton: React.FC<Props> = ({ children, disabled, loading, onClick = () => {} }) => {
-  return !loading ? (
+export default function SubmitButton({
+  children,
+  disabled,
+  loading,
+  onClick = () => {},
+  nonFixed,
+}: Props) {
+  return (
     <Button
       type="submit"
       fullWidth
@@ -22,22 +29,20 @@ const SubmitButton: React.FC<Props> = ({ children, disabled, loading, onClick = 
       disabled={disabled}
       onClick={onClick}
       sx={
-        {
-          position: 'fixed',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          zIndex: 99,
-          height: '56px',
-          borderRadius: '0px',
-        } as SxProps
+        nonFixed
+          ? {}
+          : ({
+              position: 'fixed',
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 99,
+              height: '56px',
+              borderRadius: '0px',
+            } as SxProps)
       }
     >
-      {children || button_text.SUBMIT}
+      {loading ? <Spinner isSecondary /> : children || button_text.SUBMIT}
     </Button>
-  ) : (
-    <Spinner isSecondary />
   );
-};
-
-export default SubmitButton;
+}

@@ -14,11 +14,11 @@ import { AppDispatch } from '../../../store/store';
 import { useNationality } from '../../../hooks';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import PageHeader from '../../../components/typography/PageHeader.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { initialTeamDetailsState } from './state.ts';
+import { PageHeader } from '../../../components';
 
 export default function AddTeam() {
   const { orgId } = useCustomParams();
@@ -74,8 +74,9 @@ export default function AddTeam() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.USER}>
-      <PageHeader title={PAGES.ADD_TEAM} />
-      {error ? <ErrorGraphql error={error} /> : renderContent()}
+      <PageHeader title={PAGES.ADD_TEAM}>
+        {error ? <ErrorGraphql error={error} /> : renderContent()}
+      </PageHeader>
     </RouteGuard>
   );
 }

@@ -1,5 +1,5 @@
 import { IMAGE_TYPE } from '../../../app/constants';
-import ModuleHeader from '../../../components/common/ModuleHeader';
+import ModuleHeader from '../../../components/shared/module-header/ModuleHeader';
 
 import { useDateOfBirth } from '../../../hooks';
 import { parseDate } from '../../../utils/helpers';

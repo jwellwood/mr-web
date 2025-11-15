@@ -7,7 +7,7 @@ import ControlledTextInput from '../../../components/inputs/ControlledTextInput'
 import { getMinutesOptions } from '../../matches/helpers';
 import { competitionOptions } from '../constants';
 import { getIntegers } from '../../../utils/helpers';
-import SwitchButtonList from '../../../components/common/SwitchButtonList';
+import SwitchButtonList from '../../../components/forms/SwitchButtonList';
 import { ICompetitionInput } from '../types';
 import { IListItem } from '../../../components/lists/types';
 

@@ -2,8 +2,6 @@ import { useSelector } from 'react-redux';
 
 import { AUTH_ROLES, TAB_TYPES } from '../../app/constants';
 import NavIcon from '../../components/icons/NavIcon';
-import EditLinksModal from '../../components/modals/EditLinksModal';
-import CustomAppBar from '../../components/navigation/CustomAppBar';
 import { CustomTabs, ITab } from '../../components/tabs';
 import { useAuth } from '../../hooks';
 import { useCustomParams } from '../../hooks/useCustomParams';
@@ -17,6 +15,7 @@ import { NAV_ICONS } from '../../components/icons/icons';
 import SquadTabs from '../squad/main';
 import MatchesTabs from '../matches/main';
 import HistoryTabs from '../history/main';
+import { PageHeader } from '../../components';
 
 export default function Team() {
   const { teamId } = useCustomParams();
@@ -52,12 +51,9 @@ export default function Team() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <CustomAppBar
-        title={PAGES.TEAM}
-        actionButton={isTeamAuth ? <EditLinksModal data={TEAM_ADMIN_LINKS} /> : null}
-      >
+      <PageHeader title={PAGES.TEAM} links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}>
         <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

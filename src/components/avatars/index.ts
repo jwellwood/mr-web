@@ -1,2 +1,1 @@
-export * from './CustomAvatar';
-export * from './OpponentAvatar';
+export { default as CustomAvatar } from './custom-avatar/CustomAvatar';

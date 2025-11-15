@@ -7,7 +7,7 @@ import { FETCH_ROLES } from '../modules/auth/graphql';
 import { useAuth } from '../hooks';
 import { resetAuth, setAuth } from '../store/features/auth/authSlice.ts';
 import { PageContainer } from '../components/containers';
-import CustomAlert from '../components/alerts/CustomAlert.tsx';
+import CustomAlert from '../components/alerts/custom-alert/CustomAlert.tsx';
 
 const AppRoutes = lazy(() => import('./routes/Routes.tsx'));
 

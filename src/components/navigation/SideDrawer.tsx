@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Drawer from '@mui/material/Drawer';
 import { NAV_ICONS } from '../icons/icons';
-import CustomIconButton from '../buttons/CustomIconButton';
+import { CustomIconButton } from '../buttons';
 import SidebarList from './SidebarList';
 
 const SideDrawer: React.FC = () => {

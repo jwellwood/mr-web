@@ -14,8 +14,8 @@ import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import AuthLayout from '../components/AuthLayout.tsx';
 import AuthorizationLinks from '../components/AuthorizationLinks.tsx';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import { signUpFormState } from '../forms/state.ts';
+import { PageHeader } from '../../../components';
 
 export default function SignUpContainer() {
   const dispatch: AppDispatch = useDispatch();
@@ -47,7 +47,7 @@ export default function SignUpContainer() {
   return (
     <>
       <RouteGuard authorization={AuthRoles.NONE}>
-        <CustomAppBar title={pages.SIGN_UP_PAGE}>
+        <PageHeader title={pages.SIGN_UP_PAGE}>
           <AuthLayout>
             <>
               {!loading && defaultValues ? (
@@ -64,7 +64,7 @@ export default function SignUpContainer() {
               <AuthorizationLinks links={SIGN_UP_LINKS} />
             </>
           </AuthLayout>
-        </CustomAppBar>
+        </PageHeader>
       </RouteGuard>
     </>
   );

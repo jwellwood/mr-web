@@ -1,5 +1,5 @@
 import { IMAGE_TYPE } from '../../../app/constants';
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import LinksList from '../../../components/lists/LinksList';
 import { IListItem } from '../../../components/lists/types';
@@ -15,7 +15,7 @@ export default function TeamList({ teams, isSearchComplete }: Props) {
   const links: IListItem[] =
     teams?.map(team => {
       return {
-        avatar: <CustomAvatar imageUrl={team?.teamBadge?.url} type={IMAGE_TYPE.TEAM} isList />,
+        avatar: <ImageAvatar imageUrl={team?.teamBadge?.url} fallbackIcon={IMAGE_TYPE.TEAM} />,
         label: (
           <CustomTypography bold size="sm" color="data">
             {team.teamName}

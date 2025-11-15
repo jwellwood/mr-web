@@ -1,9 +1,9 @@
 import { ImageTypes } from '../../../constants.ts';
-import CustomAvatar from '../../../components/avatars/CustomAvatar.tsx';
 import PresentationModal from '../../../components/modals/PresentationModal.tsx';
 import CustomTypography from '../../../components/typography/CustomTypography.tsx';
 import { getAvg } from '../../../utils/helpers';
 import { IPlayerVsStats } from '../../matches/types.ts';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar.tsx';
 
 export const mapPlayerVsStats = (stats: IPlayerVsStats[]) => {
   return stats?.map((item: IPlayerVsStats) => ({
@@ -16,10 +16,10 @@ export const mapPlayerVsStats = (stats: IPlayerVsStats[]) => {
             alignItems: 'center',
           }}
         >
-          <CustomAvatar
+          <ImageAvatar
             size="24px"
             imageUrl={item?.opponentBadge || 'default'}
-            type={ImageTypes.TEAM}
+            fallbackIcon={ImageTypes.TEAM}
           />
           <div style={{ marginRight: '4px' }} />
           <PresentationModal

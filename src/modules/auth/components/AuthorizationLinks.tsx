@@ -1,5 +1,5 @@
 import { CenteredGrid, GridItem } from '../../../components/grids';
-import { CustomLinkButton } from '../../../components/buttons';
+import { LinkButton } from '../../../components/buttons';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem } from '../../../components/lists/types';
 
@@ -16,9 +16,9 @@ export default function AuthorizationLinks({ links }: Props) {
             <CustomTypography color="label" size="sm">
               {item.label}
             </CustomTypography>
-            <CustomLinkButton type="text" color="warning" link={item.link as string}>
+            <LinkButton type="text" color="warning" link={item.link as string}>
               {item.value}
-            </CustomLinkButton>
+            </LinkButton>
           </GridItem>
         ))}
       </CenteredGrid>

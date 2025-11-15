@@ -1,4 +1,4 @@
-import { IImage } from '../../components/images/types.ts';
+import { IImage } from '../../components/avatars/image-avatar/types.ts';
 import { IOrganization } from '../organization/types.ts';
 
 export interface ITeamDetailsInput {

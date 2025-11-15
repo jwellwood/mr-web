@@ -13,17 +13,10 @@ interface Props {
   players: IPlayer[] | IPastPlayer[];
   title: string;
   variant?: 'text' | 'outlined' | 'contained';
-  padding?: string;
   textColor?: string;
 }
 
-export default function ByNationality({
-  players,
-  title,
-  variant,
-  padding,
-  textColor = 'primary',
-}: Props) {
+export default function ByNationality({ players, title, variant, textColor = 'primary' }: Props) {
   const countryName = (code: string) => (code ? countryList().getLabel(code) : null);
   const groupNationalities = () => {
     const playersMap = (players as IPlayer[]).reduce(
@@ -80,7 +73,7 @@ export default function ByNationality({
     <PresentationModal
       title="Nationalities"
       buttonElement={
-        <CustomButton variant={variant} padding={padding}>
+        <CustomButton variant={variant}>
           <CustomTypography color={textColor} size="xs" bold>
             {title}
           </CustomTypography>

@@ -15,8 +15,8 @@ import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import { ICompetitionInput } from '../types.ts';
+import { PageHeader } from '../../../components';
 
 export default function EditCompetition() {
   const { orgId, competitionId } = useCustomParams();
@@ -70,7 +70,7 @@ export default function EditCompetition() {
 
   return (
     <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
-      <CustomAppBar title={PAGES.EDIT_COMP}>
+      <PageHeader title={PAGES.EDIT_COMP}>
         {error || updateError ? (
           <ErrorGraphql
             error={{ message: [error?.message, updateError?.message].filter(Boolean) as string[] }}
@@ -78,7 +78,7 @@ export default function EditCompetition() {
         ) : (
           renderContent()
         )}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

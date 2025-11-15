@@ -1,5 +1,4 @@
 import { IMAGE_TYPE } from '../../../app/constants';
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
 import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import TextList from '../../../components/lists/TextList';
@@ -11,6 +10,7 @@ import { ICompetition } from '../../organization/types';
 import { ITeam } from '../../team/types';
 import { IMatchResponse } from '../types';
 import { IListItem } from '../../../components/lists/types';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 
 type Props = {
   match: IMatchResponse;
@@ -36,7 +36,7 @@ export default function MatchDetails({ match }: Props) {
 
   const scoreData: IListItem[] = [
     {
-      avatar: <CustomAvatar imageUrl={homeTeam.badge} type={IMAGE_TYPE.TEAM} />,
+      avatar: <ImageAvatar imageUrl={homeTeam.badge} fallbackIcon={IMAGE_TYPE.TEAM} />,
       label: (
         <CustomTypography size="lg" bold color="data">
           {homeTeam.name}
@@ -45,7 +45,7 @@ export default function MatchDetails({ match }: Props) {
       value: <ScoreBox points={getPoints(teamGoals, opponentGoals)} goals={homeTeam.score} />,
     },
     {
-      avatar: <CustomAvatar imageUrl={awayTeam.badge} type={IMAGE_TYPE.TEAM} />,
+      avatar: <ImageAvatar imageUrl={awayTeam.badge} fallbackIcon={IMAGE_TYPE.TEAM} />,
       label: (
         <CustomTypography size="lg" bold color="data">
           {awayTeam.name}

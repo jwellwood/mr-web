@@ -1,4 +1,4 @@
-import CustomAvatar from '../../../components/avatars/CustomAvatar';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList';
 import { IListItem } from '../../../components/lists/types';
@@ -15,12 +15,13 @@ export default function Organization({ team, loading }: Props) {
   const { orgId } = team || {};
   const links: IListItem[] = [
     {
-      avatar: loading ? (
-        <CustomAvatar>
-          <CustomSkeleton variant="circular" height="40px" width="40px" />
-        </CustomAvatar>
-      ) : (
-        <CustomAvatar imageUrl={orgId?.badge?.url} />
+      avatar: (
+        <ImageAvatar
+          imageUrl={orgId?.badge?.url}
+          fallbackIcon="team"
+          loading={loading}
+          size="40px"
+        />
       ),
       label: (
         <CustomTypography color="data">

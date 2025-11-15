@@ -9,14 +9,14 @@ import { PAGES } from '../constants.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { useSeasons } from '../../../hooks/useSeasons.ts';
-import { ITrophy } from '../types/index.ts';
+import { ITrophy } from '../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography/index.ts';
-import { Spinner } from '../../../components/loaders/index.ts';
+import { Spinner } from '../../../components/loaders';
 import TrophyForm from './components/TrophyForm.tsx';
+import { PageHeader } from '../../../components';
 
 export default function EditTrophy() {
   const { teamId, trophyId } = useCustomParams();
@@ -98,12 +98,13 @@ export default function EditTrophy() {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_TROPHY} />
-      {hasError ? (
-        <ErrorGraphql error={(error || editError || deleteError) as Error} />
-      ) : (
-        renderContent()
-      )}
+      <PageHeader title={PAGES.EDIT_TROPHY}>
+        {hasError ? (
+          <ErrorGraphql error={(error || editError || deleteError) as Error} />
+        ) : (
+          renderContent()
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 }

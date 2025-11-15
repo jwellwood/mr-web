@@ -14,8 +14,8 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { PageHeader } from '../../../components/typography';
 import { Spinner } from '../../../components/loaders';
+import { PageHeader } from '../../../components';
 
 export default function EditTeam() {
   const { teamId } = useCustomParams();
@@ -71,12 +71,13 @@ export default function EditTeam() {
 
   return (
     <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_TEAM} />
-      {error || updateError ? (
-        <ErrorGraphql error={error || (updateError as Error)} />
-      ) : (
-        renderContent()
-      )}
+      <PageHeader title={PAGES.EDIT_TEAM}>
+        {error || updateError ? (
+          <ErrorGraphql error={error || (updateError as Error)} />
+        ) : (
+          renderContent()
+        )}
+      </PageHeader>
     </RouteGuard>
   );
 }

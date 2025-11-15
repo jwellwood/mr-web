@@ -1,4 +1,4 @@
-import { CustomLinkButton } from '../../../components/buttons';
+import { LinkButton } from '../../../components/buttons';
 import { CenteredGrid } from '../../../components/grids';
 import StatIcon from '../../../components/icons/StatIcon';
 import { CustomTypography } from '../../../components/typography';
@@ -27,9 +27,9 @@ export default function ValidatedEmail({ success, errorMessage }: Props) {
           <div style={{ marginBottom: '10px' }}></div>
         </>
       )}
-      <CustomLinkButton type="contained" link={AUTH.SIGN_IN}>
+      <LinkButton type="contained" link={AUTH.SIGN_IN}>
         Go to sign in
-      </CustomLinkButton>
+      </LinkButton>
     </CenteredGrid>
   );
 }

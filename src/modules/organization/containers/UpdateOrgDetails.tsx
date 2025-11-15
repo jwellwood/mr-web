@@ -15,8 +15,8 @@ import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import { IOrganizationInput } from '../types.ts';
+import { PageHeader } from '../../../components';
 
 export default function UpdateDetailsContainer() {
   const { orgId } = useCustomParams();
@@ -66,13 +66,13 @@ export default function UpdateDetailsContainer() {
   };
   return (
     <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-      <CustomAppBar title={PAGES.EDIT}>
+      <PageHeader title={PAGES.EDIT}>
         {error || updateError ? (
           <ErrorGraphql error={(error || updateError) as Error} />
         ) : (
           renderContent()
         )}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

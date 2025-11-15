@@ -1,6 +1,6 @@
 import React, { Component, ErrorInfo } from 'react';
 import { ROOT_URL } from '../app/constants';
-import { CustomButton, CustomLinkButton } from '../components/buttons';
+import { CustomButton, LinkButton } from '../components/buttons';
 import { SectionContainer } from '../components/containers';
 import { CustomTypography } from '../components/typography';
 
@@ -39,7 +39,7 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, State> {
             </div>
             <CustomTypography color="warning">or try a different page:</CustomTypography>
 
-            <CustomLinkButton link={ROOT_URL}>Home</CustomLinkButton>
+            <LinkButton link={ROOT_URL}>Home</LinkButton>
           </SectionContainer>
         </>
       );

@@ -4,7 +4,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import { EDIT_ORG_BADGE, FETCH_ORG } from '../graphql';
 
 import { AUTH_ROLES } from '../../../app/constants';
-import ImageForm from '../../../components/common/ImageForm';
+import ImageForm from '../../../components/forms/ImageForm.tsx';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -12,8 +12,8 @@ import { PAGES } from '../constants';
 import { removeOrgBadge, uploadOrgBadge } from '../../../services/images';
 
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
 import { useUpload } from '../../../hooks/useUpload.ts';
+import { PageHeader } from '../../../components';
 
 export default function UpdateOrgBadge() {
   const { orgId } = useCustomParams();
@@ -66,13 +66,13 @@ export default function UpdateOrgBadge() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-      <CustomAppBar title={PAGES.EDIT_BADGE}>
+      <PageHeader title={PAGES.EDIT_BADGE}>
         {error || editError ? (
           <ErrorGraphql error={(error || editError) as unknown as Error} />
         ) : (
           renderContent()
         )}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 }

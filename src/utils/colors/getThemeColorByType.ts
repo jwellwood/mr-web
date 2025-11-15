@@ -11,7 +11,7 @@ export function getThemeColorByType(background?: string): string {
       backgroundColor = primary.main;
       break;
     case 'secondary':
-      backgroundColor = secondary.light;
+      backgroundColor = secondary.main;
       break;
     case 'tertiary':
       backgroundColor = tertiary.main;

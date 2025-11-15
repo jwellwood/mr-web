@@ -39,6 +39,12 @@ declare module '@mui/material/styles' {
   }
 }
 
+declare module '@mui/material/Button' {
+  interface ButtonPropsColorOverrides {
+    tertiary: true;
+  }
+}
+
 declare module '@mui/material/styles' {
   // interface Palette {
   //   dark: PaletteColor;

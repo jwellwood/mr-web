@@ -14,7 +14,7 @@ import { Spinner } from '../../../components/loaders';
 import { AuthRoles } from '../../../constants.ts';
 import { IChangePasswordInput } from '../types.ts';
 import { changePasswordFormState } from '../forms/state.ts';
-import CustomAppBar from '../../../components/navigation/CustomAppBar.tsx';
+import { PageHeader } from '../../../components';
 
 const ChangePasswordContainer: React.FC = () => {
   const navigate = useNavigate();
@@ -40,13 +40,13 @@ const ChangePasswordContainer: React.FC = () => {
 
   return (
     <RouteGuard authorization={AuthRoles.USER}>
-      <CustomAppBar title={pages.CHANGE_PASSWORD_PAGE}>
+      <PageHeader title={pages.CHANGE_PASSWORD_PAGE}>
         {!loading ? (
           <EditPasswordForm onSubmit={onSubmit} defaultValues={changePasswordFormState} />
         ) : (
           <Spinner />
         )}
-      </CustomAppBar>
+      </PageHeader>
     </RouteGuard>
   );
 };

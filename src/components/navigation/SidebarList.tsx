@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import CustomAvatar from '../avatars/CustomAvatar';
 import AppIcon from '../icons/AppIcon';
 import LinksList from '../lists/LinksList';
 import { useCustomParams } from '../../hooks/useCustomParams';
@@ -17,39 +16,23 @@ const SidebarList: React.FC<Props> = ({ toggleDrawer }) => {
   const links = [
     {
       label: 'Home',
-      avatar: (
-        <CustomAvatar>
-          <AppIcon icon="home" />
-        </CustomAvatar>
-      ),
+      icon: <AppIcon icon="home" color="white" />,
       link: HOME.HOME,
     },
     {
       label: 'Profile',
-      avatar: (
-        <CustomAvatar>
-          <AppIcon icon="profile" />
-        </CustomAvatar>
-      ),
+      icon: <AppIcon icon="profile" color="white" />,
       link: PROFILE.PROFILE,
     },
     {
       label: 'Organization',
-      avatar: (
-        <CustomAvatar>
-          <AppIcon icon="league" />
-        </CustomAvatar>
-      ),
+      icon: <AppIcon icon="league" color="white" />,
       link: `/org/${orgId}`,
       disabled: !orgId,
     },
     {
       label: 'Team',
-      avatar: (
-        <CustomAvatar>
-          <AppIcon icon="team" />
-        </CustomAvatar>
-      ),
+      icon: <AppIcon icon="team" color="white" />,
       link: `/org/${orgId}/team/${teamId}`,
       disabled: !teamId,
     },
