@@ -1,5 +1,6 @@
 import { LINK_TYPE } from '../../app/constants';
-import { ORG, PROFILE } from '../../router/routes/paths';
+import { ORG_PATHS } from '../organization/router';
+import { PROFILE_PATHS } from './router';
 
 export const pages = {
   USER_PROFILE_PAGE: 'Profile',
@@ -10,13 +11,13 @@ export const pages = {
 };
 
 export const PROFILE_ADMIN_LINKS = [
-  { label: 'Add New Organization', type: LINK_TYPE.ADD, link: ORG.ADD },
-  { label: 'Edit Profile', type: LINK_TYPE.EDIT, link: PROFILE.EDIT },
-  { label: 'Edit Image', type: LINK_TYPE.EDIT, link: PROFILE.EDIT_IMAGE },
+  { label: 'Add New Organization', type: LINK_TYPE.ADD, link: ORG_PATHS.ADD },
+  { label: 'Edit Profile', type: LINK_TYPE.EDIT, link: PROFILE_PATHS.EDIT },
+  { label: 'Edit Image', type: LINK_TYPE.EDIT, link: PROFILE_PATHS.EDIT_IMAGE },
   {
     label: 'Change Password',
     type: LINK_TYPE.EDIT,
-    link: PROFILE.CHANGE_PASSWORD,
+    link: PROFILE_PATHS.CHANGE_PASSWORD,
   },
-  { label: 'Delete Account', type: LINK_TYPE.DELETE, link: PROFILE.DELETE },
+  { label: 'Delete Account', type: LINK_TYPE.DELETE, link: PROFILE_PATHS.DELETE },
 ];

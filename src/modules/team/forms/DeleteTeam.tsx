@@ -8,12 +8,12 @@ import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
-import { PROFILE } from '../../../router/routes/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { PAGES } from '../constants.ts';
 import DeleteTeamForm from './components/DeleteTeamForm.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import { PageHeader } from '../../../components';
+import { PROFILE_PATHS } from '../../profile/router/paths.ts';
 
 export default function DeleteTeam() {
   const { teamId } = useCustomParams();
@@ -31,7 +31,7 @@ export default function DeleteTeam() {
       .then(() => {
         refetch();
         dispatch(showAlert({ text: 'Team deleted', type: 'success' }));
-        navigate(PROFILE.PROFILE);
+        navigate(PROFILE_PATHS.PROFILE);
       })
       .catch(() => {
         dispatch(showAlert({ text: 'Something went wrong', type: 'error' }));

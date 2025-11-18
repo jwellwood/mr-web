@@ -2,7 +2,6 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_ORG_TEAMS } from '../graphql';
 
-import { SectionContainer } from '../../../components/containers';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -18,9 +17,5 @@ export default function OrgTeams() {
     return !loading ? <OrgTeamsList teams={data?.teams || []} /> : <Spinner />;
   };
 
-  return (
-    <SectionContainer title="Teams">
-      {error ? <ErrorGraphql error={error} /> : renderContent()}
-    </SectionContainer>
-  );
+  return error ? <ErrorGraphql error={error} /> : renderContent();
 }

@@ -1,5 +1,6 @@
 import { navbarText, sidebarText } from '../../../i18n';
-import { HOME, PROFILE } from '../../../router/routes/paths';
+import { HOME_PATHS } from '../../../modules/home/router';
+import { PROFILE_PATHS } from '../../../modules/profile/router';
 import { IIconType } from '../../icons/types';
 
 export const sidebarLinks: {
@@ -11,13 +12,13 @@ export const sidebarLinks: {
   {
     icon: 'home',
     text: sidebarText.HOME,
-    link: HOME.HOME,
+    link: HOME_PATHS.HOME,
     guard: 'public',
   },
   {
     icon: 'user',
     text: sidebarText.PROFILE,
-    link: PROFILE.PROFILE,
+    link: PROFILE_PATHS.PROFILE,
     guard: 'public',
   },
 ];
@@ -29,15 +30,15 @@ export const navbarLinks: {
   icon: IIconType;
 }[] = [
   {
-    link: HOME.HOME,
+    link: HOME_PATHS.HOME,
     label: navbarText.HOME,
-    value: HOME.HOME,
+    value: HOME_PATHS.HOME,
     icon: 'home',
   },
   {
-    link: PROFILE.PROFILE,
+    link: PROFILE_PATHS.PROFILE,
     label: navbarText.PROFILE,
-    value: PROFILE.PROFILE,
+    value: PROFILE_PATHS.PROFILE,
     icon: 'profile',
   },
 ];

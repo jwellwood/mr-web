@@ -7,13 +7,13 @@ import { EDIT_PROFILE, FETCH_USER } from '../graphql';
 import { pages } from '../constants';
 import EditProfileForm from '../forms/EditProfile.form';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PROFILE } from '../../../router/routes/paths.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { IEditProfileInput } from '../types.ts';
 import { PageHeader } from '../../../components';
+import { PROFILE_PATHS } from '../router/paths.ts';
 
 export default function EditProfileContainer() {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ export default function EditProfileContainer() {
     })
       .then(() => {
         dispatch(showAlert({ text: 'Profile updated!', type: 'success' }));
-        navigate(PROFILE.PROFILE);
+        navigate(PROFILE_PATHS.PROFILE);
       })
       .catch(err => {
         console.error('Edit user failed', err);

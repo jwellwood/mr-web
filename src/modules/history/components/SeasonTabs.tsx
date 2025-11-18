@@ -4,9 +4,9 @@ import { TAB_TYPES } from '../../../app/constants';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import SeasonHeader from './SeasonHeader';
 import { ITeamSeason } from '../types/index';
-import { Matches } from '../../matches/routes';
-import { Squad } from '../../squad/routes';
 
+const Matches = lazy(() => import('../../matches/containers/Matches.tsx'));
+const Squad = lazy(() => import('../../squad/containers/Squad.tsx'));
 const MatchStats = lazy(() => import('../../matches/containers/MatchStats.tsx'));
 const Awards = lazy(() => import('../containers/Awards.tsx'));
 

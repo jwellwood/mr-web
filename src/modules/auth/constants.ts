@@ -1,5 +1,5 @@
 import { IListItem } from '../../components/lists/types';
-import { AUTH } from '../../router/routes/paths';
+import { AUTH_PATHS } from './router';
 
 export const pages = {
   SIGN_IN_PAGE: 'Sign In',
@@ -15,12 +15,12 @@ export const SIGN_IN_LINKS: IListItem[] = [
   {
     label: "Don't have an account yet?",
     value: 'Sign up here',
-    link: AUTH.SIGN_UP,
+    link: AUTH_PATHS.SIGN_UP,
   },
   {
     label: 'Forgotten you password?',
     value: 'Reset here',
-    link: AUTH.FORGOT,
+    link: AUTH_PATHS.FORGOT,
   },
 ];
 
@@ -28,6 +28,6 @@ export const SIGN_UP_LINKS: IListItem[] = [
   {
     label: 'Already have an account?',
     value: 'Sign in here',
-    link: AUTH.SIGN_IN,
+    link: AUTH_PATHS.SIGN_IN,
   },
 ];

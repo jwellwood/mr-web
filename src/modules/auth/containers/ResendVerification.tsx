@@ -5,9 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import { resendValidationEmail } from '../services/validation';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PROFILE } from '../../../router/routes/paths.ts';
 import { Spinner } from '../../../components/loaders';
 import { CustomButton } from '../../../components/buttons';
+import { PROFILE_PATHS } from '../../profile/router/paths.ts';
 
 interface Props {
   email: string | null;
@@ -25,7 +25,7 @@ export default function ResendVerification({ email }: Props) {
       .then((res: { email: string }) => {
         setLoading(false);
         dispatch(showAlert({ text: `Email sent to ${res.email}`, type: 'success' }));
-        navigate(PROFILE.PROFILE);
+        navigate(PROFILE_PATHS.PROFILE);
       })
       .catch((err: Error) => {
         console.error(err);

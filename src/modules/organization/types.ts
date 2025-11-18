@@ -13,6 +13,22 @@ export type IOrganization = {
   adminIds: string[];
 };
 
+export type IOrgSeason = {
+  _id: string;
+  name: string;
+  yearStarted: string;
+  yearEnded: string;
+  isCurrent: boolean;
+  comment?: string;
+};
+
+export type IOrgSeasonInput = {
+  yearStarted: string;
+  yearEnded: string;
+  isCurrent: boolean;
+  comment?: string;
+};
+
 export type IOrganizationInput = {
   name: string;
   website?: string;

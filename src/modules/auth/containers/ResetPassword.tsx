@@ -8,13 +8,13 @@ import { RESET_PASSWORD } from '../graphql';
 import { IResetPasswordInput } from '../types';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { AUTH } from '../../../router/routes/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import Spinner from '../../../components/loaders/Spinner.tsx';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { resetPasswordFormState } from '../forms/state.ts';
 import { PageHeader } from '../../../components';
+import { AUTH_PATHS } from '../router/paths.ts';
 
 export default function ResetPasswordContainer() {
   const { token } = useParams<{ token: string }>();
@@ -33,7 +33,7 @@ export default function ResetPasswordContainer() {
             type: 'success',
           })
         );
-        navigate(AUTH.SIGN_IN);
+        navigate(AUTH_PATHS.SIGN_IN);
       })
       .catch(err => {
         dispatch(showAlert({ text: err.message, type: 'error' }));

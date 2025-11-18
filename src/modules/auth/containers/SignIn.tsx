@@ -11,7 +11,6 @@ import ResendVerification from './ResendVerification';
 import { AppDispatch } from '../../../store/store';
 import { useAuth } from '../../../hooks';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PROFILE } from '../../../router/routes/paths.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../app/constants.ts';
 import { Spinner } from '../../../components/loaders';
@@ -20,6 +19,7 @@ import AuthLayout from '../components/AuthLayout.tsx';
 import AuthorizationLinks from '../components/AuthorizationLinks.tsx';
 import { signInFormState } from '../forms/state.ts';
 import { PageHeader } from '../../../components';
+import { PROFILE_PATHS } from '../../profile/router/paths.ts';
 
 export default function SignInContainer() {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ export default function SignInContainer() {
             })
           );
           if (isAuth) {
-            navigate(PROFILE.PROFILE, { replace: false });
+            navigate(PROFILE_PATHS.PROFILE, { replace: false });
           }
         }
       })

@@ -12,8 +12,8 @@ import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
 import { Spinner } from '../../../components/loaders';
 import { apolloClient } from '../../../services/graphql/apolloClient.ts';
-import { AUTH } from '../../../router/routes/paths.ts';
 import { PageHeader } from '../../../components';
+import { AUTH_PATHS } from '../../auth/router';
 
 export default function DeleteAccountContainer() {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ export default function DeleteAccountContainer() {
         dispatch(showAlert({ text: 'User account deleted successfully', type: 'success' }));
         await apolloClient.resetStore();
         dispatch(resetAuth());
-        navigate(AUTH.SIGN_IN);
+        navigate(AUTH_PATHS.SIGN_IN);
       })
       .catch(err => {
         dispatch(showAlert({ text: 'Something went wrong', type: 'error' }));

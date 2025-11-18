@@ -2,7 +2,7 @@ import { LinkButton } from '../../../components/buttons';
 import { CenteredGrid } from '../../../components/grids';
 import StatIcon from '../../../components/icons/StatIcon';
 import { CustomTypography } from '../../../components/typography';
-import { AUTH } from '../../../router/routes/paths';
+import { AUTH_PATHS } from '../router';
 
 interface Props {
   success: boolean;
@@ -27,7 +27,7 @@ export default function ValidatedEmail({ success, errorMessage }: Props) {
           <div style={{ marginBottom: '10px' }}></div>
         </>
       )}
-      <LinkButton type="contained" link={AUTH.SIGN_IN}>
+      <LinkButton type="contained" link={AUTH_PATHS.SIGN_IN}>
         Go to sign in
       </LinkButton>
     </CenteredGrid>

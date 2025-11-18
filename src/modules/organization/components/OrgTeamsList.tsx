@@ -27,7 +27,7 @@ export default function OrgTeamsList({ teams }: Props) {
   });
   const tabs: ITab[] = [
     { label: 'Active', component: <LinksList links={activeLinks} /> },
-    { label: 'Previous', component: <LinksList links={inactiveLinks} /> },
+    { label: 'Past', component: <LinksList links={inactiveLinks} /> },
   ];
 
   return <CustomTabs type={TAB_TYPES.ORG_TEAMS} tabs={tabs} level="secondary" />;

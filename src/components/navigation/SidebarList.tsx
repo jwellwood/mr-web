@@ -4,8 +4,9 @@ import AppIcon from '../icons/AppIcon';
 import LinksList from '../lists/LinksList';
 import { useCustomParams } from '../../hooks/useCustomParams';
 import Footer from './Footer';
-import { HOME, PROFILE } from '../../router/routes/paths.ts';
 import { theme } from '../../theme';
+import { HOME_PATHS } from '../../modules/home/router/paths.ts';
+import { PROFILE_PATHS } from '../../modules/profile/router/paths.ts';
 
 interface Props {
   toggleDrawer: () => void;
@@ -17,12 +18,12 @@ const SidebarList: React.FC<Props> = ({ toggleDrawer }) => {
     {
       label: 'Home',
       icon: <AppIcon icon="home" color="white" />,
-      link: HOME.HOME,
+      link: HOME_PATHS.HOME,
     },
     {
       label: 'Profile',
       icon: <AppIcon icon="profile" color="white" />,
-      link: PROFILE.PROFILE,
+      link: PROFILE_PATHS.PROFILE,
     },
     {
       label: 'Organization',

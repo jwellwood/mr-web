@@ -8,7 +8,7 @@ interface Props {
   icon: IIconType;
   size?: string;
   color?: string;
-  onClick: () => void;
+  onClick: (event: React.MouseEvent | undefined) => void;
 }
 
 export default function CustomIconButton({ icon, size = '1rem', color, onClick }: Props) {

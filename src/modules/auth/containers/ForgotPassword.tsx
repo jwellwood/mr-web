@@ -8,7 +8,6 @@ import { FORGOT_PASSWORD } from '../graphql';
 import { IForgotPasswordInput } from '../types';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { AUTH } from '../../../router/routes/paths.ts';
 import { AuthRoles } from '../../../constants.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { Spinner } from '../../../components/loaders';
@@ -16,6 +15,7 @@ import AuthLayout from '../components/AuthLayout.tsx';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { forgotPasswordFormState } from '../forms/state.ts';
 import { PageHeader } from '../../../components';
+import { AUTH_PATHS } from '../router';
 
 export default function ForgotPasswordContainer() {
   const [forgotPassword, { loading, error }] = useMutation(FORGOT_PASSWORD);
@@ -31,7 +31,7 @@ export default function ForgotPasswordContainer() {
             type: 'success',
           })
         );
-        navigate(AUTH.SIGN_IN);
+        navigate(AUTH_PATHS.SIGN_IN);
       })
       .catch(err => {
         dispatch(showAlert({ text: err.message, type: 'error' }));

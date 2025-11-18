@@ -1,21 +1,17 @@
 import { Route } from 'react-router-dom';
-import { PLAYER, TEAM } from './paths.ts';
-import {
-  DeletePlayer,
-  EditPlayer,
-  EditPlayerPhoto,
-  Player,
-} from '../../modules/players/routes.tsx';
-import { Trophy } from '../../modules/history/routes.tsx';
+
+import * as PLAYER from '../../modules/players/router';
+import * as TEAM from '../../modules/team/router';
+import { Trophy } from '../../modules/history/router';
 
 export const PLAYER_ROUTES = () => (
   <>
-    <Route path={PLAYER.PLAYER}>
-      <Route index={true} element={<Player />} />
-      <Route path={PLAYER.EDIT} element={<EditPlayer />} />
-      <Route path={PLAYER.EDIT_PHOTO} element={<EditPlayerPhoto />} />
-      <Route path={PLAYER.DELETE} element={<DeletePlayer />} />
-      <Route path={TEAM.TROPHY} element={<Trophy />} />
+    <Route path={PLAYER.PLAYER_PATHS.PLAYER}>
+      <Route index={true} element={<PLAYER.Player />} />
+      <Route path={PLAYER.PLAYER_PATHS.EDIT} element={<PLAYER.EditPlayer />} />
+      <Route path={PLAYER.PLAYER_PATHS.EDIT_PHOTO} element={<PLAYER.EditPlayerPhoto />} />
+      <Route path={PLAYER.PLAYER_PATHS.DELETE} element={<PLAYER.DeletePlayer />} />
+      <Route path={TEAM.TEAM_PATHS.TROPHY} element={<Trophy />} />
     </Route>
   </>
 );
