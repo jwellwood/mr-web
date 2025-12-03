@@ -3,6 +3,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import FormErrorMessage from './FormErrorMessage';
 import { PickerValue } from '@mui/x-date-pickers/internals';
 import { FormControl } from '@mui/material';
+import { theme } from '../../theme';
 
 interface Props {
   inputName: string;
@@ -33,6 +34,9 @@ function DateInput({ defaultValue, onChange, label, openTo, errors, view, disabl
           views={views}
           slotProps={{
             textField: { variant: 'standard' },
+            openPickerButton: {
+              style: { color: theme.palette.label.main },
+            },
           }}
         />
       </LocalizationProvider>

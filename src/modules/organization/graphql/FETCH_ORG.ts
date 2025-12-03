@@ -4,7 +4,7 @@ import { IOrganization } from '../types';
 export const FETCH_ORG: TypedDocumentNode<{
   org: IOrganization;
 }> = gql`
-  query GetOrg($orgId: String!) {
+  query FETCH_ORG($orgId: String!) {
     org: organizationById(orgId: $orgId) {
       _id
       name

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_ORG_SEASON, FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../graphql';
-
 import { PAGES } from '../constants.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
@@ -12,10 +11,11 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { Spinner } from '../../../components/loaders';
-import { PageHeader } from '../../../components';
-import OrgSeasonForm from '../forms/OrgSeasonForm.tsx';
+import { Spinner } from '../../../components/loaders/index.ts';
+import { PageHeader } from '../../../components/index.ts';
 import { IOrgSeasonInput } from '../types.ts';
+import OrgSeasonForm from './components/OrgSeasonForm.tsx';
+import DeleteOrgSeason from '../containers/DeleteOrgSeason.tsx';
 
 export default function EditOrgSeason() {
   const { orgId, orgSeasonId } = useCustomParams();
@@ -34,10 +34,6 @@ export default function EditOrgSeason() {
     refetchQueries: [{ query: FETCH_ORG_SEASONS, variables: { orgId } }],
   });
 
-  // const [deleteAward, { error: deleteError, loading: deleteLoading }] = useMutation(DELETE_AWARD, {
-  //   refetchQueries: [{ query: FETCH_ORG_SEASONS, variables: { orgId } }],
-  // });
-
   useEffect(() => {
     if (data?.orgSeason) {
       const season = data.orgSeason;
@@ -45,18 +41,6 @@ export default function EditOrgSeason() {
       setDefaultValues({ ...season });
     }
   }, [data]);
-
-  // const onDelete = async () => {
-  //   try {
-  //     return deleteAward({ variables: { teamId, awardId } }).then(() => {
-  //       dispatch(showAlert({ text: 'Award deleted successfully', type: 'success' }));
-  //       navigate(-2);
-  //     });
-  //   } catch (error) {
-  //     console.error(error);
-  //     dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
-  //   }
-  // };
 
   const onSubmit = async (formData: IOrgSeasonInput) => {
     try {
@@ -78,12 +62,10 @@ export default function EditOrgSeason() {
 
   const renderContent = () => {
     return !isLoading && defaultValues ? (
-      <OrgSeasonForm
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        // onDelete={onDelete}
-        // deleteLoading={deleteLoading}
-      />
+      <>
+        <OrgSeasonForm defaultValues={defaultValues} onSubmit={onSubmit} />
+        <DeleteOrgSeason />
+      </>
     ) : (
       <Spinner />
     );

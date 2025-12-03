@@ -4,7 +4,7 @@ import { ICompetition } from '../types';
 export const EDIT_COMPETITION: TypedDocumentNode<{
   comp: ICompetition;
 }> = gql`
-  mutation UpdateCompetition(
+  mutation EDIT_COMPETITION(
     $compId: String!
     $orgId: String!
     $name: String!

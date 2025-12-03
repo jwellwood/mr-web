@@ -5,6 +5,6 @@ export const form_error_text = {
   pattern: "The entry doesn't match the required pattern",
   high: 'The number is too high',
   low: 'The number is too low',
-  validate: 'Check you have entered this correctly',
+  validate: 'This entry is invalid',
   default: 'There is a problem with this entry',
 };

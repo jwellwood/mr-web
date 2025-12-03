@@ -4,7 +4,7 @@ import { ICompetition } from '../types';
 export const FETCH_COMPETITION: TypedDocumentNode<{
   competition: ICompetition;
 }> = gql`
-  query GetCompetitionById($compId: String!) {
+  query FETCH_COMPETITION($compId: String!) {
     competition: competitionById(compId: $compId) {
       _id
       name

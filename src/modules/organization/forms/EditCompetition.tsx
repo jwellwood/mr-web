@@ -3,20 +3,20 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
-import { FETCH_COMPETITION, EDIT_COMPETITION } from '../graphql';
-
-import { PAGES } from '../constants';
-import CompetitionForm from '../forms/CompetitionForm';
-import { mapCompetitionInput } from '../helpers/mapCompetitionInput';
+import { FETCH_COMPETITION, EDIT_COMPETITION, FETCH_COMPETITIONS } from '../graphql';
+import { PAGES } from '../constants.ts';
+import { mapCompetitionInput } from '../helpers/mapCompetitionInput.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { Spinner } from '../../../components/loaders';
+import { Spinner } from '../../../components/loaders/index.ts';
 import { ICompetitionInput } from '../types.ts';
-import { PageHeader } from '../../../components';
+import { PageHeader } from '../../../components/index.ts';
+import CompetitionForm from './components/CompetitionForm.tsx';
+import DeleteCompetition from '../containers/DeleteCompetition.tsx';
 
 export default function EditCompetition() {
   const { orgId, competitionId } = useCustomParams();
@@ -29,7 +29,10 @@ export default function EditCompetition() {
   const [updateCompetition, { loading: updateLoading, error: updateError }] = useMutation(
     EDIT_COMPETITION,
     {
-      refetchQueries: [{ query: FETCH_COMPETITION, variables: { compId: competitionId } }],
+      refetchQueries: [
+        { query: FETCH_COMPETITION, variables: { compId: competitionId } },
+        { query: FETCH_COMPETITIONS, variables: { orgId } },
+      ],
     }
   );
   const [defaultValues, setDefaultValues] = useState<ICompetitionInput | null>(null);
@@ -42,6 +45,7 @@ export default function EditCompetition() {
       });
     }
   }, [data]);
+
   const onSubmit = async (formData: ICompetitionInput) => {
     try {
       return updateCompetition({
@@ -62,7 +66,10 @@ export default function EditCompetition() {
 
   const renderContent = () => {
     return !loading && !updateLoading && defaultValues ? (
-      <CompetitionForm defaultValues={defaultValues} onSubmit={onSubmit} />
+      <>
+        <CompetitionForm defaultValues={defaultValues} onSubmit={onSubmit} />
+        <DeleteCompetition />
+      </>
     ) : (
       <Spinner />
     );

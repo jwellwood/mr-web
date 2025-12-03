@@ -35,9 +35,14 @@ export default function AppRoutes() {
         <Route path={ORG.ORG_PATHS.ADD_TEAM} element={<TEAM.AddTeam />} />
         <Route path={ORG.ORG_PATHS.ADD_COMPETITION} element={<ORG.AddCompetition />} />
         <Route path={ORG.ORG_PATHS.ADD_ORG_SEASON} element={<ORG.AddOrgSeason />} />
+        <Route path={ORG.ORG_PATHS.ADD_RESULT} element={<ORG.AddResult />} />
         <Route path={ORG.ORG_PATHS.ORG_SEASON}>
           <Route index={true} element={<ORG.OrgSeason />} />
           <Route path={ORG.ORG_PATHS.EDIT_ORG_SEASON} element={<ORG.EditOrgSeason />} />
+          <Route path={ORG.ORG_PATHS.RESULT}>
+            <Route index={true} element={<ORG.Result />} />
+            <Route path={ORG.ORG_PATHS.EDIT_RESULT} element={<ORG.EditResult />} />
+          </Route>
         </Route>
         <Route path={ORG.ORG_PATHS.COMPETITION}>
           <Route index={true} element={<ORG.Competition />} />

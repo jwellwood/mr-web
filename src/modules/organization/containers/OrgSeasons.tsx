@@ -6,6 +6,7 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { Spinner } from '../../../components/loaders';
 import LinksList from '../../../components/lists/LinksList.tsx';
 import { IListItem } from '../../../components/lists/types.ts';
+import { NoDataText } from '../../../components';
 
 export default function OrgSeasons() {
   const { orgId } = useCustomParams();
@@ -19,8 +20,14 @@ export default function OrgSeasons() {
       };
     }) || [];
 
+  const renderData = data?.orgSeasons.length ? (
+    <LinksList links={links} />
+  ) : (
+    <NoDataText>No seasons yet</NoDataText>
+  );
+
   const renderContent = () => {
-    return !loading ? <LinksList links={links} /> : <Spinner />;
+    return !loading ? renderData : <Spinner />;
   };
 
   return error ? <ErrorGraphql error={error} /> : renderContent();

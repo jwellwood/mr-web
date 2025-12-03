@@ -1,3 +1,4 @@
+import { NoDataText } from '../../../components';
 import { SectionContainer } from '../../../components/containers';
 import LinksList from '../../../components/lists/LinksList';
 import { IListItem } from '../../../components/lists/types';
@@ -17,9 +18,11 @@ export default function CompetitionsList({ competitions }: Props) {
       };
     }) || [];
 
-  return (
-    <SectionContainer title="Competitions">
-      <LinksList links={data} />
-    </SectionContainer>
+  const renderContent = competitions?.length ? (
+    <LinksList links={data} />
+  ) : (
+    <NoDataText>No competitions yet</NoDataText>
   );
+
+  return <SectionContainer title="Competitions">{renderContent}</SectionContainer>;
 }

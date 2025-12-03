@@ -30,6 +30,7 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
             imageUrl={badge}
             fallbackIcon={type}
             size="90px"
+            iconSize="65px"
             loading={loading}
             centered
           />

@@ -3,19 +3,19 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_ORG } from '../graphql';
-import { FETCH_USER, FETCH_ORGS_BY_USER } from '../../profile/graphql';
+import { ADD_ORG } from '../graphql/index.ts';
+import { FETCH_USER, FETCH_ORGS_BY_USER } from '../../profile/graphql/index.ts';
 
-import { PAGES } from '../constants';
-import OrgForm from '../forms/OrgForm';
+import { PAGES } from '../constants.ts';
+import OrgForm from './components/OrgForm.tsx';
 import { AppDispatch } from '../../../store/store.ts';
-import { useNationality } from '../../../hooks';
+import { useNationality } from '../../../hooks/index.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AuthRoles } from '../../../constants.ts';
-import { Spinner } from '../../../components/loaders';
-import { initialOrgDetailsState } from '../forms/state.ts';
+import { Spinner } from '../../../components/loaders/index.ts';
+import { initialOrgDetailsState } from './state.ts';
 import { IOrganizationInput } from '../types.ts';
 import { PageHeader } from '../../../components';
 

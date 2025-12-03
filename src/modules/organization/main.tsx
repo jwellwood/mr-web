@@ -1,15 +1,18 @@
+import { lazy } from 'react';
+
 import { AUTH_ROLES, TAB_TYPES } from '../../app/constants';
 import { CustomTabs, ITab } from '../../components/tabs';
-import { useAuth } from '../../hooks';
-import { useCustomParams } from '../../hooks/useCustomParams';
+import { useAuth, useCustomParams } from '../../hooks';
 import RouteGuard from '../../router/RouteGuard';
 import { PAGES, ORG_ADMIN_LINKS } from './constants';
-
 import { PageHeader } from '../../components';
-import Org from './containers/Org';
-import OrgTeams from './containers/OrgTeams';
-// import OrgSeasons from './containers/OrgSeasons';
-import { CustomTypography } from '../../components/typography';
+
+const Org = lazy(() => import('./containers/Org'));
+const OrgTeams = lazy(() => import('./containers/OrgTeams'));
+const OrgSeasons = lazy(() => import('./containers/OrgSeasons'));
+const LeagueTables = lazy(() => import('./containers/LeagueTables'));
+const Competitions = lazy(() => import('./containers/Competitions'));
+const Results = lazy(() => import('./containers/Results'));
 
 export default function Team() {
   const { orgId } = useCustomParams();
@@ -18,17 +21,25 @@ export default function Team() {
 
   const tabs: ITab[] = [
     {
-      label: 'Tables',
-      component: <CustomTypography color="primary">Coming soon</CustomTypography>,
+      label: 'Results',
+      component: <Results />,
     },
     {
-      label: 'Teams',
-      component: <OrgTeams />,
+      label: 'Tables',
+      component: <LeagueTables />,
     },
-
     {
       label: 'History',
-      component: <CustomTypography color="primary">Coming soon</CustomTypography>,
+      component: <OrgSeasons />,
+    },
+    {
+      label: 'More',
+      component: (
+        <>
+          <Competitions />
+          <OrgTeams />
+        </>
+      ),
     },
   ];
 

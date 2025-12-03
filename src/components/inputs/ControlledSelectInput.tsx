@@ -9,6 +9,7 @@ type Props<T extends object> = {
   label: string;
   rules?: {
     required?: boolean;
+    validate?: () => boolean;
   };
   errors: FormError[];
   disabled?: boolean;
@@ -34,7 +35,7 @@ function ControlledSelectInput<T extends object>({
             inputName={name}
             label={label}
             onChange={onChange}
-            defaultValue={value || ''}
+            defaultValue={value}
             options={options}
             errors={errors}
             disabled={disabled}

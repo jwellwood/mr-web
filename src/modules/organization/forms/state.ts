@@ -1,4 +1,4 @@
-import { ICompetitionInput, IOrganizationInput, IOrgSeasonInput } from '../types';
+import { ICompetitionInput, IOrganizationInput, IOrgSeasonInput, IResultInput } from '../types';
 
 export const initialOrgDetailsState: IOrganizationInput = {
   name: '',
@@ -19,7 +19,18 @@ export const initialCompetitionState: ICompetitionInput = {
 
 export const initialOrgSeasonState: IOrgSeasonInput = {
   yearStarted: new Date().getFullYear().toString(),
-  yearEnded: '',
+  yearEnded: new Date().getFullYear().toString(),
   isCurrent: false,
   comment: '',
+};
+
+export const initialResultState: IResultInput = {
+  date: new Date().toString(),
+  gameWeek: 0,
+  competitionId: '',
+  orgSeasonId: '',
+  homeTeam: '',
+  awayTeam: '',
+  homeGoals: 0,
+  awayGoals: 0,
 };

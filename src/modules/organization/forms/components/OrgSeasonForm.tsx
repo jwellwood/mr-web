@@ -1,29 +1,32 @@
 import { useForm } from 'react-hook-form';
 
-import ControlledDateInput from '../../../components/inputs/ControlledDateInput';
-import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import { IOrgSeason, IOrgSeasonInput } from '../types';
-import { FormContainer } from '../../../components/containers';
-import { CenteredGrid, GridItem } from '../../../components/grids';
-import { DeleteModal } from '../../../components/modals';
-import SwitchButtonList from '../../../components/forms/SwitchButtonList';
-import { IListItem } from '../../../components/lists/types';
+import ControlledDateInput from '../../../../components/inputs/ControlledDateInput';
+import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
+import { IOrgSeason, IOrgSeasonInput } from '../../types';
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
+import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
+import { IListItem } from '../../../../components/lists/types';
 
 type Props = {
   onSubmit: (formData: IOrgSeasonInput) => void;
   defaultValues: IOrgSeasonInput;
-  onDelete?: () => void;
-  deleteLoading?: boolean;
 };
 
-export default function OrgSeasonForm({ onSubmit, defaultValues, onDelete, deleteLoading }: Props) {
+export default function OrgSeasonForm({ onSubmit, defaultValues }: Props) {
   const {
     handleSubmit,
     formState: { errors },
     control,
+    watch,
   } = useForm<IOrgSeason>({
     defaultValues,
   });
+
+  const yearStarted = watch('yearStarted');
+  const yearEnded = watch('yearEnded');
+  const yearStartAsNum = new Date(yearStarted).getFullYear();
+  const yearEndAsNum = new Date(yearEnded).getFullYear();
 
   const switchList: IListItem[] = [
     {
@@ -52,7 +55,7 @@ export default function OrgSeasonForm({ onSubmit, defaultValues, onDelete, delet
             label="Year Ended"
             view="year"
             disableFuture={false}
-            rules={{ required: true }}
+            rules={{ required: true, validate: () => yearStartAsNum <= yearEndAsNum }}
             errors={errors.yearEnded ? [errors.yearEnded] : []}
           />
         </GridItem>
@@ -69,7 +72,6 @@ export default function OrgSeasonForm({ onSubmit, defaultValues, onDelete, delet
           />
         </GridItem>
       </CenteredGrid>
-      {onDelete && <DeleteModal onDelete={onDelete} title="Season" loading={deleteLoading} />}
     </FormContainer>
   );
 }

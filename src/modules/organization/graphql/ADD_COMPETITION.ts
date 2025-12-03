@@ -1,7 +1,7 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 
 export const ADD_COMPETITION: TypedDocumentNode = gql`
-  mutation AddCompetition(
+  mutation ADD_COMPETITION(
     $orgId: String!
     $name: String!
     $matchMinutes: Float!

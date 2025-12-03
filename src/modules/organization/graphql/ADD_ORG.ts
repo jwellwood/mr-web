@@ -4,7 +4,7 @@ import { IOrganization } from '../types';
 export const ADD_ORG: TypedDocumentNode<{
   org: IOrganization;
 }> = gql`
-  mutation AddOrganization(
+  mutation ADD_ORG(
     $name: String!
     $website: String
     $yearFounded: String

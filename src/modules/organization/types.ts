@@ -64,3 +64,61 @@ export type ICompetitionWinner = {
   isWinner: boolean;
   isRunnerUp: boolean;
 };
+
+export type IResult = {
+  _id: string;
+  date: string;
+  gameWeek: number;
+  competitionId: {
+    name: string;
+    _id: string;
+  };
+  orgSeasonId: {
+    name: string;
+    _id: string;
+  };
+  homeTeam: {
+    _id: string;
+    teamName: string;
+  };
+  awayTeam: {
+    _id: string;
+    teamName: string;
+  };
+  homeGoals: number;
+  awayGoals: number;
+};
+
+export type IResultInput = {
+  date: string;
+  gameWeek: number;
+  competitionId: string;
+  orgSeasonId: string;
+  homeTeam: string;
+  awayTeam: string;
+  homeGoals: number;
+  awayGoals: number;
+};
+
+export type ILeagueTableTeam = {
+  team: {
+    teamName: string;
+    _id: string;
+  };
+  played: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goalsFor: number;
+  goalsAgainst: number;
+  goalDiff: number;
+  points: number;
+};
+
+export type ILeagueTableData = {
+  competition: {
+    _id: string;
+    name: string;
+  };
+  data: ILeagueTableTeam[];
+};

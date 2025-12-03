@@ -9,6 +9,7 @@ type Props<T extends object> = {
   errors: { type: string }[];
   rules?: {
     required?: boolean;
+    validate?: () => boolean;
   };
   view?: string;
   openTo?: DateView;
@@ -20,6 +21,7 @@ function ControlledDateInput<T extends object>({
   name,
   label,
   errors,
+  rules,
   view,
   openTo,
   disableFuture = true,
@@ -28,6 +30,7 @@ function ControlledDateInput<T extends object>({
     <Controller
       control={control}
       name={name}
+      rules={rules}
       render={({ field: { name, value, onChange } }) => {
         const date = value ? new Date(value) : new Date();
         return (

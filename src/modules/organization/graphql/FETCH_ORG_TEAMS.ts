@@ -4,7 +4,7 @@ import { ITeam } from '../../team/types';
 export const FETCH_ORG_TEAMS: TypedDocumentNode<{
   teams: ITeam[];
 }> = gql`
-  query GetTeamsByOrg($orgId: String!) {
+  query FETCH_ORG_TEAMS($orgId: String!) {
     teams: teamsByOrg(orgId: $orgId) {
       _id
       teamName

@@ -1,15 +1,15 @@
 import { useForm } from 'react-hook-form';
 
-import { FormContainer } from '../../../components/containers';
-import { CenteredGrid, GridItem } from '../../../components/grids';
-import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import ControlledTextInput from '../../../components/inputs/ControlledTextInput';
-import { getMinutesOptions } from '../../matches/helpers';
-import { competitionOptions } from '../constants';
-import { getIntegers } from '../../../utils/helpers';
-import SwitchButtonList from '../../../components/forms/SwitchButtonList';
-import { ICompetitionInput } from '../types';
-import { IListItem } from '../../../components/lists/types';
+import { FormContainer } from '../../../../components/containers';
+import { CenteredGrid, GridItem } from '../../../../components/grids';
+import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
+import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
+import { getMinutesOptions } from '../../../matches/helpers';
+import { competitionOptions } from '../../constants';
+import { getIntegers } from '../../../../utils/helpers';
+import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
+import { ICompetitionInput } from '../../types';
+import { IListItem } from '../../../../components/lists/types';
 
 interface Props {
   onSubmit: (data: ICompetitionInput) => void;
