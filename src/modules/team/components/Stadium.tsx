@@ -1,4 +1,4 @@
-import { DataContainer, SectionContainer } from '../../../components/containers';
+import { DataContainer, SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import AppIcon from '../../../components/icons/AppIcon';
 import { PresentationModal } from '../../../components/modals';

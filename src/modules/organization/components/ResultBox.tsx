@@ -10,16 +10,18 @@ export default function ResultBox({ result }: Props) {
   const { homeTeam, awayTeam, homeGoals, awayGoals } = result;
 
   return (
-    <Grid container direction="row" spacing={2}>
+    <Grid container direction="row" spacing={1}>
       <Grid size={5} textAlign="right">
         <CustomTypography color={homeGoals > awayGoals ? 'primary' : 'label'}>
           {homeTeam.teamName}
         </CustomTypography>
       </Grid>
-      <CustomTypography color="data" bold>
-        {homeGoals} - {awayGoals}
-      </CustomTypography>
-      <Grid size={5}>
+      <Grid size={2} textAlign="center" flexWrap="nowrap">
+        <CustomTypography color="data" bold>
+          {homeGoals} - {awayGoals}
+        </CustomTypography>
+      </Grid>
+      <Grid size={5} textAlign="left">
         <CustomTypography color={awayGoals > homeGoals ? 'primary' : 'label'}>
           {awayTeam.teamName}
         </CustomTypography>

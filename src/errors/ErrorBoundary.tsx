@@ -1,7 +1,7 @@
 import React, { Component, ErrorInfo } from 'react';
 import { ROOT_URL } from '../app/constants';
 import { CustomButton, LinkButton } from '../components/buttons';
-import { SectionContainer } from '../components/containers';
+import { SectionContainer } from '../components';
 import { CustomTypography } from '../components/typography';
 
 interface State {

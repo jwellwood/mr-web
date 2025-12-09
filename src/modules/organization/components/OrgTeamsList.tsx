@@ -1,6 +1,6 @@
 import { TAB_TYPES } from '../../../app/constants';
 import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import LinksList from '../../../components/lists/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTabs, ITab } from '../../../components/tabs';

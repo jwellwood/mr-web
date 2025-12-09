@@ -4,6 +4,7 @@ import CustomTypography from '../../../components/typography/CustomTypography.ts
 import { getAvg } from '../../../utils/helpers';
 import { IPlayerVsStats } from '../../matches/types.ts';
 import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar.tsx';
+import { NoDataText } from '../../../components/index.ts';
 
 export const mapPlayerVsStats = (stats: IPlayerVsStats[]) => {
   return stats?.map((item: IPlayerVsStats) => ({
@@ -31,7 +32,7 @@ export const mapPlayerVsStats = (stats: IPlayerVsStats[]) => {
               </CustomTypography>
             }
           >
-            Coming soon
+            <NoDataText>Feature coming soon!</NoDataText>
           </PresentationModal>
         </div>
       ),

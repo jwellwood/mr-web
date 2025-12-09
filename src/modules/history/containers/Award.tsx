@@ -10,7 +10,7 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
 import TextList from '../../../components/lists/TextList';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem } from '../../../components/lists/types';
 import { PageHeader } from '../../../components';

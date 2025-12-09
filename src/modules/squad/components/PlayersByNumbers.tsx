@@ -1,4 +1,5 @@
-import { DataContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components/containers';
+import TextList from '../../../components/lists/TextList.tsx';
 import { IListItem } from '../../../components/lists/types.ts';
 import { IPlayer } from '../../players/types.ts';
 import { getAverageAge } from '../helpers';
@@ -21,12 +22,16 @@ export default function PlayersByNumbers({ players, loading, season, showAge }: 
   const averageAge = getAverageAge(ages, season);
 
   const data: IListItem[] = [
-    { label: 'Number of Players', value: numberOfPlayers },
+    { label: 'Players', value: numberOfPlayers },
     {
       label: 'Nationalities',
-      value: <ByNationality players={players} title={nationalities.toString()} variant="text" />,
+      value: <ByNationality players={players} title={nationalities.toString()} />,
     },
     { label: 'Average Age', value: averageAge.toFixed(1), hidden: !showAge },
   ].filter(elem => !elem.hidden);
-  return <DataContainer data={data} loading={loading} size={showAge ? 4 : 6} />;
+  return (
+    <SectionContainer>
+      <TextList data={data} loading={loading} />
+    </SectionContainer>
+  );
 }

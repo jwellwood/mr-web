@@ -9,6 +9,7 @@ import { player_vs_stats, player_vs_styles } from '../../configs';
 import { FETCH_PLAYER_OPPONENT_STATS } from '../../graphql';
 import { mapPlayerVsStats } from '../../helpers/mapPlayerVsStats';
 import { IPlayerVsStats } from '../../../matches/types';
+import { SectionContainer } from '../../../../components';
 
 export default function PlayerVsStats() {
   const { playerId } = useCustomParams();
@@ -34,5 +35,9 @@ export default function PlayerVsStats() {
     );
   };
 
-  return error ? <ErrorGraphql error={error} /> : renderContent();
+  return (
+    <SectionContainer title="Opponents">
+      {error ? <ErrorGraphql error={error} /> : renderContent()}
+    </SectionContainer>
+  );
 }

@@ -1,5 +1,4 @@
-import { CustomAvatar } from '../../../components/';
-import { SectionContainer } from '../../../components/containers';
+import { CustomAvatar, SectionContainer } from '../../../components';
 import TextList from '../../../components/lists/TextList';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
@@ -8,7 +7,6 @@ import RecordPlayers from './RecordPlayers';
 type ValueType = object & {
   [key: string]: {
     value: number;
-    disabled: boolean;
     names: {
       name: string;
       id: string;
@@ -16,31 +14,16 @@ type ValueType = object & {
   }[];
 };
 
-type Props<
-  T extends ValueType,
-  K = T extends Record<
-    infer U,
-    {
-      value: number;
-      disabled: boolean;
-    }[]
-  >
-    ? U
-    : never,
-> = {
+type Props<T extends ValueType> = {
   label: string;
-  stat: K;
+  stat: string;
   value: T;
 };
 
 export default function RecordsTable<T extends ValueType>({ label, stat, value }: Props<T>) {
   const statField = value[stat];
   return (
-    <SectionContainer>
-      <CustomTypography color="label" bold size="xs">
-        {label}
-      </CustomTypography>
-
+    <SectionContainer title={label}>
       {statField.map((item, i) => {
         const getBackground = () => {
           let color = 'secondary';

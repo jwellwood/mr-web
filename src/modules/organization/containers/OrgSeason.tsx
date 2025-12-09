@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_ORG_SEASON } from '../graphql';
-
 import { AUTH_ROLES } from '../../../app/constants';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';

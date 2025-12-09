@@ -6,6 +6,7 @@ import CustomTable from '../../../components/tables/CustomTable';
 import { getAvg, getPercentage } from '../../../utils/helpers';
 import { player_stats, player_stats_styles } from '../configs';
 import { IPlayerStats } from '../types';
+import { SectionContainer } from '../../../components';
 
 type Props = {
   stats: IPlayerStats;
@@ -97,12 +98,14 @@ const PlayerStatsTable: React.FC<Props> = ({ stats, loading }) => {
   ];
 
   return (
-    <CustomTable
-      columns={player_stats}
-      rows={rows}
-      isSortable={false}
-      cellIndexStyles={player_stats_styles}
-    />
+    <SectionContainer title="Stats">
+      <CustomTable
+        columns={player_stats}
+        rows={rows}
+        isSortable={false}
+        cellIndexStyles={player_stats_styles}
+      />
+    </SectionContainer>
   );
 };
 

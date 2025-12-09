@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_SEASONS_POSITION } from '../graphql';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';

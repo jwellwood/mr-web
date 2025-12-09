@@ -2,6 +2,7 @@ import { game_with_stat_styles, player_games_with_stat } from '../configs';
 import { getPercentage } from '../../../utils/helpers';
 import CustomTable from '../../../components/tables/CustomTable.tsx';
 import { IPlayerStats } from '../types.ts';
+import { SectionContainer } from '../../../components';
 
 type Props = {
   player: IPlayerStats;
@@ -48,12 +49,14 @@ function GamesWithStat({ player }: Props) {
   ];
 
   return (
-    <CustomTable
-      columns={player_games_with_stat}
-      rows={rows}
-      isSortable={false}
-      cellIndexStyles={game_with_stat_styles}
-    />
+    <SectionContainer title="Games with stats">
+      <CustomTable
+        columns={player_games_with_stat}
+        rows={rows}
+        isSortable={false}
+        cellIndexStyles={game_with_stat_styles}
+      />
+    </SectionContainer>
   );
 }
 

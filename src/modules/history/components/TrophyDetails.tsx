@@ -1,4 +1,4 @@
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import AppIcon from '../../../components/icons/AppIcon';
 import { CustomTypography } from '../../../components/typography';

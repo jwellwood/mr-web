@@ -4,13 +4,13 @@ import { useQuery } from '@apollo/client';
 import { FETCH_SQUAD_STATS_BASIC, FETCH_SQUAD_BY_SEASON } from '../graphql';
 import { AUTH_ROLES } from '../../../app/constants';
 import CustomTable from '../../../components/tables/CustomTable';
-import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
-import { useCustomParams } from '../../../hooks/useCustomParams';
+import { useCustomParams } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
 import RouteGuard from '../../../router/RouteGuard';
 import { squad_list, squad_list_styles } from '../configs';
 import { getSquadTableData } from '../helpers';
+import { SectionContainer, NoDataText } from '../../../components';
 
 export default function Squad() {
   const { teamId } = useCustomParams();
@@ -47,9 +47,9 @@ export default function Squad() {
 
   const renderContent = () => {
     return data?.players && data?.players.length === 0 ? (
-      <CustomTypography color="warning">No players yet</CustomTypography>
+      <NoDataText>No players yet</NoDataText>
     ) : (
-      <>
+      <SectionContainer>
         <CustomTable
           columns={squad_list}
           rows={tableData}
@@ -57,7 +57,7 @@ export default function Squad() {
           sortByString="position"
           cellIndexStyles={squad_list_styles}
         />
-      </>
+      </SectionContainer>
     );
   };
 

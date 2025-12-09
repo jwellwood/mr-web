@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { FETCH_AWARDS_BY_PLAYER } from '../../../history/graphql';
 import { useLazyQuery, useQuery } from '@apollo/client';
-import { SectionContainer } from '../../../../components/containers';
+import { SectionContainer } from '../../../../components';
 import StatIcon from '../../../../components/icons/StatIcon';
 import LinksList from '../../../../components/lists/LinksList';
 import { Spinner } from '../../../../components/loaders';
@@ -11,7 +11,6 @@ import { useCustomParams } from '../../../../hooks/useCustomParams';
 import { FETCH_PLAYER_TROPHIES } from '../../graphql';
 import { getTrophyListItem } from '../../helpers';
 import { usePlayerData } from '../../hooks/usePlayerData';
-import { theme } from '../../../../theme';
 import { IListItem } from '../../../../components/lists/types';
 
 const PlayerHonors: React.FC = () => {
@@ -65,21 +64,14 @@ const PlayerHonors: React.FC = () => {
     <>
       <SectionContainer title="Trophies">
         {!trophiesLoading && trophies ? (
-          <SectionContainer background={theme.palette.dark.main}>
-            <CustomTypography color="label" bold size="xs">
-              Winner
-            </CustomTypography>
+          <SectionContainer subtitle="Winner">
             <LinksList links={trophies} />
           </SectionContainer>
         ) : (
           <Spinner />
         )}
         {!trophiesLoading && runnerUp ? (
-          <SectionContainer background={theme.palette.dark.main}>
-            <CustomTypography color="label" bold size="xs">
-              Runner-up
-            </CustomTypography>
-
+          <SectionContainer subtitle="Runner-up">
             <LinksList links={runnerUp} />
           </SectionContainer>
         ) : (
@@ -87,7 +79,7 @@ const PlayerHonors: React.FC = () => {
         )}
       </SectionContainer>
       <SectionContainer title="Awards">
-        <SectionContainer background={theme.palette.dark.main}>
+        <SectionContainer>
           {!loading ? <LinksList links={awardsData} /> : <Spinner />}
         </SectionContainer>
       </SectionContainer>

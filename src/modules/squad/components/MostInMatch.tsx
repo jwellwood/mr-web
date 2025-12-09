@@ -1,6 +1,6 @@
 import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import LinksList from '../../../components/lists/LinksList.tsx';
 import { IMostGoalsInMatch } from '../../matches/types.ts';
 import { IListItem } from '../../../components/lists/types.ts';
@@ -45,10 +45,7 @@ export default function MostInMatch({ data, title }: Props) {
       };
     }) || [];
   return (
-    <SectionContainer>
-      <CustomTypography color="label" bold size="xs">
-        {title}
-      </CustomTypography>
+    <SectionContainer title={title}>
       <LinksList links={listData} />
     </SectionContainer>
   );

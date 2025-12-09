@@ -1,4 +1,4 @@
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import CustomTable from '../../../components/tables/CustomTable';
 import { league_table, league_table_styles } from '../config/columns';
 import { ILeagueTableTeam } from '../types';

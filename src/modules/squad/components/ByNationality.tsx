@@ -1,22 +1,20 @@
 import countryList from 'react-select-country-list';
 
 import { IPastPlayer } from '../types.ts';
-import { SectionContainer } from '../../../components/containers';
 import { CustomTypography } from '../../../components/typography';
 import FlagIcon from '../../../components/icons/FlagIcon.tsx';
 import TextList from '../../../components/lists/TextList.tsx';
 import { PresentationModal } from '../../../components/modals';
-import { CustomButton } from '../../../components/buttons';
 import { IPlayer } from '../../players/types.ts';
+import { CustomAccordion } from '../../../components';
 
 interface Props {
   players: IPlayer[] | IPastPlayer[];
   title: string;
-  variant?: 'text' | 'outlined' | 'contained';
   textColor?: string;
 }
 
-export default function ByNationality({ players, title, variant, textColor = 'primary' }: Props) {
+export default function ByNationality({ players, title, textColor = 'primary' }: Props) {
   const countryName = (code: string) => (code ? countryList().getLabel(code) : null);
   const groupNationalities = () => {
     const playersMap = (players as IPlayer[]).reduce(
@@ -55,17 +53,22 @@ export default function ByNationality({ players, title, variant, textColor = 'pr
     const listData = item?.players?.map(player => ({ label: player.name }));
 
     return (
-      <SectionContainer key={item.key}>
-        <CustomTypography color="data" bold size="sm">
-          <FlagIcon nationality={item.key} /> {countryName(item.key)}
-          <div style={{ display: 'inline-flex', marginLeft: '8px' }}>
-            <CustomTypography color="label" bold size="xs">
-              ( {listData.length} )
-            </CustomTypography>
-          </div>
-        </CustomTypography>
+      <CustomAccordion
+        key={item.key}
+        isExpanded={false}
+        title={
+          <CustomTypography color="data" bold>
+            <FlagIcon nationality={item.key} /> {countryName(item.key)}
+            <div style={{ display: 'inline-flex', marginLeft: '8px' }}>
+              <CustomTypography color="label" bold size="xs">
+                ( {listData.length} )
+              </CustomTypography>
+            </div>
+          </CustomTypography>
+        }
+      >
         <TextList data={listData} labelSize="xs" />
-      </SectionContainer>
+      </CustomAccordion>
     );
   };
 
@@ -73,11 +76,9 @@ export default function ByNationality({ players, title, variant, textColor = 'pr
     <PresentationModal
       title="Nationalities"
       buttonElement={
-        <CustomButton variant={variant}>
-          <CustomTypography color={textColor} size="xs" bold>
-            {title}
-          </CustomTypography>
-        </CustomButton>
+        <CustomTypography color={textColor} size="xs" bold>
+          {title}
+        </CustomTypography>
       }
     >
       {groupNationalities().map(item => {

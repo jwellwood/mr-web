@@ -1,3 +1,4 @@
+import { SectionContainer } from '../../../components';
 import TextList from '../../../components/lists/TextList';
 import { parseDate } from '../../../utils/helpers';
 import { IResult } from '../types';
@@ -16,9 +17,9 @@ export default function ResultDetails({ result }: Props) {
   ];
 
   return (
-    <>
+    <SectionContainer>
       <TextList data={list} />
       <ResultBox result={result} />
-    </>
+    </SectionContainer>
   );
 }

@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_MATCHES_RECORDS } from '../graphql';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
@@ -29,10 +29,7 @@ export default function MatchRecords() {
     ) : (
       listData.map(item => {
         return (
-          <SectionContainer key={item.title}>
-            <CustomTypography color="label" bold size="xs">
-              {item.title}
-            </CustomTypography>
+          <SectionContainer key={item.title} title={item.title}>
             <LinksList links={mostMatchListData(item.stat || [], orgId, teamId, loading)} />
           </SectionContainer>
         );
@@ -40,7 +37,5 @@ export default function MatchRecords() {
     );
   };
 
-  return (
-    <SectionContainer>{error ? <ErrorGraphql error={error} /> : renderContent()}</SectionContainer>
-  );
+  return error ? <ErrorGraphql error={error} /> : renderContent();
 }

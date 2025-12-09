@@ -15,5 +15,5 @@ export default function PlayerTabs() {
     { label: 'Honors', component: <PlayerHonors /> },
   ];
 
-  return <CustomTabs type={TAB_TYPES.PLAYER} tabs={tabs} level="secondary" />;
+  return <CustomTabs type={TAB_TYPES.PLAYER} tabs={tabs} level="primary" />;
 }

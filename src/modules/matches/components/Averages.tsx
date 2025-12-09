@@ -1,5 +1,5 @@
 import CustomPieChart from '../../../components/charts/CustomPieChart';
-import { DataContainer, SectionContainer } from '../../../components/containers';
+import { DataContainer } from '../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import StatSkeleton from '../../../components/loaders/StatSkeleton';
 import { CustomTypography } from '../../../components/typography';
@@ -14,11 +14,9 @@ type Props = {
 export default function Averages({ stats, loading }: Props) {
   if (!stats)
     return (
-      <SectionContainer>
-        <CenteredGrid>
-          <StatSkeleton />
-        </CenteredGrid>
-      </SectionContainer>
+      <CenteredGrid>
+        <StatSkeleton />
+      </CenteredGrid>
     );
   const { total, wins, draws, defeats, teamAvg, oppAvg } = stats;
   const avDiff = teamAvg - oppAvg;
@@ -62,18 +60,16 @@ export default function Averages({ stats, loading }: Props) {
   ];
 
   return (
-    <SectionContainer>
-      <CenteredGrid dir="row">
-        <GridItem size={4}>
-          <CustomPieChart
-            data={pieData}
-            colors={['rgb(47, 219, 145)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)']}
-          />
-        </GridItem>
-        <GridItem size={8}>
-          <DataContainer data={percentageData} loading={loading} />
-        </GridItem>
-      </CenteredGrid>
-    </SectionContainer>
+    <CenteredGrid dir="row">
+      <GridItem size={4}>
+        <CustomPieChart
+          data={pieData}
+          colors={['rgb(47, 219, 145)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)']}
+        />
+      </GridItem>
+      <GridItem size={8}>
+        <DataContainer data={percentageData} loading={loading} />
+      </GridItem>
+    </CenteredGrid>
   );
 }

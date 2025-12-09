@@ -60,7 +60,7 @@ const EditLinksModal: React.FC<Props> = ({ data, title }) => {
           {sections.map(
             section =>
               section.links.length > 0 && (
-                <SectionContainer key={section.color} border={section.color}>
+                <SectionContainer key={section.color}>
                   <LinksList links={section.links} />
                 </SectionContainer>
               )

@@ -1,5 +1,5 @@
 import React, { Fragment, ReactNode } from 'react';
-import { SectionContainer } from '../../containers';
+
 import { CenteredGrid, GridItem } from '../../grids';
 import FlagIcon from '../../icons/FlagIcon.tsx';
 import CustomSkeleton from '../../loaders/CustomSkeleton.tsx';
@@ -8,6 +8,7 @@ import { TImageType } from '../../../constants.ts';
 import { useNationality } from '../../../hooks';
 import { theme } from '../../../theme';
 import ImageAvatar from '../../avatars/image-avatar/ImageAvatar.tsx';
+import { ModuleHeaderContainer } from '../../containers';
 
 type Props = {
   title?: string;
@@ -23,7 +24,7 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
   const { countryName } = useNationality(country);
 
   return (
-    <SectionContainer>
+    <ModuleHeaderContainer>
       <CenteredGrid dir="row">
         <GridItem size={4}>
           <ImageAvatar
@@ -77,7 +78,7 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
           </div>
         </GridItem>
       </CenteredGrid>
-    </SectionContainer>
+    </ModuleHeaderContainer>
   );
 };
 

@@ -5,7 +5,7 @@ import { FETCH_PLAYER_STREAKS } from '../../graphql';
 import { Spinner } from '../../../../components/loaders';
 import CustomTable from '../../../../components/tables/CustomTable';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';
-import { SectionContainer } from '../../../../components/containers';
+import { SectionContainer } from '../../../../components';
 import { StreakTypes } from '../../types';
 import { player_streaks, player_streaks_styles } from '../../configs';
 import { getShortDate } from '../../../../utils/helpers';

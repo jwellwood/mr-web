@@ -1,5 +1,5 @@
 import { STAT_ICONS } from '../../../components/icons/icons';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import StatIcon from '../../../components/icons/StatIcon';
 import TextList from '../../../components/lists/TextList';
 import { PresentationModal } from '../../../components/modals';

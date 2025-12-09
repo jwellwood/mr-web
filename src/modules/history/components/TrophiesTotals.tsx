@@ -1,4 +1,5 @@
-import { DataContainer, SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
+import TextList from '../../../components/lists/TextList';
 import { IListItem } from '../../../components/lists/types';
 import { ITrophyTotals } from '../types';
 
@@ -14,8 +15,8 @@ export default function TrophiesTotals({ data, loading }: Props) {
     { label: 'Finals', value: data?.final },
   ] as const;
   return (
-    <SectionContainer>
-      <DataContainer data={listData} loading={loading} />
+    <SectionContainer title="Totals">
+      <TextList data={listData} loading={loading} />
     </SectionContainer>
   );
 }

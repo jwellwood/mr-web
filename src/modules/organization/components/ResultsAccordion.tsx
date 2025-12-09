@@ -4,12 +4,15 @@ import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import { IResult } from '../types';
 import ResultBox from './ResultBox';
+import { SectionContainer } from '../../../components';
 
 type Props = {
   results: IResult[];
+  orgId: string;
+  orgSeasonId: string;
 };
 
-export default function ResultsAccordion({ results }: Props) {
+export default function ResultsAccordion({ results, orgId, orgSeasonId }: Props) {
   const resultsByGameWeek = results
     ? results.reduce<Record<string, IResult[]>>((acc, result) => {
         const { gameWeek } = result;
@@ -26,7 +29,10 @@ export default function ResultsAccordion({ results }: Props) {
     .reverse()
     .map((result, i) => {
       const links: IListItem[] = result[1].map(res => {
-        return { link: `result/${res._id}`, label: <ResultBox key={res._id} result={res} /> };
+        return {
+          link: `/org/${orgId}/org_season/${orgSeasonId}/result/${res._id}`,
+          label: <ResultBox key={res._id} result={res} />,
+        };
       });
       return (
         <CustomAccordion
@@ -46,5 +52,5 @@ export default function ResultsAccordion({ results }: Props) {
       );
     });
 
-  return gameweeks;
+  return <SectionContainer>{gameweeks}</SectionContainer>;
 }

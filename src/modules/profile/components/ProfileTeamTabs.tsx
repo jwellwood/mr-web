@@ -1,7 +1,7 @@
 import { IMAGE_TYPE, TAB_TYPES } from '../../../app/constants';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTabs, ITab } from '../../../components/tabs';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import { ITeamResponse } from '../../team/types';
 import { IListItem } from '../../../components/lists/types';
 import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';

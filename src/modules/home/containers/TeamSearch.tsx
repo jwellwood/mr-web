@@ -8,7 +8,6 @@ import TeamList from '../components/TeamList';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import PresentationModal from '../../../components/modals/PresentationModal.tsx';
 import CustomButton from '../../../components/buttons/custom-button/CustomButton.tsx';
-import SectionContainer from '../../../components/containers/SectionContainer.tsx';
 import LoadingList from '../../../components/lists/LoadingList.tsx';
 
 export default function TeamSearch() {
@@ -47,10 +46,8 @@ export default function TeamSearch() {
         title="Find your team"
         buttonElement={<CustomButton>Find your team</CustomButton>}
       >
-        <SectionContainer>
-          <SearchForm defaultValues={{ teamName: searchTerm }} onSubmit={onSubmit} />
-          {renderContent()}
-        </SectionContainer>
+        <SearchForm defaultValues={{ teamName: searchTerm }} onSubmit={onSubmit} />
+        {renderContent()}
       </PresentationModal>
     </>
   );

@@ -7,7 +7,6 @@ import ControlledSelectInput from '../../../../components/inputs/ControlledSelec
 import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { getIntegers } from '../../../../utils/helpers';
-import { theme } from '../../../../theme';
 import { IPlayerInMatch } from '../../types';
 
 interface Props {
@@ -58,12 +57,7 @@ export default function AddMatchPlayerStatsForm({
   ];
 
   return (
-    <FormContainer
-      onSubmit={handleSubmit(onSubmit)}
-      text="Add"
-      nonAbsoluteSubmit
-      background={theme.palette.dark.main}
-    >
+    <FormContainer onSubmit={handleSubmit(onSubmit)} text="Add" nonAbsoluteSubmit>
       <CenteredGrid dir="row">
         <GridItem size={4}>
           <ControlledSelectInput

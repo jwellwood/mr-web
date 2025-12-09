@@ -13,6 +13,7 @@ import PlayerGameStreaks from './PlayerGameStreaks';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';
 import { IPlayerStats } from '../../types';
 import { IMatchStats } from '../../../matches/types';
+import { SectionContainer } from '../../../../components';
 
 export default function PlayerAllTimeStats() {
   const { playerId } = useCustomParams();
@@ -31,8 +32,10 @@ export default function PlayerAllTimeStats() {
     <ErrorGraphql error={error} />
   ) : (
     <>
-      <MatchStatsTable stats={mapPlayerMatchStats(player, loading) as unknown as IMatchStats} />
-      <Averages stats={mapPlayerAverages(player)} loading={loading} />
+      <SectionContainer>
+        <MatchStatsTable stats={mapPlayerMatchStats(player, loading) as unknown as IMatchStats} />
+        <Averages stats={mapPlayerAverages(player)} loading={loading} />
+      </SectionContainer>
       <PlayerStatsTable stats={player} loading={loading} />
       <GamesWithStat player={player} loading={loading} />
       <PlayerGameStreaks />

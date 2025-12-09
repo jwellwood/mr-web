@@ -1,16 +1,15 @@
 import { IMAGE_TYPE } from '../../../app/constants';
-import { SectionContainer } from '../../../components/containers';
 import { CenteredGrid } from '../../../components/grids';
 import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
 import { getPoints } from '../helpers';
-import ScoreBox from './ScoreBox';
 import { ICompetition } from '../../organization/types';
 import { ITeam } from '../../team/types';
 import { IMatchResponse } from '../types';
 import { IListItem } from '../../../components/lists/types';
-import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
+import { ImageAvatar, ModuleHeaderContainer } from '../../../components';
+import ScoreBox from './ScoreBox';
 
 type Props = {
   match: IMatchResponse;
@@ -56,14 +55,16 @@ export default function MatchDetails({ match }: Props) {
   ];
 
   return (
-    <SectionContainer>
+    <ModuleHeaderContainer>
       <CenteredGrid>
         <CustomTypography size="xs" color="label">
           {matchDate}
         </CustomTypography>
         <CustomTypography color="label">{(competitionId as ICompetition)?.name}</CustomTypography>
       </CenteredGrid>
-      <TextList data={scoreData} />
-    </SectionContainer>
+      <div style={{ marginLeft: 16 }}>
+        <TextList data={scoreData} />
+      </div>
+    </ModuleHeaderContainer>
   );
 }

@@ -10,6 +10,7 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { opponent_table, opponent_table_styles } from '../configs';
 import { mapOpponentStats } from '../helpers/mapOpponentStats';
 import { IOpponentTable } from '../types';
+import { SectionContainer } from '../../../components';
 
 export default function OpponentTable() {
   const { teamId } = useCustomParams();
@@ -41,13 +42,15 @@ export default function OpponentTable() {
           label={'Show all teams'}
           placement="start"
         />
-        <CustomTable
-          rows={tableData}
-          columns={opponent_table}
-          isSortable
-          sortByString="played"
-          cellIndexStyles={opponent_table_styles}
-        />
+        <SectionContainer>
+          <CustomTable
+            rows={tableData}
+            columns={opponent_table}
+            isSortable
+            sortByString="played"
+            cellIndexStyles={opponent_table_styles}
+          />
+        </SectionContainer>
       </>
     ) : (
       <Spinner />

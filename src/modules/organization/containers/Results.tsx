@@ -14,7 +14,11 @@ export default function Results() {
   });
 
   const renderData = data?.results.length ? (
-    <ResultsAccordion results={data?.results} />
+    <ResultsAccordion
+      results={data?.results}
+      orgId={orgId as string}
+      orgSeasonId={orgSeasonId || 'default'}
+    />
   ) : (
     <NoDataText>No results yet</NoDataText>
   );

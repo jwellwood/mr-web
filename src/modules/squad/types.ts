@@ -8,3 +8,19 @@ export interface IPastPlayer {
   left: string;
   seasons: number;
 }
+
+export type TStatField = {
+  value: number;
+  disabled: boolean;
+  names: {
+    name: string;
+    id: string;
+  }[];
+}[];
+
+export interface IRecords {
+  apps: TStatField;
+  goals: TStatField;
+  assists: TStatField;
+  mvp: TStatField;
+}

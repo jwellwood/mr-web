@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
-import { SectionContainer } from '../../../components/containers';
-import { theme } from '../../../theme';
+import { SectionContainer } from '../../../components';
 
 type Props = {
   children: ReactElement;
@@ -9,7 +8,7 @@ type Props = {
 export default function AuthLayout({ children }: Props) {
   return (
     <div style={{ margin: '100px auto', textAlign: 'center', maxWidth: 300 }}>
-      <SectionContainer background={theme.palette.secondary.dark}>{children}</SectionContainer>
+      <SectionContainer>{children}</SectionContainer>
     </div>
   );
 }

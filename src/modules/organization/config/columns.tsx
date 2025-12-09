@@ -68,6 +68,10 @@ export const league_table = [
 
 export const league_table_styles = [
   {
+    index: 0,
+    background: STATIC,
+  },
+  {
     index: 1,
     background: STATIC,
     border: STANDARD,
@@ -76,7 +80,6 @@ export const league_table_styles = [
   { index: 8, border: STANDARD },
   {
     index: 9,
-    background: STATIC,
     border: STANDARD,
   },
 ] as const;

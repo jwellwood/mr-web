@@ -7,6 +7,7 @@ import LinksList from '../../../components/lists/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import TrophiesOrderByCompetition from './TrophiesOrderByCompetition';
 import TrophiesOrderByType from './TrophiesOrderByType';
+import { SectionContainer } from '../../../components';
 
 type Props = {
   trophies: ITrophyResponse[];
@@ -36,7 +37,7 @@ export default function TrophiesOrderBy({ trophies }: Props) {
   };
 
   return (
-    <>
+    <SectionContainer>
       <SelectInput
         inputName="trophiesOrder"
         label="Order by"
@@ -46,6 +47,6 @@ export default function TrophiesOrderBy({ trophies }: Props) {
         defaultValue={order}
       />
       {componentToRender()}
-    </>
+    </SectionContainer>
   );
 }

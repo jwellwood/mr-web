@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_HALL_OF_FAME } from '../graphql';
 
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import LinksList from '../../../components/lists/LinksList';
 import { Spinner } from '../../../components/loaders';

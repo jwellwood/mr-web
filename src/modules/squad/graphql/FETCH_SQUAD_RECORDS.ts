@@ -1,13 +1,5 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
-
-type TStatField = {
-  value: number;
-  disabled: boolean;
-  names: {
-    name: string;
-    id: string;
-  }[];
-}[];
+import { TStatField } from '../types';
 
 export const FETCH_SQUAD_RECORDS: TypedDocumentNode<{
   stats: {

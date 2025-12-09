@@ -1,6 +1,6 @@
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 
 interface Props {
   item: {

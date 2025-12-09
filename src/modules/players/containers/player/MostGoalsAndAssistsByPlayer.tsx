@@ -8,6 +8,7 @@ import { useCustomParams } from '../../../../hooks/useCustomParams';
 import { player_most_goals_and_assists } from '../../configs';
 import PlayerMatchesWithMostAssists from './PlayerMatchesWithMostAssists';
 import PlayerMatchesWithMostGoals from './PlayerMatchesWithMostGoals';
+import { SectionContainer } from '../../../../components';
 
 export default function MostGoalsAndAssistsByPlayer() {
   const { teamId, playerId } = useCustomParams();
@@ -35,9 +36,13 @@ export default function MostGoalsAndAssistsByPlayer() {
     return <ErrorGraphql error={error} />;
   }
 
-  return !loading ? (
-    <CustomTable columns={player_most_goals_and_assists} rows={rows} isSortable={false} />
-  ) : (
-    <Spinner />
+  return (
+    <SectionContainer title="Records">
+      {!loading ? (
+        <CustomTable columns={player_most_goals_and_assists} rows={rows} isSortable={false} />
+      ) : (
+        <Spinner />
+      )}
+    </SectionContainer>
   );
 }

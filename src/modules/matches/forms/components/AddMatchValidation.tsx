@@ -1,4 +1,4 @@
-import { DataContainer, SectionContainer } from '../../../../components/containers';
+import { DataContainer, SectionContainer } from '../../../../components';
 import { IListItem } from '../../../../components/lists/types';
 import { CustomTypography } from '../../../../components/typography';
 import { validateStats } from '../../helpers/statsValidation';

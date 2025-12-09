@@ -5,7 +5,7 @@ import { FETCH_MATCHES } from '../graphql';
 
 import { AUTH_ROLES } from '../../../app/constants';
 import { CustomButton } from '../../../components/buttons';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import LinksList from '../../../components/lists/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';

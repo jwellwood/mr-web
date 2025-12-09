@@ -44,16 +44,20 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
     [sortBy, rows]
   );
 
+  const hasLabel = columns.some(col => col.label);
+
   return (
     <Box>
       <TableContainer>
         <Table stickyHeader aria-labelledby="tableTitle" size={'small'}>
-          <CustomTableHead
-            onRequestSort={handleRequestSort}
-            columns={columns.filter(column => column.id !== 'isPercentage')}
-            sortBy={sortBy}
-            isSortable={isSortable}
-          />
+          {hasLabel && (
+            <CustomTableHead
+              onRequestSort={handleRequestSort}
+              columns={columns.filter(column => column.id !== 'isPercentage')}
+              sortBy={sortBy}
+              isSortable={isSortable}
+            />
+          )}
           <TableBody>
             {visibleRows.map((row, i) => {
               return (

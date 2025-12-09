@@ -1,6 +1,5 @@
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import { CustomTypography } from '../../../components/typography';
-import { theme } from '../../../theme';
 import LinksList from '../../../components/lists/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import { ITrophyResponse } from '../types';
@@ -19,13 +18,13 @@ export default function TrophiesOrderByType({ trophies }: Props) {
     .map(trophy => getTrophyListItemTeam(trophy));
   return (
     <>
-      <SectionContainer background={theme.palette.dark.main}>
+      <SectionContainer>
         <CustomTypography color="label" bold size="xs">
           Winner
         </CustomTypography>
         <LinksList links={winner} />
       </SectionContainer>
-      <SectionContainer background={theme.palette.dark.main}>
+      <SectionContainer>
         <CustomTypography color="label" bold size="xs">
           Runner up
         </CustomTypography>

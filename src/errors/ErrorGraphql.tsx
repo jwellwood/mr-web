@@ -1,6 +1,6 @@
 import React from 'react';
-import { SectionContainer } from '../components/containers';
-import { theme } from '../theme';
+
+import { SectionContainer } from '../components';
 import { CustomTypography } from '../components/typography';
 import TextList from '../components/lists/TextList';
 import { IListItem } from '../components/lists/types';
@@ -17,7 +17,7 @@ const ErrorGraphql: React.FC<Props> = ({ error }) => {
       })
     : [];
   return (
-    <SectionContainer border={theme.palette.dark.main} background={theme.palette.warning.light}>
+    <SectionContainer>
       <CustomTypography bold size="md" color="secondary">
         Something went wrong
       </CustomTypography>

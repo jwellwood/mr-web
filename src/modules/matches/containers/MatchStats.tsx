@@ -28,7 +28,7 @@ const MatchStats: React.FC = () => {
   }
 
   return (
-    <SectionContainer>
+    <SectionContainer title="Current Season">
       {data?.stats && !data?.stats?.total ? (
         <CustomTypography color="warning">No matches yet</CustomTypography>
       ) : (

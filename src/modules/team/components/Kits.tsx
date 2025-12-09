@@ -3,7 +3,7 @@ import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
 
 import { ITeamResponse } from '../types';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton.tsx';
@@ -53,7 +53,7 @@ export default function Kits({ team, loading }: Props) {
       <CenteredGrid dir="row">
         {items.map(item => (
           <GridItem size={6} key={item.title}>
-            <CustomTypography bold color="primary" size="sm">
+            <CustomTypography bold color="data" size="sm">
               {item.title}
             </CustomTypography>
             <div style={{ background: kitsBackground }} className={classes.container}>

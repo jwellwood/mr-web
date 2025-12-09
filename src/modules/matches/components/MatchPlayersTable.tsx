@@ -1,4 +1,4 @@
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import CustomTable from '../../../components/tables/CustomTable';
 import { match_players_table, match_players_table_styles } from '../configs';
 import { statsData } from '../helpers';

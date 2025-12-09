@@ -14,6 +14,7 @@ import { mapPlayerMatchStats } from '../../helpers/mapPlayerMatchStats';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';
 import { IPlayerStats } from '../../types';
 import { IMatchStats } from '../../../matches/types';
+import { SectionContainer } from '../../../../components';
 
 export default function PlayerSeasonStats() {
   const { seasonId } = useSeasons();
@@ -34,9 +35,11 @@ export default function PlayerSeasonStats() {
   const renderContent = () => {
     return (
       <>
-        <SelectSeason playerId={playerId} />
-        <MatchStatsTable stats={mapPlayerMatchStats(player, loading) as unknown as IMatchStats} />
-        <Averages stats={mapPlayerAverages(player)} loading={loading} />
+        <SectionContainer title={<SelectSeason playerId={playerId} />}>
+          <MatchStatsTable stats={mapPlayerMatchStats(player, loading) as unknown as IMatchStats} />
+          <Averages stats={mapPlayerAverages(player)} loading={loading} />
+        </SectionContainer>
+
         <PlayerStatsTable stats={player} loading={loading} />
         <GamesWithStat player={player} loading={loading} />
       </>

@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_MATCHES_ALL_TIME_STATS } from '../graphql';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -19,14 +19,12 @@ export default function AllTimeMatchStats() {
     return data?.stats && !data?.stats?.total ? (
       <CustomTypography color="warning">No matches yet</CustomTypography>
     ) : (
-      <>
+      <SectionContainer title="All time">
         <MatchStatsTable stats={data?.stats} />
         <Averages stats={data?.stats} loading={loading} />
-      </>
+      </SectionContainer>
     );
   };
 
-  return (
-    <SectionContainer>{error ? <ErrorGraphql error={error} /> : renderContent()}</SectionContainer>
-  );
+  return error ? <ErrorGraphql error={error} /> : renderContent();
 }

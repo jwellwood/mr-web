@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { FETCH_SQUAD_STATS_SEASON } from '../graphql';
-import { SectionContainer } from '../../../components/containers';
+import { SectionContainer } from '../../../components';
 import CustomTable from '../../../components/tables/CustomTable';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
@@ -56,6 +56,8 @@ export default function SquadStatsSeason() {
   };
 
   return (
-    <SectionContainer>{error ? <ErrorGraphql error={error} /> : renderContent()}</SectionContainer>
+    <SectionContainer title="Season Stats">
+      {error ? <ErrorGraphql error={error} /> : renderContent()}
+    </SectionContainer>
   );
 }

@@ -24,7 +24,7 @@ interface Props {
 
 const PageContainer: React.FC<Props> = ({ children }) => {
   return (
-    <StyledContainer className={classes.container} sx={{ padding: '2px 2px 0px 2px' }}>
+    <StyledContainer className={classes.container} sx={{ padding: '2px' }}>
       <div>{children}</div>
     </StyledContainer>
   );

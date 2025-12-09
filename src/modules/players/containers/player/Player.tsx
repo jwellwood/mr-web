@@ -9,7 +9,6 @@ import { AuthRoles, ImageTypes } from '../../../../constants.ts';
 import PositionString from '../../../../components/tables/PositionString.tsx';
 import ErrorGraphql from '../../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../../router/RouteGuard.tsx';
-import { SectionContainer } from '../../../../components/containers';
 import ModuleHeader from '../../../../components/shared/module-header/ModuleHeader.tsx';
 import { PageHeader } from '../../../../components';
 
@@ -48,10 +47,10 @@ export default function Player() {
   return (
     <RouteGuard authorization={AuthRoles.PUBLIC}>
       <PageHeader title={PAGES.PLAYER} links={isTeamAuth ? PLAYER_ADMIN_LINKS : undefined}>
-        <SectionContainer>
+        <>
           {error ? <ErrorGraphql error={error} /> : renderContent()}
           <PlayerTabs />
-        </SectionContainer>
+        </>
       </PageHeader>
     </RouteGuard>
   );
