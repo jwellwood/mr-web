@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { AUTH_ROLES, TAuthRoles } from '../../../app/constants.ts';
+import { AUTH_ROLES, TAuthRoles } from '../../../constants';
 
 interface IAuthState {
   isAuth: boolean;
@@ -7,6 +7,7 @@ interface IAuthState {
   isSiteAdmin: boolean;
   teamIds: string[];
   orgIds: string[];
+  username?: string;
 }
 
 const initialState: IAuthState = {
@@ -15,6 +16,7 @@ const initialState: IAuthState = {
   isSiteAdmin: false,
   teamIds: [],
   orgIds: [],
+  username: '',
 };
 
 const authSlice = createSlice({
@@ -27,12 +29,14 @@ const authSlice = createSlice({
         roles?: TAuthRoles[];
         teamIds?: string[];
         orgIds?: string[];
+        username?: string;
       }>
     ) => {
-      const { roles = [], orgIds = [], teamIds = [] } = action.payload;
+      const { roles = [], orgIds = [], teamIds = [], username } = action.payload;
       const isAuth = (roles && roles.includes(AUTH_ROLES.USER)) || false;
       const isTeamAdmin = (roles && roles.includes(AUTH_ROLES.TEAM_ADMIN)) || false;
       const isSiteAdmin = (roles && roles.includes(AUTH_ROLES.SITE_ADMIN)) || false;
+
       return {
         ...state,
         ...{
@@ -41,6 +45,7 @@ const authSlice = createSlice({
           isSiteAdmin,
           teamIds,
           orgIds,
+          username,
         },
       };
     },

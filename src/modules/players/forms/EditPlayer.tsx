@@ -12,7 +12,7 @@ import { useNationality } from '../../../hooks';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
@@ -75,7 +75,7 @@ const EditPlayer: React.FC = () => {
     return <ErrorGraphql error={(error || updateError) as ApolloError} />;
   }
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_PLAYER}>
         {!loading && !seasonLoading && !updateLoading && defaultValues ? (
           <PlayerForm

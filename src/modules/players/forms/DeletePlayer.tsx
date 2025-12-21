@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { DELETE_PLAYER, FETCH_PLAYER } from '../graphql';
-import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
 import { PAGES } from '../constants';
 import DeletePlayerForm from './components/DeletePlayerForm';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { PageHeader } from '../../../components';
 
@@ -25,7 +25,7 @@ const DeletePlayer: React.FC = () => {
   const [deletePlayer, { loading: deleteLoading }] = useMutation(DELETE_PLAYER, {
     refetchQueries: [
       {
-        query: FETCH_SQUAD_BY_SEASON,
+        query: FETCH_SQUAD_LIST_BY_SEASON,
         variables: { teamId, seasonId: 'all' },
       },
     ],
@@ -45,7 +45,7 @@ const DeletePlayer: React.FC = () => {
   if (error) return <ErrorGraphql error={error} />;
 
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.DELETE_PLAYER}>
         {!loading && !deleteLoading ? (
           <DeletePlayerForm

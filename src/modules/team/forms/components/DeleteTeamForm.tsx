@@ -9,8 +9,9 @@ interface Props {
   onSubmit: (data: IDeleteTeamForm) => void;
   defaultValues?: IDeleteTeamForm;
   teamName: string;
+  loading: boolean;
 }
-export default function DeleteTeamForm({ onSubmit, defaultValues, teamName }: Props) {
+export default function DeleteTeamForm({ onSubmit, defaultValues, teamName, loading }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -23,7 +24,11 @@ export default function DeleteTeamForm({ onSubmit, defaultValues, teamName }: Pr
   const candidateName = watch('teamName');
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} disabled={candidateName !== teamName}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      disabled={candidateName !== teamName}
+      loading={loading}
+    >
       <CenteredGrid dir="row">
         <ControlledTextInput
           control={control}

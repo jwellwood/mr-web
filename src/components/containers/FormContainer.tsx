@@ -1,5 +1,6 @@
 import React, { FormEvent } from 'react';
 import Container from '@mui/material/Container';
+
 import { SubmitButton } from '../buttons';
 import SectionContainer from './section-container/SectionContainer';
 
@@ -9,15 +10,17 @@ interface Props {
   disabled?: boolean;
   text?: string;
   nonAbsoluteSubmit?: boolean;
+  loading?: boolean;
 }
 
-const FormContainer: React.FC<Props> = ({
+export default function FormContainer({
   children,
   onSubmit,
   disabled,
   text = 'Submit',
   nonAbsoluteSubmit = false,
-}) => {
+  loading,
+}: Props) {
   return (
     <Container maxWidth="sm" disableGutters style={{ marginBottom: '4px' }}>
       <form
@@ -29,12 +32,10 @@ const FormContainer: React.FC<Props> = ({
       >
         <SectionContainer>{children}</SectionContainer>
 
-        <SubmitButton disabled={disabled} nonFixed={nonAbsoluteSubmit}>
+        <SubmitButton disabled={disabled} nonFixed={nonAbsoluteSubmit} loading={loading}>
           {text}
         </SubmitButton>
       </form>
     </Container>
   );
-};
-
-export default FormContainer;
+}

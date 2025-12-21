@@ -1,5 +1,5 @@
 import { IListItem } from '../../components/lists/types';
-import { LinkTypes } from '../../constants';
+import { LINK_TYPE } from '../../constants';
 
 export const PAGES = {
   PLAYER: 'Player',
@@ -12,17 +12,17 @@ export const PAGES = {
 export const PLAYER_ADMIN_LINKS: IListItem[] = [
   {
     label: 'Edit Player',
-    type: LinkTypes.EDIT,
+    type: LINK_TYPE.EDIT,
     link: 'edit',
   },
   {
     label: 'Edit Photo',
-    type: LinkTypes.EDIT,
+    type: LINK_TYPE.EDIT,
     link: 'edit_photo',
   },
   {
     label: 'Delete Player',
-    type: LinkTypes.DELETE,
+    type: LINK_TYPE.DELETE,
     link: 'delete',
   },
 ];

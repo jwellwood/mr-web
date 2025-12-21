@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { AUTH_ROLES } from '../../../app/constants';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import ValidatedEmail from '../components/ValidatedEmail.component';
-import { pages } from '../constants';
+import { PAGES } from '../constants';
 import { verifyEmail } from '../services/validation';
 import { AppDispatch } from '../../../store/store.ts';
-import RouteGuard from '../../../router/RouteGuard.tsx';
-import { PageHeader } from '../../../components';
+import { PageContainer } from '../../../components';
 
 export default function ValidatedEmailContainer() {
   const { token } = useParams<{ token: string }>();
@@ -36,10 +35,8 @@ export default function ValidatedEmailContainer() {
   return loading ? (
     <Spinner />
   ) : (
-    <RouteGuard authorization={AUTH_ROLES.NONE}>
-      <PageHeader title={pages.VALIDATED_EMAIL_PAGE}>
-        <ValidatedEmail success={successfulValidation} errorMessage={error} />
-      </PageHeader>
-    </RouteGuard>
+    <PageContainer auth={AUTH_ROLES.NONE} title={PAGES.VALIDATED_EMAIL_PAGE}>
+      <ValidatedEmail success={successfulValidation} errorMessage={error} />
+    </PageContainer>
   );
 }

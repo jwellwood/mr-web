@@ -1,17 +1,15 @@
 import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
-import { SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/LinksList.tsx';
+import LinksList from '../../../components/lists/links-list/LinksList.tsx';
 import { IMostGoalsInMatch } from '../../matches/types.ts';
 import { IListItem } from '../../../components/lists/types.ts';
 
 interface Props {
-  title: string;
-  data: IMostGoalsInMatch[];
+  data?: IMostGoalsInMatch[];
   loading: boolean;
 }
 
-export default function MostInMatch({ data, title }: Props) {
+export default function MostInMatch({ data, loading }: Props) {
   const listData: IListItem[] =
     data?.map(item => {
       const labelColor =
@@ -44,9 +42,5 @@ export default function MostInMatch({ data, title }: Props) {
         link: `match/${item.matchId}`,
       };
     }) || [];
-  return (
-    <SectionContainer title={title}>
-      <LinksList links={listData} />
-    </SectionContainer>
-  );
+  return <LinksList links={listData} loading={loading} />;
 }

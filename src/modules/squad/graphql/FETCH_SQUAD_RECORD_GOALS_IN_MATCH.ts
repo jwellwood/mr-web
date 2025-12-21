@@ -5,7 +5,7 @@ export const FETCH_SQUAD_RECORD_GOALS_IN_MATCH: TypedDocumentNode<{
   stats: IMostGoalsInMatch[];
 }> = gql`
   query FETCH_SQUAD_RECORD_GOALS_IN_MATCH($teamId: String!) {
-    stats: mostGoalsInGame(teamId: $teamId) {
+    stats: SQUAD_RECORD_GOALS_IN_MATCH(teamId: $teamId) {
       player
       total
       date

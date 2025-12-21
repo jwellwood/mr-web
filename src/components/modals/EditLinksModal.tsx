@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { CustomButton } from '../buttons';
 import { SectionContainer } from '../containers';
-import LinksList from '../lists/LinksList';
+import LinksList from '../lists/links-list/LinksList';
 import { theme } from '../../theme';
 import { IListItem } from '../lists/types';
 

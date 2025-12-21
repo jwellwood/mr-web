@@ -6,6 +6,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { CustomTypography } from '../typography';
 import { IListItem } from './types';
+import CustomSkeleton from '../loaders/CustomSkeleton';
 
 interface Props {
   data?: readonly IListItem[];
@@ -13,7 +14,7 @@ interface Props {
   loading?: boolean;
 }
 
-const TextList: React.FC<Props> = ({ data = [], labelSize }) => {
+const TextList: React.FC<Props> = ({ data = [], labelSize, loading }) => {
   return (
     <List dense>
       {data.map((item, i) => {
@@ -21,11 +22,15 @@ const TextList: React.FC<Props> = ({ data = [], labelSize }) => {
 
         const valueDisplay =
           typeof value === 'string' || typeof value === 'number' ? (
-            <CustomTypography color="data" bold size="xs">
-              {value}
-            </CustomTypography>
+            loading ? (
+              <CustomSkeleton width="100px" height="20px" />
+            ) : (
+              <CustomTypography color="data" bold size="xs">
+                {value}
+              </CustomTypography>
+            )
           ) : (
-            <>{value}</>
+            <>{loading ? <CustomSkeleton width="100px" height="24px" /> : value}</>
           );
 
         return (

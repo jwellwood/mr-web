@@ -3,7 +3,7 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_ORG_BADGE, FETCH_ORG } from '../graphql';
 
-import { AUTH_ROLES } from '../../../app/constants';
+import { AUTH_ROLES } from '../../../constants';
 import ImageForm from '../../../components/forms/ImageForm.tsx';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';

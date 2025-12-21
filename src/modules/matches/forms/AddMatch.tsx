@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
-import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql/';
 import { PAGES } from '../constants';
 import { mapMatch } from '../helpers';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
@@ -14,7 +14,7 @@ import { getTempMatch } from '../../../store/features/matches/matchesSelector';
 import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { resetTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers } from '../../../store/features/players/playersSlice.ts';
@@ -45,7 +45,7 @@ export default function AddMatch() {
         },
       },
       {
-        query: FETCH_SQUAD_BY_SEASON,
+        query: FETCH_SQUAD_LIST_BY_SEASON,
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
       {
@@ -99,7 +99,7 @@ export default function AddMatch() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_MATCH}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
       </PageHeader>

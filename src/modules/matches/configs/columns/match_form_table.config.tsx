@@ -1,4 +1,4 @@
-import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
+import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../constants';
 import { STAT_ICONS } from '../../../../components/icons/icons';
 import StatIcon from '../../../../components/icons/StatIcon';
 import { ICellStyleByIndex } from '../../../../components/tables/types';

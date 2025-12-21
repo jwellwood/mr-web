@@ -1,4 +1,4 @@
-import { BASE_YEAR, MAX_YEAR } from '../../constants.ts';
+import { BASE_YEAR, MAX_YEAR } from '../../constants';
 
 interface IYearOptions {
   label: string;

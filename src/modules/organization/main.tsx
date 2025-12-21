@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
-import { AUTH_ROLES, TAB_TYPES } from '../../app/constants';
+import { AUTH_ROLES, TAB_TYPES } from '../../constants';
 import { CustomTabs, ITab } from '../../components/tabs';
 import { useAuth, useCustomParams } from '../../hooks';
 import RouteGuard from '../../router/RouteGuard';

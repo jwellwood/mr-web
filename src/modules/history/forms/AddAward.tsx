@@ -14,7 +14,7 @@ import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import AwardForm from './components/AwardForm.tsx';
 import { initialAwardState } from './state.ts';
@@ -76,7 +76,7 @@ export default function AddAward() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_AWARD}>
         {error || playersError ? (
           <ErrorGraphql error={(error || playersError) as Error} />

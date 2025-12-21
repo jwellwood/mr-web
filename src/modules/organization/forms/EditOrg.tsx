@@ -5,7 +5,7 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import { FETCH_ORG, EDIT_ORG } from '../graphql/index.ts';
 
-import { PAGES } from '../constants.ts';
+import { PAGES } from '../constants';
 import OrgForm from './components/OrgForm.tsx';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
@@ -13,7 +13,7 @@ import { useNationality } from '../../../hooks/index.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AUTH_ROLES } from '../../../app/constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders/index.ts';
 import { IOrganizationInput } from '../types.ts';
 import { PageHeader } from '../../../components/index.ts';

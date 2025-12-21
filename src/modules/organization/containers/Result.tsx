@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_RESULT } from '../graphql';
 
-import { AUTH_ROLES, LINK_TYPE } from '../../../app/constants';
+import { AUTH_ROLES, LINK_TYPE } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useAuth } from '../../../hooks';

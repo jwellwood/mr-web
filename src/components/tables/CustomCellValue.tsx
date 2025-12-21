@@ -1,6 +1,6 @@
 import React from 'react';
 import { CustomTypography } from '../typography';
-import DifferenceText from './DifferenceText';
+import DifferenceCell from './difference-cell/DifferenceCell';
 
 type Props = {
   value: unknown | number;
@@ -11,7 +11,7 @@ type Props = {
 
 const CustomCellValue: React.FC<Props> = ({ value, isDifference, isPercentage, textColor }) => {
   if (isDifference) {
-    return <DifferenceText stat={value as number} />;
+    return <DifferenceCell stat={value as number} />;
   }
 
   if (typeof value === 'number') {

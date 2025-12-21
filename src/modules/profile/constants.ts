@@ -1,8 +1,8 @@
-import { LINK_TYPE } from '../../app/constants';
+import { LINK_TYPE } from '../../constants';
 import { ORG_PATHS } from '../organization/router';
 import { PROFILE_PATHS } from './router';
 
-export const pages = {
+export const PAGES = {
   USER_PROFILE_PAGE: 'Profile',
   EDIT_PROFILE_PAGE: 'Edit Profile',
   EDIT_USER_IMAGE_PAGE: 'Edit Photo',

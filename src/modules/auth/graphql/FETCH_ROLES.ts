@@ -10,6 +10,7 @@ export const FETCH_ROLES: TypedDocumentNode<{
       roles
       teamIds
       orgIds
+      username
     }
   }
 `;

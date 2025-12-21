@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { surfaceOptions } from '../../constants.ts';
+import { surfaceOptions } from '../../constants';
 import { ITeamDetailsInput } from '../../types';
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
@@ -16,9 +16,10 @@ interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
   defaultValues: Partial<ITeamDetailsInput>;
   countryOptions: ISelectOptions[];
+  loading: boolean;
 }
 
-export default function EditTeamForm({ onSubmit, defaultValues, countryOptions }: Props) {
+export default function EditTeamForm({ onSubmit, defaultValues, countryOptions, loading }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -35,7 +36,7 @@ export default function EditTeamForm({ onSubmit, defaultValues, countryOptions }
   ];
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading}>
       <CenteredGrid dir="row">
         <GridItem size={12}>
           <SwitchButtonList data={switchList} control={control} />

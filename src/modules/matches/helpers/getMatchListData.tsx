@@ -1,4 +1,4 @@
-import { IMAGE_TYPE } from '../../../app/constants';
+import { IMAGE_TYPE } from '../../../constants';
 import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import MatchListLabel from '../components/MatchListLabel';
 import MatchListScoreBox from '../components/MatchListScoreBox';

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
 import { useAuth } from '../hooks';
-import { AUTH_ROLES, TAuthRoles } from '../app/constants.ts';
+import { AUTH_ROLES, TAuthRoles } from '../constants';
 import { showAlert } from '../store/features/alerts/alertsSlice.ts';
 import { useCustomParams } from '../hooks/useCustomParams.tsx';
 import { AUTH_PATHS } from '../modules/auth/router';

@@ -5,13 +5,13 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
-import CustomTableHead from '../tables/CustomTableHead';
+import CustomTableHead from './custom-table-head/CustomTableHead.tsx';
 import { getComparator, stableSort } from './helpers/sort.ts';
 import CustomCellValue from './CustomCellValue';
 import { getBackgroundColor } from './helpers/getBackgroundColor';
 import { getBorderStyle } from './helpers/getBorderStyle';
-import PositionString from './PositionString';
 import { ICellStyleByIndex } from './types';
+import PositionCell from './position-cell/PositionCell.tsx';
 
 type Props<T extends Record<string, number | object | ReactNode>> = {
   rows: readonly T[];
@@ -26,7 +26,7 @@ type Props<T extends Record<string, number | object | ReactNode>> = {
   cellIndexStyles?: readonly ICellStyleByIndex[];
 };
 
-function CustomTable<T extends Record<string, number | object | ReactNode>>({
+export default function CustomTable<T extends Record<string, number | object | ReactNode>>({
   rows = [],
   columns,
   isSortable,
@@ -72,13 +72,13 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
                     const customCellValue = () => {
                       if (item[0] === 'position') {
                         return (
-                          <PositionString>
+                          <PositionCell>
                             {
                               (typeof item[1] === 'object' && item[1] !== null && 'value' in item[1]
                                 ? item[1].value
                                 : item[1]) as string
                             }
-                          </PositionString>
+                          </PositionCell>
                         );
                       }
 
@@ -129,5 +129,3 @@ function CustomTable<T extends Record<string, number | object | ReactNode>>({
     </Box>
   );
 }
-
-export default CustomTable;

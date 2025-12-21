@@ -1,4 +1,4 @@
-import { BORDER_STYLE } from '../../../../app/constants';
+import { BORDER_STYLE } from '../../../../constants';
 import { ICellStyleByIndex } from '../../../../components/tables/types';
 
 export const match_table = [

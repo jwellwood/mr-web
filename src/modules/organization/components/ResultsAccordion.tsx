@@ -1,6 +1,6 @@
 import { CustomAccordion } from '../../../components/accordion';
 import { IListItem } from '../../../components/lists/types';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import { IResult } from '../types';
 import ResultBox from './ResultBox';

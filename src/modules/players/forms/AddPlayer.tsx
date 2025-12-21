@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
 import { PAGES } from '../constants';
 import { ADD_PLAYER } from '../graphql';
 import PlayerForm from './components/PlayerForm';
@@ -14,7 +14,7 @@ import { useSeasons } from '../../../hooks/useSeasons';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 import { initialPlayerState } from './state.ts';
@@ -31,7 +31,7 @@ const AddPlayer: React.FC = () => {
   const [defaultValues, setDefaultValues] = useState<Partial<IPlayer | null>>(null);
 
   const [addPlayer, { error, loading: addLoading }] = useMutation(ADD_PLAYER, {
-    refetchQueries: [{ query: FETCH_SQUAD_BY_SEASON, variables: { teamId, seasonId } }],
+    refetchQueries: [{ query: FETCH_SQUAD_LIST_BY_SEASON, variables: { teamId, seasonId } }],
   });
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const AddPlayer: React.FC = () => {
   if (error) return <ErrorGraphql error={error} />;
 
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_PLAYER}>
         {!loading && !addLoading && defaultValues ? (
           <PlayerForm

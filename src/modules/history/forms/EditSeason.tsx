@@ -19,9 +19,9 @@ import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
-import { PAGES } from '../constants.ts';
+import { PAGES } from '../constants';
 import { mapFormDataToSeason, mapSeasonToFormData } from './seasons.mapper.ts';
 import SeasonForm from './components/SeasonForm.tsx';
 import { PageHeader } from '../../../components';
@@ -112,7 +112,7 @@ export default function EditSeason() {
     );
   };
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_SEASON}>
         {hasError ? (
           <ErrorGraphql error={(error || editError || deleteError || orgError) as Error} />

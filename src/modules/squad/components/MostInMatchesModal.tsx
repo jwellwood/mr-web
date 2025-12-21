@@ -2,7 +2,7 @@ import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
 import { PresentationModal } from '../../../components/modals';
 import { CustomButton } from '../../../components/buttons';
-import LinksList from '../../../components/lists/LinksList.tsx';
+import LinksList from '../../../components/lists/links-list/LinksList.tsx';
 import { Spinner } from '../../../components/loaders';
 import { IListItem } from '../../../components/lists/types.ts';
 

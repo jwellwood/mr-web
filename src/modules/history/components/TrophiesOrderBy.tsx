@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { SelectInput } from '../../../components/inputs';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { ITrophyResponse } from '../types';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import TrophiesOrderByCompetition from './TrophiesOrderByCompetition';
 import TrophiesOrderByType from './TrophiesOrderByType';

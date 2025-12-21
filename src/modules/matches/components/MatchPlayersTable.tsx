@@ -2,7 +2,7 @@ import { SectionContainer } from '../../../components';
 import CustomTable from '../../../components/tables/CustomTable';
 import { match_players_table, match_players_table_styles } from '../configs';
 import { statsData } from '../helpers';
-import { POSITIONS } from '../../players/constants.ts';
+import { POSITIONS } from '../../players/constants';
 import { IMatchResponse, IPlayerInMatch } from '../types.ts';
 import { IPlayer } from '../../players/types.ts';
 

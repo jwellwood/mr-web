@@ -1,4 +1,4 @@
-import { TAuthRoles } from '../../app/constants.ts';
+import { TAuthRoles } from '../../constants';
 import { IImage } from '../../components/avatars/image-avatar/types.ts';
 
 export interface IUser {

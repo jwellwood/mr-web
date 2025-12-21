@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { FETCH_SEASONS } from '../modules/history/graphql/FETCH_SEASONS.ts';
+import { FETCH_SEASONS } from '../modules/history/graphql';
 import { useCustomParams } from './useCustomParams.tsx';
 import { ISelectOptions } from '../components/inputs/SelectInput.tsx';
 
@@ -55,6 +55,7 @@ export const useSeasons = () => {
 
   return {
     seasonId: seasonToUse,
+    seasonReady: !loading && !!data,
     onSelectSeason,
     loading,
     error,

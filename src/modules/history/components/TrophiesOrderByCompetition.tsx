@@ -1,6 +1,6 @@
 import { SectionContainer } from '../../../components';
 import { CustomTypography } from '../../../components/typography';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import { ITrophyResponse } from '../types';
 

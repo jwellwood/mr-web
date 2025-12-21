@@ -3,7 +3,7 @@ import { FETCH_AWARDS_BY_PLAYER } from '../../../history/graphql';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { SectionContainer } from '../../../../components';
 import StatIcon from '../../../../components/icons/StatIcon';
-import LinksList from '../../../../components/lists/LinksList';
+import LinksList from '../../../../components/lists/links-list/LinksList';
 import { Spinner } from '../../../../components/loaders';
 import { CustomTypography } from '../../../../components/typography';
 import ErrorGraphql from '../../../../errors/ErrorGraphql';

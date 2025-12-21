@@ -2,11 +2,10 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_HALL_OF_FAME } from '../graphql';
 
-import { SectionContainer } from '../../../components';
+import { PositionCell, SectionContainer } from '../../../components';
 import FlagIcon from '../../../components/icons/FlagIcon';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { Spinner } from '../../../components/loaders';
-import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
@@ -32,7 +31,7 @@ export default function HallOfFame() {
         ),
         secondary: (
           <>
-            <PositionString>{player.position}</PositionString> |{' '}
+            <PositionCell>{player.position}</PositionCell> |{' '}
             <FlagIcon nationality={player.nationality} /> |{' '}
             <CustomTypography color="label" bold>
               <CustomTypography size="xs" color="label">

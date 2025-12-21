@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_ORG_SEASON, FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../graphql';
-import { PAGES } from '../constants.ts';
+import { PAGES } from '../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders/index.ts';
 import { PageHeader } from '../../../components/index.ts';
 import { IOrgSeasonInput } from '../types.ts';
@@ -72,7 +72,7 @@ export default function EditOrgSeason() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.EDIT_ORG_SEASON}>
         {hasError ? <ErrorGraphql error={(error || editError) as Error} /> : renderContent()}
       </PageHeader>

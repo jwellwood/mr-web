@@ -1,9 +1,8 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_SQUAD_RECORDS } from '../graphql';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import Records from '../components/Records';
+import RecordsView from '../views/RecordsView';
 
 export default function SquadRecords() {
   const { teamId } = useCustomParams();
@@ -11,5 +10,5 @@ export default function SquadRecords() {
     variables: { teamId },
   });
 
-  return error ? <ErrorGraphql error={error} /> : <Records data={data?.stats} loading={loading} />;
+  return <RecordsView data={data} loading={loading} error={error} />;
 }

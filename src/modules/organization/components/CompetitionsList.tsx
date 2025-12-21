@@ -1,6 +1,6 @@
 import { NoDataText } from '../../../components';
 import { SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import { ICompetition } from '../types';
 

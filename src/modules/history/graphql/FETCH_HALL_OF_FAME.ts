@@ -5,7 +5,7 @@ export const FETCH_HALL_OF_FAME: TypedDocumentNode<{
   players: IPlayer[];
 }> = gql`
   query FETCH_HALL_OF_FAME($teamId: String!) {
-    players: hallOfFamePlayers(teamId: $teamId) {
+    players: HALL_OF_FAME_PLAYERS(teamId: $teamId) {
       _id
       name
       squadNumber

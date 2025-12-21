@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { positionOptions } from '../../../../app/constants';
+import { positionOptions } from '../../../../constants';
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';

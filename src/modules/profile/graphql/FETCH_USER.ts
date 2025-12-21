@@ -4,7 +4,7 @@ import { IUser } from '../../auth/types';
 export const FETCH_USER: TypedDocumentNode<{
   user: IUser;
 }> = gql`
-  query FetchUser {
+  query FETCH_USER {
     user {
       _id
       isVerified

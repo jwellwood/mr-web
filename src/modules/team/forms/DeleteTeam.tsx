@@ -3,17 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { DELETE_TEAM, FETCH_TEAM } from '../graphql';
-import { AUTH_ROLES } from '../../../app/constants.ts';
-import { Spinner } from '../../../components/loaders';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
+import { AUTH_ROLES } from '../../../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { FETCH_TEAMS_BY_USER } from '../../profile/graphql';
-import RouteGuard from '../../../router/RouteGuard.tsx';
-import { PAGES } from '../constants.ts';
-import DeleteTeamForm from './components/DeleteTeamForm.tsx';
+import { PAGES } from '../constants';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import { PageHeader } from '../../../components';
+import { PageContainer } from '../../../components';
 import { PROFILE_PATHS } from '../../profile/router/paths.ts';
+import DeleteTeamView from '../views/DeleteTeamView';
 
 export default function DeleteTeam() {
   const { teamId } = useCustomParams();
@@ -38,19 +35,14 @@ export default function DeleteTeam() {
       });
   };
 
-  const renderContent = () => {
-    return !loading && !deleteLoading && data ? (
-      <DeleteTeamForm onSubmit={onDelete} defaultValues={undefined} teamName={data.team.teamName} />
-    ) : (
-      <Spinner />
-    );
-  };
-
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.DELETE_TEAM}>
-        {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </PageHeader>
-    </RouteGuard>
+    <PageContainer auth={AUTH_ROLES.TEAM_ADMIN} title={PAGES.DELETE_TEAM}>
+      <DeleteTeamView
+        data={data}
+        loading={loading || deleteLoading}
+        onDelete={onDelete}
+        error={error}
+      />
+    </PageContainer>
   );
 }

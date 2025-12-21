@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_COMPETITION, FETCH_COMPETITIONS } from '../graphql';
-import { AuthRoles } from '../../../constants.ts';
-import { PAGES } from '../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
+import { PAGES } from '../constants';
 import { initialCompetitionState } from './state.ts';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
@@ -56,7 +56,7 @@ export default function AddCompetition() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.ADD_COMPETITION}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
       </PageHeader>

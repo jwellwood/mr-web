@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { TAB_TYPES } from '../../../../app/constants';
+import { TAB_TYPES } from '../../../../constants';
 import { CustomTabs, ITab } from '../../../../components/tabs';
 
 const PlayerAllTimeStats = lazy(() => import('./PlayerAllTimeStats'));

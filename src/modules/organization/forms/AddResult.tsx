@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_RESULT, FETCH_RESULTS } from '../graphql/index.ts';
-import { AuthRoles } from '../../../constants.ts';
-import { PAGES } from '../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
+import { PAGES } from '../constants';
 import { initialResultState } from './state.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
@@ -71,7 +71,7 @@ export default function AddResult() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.ADD_RESULT}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
       </PageHeader>

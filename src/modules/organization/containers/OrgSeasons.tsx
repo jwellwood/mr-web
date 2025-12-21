@@ -4,7 +4,7 @@ import { FETCH_ORG_SEASONS } from '../graphql';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { Spinner } from '../../../components/loaders';
-import LinksList from '../../../components/lists/LinksList.tsx';
+import LinksList from '../../../components/lists/links-list/LinksList.tsx';
 import { IListItem } from '../../../components/lists/types.ts';
 import { NoDataText, SectionContainer } from '../../../components';
 

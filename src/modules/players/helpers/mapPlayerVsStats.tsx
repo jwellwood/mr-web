@@ -1,4 +1,4 @@
-import { ImageTypes } from '../../../constants.ts';
+import { IMAGE_TYPE } from '../../../constants';
 import PresentationModal from '../../../components/modals/PresentationModal.tsx';
 import CustomTypography from '../../../components/typography/CustomTypography.tsx';
 import { getAvg } from '../../../utils/helpers';
@@ -20,7 +20,7 @@ export const mapPlayerVsStats = (stats: IPlayerVsStats[]) => {
           <ImageAvatar
             size="24px"
             imageUrl={item?.opponentBadge || 'default'}
-            fallbackIcon={ImageTypes.TEAM}
+            fallbackIcon={IMAGE_TYPE.TEAM}
           />
           <div style={{ marginRight: '4px' }} />
           <PresentationModal

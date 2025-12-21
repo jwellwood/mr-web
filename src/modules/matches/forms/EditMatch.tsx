@@ -4,8 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
 import MatchFormStepper from './components/MatchFormStepper.tsx';
-import { PAGES } from '../constants.ts';
+import { PAGES } from '../constants';
 import { mapMatch } from '../helpers';
 import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch.ts';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput.ts';
@@ -15,11 +16,10 @@ import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts
 import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
-import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql/FETCH_SQUAD_BY_SEASON.ts';
 import { IPlayerInMatch, ITempMatch } from '../types.ts';
 import { PageHeader } from '../../../components';
 
@@ -52,7 +52,7 @@ export default function EditMatch() {
         },
       },
       {
-        query: FETCH_SQUAD_BY_SEASON,
+        query: FETCH_SQUAD_LIST_BY_SEASON,
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
       {
@@ -114,7 +114,7 @@ export default function EditMatch() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_MATCH}>
         {error || editError ? (
           <ErrorGraphql error={(error || editError) as Error} />

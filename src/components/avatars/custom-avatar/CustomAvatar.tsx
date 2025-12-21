@@ -11,6 +11,7 @@ interface Props {
   shadow?: string;
   alt?: string;
   loading?: boolean;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export default function CustomAvatar({
@@ -20,6 +21,7 @@ export default function CustomAvatar({
   size = '30px',
   alt,
   loading,
+  onClick,
 }: Props) {
   const borderColor = getThemeColorByType(border);
   const shadowColor = getThemeColorByType(shadow);
@@ -28,6 +30,7 @@ export default function CustomAvatar({
     <CustomSkeleton variant="circular" width={size} height={size} margin="0" />
   ) : (
     <Avatar
+      onClick={onClick}
       alt={alt}
       sx={{
         height: size,

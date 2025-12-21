@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_MATCHES_BY_OPPONENT } from '../graphql';
 import { SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList.tsx';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -53,10 +53,10 @@ export default function HeadToHead({ opponentId }: Props) {
 
   const renderContent = () => {
     return !loading ? (
-      <SectionContainer>
+      <>
         <MatchStatsTable stats={mapMatchStats() as IMatchStats} />
         {getMatchListData && getMatchListData.length > 0 && <LinksList links={matchListData} />}
-      </SectionContainer>
+      </>
     ) : (
       <Spinner />
     );

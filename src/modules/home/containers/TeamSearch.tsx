@@ -1,14 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 
 import { FETCH_TEAMS_BY_SEARCH } from '../graphql';
-
-import SearchForm from '../components/SearchForm';
-import TeamList from '../components/TeamList';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
-import PresentationModal from '../../../components/modals/PresentationModal.tsx';
-import CustomButton from '../../../components/buttons/custom-button/CustomButton.tsx';
-import LoadingList from '../../../components/lists/LoadingList.tsx';
+import TeamSearchView from '../views/TeamSearchView.tsx';
 
 export default function TeamSearch() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,6 +11,10 @@ export default function TeamSearch() {
   const [fetchTeamsBySearch, { loading, error, data }] = useLazyQuery(FETCH_TEAMS_BY_SEARCH, {
     variables: { filter: searchTerm },
   });
+
+  useEffect(() => {
+    setIsSearchComplete(false);
+  }, [searchTerm]);
 
   const onSubmit = async (data: { teamName: string }) => {
     setSearchTerm(data.teamName);
@@ -30,25 +28,14 @@ export default function TeamSearch() {
     }
   };
 
-  const renderContent = () => {
-    if (error) return <ErrorGraphql error={error} />;
-
-    return !loading ? (
-      <TeamList teams={data?.teams || []} isSearchComplete={isSearchComplete} />
-    ) : (
-      <LoadingList avatar label secondary />
-    );
-  };
-
   return (
-    <>
-      <PresentationModal
-        title="Find your team"
-        buttonElement={<CustomButton>Find your team</CustomButton>}
-      >
-        <SearchForm defaultValues={{ teamName: searchTerm }} onSubmit={onSubmit} />
-        {renderContent()}
-      </PresentationModal>
-    </>
+    <TeamSearchView
+      searchTerm={searchTerm}
+      isSearchComplete={isSearchComplete}
+      onSubmit={onSubmit}
+      loading={loading}
+      error={error}
+      data={data}
+    />
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-import { AUTH_ROLES } from '../../../app/constants';
+import { AUTH_ROLES } from '../../../constants';
 import ImageForm from '../../../components/forms/ImageForm.tsx';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';

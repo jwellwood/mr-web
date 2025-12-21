@@ -5,7 +5,7 @@ export const FETCH_SQUAD_STREAKS: TypedDocumentNode<{
   streaks: AllPlayerStreaks[];
 }> = gql`
   query FETCH_SQUAD_STREAKS($teamId: String!) {
-    streaks: allPlayerPlayedStreaks(teamId: $teamId) {
+    streaks: SQUAD_STREAKS(teamId: $teamId) {
       playerId
       longestPlayedStreak
     }

@@ -1,4 +1,4 @@
-import { IMAGE_TYPE } from '../../../app/constants';
+import { IMAGE_TYPE } from '../../../constants';
 import { CenteredGrid } from '../../../components/grids';
 import TextList from '../../../components/lists/TextList';
 import { CustomTypography } from '../../../components/typography';

@@ -2,19 +2,15 @@ import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { pages } from '../constants';
-import ResetPassword from '../forms/ResetPassword.form';
 import { RESET_PASSWORD } from '../graphql';
+import { PAGES } from '../constants';
 import { IResetPasswordInput } from '../types';
 import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AUTH_ROLES } from '../../../app/constants.ts';
-import Spinner from '../../../components/loaders/Spinner.tsx';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
-import { resetPasswordFormState } from '../forms/state.ts';
-import { PageHeader } from '../../../components';
+import { AUTH_ROLES } from '../../../constants';
+import { PageContainer } from '../../../components';
 import { AUTH_PATHS } from '../router/paths.ts';
+import ResetPasswordView from '../views/ResetPasswordView.tsx';
 
 export default function ResetPasswordContainer() {
   const { token } = useParams<{ token: string }>();
@@ -40,19 +36,9 @@ export default function ResetPasswordContainer() {
       });
   };
 
-  const renderContent = () => {
-    return !loading ? (
-      <ResetPassword defaultValues={resetPasswordFormState} onSubmit={onSubmit} />
-    ) : (
-      <Spinner />
-    );
-  };
-
   return (
-    <RouteGuard authorization={AUTH_ROLES.NONE}>
-      <PageHeader title={pages.RESET_PASSWORD_PAGE}>
-        {error ? <ErrorGraphql error={error} /> : renderContent()}
-      </PageHeader>
-    </RouteGuard>
+    <PageContainer auth={AUTH_ROLES.NONE} title={PAGES.RESET_PASSWORD_PAGE}>
+      <ResetPasswordView loading={loading} error={error} onSubmit={onSubmit} />
+    </PageContainer>
   );
 }

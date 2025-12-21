@@ -4,16 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_PROFILE, FETCH_USER } from '../graphql';
-import { pages } from '../constants';
-import EditProfileForm from '../forms/EditProfile.form';
+import { PAGES } from '../constants';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
-import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
-import { Spinner } from '../../../components/loaders';
+import { AUTH_ROLES } from '../../../constants';
 import { IEditProfileInput } from '../types.ts';
-import { PageHeader } from '../../../components';
+import { PageContainer } from '../../../components';
 import { PROFILE_PATHS } from '../router/paths.ts';
+import EditProfileView from '../views/EditProfileView.tsx';
 
 export default function EditProfileContainer() {
   const dispatch = useDispatch();
@@ -48,22 +45,14 @@ export default function EditProfileContainer() {
       });
   };
 
-  const renderContent = () =>
-    !loading && !editLoading && defaultValues ? (
-      <EditProfileForm onSubmit={onSubmit} defaultValues={defaultValues} />
-    ) : (
-      <Spinner />
-    );
-
   return (
-    <RouteGuard authorization={AuthRoles.USER}>
-      <PageHeader title={pages.EDIT_PROFILE_PAGE}>
-        {error || editError ? (
-          <ErrorGraphql error={(error || editError) as Error} />
-        ) : (
-          renderContent()
-        )}
-      </PageHeader>
-    </RouteGuard>
+    <PageContainer auth={AUTH_ROLES.USER} title={PAGES.EDIT_PROFILE_PAGE}>
+      <EditProfileView
+        loading={loading || editLoading}
+        error={error || editError}
+        onSubmit={onSubmit}
+        defaultValues={defaultValues}
+      />
+    </PageContainer>
   );
 }

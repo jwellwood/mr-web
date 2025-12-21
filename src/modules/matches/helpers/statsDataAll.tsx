@@ -2,10 +2,10 @@ import { ReactElement, ReactNode } from 'react';
 
 import { STAT_ICONS } from '../../../components/icons/icons';
 import StatIcon from '../../../components/icons/StatIcon';
-import PositionString from '../../../components/tables/PositionString';
 import { CustomTypography } from '../../../components/typography';
 import AddStats from '../forms/AddStats';
 import { IPlayerInMatch } from '../types';
+import { PositionCell } from '../../../components';
 
 export const statsDataAll = (
   currentPlayers?: Partial<IPlayerInMatch[]>,
@@ -73,7 +73,7 @@ export const statsDataAll = (
       isStarter: {
         value: !isStarter ? <StatIcon icon={STAT_ICONS.SUB_IN} /> : '',
       },
-      matchPosition: <PositionString>{matchPosition}</PositionString>,
+      matchPosition: <PositionCell>{matchPosition}</PositionCell>,
       name: { value: nameData },
       goals: goals || '',
       assists: assists || '',

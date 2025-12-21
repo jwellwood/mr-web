@@ -16,3 +16,5 @@ export * from './shortenYear';
 export * from './sortArr';
 export * from './yearOptions';
 export * from './getYear';
+export * from './getInitials';
+export * from './getAverageAge';

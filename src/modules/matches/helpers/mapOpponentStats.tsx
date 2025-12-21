@@ -1,6 +1,6 @@
 import { getAvg, getPercentage } from '../../../utils/helpers';
 import HeadToHead from '../containers/HeadToHead';
-import { ImageTypes } from '../../../constants.ts';
+import { IMAGE_TYPE } from '../../../constants';
 import { PresentationModal } from '../../../components/modals';
 import CustomTypography from '../../../components/typography/CustomTypography.tsx';
 import { IOpponentTable } from '../types.ts';
@@ -30,7 +30,7 @@ export const mapOpponentStats = (stats: IOpponentTable[]) => {
           <ImageAvatar
             size="24px"
             imageUrl={item?.opponentBadge || 'default'}
-            fallbackIcon={ImageTypes.TEAM}
+            fallbackIcon={IMAGE_TYPE.TEAM}
           />
           <div style={{ marginRight: '4px' }} />
           <PresentationModal

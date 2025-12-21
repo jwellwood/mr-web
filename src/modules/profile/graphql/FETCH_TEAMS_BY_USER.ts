@@ -4,7 +4,7 @@ import { ITeamResponse } from '../../team/types';
 export const FETCH_TEAMS_BY_USER: TypedDocumentNode<{
   teams: ITeamResponse[];
 }> = gql`
-  query FetchTeamsByUser {
+  query FETCH_TEAMS_BY_USER {
     teams: userTeams {
       _id
       teamName

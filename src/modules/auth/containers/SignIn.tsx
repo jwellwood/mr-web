@@ -1,38 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { SIGN_IN_LINKS, pages } from '../constants';
-import SignInForm from '../forms/SignIn.form';
+import { PAGES } from '../constants';
 import { SIGN_IN_USER } from '../graphql';
-import { ISignInInput } from '../types';
-import ResendVerification from './ResendVerification';
 import { AppDispatch } from '../../../store/store';
 import { useAuth } from '../../../hooks';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AUTH_ROLES } from '../../../app/constants.ts';
-import { Spinner } from '../../../components/loaders';
+import { AUTH_ROLES } from '../../../constants';
 import { setAuth } from '../../../store/features/auth/authSlice.ts';
-import AuthLayout from '../components/AuthLayout.tsx';
-import AuthorizationLinks from '../components/AuthorizationLinks.tsx';
-import { signInFormState } from '../forms/state.ts';
-import { PageHeader } from '../../../components';
+import { PageContainer } from '../../../components';
 import { PROFILE_PATHS } from '../../profile/router/paths.ts';
+import SignInView from '../views/SignInView.tsx';
 
 export default function SignInContainer() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<ISignInInput | null>(null);
   const [email, setEmail] = useState<string | null>(null);
-  const [signInUser, { loading }] = useMutation(SIGN_IN_USER);
+  const [signInUser, { loading, error }] = useMutation(SIGN_IN_USER);
   const [showResendLink, setShowResendLink] = useState(false);
   const { isAuth } = useAuth();
-
-  useEffect(() => {
-    setDefaultValues({ ...signInFormState });
-  }, []);
 
   const onSubmit = async (formData: { email: string }) => {
     setEmail(formData.email);
@@ -49,6 +37,7 @@ export default function SignInContainer() {
               roles: user.roles,
               teamIds: user.teamIds,
               orgIds: user.orgIds,
+              username: user.username,
             })
           );
           if (isAuth) {
@@ -65,22 +54,14 @@ export default function SignInContainer() {
   };
 
   return (
-    <>
-      <RouteGuard authorization={AUTH_ROLES.NONE}>
-        <PageHeader title={pages.SIGN_IN_PAGE}>
-          <AuthLayout>
-            <>
-              {!loading && defaultValues ? (
-                <SignInForm defaultValues={defaultValues} onSubmit={onSubmit} />
-              ) : (
-                <Spinner />
-              )}
-              {showResendLink && <ResendVerification email={email} />}
-              <AuthorizationLinks links={SIGN_IN_LINKS} />
-            </>
-          </AuthLayout>
-        </PageHeader>
-      </RouteGuard>
-    </>
+    <PageContainer title={PAGES.SIGN_IN_PAGE} auth={AUTH_ROLES.NONE}>
+      <SignInView
+        loading={loading}
+        error={error}
+        email={email}
+        onSubmit={onSubmit}
+        showResendLink={showResendLink}
+      />
+    </PageContainer>
   );
 }

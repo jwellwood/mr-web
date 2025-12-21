@@ -1,4 +1,4 @@
-import { BACKGROUND_STYLE } from '../../../app/constants.ts';
+import { BACKGROUND_STYLE } from '../../../constants';
 import { ICellStyleByIndex } from '../../../components/tables/types.ts';
 
 const { STATIC } = BACKGROUND_STYLE;

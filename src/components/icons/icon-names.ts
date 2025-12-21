@@ -53,6 +53,7 @@ export const linkIcon = 'link';
 export const chevronDownIcon = 'chevron-down';
 export const chevronUpIcon = 'chevron-up';
 export const resetIcon = 'reset';
+export const flag = 'flag';
 // External Icons
 export const instagramIcon = 'instagram';
 export const menuIcon = 'menu';

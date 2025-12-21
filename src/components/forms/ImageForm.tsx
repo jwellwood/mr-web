@@ -6,6 +6,7 @@ import { CenteredGrid } from '../grids';
 import FileInput from '../inputs/FileInput';
 import { button_text } from '../../i18n';
 import ImageAvatar from '../avatars/image-avatar/ImageAvatar';
+import { IMAGE_TYPE } from '../../constants';
 
 interface Props {
   imageUrl?: string;
@@ -13,6 +14,7 @@ interface Props {
   onSubmit: (data: { imageFile: File | null }) => void;
   currentUrl?: string;
   removeImage: () => void;
+  loading?: boolean;
 }
 
 const ImageForm: React.FC<Props> = ({
@@ -21,6 +23,7 @@ const ImageForm: React.FC<Props> = ({
   onSubmit,
   currentUrl,
   removeImage,
+  loading,
 }) => {
   const {
     handleSubmit,
@@ -39,7 +42,7 @@ const ImageForm: React.FC<Props> = ({
   }, [reset, setImageUrl]);
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading}>
       <CenteredGrid>
         <Controller
           control={control}
@@ -58,7 +61,12 @@ const ImageForm: React.FC<Props> = ({
             );
           }}
         />
-        <ImageAvatar imageUrl={imageUrl} />
+        <ImageAvatar
+          imageUrl={imageUrl}
+          size="150px"
+          fallbackIcon={IMAGE_TYPE.TEAM}
+          iconSize="100px"
+        />
         <CustomButton type="reset" onClick={resetImage}>
           {button_text.DEFAULT}
         </CustomButton>

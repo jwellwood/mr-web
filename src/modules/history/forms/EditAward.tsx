@@ -5,7 +5,7 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_AWARD, FETCH_AWARD, FETCH_AWARDS, DELETE_AWARD } from '../graphql';
 
-import { PAGES } from '../constants.ts';
+import { PAGES } from '../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { useSeasons } from '../../../hooks/useSeasons.ts';
@@ -13,7 +13,7 @@ import { IAward } from '../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { useMatchPlayersInput } from '../../matches/hooks/useMatchPlayersInput.ts';
 import { ISelectOptions } from '../../../components/inputs/SelectInput.tsx';
@@ -121,7 +121,7 @@ export default function EditAward() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_AWARD}>
         {hasError ? (
           <ErrorGraphql error={(error || editError || deleteError || playersError) as Error} />

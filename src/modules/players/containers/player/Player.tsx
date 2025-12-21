@@ -1,16 +1,15 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_PLAYER } from '../../graphql';
-import { PAGES, PLAYER_ADMIN_LINKS } from '../../constants.ts';
+import { PAGES, PLAYER_ADMIN_LINKS } from '../../constants';
 import PlayerTabs from './PlayerTabs.tsx';
 import { useCustomParams } from '../../../../hooks/useCustomParams.tsx';
 import { useAuth, useDateOfBirth } from '../../../../hooks';
-import { AuthRoles, ImageTypes } from '../../../../constants.ts';
-import PositionString from '../../../../components/tables/PositionString.tsx';
+import { AUTH_ROLES, IMAGE_TYPE } from '../../../../constants';
 import ErrorGraphql from '../../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../../router/RouteGuard.tsx';
 import ModuleHeader from '../../../../components/shared/module-header/ModuleHeader.tsx';
-import { PageHeader } from '../../../../components';
+import { PageHeader, PositionCell } from '../../../../components';
 
 export default function Player() {
   const { teamId, playerId } = useCustomParams();
@@ -25,7 +24,7 @@ export default function Player() {
   const dataToDisplay = [
     {
       label: '',
-      value: <PositionString>{data?.player.position || '-'}</PositionString>,
+      value: <PositionCell>{data?.player.position || '-'}</PositionCell>,
     },
     { label: '', value: `#${data?.player.squadNumber || '-'}` },
     { label: '', value: `${age} years` },
@@ -38,14 +37,14 @@ export default function Player() {
         badge={data?.player.image.url || ''}
         data={dataToDisplay}
         country={data?.player.nationality || ''}
-        type={ImageTypes.USER}
+        type={IMAGE_TYPE.USER}
         loading={loading}
       />
     );
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.PUBLIC}>
+    <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <PageHeader title={PAGES.PLAYER} links={isTeamAuth ? PLAYER_ADMIN_LINKS : undefined}>
         <>
           {error ? <ErrorGraphql error={error} /> : renderContent()}

@@ -1,7 +1,7 @@
 import { TypedDocumentNode, gql } from '@apollo/client';
 
 export const DELETE_USER: TypedDocumentNode = gql`
-  mutation DeleteUser {
+  mutation DELETE_USER {
     deleteUser {
       _id
     }

@@ -7,7 +7,7 @@ import { createRoot } from 'react-dom/client';
 import { apolloClient } from './services/graphql/apolloClient';
 import { store } from './store/store';
 import { theme } from './theme';
-import ErrorBoundary from './errors/ErrorBoundary';
+import ErrorBoundary from './components/errors/error-boundary/ErrorBoundary';
 import AppRouter from './router/AppRouter';
 
 const container = document.getElementById('root');

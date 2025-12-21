@@ -1,21 +1,20 @@
+import { lazy } from 'react';
 import { useSelector } from 'react-redux';
 
-import { AUTH_ROLES, TAB_TYPES } from '../../app/constants';
+import { AUTH_ROLES, TAB_TYPES } from '../../constants';
 import NavIcon from '../../components/icons/NavIcon';
 import { CustomTabs, ITab } from '../../components/tabs';
-import { useAuth } from '../../hooks';
-import { useCustomParams } from '../../hooks/useCustomParams';
-import RouteGuard from '../../router/RouteGuard';
+import { useAuth, useCustomParams } from '../../hooks';
 import { PAGES, TEAM_ADMIN_LINKS } from './constants';
-import TeamOverview from './containers/TeamOverview';
 import { IIconType } from '../../components/icons/types';
 import { getTabIndex } from '../../store/features/tabs/tabsSelector';
 import { NAV_ICONS } from '../../components/icons/icons';
+import { PageContainer } from '../../components';
 
-import SquadTabs from '../squad/main';
-import MatchesTabs from '../matches/main';
-import HistoryTabs from '../history/main';
-import { PageHeader } from '../../components';
+export const TeamOverview = lazy(() => import('./containers/TeamOverview'));
+export const SquadTabs = lazy(() => import('../squad/main'));
+export const MatchesTabs = lazy(() => import('../matches/main'));
+export const HistoryTabs = lazy(() => import('../history/main'));
 
 export default function Team() {
   const { teamId } = useCustomParams();
@@ -50,10 +49,12 @@ export default function Team() {
   ];
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <PageHeader title={PAGES.TEAM} links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}>
-        <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
-      </PageHeader>
-    </RouteGuard>
+    <PageContainer
+      auth={AUTH_ROLES.PUBLIC}
+      title={PAGES.TEAM}
+      links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}
+    >
+      <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
+    </PageContainer>
   );
 }

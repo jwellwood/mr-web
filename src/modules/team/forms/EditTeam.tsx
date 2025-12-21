@@ -4,18 +4,15 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { FETCH_TEAM, EDIT_TEAM } from '../graphql';
-import { PAGES, TeamError, TeamSuccess } from '../constants.ts';
-import EditTeamForm from './components/EditTeamForm.tsx';
+import { PAGES, TeamError, TeamSuccess } from '../constants';
 import { ITeamDetailsInput } from '../types';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { useNationality } from '../../../hooks';
 import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
-import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
-import { Spinner } from '../../../components/loaders';
-import { PageHeader } from '../../../components';
+import { AUTH_ROLES } from '../../../constants';
+import { PageContainer } from '../../../components';
+import EditTeamView from '../views/EditTeamView.tsx';
 
 export default function EditTeam() {
   const { teamId } = useCustomParams();
@@ -57,27 +54,15 @@ export default function EditTeam() {
     }
   };
 
-  const renderContent = () => {
-    return !loading && !updateLoading && defaultValues ? (
-      <EditTeamForm
+  return (
+    <PageContainer auth={AUTH_ROLES.TEAM_ADMIN} title={PAGES.EDIT_TEAM}>
+      <EditTeamView
+        loading={loading || updateLoading}
+        error={error || updateError}
         defaultValues={defaultValues}
         onSubmit={onSubmit}
         countryOptions={nationalityOptions}
       />
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_TEAM}>
-        {error || updateError ? (
-          <ErrorGraphql error={error || (updateError as Error)} />
-        ) : (
-          renderContent()
-        )}
-      </PageHeader>
-    </RouteGuard>
+    </PageContainer>
   );
 }

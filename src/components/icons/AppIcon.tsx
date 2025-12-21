@@ -27,6 +27,7 @@ import {
   BiChevronUp,
   BiReset,
 } from 'react-icons/bi';
+import { FaRegFlag } from 'react-icons/fa6';
 import { BsShieldShaded } from 'react-icons/bs';
 import { FaUserShield, FaTshirt, FaMonument, FaUserCircle } from 'react-icons/fa';
 import { FiLock } from 'react-icons/fi';
@@ -154,6 +155,8 @@ const AppIcon: React.FC<Props> = ({ icon, size = '1rem', color = theme.palette.p
       return <BiReset size={size} color={iconColor} />;
     case icons.menuIcon:
       return <TfiMenu size={size} color={iconColor} />;
+    case icons.flag:
+      return <FaRegFlag size={size} color={iconColor} />;
 
     default:
       break;

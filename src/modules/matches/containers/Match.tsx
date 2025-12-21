@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { FETCH_MATCH } from '../graphql';
-import { AUTH_ROLES, TAB_TYPES } from '../../../app/constants';
+import { AUTH_ROLES, TAB_TYPES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { CustomTypography } from '../../../components/typography';

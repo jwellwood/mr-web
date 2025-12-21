@@ -1,5 +1,5 @@
 import { CustomAvatar } from '../../../components';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';

@@ -1,56 +1,52 @@
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
-import { SectionContainer } from '../../../components';
+import { LinksList, SectionContainer } from '../../../components';
 
 interface Props {
-  item: {
-    names: {
-      name: string;
-      id: string;
-    }[];
-  };
+  names: {
+    name: string;
+    id: string;
+  }[];
+  loading?: boolean;
 }
 
-export default function RecordPlayers({ item }: Props) {
-  const isMoreThanTwoPlayers = item.names.length > 2;
+export default function RecordPlayers({ names, loading }: Props) {
+  const isMoreThanOnePlayer = names.length > 1;
 
-  const playerList = (
-    player: {
-      id: string;
-      name: string;
-    },
-    index: number
-  ) => {
-    return (
-      <CustomTypography key={player.name} color="data" bold link={`player/${player.id}`}>
-        {player.name}
-        {item?.names.length > 1 && index !== item?.names.length - 1 ? (
-          <CustomTypography size="xs" bold color="label">
-            {' '}
-            |{' '}
+  const playerList = () => (
+    <LinksList
+      links={names.map(item => ({
+        label: (
+          <CustomTypography color="bold" bold>
+            {item.name}
           </CustomTypography>
-        ) : null}
-      </CustomTypography>
-    );
-  };
+        ),
+        link: `player/${item.id}`,
+      }))}
+      loading={loading}
+    />
+  );
+
+  const playerLink = (player: { name: string; id: string }) => (
+    <CustomTypography key={player.id} color="data" bold link={`player/${player.id}`}>
+      {player.name}
+    </CustomTypography>
+  );
+
   const playerListModal = () => {
     return (
       <PresentationModal
-        title={`${item.names.length} Players`}
+        title={`${names.length} Players`}
         buttonElement={
-          <CustomTypography color="data" bold>
-            {item.names.length} players
+          <CustomTypography color="label" bold>
+            {names?.length} players
           </CustomTypography>
         }
       >
-        <SectionContainer>
-          {item?.names?.map((player, index) => playerList(player, index))}
-        </SectionContainer>
+        <SectionContainer>{playerList()}</SectionContainer>
       </PresentationModal>
     );
   };
 
-  return isMoreThanTwoPlayers
-    ? playerListModal()
-    : item?.names?.map((player, index) => playerList(player, index));
+  return isMoreThanOnePlayer ? playerListModal() : names.map(player => playerLink(player));
 }

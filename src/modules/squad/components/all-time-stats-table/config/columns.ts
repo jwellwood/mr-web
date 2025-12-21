@@ -1,0 +1,44 @@
+export const columns = [
+  {
+    id: 'name',
+    label: '',
+    width: 150,
+  },
+  {
+    id: 'apps',
+    label: 'Pl',
+    width: 40,
+  },
+  {
+    id: 'goals',
+    label: 'Goals',
+    width: 40,
+  },
+  {
+    id: 'assists',
+    label: 'As',
+    width: 40,
+  },
+
+  {
+    id: 'mvp',
+    label: 'Mvp',
+    width: 50,
+  },
+
+  {
+    id: 'conceded',
+    label: 'Cn',
+    width: 40,
+  },
+  {
+    id: 'cleanSheets',
+    label: 'C/S',
+    width: 40,
+  },
+  {
+    id: 'playedStreak',
+    label: 'Streak',
+    width: 40,
+  },
+] as const;

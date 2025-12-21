@@ -1,31 +1,31 @@
 import { SectionContainer } from '../../../components/containers';
 import TextList from '../../../components/lists/TextList.tsx';
 import { IListItem } from '../../../components/lists/types.ts';
+import { getAverageAge } from '../../../utils/helpers';
 import { IPlayer } from '../../players/types.ts';
-import { getAverageAge } from '../helpers';
-import { IPastPlayer } from '../types.ts';
+import { IPastPlayer, ISquadSeasonStats } from '../types.ts';
 import ByNationality from './ByNationality.tsx';
 
 interface Props {
-  players: IPlayer[] | IPastPlayer[];
+  players?: IPlayer[] | IPastPlayer[] | ISquadSeasonStats[];
   loading: boolean;
   season?: string;
   showAge?: boolean;
 }
 
 export default function PlayersByNumbers({ players, loading, season, showAge }: Props) {
-  const numberOfPlayers = players.length;
-  const nationalities = new Set(players.map(player => player.nationality)).size;
-  const ages: string[] = players
-    .map(player => 'dateOfBirth' in player && player.dateOfBirth)
+  const numberOfPlayers = players?.length;
+  const nationalities = new Set(players?.map(player => player.nationality)).size;
+  const ages: string[] | undefined = players
+    ?.map(player => 'dateOfBirth' in player && player.dateOfBirth)
     .filter(age => typeof age === 'string');
-  const averageAge = getAverageAge(ages, season);
+  const averageAge = getAverageAge(ages || [], season);
 
   const data: IListItem[] = [
     { label: 'Players', value: numberOfPlayers },
     {
       label: 'Nationalities',
-      value: <ByNationality players={players} title={nationalities.toString()} />,
+      value: <ByNationality players={players || []} title={nationalities.toString()} />,
     },
     { label: 'Average Age', value: averageAge.toFixed(1), hidden: !showAge },
   ].filter(elem => !elem.hidden);

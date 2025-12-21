@@ -2,15 +2,14 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_PROFILE_IMAGE, FETCH_USER } from '../graphql';
 
-import { AUTH_ROLES } from '../../../app/constants';
+import { AUTH_ROLES } from '../../../constants';
 import ImageForm from '../../../components/forms/ImageForm';
 import { Spinner } from '../../../components/loaders';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
-import RouteGuard from '../../../router/RouteGuard';
-import { pages } from '../constants';
+import { PAGES } from '../constants';
 import { removeUserImage, uploadUserImage } from '../../../services/images';
 import { useUpload } from '../../../hooks';
-import { PageHeader } from '../../../components';
+import { PageContainer } from '../../../components';
 
 export default function EditUserImage() {
   const { data, error, loading: loadingUser, refetch } = useQuery(FETCH_USER);
@@ -41,14 +40,12 @@ export default function EditUserImage() {
     );
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.USER}>
-      <PageHeader title={pages.EDIT_USER_IMAGE_PAGE}>
-        {error || editError ? (
-          <ErrorGraphql error={(error || editError) as Error} />
-        ) : (
-          renderContent()
-        )}
-      </PageHeader>
-    </RouteGuard>
+    <PageContainer auth={AUTH_ROLES.USER} title={PAGES.EDIT_USER_IMAGE_PAGE}>
+      {error || editError ? (
+        <ErrorGraphql error={(error || editError) as Error} />
+      ) : (
+        renderContent()
+      )}
+    </PageContainer>
   );
 }

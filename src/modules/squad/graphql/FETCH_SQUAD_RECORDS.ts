@@ -10,7 +10,7 @@ export const FETCH_SQUAD_RECORDS: TypedDocumentNode<{
   };
 }> = gql`
   query FETCH_SQUAD_RECORDS($teamId: String!) {
-    stats: topPlayerStats(teamId: $teamId) {
+    stats: SQUAD_RECORDS(teamId: $teamId) {
       apps {
         value
         names {

@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_ORG_SEASON, FETCH_ORG_SEASONS } from '../graphql';
-import { AuthRoles } from '../../../constants.ts';
-import { PAGES } from '../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
+import { PAGES } from '../constants';
 import { initialOrgSeasonState } from './state.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
@@ -54,7 +54,7 @@ export default function AddOrgSeason() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.ADD_ORG_SEASON}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
       </PageHeader>

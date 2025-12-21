@@ -1,6 +1,6 @@
 export * from './FETCH_PAST_PLAYERS';
 export * from './FETCH_SQUAD_STATS_ALL_TIME';
-export * from './FETCH_SQUAD_STATS_BASIC';
+export * from './FETCH_SQUAD_LIST_BY_SEASON';
 export * from './FETCH_SQUAD_RECORDS';
 export * from './FETCH_SQUAD_BY_SEASON';
 export * from './FETCH_SQUAD_STATS_SEASON';

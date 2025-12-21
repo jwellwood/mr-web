@@ -2,7 +2,7 @@ import { IAward } from '../types';
 import StatIcon from '../../../components/icons/StatIcon';
 import { STAT_ICONS } from '../../../components/icons/icons';
 import { CustomTypography } from '../../../components/typography';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 
 type Props = { awards: IAward[] };

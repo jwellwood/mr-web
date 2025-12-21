@@ -4,14 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { FETCH_COMPETITION, EDIT_COMPETITION, FETCH_COMPETITIONS } from '../graphql';
-import { PAGES } from '../constants.ts';
+import { PAGES } from '../constants';
 import { mapCompetitionInput } from '../helpers/mapCompetitionInput.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders/index.ts';
 import { ICompetitionInput } from '../types.ts';
 import { PageHeader } from '../../../components/index.ts';
@@ -76,7 +76,7 @@ export default function EditCompetition() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.ORG_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
       <PageHeader title={PAGES.EDIT_COMP}>
         {error || updateError ? (
           <ErrorGraphql

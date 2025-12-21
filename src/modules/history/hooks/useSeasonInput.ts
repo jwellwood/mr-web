@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/client';
 import { FETCH_ORG } from '../../organization/graphql';
 import { ICompetition } from '../../organization/types.ts';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { emptySelectOption } from '../../matches/constants.ts';
+import { emptySelectOption } from '../../matches/constants';
 
 export const useSeasonInput = (orgId?: string) => {
   const [competitions, setCompetitions] = useState<ICompetition[]>([]);

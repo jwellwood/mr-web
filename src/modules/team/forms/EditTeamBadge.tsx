@@ -4,15 +4,11 @@ import { useMutation, useQuery } from '@apollo/client';
 import { FETCH_TEAM, EDIT_TEAM_BADGE } from '../graphql';
 import { PAGES } from '../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-
-import ErrorGraphql from '../../../errors/ErrorGraphql';
-import RouteGuard from '../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../app/constants';
-import ImageForm from '../../../components/forms/ImageForm';
-import { Spinner } from '../../../components/loaders';
+import { AUTH_ROLES } from '../../../constants';
 import { removeTeamBadge, uploadTeamBadge } from '../../../services/images';
 import { useUpload } from '../../../hooks';
-import { PageHeader } from '../../../components';
+import { PageContainer } from '../../../components';
+import EditTeamBadgeView from '../views/EditTeamBadgeView';
 
 export default function EditTeamBadge() {
   const { teamId } = useCustomParams();
@@ -43,31 +39,19 @@ export default function EditTeamBadge() {
     }
   }, [data, setImageUrl]);
 
-  const loadingState = loading || loadingTeam || editLoading;
-
-  const renderContent = () => {
-    return !loadingState && imageUrl ? (
-      <ImageForm
-        imageUrl={imageUrl}
-        setImageUrl={setImageUrl}
-        onSubmit={onSubmit}
-        currentUrl={data?.team.teamBadge?.url as string}
-        removeImage={removeImage}
-      />
-    ) : (
-      <Spinner />
-    );
-  };
+  const isLoading = loading || loadingTeam || editLoading;
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_BADGE}>
-        {error || editError ? (
-          <ErrorGraphql error={(error || editError) as Error} />
-        ) : (
-          renderContent()
-        )}
-      </PageHeader>
-    </RouteGuard>
+    <PageContainer auth={AUTH_ROLES.TEAM_ADMIN} title={PAGES.EDIT_BADGE}>
+      <EditTeamBadgeView
+        onSubmit={onSubmit}
+        loading={isLoading}
+        error={error || editError}
+        imageUrl={imageUrl as string}
+        setImageUrl={setImageUrl}
+        removeImage={removeImage}
+        data={data}
+      />
+    </PageContainer>
   );
 }

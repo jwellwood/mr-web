@@ -7,7 +7,7 @@ interface Props {
 
 export default function LogoutButton({ onClick }: Props) {
   return (
-    <Button variant="outlined" color="warning" onClick={onClick}>
+    <Button variant="text" color="tertiary" onClick={onClick}>
       {link_text.sign_out}
     </Button>
   );

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-import { BASE_YEAR, CURRENT_YEAR } from '../../../../app/constants';
+import { BASE_YEAR, CURRENT_YEAR } from '../../../../constants';
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';

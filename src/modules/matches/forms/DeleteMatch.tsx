@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { DELETE_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
-import { FETCH_SQUAD_BY_SEASON } from '../../squad/graphql';
-import { PAGES } from '../constants.ts';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
+import { PAGES } from '../constants';
 import { useSeasons } from '../../../hooks/useSeasons.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
-import { AuthRoles } from '../../../constants.ts';
+import { AUTH_ROLES } from '../../../constants';
 import { CustomTypography } from '../../../components/typography';
 import { DeleteModal } from '../../../components/modals';
 import { Spinner } from '../../../components/loaders';
@@ -29,7 +29,7 @@ export default function DeleteMatch() {
         variables: { limit: 5, offset: 0, teamId, seasonId: seasonId },
       },
       {
-        query: FETCH_SQUAD_BY_SEASON,
+        query: FETCH_SQUAD_LIST_BY_SEASON,
         variables: { teamId, seasonId: seasonId },
       },
       {
@@ -74,7 +74,7 @@ export default function DeleteMatch() {
   };
 
   return (
-    <RouteGuard authorization={AuthRoles.TEAM_ADMIN}>
+    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.DELETE_MATCH}>
         {error ? <ErrorGraphql error={error} /> : renderContent()}
       </PageHeader>

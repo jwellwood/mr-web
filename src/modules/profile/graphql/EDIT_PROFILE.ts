@@ -4,7 +4,7 @@ import { IUser } from '../../auth/types';
 export const EDIT_PROFILE: TypedDocumentNode<{
   user: IUser;
 }> = gql`
-  mutation EditProfile(
+  mutation EDIT_PROFILE(
     $username: String!
     $email: String!
     $dateOfBirth: String

@@ -3,10 +3,10 @@ import { NetworkStatus, useQuery } from '@apollo/client';
 
 import { FETCH_MATCHES } from '../graphql';
 
-import { AUTH_ROLES } from '../../../app/constants';
+import { AUTH_ROLES } from '../../../constants';
 import { CustomButton } from '../../../components/buttons';
 import { SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList.tsx';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';

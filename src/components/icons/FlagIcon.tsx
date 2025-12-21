@@ -1,26 +1,28 @@
-import React from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import AppIcon from './AppIcon';
+import StatSkeleton from '../loaders/StatSkeleton';
 
 interface Props {
   nationality?: string;
   countryName?: string;
   size?: string;
+  loading?: boolean;
 }
 
-const FlagIcon: React.FC<Props> = ({ nationality, countryName, size = '1.2rem' }) => {
-  return nationality && nationality !== '' ? (
-    <ReactCountryFlag
-      countryCode={nationality}
-      svg
-      style={{
-        fontSize: size,
-      }}
-      aria-label={countryName || 'country-name'}
-    />
-  ) : (
-    <AppIcon icon="team" />
-  );
-};
+export default function FlagIcon({ nationality, countryName, size = '1.2rem', loading }: Props) {
+  const renderIcon =
+    nationality && nationality !== '' ? (
+      <ReactCountryFlag
+        countryCode={nationality}
+        svg
+        style={{
+          fontSize: size,
+        }}
+        aria-label={countryName || 'country-name'}
+      />
+    ) : (
+      <AppIcon icon="flag" color="data" />
+    );
 
-export default FlagIcon;
+  return loading ? <StatSkeleton /> : renderIcon;
+}

@@ -14,9 +14,10 @@ interface Props {
   onSubmit: (data: Partial<ITeamDetailsInput>) => void;
   defaultValues: Partial<ITeamDetailsInput>;
   countryOptions: ISelectOptions[];
+  loading: boolean;
 }
 
-export default function AddTeamForm({ onSubmit, defaultValues, countryOptions }: Props) {
+export default function AddTeamForm({ onSubmit, defaultValues, countryOptions, loading }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -33,7 +34,7 @@ export default function AddTeamForm({ onSubmit, defaultValues, countryOptions }:
   ];
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading}>
       <CenteredGrid dir="row">
         <GridItem size={12}>
           <ControlledTextInput

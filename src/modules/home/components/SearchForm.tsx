@@ -6,9 +6,10 @@ import ControlledTextInput from '../../../components/inputs/ControlledTextInput'
 type Props = {
   defaultValues: { teamName: string };
   onSubmit: (data: { teamName: string }) => void;
+  loading: boolean;
 };
 
-export default function SearchForm({ defaultValues, onSubmit }: Props) {
+export default function SearchForm({ defaultValues, onSubmit, loading }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -27,6 +28,7 @@ export default function SearchForm({ defaultValues, onSubmit }: Props) {
       nonAbsoluteSubmit
       text="Search"
       disabled={teamName.length < 3}
+      loading={loading}
     >
       <ControlledTextInput
         control={control}

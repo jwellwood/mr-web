@@ -1,4 +1,4 @@
-import { API_PATH } from '../../../app/constants';
+import { API_PATH } from '../../../constants';
 import axios from 'axios';
 
 const api = {

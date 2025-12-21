@@ -6,7 +6,7 @@ import { useQuery } from '@apollo/client';
 import { FETCH_ROLES } from '../modules/auth/graphql';
 import { useAuth } from '../hooks';
 import { resetAuth, setAuth } from '../store/features/auth/authSlice.ts';
-import { PageContainer } from '../components/containers';
+import { BackgroundContainer } from '../components/containers';
 import CustomAlert from '../components/alerts/custom-alert/CustomAlert.tsx';
 
 const AppRoutes = lazy(() => import('./routes/Routes.tsx'));
@@ -23,6 +23,7 @@ function AppRouter() {
           roles: data.user?.roles,
           teamIds: data.user?.teamIds,
           orgIds: data.user?.orgIds,
+          username: data.user.username,
         })
       );
     } else {
@@ -32,10 +33,10 @@ function AppRouter() {
 
   return (
     <BrowserRouter>
-      <PageContainer>
+      <BackgroundContainer>
         {isAuth !== null && !loading && <AppRoutes />}
         <CustomAlert />
-      </PageContainer>
+      </BackgroundContainer>
     </BrowserRouter>
   );
 }

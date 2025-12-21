@@ -2,8 +2,8 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import { SxProps } from '@mui/material';
 
-import { Spinner } from '../../loaders';
 import { button_text } from '../../../i18n';
+import ButtonLoader from '../../loaders/ButtonLoader';
 
 interface Props {
   children?: React.ReactNode;
@@ -28,6 +28,8 @@ export default function SubmitButton({
       color="primary"
       disabled={disabled}
       onClick={onClick}
+      loading={loading}
+      loadingIndicator={loading ? <ButtonLoader /> : undefined}
       sx={
         nonFixed
           ? {}
@@ -42,7 +44,7 @@ export default function SubmitButton({
             } as SxProps)
       }
     >
-      {loading ? <Spinner isSecondary /> : children || button_text.SUBMIT}
+      {children || button_text.SUBMIT}
     </Button>
   );
 }

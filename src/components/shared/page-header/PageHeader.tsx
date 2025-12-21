@@ -6,7 +6,8 @@ import { CustomTypography } from '../../typography';
 import { theme } from '../../../theme';
 import EditLinksModal from '../../modals/EditLinksModal';
 import { IListItem } from '../../lists/types';
-import { SideDrawer } from '../../navigation';
+import NavMenu from '../../navigation/nav-menu/NavMenu';
+import { useAuth } from '../../../hooks';
 
 interface Props {
   title: string;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 export default function PageHeader({ title, children, backButton = true, links }: Props) {
+  const { username } = useAuth();
   function HideOnScroll({ children }: { children: ReactElement }) {
     const trigger = useScrollTrigger();
 
@@ -38,7 +40,9 @@ export default function PageHeader({ title, children, backButton = true, links }
               </CustomTypography>
             )}
             {links?.length && <EditLinksModal data={links} />}
-            <SideDrawer />
+            <div>
+              <NavMenu username={username} />
+            </div>
           </Toolbar>
         </AppBar>
       </HideOnScroll>

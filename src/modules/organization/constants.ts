@@ -1,4 +1,4 @@
-import { LINK_TYPE } from '../../app/constants';
+import { LINK_TYPE } from '../../constants';
 import { ISelectOptions } from '../../components/inputs/SelectInput';
 import { IListItem } from '../../components/lists/types.ts';
 import { ORG_PATHS } from './router/paths.ts';

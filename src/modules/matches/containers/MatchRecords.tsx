@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_MATCHES_RECORDS } from '../graphql';
 import { SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/LinksList';
+import LinksList from '../../../components/lists/links-list/LinksList';
 import { CustomTypography } from '../../../components/typography';
 import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';

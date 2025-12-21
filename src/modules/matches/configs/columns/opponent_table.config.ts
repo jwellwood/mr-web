@@ -1,4 +1,4 @@
-import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../app/constants';
+import { BACKGROUND_STYLE, BORDER_STYLE } from '../../../../constants';
 
 const { STATIC } = BACKGROUND_STYLE;
 const { STANDARD } = BORDER_STYLE;

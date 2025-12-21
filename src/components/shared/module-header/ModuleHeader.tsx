@@ -4,11 +4,11 @@ import { CenteredGrid, GridItem } from '../../grids';
 import FlagIcon from '../../icons/FlagIcon.tsx';
 import CustomSkeleton from '../../loaders/CustomSkeleton.tsx';
 import { CustomTypography } from '../../typography';
-import { TImageType } from '../../../constants.ts';
 import { useNationality } from '../../../hooks';
 import { theme } from '../../../theme';
 import ImageAvatar from '../../avatars/image-avatar/ImageAvatar.tsx';
 import { ModuleHeaderContainer } from '../../containers';
+import { IIconType } from '../../icons/types/index.ts';
 
 type Props = {
   title?: string;
@@ -16,7 +16,7 @@ type Props = {
   data?: { label: string; value: ReactNode }[];
   city?: string;
   country?: string;
-  type?: TImageType;
+  type?: IIconType;
   loading?: boolean;
 };
 

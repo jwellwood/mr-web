@@ -1,6 +1,6 @@
 import countryList from 'react-select-country-list';
 
-import { IPastPlayer } from '../types.ts';
+import { IPastPlayer, ISquadSeasonStats } from '../types.ts';
 import { CustomTypography } from '../../../components/typography';
 import FlagIcon from '../../../components/icons/FlagIcon.tsx';
 import TextList from '../../../components/lists/TextList.tsx';
@@ -9,7 +9,7 @@ import { IPlayer } from '../../players/types.ts';
 import { CustomAccordion } from '../../../components';
 
 interface Props {
-  players: IPlayer[] | IPastPlayer[];
+  players: IPlayer[] | IPastPlayer[] | ISquadSeasonStats[];
   title: string;
   textColor?: string;
 }
@@ -67,7 +67,7 @@ export default function ByNationality({ players, title, textColor = 'primary' }:
           </CustomTypography>
         }
       >
-        <TextList data={listData} labelSize="xs" />
+        <TextList data={listData} labelSize="sm" />
       </CustomAccordion>
     );
   };

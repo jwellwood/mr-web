@@ -71,4 +71,5 @@ export type IIconType =
   | 'chevron-up'
   | 'reset'
   | 'instagram'
-  | 'percentage';
+  | 'percentage'
+  | 'flag';

@@ -1,4 +1,4 @@
-import { BackgroundStyles } from '../../../constants.ts';
+import { BACKGROUND_STYLE } from '../../../constants';
 import type { ICellStyleByIndex } from '../types.ts';
 import { theme } from '../../../theme';
 import { getOpaqueValue } from '../../../utils/colors/getOpaqueValue.ts';
@@ -22,5 +22,5 @@ export const getBackgroundColor = (
   if (isSelected) {
     backgroundColor = getOpaqueValue(theme.palette.primary.main);
   }
-  return backgroundColor === BackgroundStyles.STATIC ? staticBackground : backgroundColor;
+  return backgroundColor === BACKGROUND_STYLE.STATIC ? staticBackground : backgroundColor;
 };
