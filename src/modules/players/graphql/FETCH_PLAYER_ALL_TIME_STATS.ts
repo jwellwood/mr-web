@@ -2,10 +2,10 @@ import { TypedDocumentNode, gql } from '@apollo/client';
 import { IPlayerStats } from '../types';
 
 export const FETCH_PLAYER_ALL_TIME_STATS: TypedDocumentNode<{
-  player: IPlayerStats[];
+  player: IPlayerStats;
 }> = gql`
   query FETCH_PLAYER_ALL_TIME_STATS($playerId: String!) {
-    player: playerAllTimeStats(playerId: $playerId) {
+    player: PLAYER_ALL_TIME_STATS(playerId: $playerId) {
       _id
       minutes
       apps

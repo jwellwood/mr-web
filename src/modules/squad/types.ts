@@ -69,3 +69,11 @@ export interface ISquadListStats {
   goals: number;
   assists: number;
 }
+
+export interface IPlayerRecordMatch {
+  teamGoals: number;
+  opponentGoals: number;
+  opponent: string;
+  date: string;
+  _id: string;
+}

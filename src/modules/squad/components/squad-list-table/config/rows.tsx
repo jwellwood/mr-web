@@ -2,13 +2,12 @@ import { ImageAvatar, NameCell } from '../../../../../components';
 import FlagIcon from '../../../../../components/icons/FlagIcon';
 import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
-import { POSITIONS } from '../../../../players/constants';
+import { POSITIONS } from '../../../../../constants';
 import { ISquadListStats } from '../../../types';
 
 export const rows = (data?: { players: ISquadListStats[] }, loading?: boolean) => {
   const arr = new Array(15).fill({});
-  const mappedPlayers =
-    loading || !data?.players.length ? arr : data?.players.map(player => player);
+  const mappedPlayers = loading || !data?.players.length ? arr : data?.players;
 
   return mappedPlayers.map(player => {
     const { _id, number, position, nationality, image, name, apps, goals, assists } = player || {};

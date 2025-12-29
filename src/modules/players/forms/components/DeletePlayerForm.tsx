@@ -1,5 +1,5 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
+
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
 import ControlledTextInput from '../../../../components/inputs/ControlledTextInput';
@@ -11,7 +11,7 @@ interface Props {
   playerName: string;
 }
 
-const DeletePlayerForm: React.FC<Props> = ({ onSubmit, defaultValues, playerName }) => {
+export default function DeletePlayerForm({ onSubmit, defaultValues, playerName }: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -37,6 +37,4 @@ const DeletePlayerForm: React.FC<Props> = ({ onSubmit, defaultValues, playerName
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default DeletePlayerForm;
+}

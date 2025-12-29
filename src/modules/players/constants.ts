@@ -1,4 +1,3 @@
-import { IListItem } from '../../components/lists/types';
 import { LINK_TYPE } from '../../constants';
 
 export const PAGES = {
@@ -9,7 +8,7 @@ export const PAGES = {
   DELETE_PLAYER: 'Delete Player',
 } as const;
 
-export const PLAYER_ADMIN_LINKS: IListItem[] = [
+export const PLAYER_ADMIN_LINKS = [
   {
     label: 'Edit Player',
     type: LINK_TYPE.EDIT,
@@ -26,13 +25,3 @@ export const PLAYER_ADMIN_LINKS: IListItem[] = [
     link: 'delete',
   },
 ];
-
-export const POSITIONS = {
-  GK: 'GK',
-  DF: 'DF',
-  MF: 'MF',
-  FW: 'FW',
-  NONE: '',
-} as const;
-
-export type TPosition = (typeof POSITIONS)[keyof typeof POSITIONS];

@@ -1,4 +1,4 @@
-import { POSITIONS } from '../../players/constants';
+import { POSITIONS } from '../../../constants';
 import { IMatch, IPlayerInMatch } from '../types';
 
 export const initialMatchState = {

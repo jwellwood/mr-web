@@ -10,7 +10,7 @@ export const EDIT_PLAYER_PHOTO: TypedDocumentNode<{
     $public_id: String!
     $url: String!
   ) {
-    editPlayerPhoto(
+    EDIT_PLAYER_PHOTO(
       teamId: $teamId
       playerId: $playerId
       data: { public_id: $public_id, url: $url }

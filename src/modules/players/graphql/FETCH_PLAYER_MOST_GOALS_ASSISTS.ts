@@ -2,10 +2,10 @@ import { TypedDocumentNode, gql } from '@apollo/client';
 import { IMostGoalsAndAssistsByPlayer } from '../../matches/types';
 
 export const FETCH_PLAYER_MOST_GOALS_ASSISTS: TypedDocumentNode<{
-  stats: IMostGoalsAndAssistsByPlayer[];
+  stats: IMostGoalsAndAssistsByPlayer;
 }> = gql`
   query FETCH_PLAYER_MOST_GOALS_ASSISTS($teamId: String!, $playerId: String!) {
-    stats: mostGoalsAndMostAssistsByPlayer(teamId: $teamId, playerId: $playerId) {
+    stats: PLAYER_MOST_GOALS_ASSISTS(teamId: $teamId, playerId: $playerId) {
       maxGoals
       maxAssists
     }

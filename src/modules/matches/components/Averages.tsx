@@ -7,7 +7,7 @@ import { getPercentage } from '../../../utils/helpers';
 import { IMatchStats } from '../types';
 
 type Props = {
-  stats?: IMatchStats;
+  stats?: IMatchStats | null;
   loading: boolean;
 };
 

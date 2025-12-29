@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { amber, blue, green, red } from '@mui/material/colors';
 import { CustomTypography } from '../../typography';
-import { POSITIONS } from '../../../modules/players/constants';
+import { POSITIONS } from '../../../constants';
 
 type Props = {
   children: string | number | ReactElement;

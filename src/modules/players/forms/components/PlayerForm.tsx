@@ -1,5 +1,5 @@
-import React from 'react';
 import { useForm } from 'react-hook-form';
+
 import { positionOptions } from '../../../../constants';
 import { FormContainer } from '../../../../components/containers';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
@@ -10,8 +10,8 @@ import ControlledTextInput from '../../../../components/inputs/ControlledTextInp
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { getIntegers } from '../../../../utils/helpers';
 import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
-import { IPlayer } from '../../types';
 import { IListItem } from '../../../../components/lists/types';
+import { IPlayer, ISeasonID } from '../../types';
 
 interface Props {
   onSubmit: (data: Partial<IPlayer>) => void;
@@ -20,12 +20,12 @@ interface Props {
   seasonOptions: ISelectOptions[];
 }
 
-const PlayerForm: React.FC<Props> = ({
+export default function PlayerForm({
   onSubmit,
   defaultValues,
   countryOptions,
   seasonOptions,
-}) => {
+}: Props) {
   const {
     handleSubmit,
     formState: { errors },
@@ -35,7 +35,7 @@ const PlayerForm: React.FC<Props> = ({
     defaultValues,
   });
 
-  const seasonIds = watch('seasonIds');
+  const seasonIds = watch('seasonIds') as ISeasonID[];
   const disabled = (seasonIds?.length || 0) < 1;
 
   const switchList: IListItem[] = [
@@ -138,6 +138,4 @@ const PlayerForm: React.FC<Props> = ({
       </CenteredGrid>
     </FormContainer>
   );
-};
-
-export default PlayerForm;
+}

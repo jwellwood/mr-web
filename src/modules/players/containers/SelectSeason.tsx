@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
@@ -11,7 +11,7 @@ interface Props {
   playerId?: string;
 }
 
-const SelectSeason: React.FC<Props> = ({ playerId }) => {
+export default function SelectSeason({ playerId }: Props) {
   const [seasonsToDisplay, setSeasonsToDisplay] = useState<IListItem[]>([]);
 
   const { onSelectSeason, seasonOptions, seasonId } = useSeasons();
@@ -31,6 +31,7 @@ const SelectSeason: React.FC<Props> = ({ playerId }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data?.player]);
+
   return !loading ? (
     <SelectSeasonModal
       currentSeason={currentSeason}
@@ -41,6 +42,4 @@ const SelectSeason: React.FC<Props> = ({ playerId }) => {
   ) : (
     <CustomSkeleton width="100px" height="30px" />
   );
-};
-
-export default SelectSeason;
+}

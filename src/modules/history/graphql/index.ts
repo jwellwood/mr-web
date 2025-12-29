@@ -8,7 +8,6 @@ export * from './EDIT_AWARD';
 export * from './EDIT_SEASON';
 export * from './EDIT_TROPHY';
 export * from './FETCH_AWARD';
-export * from './FETCH_AWARDS_BY_PLAYER';
 export * from './FETCH_AWARDS';
 export * from './FETCH_HALL_OF_FAME';
 export * from './FETCH_SEASON';

@@ -1,5 +1,5 @@
 import { IImage } from '../../components/avatars/image-avatar/types.ts';
-import { TPosition } from './constants';
+import { TPosition } from '../../constants/position.ts';
 
 export interface IPlayer {
   _id: string;

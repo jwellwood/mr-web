@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 
 import { ICompetition } from '../organization/types';
-import { TPosition } from '../players/constants';
 import { ITeam } from '../team/types';
 import { IPlayer } from '../players/types';
+import { TPosition } from '../../constants';
 
 export interface IPlayerInMatch {
   _id?: string;

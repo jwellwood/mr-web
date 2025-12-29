@@ -5,7 +5,7 @@ export const FETCH_PLAYER: TypedDocumentNode<{
   player: IPlayer;
 }> = gql`
   query FETCH_PLAYER($playerId: String!) {
-    player: playerById(playerId: $playerId) {
+    player: PLAYER_BY_ID(playerId: $playerId) {
       _id
       name
       position

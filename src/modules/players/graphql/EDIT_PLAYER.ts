@@ -18,7 +18,7 @@ export const EDIT_PLAYER: TypedDocumentNode<{
     $isHallOfFame: Boolean!
     $seasonIds: [String!]!
   ) {
-    updatePlayer(
+    EDIT_PLAYER(
       teamId: $teamId
       playerId: $playerId
       data: {
