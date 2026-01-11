@@ -31,6 +31,22 @@ export const SEASON_ADMIN_LINKS: IListItem[] = [
   },
 ];
 
+export const AWARD_ADMIN_LINKS: IListItem[] = [
+  {
+    label: 'Edit Award',
+    type: LINK_TYPE.EDIT,
+    link: 'edit',
+  },
+];
+
+export const TROPHY_ADMIN_LINKS: IListItem[] = [
+  {
+    label: 'Edit Trophy',
+    type: LINK_TYPE.EDIT,
+    link: 'edit',
+  },
+];
+
 export const seasonColors = [
   {
     color: `${theme.palette.tertiary.main}`,

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import {
   DELETE_SEASON,
@@ -17,14 +17,13 @@ import { ITeamSeasonInput } from '../types';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { PAGES } from '../constants';
 import { mapFormDataToSeason, mapSeasonToFormData } from './seasons.mapper.ts';
 import SeasonForm from './components/SeasonForm.tsx';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
 export default function EditSeason() {
   const { teamId, seasonId, orgId } = useCustomParams();
@@ -115,7 +114,7 @@ export default function EditSeason() {
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_SEASON}>
         {hasError ? (
-          <ErrorGraphql error={(error || editError || deleteError || orgError) as Error} />
+          <DataError error={(error || editError || deleteError || orgError) as ApolloError} />
         ) : (
           renderContent()
         )}

@@ -6,6 +6,7 @@ export * from './tabs';
 export * from './auth';
 export * from './position';
 export * from './styles';
+export * from './rounds';
 
 import packageJSON from '../../package.json';
 

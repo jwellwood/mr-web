@@ -12,6 +12,7 @@ export const FETCH_HALL_OF_FAME: TypedDocumentNode<{
       nationality
       yearJoined
       position
+      description
       image {
         public_id
         url

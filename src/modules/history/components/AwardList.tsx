@@ -5,9 +5,12 @@ import { CustomTypography } from '../../../components/typography';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 
-type Props = { awards: IAward[] };
+interface Props {
+  awards?: IAward[];
+  loading: boolean;
+}
 
-export default function AwardList({ awards }: Props) {
+export default function AwardList({ awards, loading }: Props) {
   const list: IListItem[] = awards
     ? awards.map(award => {
         return {
@@ -46,5 +49,5 @@ export default function AwardList({ awards }: Props) {
         };
       })
     : [];
-  return <LinksList links={list} />;
+  return <LinksList links={list} loading={loading} />;
 }

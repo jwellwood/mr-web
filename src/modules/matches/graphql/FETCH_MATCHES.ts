@@ -4,8 +4,8 @@ import { IMatchList } from '../types';
 export const FETCH_MATCHES: TypedDocumentNode<{
   matches: IMatchList[];
 }> = gql`
-  query FETCH_MATCHES($limit: Float!, $offset: Float!, $teamId: String!, $seasonId: String!) {
-    matches: matchesBySeason(teamId: $teamId, seasonId: $seasonId, limit: $limit, offset: $offset) {
+  query FETCH_MATCHES($teamId: String!, $seasonId: String!) {
+    matches: FETCH_MATCHES(teamId: $teamId, seasonId: $seasonId) {
       _id
       date
       isHome

@@ -4,3 +4,4 @@ export * from './mapMatch';
 export * from './statsData';
 export * from './statsDataAll';
 export * from './getPoints';
+export * from './getMatchListData';

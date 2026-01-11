@@ -10,7 +10,7 @@ import TrophiesOrderByType from './TrophiesOrderByType';
 import { SectionContainer } from '../../../components';
 
 type Props = {
-  trophies: ITrophyResponse[];
+  trophies?: ITrophyResponse[];
 };
 
 export default function TrophiesOrderBy({ trophies }: Props) {
@@ -32,7 +32,7 @@ export default function TrophiesOrderBy({ trophies }: Props) {
       case 'trophyType':
         return <TrophiesOrderByType trophies={trophies} />;
       default:
-        return <LinksList links={trophies.map(item => getTrophyListItemTeam(item))} />;
+        return <LinksList links={trophies?.map(item => getTrophyListItemTeam(item))} />;
     }
   };
 

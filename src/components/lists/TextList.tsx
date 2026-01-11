@@ -23,14 +23,14 @@ const TextList: React.FC<Props> = ({ data = [], labelSize, loading }) => {
         const valueDisplay =
           typeof value === 'string' || typeof value === 'number' ? (
             loading ? (
-              <CustomSkeleton width="100px" height="20px" />
+              <CustomSkeleton width="50px" height="20px" />
             ) : (
               <CustomTypography color="data" bold size="xs">
                 {value}
               </CustomTypography>
             )
           ) : (
-            <>{loading ? <CustomSkeleton width="100px" height="24px" /> : value}</>
+            <>{loading ? <CustomSkeleton width="50px" height="24px" /> : value}</>
           );
 
         return (
@@ -45,11 +45,15 @@ const TextList: React.FC<Props> = ({ data = [], labelSize, loading }) => {
             {avatar && <ListItemAvatar>{avatar}</ListItemAvatar>}
             {icon && <ListItemIcon>{icon}</ListItemIcon>}
             <ListItemText
-              sx={{ marginTop: 0, marginBottom: 0 }}
+              sx={{ margin: '0px' }}
               primary={
-                <CustomTypography color={secondary ? 'data' : 'label'} size={labelSize}>
-                  {label}
-                </CustomTypography>
+                loading ? (
+                  <CustomSkeleton width="200px" height="24px" margin="0px" />
+                ) : (
+                  <CustomTypography color={secondary ? 'data' : 'label'} size={labelSize}>
+                    {label}
+                  </CustomTypography>
+                )
               }
               secondary={
                 <CustomTypography color={label ? 'label' : 'data'}>{secondary}</CustomTypography>

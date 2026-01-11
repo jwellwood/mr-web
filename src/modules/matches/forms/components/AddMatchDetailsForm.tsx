@@ -7,11 +7,11 @@ import ControlledDateInput from '../../../../components/inputs/ControlledDateInp
 import ControlledSelectInput from '../../../../components/inputs/ControlledSelectInput';
 import { ISelectOptions } from '../../../../components/inputs/SelectInput';
 import { getIntegers } from '../../../../utils/helpers';
-import { cupRoundOptions } from '../../constants';
 import SwitchButtonList from '../../../../components/forms/SwitchButtonList';
 import { ICompetition } from '../../../organization/types';
 import { ITempMatch } from '../../types';
 import { IListItem } from '../../../../components/lists/types';
+import { cupRoundOptions } from '../../../../constants';
 
 interface Props {
   onSubmit: (data: ITempMatch) => void;

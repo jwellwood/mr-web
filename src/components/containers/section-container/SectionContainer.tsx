@@ -8,18 +8,26 @@ interface Props {
   title?: string | ReactNode;
   subtitle?: string | ReactNode;
   children: React.ReactNode;
+  isSpecial?: boolean;
 }
 
-export default function SectionContainer({ title, subtitle, children }: Props) {
+const specialBackground = `linear-gradient(310deg,
+${theme.palette.dark.main} 80%,
+${theme.palette.warning.light} 0%)`;
+export default function SectionContainer({ title, subtitle, children, isSpecial }: Props) {
   const { palette, spacing } = theme;
-  const border = `${palette.secondary.light} 0.5px solid`;
+
+  const border = isSpecial
+    ? 'rgba(234,162,33, 1) 1px solid'
+    : `${palette.secondary.light} 0.5px solid`;
+
   return (
     <Fade in={true} timeout={500}>
       <Paper
         elevation={10}
         sx={{
           margin: spacing(1),
-          background: palette.secondary.dark,
+          background: isSpecial ? specialBackground : palette.secondary.dark,
           border,
         }}
       >

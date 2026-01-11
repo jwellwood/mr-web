@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { ISelectOptions } from '../../../../components/inputs/SelectInput.tsx';
-import { emptySelectOption } from '../../constants';
 import { AppDispatch } from '../../../../store/store.ts';
 import { getTempMatch } from '../../../../store/features/matches/matchesSelector.ts';
 import { setTmpMatch } from '../../../../store/features/matches/matchesSlice.ts';
@@ -10,6 +9,7 @@ import { ICompetition } from '../../../organization/types.ts';
 import { ITeam } from '../../../team/types.ts';
 import AddMatchDetailsForm from '../components/AddMatchDetailsForm.tsx';
 import { ITempMatch } from '../../types.ts';
+import { emptySelectOption } from '../../../../constants/rounds.ts';
 
 interface Props {
   onNextClick: () => void;

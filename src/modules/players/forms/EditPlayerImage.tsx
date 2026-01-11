@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useEffect } from 'react';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 import { AUTH_ROLES } from '../../../constants';
 import ImageForm from '../../../components/forms/ImageForm.tsx';
 import { Spinner } from '../../../components/loaders';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { PAGES } from '../constants';
 import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../graphql';
@@ -11,9 +10,9 @@ import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../graphql';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { removePlayerPhoto, uploadPlayerPhoto } from '../../../services/images/player-images.ts';
 import { useUpload } from '../../../hooks/useUpload.ts';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
-const EditPlayerPhoto: React.FC = () => {
+export default function EditPlayerPhoto() {
   const { teamId, playerId } = useCustomParams();
   const {
     data,
@@ -45,27 +44,29 @@ const EditPlayerPhoto: React.FC = () => {
 
   const loadingState = loading || loadingTeam || editLoading;
 
-  if (error || editError) {
-    return <ErrorGraphql error={(error || editError) as Error} />;
-  }
+  const renderContent = () => {
+    return !loadingState && imageUrl ? (
+      <ImageForm
+        imageUrl={imageUrl}
+        setImageUrl={setImageUrl}
+        currentUrl={data?.player.image.url}
+        onSubmit={onSubmit}
+        removeImage={removeImage}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_PLAYER_PHOTO}>
-        {!loadingState && imageUrl ? (
-          <ImageForm
-            imageUrl={imageUrl}
-            setImageUrl={setImageUrl}
-            currentUrl={data?.player.image.url}
-            onSubmit={onSubmit}
-            removeImage={removeImage}
-          />
+        {error || editError ? (
+          <DataError error={(error || editError) as ApolloError} />
         ) : (
-          <Spinner />
+          renderContent()
         )}
       </PageHeader>
     </RouteGuard>
   );
-};
-
-export default EditPlayerPhoto;
+}

@@ -5,7 +5,7 @@ import { IMatchList } from '../types';
 
 type Props = {
   match: IMatchList;
-  loading: boolean;
+  loading?: boolean;
 };
 
 export default function MatchListLabel({ match, loading }: Props) {

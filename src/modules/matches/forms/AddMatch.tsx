@@ -12,7 +12,6 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { AppDispatch } from '../../../store/store';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector';
 import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
@@ -20,7 +19,7 @@ import { resetTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 import MatchFormStepper from './components/MatchFormStepper.tsx';
 import { IPlayerInMatch, ITempMatch } from '../types.ts';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
 export default function AddMatch() {
   const { teamId } = useCustomParams();
@@ -101,7 +100,7 @@ export default function AddMatch() {
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_MATCH}>
-        {error ? <ErrorGraphql error={error} /> : renderContent()}
+        {error ? <DataError error={error} /> : renderContent()}
       </PageHeader>
     </RouteGuard>
   );

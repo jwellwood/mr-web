@@ -1,10 +1,9 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import { ApolloError, useMutation } from '@apollo/client';
 
 import { ADD_AWARD, FETCH_AWARDS } from '../graphql';
-
 import { PAGES } from '../constants';
 import { IAward } from '../types';
 import { useCustomParams } from '../../../hooks/useCustomParams';
@@ -12,13 +11,12 @@ import { AppDispatch } from '../../../store/store';
 import { useMatchPlayersInput } from '../../matches/hooks/useMatchPlayersInput';
 import { ISelectOptions } from '../../../components/inputs/SelectInput';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import AwardForm from './components/AwardForm.tsx';
 import { initialAwardState } from './state.ts';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
 export default function AddAward() {
   const { teamId, seasonId } = useCustomParams();
@@ -79,7 +77,7 @@ export default function AddAward() {
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_AWARD}>
         {error || playersError ? (
-          <ErrorGraphql error={(error || playersError) as Error} />
+          <DataError error={(error || playersError) as ApolloError} />
         ) : (
           renderContent()
         )}

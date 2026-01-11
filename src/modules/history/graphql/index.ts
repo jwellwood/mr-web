@@ -13,6 +13,5 @@ export * from './FETCH_HALL_OF_FAME';
 export * from './FETCH_SEASON';
 export * from './FETCH_SEASONS_POSITION';
 export * from './FETCH_SEASONS';
-export * from './FETCH_TROPHIES_TOTALS';
 export * from './FETCH_TROPHIES';
 export * from './FETCH_TROPHY';

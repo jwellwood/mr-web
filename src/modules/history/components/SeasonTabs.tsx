@@ -7,7 +7,7 @@ import { ITeamSeason } from '../types/index';
 
 const Matches = lazy(() => import('../../matches/containers/Matches.tsx'));
 const Squad = lazy(() => import('../../squad/containers/Squad.tsx'));
-const MatchStats = lazy(() => import('../../matches/containers/MatchStats.tsx'));
+const MatchStatsSeason = lazy(() => import('../../matches/containers/MatchStatsSeason.tsx'));
 const Awards = lazy(() => import('../containers/Awards.tsx'));
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
 
 export default function SeasonTabs({ season }: Props) {
   const tabs: ITab[] = [
-    { label: 'Stats', component: <MatchStats /> },
+    { label: 'Stats', component: <MatchStatsSeason /> },
     { label: 'Matches', component: <Matches /> },
     { label: 'Squad', component: <Squad /> },
     { label: 'Awards', component: <Awards /> },

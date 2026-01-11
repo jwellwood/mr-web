@@ -5,7 +5,7 @@ export const FETCH_USER: TypedDocumentNode<{
   user: IUser;
 }> = gql`
   query FETCH_USER {
-    user {
+    user: FETCH_USER {
       _id
       isVerified
       username

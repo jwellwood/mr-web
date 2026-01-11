@@ -2,19 +2,19 @@ export const columns = [
   {
     id: 'rank',
     numeric: false,
-    label: '#',
+    label: <></>,
     width: 30,
   },
   {
     id: 'names',
     numeric: false,
-    label: '',
+    label: <></>,
     border: true,
   },
   {
     id: 'value',
     numeric: true,
-    label: '',
+    label: <></>,
     width: 40,
   },
 ] as const;

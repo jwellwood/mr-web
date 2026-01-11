@@ -9,7 +9,7 @@ import SquadView from '../views/SquadView';
 
 export default function Squad() {
   const { teamId } = useCustomParams();
-  const { seasonId, loading } = useSeasons();
+  const { seasonId, loading, seasonReady } = useSeasons();
 
   const {
     loading: statsLoading,
@@ -22,7 +22,12 @@ export default function Squad() {
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <SquadView data={data} loading={loading || statsLoading} error={error} />
+      <SquadView
+        data={data}
+        loading={loading || statsLoading}
+        error={error}
+        seasonReady={seasonReady}
+      />
     </RouteGuard>
   );
 }

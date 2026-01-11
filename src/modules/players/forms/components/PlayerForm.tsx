@@ -135,6 +135,15 @@ export default function PlayerForm({
         <GridItem size={12}>
           <SwitchButtonList control={control} data={switchList} />
         </GridItem>
+        <GridItem size={12}>
+          <ControlledTextInput
+            control={control}
+            name="description"
+            rules={{ maxLength: 200 }}
+            label="Description"
+            errors={errors.description ? [errors.description] : []}
+          />
+        </GridItem>
       </CenteredGrid>
     </FormContainer>
   );

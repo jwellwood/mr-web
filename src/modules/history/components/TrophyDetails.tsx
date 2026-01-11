@@ -1,18 +1,17 @@
 import { SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import AppIcon from '../../../components/icons/AppIcon';
+import { Spinner } from '../../../components/loaders';
 import { CustomTypography } from '../../../components/typography';
 import { ITrophyResponse } from '../types';
 
 type Props = {
   trophy?: ITrophyResponse;
+  loading: boolean;
 };
 
-export default function TrophyDetails({ trophy }: Props) {
-  if (!trophy) {
-    return null;
-  }
-  const { name, isFinal, isWinner, season, opponent, comment } = trophy;
+export default function TrophyDetails({ trophy, loading }: Props) {
+  const { name, isFinal, isWinner, season, opponent, comment } = trophy || {};
 
   const iconToDisplay = () => {
     if (isWinner) {
@@ -21,8 +20,12 @@ export default function TrophyDetails({ trophy }: Props) {
     return <AppIcon size="3rem" icon="medal" color="silver" />;
   };
 
+  if (loading) {
+    return <Spinner />;
+  }
+
   return (
-    <SectionContainer>
+    <SectionContainer isSpecial>
       <CenteredGrid>
         <GridItem>{iconToDisplay()}</GridItem>
         <GridItem>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { FETCH_TROPHY, EDIT_TROPHY, DELETE_TROPHY, FETCH_TROPHIES } from '../graphql';
 
@@ -11,12 +11,11 @@ import { AppDispatch } from '../../../store/store.ts';
 import { useSeasons } from '../../../hooks/useSeasons.ts';
 import { ITrophy } from '../types';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import TrophyForm from './components/TrophyForm.tsx';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
 export default function EditTrophy() {
   const { teamId, trophyId } = useCustomParams();
@@ -100,7 +99,7 @@ export default function EditTrophy() {
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_TROPHY}>
         {hasError ? (
-          <ErrorGraphql error={(error || editError || deleteError) as Error} />
+          <DataError error={(error || editError || deleteError) as ApolloError} />
         ) : (
           renderContent()
         )}

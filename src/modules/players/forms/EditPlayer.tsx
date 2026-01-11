@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
@@ -13,15 +13,13 @@ import { AppDispatch } from '../../../store/store';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 import { IPlayer, ISeasonID } from '../types.ts';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
-const EditPlayer: React.FC = () => {
+export default function EditPlayer() {
   const { teamId, playerId } = useCustomParams();
-
   const { seasonOptions, loading: seasonLoading } = useSeasons();
 
   const navigate = useNavigate();
@@ -71,25 +69,28 @@ const EditPlayer: React.FC = () => {
     }
   };
 
-  if (error || updateError) {
-    return <ErrorGraphql error={(error || updateError) as ApolloError} />;
-  }
+  const renderContent = () => {
+    return !loading && !seasonLoading && !updateLoading && defaultValues ? (
+      <PlayerForm
+        defaultValues={defaultValues}
+        onSubmit={onSubmit}
+        countryOptions={nationalityOptions}
+        seasonOptions={seasonOptions}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
+
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_PLAYER}>
-        {!loading && !seasonLoading && !updateLoading && defaultValues ? (
-          <PlayerForm
-            defaultValues={defaultValues}
-            onSubmit={onSubmit}
-            countryOptions={nationalityOptions}
-            seasonOptions={seasonOptions}
-          />
+        {error || updateError ? (
+          <DataError error={(error || updateError) as ApolloError} />
         ) : (
-          <Spinner />
+          renderContent()
         )}
       </PageHeader>
     </RouteGuard>
   );
-};
-
-export default EditPlayer;
+}

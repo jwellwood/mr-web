@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
@@ -9,13 +8,12 @@ import { PAGES } from '../constants';
 import DeletePlayerForm from './components/DeletePlayerForm';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
-const DeletePlayer: React.FC = () => {
+export default function DeletePlayer() {
   const { teamId, playerId } = useCustomParams();
   const { data, loading, error } = useQuery(FETCH_PLAYER, {
     variables: { playerId: playerId },
@@ -42,23 +40,23 @@ const DeletePlayer: React.FC = () => {
       });
   };
 
-  if (error) return <ErrorGraphql error={error} />;
+  const renderContent = () => {
+    return !loading && !deleteLoading ? (
+      <DeletePlayerForm
+        onSubmit={onDelete}
+        defaultValues={{}}
+        playerName={data?.player?.name || ''}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.DELETE_PLAYER}>
-        {!loading && !deleteLoading ? (
-          <DeletePlayerForm
-            onSubmit={onDelete}
-            defaultValues={{}}
-            playerName={data?.player?.name || ''}
-          />
-        ) : (
-          <Spinner />
-        )}
+        {error ? <DataError error={error} /> : renderContent()}
       </PageHeader>
     </RouteGuard>
   );
-};
-
-export default DeletePlayer;
+}

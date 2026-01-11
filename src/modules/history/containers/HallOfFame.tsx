@@ -1,16 +1,8 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_HALL_OF_FAME } from '../graphql';
-
-import { PositionCell, SectionContainer } from '../../../components';
-import FlagIcon from '../../../components/icons/FlagIcon';
-import LinksList from '../../../components/lists/links-list/LinksList';
-import { Spinner } from '../../../components/loaders';
-import { CustomTypography } from '../../../components/typography';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
-import { IListItem } from '../../../components/lists/types';
-import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
+import HallOfFameView from '../views/HallOfFameView';
 
 export default function HallOfFame() {
   const { teamId } = useCustomParams();
@@ -19,46 +11,5 @@ export default function HallOfFame() {
     variables: { teamId },
   });
 
-  const links: IListItem[] =
-    data?.players.map(player => {
-      return {
-        avatar: <ImageAvatar size="40px" imageUrl={player.image.url} loading={loading} />,
-        link: `player/${player._id}`,
-        label: (
-          <CustomTypography color="data" bold size="sm">
-            {player.name}
-          </CustomTypography>
-        ),
-        secondary: (
-          <>
-            <PositionCell>{player.position}</PositionCell> |{' '}
-            <FlagIcon nationality={player.nationality} /> |{' '}
-            <CustomTypography color="label" bold>
-              <CustomTypography size="xs" color="label">
-                #
-              </CustomTypography>
-              {player.squadNumber}
-            </CustomTypography>
-          </>
-        ),
-      };
-    }) || [];
-
-  const renderContent = () => {
-    return !loading ? (
-      <>
-        {!data?.players?.length ? (
-          <CustomTypography color="warning">No hall of fame players yet</CustomTypography>
-        ) : (
-          <SectionContainer>
-            <LinksList links={links} />
-          </SectionContainer>
-        )}
-      </>
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return error ? <ErrorGraphql error={error} /> : renderContent();
+  return <HallOfFameView data={data} loading={loading} error={error} />;
 }

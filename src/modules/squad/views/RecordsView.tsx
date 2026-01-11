@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
 
 import { IRecords } from '../types';
-import NoDataText from '../../../components/errors/error-text/ErrorText';
-import { DataError, SectionContainer } from '../../../components';
+import { DataError, SectionContainer, NoDataText } from '../../../components';
 import SquadRecordTable from '../components/squad-record-table/SquadRecordTable';
 import SquadMostGoalsInMatch from '../containers/SquadMostGoalsInMatch';
 import SquadMostAssistsInMatch from '../containers/SquadMostAssistsInMatch';
@@ -34,10 +33,10 @@ export default function RecordsView({ data, loading, error }: Props) {
               </SectionContainer>
             );
           })}
+          <SquadMostGoalsInMatch />
+          <SquadMostAssistsInMatch />
         </>
       )}
-      <SquadMostGoalsInMatch />
-      <SquadMostAssistsInMatch />
     </>
   );
 

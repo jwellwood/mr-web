@@ -1,9 +1,13 @@
 import { ApolloError } from '@apollo/client';
-import { DataError, NoDataText, SectionContainer } from '../../../components';
+import {
+  DataError,
+  NoDataText,
+  SectionContainer,
+  MatchStatsTable,
+  MatchAverages,
+} from '../../../components';
 import SelectSeason from '../containers/SelectSeason';
 import { IMatchStats } from '../../matches/types';
-import MatchStatsTable from '../../matches/components/MatchStatsTable';
-import Averages from '../../matches/components/Averages';
 import { mapPlayerMatchStats } from '../helpers/mapPlayerMatchStats';
 import { mapPlayerAverages } from '../helpers';
 import { IPlayerStats } from '../types';
@@ -27,8 +31,9 @@ export default function PlayerSeasonStatsView({ data, playerId, loading, error }
       <>
         <MatchStatsTable
           stats={mapPlayerMatchStats(data?.player, loading) as unknown as IMatchStats}
+          loading={loading}
         />
-        <Averages stats={mapPlayerAverages(data?.player)} loading={loading} />
+        <MatchAverages stats={mapPlayerAverages(data?.player)} loading={loading} />
       </>
     );
   };

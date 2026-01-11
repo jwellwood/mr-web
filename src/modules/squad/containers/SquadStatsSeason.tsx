@@ -6,7 +6,7 @@ import SquadStatsSeasonView from '../views/SquadStatsSeasonView';
 
 export default function SquadStatsSeason() {
   const { teamId } = useCustomParams();
-  const { seasonId, seasonEndDate } = useSeasons();
+  const { seasonId, seasonEndDate, seasonReady } = useSeasons();
 
   const { loading, error, data } = useQuery(FETCH_SQUAD_STATS_SEASON, {
     variables: { teamId, seasonId },
@@ -19,6 +19,7 @@ export default function SquadStatsSeason() {
       loading={loading}
       error={error}
       seasonEndDate={seasonEndDate || undefined}
+      seasonReady={seasonReady}
     />
   );
 }

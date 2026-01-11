@@ -13,6 +13,7 @@ export interface IPlayer {
   isCaptain?: boolean;
   isViceCaptain?: boolean;
   isHallOfFame?: boolean;
+  description?: string;
   seasonIds?: ISeasonID[];
 }
 

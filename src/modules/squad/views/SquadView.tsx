@@ -8,11 +8,12 @@ type Props = {
   error?: ApolloError;
   data?: { players: ISquadListStats[] };
   loading: boolean;
+  seasonReady: boolean;
 };
 
-export default function SquadView({ error, data, loading }: Props) {
+export default function SquadView({ error, data, loading, seasonReady }: Props) {
   const renderData = () => {
-    return !loading && data?.players.length === 0 ? (
+    return (seasonReady && !data && !loading) || (!loading && data?.players.length === 0) ? (
       <NoDataText>No players yet</NoDataText>
     ) : (
       <SquadListTable data={data} loading={loading} />

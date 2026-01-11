@@ -10,11 +10,18 @@ interface Props {
   loading: boolean;
   seasonEndDate?: string;
   data?: { stats: ISquadSeasonStats[] };
+  seasonReady: boolean;
 }
 
-export default function SquadStatsSeasonView({ error, loading, data, seasonEndDate }: Props) {
+export default function SquadStatsSeasonView({
+  error,
+  loading,
+  data,
+  seasonEndDate,
+  seasonReady,
+}: Props) {
   const renderContent = () => {
-    return !loading && data?.stats.length === 0 ? (
+    return (seasonReady && !data && !loading) || (!loading && data?.stats.length === 0) ? (
       <NoDataText>No players yet</NoDataText>
     ) : (
       <>

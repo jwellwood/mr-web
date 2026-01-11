@@ -1,17 +1,17 @@
-import CustomPieChart from '../../../components/charts/CustomPieChart';
-import { DataContainer } from '../../../components/containers';
-import { CenteredGrid, GridItem } from '../../../components/grids';
-import StatSkeleton from '../../../components/loaders/StatSkeleton';
-import { CustomTypography } from '../../../components/typography';
+import CustomPieChart from '../../charts/CustomPieChart';
+import { DataContainer } from '../../containers';
+import { CenteredGrid, GridItem } from '../../grids';
+import StatSkeleton from '../../loaders/StatSkeleton';
+import { CustomTypography } from '../../typography';
 import { getPercentage } from '../../../utils/helpers';
-import { IMatchStats } from '../types';
+import { IMatchStats } from '../../../modules/matches/types';
 
 type Props = {
   stats?: IMatchStats | null;
   loading: boolean;
 };
 
-export default function Averages({ stats, loading }: Props) {
+export default function MatchAverages({ stats, loading }: Props) {
   if (!stats)
     return (
       <CenteredGrid>

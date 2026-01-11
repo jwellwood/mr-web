@@ -1,10 +1,8 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_AWARDS } from '../graphql';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { Spinner } from '../../../components/loaders';
-import AwardList from '../components/AwardList';
+import AwardsView from '../views/AwardsView';
 
 export default function Awards() {
   const { seasonId } = useCustomParams();
@@ -13,9 +11,5 @@ export default function Awards() {
     variables: { seasonId },
   });
 
-  const renderContent = () => {
-    return !loading ? <AwardList awards={data?.awards || []} /> : <Spinner />;
-  };
-
-  return error ? <ErrorGraphql error={error} /> : renderContent();
+  return <AwardsView data={data} loading={loading} error={error} />;
 }

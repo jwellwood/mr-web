@@ -7,7 +7,7 @@ import { AUTH_ROLES, TAuthRoles } from '../constants';
 import { showAlert } from '../store/features/alerts/alertsSlice.ts';
 import { useCustomParams } from '../hooks/useCustomParams.tsx';
 import { AUTH_PATHS } from '../modules/auth/router';
-import { PROFILE_PATHS } from '../modules/profile/router/paths.ts';
+import { PROFILE_PATHS } from '../modules/profile/router';
 
 interface Props {
   children: ReactNode;

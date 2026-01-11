@@ -1,13 +1,8 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import { IMostMatch } from '../types';
+import { IMatchRecords } from '../types';
 
 export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
-  stats: {
-    maxDiff: IMostMatch[];
-    minDiff: IMostMatch[];
-    maxGoals: IMostMatch[];
-    maxConceded: IMostMatch[];
-  };
+  stats: IMatchRecords;
 }> = gql`
   query FETCH_MATCHES_RECORDS($teamId: String!) {
     stats: highLowStats(teamId: $teamId) {

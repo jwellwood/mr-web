@@ -5,9 +5,10 @@ import { POSITIONS } from '../../../constants';
 
 type Props = {
   children: string | number | ReactElement;
+  size?: string;
 };
 
-export default function PositionCell({ children }: Props) {
+export default function PositionCell({ children, size = 'xs' }: Props) {
   let color = 'data';
   switch (children) {
     case 4:
@@ -30,7 +31,7 @@ export default function PositionCell({ children }: Props) {
       break;
   }
   return (
-    <CustomTypography bold size="xs" color={color}>
+    <CustomTypography bold size={size} color={color}>
       {typeof children === 'string' && (children as keyof typeof POSITIONS) in POSITIONS
         ? POSITIONS[children as keyof typeof POSITIONS]
         : children}

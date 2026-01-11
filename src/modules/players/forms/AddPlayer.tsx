@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
@@ -12,16 +12,15 @@ import { AppDispatch } from '../../../store/store';
 import { useNationality } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { mapPlayerForm } from '../helpers/mapPlayerForm.ts';
 import { initialPlayerState } from './state.ts';
 import { IPlayer } from '../types.ts';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
-const AddPlayer: React.FC = () => {
+export default function AddPlayer() {
   const { teamId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
@@ -49,24 +48,24 @@ const AddPlayer: React.FC = () => {
     }
   };
 
-  if (error) return <ErrorGraphql error={error} />;
+  const renderContent = () => {
+    return !loading && !addLoading && defaultValues ? (
+      <PlayerForm
+        defaultValues={defaultValues}
+        onSubmit={onSubmit}
+        countryOptions={nationalityOptions}
+        seasonOptions={seasonOptions}
+      />
+    ) : (
+      <Spinner />
+    );
+  };
 
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_PLAYER}>
-        {!loading && !addLoading && defaultValues ? (
-          <PlayerForm
-            defaultValues={defaultValues}
-            onSubmit={onSubmit}
-            countryOptions={nationalityOptions}
-            seasonOptions={seasonOptions}
-          />
-        ) : (
-          <Spinner />
-        )}
+        {error ? <DataError error={error} /> : renderContent()}
       </PageHeader>
     </RouteGuard>
   );
-};
-
-export default AddPlayer;
+}

@@ -1,12 +1,11 @@
 import { SectionContainer } from '../../../components';
-import { CustomTypography } from '../../../components/typography';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import { ITrophyResponse } from '../types';
 import { IListItem } from '../../../components/lists/types';
 
 type Props = {
-  trophies: ITrophyResponse[];
+  trophies?: ITrophyResponse[];
 };
 
 export default function TrophiesOrderByType({ trophies }: Props) {
@@ -18,16 +17,10 @@ export default function TrophiesOrderByType({ trophies }: Props) {
     .map(trophy => getTrophyListItemTeam(trophy));
   return (
     <>
-      <SectionContainer>
-        <CustomTypography color="label" bold size="xs">
-          Winner
-        </CustomTypography>
+      <SectionContainer subtitle="Winner">
         <LinksList links={winner} />
       </SectionContainer>
-      <SectionContainer>
-        <CustomTypography color="label" bold size="xs">
-          Runner up
-        </CustomTypography>
+      <SectionContainer subtitle="Runner up">
         <LinksList links={runnerUp} />
       </SectionContainer>
     </>

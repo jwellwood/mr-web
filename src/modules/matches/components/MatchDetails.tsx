@@ -10,15 +10,20 @@ import { IMatchResponse } from '../types';
 import { IListItem } from '../../../components/lists/types';
 import { ImageAvatar, ModuleHeaderContainer } from '../../../components';
 import ScoreBox from './ScoreBox';
+import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 
 type Props = {
-  match: IMatchResponse;
+  match?: IMatchResponse;
+  loading: boolean;
 };
 
-export default function MatchDetails({ match }: Props) {
-  const { date, teamId, teamGoals, opponentId, opponentGoals, isHome, competitionId } = match;
+export default function MatchDetails({ match, loading }: Props) {
+  const { date, teamId, teamGoals, opponentId, opponentGoals, isHome, competitionId } = match || {
+    teamGoals: 0,
+    opponentGoals: 0,
+  };
   const matchDate = parseDate(date);
-  const team = (teamId as ITeam).teamName;
+  const team = (teamId as ITeam)?.teamName;
   const teamBadge = (teamId as ITeam)?.teamBadge?.url || 'default';
   const opponent = (opponentId as ITeam)?.teamName;
   const oppBadge = (opponentId as ITeam)?.teamBadge?.url || 'default';
@@ -35,7 +40,15 @@ export default function MatchDetails({ match }: Props) {
 
   const scoreData: IListItem[] = [
     {
-      avatar: <ImageAvatar imageUrl={homeTeam.badge} fallbackIcon={IMAGE_TYPE.TEAM} />,
+      avatar: (
+        <ImageAvatar
+          size="50px"
+          iconSize="30px"
+          imageUrl={homeTeam.badge}
+          fallbackIcon={IMAGE_TYPE.TEAM}
+          loading={loading}
+        />
+      ),
       label: (
         <CustomTypography size="lg" bold color="data">
           {homeTeam.name}
@@ -44,7 +57,15 @@ export default function MatchDetails({ match }: Props) {
       value: <ScoreBox points={getPoints(teamGoals, opponentGoals)} goals={homeTeam.score} />,
     },
     {
-      avatar: <ImageAvatar imageUrl={awayTeam.badge} fallbackIcon={IMAGE_TYPE.TEAM} />,
+      avatar: (
+        <ImageAvatar
+          size="50px"
+          iconSize="30px"
+          imageUrl={awayTeam.badge}
+          fallbackIcon={IMAGE_TYPE.TEAM}
+          loading={loading}
+        />
+      ),
       label: (
         <CustomTypography size="lg" bold color="data">
           {awayTeam.name}
@@ -58,12 +79,14 @@ export default function MatchDetails({ match }: Props) {
     <ModuleHeaderContainer>
       <CenteredGrid>
         <CustomTypography size="xs" color="label">
-          {matchDate}
+          {loading ? <CustomSkeleton width="40px" /> : matchDate}
         </CustomTypography>
-        <CustomTypography color="label">{(competitionId as ICompetition)?.name}</CustomTypography>
+        <CustomTypography color="label">
+          {loading ? <CustomSkeleton width="70px" /> : (competitionId as ICompetition)?.name}
+        </CustomTypography>
       </CenteredGrid>
       <div style={{ marginLeft: 16 }}>
-        <TextList data={scoreData} />
+        <TextList data={scoreData} loading={loading} />
       </div>
     </ModuleHeaderContainer>
   );

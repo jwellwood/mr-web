@@ -11,7 +11,7 @@ export const columns = [
   },
   {
     id: 'goals',
-    label: 'Goals',
+    label: 'Gs',
     width: 40,
   },
   {
@@ -23,7 +23,7 @@ export const columns = [
   {
     id: 'mvp',
     label: 'Mvp',
-    width: 50,
+    width: 40,
   },
 
   {

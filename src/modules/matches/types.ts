@@ -42,6 +42,13 @@ export interface IMostMatch {
   isHome: boolean;
 }
 
+export interface IMatchRecords {
+  maxDiff: IMostMatch[];
+  minDiff: IMostMatch[];
+  maxGoals: IMostMatch[];
+  maxConceded: IMostMatch[];
+}
+
 export type IMatchList = {
   _id: string;
   date: string;

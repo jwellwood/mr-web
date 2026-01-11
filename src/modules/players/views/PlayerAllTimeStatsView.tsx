@@ -1,9 +1,7 @@
 import { ApolloError } from '@apollo/client';
 
-import { DataError, SectionContainer } from '../../../components';
+import { DataError, SectionContainer, MatchStatsTable, MatchAverages } from '../../../components';
 import { IMatchStats } from '../../matches/types';
-import MatchStatsTable from '../../matches/components/MatchStatsTable';
-import Averages from '../../matches/components/Averages';
 import { mapPlayerMatchStats } from '../helpers/mapPlayerMatchStats';
 import { mapPlayerAverages } from '../helpers';
 import { IPlayerStats } from '../types';
@@ -25,8 +23,9 @@ export default function PlayerAllTimeStatsView({ data, loading, error }: Props) 
       <SectionContainer>
         <MatchStatsTable
           stats={mapPlayerMatchStats(data?.player, loading) as unknown as IMatchStats}
+          loading={loading}
         />
-        <Averages stats={mapPlayerAverages(data?.player)} loading={loading} />
+        <MatchAverages stats={mapPlayerAverages(data?.player)} loading={loading} />
       </SectionContainer>
 
       <SectionContainer title="Stats">

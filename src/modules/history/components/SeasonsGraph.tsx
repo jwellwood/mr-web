@@ -65,6 +65,7 @@ export default function SeasonsGraph({ data }: Props) {
       ),
       avatar: (
         <CustomAvatar
+          size="40px"
           border={getIconColor(position)}
           shadow={position < 4 ? getIconColor(position) : ''}
         >
@@ -76,7 +77,7 @@ export default function SeasonsGraph({ data }: Props) {
               </CustomTypography>
             </CustomTypography>
           ) : (
-            '?'
+            '-'
           )}
         </CustomAvatar>
       ),
@@ -85,7 +86,7 @@ export default function SeasonsGraph({ data }: Props) {
           {division || '-'}
         </CustomTypography>
       ),
-      value: position && <ProgressBar max={item.totalFinalPositions || 10} value={position} />,
+      value: position ? <ProgressBar max={item.totalFinalPositions || 10} value={position} /> : '-',
       link: `/org/${orgId}/team/${teamId}/season/${item.seasonId}`,
     };
   });

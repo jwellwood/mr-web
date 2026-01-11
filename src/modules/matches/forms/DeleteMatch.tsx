@@ -7,14 +7,13 @@ import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
 import { PAGES } from '../constants';
 import { useSeasons } from '../../../hooks/useSeasons.ts';
 import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
 import { CustomTypography } from '../../../components/typography';
 import { DeleteModal } from '../../../components/modals';
 import { Spinner } from '../../../components/loaders';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
 export default function DeleteMatch() {
   const { seasonId } = useSeasons();
@@ -76,7 +75,7 @@ export default function DeleteMatch() {
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.DELETE_MATCH}>
-        {error ? <ErrorGraphql error={error} /> : renderContent()}
+        {error ? <DataError error={error} /> : renderContent()}
       </PageHeader>
     </RouteGuard>
   );

@@ -10,14 +10,13 @@ import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { useSeasons } from '../../../hooks/useSeasons.ts';
 import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { ITrophy } from '../types';
 import TrophyForm from './components/TrophyForm.tsx';
 import { initialTrophyFormState } from './state.ts';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
 export default function AddTrophy() {
   const { teamId } = useCustomParams();
@@ -58,7 +57,7 @@ export default function AddTrophy() {
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.ADD_TROPHY}>
-        {error?.message ? <ErrorGraphql error={{ message: error.message }} /> : renderContent()}
+        {error?.message ? <DataError error={error} /> : renderContent()}
       </PageHeader>
     </RouteGuard>
   );

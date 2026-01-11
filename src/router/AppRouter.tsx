@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { FETCH_ROLES } from '../modules/auth/graphql';
 import { useAuth } from '../hooks';
 import { resetAuth, setAuth } from '../store/features/auth/authSlice.ts';
 import { BackgroundContainer } from '../components/containers';
 import CustomAlert from '../components/alerts/custom-alert/CustomAlert.tsx';
+import { ErrorBoundary } from '../components/index.ts';
+import { FETCH_ROLES } from '../modules/auth/graphql/FETCH_ROLES.ts';
 
-const AppRoutes = lazy(() => import('./routes/Routes.tsx'));
+const AppRoutes = lazy(() => import('./routes/Routes'));
 
 function AppRouter() {
   const dispatch = useDispatch();
@@ -33,10 +34,12 @@ function AppRouter() {
 
   return (
     <BrowserRouter>
-      <BackgroundContainer>
-        {isAuth !== null && !loading && <AppRoutes />}
-        <CustomAlert />
-      </BackgroundContainer>
+      <ErrorBoundary>
+        <BackgroundContainer>
+          {isAuth !== null && !loading && <AppRoutes />}
+          <CustomAlert />
+        </BackgroundContainer>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

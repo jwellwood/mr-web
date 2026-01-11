@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
@@ -14,14 +14,13 @@ import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 import { AppDispatch } from '../../../store/store.ts';
 import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
 import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
 import RouteGuard from '../../../router/RouteGuard.tsx';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
 import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
 import { IPlayerInMatch, ITempMatch } from '../types.ts';
-import { PageHeader } from '../../../components';
+import { DataError, PageHeader } from '../../../components';
 
 export default function EditMatch() {
   const { teamId, matchId } = useCustomParams();
@@ -113,14 +112,12 @@ export default function EditMatch() {
     );
   };
 
+  const hasError = error || editError;
+
   return (
     <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
       <PageHeader title={PAGES.EDIT_MATCH}>
-        {error || editError ? (
-          <ErrorGraphql error={(error || editError) as Error} />
-        ) : (
-          renderContent()
-        )}
+        {hasError ? <DataError error={error || (editError as ApolloError)} /> : renderContent()}
       </PageHeader>
     </RouteGuard>
   );

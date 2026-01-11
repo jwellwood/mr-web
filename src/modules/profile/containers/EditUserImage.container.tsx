@@ -1,15 +1,13 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_PROFILE_IMAGE, FETCH_USER } from '../graphql';
-
 import { AUTH_ROLES } from '../../../constants';
 import ImageForm from '../../../components/forms/ImageForm';
 import { Spinner } from '../../../components/loaders';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { PAGES } from '../constants';
 import { removeUserImage, uploadUserImage } from '../../../services/images';
 import { useUpload } from '../../../hooks';
-import { PageContainer } from '../../../components';
+import { DataError, PageContainer } from '../../../components';
 
 export default function EditUserImage() {
   const { data, error, loading: loadingUser, refetch } = useQuery(FETCH_USER);
@@ -42,7 +40,7 @@ export default function EditUserImage() {
   return (
     <PageContainer auth={AUTH_ROLES.USER} title={PAGES.EDIT_USER_IMAGE_PAGE}>
       {error || editError ? (
-        <ErrorGraphql error={(error || editError) as Error} />
+        <DataError error={(error || editError) as ApolloError} />
       ) : (
         renderContent()
       )}
