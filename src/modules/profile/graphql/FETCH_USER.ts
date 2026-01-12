@@ -11,6 +11,8 @@ export const FETCH_USER: TypedDocumentNode<{
       username
       email
       roles
+      teamIds
+      orgIds
       createdAt
       updatedAt
       image {

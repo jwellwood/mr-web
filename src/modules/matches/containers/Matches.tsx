@@ -7,12 +7,20 @@ import MatchesView from '../views/MatchesView.tsx';
 
 export default function Matches() {
   const { teamId } = useCustomParams();
-  const { seasonId, seasonReady } = useSeasons();
+  const { seasonId, seasonReady, loading: loadingSeasons } = useSeasons();
 
   const { data, error, loading } = useQuery(FETCH_MATCHES, {
     variables: { teamId, seasonId },
+    notifyOnNetworkStatusChange: true,
     skip: !seasonId,
   });
 
-  return <MatchesView data={data} loading={loading} error={error} seasonReady={seasonReady} />;
+  return (
+    <MatchesView
+      data={data}
+      loading={loading || loadingSeasons}
+      error={error}
+      seasonReady={seasonReady}
+    />
+  );
 }

@@ -5,7 +5,7 @@ export const FETCH_MATCH: TypedDocumentNode<{
   match: IMatchResponse;
 }> = gql`
   query FETCH_MATCH($matchId: String!) {
-    match: matchById(matchId: $matchId) {
+    match: FETCH_MATCH(matchId: $matchId) {
       _id
       date
       isHome

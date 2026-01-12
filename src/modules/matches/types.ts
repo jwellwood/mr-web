@@ -43,10 +43,10 @@ export interface IMostMatch {
 }
 
 export interface IMatchRecords {
-  maxDiff: IMostMatch[];
-  minDiff: IMostMatch[];
-  maxGoals: IMostMatch[];
-  maxConceded: IMostMatch[];
+  maxDiff: IMatchList[];
+  minDiff: IMatchList[];
+  maxGoals: IMatchList[];
+  maxConceded: IMatchList[];
 }
 
 export type IMatchList = {

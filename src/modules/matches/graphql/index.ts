@@ -7,4 +7,4 @@ export * from './FETCH_MATCHES_STATS';
 export * from './FETCH_MATCHES_ALL_TIME_STATS';
 export * from './FETCH_MATCHES_BY_OPPONENT';
 export * from './FETCH_MATCHES_RECORDS';
-export * from './FETCH_OPPONENTS';
+export * from './FETCH_MATCH_OPPONENTS';

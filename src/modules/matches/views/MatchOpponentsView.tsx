@@ -3,7 +3,7 @@ import { ApolloError } from '@apollo/client';
 
 import { CustomSwitch } from '../../../components/inputs';
 import { IOpponentTable } from '../types';
-import { DataError, NoDataText } from '../../../components';
+import { DataError, NoDataText, SectionContainer } from '../../../components';
 import MatchOpponentsTable from '../components/match-opponents-table/MatchOpponentsTable';
 
 interface Props {
@@ -16,12 +16,11 @@ interface Props {
 export default function MatchOpponentsView({ data, loading, error, seasonReady }: Props) {
   const [showAllTeams, setShowAllTeams] = useState(false);
 
-  const stats = data?.stats || ([] as IOpponentTable[]);
   const filteredStats = () => {
     if (showAllTeams) {
-      return stats;
+      return data?.stats;
     }
-    return (stats as IOpponentTable[]).filter(team => team.isActive);
+    return (data?.stats as IOpponentTable[])?.filter(team => team.isActive);
   };
 
   const toggleSwitch = () => {
@@ -29,7 +28,7 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
   };
 
   const renderContent = () => {
-    return (seasonReady && !data) || (data?.stats && data?.stats.length === 0) ? (
+    return seasonReady && data?.stats && data?.stats.length === 0 ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
       <>
@@ -45,5 +44,7 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
     );
   };
 
-  return error ? <DataError error={error} /> : renderContent();
+  return (
+    <SectionContainer>{error ? <DataError error={error} /> : renderContent()}</SectionContainer>
+  );
 }

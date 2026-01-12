@@ -5,14 +5,14 @@ export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
   stats: IMatchRecords;
 }> = gql`
   query FETCH_MATCHES_RECORDS($teamId: String!) {
-    stats: highLowStats(teamId: $teamId) {
+    stats: FETCH_MATCHES_RECORDS(teamId: $teamId) {
       maxDiff {
         _id
         teamGoals
         opponentGoals
         date
         isHome
-        opponent
+        opponentName
       }
       minDiff {
         _id
@@ -20,7 +20,7 @@ export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
         opponentGoals
         date
         isHome
-        opponent
+        opponentName
       }
       maxGoals {
         _id
@@ -28,7 +28,7 @@ export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
         opponentGoals
         date
         isHome
-        opponent
+        opponentName
       }
       maxConceded {
         _id
@@ -36,7 +36,7 @@ export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
         opponentGoals
         date
         isHome
-        opponent
+        opponentName
       }
     }
   }

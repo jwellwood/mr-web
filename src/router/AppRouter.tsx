@@ -8,13 +8,13 @@ import { resetAuth, setAuth } from '../store/features/auth/authSlice.ts';
 import { BackgroundContainer } from '../components/containers';
 import CustomAlert from '../components/alerts/custom-alert/CustomAlert.tsx';
 import { ErrorBoundary } from '../components/index.ts';
-import { FETCH_ROLES } from '../modules/auth/graphql/FETCH_ROLES.ts';
+import { FETCH_USER } from '../modules/profile/graphql/FETCH_USER.ts';
 
 const AppRoutes = lazy(() => import('./routes/Routes'));
 
 function AppRouter() {
   const dispatch = useDispatch();
-  const { data, loading } = useQuery(FETCH_ROLES);
+  const { data, loading } = useQuery(FETCH_USER);
   const { isAuth } = useAuth();
 
   useEffect(() => {

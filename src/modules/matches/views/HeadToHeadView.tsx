@@ -2,14 +2,12 @@ import { ApolloError } from '@apollo/client';
 
 import {
   DataError,
-  LinksList,
+  MatchList,
   MatchStatsTable,
   NoDataText,
   SectionContainer,
 } from '../../../components';
 import { IMatchList, IMatchStats } from '../types.ts';
-import { getMatchListData } from '../helpers/getMatchListData.tsx';
-import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
 
 interface Props {
   data?: { matches: IMatchList[] };
@@ -18,7 +16,6 @@ interface Props {
 }
 
 export default function HeadToHeadView({ data, loading, error }: Props) {
-  const { orgId, teamId, matchId } = useCustomParams();
   const mapMatchStats = () => {
     if (data?.matches) {
       const { matches } = data;
@@ -41,23 +38,13 @@ export default function HeadToHeadView({ data, loading, error }: Props) {
     }
   };
 
-  const matchListData = getMatchListData({
-    data: data?.matches || [],
-    loading,
-    orgId: orgId!,
-    teamId: teamId!,
-    showBadge: false,
-    matchId,
-  });
-
   const renderContent = () => {
     return data?.matches && data.matches.length === 0 ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
       <>
         <MatchStatsTable stats={mapMatchStats() as IMatchStats} loading={loading} />
-
-        <LinksList links={matchListData} loading={loading} rows={15} />
+        <MatchList matches={data?.matches} loading={loading} showBadge={false} />
       </>
     );
   };

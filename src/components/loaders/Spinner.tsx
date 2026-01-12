@@ -26,7 +26,7 @@ interface Props {
 const Spinner: React.FC<Props> = () => {
   return (
     <Circle className={classes.circle}>
-      <CircularProgress color="secondary" />
+      <CircularProgress color="primary" />
     </Circle>
   );
 };

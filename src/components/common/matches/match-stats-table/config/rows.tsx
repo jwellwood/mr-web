@@ -1,5 +1,5 @@
-import { IMatchStats } from '../../../../modules/matches/types';
-import StatSkeleton from '../../../loaders/StatSkeleton';
+import { IMatchStats } from '../../../../../modules/matches/types';
+import StatSkeleton from '../../../../loaders/StatSkeleton';
 
 export const rows = (stats?: IMatchStats, loading?: boolean) => {
   return [

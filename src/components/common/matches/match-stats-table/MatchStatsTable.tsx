@@ -1,5 +1,6 @@
-import CustomTable from '../../tables/CustomTable';
-import { IMatchStats } from '../../../modules/matches/types';
+import { IMatchStats } from '../../../../modules/matches/types';
+import CustomTable from '../../../tables/CustomTable';
+
 import { columns, styles, rows } from './config';
 
 interface Props {

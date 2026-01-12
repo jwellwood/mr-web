@@ -20,7 +20,9 @@ export default function BackgroundContainer({ children }: Props) {
         padding: '2px',
       }}
     >
-      <Container maxWidth="md">{children}</Container>
+      <Container maxWidth="md" sx={{ padding: 0 }}>
+        {children}
+      </Container>
     </Container>
   );
 }

@@ -2,7 +2,7 @@ export const columns = [
   {
     id: 'name',
     label: '',
-    width: 130,
+    width: 150,
   },
   {
     id: 'played',

@@ -1,8 +1,8 @@
-import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
-import { CustomTypography } from '../../../components/typography';
-import { getPoints } from '../helpers';
-import { theme } from '../../../theme';
-import { getOpaqueValue } from '../../../utils/colors/getOpaqueValue.ts';
+import CustomSkeleton from '../../../loaders/CustomSkeleton.tsx';
+import { CustomTypography } from '../../../typography/index.ts';
+import { getPoints } from '../../../../modules/matches/helpers/index.ts';
+import { theme } from '../../../../theme/index.ts';
+import { getOpaqueValue } from '../../../../utils/colors/getOpaqueValue.ts';
 
 type Props = {
   teamGoals: number;

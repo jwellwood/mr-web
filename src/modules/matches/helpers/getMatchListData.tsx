@@ -1,7 +1,7 @@
 import { IMAGE_TYPE } from '../../../constants';
 import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
-import MatchListLabel from '../components/MatchListLabel';
-import MatchListScoreBox from '../components/MatchListScoreBox';
+import MatchListLabel from '../../../components/common/matches/match-list/MatchListLabel';
+import MatchListScoreBox from '../../../components/common/matches/match-list/MatchListScoreBox';
 import { IMatchList } from '../types';
 
 interface Args {
@@ -21,7 +21,7 @@ export const getMatchListData = ({
   showBadge,
   matchId,
 }: Args) => {
-  const arr = new Array(5).fill({});
+  const arr = new Array(15).fill({});
   const mappedData =
     loading || data === undefined
       ? arr.map((_item, i) => ({ link: i }) as unknown as IMatchList)

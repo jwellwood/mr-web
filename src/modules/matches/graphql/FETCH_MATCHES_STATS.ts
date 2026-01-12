@@ -5,7 +5,7 @@ export const FETCH_MATCHES_STATS: TypedDocumentNode<{
   stats: IMatchStats;
 }> = gql`
   query FETCH_MATCHES_STATS($teamId: String!, $seasonId: String!) {
-    stats: matchStats(teamId: $teamId, seasonId: $seasonId) {
+    stats: FETCH_MATCHES_STATS(teamId: $teamId, seasonId: $seasonId) {
       total
       wins
       draws

@@ -12,7 +12,7 @@ type Props = {
 
 export default function PlayerOpponentStatsView({ data, loading, error }: Props) {
   return (
-    <SectionContainer>
+    <SectionContainer title="Opponent Statistics">
       {error ? (
         <DataError error={error} />
       ) : (

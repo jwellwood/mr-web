@@ -1,9 +1,7 @@
 import { ApolloError } from '@apollo/client';
 
-import { DataError, LinksList, NoDataText, SectionContainer } from '../../../components';
-import { IMatchRecords } from '../types.ts';
-import { mostMatchListData } from '../helpers/mostMatchListData.tsx';
-import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
+import { DataError, MatchList, NoDataText, SectionContainer } from '../../../components';
+import { IMatchRecords } from '../types';
 
 interface Props {
   data?: { stats: IMatchRecords };
@@ -12,7 +10,6 @@ interface Props {
 }
 
 export default function MatchRecordsView({ data, loading, error }: Props) {
-  const { orgId, teamId } = useCustomParams();
   const { stats } = data || {};
 
   const listData = [
@@ -29,7 +26,7 @@ export default function MatchRecordsView({ data, loading, error }: Props) {
       listData.map(item => {
         return (
           <SectionContainer key={item.title} title={item.title}>
-            <LinksList links={mostMatchListData(item.stat || [], orgId, teamId, loading)} />
+            <MatchList matches={item.stat} loading={loading} showBadge={false} showComp={false} />
           </SectionContainer>
         );
       })

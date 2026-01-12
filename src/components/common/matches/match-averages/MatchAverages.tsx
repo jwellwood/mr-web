@@ -1,10 +1,10 @@
-import CustomPieChart from '../../charts/CustomPieChart';
-import { DataContainer } from '../../containers';
-import { CenteredGrid, GridItem } from '../../grids';
-import StatSkeleton from '../../loaders/StatSkeleton';
-import { CustomTypography } from '../../typography';
-import { getPercentage } from '../../../utils/helpers';
-import { IMatchStats } from '../../../modules/matches/types';
+import CustomPieChart from '../../../charts/CustomPieChart';
+import { DataContainer } from '../../../containers';
+import { CenteredGrid, GridItem } from '../../../grids';
+import StatSkeleton from '../../../loaders/StatSkeleton';
+import { CustomTypography } from '../../../typography';
+import { getPercentage } from '../../../../utils/helpers';
+import { IMatchStats } from '../../../../modules/matches/types';
 
 type Props = {
   stats?: IMatchStats | null;

@@ -7,7 +7,7 @@ import MatchStatsSeasonView from '../views/MatchStatsSeasonView';
 
 export default function MatchStatsSeason() {
   const { teamId } = useCustomParams();
-  const { seasonId, seasonReady } = useSeasons();
+  const { seasonId, seasonReady, loading: seasonLoading } = useSeasons();
 
   const { loading, error, data } = useQuery(FETCH_MATCHES_STATS, {
     skip: !seasonId,
@@ -15,6 +15,11 @@ export default function MatchStatsSeason() {
   });
 
   return (
-    <MatchStatsSeasonView data={data} loading={loading} error={error} seasonReady={seasonReady} />
+    <MatchStatsSeasonView
+      data={data}
+      loading={loading || seasonLoading}
+      error={error}
+      seasonReady={seasonReady}
+    />
   );
 }

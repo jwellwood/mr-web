@@ -18,19 +18,19 @@ interface Props {
 
 export default function MatchStatsSeasonView({ data, loading, error, seasonReady }: Props) {
   const renderContent = () => {
-    return (
-      <SectionContainer title="Current Season">
-        {(seasonReady && !data?.stats) || (data?.stats && !data?.stats?.total) ? (
-          <NoDataText>No matches yet</NoDataText>
-        ) : (
-          <>
-            <MatchStatsTable stats={data?.stats} loading={loading} />
-            <MatchAverages stats={data?.stats} loading={loading} />
-          </>
-        )}
-      </SectionContainer>
+    return seasonReady && data?.stats && !data?.stats?.total ? (
+      <NoDataText>No matches yet</NoDataText>
+    ) : (
+      <>
+        <MatchStatsTable stats={data?.stats} loading={loading} />
+        <MatchAverages stats={data?.stats} loading={loading} />
+      </>
     );
   };
 
-  return error ? <DataError error={error} /> : renderContent();
+  return (
+    <SectionContainer title="Current Season">
+      {error ? <DataError error={error} /> : renderContent()}
+    </SectionContainer>
+  );
 }

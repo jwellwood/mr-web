@@ -1,5 +1,5 @@
-import { BORDER_STYLE } from '../../../../constants';
-import { ICellStyleByIndex } from '../../../../components/tables/types';
+import { BORDER_STYLE } from '../../../../../constants';
+import { ICellStyleByIndex } from '../../../../tables/types';
 
 export const styles: ICellStyleByIndex[] = [
   { index: 0, border: BORDER_STYLE.STANDARD },
