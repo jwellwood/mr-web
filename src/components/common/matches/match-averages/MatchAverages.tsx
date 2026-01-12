@@ -5,6 +5,7 @@ import StatSkeleton from '../../../loaders/StatSkeleton';
 import { CustomTypography } from '../../../typography';
 import { getPercentage } from '../../../../utils/helpers';
 import { IMatchStats } from '../../../../modules/matches/types';
+import CustomSkeleton from '../../../loaders/CustomSkeleton';
 
 type Props = {
   stats?: IMatchStats | null;
@@ -12,13 +13,14 @@ type Props = {
 };
 
 export default function MatchAverages({ stats, loading }: Props) {
-  if (!stats)
-    return (
-      <CenteredGrid>
-        <StatSkeleton />
-      </CenteredGrid>
-    );
-  const { total, wins, draws, defeats, teamAvg, oppAvg } = stats;
+  const { total, wins, draws, defeats, teamAvg, oppAvg } = stats || {
+    total: 0,
+    wins: 0,
+    draws: 0,
+    defeats: 0,
+    teamAvg: 0,
+    oppAvg: 0,
+  };
   const avDiff = teamAvg - oppAvg;
   const percentageData = [
     {
@@ -62,10 +64,14 @@ export default function MatchAverages({ stats, loading }: Props) {
   return (
     <CenteredGrid dir="row">
       <GridItem size={4}>
-        <CustomPieChart
-          data={pieData}
-          colors={['rgb(47, 219, 145)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)']}
-        />
+        {loading ? (
+          <CustomSkeleton variant="circular" height="110px" width="110px" />
+        ) : (
+          <CustomPieChart
+            data={pieData}
+            colors={['rgb(47, 219, 145)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)']}
+          />
+        )}
       </GridItem>
       <GridItem size={8}>
         <DataContainer data={percentageData} loading={loading} />

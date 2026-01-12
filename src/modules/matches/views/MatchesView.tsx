@@ -12,7 +12,8 @@ interface Props {
 
 export default function MatchesView({ data, loading, error, seasonReady }: Props) {
   const renderContent = () =>
-    seasonReady && data?.matches && data?.matches.length === 0 ? (
+    (seasonReady && !loading && !data) ||
+    (seasonReady && data?.matches && data?.matches.length === 0) ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
       <MatchList matches={data?.matches} loading={loading} />

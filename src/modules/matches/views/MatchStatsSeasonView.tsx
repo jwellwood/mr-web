@@ -18,7 +18,8 @@ interface Props {
 
 export default function MatchStatsSeasonView({ data, loading, error, seasonReady }: Props) {
   const renderContent = () => {
-    return seasonReady && data?.stats && !data?.stats?.total ? (
+    return (seasonReady && !loading && !data) ||
+      (seasonReady && data?.stats && !data?.stats?.total) ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
       <>
