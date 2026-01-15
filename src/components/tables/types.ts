@@ -14,4 +14,5 @@ export interface ICellStyleByIndex {
   border?: '0px' | 'standard';
   background?: 'static';
   textColor?: string;
+  textAlign?: 'left' | 'center' | 'right';
 }

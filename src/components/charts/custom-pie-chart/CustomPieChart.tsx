@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box } from '@mui/material';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
-import { theme } from '../../theme';
+import { theme } from '../../../theme';
 
 interface Props {
   data: {

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import { CustomTypography } from '../../../components/typography';
 import SimpleDialog from '../../../components/modals/SimpleDialog';
 import { IListItem } from '../../../components/lists/types';
+import TextList from '../../../components/lists/TextList';
 
 interface Props {
   currentSeason?: string;
@@ -34,6 +35,22 @@ export default function SelectSeasonModal({
     setOpen(false);
   };
 
+  const handleListItemClick = (value: string) => {
+    handleClose(value);
+  };
+
+  const listData: IListItem[] = seasonsList.map(item => {
+    const isCurrentSeason = item.label === currentSeason;
+    return {
+      label: (
+        <CustomTypography size="sm" bold color={isCurrentSeason ? 'primary' : 'data'}>
+          {item.label}
+        </CustomTypography>
+      ),
+      onClick: () => handleListItemClick(String(item.value)),
+    };
+  });
+
   return (
     <div>
       <Button variant="contained" onClick={handleClickOpen}>
@@ -41,12 +58,9 @@ export default function SelectSeasonModal({
           {currentSeason}
         </CustomTypography>
       </Button>
-      <SimpleDialog
-        data={seasonsList}
-        selectedValue={currentSeason}
-        open={open}
-        onClose={(e, reason) => handleClose(e, reason)}
-      />
+      <SimpleDialog open={open} onClose={(e, reason) => handleClose(e, reason)}>
+        <TextList data={listData} />
+      </SimpleDialog>
     </div>
   );
 }

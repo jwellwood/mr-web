@@ -7,51 +7,51 @@ export const columns = [
   {
     id: 'apps',
     label: 'Pl',
-    width: 30,
+    width: 40,
   },
   {
     id: 'goals',
     label: 'Gs',
-    width: 50,
+    width: 40,
   },
   {
     id: 'goalsPerGame',
     label: 'Av',
-    width: 50,
+    width: 40,
   },
   {
     id: 'assists',
     label: 'As',
-    width: 50,
+    width: 40,
   },
   {
     id: 'assistsPerGame',
     label: 'Av',
-    width: 50,
+    width: 40,
   },
   {
     id: 'mvp',
     label: 'Mvp',
-    width: 50,
+    width: 40,
   },
   {
     id: 'mvpPerGame',
     label: 'Av',
-    width: 50,
+    width: 40,
   },
   {
     id: 'conceded',
     label: 'Con',
-    width: 50,
+    width: 40,
   },
   {
     id: 'concededPerGame',
     label: 'Av',
-    width: 50,
+    width: 40,
   },
   {
     id: 'cleanSheets',
     label: 'C/S',
-    width: 50,
+    width: 40,
   },
 ] as const;

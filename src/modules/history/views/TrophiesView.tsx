@@ -20,7 +20,7 @@ export default function TrophiesView({ data, loading, error }: Props) {
   };
 
   const totals = <TrophiesTotals data={totalsData} loading={loading} />;
-  const list = <TrophiesOrderBy trophies={data?.trophies} />;
+  const list = <TrophiesOrderBy trophies={data?.trophies} loading={loading} />;
 
   const renderContent = () => {
     return data?.trophies && data.trophies.length === 0 ? (

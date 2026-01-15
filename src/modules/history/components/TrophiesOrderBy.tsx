@@ -11,9 +11,10 @@ import { SectionContainer } from '../../../components';
 
 type Props = {
   trophies?: ITrophyResponse[];
+  loading: boolean;
 };
 
-export default function TrophiesOrderBy({ trophies }: Props) {
+export default function TrophiesOrderBy({ trophies, loading }: Props) {
   const [order, setOrder] = useState('date');
   const options: ISelectOptions[] = [
     { label: 'Date', value: 'date' },
@@ -32,7 +33,13 @@ export default function TrophiesOrderBy({ trophies }: Props) {
       case 'trophyType':
         return <TrophiesOrderByType trophies={trophies} />;
       default:
-        return <LinksList links={trophies?.map(item => getTrophyListItemTeam(item))} />;
+        return (
+          <LinksList
+            links={trophies?.map(item => getTrophyListItemTeam(item))}
+            loading={loading}
+            rows={15}
+          />
+        );
     }
   };
 

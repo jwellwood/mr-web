@@ -1,10 +1,8 @@
 import { ApolloError } from '@apollo/client';
 
 import { IAward } from '../types';
-import { CustomTypography, DataError, SectionContainer } from '../../../components';
-import { IListItem } from '../../../components/lists/types';
-import { Spinner } from '../../../components/loaders';
-import TextList from '../../../components/lists/TextList';
+import { DataError } from '../../../components';
+import ItemDetails from '../../../components/common/history/item-details/ItemDetails';
 
 type Props = {
   data?: { award: IAward };
@@ -13,30 +11,21 @@ type Props = {
 };
 
 export default function AwardView({ data, loading, error }: Props) {
-  const listData: IListItem[] = data?.award
-    ? [
-        {
-          label: (
-            <CustomTypography color="primary" bold>
-              {data.award?.winners
-                ?.map(winner => (typeof winner === 'string' ? winner : winner.name))
-                .join(', ')}
-            </CustomTypography>
-          ),
-          value: data.award.awardValue || '-',
-        },
-      ]
-    : [];
+  const { winners, comment, awardName, awardValue } = data?.award || {};
 
-  const renderContent = () =>
-    loading ? (
-      <Spinner />
-    ) : (
-      <SectionContainer title={data?.award?.awardName || 'Details'}>
-        <TextList data={listData} />
-        <CustomTypography color="data">{data?.award?.comment || ''}</CustomTypography>
-      </SectionContainer>
-    );
+  const renderContent = () => (
+    <ItemDetails
+      icon="trophy"
+      iconColor="gold"
+      header={awardName || ''}
+      subHeader={
+        winners?.map(winner => (typeof winner === 'string' ? winner : winner.name)).join(', ') || ''
+      }
+      comment={comment}
+      commentValue={awardValue}
+      loading={loading}
+    />
+  );
 
   return error ? <DataError error={error} /> : renderContent();
 }

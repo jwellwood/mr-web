@@ -76,7 +76,7 @@ export default function ByNationality({ players, title, textColor = 'primary' }:
     <PresentationModal
       title="Nationalities"
       buttonElement={
-        <CustomTypography color={textColor} size="xs" bold>
+        <CustomTypography color={textColor} size="sm" bold>
           {title}
         </CustomTypography>
       }

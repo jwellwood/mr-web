@@ -47,7 +47,7 @@ export default function ListItemLink({ data, onClick }: Props) {
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         {avatar ? <ListItemAvatar>{avatar}</ListItemAvatar> : null}
         <ListItemText
-          primary={<CustomTypography color="label">{label}</CustomTypography>}
+          primary={<CustomTypography color="data">{label}</CustomTypography>}
           secondary={secondary}
           slotProps={{ secondary: { component: 'div' } }}
         />

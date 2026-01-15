@@ -5,7 +5,7 @@ export const FETCH_AWARDS: TypedDocumentNode<{
   awards: IAward[];
 }> = gql`
   query FETCH_AWARDS($seasonId: String!) {
-    awards: awardsBySeason(seasonId: $seasonId) {
+    awards: FETCH_AWARDS(seasonId: $seasonId) {
       _id
       awardName
       winners {

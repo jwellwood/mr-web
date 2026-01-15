@@ -49,11 +49,11 @@ const PresentationModal: React.FC<Props> = ({
             </CustomTypography>
           </DialogTitle>
         ) : null}
-        <DialogContent>
+        <DialogContent sx={{ root: { style: { padding: '0px 0px' } } }}>
           <SectionContainer>{children}</SectionContainer>
         </DialogContent>
         <DialogActions>
-          <CustomButton onClick={handleClose} variant="text" color="secondary">
+          <CustomButton onClick={handleClose} variant="text" color="tertiary">
             Back
           </CustomButton>
         </DialogActions>

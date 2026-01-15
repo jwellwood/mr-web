@@ -25,7 +25,7 @@ const TextList: React.FC<Props> = ({ data = [], labelSize, loading }) => {
             loading ? (
               <CustomSkeleton width="50px" height="20px" />
             ) : (
-              <CustomTypography color="data" bold size="xs">
+              <CustomTypography color="data" bold size="sm">
                 {value}
               </CustomTypography>
             )

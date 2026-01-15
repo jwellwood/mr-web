@@ -19,7 +19,7 @@ export const getBackgroundColor = (
     backgroundColor =
       cellIndexStyles?.find(cell => cell.index === i)?.background || theme.palette.dark.main;
   }
-  if (isSelected) {
+  if (isSelected && item[0] !== 'position') {
     backgroundColor = getOpaqueValue(theme.palette.primary.main);
   }
   return backgroundColor === BACKGROUND_STYLE.STATIC ? staticBackground : backgroundColor;

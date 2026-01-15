@@ -5,7 +5,7 @@ export const FETCH_TROPHY: TypedDocumentNode<{
   trophy: ITrophyResponse;
 }> = gql`
   query FETCH_TROPHY($trophyId: String!) {
-    trophy: trophyById(trophyId: $trophyId) {
+    trophy: FETCH_TROPHY(trophyId: $trophyId) {
       _id
       name
       season

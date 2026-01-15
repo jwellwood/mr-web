@@ -1,9 +1,8 @@
 import { ApolloError } from '@apollo/client';
 
 import { ILeaguePositions } from '../types';
-import { DataError, NoDataText } from '../../../components';
-import SeasonsGraph from '../components/SeasonsGraph';
-import { Spinner } from '../../../components/loaders';
+import { DataError, NoDataText, SectionContainer } from '../../../components';
+import SeasonsTable from '../components/seasons-table/SeasonsTable';
 
 type Props = {
   data?: { position: ILeaguePositions[] };
@@ -13,15 +12,13 @@ type Props = {
 
 export default function SeasonsView({ data, loading, error }: Props) {
   const renderContent = () => {
-    return !loading ? (
-      data?.position.length === 0 ? (
-        <NoDataText>No seasons yet</NoDataText>
-      ) : (
-        <SeasonsGraph data={data?.position} />
-      )
+    return data?.position && data?.position.length === 0 ? (
+      <NoDataText>No seasons yet</NoDataText>
     ) : (
-      <Spinner />
+      <SeasonsTable data={data?.position} loading={loading} />
     );
   };
-  return error ? <DataError error={error} /> : renderContent();
+  return (
+    <SectionContainer>{error ? <DataError error={error} /> : renderContent()}</SectionContainer>
+  );
 }

@@ -10,3 +10,4 @@ export * from './lists';
 export * from './shared';
 export * from './tables';
 export * from './common';
+export * from './charts';

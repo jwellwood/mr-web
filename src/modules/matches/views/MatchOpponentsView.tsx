@@ -31,20 +31,22 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
     return seasonReady && data?.stats && data?.stats.length === 0 ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
-      <>
+      <MatchOpponentsTable data={filteredStats()} loading={loading} />
+    );
+  };
+
+  return (
+    <SectionContainer
+      title={
         <CustomSwitch
           checked={showAllTeams}
           onCheck={toggleSwitch}
           label={'Show all teams'}
           placement="start"
         />
-
-        <MatchOpponentsTable data={filteredStats()} loading={loading} />
-      </>
-    );
-  };
-
-  return (
-    <SectionContainer>{error ? <DataError error={error} /> : renderContent()}</SectionContainer>
+      }
+    >
+      {error ? <DataError error={error} /> : renderContent()}
+    </SectionContainer>
   );
 }

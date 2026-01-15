@@ -8,14 +8,15 @@ type Props = {
   data?: { awards: IAward[] };
   loading: boolean;
   error?: ApolloError;
+  seasonId?: string;
 };
 
-export default function AwardsView({ data, loading, error }: Props) {
+export default function AwardsView({ data, loading, error, seasonId }: Props) {
   const renderContent = () => {
     return data?.awards && data.awards.length === 0 ? (
       <NoDataText>No awards yet</NoDataText>
     ) : (
-      <AwardList awards={data?.awards} loading={loading} />
+      <AwardList awards={data?.awards} loading={loading} seasonId={seasonId} />
     );
   };
 

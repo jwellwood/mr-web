@@ -7,6 +7,7 @@ type Props = {
   isDifference: boolean;
   isPercentage?: boolean;
   textColor?: string;
+  textAlign?: 'left' | 'center' | 'right';
 };
 
 const CustomCellValue: React.FC<Props> = ({ value, isDifference, isPercentage, textColor }) => {

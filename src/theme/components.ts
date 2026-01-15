@@ -5,6 +5,7 @@ import { MuiInputBase, MuiPickersInputBase } from './components/MuiInputBase';
 import { MuiTab } from './components/MuiTab';
 import { MuiButton } from './components/MuiButton';
 import { MuiListItem } from './components/MuiListItem';
+import { MuiDialogContent } from './components/MuiDialogContent';
 
 export const components = {
   MuiFormControl,
@@ -14,6 +15,7 @@ export const components = {
   MuiButton,
   MuiTab,
   MuiListItem,
+  MuiDialogContent,
   MuiCssBaseline: {
     styleOverrides: {
       'input:-webkit-autofill': {

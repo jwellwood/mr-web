@@ -5,13 +5,11 @@ export const columns = [
   },
   {
     id: 'value',
-    numeric: true,
     label: '',
     width: 50,
   },
   {
     id: 'average',
-    numeric: true,
     label: <></>,
     width: 50,
   },

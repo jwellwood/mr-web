@@ -26,6 +26,7 @@ export default function CustomTableHead<
       <TableRow>
         {columns.map(headCell => {
           const renderSort = sortBy === headCell.id && sortBy !== 'position';
+
           const stringCell = () =>
             typeof headCell.label === 'string' && headCell.label !== '' ? (
               <CustomTypography bold color={renderSort ? 'secondary' : 'label'} size="xs">

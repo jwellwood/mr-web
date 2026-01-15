@@ -87,11 +87,13 @@ export default function CustomTable<T extends Record<string, number | object | R
                         : item[1];
                     };
 
+                    const leftAlignedCells = ['name', 'label', 'division'];
+
                     return (
                       <TableCell
                         className="custom-table-cell"
                         size="small"
-                        align={item[0] === 'name' || item[0] === 'label' ? 'left' : 'center'}
+                        align={leftAlignedCells.includes(item[0]) ? 'left' : 'center'}
                         key={item[0]}
                         id={item[0]}
                         sx={{
@@ -99,7 +101,7 @@ export default function CustomTable<T extends Record<string, number | object | R
                           backgroundColor: getBackgroundColor(item, i, sortBy, cellIndexStyles),
                           zIndex: item[0] === 'name' ? 1 : 0,
                           left: 0,
-                          padding: '0px',
+                          padding: leftAlignedCells.includes(item[0]) ? '0px 4px' : '0px',
                           height: '32px',
                           borderRight: getBorderStyle(cellIndexStyles, i),
                           borderBottom: '0.5px solid rgba(244, 244, 244, 0.1)',

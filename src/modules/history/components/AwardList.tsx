@@ -8,9 +8,10 @@ import { IListItem } from '../../../components/lists/types';
 interface Props {
   awards?: IAward[];
   loading: boolean;
+  seasonId?: string;
 }
 
-export default function AwardList({ awards, loading }: Props) {
+export default function AwardList({ awards, loading, seasonId }: Props) {
   const list: IListItem[] = awards
     ? awards.map(award => {
         return {
@@ -45,7 +46,7 @@ export default function AwardList({ awards, loading }: Props) {
               {award.awardValue || ''}
             </CustomTypography>
           ),
-          link: `award/${award._id}`,
+          link: seasonId ? `season/${seasonId}/award/${award._id}` : `award/${award._id}`,
         };
       })
     : [];

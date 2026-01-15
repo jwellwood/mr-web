@@ -14,7 +14,7 @@ export const getTrophyListItemTeam = (trophy: ITrophyResponse) => {
     ),
     link: `trophy/${trophy._id}`,
     label: (
-      <CustomTypography size="xs" bold color="data">
+      <CustomTypography size="sm" bold color="data">
         {trophy.name}
       </CustomTypography>
     ),
