@@ -54,6 +54,8 @@ export const chevronDownIcon = 'chevron-down';
 export const chevronUpIcon = 'chevron-up';
 export const resetIcon = 'reset';
 export const flag = 'flag';
+export const filter = 'filter';
+export const filterApplied = 'filter-applied';
 // External Icons
 export const instagramIcon = 'instagram';
 export const menuIcon = 'menu';

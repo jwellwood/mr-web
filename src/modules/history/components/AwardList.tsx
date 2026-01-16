@@ -50,5 +50,5 @@ export default function AwardList({ awards, loading, seasonId }: Props) {
         };
       })
     : [];
-  return <LinksList links={list} loading={loading} />;
+  return <LinksList links={list} loading={loading} rows={5} />;
 }

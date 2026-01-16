@@ -1,5 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { CustomTypography } from '../typography';
 
 type Props = {
   title?: string;
@@ -25,14 +26,16 @@ const FormModal: React.FC<Props> = ({ title, children, buttonElement, closeForm 
   }, [closeForm]);
 
   return (
-    <div>
+    <div style={{ width: '300px' }}>
       <span role="button" style={{ cursor: 'pointer' }} onClick={handleOpen}>
         {buttonElement}
       </span>
       <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
         {title ? (
           <DialogTitle id="responsive-dialog-title" color="primary">
-            {title}
+            <CustomTypography color="secondary" bold>
+              {title}
+            </CustomTypography>
           </DialogTitle>
         ) : null}
         <DialogContent>{children}</DialogContent>

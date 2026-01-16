@@ -72,4 +72,6 @@ export type IIconType =
   | 'reset'
   | 'instagram'
   | 'percentage'
-  | 'flag';
+  | 'flag'
+  | 'filter'
+  | 'filter-applied';

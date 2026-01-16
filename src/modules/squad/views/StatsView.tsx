@@ -3,35 +3,30 @@ import { ApolloError } from '@apollo/client';
 import { DataError, SectionContainer, NoDataText } from '../../../components';
 import PlayersByNumbers from '../components/PlayersByNumbers';
 import { ISquadSeasonStats } from '../types';
-import SeasonStatsTable from '../components/season-stats-table/SeasonStatsTable';
+import SeasonStatsTable from '../components/season-stats-table/SquadStatsTable';
+import StatFilters from '../containers/StatsFilters';
+import { TFilters } from '../context/FiltersContext';
 
 interface Props {
   error?: ApolloError;
   loading: boolean;
-  seasonEndDate?: string;
   data?: { stats: ISquadSeasonStats[] };
-  seasonReady: boolean;
+  filters: TFilters;
 }
 
-export default function SquadStatsSeasonView({
-  error,
-  loading,
-  data,
-  seasonEndDate,
-  seasonReady,
-}: Props) {
+export default function StatsView({ error, loading, data, filters }: Props) {
   const renderContent = () => {
-    return (seasonReady && !data && !loading) || (!loading && data?.stats.length === 0) ? (
+    return data && data?.stats.length === 0 ? (
       <NoDataText>No players yet</NoDataText>
     ) : (
       <>
-        <PlayersByNumbers players={data?.stats} loading={loading} season={seasonEndDate} showAge />
-        <SeasonStatsTable data={data} loading={loading} />
+        <PlayersByNumbers players={data?.stats} loading={loading} />
+        <SeasonStatsTable data={data} loading={loading} filters={filters} />
       </>
     );
   };
   return (
-    <SectionContainer title="Season Stats">
+    <SectionContainer title={<StatFilters />}>
       {error ? <DataError error={error} /> : renderContent()}
     </SectionContainer>
   );

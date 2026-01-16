@@ -34,7 +34,7 @@ export default function Step4SubmitMatch({
     { label: 'Players', value: String(currentTempPlayers.length) },
   ];
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} text="Submit">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} submitText="Submit">
       <SectionContainer title="Summary">
         <TextList data={data} />
         <CustomTable

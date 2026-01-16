@@ -26,7 +26,7 @@ export default function SearchForm({ defaultValues, onSubmit, loading }: Props) 
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       nonAbsoluteSubmit
-      text="Search"
+      submitText="Search"
       disabled={teamName.length < 3}
       loading={loading}
     >

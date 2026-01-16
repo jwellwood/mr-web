@@ -1,4 +1,4 @@
-export const columns = [
+export const columns_averages = [
   {
     id: 'name',
     label: '',
@@ -15,30 +15,43 @@ export const columns = [
     width: 40,
   },
   {
+    id: 'goalsPerGame',
+    label: 'Av',
+    width: 40,
+  },
+  {
     id: 'assists',
     label: 'As',
     width: 40,
   },
-
+  {
+    id: 'assistsPerGame',
+    label: 'Av',
+    width: 40,
+  },
   {
     id: 'mvp',
     label: 'Mvp',
     width: 40,
   },
-
+  {
+    id: 'mvpPerGame',
+    label: 'Av',
+    width: 40,
+  },
   {
     id: 'conceded',
-    label: 'Cn',
+    label: 'Con',
+    width: 40,
+  },
+  {
+    id: 'concededPerGame',
+    label: 'Av',
     width: 40,
   },
   {
     id: 'cleanSheets',
     label: 'C/S',
-    width: 40,
-  },
-  {
-    id: 'playedStreak',
-    label: 'Streak',
     width: 40,
   },
 ] as const;

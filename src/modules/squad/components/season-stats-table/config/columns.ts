@@ -15,18 +15,8 @@ export const columns = [
     width: 40,
   },
   {
-    id: 'goalsPerGame',
-    label: 'Av',
-    width: 40,
-  },
-  {
     id: 'assists',
     label: 'As',
-    width: 40,
-  },
-  {
-    id: 'assistsPerGame',
-    label: 'Av',
     width: 40,
   },
   {
@@ -35,18 +25,8 @@ export const columns = [
     width: 40,
   },
   {
-    id: 'mvpPerGame',
-    label: 'Av',
-    width: 40,
-  },
-  {
     id: 'conceded',
     label: 'Con',
-    width: 40,
-  },
-  {
-    id: 'concededPerGame',
-    label: 'Av',
     width: 40,
   },
   {

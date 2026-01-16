@@ -57,7 +57,7 @@ export default function AddMatchPlayerStatsForm({
   ];
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} text="Add" nonAbsoluteSubmit>
+    <FormContainer onSubmit={handleSubmit(onSubmit)} submitText="Add" nonAbsoluteSubmit>
       <CenteredGrid dir="row">
         <GridItem size={4}>
           <ControlledSelectInput

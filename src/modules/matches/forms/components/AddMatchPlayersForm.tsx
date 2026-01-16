@@ -44,7 +44,7 @@ export default function AddMatchPlayersForm({
 
   return (
     <>
-      <FormContainer onSubmit={handleSubmit(onSubmit)} text="Next">
+      <FormContainer onSubmit={handleSubmit(onSubmit)} submitText="Next">
         <GridItem size={12}>
           <ControlledMultiSelectInput
             control={control}

@@ -13,6 +13,7 @@ interface Props {
 
 export default function LinksList({ links, loading, rows = 1, onClick }: Props) {
   const skeletonParts = {
+    icon: links?.some(link => !!link.icon),
     avatar: links?.some(link => !!link.avatar),
     label: links?.some(link => !!link.label),
     secondary: links?.some(link => !!link.secondary),

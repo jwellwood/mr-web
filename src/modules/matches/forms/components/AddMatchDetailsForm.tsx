@@ -60,7 +60,7 @@ export default function AddMatchDetailsForm({
   ];
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} text="Next">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} submitText="Next">
       <CenteredGrid dir="row">
         <GridItem size={12}>
           <ControlledDateInput
