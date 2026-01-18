@@ -169,18 +169,18 @@ export interface IMostGoalsInMatch {
   total: number;
 }
 
-export interface IMostGoalsAndAssistsByPlayer {
+export interface IPlayerMatchRecords {
   maxGoals: number;
   maxAssists: number;
+  maxCombined: number;
 }
 
-export interface IMostGoalsByPlayerMatches {
+export interface IPlayerRecordMatches {
   _id: string;
   date: string;
   opponent: string;
   teamGoals: number;
   opponentGoals: number;
-  total: number;
 }
 
 export interface IOpponentTable {

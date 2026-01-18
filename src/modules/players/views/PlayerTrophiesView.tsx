@@ -22,7 +22,7 @@ export default function PlayerTrophiesView({ data, loading, error }: Props) {
     }
     return (
       <>
-        <SectionContainer subtitle="Winner">
+        <SectionContainer isSpecial subtitle="Winner">
           <LinksList links={winner()} loading={loading} />
         </SectionContainer>
         <SectionContainer subtitle="Runner-up">

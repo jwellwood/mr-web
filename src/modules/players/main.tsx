@@ -6,29 +6,38 @@ import { PageContainer } from '../../components';
 import Player from './containers/Player';
 import { PAGES, PLAYER_ADMIN_LINKS } from './constants';
 import { useAuth, useCustomParams } from '../../hooks';
+import PlayerGameStreaks from './containers/PlayerGameStreaks';
 
-const PlayerAllTimeStats = lazy(() => import('./containers/PlayerAllTimeStats'));
 const PlayerTrophies = lazy(() => import('./containers/PlayerTrophies'));
-const PlayerSeasonStats = lazy(() => import('./containers/PlayerSeasonStats'));
+const PlayerStats = lazy(() => import('./containers/PlayerStats'));
 const PlayerOpponentStats = lazy(() => import('./containers/PlayerOpponentStats'));
 const PlayerAwards = lazy(() => import('./containers/PlayerAwards'));
-const PlayerMatchesWithRecords = lazy(() => import('./containers/PlayerMatchesWithRecords'));
+const PlayerSeasonsSummary = lazy(() => import('./containers/PlayerSeasonsSummary'));
+const PlayerMatchRecords = lazy(() => import('./containers/PlayerMatchRecords'));
 
 export default function PlayerTabs() {
   const { teamId } = useCustomParams();
   const { isTeamAuth } = useAuth(teamId);
 
   const tabs: ITab[] = [
-    { label: 'Season', component: <PlayerSeasonStats /> },
-    { label: 'All Time', component: <PlayerAllTimeStats /> },
     {
-      label: 'Versus',
+      label: 'Stats',
+      component: <PlayerStats />,
+    },
+
+    {
+      label: 'Records',
       component: (
         <>
-          <PlayerMatchesWithRecords />
-          <PlayerOpponentStats />
+          <PlayerMatchRecords />
+          <PlayerSeasonsSummary />
+          <PlayerGameStreaks />
         </>
       ),
+    },
+    {
+      label: 'Versus',
+      component: <PlayerOpponentStats />,
     },
     {
       label: 'Honors',

@@ -1,6 +1,6 @@
 import { ApolloError } from '@apollo/client';
 
-import { DataError, SectionContainer } from '../../../components';
+import { DataError, NoDataText, SectionContainer } from '../../../components';
 import { IPlayerVsStats } from '../../matches/types';
 import PlayerOpponentTable from '../components/player-opponents-table/PlayerOpponentTable';
 
@@ -15,6 +15,8 @@ export default function PlayerOpponentStatsView({ data, loading, error }: Props)
     <SectionContainer title="Opponent Statistics">
       {error ? (
         <DataError error={error} />
+      ) : !loading && !data?.stats[0]?.matches ? (
+        <NoDataText>No matches played</NoDataText>
       ) : (
         <PlayerOpponentTable data={data?.stats} loading={loading} />
       )}

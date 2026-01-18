@@ -5,13 +5,11 @@ export const columns = [
   },
   {
     id: 'current',
-    numeric: true,
     label: 'Current',
     width: 30,
   },
   {
     id: 'longest',
-    numeric: true,
     label: 'Longest',
     width: 30,
   },

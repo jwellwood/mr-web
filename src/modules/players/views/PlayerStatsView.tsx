@@ -6,25 +6,24 @@ import {
   MatchStatsTable,
   MatchAverages,
 } from '../../../components';
-import SelectSeason from '../containers/SelectSeason';
 import { IMatchStats } from '../../matches/types';
 import { mapPlayerMatchStats } from '../helpers/mapPlayerMatchStats';
 import { mapPlayerAverages } from '../helpers';
 import { IPlayerStats } from '../types';
 import GamesWithStatTable from '../components/games-with-stat-table/GamesWithStatTable';
 import PlayerStatsTable from '../components/player-stats-table/PlayerStatsTable';
+import StatsFilters from '../forms/StatsFilters';
 
 type Props = {
   data?: { player: IPlayerStats };
-  playerId: string;
   loading: boolean;
   error?: ApolloError;
 };
 
-export default function PlayerSeasonStatsView({ data, playerId, loading, error }: Props) {
+export default function PlayerStatsView({ data, loading, error }: Props) {
   const renderContent = () => {
-    return data?.player.apps === 0 ? (
-      <NoDataText>No stats for this season</NoDataText>
+    return data && data?.player.apps === 0 ? (
+      <NoDataText>No stats </NoDataText>
     ) : error ? (
       <DataError error={error} />
     ) : (
@@ -39,10 +38,8 @@ export default function PlayerSeasonStatsView({ data, playerId, loading, error }
   };
   return (
     <>
-      <SectionContainer title={<SelectSeason playerId={playerId} />}>
-        {renderContent()}
-      </SectionContainer>
-      {!error && (
+      <SectionContainer title={<StatsFilters />}>{renderContent()}</SectionContainer>
+      {!error && data?.player && data?.player?.apps > 0 && (
         <>
           <SectionContainer title="Stats">
             <PlayerStatsTable stats={data?.player} loading={loading} />

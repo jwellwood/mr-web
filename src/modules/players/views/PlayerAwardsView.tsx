@@ -39,7 +39,7 @@ export default function PlayerAwardsView({ data, loading, error }: Props) {
     data && data?.awards.length === 0 ? (
       <NoDataText>No awards yet</NoDataText>
     ) : (
-      <SectionContainer>
+      <SectionContainer isSpecial={!loading && !!data?.awards.length}>
         <LinksList links={awardsData} loading={loading} />
       </SectionContainer>
     );

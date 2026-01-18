@@ -3,7 +3,6 @@ import type { ReactElement } from 'react';
 export interface IHeadCell {
   id: string;
   label: string | ReactElement;
-  numeric?: boolean;
   width?: number;
   border?: boolean;
   padding?: string;

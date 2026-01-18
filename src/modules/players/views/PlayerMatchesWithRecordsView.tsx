@@ -1,11 +1,11 @@
 import { ApolloError } from '@apollo/client';
 
 import { DataError, NoDataText, SectionContainer } from '../../../components';
-import { IMostGoalsAndAssistsByPlayer } from '../../matches/types';
+import { IPlayerMatchRecords } from '../../matches/types';
 import PlayerMatchRecordsTable from '../components/player-match-records-table/PlayerMatchRecordsTable';
 
 type Props = {
-  data?: { stats: IMostGoalsAndAssistsByPlayer };
+  data?: { stats: IPlayerMatchRecords };
   loading: boolean;
   error?: ApolloError;
 };

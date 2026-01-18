@@ -1,12 +1,12 @@
 import { useQuery } from '@apollo/client';
 
 import { useCustomParams } from '../../../hooks';
-import { FETCH_PLAYER_MOST_GOALS_ASSISTS } from '../graphql';
+import { FETCH_PLAYER_MATCH_RECORDS } from '../graphql';
 import PlayerMatchesWithRecordsView from '../views/PlayerMatchesWithRecordsView';
 
-export default function PlayerMatchesWithRecords() {
+export default function PlayerMatchesRecords() {
   const { teamId, playerId } = useCustomParams();
-  const { data, loading, error } = useQuery(FETCH_PLAYER_MOST_GOALS_ASSISTS, {
+  const { data, loading, error } = useQuery(FETCH_PLAYER_MATCH_RECORDS, {
     variables: { teamId, playerId },
   });
 

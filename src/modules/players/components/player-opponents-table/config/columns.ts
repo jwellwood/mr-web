@@ -1,7 +1,6 @@
 export const columns = [
   {
     id: 'name',
-    numeric: false,
     label: '',
     width: 150,
   },

@@ -69,3 +69,11 @@ export interface IPlayerStats {
   gamesWithGoalAndAssist: number;
   gamesWithGoalOrAssist: number;
 }
+
+export interface IPlayerSeasonsSummary {
+  seasonName: string;
+  seasonId: string;
+  apps: number;
+  goals: number;
+  assists: number;
+}

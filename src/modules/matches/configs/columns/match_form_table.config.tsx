@@ -18,19 +18,16 @@ export const match_form_table = [
   },
   {
     id: 'name',
-    numeric: false,
     label: '',
     width: 100,
   },
   {
     id: 'goals',
     label: 'Goals',
-    numeric: true,
   },
   {
     id: 'assists',
     label: 'Assists',
-    numeric: true,
   },
   {
     id: 'mvp',
@@ -39,27 +36,22 @@ export const match_form_table = [
   {
     id: 'pensScored',
     label: <StatIcon icon={STAT_ICONS.PEN_SCORED} />,
-    numeric: true,
   },
   {
     id: 'pensMissed',
     label: <StatIcon icon={STAT_ICONS.PEN_MISSED} />,
-    numeric: true,
   },
   {
     id: 'ownGoals',
     label: 'OGs',
-    numeric: true,
   },
   {
     id: 'conceded',
     label: <StatIcon icon={STAT_ICONS.CONCEDED} />,
-    numeric: true,
   },
   {
     id: 'pensSaved',
     label: <StatIcon icon={STAT_ICONS.PEN_SAVED} />,
-    numeric: true,
   },
   {
     id: 'cleanSheet',
@@ -68,7 +60,6 @@ export const match_form_table = [
   {
     label: <StatIcon icon={STAT_ICONS.YELLOW_CARD} />,
     id: 'yellowCards',
-    numeric: true,
   },
   {
     label: <StatIcon icon={STAT_ICONS.RED_CARD} />,
@@ -77,7 +68,6 @@ export const match_form_table = [
   {
     id: 'minutes',
     label: <StatIcon icon={STAT_ICONS.MINS} />,
-    numeric: true,
     width: 30,
   },
 ] as const;

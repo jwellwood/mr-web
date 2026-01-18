@@ -17,7 +17,7 @@ export const EDIT_MATCH: TypedDocumentNode<{
     $isForfeit: Boolean!
     $leaguePosition: Float
     $cupRound: String
-    $matchPlayers: [PlayerInMatchInput!]!
+    $matchPlayers: [TPlayerInMatchInput!]!
   ) {
     editMatch(
       matchId: $matchId

@@ -11,9 +11,10 @@ interface Props {
   isSpecial?: boolean;
 }
 
-const specialBackground = `linear-gradient(310deg,
-${theme.palette.dark.main} 80%,
-${theme.palette.warning.light} 0%)`;
+const specialBackground = `linear-gradient(315deg,
+${theme.palette.warning.light} 0%,
+${theme.palette.secondary.dark} 12%, ${theme.palette.dark.main} 100%)`;
+
 export default function SectionContainer({ title, subtitle, children, isSpecial }: Props) {
   const { palette, spacing } = theme;
 

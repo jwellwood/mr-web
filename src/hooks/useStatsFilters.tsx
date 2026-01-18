@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 
-import { useCustomParams, useSeasons } from '../../../hooks';
-import { ICompetition } from '../../organization/types';
-import { FETCH_ORG } from '../../organization/graphql';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import { useCustomParams, useSeasons } from '.';
+import { ICompetition } from '../modules/organization/types';
+import { FETCH_ORG } from '../modules/organization/graphql';
+import { ISelectOptions } from '../components/inputs/SelectInput';
 
 export const useStatsFilters = () => {
   const { orgId } = useCustomParams();
