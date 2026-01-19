@@ -1,17 +1,53 @@
 steps:
   - id: 'build docker image'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'build', '-t', 'madrid-reds-web:$COMMIT_SHA', '.']
+    args:
+      [
+        'build',
+        '--build-arg',
+        'VITE_ROOT_URL=${_VITE_ROOT_URL}',
+        '--build-arg',
+        'VITE_APP_VERSION=$COMMIT_SHA',
+        '-t',
+        'madrid-reds-web:$COMMIT_SHA',
+        '.',
+      ]
 
   - id: 'tag docker image'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'tag', 'madrid-reds-web:$COMMIT_SHA', 'europe-southwest1-docker.pkg.dev/madrid-reds-369822/madrid-reds-docker-images/madrid-reds-web:$COMMIT_SHA']
+    args:
+      [
+        'tag',
+        'madrid-reds-web:$COMMIT_SHA',
+        'europe-southwest1-docker.pkg.dev/madrid-reds-369822/madrid-reds-docker-images/madrid-reds-web:$COMMIT_SHA',
+      ]
 
   - id: 'push docker image'
     name: 'gcr.io/cloud-builders/docker'
-    args: [ 'push', 'europe-southwest1-docker.pkg.dev/madrid-reds-369822/madrid-reds-docker-images/madrid-reds-web:$COMMIT_SHA']
+    args:
+      [
+        'push',
+        'europe-southwest1-docker.pkg.dev/madrid-reds-369822/madrid-reds-docker-images/madrid-reds-web:$COMMIT_SHA',
+      ]
 
   - id: 'deploy image'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: [ 'run', 'deploy', 'madrid-reds-web', '--image', 'europe-southwest1-docker.pkg.dev/madrid-reds-369822/madrid-reds-docker-images/madrid-reds-web:$COMMIT_SHA', '--region', 'northamerica-northeast2', '--memory', '512Mi', '--port', '8080', '--allow-unauthenticated', '--cpu-throttling']
+    args:
+      [
+        'run',
+        'deploy',
+        'madrid-reds-web',
+        '--image',
+        'europe-southwest1-docker.pkg.dev/madrid-reds-369822/madrid-reds-docker-images/madrid-reds-web:$COMMIT_SHA',
+        '--region',
+        'northamerica-northeast2',
+        '--memory',
+        '512Mi',
+        '--port',
+        '8080',
+        '--allow-unauthenticated',
+        '--cpu-throttling',
+        '--set-env-vars',
+        'VITE_ROOT_URL=${_VITE_ROOT_URL},VITE_APP_VERSION=$COMMIT_SHA',
+      ]

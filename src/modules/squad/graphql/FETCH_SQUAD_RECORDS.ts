@@ -3,10 +3,10 @@ import { TStatField } from '../types';
 
 export const FETCH_SQUAD_RECORDS: TypedDocumentNode<{
   stats: {
-    apps: TStatField;
-    goals: TStatField;
-    assists: TStatField;
-    mvp: TStatField;
+    apps: TStatField[];
+    goals: TStatField[];
+    assists: TStatField[];
+    mvp: TStatField[];
   };
 }> = gql`
   query FETCH_SQUAD_RECORDS($teamId: String!) {

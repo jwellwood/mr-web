@@ -1,4 +1,4 @@
-import { shortenString } from '..';
+import { shortenString } from '../shortenString';
 
 describe('shorten string tests', () => {
   test('should return an empty string if fed empty string', () => {

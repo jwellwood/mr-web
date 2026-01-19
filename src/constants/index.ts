@@ -8,7 +8,16 @@ export * from './position';
 export * from './styles';
 export * from './rounds';
 
-import packageJSON from '../../package.json';
+const _processEnv =
+  typeof process !== 'undefined' ? (process.env as Record<string, string | undefined>) : {};
 
-export const ROOT_URL = 'https://madrid-reds-1035582858411.northamerica-northeast2.run.app';
-export const VERSION: string = packageJSON.version;
+export const ROOT_URL: string =
+  typeof __ROOT_URL__ !== 'undefined'
+    ? __ROOT_URL__
+    : (_processEnv.VITE_ROOT_URL as string) ||
+      'https://madrid-reds-1035582858411.northamerica-northeast2.run.app';
+
+export const VERSION: string =
+  typeof __APP_VERSION__ !== 'undefined'
+    ? __APP_VERSION__
+    : (_processEnv.VITE_APP_VERSION as string) || '0.0.0';

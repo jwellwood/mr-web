@@ -11,11 +11,11 @@ interface Props {
 }
 
 export default function RecordPlayers({ names, loading }: Props) {
-  const isMoreThanOnePlayer = names.length > 1;
+  const isMoreThanOnePlayer = names?.length > 1;
 
   const playerList = () => (
     <LinksList
-      links={names.map(item => ({
+      links={names?.map(item => ({
         label: (
           <CustomTypography color="bold" bold>
             {item.name}
@@ -48,5 +48,5 @@ export default function RecordPlayers({ names, loading }: Props) {
     );
   };
 
-  return isMoreThanOnePlayer ? playerListModal() : names.map(player => playerLink(player));
+  return isMoreThanOnePlayer ? playerListModal() : names?.map(player => playerLink(player));
 }

@@ -1,4 +1,4 @@
-import { yearOptions } from '..';
+import { yearOptions } from '../yearOptions';
 import { BASE_YEAR, MAX_YEAR } from '../../../constants';
 
 describe('year options tests', () => {

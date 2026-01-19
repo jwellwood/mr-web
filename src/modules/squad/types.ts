@@ -13,18 +13,35 @@ export interface IPastPlayer {
 
 export type TStatField = {
   value: number;
-  disabled: boolean;
   names: {
     name: string;
     id: string;
   }[];
-}[];
+};
 
-export interface IRecords {
-  apps: TStatField;
-  goals: TStatField;
-  assists: TStatField;
-  mvp: TStatField;
+export type TSingleSeasonSquadRecord = {
+  value: number;
+  players: {
+    name: string;
+    id: string;
+  }[];
+  seasons: {
+    name: string;
+    id: string;
+  }[];
+};
+
+export interface ISquadRecords {
+  apps: TStatField[];
+  goals: TStatField[];
+  assists: TStatField[];
+  mvp: TStatField[];
+}
+
+export interface ISquadSingleSeasonRecords {
+  goals: TSingleSeasonSquadRecord;
+  assists: TSingleSeasonSquadRecord;
+  combined: TSingleSeasonSquadRecord;
 }
 
 export interface SquadTableRow {

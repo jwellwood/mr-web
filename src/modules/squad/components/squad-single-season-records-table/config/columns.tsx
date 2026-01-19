@@ -12,12 +12,10 @@ export const columns = [
   {
     id: 'names',
     label: <></>,
-    border: true,
   },
   {
-    id: 'more',
-    label: '',
-    border: true,
+    id: 'seasons',
+    label: <></>,
     width: 50,
   },
 ] as const;

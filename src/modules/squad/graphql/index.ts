@@ -6,3 +6,4 @@ export * from './FETCH_SQUAD_STATS';
 export * from './FETCH_SQUAD_STREAKS';
 export * from './FETCH_SQUAD_RECORD_GOALS_IN_MATCH';
 export * from './FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH';
+export * from './FETCH_SQUAD_SINGLE_SEASON_RECORDS';

@@ -1,15 +1,10 @@
 {
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
-    "module": "esnext",
+    "module": "es2022",
     "moduleResolution": "node",
     "types": ["jest", "node", "@testing-library/jest-dom"],
     "esModuleInterop": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "jest.config.ts",
-    "jest.setup.ts"
-  ]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "jest.config.ts", "jest.setup.ts"]
 }

@@ -13,6 +13,12 @@ RUN npm install
 # Copy the rest of your app's source code
 COPY . .
 
+# Allow passing Vite env as build args and expose them as env vars during build
+ARG VITE_ROOT_URL
+ARG VITE_APP_VERSION
+ENV VITE_ROOT_URL=${VITE_ROOT_URL}
+ENV VITE_APP_VERSION=${VITE_APP_VERSION}
+
 # Build your app
 RUN npm run build
 
