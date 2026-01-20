@@ -5,11 +5,11 @@ import { IPastPlayer } from '../types';
 import PlayersByNumbers from '../components/PlayersByNumbers';
 import PastPlayersTable from '../components/past-players-table/PastPlayersTable';
 
-type Props = {
+interface Props {
   error?: ApolloError;
   data?: { players: IPastPlayer[] };
   loading: boolean;
-};
+}
 
 export default function PastPlayersView({ error, data, loading }: Props) {
   const renderData =

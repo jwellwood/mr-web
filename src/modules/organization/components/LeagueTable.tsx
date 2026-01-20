@@ -3,10 +3,10 @@ import CustomTable from '../../../components/tables/CustomTable';
 import { league_table, league_table_styles } from '../config/columns';
 import { ILeagueTableTeam } from '../types';
 
-type Props = {
+interface Props {
   name: string;
   data: ILeagueTableTeam[];
-};
+}
 
 export default function LeagueTable({ name, data }: Props) {
   const rows = data?.map((item, i) => {

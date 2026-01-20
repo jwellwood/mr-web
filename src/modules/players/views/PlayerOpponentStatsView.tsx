@@ -4,11 +4,11 @@ import { DataError, NoDataText, SectionContainer } from '../../../components';
 import { IPlayerVsStats } from '../../matches/types';
 import PlayerOpponentTable from '../components/player-opponents-table/PlayerOpponentTable';
 
-type Props = {
+interface Props {
   data?: { stats: IPlayerVsStats[] };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function PlayerOpponentStatsView({ data, loading, error }: Props) {
   return (

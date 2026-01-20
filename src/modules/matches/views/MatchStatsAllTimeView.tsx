@@ -6,8 +6,8 @@ import {
   MatchStatsTable,
   NoDataText,
   SectionContainer,
-} from '../../../components/index.ts';
-import { IMatchStats } from '../types.ts';
+} from '../../../components';
+import { IMatchStats } from '../types';
 
 interface Props {
   data?: { stats: IMatchStats };

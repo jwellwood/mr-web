@@ -19,8 +19,6 @@ export const rows = (currentPlayers?: IPlayerInMatch[], loading?: boolean) => {
     const {
       name,
       isStarter,
-      minutes,
-      // _id,
       position,
       goals,
       pensMissed,
@@ -39,11 +37,6 @@ export const rows = (currentPlayers?: IPlayerInMatch[], loading?: boolean) => {
       loading ? <StatSkeleton /> : value;
 
     const listData = [
-      {
-        icon: <StatIcon size="1.5rem" icon={STAT_ICONS.MINS} />,
-        label: 'Minutes',
-        value: renderValue(minutes || 0),
-      },
       {
         icon: <StatIcon size="1.5rem" icon={STAT_ICONS.GOAL} />,
         label: 'Goals',

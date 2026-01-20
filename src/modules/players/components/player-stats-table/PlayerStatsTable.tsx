@@ -2,10 +2,10 @@ import CustomTable from '../../../../components/tables/CustomTable';
 import { IPlayerStats } from '../../types';
 import { columns, rows, styles } from './config';
 
-type Props = {
+interface Props {
   stats?: IPlayerStats;
   loading: boolean;
-};
+}
 
 export default function PlayerStreaksTable({ stats, loading }: Props) {
   return (

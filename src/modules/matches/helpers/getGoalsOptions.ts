@@ -1,4 +1,4 @@
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import type { ISelectOptions } from '../../../components';
 
 export const getGoalsOptions = (goalsScored = 0) => {
   const options: ISelectOptions[] = [];

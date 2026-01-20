@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import { resendValidationEmail } from '../services/validation';
-import { AppDispatch } from '../../../store/store';
-import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
+import { AppDispatch, showAlert } from '../../../store';
 import { Spinner } from '../../../components/loaders';
-import { CustomButton } from '../../../components/buttons';
-import { PROFILE_PATHS } from '../../profile/router/paths.ts';
+import { CustomButton } from '../../../components';
+import { PROFILE_PATHS } from '../../profile/router';
+import { resendValidationEmail } from '../services/validation';
+import { Box } from '@mui/material';
 
 interface Props {
   email: string | null;
@@ -33,9 +33,15 @@ export default function ResendVerification({ email }: Props) {
       });
   };
 
-  return loading ? (
-    <Spinner />
-  ) : (
-    <CustomButton onClick={onSubmit}>Resend Verification Link</CustomButton>
+  return (
+    <Box sx={{ m: 2 }}>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <CustomButton onClick={onSubmit} color="warning">
+          Resend Verification Link
+        </CustomButton>
+      )}
+    </Box>
   );
 }

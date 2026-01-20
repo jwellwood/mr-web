@@ -4,25 +4,21 @@ import { ISquadSingleSeasonRecords } from '../types';
 import { DataError, SectionContainer, NoDataText } from '../../../components';
 import SquadSingleSeasonRecordsTable from '../components/squad-single-season-records-table/SquadSingleSeasonRecordsTable';
 
-type Props = {
+interface Props {
   loading: boolean;
   error?: ApolloError;
   data?: { stats: ISquadSingleSeasonRecords };
-};
+}
 
 export default function SquadSingleSeasonRecordsView({ data, loading, error }: Props) {
   const renderContent = () => (
-    <>
-      {data && data.stats?.combined.value === 0 ? (
+    <SectionContainer title="Single Season Records">
+      {data && !data.stats?.combined?.value ? (
         <NoDataText>No records yet</NoDataText>
       ) : (
-        <>
-          <SectionContainer title="Single Season Records">
-            <SquadSingleSeasonRecordsTable data={data} loading={loading} />
-          </SectionContainer>
-        </>
+        <SquadSingleSeasonRecordsTable data={data} loading={loading} />
       )}
-    </>
+    </SectionContainer>
   );
 
   return error ? <DataError error={error} /> : renderContent();

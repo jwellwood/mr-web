@@ -6,7 +6,7 @@ import { IIconType } from '../../../icons/types';
 import { ReactElement } from 'react';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 
-type Props = {
+interface Props {
   icon: IIconType;
   iconColor: string;
   header: string;
@@ -14,7 +14,7 @@ type Props = {
   comment?: ReactElement | string;
   commentValue?: ReactElement | string | number;
   loading?: boolean;
-};
+}
 
 export default function ItemDetails({
   icon,

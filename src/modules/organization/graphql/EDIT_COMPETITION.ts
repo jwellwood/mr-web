@@ -10,7 +10,6 @@ export const EDIT_COMPETITION: TypedDocumentNode<{
     $name: String!
     $matchMinutes: Float!
     $playersPerTeam: Float!
-    $numberOfTeams: Float!
     $competitionType: String!
     $isActive: Boolean!
   ) {
@@ -21,7 +20,6 @@ export const EDIT_COMPETITION: TypedDocumentNode<{
         name: $name
         matchMinutes: $matchMinutes
         playersPerTeam: $playersPerTeam
-        numberOfTeams: $numberOfTeams
         competitionType: $competitionType
         isActive: $isActive
       }
@@ -30,7 +28,6 @@ export const EDIT_COMPETITION: TypedDocumentNode<{
       name
       matchMinutes
       playersPerTeam
-      numberOfTeams
       competitionType
       isActive
     }

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { getAuth } from '../store/features/auth/authSelector.ts';
+import { getAuth } from '../store';
 
 export const useAuth = (teamId?: string, orgId?: string) => {
   const { isAuth, isTeamAdmin, isSiteAdmin, teamIds, orgIds, username } = useSelector(getAuth);

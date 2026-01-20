@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { FETCH_MATCHES } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
-import MatchesView from '../views/MatchesView.tsx';
+import MatchesView from '../views/MatchesView';
 
 export default function Matches() {
   const { teamId } = useCustomParams();

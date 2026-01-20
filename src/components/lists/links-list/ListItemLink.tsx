@@ -8,11 +8,11 @@ import ListItemText from '@mui/material/ListItemText';
 import { CustomTypography } from '../../typography';
 import { IListItem } from '../types';
 
-type Props = {
+interface Props {
   data: IListItem;
   loading?: boolean;
   onClick?: () => void;
-};
+}
 
 const Link = React.forwardRef<HTMLAnchorElement, RouterLinkProps>(function Link(itemProps, ref) {
   return <RouterLink ref={ref} {...itemProps} role={undefined} />;

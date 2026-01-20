@@ -5,12 +5,12 @@ import { IMAGE_TYPE } from '../../../constants';
 import { CustomTypography } from '../../typography';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
 
-type Props = {
+interface Props {
   name: string;
   badge: string;
   loading: boolean;
   children: ReactElement;
-};
+}
 
 export default function OpponentModal({ children, name, badge, loading }: Props) {
   return (

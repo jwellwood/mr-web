@@ -4,7 +4,9 @@ import { parseDate } from '../../../utils/helpers';
 import { IResult } from '../types';
 import ResultBox from './ResultBox';
 
-type Props = { result: IResult };
+interface Props {
+  result: IResult;
+}
 
 export default function ResultDetails({ result }: Props) {
   const { date, gameWeek, competitionId, orgSeasonId } = result;

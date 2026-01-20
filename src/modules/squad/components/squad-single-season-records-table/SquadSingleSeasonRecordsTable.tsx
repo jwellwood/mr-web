@@ -11,7 +11,7 @@ export default function SquadSingleSeasonRecordsTable({ data, loading }: Props) 
   return (
     <CustomTable
       columns={columns}
-      rows={rows(data, loading) || []}
+      rows={rows(data, loading)}
       isSortable={false}
       cellIndexStyles={styles}
     />

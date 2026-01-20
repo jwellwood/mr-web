@@ -17,7 +17,6 @@ export const FETCH_ORG: TypedDocumentNode<{
         name
         competitionType
         playersPerTeam
-        numberOfTeams
         matchMinutes
         isActive
       }

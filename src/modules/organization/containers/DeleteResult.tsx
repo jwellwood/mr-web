@@ -4,10 +4,9 @@ import { useMutation } from '@apollo/client';
 
 import { DELETE_RESULT, FETCH_LEAGUE_TABLES, FETCH_RESULTS } from '../graphql';
 import { Spinner } from '../../../components/loaders';
-import ErrorGraphql from '../../../errors/ErrorGraphql.tsx';
-import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
-import { showAlert } from '../../../store/features/alerts/alertsSlice.ts';
-import DeleteModal from '../../../components/modals/DeleteModal.tsx';
+import { useCustomParams } from '../../../hooks';
+import { showAlert } from '../../../store';
+import DeleteModal from '../../../components/modals/DeleteModal';
 
 export default function DeleteResult() {
   const { orgId, orgSeasonId, resultId } = useCustomParams();
@@ -32,9 +31,5 @@ export default function DeleteResult() {
       });
   };
 
-  const renderContent = () => {
-    return !loading ? <DeleteModal title="Result" onDelete={onDelete} /> : <Spinner />;
-  };
-
-  return error ? <ErrorGraphql error={error} /> : renderContent();
+  return !loading ? <DeleteModal title="Result" onDelete={onDelete} error={error} /> : <Spinner />;
 }

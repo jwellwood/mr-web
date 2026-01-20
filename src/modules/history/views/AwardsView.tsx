@@ -4,12 +4,12 @@ import { IAward } from '../types';
 import AwardList from '../components/AwardList';
 import { DataError, NoDataText } from '../../../components';
 
-type Props = {
+interface Props {
   data?: { awards: IAward[] };
   loading: boolean;
   error?: ApolloError;
   seasonId?: string;
-};
+}
 
 export default function AwardsView({ data, loading, error, seasonId }: Props) {
   const renderContent = () => {

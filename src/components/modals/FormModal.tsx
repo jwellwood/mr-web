@@ -2,12 +2,12 @@ import React, { ReactNode, useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { CustomTypography } from '../typography';
 
-type Props = {
+interface Props {
   title?: string;
   children: ReactNode;
   buttonElement: ReactNode;
   closeForm: () => boolean;
-};
+}
 
 const FormModal: React.FC<Props> = ({ title, children, buttonElement, closeForm }) => {
   const [open, setOpen] = useState(false);
@@ -26,7 +26,7 @@ const FormModal: React.FC<Props> = ({ title, children, buttonElement, closeForm 
   }, [closeForm]);
 
   return (
-    <div style={{ width: '300px' }}>
+    <div>
       <span role="button" style={{ cursor: 'pointer' }} onClick={handleOpen}>
         {buttonElement}
       </span>
@@ -40,7 +40,7 @@ const FormModal: React.FC<Props> = ({ title, children, buttonElement, closeForm 
         ) : null}
         <DialogContent>{children}</DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="secondary">
+          <Button onClick={handleClose} color="tertiary">
             Back
           </Button>
         </DialogActions>

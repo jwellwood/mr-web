@@ -12,7 +12,6 @@ export const FETCH_COMPETITIONS: TypedDocumentNode<{
         name
         competitionType
         playersPerTeam
-        numberOfTeams
         matchMinutes
         isActive
       }

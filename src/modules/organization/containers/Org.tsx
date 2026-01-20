@@ -2,9 +2,8 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_ORG } from '../graphql';
 import { IMAGE_TYPE } from '../../../constants';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { ModuleHeader } from '../../../components';
+import { DataError, ModuleHeader } from '../../../components';
 
 export default function Org() {
   const { orgId } = useCustomParams();
@@ -23,5 +22,5 @@ export default function Org() {
     );
   };
 
-  return error ? <ErrorGraphql error={error} /> : renderContent();
+  return error ? <DataError error={error} /> : renderContent();
 }

@@ -9,7 +9,6 @@ export const mapMatch = (
     return {
       playerId: player._id,
       matchPosition: player.matchPosition,
-      minutes: +player.minutes,
       isStarter: player.isStarter,
       goals: +player.goals,
       assists: +player.assists,

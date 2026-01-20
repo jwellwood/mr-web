@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { useCustomParams } from '../../../hooks';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import type { ISelectOptions } from '../../../components';
 import { FETCH_ORG_TEAMS } from '../graphql';
 
 export const useTeamOptions = () => {

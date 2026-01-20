@@ -7,7 +7,6 @@ export const FETCH_PLAYER_STATS: TypedDocumentNode<{
   query FETCH_PLAYER_STATS($playerId: String!, $seasonId: String!, $competitionId: String!) {
     player: PLAYER_STATS(playerId: $playerId, seasonId: $seasonId, competitionId: $competitionId) {
       _id
-      minutes
       apps
       goals
       assists

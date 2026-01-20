@@ -1,12 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-
-import { IAlert } from '../types';
-import { AppDispatch } from '../../../store/store';
-import { getAlert } from '../../../store/features/alerts/alertSelector';
-import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import { Slide, SlideProps } from '@mui/material';
+
+import { AppDispatch, getAlert, showAlert } from '../../../store';
+import type { IAlert } from '../types';
 
 function SlideTransition(props: SlideProps) {
   return <Slide {...props} direction="down" />;

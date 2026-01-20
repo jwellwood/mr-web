@@ -1,7 +1,7 @@
 export const MuiFormControl = {
   styleOverrides: {
     root: {
-      background: '',
+      background: 'transparent',
     },
     marginNormal: {
       marginTop: '4px',

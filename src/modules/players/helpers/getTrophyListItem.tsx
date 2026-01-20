@@ -20,7 +20,7 @@ export const getTrophyListItem = (trophy: ITrophyResponse) => {
     ),
     value: (
       <CustomTypography size="xs" bold color="data">
-        {trophy.year}
+        {trophy.year.getFullYear()}
       </CustomTypography>
     ),
   };

@@ -4,11 +4,11 @@ import { DataError, NoDataText, SectionContainer } from '../../../components';
 import { IPlayerSeasonsSummary } from '../types';
 import PlayerBestSeasonTable from '../components/player-best-season-table/PlayerBestSeasonTable';
 
-type Props = {
+interface Props {
   data?: { seasons: IPlayerSeasonsSummary[] };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function PlayerBestSeasonView({ data, loading, error }: Props) {
   const renderContent = () => {

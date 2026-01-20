@@ -1,5 +1,5 @@
 import { LINK_TYPE } from '../../constants';
-import { IListItem } from '../../components/lists/types.ts';
+import { IListItem } from '../../components/lists/types';
 
 export const PAGES = {
   MATCH: 'Match',

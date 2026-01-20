@@ -5,21 +5,26 @@ import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
-import MatchFormStepper from './components/MatchFormStepper.tsx';
+import MatchFormStepper from './components/MatchFormStepper';
 import { PAGES } from '../constants';
 import { mapMatch } from '../helpers';
-import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch.ts';
-import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput.ts';
-import { useCustomParams } from '../../../hooks/useCustomParams.tsx';
-import { AppDispatch } from '../../../store/store.ts';
-import { getTempMatch } from '../../../store/features/matches/matchesSelector.ts';
-import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
-import RouteGuard from '../../../router/RouteGuard.tsx';
+import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch';
+import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
+import { useCustomParams } from '../../../hooks';
+import {
+  AppDispatch,
+  getTempMatch,
+  getTempPlayers,
+  resetTmpMatch,
+  resetTmpPlayers,
+  setTmpPlayers,
+  setTmpMatch,
+  showAlert,
+} from '../../../store';
+import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
-import { resetTmpMatch, setTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
-import { resetTmpPlayers, setTmpPlayers } from '../../../store/features/players/playersSlice.ts';
-import { IPlayerInMatch, ITempMatch } from '../types.ts';
+import { IPlayerInMatch, ITempMatch } from '../types';
 import { DataError, PageHeader } from '../../../components';
 
 export default function EditMatch() {
@@ -58,6 +63,10 @@ export default function EditMatch() {
         query: FETCH_MATCHES_STATS,
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
+      {
+        query: FETCH_MATCH,
+        variables: { matchId },
+      },
     ],
   });
 
@@ -84,11 +93,13 @@ export default function EditMatch() {
     const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
     editMatch({ variables: { matchId, ...data } })
       .then(() => {
+        dispatch(showAlert({ text: 'Match updated successfully!', type: 'success' }));
         dispatch(resetTmpMatch());
         dispatch(resetTmpPlayers());
         navigate(-1);
       })
       .catch(err => {
+        dispatch(showAlert({ text: 'Failed to update match.', type: 'error' }));
         console.error(err);
       });
   };
@@ -106,6 +117,7 @@ export default function EditMatch() {
         opponents={opponents}
         competitions={competitions}
         onSubmit={onSubmit}
+        loading={isLoading}
       />
     ) : (
       <Spinner />

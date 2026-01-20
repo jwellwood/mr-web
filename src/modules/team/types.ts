@@ -1,5 +1,5 @@
-import { IImage } from '../../components/avatars/image-avatar/types.ts';
-import { IOrganization } from '../organization/types.ts';
+import { IImage } from '../../components/avatars/image-avatar/types';
+import { IOrganization } from '../organization/types';
 
 export interface ITeamDetailsInput {
   teamName: string;
@@ -37,7 +37,7 @@ export interface ITeam {
   orgId: string;
   teamBadge?: IImage;
   teamName: string;
-  yearFounded: number;
+  yearFounded: string;
   location: string;
   country: string;
   stadiumName?: string;

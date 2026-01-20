@@ -1,5 +1,5 @@
-import { IImage } from '../../components/avatars/image-avatar/types.ts';
-import { TPosition } from '../../constants/position.ts';
+import { IImage } from '../../components/avatars/image-avatar/types';
+import { TPosition } from '../../constants/position';
 
 export interface IPlayer {
   _id: string;
@@ -46,7 +46,6 @@ export type AllPlayerStreaks = {
 
 export interface IPlayerStats {
   apps: number;
-  minutes: number;
   goals: number;
   assists: number;
   conceded: number;

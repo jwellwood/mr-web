@@ -4,9 +4,9 @@ import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import { ICompetition } from '../types';
 
-type Props = {
+interface Props {
   competitions?: ICompetition[];
-};
+}
 
 export default function CompetitionsList({ competitions }: Props) {
   const data: IListItem[] =

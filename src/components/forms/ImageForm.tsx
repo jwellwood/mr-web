@@ -1,12 +1,14 @@
 import React, { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { ApolloError } from '@apollo/client';
+
 import { CustomButton } from '../buttons';
-import { FormContainer } from '../containers';
 import { CenteredGrid } from '../grids';
-import FileInput from '../inputs/FileInput';
+import FileInput from '../inputs/file-input/FileInput';
 import { button_text } from '../../i18n';
 import ImageAvatar from '../avatars/image-avatar/ImageAvatar';
 import { IMAGE_TYPE } from '../../constants';
+import FormContainer from './form-container/FormContainer';
 
 interface Props {
   imageUrl?: string;
@@ -14,7 +16,8 @@ interface Props {
   onSubmit: (data: { imageFile: File | null }) => void;
   currentUrl?: string;
   removeImage: () => void;
-  loading?: boolean;
+  loading: boolean;
+  error?: ApolloError;
 }
 
 const ImageForm: React.FC<Props> = ({
@@ -24,6 +27,7 @@ const ImageForm: React.FC<Props> = ({
   currentUrl,
   removeImage,
   loading,
+  error,
 }) => {
   const {
     handleSubmit,
@@ -42,7 +46,7 @@ const ImageForm: React.FC<Props> = ({
   }, [reset, setImageUrl]);
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
       <CenteredGrid>
         <Controller
           control={control}
@@ -56,7 +60,13 @@ const ImageForm: React.FC<Props> = ({
                   onChange(event.target?.files?.[0]);
                   setImageUrl(URL.createObjectURL(event.target?.files?.[0] as File));
                 }}
-                errors={errors.imageFile ? [errors.imageFile.message as string] : []}
+                errors={
+                  errors.imageFile
+                    ? Array.isArray(errors.imageFile)
+                      ? errors.imageFile.map(err => err)
+                      : [errors.imageFile]
+                    : []
+                }
               />
             );
           }}

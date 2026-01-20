@@ -1,5 +1,5 @@
 import { TAuthRoles } from '../../constants';
-import { IImage } from '../../components/avatars/image-avatar/types.ts';
+import { IImage } from '../../components/avatars/image-avatar/types';
 
 export interface IUser {
   _id?: string;

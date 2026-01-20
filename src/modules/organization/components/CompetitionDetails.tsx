@@ -1,4 +1,4 @@
-import { DataContainer, SectionContainer } from '../../../components';
+import { SectionContainer } from '../../../components';
 import TextList from '../../../components/lists/TextList';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
@@ -25,32 +25,23 @@ export default function CompetitionDetails({ competition }: Props) {
       label: 'Type',
       value: competition?.competitionType,
     },
-
     {
       label: 'Currently Active',
       value: competition?.isActive ? 'Yes' : 'No',
     },
-  ];
-
-  const numbersData = [
     {
       label: 'Players / Team',
-      value: competition?.playersPerTeam,
+      value: competition?.playersPerTeam || '-',
     },
     {
-      label: 'Match Length',
-      value: competition?.matchMinutes,
-    },
-    {
-      label: 'Teams',
-      value: competition?.numberOfTeams,
+      label: 'Match Length (minutes)',
+      value: competition?.matchMinutes || '-',
     },
   ];
 
   return (
     <SectionContainer title="Summary">
       <TextList data={data} />
-      <DataContainer data={numbersData} />
     </SectionContainer>
   );
 }

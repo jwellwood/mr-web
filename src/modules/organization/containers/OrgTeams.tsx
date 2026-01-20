@@ -3,9 +3,9 @@ import { useQuery } from '@apollo/client';
 import { FETCH_ORG_TEAMS } from '../graphql';
 
 import { Spinner } from '../../../components/loaders';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import OrgTeamsList from '../components/OrgTeamsList';
+import { DataError } from '../../../components';
 
 export default function OrgTeams() {
   const { orgId } = useCustomParams();
@@ -17,5 +17,5 @@ export default function OrgTeams() {
     return !loading ? <OrgTeamsList teams={data?.teams || []} /> : <Spinner />;
   };
 
-  return error ? <ErrorGraphql error={error} /> : renderContent();
+  return error ? <DataError error={error} /> : renderContent();
 }

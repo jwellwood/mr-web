@@ -6,11 +6,11 @@ import { IResult } from '../types';
 import ResultBox from './ResultBox';
 import { SectionContainer } from '../../../components';
 
-type Props = {
+interface Props {
   results: IResult[];
   orgId: string;
   orgSeasonId: string;
-};
+}
 
 export default function ResultsAccordion({ results, orgId, orgSeasonId }: Props) {
   const resultsByGameWeek = results

@@ -12,13 +12,13 @@ import { mapPlayerAverages } from '../helpers';
 import { IPlayerStats } from '../types';
 import GamesWithStatTable from '../components/games-with-stat-table/GamesWithStatTable';
 import PlayerStatsTable from '../components/player-stats-table/PlayerStatsTable';
-import StatsFilters from '../forms/StatsFilters';
+import StatsFilters from '../forms/stats-filter/StatsFilters';
 
-type Props = {
+interface Props {
   data?: { player: IPlayerStats };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function PlayerStatsView({ data, loading, error }: Props) {
   const renderContent = () => {

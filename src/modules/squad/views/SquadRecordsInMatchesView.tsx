@@ -4,12 +4,12 @@ import { DataError, NoDataText, SectionContainer } from '../../../components';
 import MostInMatch from '../components/MostInMatch';
 import { IMostGoalsInMatch } from '../../matches/types';
 
-type Props = {
+interface Props {
   data?: { stats: IMostGoalsInMatch[] };
   title: string;
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function SquadRecordsInMatchesView({ data, loading, error, title }: Props) {
   const renderData =

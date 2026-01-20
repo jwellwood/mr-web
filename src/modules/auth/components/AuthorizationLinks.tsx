@@ -3,9 +3,9 @@ import { LinkButton } from '../../../components/buttons';
 import { CustomTypography } from '../../../components/typography';
 import { IListItem } from '../../../components/lists/types';
 
-type Props = {
+interface Props {
   links: IListItem[];
-};
+}
 
 export default function AuthorizationLinks({ links }: Props) {
   return (

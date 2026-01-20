@@ -2,10 +2,10 @@ import CustomTable from '../../../../components/tables/CustomTable';
 import { IPlayerVsStats } from '../../../matches/types';
 import { columns, rows, styles } from './config';
 
-type Props = {
+interface Props {
   data?: IPlayerVsStats[];
   loading: boolean;
-};
+}
 
 export default function PlayerOpponentTable({ data, loading }: Props) {
   return (

@@ -12,7 +12,6 @@ export const link_text = {
   edit_match: 'Edit Match',
   users: 'Users',
   set_permissions: 'Set Permissions',
-  player_minutes: 'Starts and Minutes',
   team_details: 'Team Details',
   team_photo: 'Team Photo',
   trophies: 'Trophies',

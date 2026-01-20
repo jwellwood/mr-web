@@ -3,12 +3,12 @@ import { lazy } from 'react';
 import { TAB_TYPES } from '../../../constants';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import SeasonHeader from './SeasonHeader';
-import { ITeamSeason } from '../types/index';
+import { ITeamSeason } from '../types';
 
-const Matches = lazy(() => import('../../matches/containers/Matches.tsx'));
-const Squad = lazy(() => import('../../squad/containers/Squad.tsx'));
-const MatchStatsSeason = lazy(() => import('../../matches/containers/MatchStatsSeason.tsx'));
-const Awards = lazy(() => import('../containers/Awards.tsx'));
+const Matches = lazy(() => import('../../matches/containers/Matches'));
+const Squad = lazy(() => import('../../squad/containers/Squad'));
+const MatchStatsSeason = lazy(() => import('../../matches/containers/MatchStatsSeason'));
+const Awards = lazy(() => import('../containers/Awards'));
 
 interface Props {
   season?: ITeamSeason;

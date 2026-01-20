@@ -3,8 +3,8 @@ import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { FETCH_SEASONS } from '../modules/history/graphql';
-import { useCustomParams } from './useCustomParams.tsx';
-import { ISelectOptions } from '../components/inputs/SelectInput.tsx';
+import { useCustomParams } from './useCustomParams';
+import type { ISelectOptions } from '../components';
 
 export const useSeasons = () => {
   const [seasonToUse, setSeasonToUse] = useState('');

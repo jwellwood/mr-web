@@ -11,7 +11,6 @@ export const FETCH_COMPETITION: TypedDocumentNode<{
       competitionType
       matchMinutes
       playersPerTeam
-      numberOfTeams
       isActive
       winners {
         teamId {

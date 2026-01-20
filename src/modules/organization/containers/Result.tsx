@@ -4,13 +4,12 @@ import { FETCH_RESULT } from '../graphql';
 
 import { AUTH_ROLES, LINK_TYPE } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
 import { IListItem } from '../../../components/lists/types';
-import { NoDataText, PageHeader } from '../../../components';
+import { DataError, NoDataText, PageHeader } from '../../../components';
 import ResultDetails from '../components/ResultDetails';
 
 export default function Result() {
@@ -40,7 +39,7 @@ export default function Result() {
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
       <PageHeader title={PAGES.RESULT} links={isOrgAuth ? links : undefined}>
-        {error ? <ErrorGraphql error={error} /> : renderContent()}
+        {error ? <DataError error={error} /> : renderContent()}
       </PageHeader>
     </RouteGuard>
   );

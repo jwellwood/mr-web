@@ -1,4 +1,4 @@
-import { ISelectOptions } from '../../components/inputs/SelectInput.tsx';
+import { ISelectOptions } from '../../components';
 
 export function getIntegers(max: string | number = 99, min: string | number = 0): ISelectOptions[] {
   if (typeof max !== 'number') max = +max;

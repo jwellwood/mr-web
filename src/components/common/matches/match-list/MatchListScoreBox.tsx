@@ -1,14 +1,14 @@
-import CustomSkeleton from '../../../loaders/CustomSkeleton.tsx';
-import { CustomTypography } from '../../../typography/index.ts';
-import { getPoints } from '../../../../modules/matches/helpers/index.ts';
-import { theme } from '../../../../theme/index.ts';
-import { getOpaqueValue } from '../../../../utils/colors/getOpaqueValue.ts';
+import CustomSkeleton from '../../../loaders/CustomSkeleton';
+import { CustomTypography } from '../../../typography';
+import { getPoints } from '../../../../modules/matches/helpers';
+import { theme } from '../../../../theme';
+import { getOpaqueValue } from '../../../../utils/colors/getOpaqueValue';
 
-type Props = {
+interface Props {
   teamGoals: number;
   opponentGoals: number;
   loading?: boolean;
-};
+}
 
 export default function MatchListScoreBox({ teamGoals, opponentGoals, loading }: Props) {
   const { palette } = theme;

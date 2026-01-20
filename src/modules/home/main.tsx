@@ -1,8 +1,8 @@
 import { AUTH_ROLES } from '../../constants';
 import { CenteredGrid, GridItem } from '../../components/grids';
 import { PageContainer } from '../../components';
-import AppTitle from './components/AppTitle.tsx';
-import TeamSearch from './containers/TeamSearch.tsx';
+import AppTitle from './components/AppTitle';
+import TeamSearch from './forms/TeamSearch';
 
 export default function HomeContainer() {
   return (

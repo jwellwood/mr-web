@@ -1,11 +1,11 @@
 import countryList from 'react-select-country-list';
 
-import { IPastPlayer, ISquadSeasonStats } from '../types.ts';
+import { IPastPlayer, ISquadSeasonStats } from '../types';
 import { CustomTypography } from '../../../components/typography';
-import FlagIcon from '../../../components/icons/FlagIcon.tsx';
-import TextList from '../../../components/lists/TextList.tsx';
+import FlagIcon from '../../../components/icons/FlagIcon';
+import TextList from '../../../components/lists/TextList';
 import { PresentationModal } from '../../../components/modals';
-import { IPlayer } from '../../players/types.ts';
+import { IPlayer } from '../../players/types';
 import { CustomAccordion } from '../../../components';
 
 interface Props {

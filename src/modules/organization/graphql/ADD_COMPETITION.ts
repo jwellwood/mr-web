@@ -5,7 +5,6 @@ export const ADD_COMPETITION: TypedDocumentNode = gql`
     $orgId: String!
     $name: String!
     $matchMinutes: Float!
-    $numberOfTeams: Float!
     $playersPerTeam: Float!
     $competitionType: String!
     $isActive: Boolean!
@@ -17,7 +16,6 @@ export const ADD_COMPETITION: TypedDocumentNode = gql`
         competitionType: $competitionType
         matchMinutes: $matchMinutes
         playersPerTeam: $playersPerTeam
-        numberOfTeams: $numberOfTeams
         isActive: $isActive
       }
     ) {

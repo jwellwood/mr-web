@@ -4,10 +4,10 @@ import { CustomTypography } from '../../../../components/typography';
 import { validateStats } from '../../helpers/statsValidation';
 import { IPlayerInMatch, ITempMatch } from '../../types';
 
-type Props = {
+interface Props {
   match: ITempMatch;
   players: IPlayerInMatch[];
-};
+}
 
 export default function AddMatchValidation({ match, players }: Props) {
   const { validationArray } = validateStats(match, players);

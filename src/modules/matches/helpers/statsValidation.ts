@@ -6,7 +6,7 @@ export const validateStats = (
 ): {
   isValid: boolean;
   validationArray: readonly {
-    label: 'Starters' | 'Minutes' | 'Goals' | 'Assists' | 'Own Goals' | 'Conceded';
+    label: 'Starters' | 'Goals' | 'Assists' | 'Own Goals' | 'Conceded';
     value: number;
     isValid: boolean;
     isExact: boolean;
@@ -14,7 +14,7 @@ export const validateStats = (
   }[];
 } => {
   const { teamGoals, opponentGoals, competition } = match;
-  const { playersPerTeam, matchMinutes } = competition || {};
+  const { playersPerTeam } = competition || {};
 
   const getTotalArray = (type: keyof IPlayerInMatch) => {
     return players.map(player => +(player[type] || 0)).reduce((prev, curr) => prev + curr, 0);
@@ -28,8 +28,6 @@ export const validateStats = (
   const conceded = getTotalArray('conceded');
   const ownGoals = getTotalArray('ownGoals');
   const starters = getTotalTrue('isStarter');
-  const mins = getTotalArray('minutes');
-  const totalMins = (playersPerTeam || 0) * (matchMinutes || 0);
 
   const validateScored = (stat: number) => {
     return +stat <= +teamGoals;
@@ -45,13 +43,6 @@ export const validateStats = (
       isValid: (playersPerTeam && starters <= playersPerTeam) || false,
       isExact: +starters === playersPerTeam,
       total: playersPerTeam || 0,
-    },
-    {
-      label: 'Minutes',
-      value: mins,
-      isValid: mins <= totalMins || false,
-      isExact: +mins === totalMins,
-      total: totalMins,
     },
     {
       label: 'Goals',

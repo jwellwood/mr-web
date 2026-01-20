@@ -15,7 +15,7 @@ export const MuiPickersInputBase = {
     root: {
       fontWeight: 'bold',
       color: teal[50],
-      backgroundColor: 'transparent',
+      backgroundColor: 'green',
     },
   },
 };

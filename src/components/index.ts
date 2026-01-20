@@ -11,3 +11,5 @@ export * from './shared';
 export * from './tables';
 export * from './common';
 export * from './charts';
+export * from './inputs';
+export * from './forms';

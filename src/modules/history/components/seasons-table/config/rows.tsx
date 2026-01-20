@@ -37,7 +37,7 @@ export const rows = (data?: ILeaguePositions[], loading?: boolean) => {
         <CustomSkeleton width="100px" />
       ) : (
         <CustomTypography size="sm" color="data" bold>
-          {division}
+          {division || '-'}
         </CustomTypography>
       ),
 

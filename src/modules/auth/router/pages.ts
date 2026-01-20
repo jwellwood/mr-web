@@ -1,7 +1,8 @@
 import { lazy } from 'react';
 
-export const SignIn = lazy(() => import('../containers/SignIn'));
-export const SignUp = lazy(() => import('../containers/SignUp'));
+export const SignIn = lazy(() => import('../forms/sign-in/SignIn'));
+export const SignUp = lazy(() => import('../forms/sign-up/SignUp'));
+export const ForgotPassword = lazy(() => import('../forms/forgot-password/ForgotPassword'));
+export const ResetPassword = lazy(() => import('../forms/reset-password/ResetPassword'));
+
 export const ValidatedEmail = lazy(() => import('../containers/ValidatedEmail'));
-export const ForgotPassword = lazy(() => import('../containers/ForgotPassword'));
-export const ResetPassword = lazy(() => import('../containers/ResetPassword'));

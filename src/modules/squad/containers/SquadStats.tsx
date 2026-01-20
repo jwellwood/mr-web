@@ -1,4 +1,3 @@
-// In SquadStats.tsx
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 

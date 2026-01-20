@@ -4,11 +4,11 @@ import { DataError, LinksList, NoDataText, SectionContainer } from '../../../com
 import { ITrophyResponse } from '../../history/types';
 import { getTrophyListItem } from '../helpers';
 
-type Props = {
+interface Props {
   data?: { trophies: ITrophyResponse[] };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function PlayerTrophiesView({ data, loading, error }: Props) {
   const winner = () =>

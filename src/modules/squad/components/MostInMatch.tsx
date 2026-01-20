@@ -1,8 +1,8 @@
 import { CustomTypography } from '../../../components/typography';
 import { parseDate } from '../../../utils/helpers';
-import LinksList from '../../../components/lists/links-list/LinksList.tsx';
-import { IMostGoalsInMatch } from '../../matches/types.ts';
-import { IListItem } from '../../../components/lists/types.ts';
+import LinksList from '../../../components/lists/links-list/LinksList';
+import { IMostGoalsInMatch } from '../../matches/types';
+import { IListItem } from '../../../components/lists/types';
 
 interface Props {
   data?: IMostGoalsInMatch[];

@@ -1,8 +1,8 @@
 import { CustomTypography } from '../../typography';
 
-type Props = {
+interface Props {
   stat: number;
-};
+}
 
 export default function DifferenceCell({ stat }: Props) {
   let symbol = '';

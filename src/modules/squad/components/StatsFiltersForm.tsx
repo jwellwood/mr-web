@@ -1,12 +1,15 @@
 import { Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { CustomButton, FormContainer } from '../../../components';
+import {
+  CustomButton,
+  FormContainer,
+  ControlledSelectInput,
+  ControlledSwitchInput,
+} from '../../../components';
 import FormModal from '../../../components/modals/FormModal';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import ControlledSelectInput from '../../../components/inputs/ControlledSelectInput';
-import SwitchButtonList from '../../../components/forms/SwitchButtonList';
-import StatsFiltersDisplay from './StatsFiltersDisplay';
+import type { ISelectOptions } from '../../../components';
+import StatsFiltersDisplay from '../forms/StatsFiltersDisplay';
 import { TFilters } from '../context/FiltersContext';
 
 interface Props {
@@ -24,12 +27,7 @@ export default function StatsFiltersForm({
   competitionOptions,
   defaultValues,
 }: Props) {
-  const {
-    handleSubmit,
-    control,
-    reset,
-    formState: { errors },
-  } = useForm<TFilters>({ defaultValues });
+  const { handleSubmit, control, reset } = useForm<TFilters>({ defaultValues });
 
   const resetForm = () => {
     reset();
@@ -49,8 +47,8 @@ export default function StatsFiltersForm({
     >
       <FormContainer
         onSubmit={handleSubmit(onSubmit)}
-        nonAbsoluteSubmit
-        submitText="Apply"
+        loading={false}
+        submitBtn={{ text: 'Apply' }}
         resetBtn={
           <CustomButton onClick={resetForm} color="error">
             Reset
@@ -62,26 +60,16 @@ export default function StatsFiltersForm({
             name="seasons"
             options={seasonOptions}
             label={'Season'}
-            errors={errors.seasons ? [errors.seasons] : []}
             control={control}
           />
           <ControlledSelectInput
             name="competitions"
             options={competitionOptions}
             label={'Competitions'}
-            errors={errors.competitions ? [errors.competitions] : []}
             control={control}
           />
 
-          <SwitchButtonList
-            control={control}
-            data={[
-              {
-                label: 'Show Averages',
-                value: 'showAverages',
-              },
-            ]}
-          />
+          <ControlledSwitchInput name="showAverages" label="Show Averages" control={control} />
         </Stack>
       </FormContainer>
     </FormModal>

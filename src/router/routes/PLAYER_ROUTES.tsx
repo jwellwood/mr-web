@@ -10,7 +10,6 @@ export const PLAYER_ROUTES = () => (
       <Route index={true} element={<PLAYER.Player />} />
       <Route path={PLAYER.PLAYER_PATHS.EDIT} element={<PLAYER.EditPlayer />} />
       <Route path={PLAYER.PLAYER_PATHS.EDIT_PHOTO} element={<PLAYER.EditPlayerPhoto />} />
-      <Route path={PLAYER.PLAYER_PATHS.DELETE} element={<PLAYER.DeletePlayer />} />
       <Route path={TEAM.TEAM_PATHS.TROPHY} element={<Trophy />} />
     </Route>
   </>

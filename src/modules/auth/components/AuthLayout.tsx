@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
 import { SectionContainer } from '../../../components';
 
-type Props = {
+interface Props {
   children: ReactElement;
-};
+}
 
 export default function AuthLayout({ children }: Props) {
   return (

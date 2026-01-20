@@ -11,11 +11,11 @@ import StatIcon from '../../../components/icons/StatIcon';
 import { IAwardByPlayer } from '../../history/types';
 import { IListItem } from '../../../components/lists/types';
 
-type Props = {
+interface Props {
   data?: { awards: IAwardByPlayer[] };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function PlayerAwardsView({ data, loading, error }: Props) {
   const awardsData: IListItem[] =

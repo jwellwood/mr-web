@@ -3,12 +3,10 @@ import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
+import { FETCH_USER } from '../modules/profile/graphql';
 import { useAuth } from '../hooks';
-import { resetAuth, setAuth } from '../store/features/auth/authSlice.ts';
-import { BackgroundContainer } from '../components/containers';
-import CustomAlert from '../components/alerts/custom-alert/CustomAlert.tsx';
-import { ErrorBoundary } from '../components/index.ts';
-import { FETCH_USER } from '../modules/profile/graphql/FETCH_USER.ts';
+import { resetAuth, setAuth } from '../store';
+import { CustomAlert, ErrorBoundary, BackgroundContainer } from '../components';
 
 const AppRoutes = lazy(() => import('./routes/Routes'));
 

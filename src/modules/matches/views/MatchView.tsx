@@ -4,9 +4,9 @@ import { ApolloError } from '@apollo/client';
 import { TAB_TYPES } from '../../../constants';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { NoDataText } from '../../../components/typography';
-import { ITeam } from '../../team/types.ts';
+import { ITeam } from '../../team/types';
 import { DataError } from '../../../components';
-import { IMatchResponse } from '../types.ts';
+import { IMatchResponse } from '../types';
 
 const MatchDetails = lazy(() => import('../components/MatchDetails'));
 const MatchPlayersTable = lazy(() => import('../components/match-players-table/MatchPlayersTable'));

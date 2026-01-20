@@ -3,11 +3,11 @@ import { CustomTypography } from '../../../typography';
 import { parseDate } from '../../../../utils/helpers';
 import { IMatchList } from '../../../../modules/matches/types';
 
-type Props = {
+interface Props {
   match: IMatchList;
   loading?: boolean;
   showComp?: boolean;
-};
+}
 
 export default function MatchListLabel({ match, loading, showComp = true }: Props) {
   const { date, isHome, opponentName, competition, isForfeit } = match || {};

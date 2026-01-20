@@ -4,11 +4,11 @@ import { DataError, NoDataText, SectionContainer } from '../../../components';
 import { IPlayerMatchRecords } from '../../matches/types';
 import PlayerMatchRecordsTable from '../components/player-match-records-table/PlayerMatchRecordsTable';
 
-type Props = {
+interface Props {
   data?: { stats: IPlayerMatchRecords };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function PlayerMatchesWithRecordsView({ data, loading, error }: Props) {
   const renderContent = () => {

@@ -1,32 +1,7 @@
-import { ReactElement } from 'react';
-
 import { ICompetition } from '../organization/types';
 import { ITeam } from '../team/types';
 import { IPlayer } from '../players/types';
 import { TPosition } from '../../constants';
-
-export interface IPlayerInMatch {
-  _id?: string;
-  playerId: string | Partial<IPlayer>;
-  name: string;
-  matchId: string;
-  isStarter: boolean;
-  matchPosition: TPosition | ReactElement;
-  position?: TPosition;
-  apps?: number;
-  minutes: number;
-  goals: number;
-  assists: number;
-  conceded: number;
-  pensScored: number;
-  pensMissed: number;
-  pensSaved: number;
-  ownGoals: number;
-  yellowCards: number;
-  mvp: boolean;
-  redCard: boolean;
-  cleanSheet: boolean;
-}
 
 export interface IPlayerResponse extends Omit<IPlayerInMatch, 'playerId'> {
   playerId: string | IPlayer;
@@ -68,10 +43,9 @@ export interface IPlayerInMatch {
   name: string;
   matchId: string;
   isStarter: boolean;
-  matchPosition: TPosition | ReactElement;
+  matchPosition: TPosition;
   position?: TPosition;
   apps?: number;
-  minutes: number;
   goals: number;
   assists: number;
   conceded: number;
@@ -87,7 +61,6 @@ export interface IPlayerInMatch {
 
 export interface IPlayerStats {
   apps: number;
-  minutes: number;
   goals: number;
   assists: number;
   conceded: number;

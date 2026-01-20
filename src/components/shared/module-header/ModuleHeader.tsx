@@ -1,16 +1,16 @@
 import React, { Fragment, ReactNode } from 'react';
 
 import { CenteredGrid, GridItem } from '../../grids';
-import FlagIcon from '../../icons/FlagIcon.tsx';
-import CustomSkeleton from '../../loaders/CustomSkeleton.tsx';
+import FlagIcon from '../../icons/FlagIcon';
+import CustomSkeleton from '../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../typography';
 import { useNationality } from '../../../hooks';
 import { theme } from '../../../theme';
-import ImageAvatar from '../../avatars/image-avatar/ImageAvatar.tsx';
+import ImageAvatar from '../../avatars/image-avatar/ImageAvatar';
 import { ModuleHeaderContainer } from '../../containers';
-import { IIconType } from '../../icons/types/index.ts';
+import { IIconType } from '../../icons/types';
 
-type Props = {
+interface Props {
   title?: string;
   badge?: string;
   data?: { label: string; value: ReactNode }[];
@@ -18,7 +18,7 @@ type Props = {
   country?: string;
   type?: IIconType;
   loading?: boolean;
-};
+}
 
 const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type, loading }) => {
   const { countryName } = useNationality(country);

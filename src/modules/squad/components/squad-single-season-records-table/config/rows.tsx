@@ -4,11 +4,13 @@ import { ISquadSingleSeasonRecords } from '../../../types';
 import RecordPlayers from '../../RecordPlayers';
 
 export const rows = (data?: { stats: ISquadSingleSeasonRecords }, loading?: boolean) => {
-  const { goals, assists, combined } = data?.stats || {
-    goals: { value: 0, players: [], seasons: [] },
-    assists: { value: 0, players: [], seasons: [] },
-    combined: { value: 0, players: [], seasons: [] },
-  };
+  const { goals, assists, combined } = data?.stats.combined
+    ? data.stats
+    : {
+        goals: { value: 0, players: [], seasons: [] },
+        assists: { value: 0, players: [], seasons: [] },
+        combined: { value: 0, players: [], seasons: [] },
+      };
 
   const tableData = [
     { label: 'Most Goals', players: goals.players, seasons: goals.seasons, value: goals },

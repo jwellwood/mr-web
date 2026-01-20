@@ -1,6 +1,8 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { ITempMatch } from '../../../modules/matches/types';
 
+const date = new Date().toISOString();
+
 export const initialMatchState: ITempMatch = {
   _id: '',
   teamId: '',
@@ -10,7 +12,7 @@ export const initialMatchState: ITempMatch = {
   opponentName: '',
   competitionId: '',
   competition: null,
-  date: new Date().toString(),
+  date,
   isHome: true,
   teamGoals: 0,
   opponentGoals: 0,

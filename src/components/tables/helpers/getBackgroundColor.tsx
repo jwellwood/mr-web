@@ -1,8 +1,9 @@
-import { BACKGROUND_STYLE } from '../../../constants';
-import type { ICellStyleByIndex } from '../types.ts';
-import { theme } from '../../../theme';
-import { getOpaqueValue } from '../../../utils/colors/getOpaqueValue.ts';
 import { ReactNode } from 'react';
+
+import { BACKGROUND_STYLE } from '../../../constants';
+import type { ICellStyleByIndex } from '../types';
+import { theme } from '../../../theme';
+import { getOpaqueValue } from '../../../utils/colors/getOpaqueValue';
 
 export const getBackgroundColor = (
   item: [string, ReactNode | number | object],

@@ -4,11 +4,11 @@ import { LinksList, ImageAvatar } from '../../../components';
 import { CustomTypography, NoDataText } from '../../../components/typography';
 import { ITeamResponse } from '../../team/types';
 
-type Props = {
+interface Props {
   teams?: ITeamResponse[];
   isSearchComplete: boolean;
   loading: boolean;
-};
+}
 
 export default function TeamList({ teams, isSearchComplete, loading }: Props) {
   const links = teams?.length

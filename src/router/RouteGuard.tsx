@@ -2,10 +2,9 @@ import { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { useAuth } from '../hooks';
+import { useAuth, useCustomParams } from '../hooks';
 import { AUTH_ROLES, TAuthRoles } from '../constants';
-import { showAlert } from '../store/features/alerts/alertsSlice.ts';
-import { useCustomParams } from '../hooks/useCustomParams.tsx';
+import { showAlert } from '../store';
 import { AUTH_PATHS } from '../modules/auth/router';
 import { PROFILE_PATHS } from '../modules/profile/router';
 

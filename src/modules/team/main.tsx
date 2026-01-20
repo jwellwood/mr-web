@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 
 import { AUTH_ROLES, TAB_TYPES } from '../../constants';
 import NavIcon from '../../components/icons/NavIcon';
+import { NAV_ICONS } from '../../components/icons/icons';
 import { CustomTabs, ITab } from '../../components/tabs';
+import { IIconType } from '../../components/icons/types';
 import { useAuth, useCustomParams } from '../../hooks';
 import { PAGES, TEAM_ADMIN_LINKS } from './constants';
-import { IIconType } from '../../components/icons/types';
-import { getTabIndex } from '../../store/features/tabs/tabsSelector';
-import { NAV_ICONS } from '../../components/icons/icons';
+import { getTabIndex } from '../../store';
 import { PageContainer } from '../../components';
 
 export const TeamOverview = lazy(() => import('./containers/TeamOverview'));

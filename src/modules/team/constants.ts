@@ -1,4 +1,4 @@
-import { ISelectOptions } from '../../components/inputs/SelectInput.tsx';
+import type { ISelectOptions } from '../../components';
 import { LINK_TYPE } from '../../constants';
 
 export const TEAM_ADMIN_LINKS = [

@@ -6,6 +6,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 
+import { visualizer } from 'rollup-plugin-visualizer';
+
 import pkg from './package.json';
 const dirname =
   typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
@@ -18,11 +20,18 @@ export default defineConfig(({ mode }) => {
       __APP_VERSION__: JSON.stringify(pkg.version),
       __ROOT_URL__: JSON.stringify(env.VITE_ROOT_URL),
     },
-    plugins: [react()],
+    plugins: [
+      react(), // show bundle report only on production builds
+      mode === 'production' &&
+        visualizer({ filename: 'dist/stats.html', open: false, gzipSize: true }),
+    ].filter(Boolean),
     server: {
       port: 3000,
     },
     base: '/',
+    build: {
+      sourcemap: true,
+    },
     test: {
       projects: [
         {

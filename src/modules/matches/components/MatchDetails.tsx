@@ -12,10 +12,10 @@ import { ImageAvatar, ModuleHeaderContainer } from '../../../components';
 import ScoreBox from './ScoreBox';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 
-type Props = {
+interface Props {
   match?: IMatchResponse;
   loading: boolean;
-};
+}
 
 export default function MatchDetails({ match, loading }: Props) {
   const { date, teamId, teamGoals, opponentId, opponentGoals, isHome, competitionId } = match || {

@@ -4,12 +4,12 @@ import { DataError, NoDataText, SectionContainer } from '../../../components';
 import { ISquadListStats } from '../types';
 import SquadListTable from '../components/squad-list-table/SquadListTable';
 
-type Props = {
+interface Props {
   error?: ApolloError;
   data?: { players: ISquadListStats[] };
   loading: boolean;
   seasonReady: boolean;
-};
+}
 
 export default function SquadView({ error, data, loading, seasonReady }: Props) {
   const renderData = () => {

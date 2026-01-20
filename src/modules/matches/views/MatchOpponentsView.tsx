@@ -43,6 +43,7 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
           onCheck={toggleSwitch}
           label={'Show all teams'}
           placement="start"
+          errors={[]}
         />
       }
     >

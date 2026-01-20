@@ -4,9 +4,9 @@ import { SectionContainer } from '../../containers';
 import { CustomTypography } from '../../typography';
 import { ErrorText } from '..';
 
-type Props = {
+interface Props {
   error: ApolloError;
-};
+}
 
 export default function DataError({ error }: Props) {
   const { networkError } = error;

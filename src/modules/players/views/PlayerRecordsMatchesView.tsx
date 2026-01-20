@@ -4,12 +4,12 @@ import PlayerRecordsMatchesModal from '../../squad/components/PlayerRecordsMatch
 import { useCustomParams } from '../../../hooks';
 import { IPlayerRecordMatch } from '../../squad/types';
 
-type Props = {
+interface Props {
   data?: IPlayerRecordMatch[];
   loading: boolean;
   error?: ApolloError;
   title: string;
-};
+}
 
 export default function PlayerRecordsMatchesView({ data, loading, error, title }: Props) {
   const { orgId, teamId } = useCustomParams();

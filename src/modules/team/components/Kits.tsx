@@ -6,7 +6,7 @@ import { ITeamResponse } from '../types';
 import { SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
-import CustomSkeleton from '../../../components/loaders/CustomSkeleton.tsx';
+import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 
 const useStyles = makeStyles(() => ({
   container: {

@@ -4,11 +4,10 @@ import AppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-import TabPanel from './TabPanel';
-import { AppDispatch } from '../../store/store.ts';
-import { getTabIndex } from '../../store/features/tabs/tabsSelector.ts';
-import { setTabIndex, TabIndex } from '../../store/features/tabs/tabsSlice.ts';
+
+import { AppDispatch, getTabIndex, setTabIndex, type TabIndex } from '../../store';
 import { theme } from '../../theme';
+import TabPanel from './TabPanel';
 
 export interface ITab {
   label: string | ReactElement;

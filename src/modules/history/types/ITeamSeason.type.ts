@@ -20,12 +20,3 @@ export interface ILeaguePositions {
   totalFinalPositions?: number;
   division?: string;
 }
-
-export interface ITeamSeasonInput {
-  yearStarted: string;
-  yearEnded: string;
-  leaguePosition?: string;
-  totalFinalPositions?: string;
-  division?: string;
-  comment?: string;
-}

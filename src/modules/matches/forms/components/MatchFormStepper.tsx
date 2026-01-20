@@ -1,21 +1,21 @@
 import { useState } from 'react';
+import { ApolloError } from '@apollo/client';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
 
-import { ISelectOptions } from '../../../../components/inputs/SelectInput';
-
-import Step1MatchDetails from '../steps/Step1MatchDetails';
-import Step2AddPlayers from '../steps/Step2MatchPlayers';
-import Step3MatchStats from '../steps/Step3MatchStats';
-import Step4SubmitMatch from '../steps/Step4SubmitMatch';
-import MatchOverview from '../../components/MatchOverview';
+import type { ISelectOptions } from '../../../../components';
+import Step1MatchDetails from '../add-match-details/Step1MatchDetails';
+import Step2AddPlayers from '../add-match-players/Step2MatchPlayers';
+import Step3MatchStats from '../add-match-player-stats/Step3MatchStats';
+import Step4SubmitMatch from '../submit-match/Step4SubmitMatch';
+import MatchOverview from './MatchOverview';
 import { theme } from '../../../../theme';
 import { ICompetition } from '../../../organization/types';
 import { ITeam } from '../../../team/types';
 import { IPlayerInMatch, ITempMatch } from '../../types';
 
-type Props = {
+interface Props {
   defaultValues: ITempMatch;
   currentPlayers: IPlayerInMatch[];
   seasonOptions: ISelectOptions[];
@@ -23,7 +23,9 @@ type Props = {
   teamId: string;
   opponents: ITeam[];
   competitions: ICompetition[];
-};
+  loading: boolean;
+  error?: ApolloError;
+}
 
 export default function MatchFormStepper({
   defaultValues,
@@ -33,6 +35,8 @@ export default function MatchFormStepper({
   teamId,
   opponents,
   competitions,
+  loading,
+  error,
 }: Props) {
   const [activeStep, setActiveStep] = useState(0);
 
@@ -52,21 +56,23 @@ export default function MatchFormStepper({
       seasonOptions={seasonOptions}
       competitions={competitions}
       opponents={opponents}
+      loading={loading}
+      error={error}
     />,
-    <Step2AddPlayers onNextClick={handleNext} teamId={teamId} />,
-    <Step3MatchStats onNextClick={handleNext} currentPlayers={currentPlayers} />,
+    <Step2AddPlayers onNextClick={handleNext} teamId={teamId} loading={loading} error={error} />,
+    <Step3MatchStats onNextClick={handleNext} currentPlayers={currentPlayers} error={error} />,
     <Step4SubmitMatch
       onSubmit={onSubmit}
       currentTempMatch={defaultValues}
       currentTempPlayers={currentPlayers}
+      loading={loading}
+      error={error}
     />,
   ];
   const maxSteps = steps.length;
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {activeStep !== 0 && <MatchOverview currentTempMatch={defaultValues} />}
-      <Box>{steps[activeStep]}</Box>
       <MobileStepper
         sx={{
           position: 'relative',
@@ -83,6 +89,8 @@ export default function MatchFormStepper({
           </Button>
         }
       />
+      {activeStep !== 0 && <MatchOverview currentTempMatch={defaultValues} />}
+      <Box>{steps[activeStep]}</Box>
     </Box>
   );
 }

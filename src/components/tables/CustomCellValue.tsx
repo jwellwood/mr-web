@@ -2,13 +2,13 @@ import React from 'react';
 import { CustomTypography } from '../typography';
 import DifferenceCell from './difference-cell/DifferenceCell';
 
-type Props = {
+interface Props {
   value: unknown | number;
   isDifference: boolean;
   isPercentage?: boolean;
   textColor?: string;
   textAlign?: 'left' | 'center' | 'right';
-};
+}
 
 const CustomCellValue: React.FC<Props> = ({ value, isDifference, isPercentage, textColor }) => {
   if (isDifference) {

@@ -1,18 +1,17 @@
 import { useState } from 'react';
 
-import { SelectInput } from '../../../components/inputs';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
+import { SectionContainer, SelectInput } from '../../../components';
+import type { ISelectOptions } from '../../../components';
 import { ITrophyResponse } from '../types';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import TrophiesOrderByCompetition from './TrophiesOrderByCompetition';
 import TrophiesOrderByType from './TrophiesOrderByType';
-import { SectionContainer } from '../../../components';
 
-type Props = {
+interface Props {
   trophies?: ITrophyResponse[];
   loading: boolean;
-};
+}
 
 export default function TrophiesOrderBy({ trophies, loading }: Props) {
   const [order, setOrder] = useState('date');

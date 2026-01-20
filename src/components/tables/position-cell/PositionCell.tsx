@@ -3,10 +3,10 @@ import { amber, blue, green, red } from '@mui/material/colors';
 import { CustomTypography } from '../../typography';
 import { POSITIONS } from '../../../constants';
 
-type Props = {
+interface Props {
   children: string | number | ReactElement;
   size?: string;
-};
+}
 
 export default function PositionCell({ children, size = 'xs' }: Props) {
   let color = 'data';

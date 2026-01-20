@@ -3,9 +3,9 @@ import LinksList from '../../../components/lists/links-list/LinksList';
 import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import { ITrophyResponse } from '../types';
 
-type Props = {
+interface Props {
   trophies?: ITrophyResponse[];
-};
+}
 
 export default function TrophiesOrderByCompetition({ trophies }: Props) {
   // const getComps = Object.groupBy(trophies, ({ name }) => name); // TODO add this when

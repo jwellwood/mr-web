@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { showAlert } from '../store/features/alerts/alertsSlice';
 import { ApolloQueryResult, FetchResult } from '@apollo/client';
+
+import { showAlert } from '../store';
 
 interface UseUpload {
   uploadFunc: (fileData: FormData) => Promise<object>;

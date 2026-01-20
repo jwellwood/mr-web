@@ -4,11 +4,11 @@ import { ILeaguePositions } from '../types';
 import { DataError, NoDataText, SectionContainer } from '../../../components';
 import SeasonsTable from '../components/seasons-table/SeasonsTable';
 
-type Props = {
+interface Props {
   data?: { position: ILeaguePositions[] };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function SeasonsView({ data, loading, error }: Props) {
   const renderContent = () => {

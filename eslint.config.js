@@ -25,6 +25,13 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       ...prettierPlugin.configs.recommended.rules,
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          // disallow importing files with explicit TS/TSX extensions or index files
+          patterns: ['**/*.ts', '**/*.tsx', '**/*/index', '**/*/index.ts', '**/*/index.tsx'],
+        },
+      ],
       'no-console': [
         'error',
         {

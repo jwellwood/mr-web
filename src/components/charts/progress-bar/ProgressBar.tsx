@@ -3,13 +3,13 @@ import { theme } from '../../../theme';
 import { CustomTypography } from '../../typography';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
 
-type Props = {
+interface Props {
   max: number;
   value: number;
   text?: string;
   width?: number;
   loading?: boolean;
-};
+}
 
 export default function ProgressBar({ max, value, text, width = 130, loading }: Props) {
   const calcPercentage = () => {

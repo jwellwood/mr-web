@@ -4,11 +4,11 @@ import { ITrophyResponse } from '../types';
 import TrophyDetails from '../components/TrophyDetails';
 import { DataError } from '../../../components';
 
-type Props = {
+interface Props {
   data?: { trophy: ITrophyResponse };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function TrophyView({ data, loading, error }: Props) {
   return error ? (

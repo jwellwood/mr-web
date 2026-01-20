@@ -1,12 +1,12 @@
-import { CustomTypography } from '../../../components/typography/index.ts';
-import { parseDate } from '../../../utils/helpers/index.ts';
-import { PresentationModal } from '../../../components/modals/index.ts';
-import { CustomButton } from '../../../components/buttons/index.ts';
-import LinksList from '../../../components/lists/links-list/LinksList.tsx';
-import { IListItem } from '../../../components/lists/types.ts';
-import { IPlayerRecordMatch } from '../types.ts';
+import { CustomTypography } from '../../../components/typography';
+import { parseDate } from '../../../utils/helpers';
+import { PresentationModal } from '../../../components/modals';
+import { CustomButton } from '../../../components/buttons';
+import LinksList from '../../../components/lists/links-list/LinksList';
+import { IListItem } from '../../../components/lists/types';
+import { IPlayerRecordMatch } from '../types';
 import { ApolloError } from '@apollo/client';
-import { DataError } from '../../../components/index.ts';
+import { DataError } from '../../../components';
 
 interface Props {
   data?: IPlayerRecordMatch[];

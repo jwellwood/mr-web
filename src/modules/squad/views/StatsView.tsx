@@ -4,7 +4,7 @@ import { DataError, SectionContainer, NoDataText } from '../../../components';
 import PlayersByNumbers from '../components/PlayersByNumbers';
 import { ISquadSeasonStats } from '../types';
 import SeasonStatsTable from '../components/season-stats-table/SquadStatsTable';
-import StatFilters from '../containers/StatsFilters';
+import StatFilters from '../forms/StatsFilters';
 import { TFilters } from '../context/FiltersContext';
 
 interface Props {

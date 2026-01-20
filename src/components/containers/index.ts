@@ -1,4 +1,3 @@
-export { default as FormContainer } from './FormContainer';
 export { default as DataContainer } from './DataContainer';
 export { default as PageContainer } from './page-container/PageContainer';
 export { default as SectionContainer } from './section-container/SectionContainer';

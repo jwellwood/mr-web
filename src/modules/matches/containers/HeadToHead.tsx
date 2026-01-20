@@ -2,11 +2,11 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_MATCHES_BY_OPPONENT } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import HeadToHeadView from '../views/HeadToHeadView.tsx';
+import HeadToHeadView from '../views/HeadToHeadView';
 
-type Props = {
+interface Props {
   opponentId?: string;
-};
+}
 
 export default function HeadToHead({ opponentId }: Props) {
   const { teamId } = useCustomParams();

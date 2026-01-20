@@ -7,10 +7,10 @@ import { IMatchStats } from '../../../../modules/matches/types';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import { CustomPieChart } from '../../../charts';
 
-type Props = {
+interface Props {
   stats?: IMatchStats | null;
   loading: boolean;
-};
+}
 
 export default function MatchAverages({ stats, loading }: Props) {
   const { total, wins, draws, defeats, teamAvg, oppAvg } = stats || {

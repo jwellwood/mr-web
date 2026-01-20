@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
-import ValidatedEmail from '../components/ValidatedEmail.component';
 import { PAGES } from '../constants';
 import { verifyEmail } from '../services/validation';
-import { AppDispatch } from '../../../store/store.ts';
+import { AppDispatch } from '../../../store';
 import { PageContainer } from '../../../components';
+import ValidatedEmail from '../components/ValidatedEmail.component';
 
 export default function ValidatedEmailContainer() {
   const { token } = useParams<{ token: string }>();

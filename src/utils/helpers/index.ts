@@ -7,3 +7,4 @@ export * from './shortenString';
 export * from './yearOptions';
 export * from './getInitials';
 export * from './getAverageAge';
+export * from './getMinutesOptions';

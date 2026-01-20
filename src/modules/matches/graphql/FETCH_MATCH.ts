@@ -46,7 +46,6 @@ export const FETCH_MATCH: TypedDocumentNode<{
         }
         isStarter
         matchPosition
-        minutes
         goals
         assists
         pensScored

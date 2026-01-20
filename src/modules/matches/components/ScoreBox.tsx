@@ -2,10 +2,10 @@ import { Avatar } from '@mui/material';
 
 import { CustomTypography } from '../../../components/typography';
 
-type Props = {
+interface Props {
   points: number;
   goals: number;
-};
+}
 
 export default function ScoreBox({ goals }: Props) {
   return (

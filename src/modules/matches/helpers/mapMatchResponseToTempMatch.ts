@@ -13,6 +13,7 @@ export const mapMatchResponseToTempMatch = (match: IMatchResponse): ITempMatch =
     opponentName: (match.opponentId as ITeam).teamName,
     competitionId: (match.competitionId as ICompetition)._id,
     competition: match.competitionId as ICompetition,
+    // keep date as a serializable string in temporary state
     date: match.date,
     isHome: match.isHome,
     teamGoals: match.teamGoals,

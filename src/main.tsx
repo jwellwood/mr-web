@@ -5,7 +5,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { createRoot } from 'react-dom/client';
 
 import { apolloClient } from './services/graphql/apolloClient';
-import { store } from './store/store';
+import { store } from './store';
 import { theme } from './theme';
 import ErrorBoundary from './components/errors/error-boundary/ErrorBoundary';
 import AppRouter from './router/AppRouter';

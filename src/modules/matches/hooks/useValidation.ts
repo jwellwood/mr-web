@@ -1,5 +1,5 @@
-import { KeysOfType } from '../../../utils/types.ts';
-import { IMatch, IPlayerInMatch } from '../types.ts';
+import { KeysOfType } from '../../../utils/types';
+import { IMatch, IPlayerInMatch } from '../types';
 
 export const useValidation = (match: IMatch, players: IPlayerInMatch[]) => {
   const { teamGoals, opponentGoals } = match;
@@ -19,14 +19,7 @@ export const useValidation = (match: IMatch, players: IPlayerInMatch[]) => {
   const conceded = getTotalArray('conceded');
   const ownGoals = getTotalArray('ownGoals');
   const mvp = getTotalTrue('mvp');
-  const mins = getTotalArray('minutes');
-  const totalMins = 5 * 50;
   const validationMessages = [
-    {
-      isInvalid: mins !== totalMins,
-      message: 'Mins error',
-      value: `${mins}/${totalMins}`,
-    },
     {
       isInvalid: goals > teamGoals,
       message: 'Goals error',

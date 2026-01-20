@@ -4,7 +4,7 @@ import { useLazyQuery } from '@apollo/client';
 import { useCustomParams, useSeasons } from '.';
 import { ICompetition } from '../modules/organization/types';
 import { FETCH_ORG } from '../modules/organization/graphql';
-import { ISelectOptions } from '../components/inputs/SelectInput';
+import type { ISelectOptions } from '../components';
 
 export const useStatsFilters = () => {
   const { orgId } = useCustomParams();

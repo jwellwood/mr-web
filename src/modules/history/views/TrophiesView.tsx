@@ -6,11 +6,11 @@ import TrophiesOrderBy from '../components/TrophiesOrderBy';
 import TrophiesTotals from '../components/TrophiesTotals';
 import { DataError, NoDataText } from '../../../components';
 
-type Props = {
+interface Props {
   data?: { trophies: ITrophyResponse[] };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function TrophiesView({ data, loading, error }: Props) {
   const totalsData = {

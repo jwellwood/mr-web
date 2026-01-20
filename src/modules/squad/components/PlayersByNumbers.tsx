@@ -1,10 +1,10 @@
 import { SectionContainer } from '../../../components/containers';
-import TextList from '../../../components/lists/TextList.tsx';
-import { IListItem } from '../../../components/lists/types.ts';
+import TextList from '../../../components/lists/TextList';
+import { IListItem } from '../../../components/lists/types';
 import { getAverageAge } from '../../../utils/helpers';
-import { IPlayer } from '../../players/types.ts';
-import { IPastPlayer, ISquadSeasonStats } from '../types.ts';
-import ByNationality from './ByNationality.tsx';
+import { IPlayer } from '../../players/types';
+import { IPastPlayer, ISquadSeasonStats } from '../types';
+import ByNationality from './ByNationality';
 
 interface Props {
   players?: IPlayer[] | IPastPlayer[] | ISquadSeasonStats[];

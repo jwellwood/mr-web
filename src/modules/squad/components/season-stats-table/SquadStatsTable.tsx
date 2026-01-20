@@ -5,11 +5,11 @@ import { TFilters } from '../../context/FiltersContext';
 import { ISquadSeasonStats } from '../../types';
 import { columns, columns_averages, rows, rows_averages, styles, styles_averages } from './config';
 
-type Props = {
+interface Props {
   data?: { stats: ISquadSeasonStats[] };
   loading: boolean;
   filters: TFilters;
-};
+}
 
 export default function SquadStatsTable({ data, loading, filters }: Props) {
   const table_props = () => {

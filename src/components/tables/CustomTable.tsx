@@ -5,13 +5,13 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
-import CustomTableHead from './custom-table-head/CustomTableHead.tsx';
-import { getComparator, stableSort } from './helpers/sort.ts';
+import CustomTableHead from './custom-table-head/CustomTableHead';
+import { getComparator, stableSort } from './helpers/sort';
 import CustomCellValue from './CustomCellValue';
 import { getBackgroundColor } from './helpers/getBackgroundColor';
 import { getBorderStyle } from './helpers/getBorderStyle';
 import { ICellStyleByIndex } from './types';
-import PositionCell from './position-cell/PositionCell.tsx';
+import PositionCell from './position-cell/PositionCell';
 
 type Props<T extends Record<string, number | object | ReactNode>> = {
   rows: readonly T[];

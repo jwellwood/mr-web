@@ -6,9 +6,9 @@ import { IListItem } from '../../../components/lists/types';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { ITeam } from '../../team/types';
 
-type Props = {
+interface Props {
   teams: ITeam[];
-};
+}
 
 export default function OrgTeamsList({ teams }: Props) {
   const activeTeams = teams.filter(team => team.isActive);

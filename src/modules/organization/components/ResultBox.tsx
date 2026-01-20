@@ -2,9 +2,9 @@ import { Grid } from '@mui/material';
 import { IResult } from '../types';
 import { CustomTypography } from '../../../components/typography';
 
-type Props = {
+interface Props {
   result: IResult;
-};
+}
 
 export default function ResultBox({ result }: Props) {
   const { homeTeam, awayTeam, homeGoals, awayGoals } = result;

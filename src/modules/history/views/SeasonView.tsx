@@ -5,11 +5,11 @@ import { DataError } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import SeasonTabs from '../components/SeasonTabs';
 
-type Props = {
+interface Props {
   data?: { season: ITeamSeason };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function SeasonView({ data, loading, error }: Props) {
   const renderContent = () => (loading ? <Spinner /> : <SeasonTabs season={data?.season} />);

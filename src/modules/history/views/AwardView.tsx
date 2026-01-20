@@ -4,11 +4,11 @@ import { IAward } from '../types';
 import { DataError } from '../../../components';
 import ItemDetails from '../../../components/common/history/item-details/ItemDetails';
 
-type Props = {
+interface Props {
   data?: { award: IAward };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function AwardView({ data, loading, error }: Props) {
   const { winners, comment, awardName, awardValue } = data?.award || {};

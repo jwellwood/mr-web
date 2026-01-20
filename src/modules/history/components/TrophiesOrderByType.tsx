@@ -4,9 +4,9 @@ import { getTrophyListItemTeam } from '../helpers/getTrophyListItemTeam';
 import { ITrophyResponse } from '../types';
 import { IListItem } from '../../../components/lists/types';
 
-type Props = {
+interface Props {
   trophies?: ITrophyResponse[];
-};
+}
 
 export default function TrophiesOrderByType({ trophies }: Props) {
   const winner: IListItem[] = (trophies || [])

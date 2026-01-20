@@ -7,7 +7,7 @@ import {
   NoDataText,
   SectionContainer,
 } from '../../../components';
-import { IMatchList, IMatchStats } from '../types.ts';
+import { IMatchList, IMatchStats } from '../types';
 
 interface Props {
   data?: { matches: IMatchList[] };

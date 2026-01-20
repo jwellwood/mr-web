@@ -67,7 +67,7 @@ const EditLinksModal: React.FC<Props> = ({ data, title }) => {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
+          <Button onClick={handleClose} color="tertiary" autoFocus>
             Back
           </Button>
         </DialogActions>

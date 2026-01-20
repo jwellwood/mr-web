@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 
 import { FETCH_ORG } from '../../organization/graphql';
-import { ICompetition } from '../../organization/types.ts';
-import { ISelectOptions } from '../../../components/inputs/SelectInput';
-import { emptySelectOption } from '../../../constants/rounds.ts';
+import { ICompetition } from '../../organization/types';
+import type { ISelectOptions } from '../../../components';
+import { emptySelectOption } from '../../../constants/rounds';
 
 export const useSeasonInput = (orgId?: string) => {
   const [competitions, setCompetitions] = useState<ICompetition[]>([]);

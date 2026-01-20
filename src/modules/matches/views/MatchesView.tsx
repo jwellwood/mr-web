@@ -1,7 +1,7 @@
 import { ApolloError } from '@apollo/client';
 
 import { DataError, MatchList, NoDataText, SectionContainer } from '../../../components';
-import { IMatchList } from '../types.ts';
+import { IMatchList } from '../types';
 
 interface Props {
   data?: { matches: IMatchList[] };

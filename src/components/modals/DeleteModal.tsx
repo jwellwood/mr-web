@@ -5,9 +5,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
+import { ApolloError } from '@apollo/client';
+
 import AppIcon from '../icons/AppIcon';
 import { Spinner } from '../loaders';
 import { CustomTypography } from '../typography';
+import { MutationError } from '../errors';
 
 interface Props {
   title: string;
@@ -15,9 +18,17 @@ interface Props {
   onDelete: () => void;
   disabled?: boolean;
   text?: boolean;
+  error?: ApolloError;
 }
 
-const DeleteModal: React.FC<Props> = ({ title, loading = false, onDelete, disabled, text }) => {
+const DeleteModal: React.FC<Props> = ({
+  title,
+  loading = false,
+  onDelete,
+  disabled,
+  text,
+  error,
+}) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -51,6 +62,7 @@ const DeleteModal: React.FC<Props> = ({ title, loading = false, onDelete, disabl
             ) : (
               <Spinner isSecondary />
             )}
+            {error && <MutationError error={error} />}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="secondary">

@@ -8,6 +8,7 @@ export const FETCH_SQUAD_BY_SEASON: TypedDocumentNode<{
     players: SQUAD_BY_SEASON(teamId: $teamId, seasonId: $seasonId) {
       _id
       name
+      position
     }
   }
 `;

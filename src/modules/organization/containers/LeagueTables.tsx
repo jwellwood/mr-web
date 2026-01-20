@@ -1,11 +1,10 @@
 import { useQuery } from '@apollo/client';
 
 import { FETCH_LEAGUE_TABLES } from '../graphql';
-import ErrorGraphql from '../../../errors/ErrorGraphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { Spinner } from '../../../components/loaders';
 import LeagueTable from '../components/LeagueTable';
-import { NoDataText } from '../../../components';
+import { DataError, NoDataText } from '../../../components';
 
 export default function LeagueTables() {
   const { orgId, orgSeasonId } = useCustomParams();
@@ -28,5 +27,5 @@ export default function LeagueTables() {
     return !loading && data?.data ? renderData : <Spinner />;
   };
 
-  return error ? <ErrorGraphql error={error} /> : renderContent();
+  return error ? <DataError error={error} /> : renderContent();
 }

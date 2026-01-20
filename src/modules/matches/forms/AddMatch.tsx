@@ -9,16 +9,19 @@ import { PAGES } from '../constants';
 import { mapMatch } from '../helpers';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { AppDispatch } from '../../../store/store';
-import { getTempMatch } from '../../../store/features/matches/matchesSelector';
-import { getTempPlayers } from '../../../store/features/players/playersSelector.ts';
-import RouteGuard from '../../../router/RouteGuard.tsx';
+import {
+  AppDispatch,
+  getTempMatch,
+  getTempPlayers,
+  resetTmpMatch,
+  resetTmpPlayers,
+  showAlert,
+} from '../../../store';
+import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
-import { resetTmpMatch } from '../../../store/features/matches/matchesSlice.ts';
-import { resetTmpPlayers } from '../../../store/features/players/playersSlice.ts';
-import MatchFormStepper from './components/MatchFormStepper.tsx';
-import { IPlayerInMatch, ITempMatch } from '../types.ts';
+import MatchFormStepper from './components/MatchFormStepper';
+import { IPlayerInMatch, ITempMatch } from '../types';
 import { DataError, PageHeader } from '../../../components';
 
 export default function AddMatch() {
@@ -54,7 +57,13 @@ export default function AddMatch() {
     ],
   });
 
-  const { opponents, competitions, seasonOptions } = useMatchDetailsInput();
+  const {
+    opponents,
+    competitions,
+    seasonOptions,
+    loading,
+    error: inputError,
+  } = useMatchDetailsInput();
 
   useEffect(() => {
     setDefaultValues(currentTempMatch);
@@ -72,17 +81,20 @@ export default function AddMatch() {
     const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
     addMatch({ variables: { ...data } })
       .then(() => {
+        dispatch(showAlert({ text: 'Match added successfully!', type: 'success' }));
         dispatch(resetTmpMatch());
         dispatch(resetTmpPlayers());
         navigate(-1);
       })
       .catch(err => {
+        dispatch(showAlert({ text: 'Failed to add match.', type: 'error' }));
         console.error('Add match error', err);
       });
   };
+  const isLoading = loading || addLoading;
 
   const renderContent = () => {
-    return !addLoading && defaultValues ? (
+    return defaultValues ? (
       <MatchFormStepper
         defaultValues={defaultValues}
         currentPlayers={currentPlayers}
@@ -91,6 +103,8 @@ export default function AddMatch() {
         opponents={opponents}
         competitions={competitions}
         onSubmit={onSubmit}
+        loading={isLoading}
+        error={error || inputError}
       />
     ) : (
       <Spinner />

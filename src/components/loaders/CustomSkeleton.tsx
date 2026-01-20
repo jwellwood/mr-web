@@ -1,14 +1,19 @@
 import React from 'react';
 import { Skeleton } from '@mui/material';
 
-type Props = {
+interface Props {
   variant?: 'text' | 'rectangular' | 'rounded' | 'circular';
   height?: string;
   width?: string;
   margin?: string;
-};
+}
 
-const CustomSkeleton: React.FC<Props> = ({ variant = 'rounded', height, width, margin }) => {
+const CustomSkeleton: React.FC<Props> = ({
+  variant = 'rounded',
+  height,
+  width = '100%',
+  margin,
+}) => {
   return (
     <Skeleton
       variant={variant}

@@ -4,11 +4,11 @@ import { IPlayer } from '../../players/types';
 import { DataError, NoDataText } from '../../../components';
 import HallOfFamePlayer from '../components/HallOfFamePlayer';
 
-type Props = {
+interface Props {
   data?: { players: IPlayer[] };
   loading: boolean;
   error?: ApolloError;
-};
+}
 
 export default function HallOfFameView({ data, loading, error }: Props) {
   const arr = new Array(15).fill({

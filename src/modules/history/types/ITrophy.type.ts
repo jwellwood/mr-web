@@ -3,7 +3,7 @@ export interface ITrophy {
   teamId: string;
   name: string;
   seasonId: string;
-  year?: string;
+  year: Date;
   isWinner: boolean;
   isFinal: boolean;
   opponent?: string;
