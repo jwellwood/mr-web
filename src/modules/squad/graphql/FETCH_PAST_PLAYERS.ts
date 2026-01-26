@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IPastPlayer } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_PAST_PLAYERS: TypedDocumentNode<{
-  players: IPastPlayer[];
-}> = gql`
+export const FETCH_PAST_PLAYERS = gql`
   query FETCH_PAST_PLAYERS($teamId: String!) {
     players: PAST_PLAYERS(teamId: $teamId) {
       _id

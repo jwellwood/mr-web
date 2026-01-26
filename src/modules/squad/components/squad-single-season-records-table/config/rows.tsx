@@ -1,9 +1,9 @@
 import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
-import { ISquadSingleSeasonRecords } from '../../../types';
 import RecordPlayers from '../../RecordPlayers';
+import { FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../types';
 
-export const rows = (data?: { stats: ISquadSingleSeasonRecords }, loading?: boolean) => {
+export const rows = (data?: FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY, loading?: boolean) => {
   const { goals, assists, combined } = data?.stats.combined
     ? data.stats
     : {
@@ -13,12 +13,22 @@ export const rows = (data?: { stats: ISquadSingleSeasonRecords }, loading?: bool
       };
 
   const tableData = [
-    { label: 'Most Goals', players: goals.players, seasons: goals.seasons, value: goals },
-    { label: 'Most Assists', players: assists.players, seasons: assists.seasons, value: assists },
+    {
+      label: 'Most Goals',
+      players: goals ? goals.players : [],
+      seasons: goals ? goals.seasons : [],
+      value: goals,
+    },
+    {
+      label: 'Most Assists',
+      players: assists ? assists.players : [],
+      seasons: assists ? assists.seasons : [],
+      value: assists,
+    },
     {
       label: 'Combined',
-      players: combined.players,
-      seasons: combined.seasons,
+      players: combined ? combined.players : [],
+      seasons: combined ? combined.seasons : [],
       value: combined,
     },
   ];

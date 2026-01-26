@@ -12,7 +12,7 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
-import { EditTeamSchema, type EditTeamFormData } from './validation';
+import { EditTeamSchema, type EditTeamFormData } from './types';
 
 interface Props {
   onSubmit: (data: EditTeamFormData) => void;

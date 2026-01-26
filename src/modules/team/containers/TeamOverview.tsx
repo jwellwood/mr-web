@@ -1,15 +1,15 @@
 import { useQuery } from '@apollo/client';
 
-import { FETCH_TEAM } from '../graphql';
 import { AUTH_ROLES } from '../../../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import RouteGuard from '../../../router/RouteGuard';
 import TeamView from '../views/TeamView';
+import { FETCH_TEAM } from '../graphql';
 
 export default function TeamOverview() {
   const { teamId } = useCustomParams();
   const { data, error, loading } = useQuery(FETCH_TEAM, {
-    variables: { teamId },
+    variables: { teamId: teamId! },
   });
 
   return (

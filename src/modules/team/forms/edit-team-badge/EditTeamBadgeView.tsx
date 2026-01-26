@@ -3,7 +3,7 @@ import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import ImageForm from '../../../../components/forms/ImageForm';
-import { ITeamResponse } from '../../types';
+import { FETCH_TEAM_QUERY } from '../../types';
 
 interface Props {
   loading: boolean;
@@ -11,7 +11,7 @@ interface Props {
   onSubmit: (formData: { imageFile: File | null }) => void;
   imageUrl?: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string | null>>;
-  data?: { team: ITeamResponse };
+  data?: FETCH_TEAM_QUERY;
   removeImage: () => void;
 }
 

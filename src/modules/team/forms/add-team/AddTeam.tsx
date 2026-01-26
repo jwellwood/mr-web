@@ -10,8 +10,9 @@ import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
-import type { TeamFormData } from './validation';
+import type { TeamFormData } from './types';
 import AddTeamView from './AddTeamView';
+import { mapFormDataToMutationInput } from './state';
 
 export default function AddTeam() {
   const { orgId } = useCustomParams();
@@ -29,22 +30,21 @@ export default function AddTeam() {
     ],
   });
 
-  const onSubmit = async (data: Partial<TeamFormData>) => {
+  const onSubmit = async (data: TeamFormData) => {
     try {
-      return addTeam({ variables: { orgId, ...data } }).then(() => {
-        dispatch(
-          showAlert({
-            text: TeamSuccess.edit,
-            type: 'success',
-          })
-        );
-        navigate(-1);
-      });
+      await addTeam({ variables: { orgId: orgId!, ...mapFormDataToMutationInput({ ...data }) } });
+      dispatch(
+        showAlert({
+          text: TeamSuccess.add,
+          type: 'success',
+        })
+      );
+      navigate(-1);
     } catch (error) {
       console.error(error);
       dispatch(
         showAlert({
-          text: TeamError.edit,
+          text: TeamError.add,
           type: 'error',
         })
       );

@@ -1,7 +1,7 @@
 import { ApolloError } from '@apollo/client';
 
 import { DataError } from '../../../../components';
-import type { DeleteTeamFormData } from './validation';
+import type { DeleteTeamFormData } from './types';
 import DeleteTeamForm from './DeleteTeamForm';
 
 interface Props {

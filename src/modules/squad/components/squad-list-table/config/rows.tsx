@@ -3,9 +3,9 @@ import FlagIcon from '../../../../../components/icons/FlagIcon';
 import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { POSITIONS } from '../../../../../constants';
-import { ISquadListStats } from '../../../types';
+import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../../types';
 
-export const rows = (data?: { players: ISquadListStats[] }, loading?: boolean) => {
+export const rows = (data?: FETCH_SQUAD_LIST_BY_SEASON_QUERY, loading?: boolean) => {
   const arr = new Array(15).fill({});
   const mappedPlayers = loading || !data?.players.length ? arr : data?.players;
 

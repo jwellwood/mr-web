@@ -1,12 +1,12 @@
 import { ApolloError } from '@apollo/client';
 
 import { DataError, NoDataText, SectionContainer } from '../../../components';
-import { ISquadListStats } from '../types';
 import SquadListTable from '../components/squad-list-table/SquadListTable';
+import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../types';
 
 interface Props {
   error?: ApolloError;
-  data?: { players: ISquadListStats[] };
+  data?: FETCH_SQUAD_LIST_BY_SEASON_QUERY;
   loading: boolean;
   seasonReady: boolean;
 }

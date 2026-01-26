@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IAwardByPlayer } from '../../history/types';
+import { gql } from '@apollo/client';
 
-export const FETCH_AWARDS_BY_PLAYER: TypedDocumentNode<{
-  awards: IAwardByPlayer[];
-}> = gql`
+export const FETCH_AWARDS_BY_PLAYER = gql`
   query FETCH_AWARDS_BY_PLAYER($playerId: String!) {
     awards: awardsByPlayer(playerId: $playerId) {
       _id

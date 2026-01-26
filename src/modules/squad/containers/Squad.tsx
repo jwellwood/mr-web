@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
 
-import { FETCH_SQUAD_LIST_BY_SEASON } from '../graphql';
 import { AUTH_ROLES } from '../../../constants';
 import { useCustomParams } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
 import RouteGuard from '../../../router/RouteGuard';
 import SquadView from '../views/SquadView';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../graphql';
 
 export default function Squad() {
   const { teamId } = useCustomParams();
@@ -16,7 +16,7 @@ export default function Squad() {
     error,
     data,
   } = useQuery(FETCH_SQUAD_LIST_BY_SEASON, {
-    variables: { teamId, seasonId },
+    variables: { teamId: teamId!, seasonId: seasonId! },
     skip: !seasonId,
   });
 

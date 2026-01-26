@@ -4,12 +4,19 @@ import { PresentationModal } from '../../../components/modals';
 import { CustomButton } from '../../../components/buttons';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
-import { IPlayerRecordMatch } from '../types';
 import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../components';
+import {
+  FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY,
+  FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY,
+} from '../types';
+
+type MostInMatchItem =
+  | FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY['stats'][number]
+  | FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY['stats'][number];
 
 interface Props {
-  data?: IPlayerRecordMatch[];
+  data?: MostInMatchItem[];
   loading: boolean;
   orgId?: string;
   teamId?: string;
@@ -36,7 +43,7 @@ export default function PlayerRecordsMatchesModal({
       return {
         label: (
           <CustomTypography bold color="data">
-            {item.opponent}
+            {item.opponentName}
           </CustomTypography>
         ),
         secondary: (
@@ -47,7 +54,7 @@ export default function PlayerRecordsMatchesModal({
             | {parseDate(item.date)}
           </CustomTypography>
         ),
-        link: `/org/${orgId}/team/${teamId}/match/${item._id}`,
+        link: `/org/${orgId}/team/${teamId}/match/${item.matchId}`,
       };
     }) || [];
 

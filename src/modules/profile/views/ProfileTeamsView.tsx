@@ -4,12 +4,12 @@ import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import { DataError, ImageAvatar, SectionContainer } from '../../../components';
 import { IListItem } from '../../../components/lists/types';
 import LinksList from '../../../components/lists/links-list/LinksList';
-import { ITeamResponse } from '../../team/types';
 import { CustomTabs, ITab } from '../../../components/tabs';
+import { FETCH_TEAMS_BY_USER_QUERY } from '../types';
 
 interface Props {
   loading: boolean;
-  data?: { teams: ITeamResponse[] };
+  data?: FETCH_TEAMS_BY_USER_QUERY;
   error?: ApolloError;
 }
 

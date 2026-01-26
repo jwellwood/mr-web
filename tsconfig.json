@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "module": "esnext"
+    "module": "esnext",
+    "types": ["vite/client"]
   },
   "files": [],
   "references": [

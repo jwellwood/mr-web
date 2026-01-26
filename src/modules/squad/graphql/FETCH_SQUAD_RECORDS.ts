@@ -1,14 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { TStatField } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_SQUAD_RECORDS: TypedDocumentNode<{
-  stats: {
-    apps: TStatField[];
-    goals: TStatField[];
-    assists: TStatField[];
-    mvp: TStatField[];
-  };
-}> = gql`
+export const FETCH_SQUAD_RECORDS = gql`
   query FETCH_SQUAD_RECORDS($teamId: String!) {
     stats: SQUAD_RECORDS(teamId: $teamId) {
       apps {

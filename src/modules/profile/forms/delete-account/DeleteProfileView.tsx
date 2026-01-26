@@ -1,13 +1,13 @@
 import { ApolloError } from '@apollo/client';
 
-import { IUser } from '../../../auth/types';
 import { MutationError } from '../../../../components';
 import { deleteAccountFormState } from './state';
 import DeleteAccountForm from './DeleteAccountForm';
+import { FETCH_USER_QUERY } from '../../types';
 
 interface Props {
   loading: boolean;
-  data?: { user: IUser };
+  data?: FETCH_USER_QUERY;
   onSubmit: () => Promise<void>;
   error?: ApolloError;
 }

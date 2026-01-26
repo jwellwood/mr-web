@@ -1,13 +1,14 @@
 import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import RecordPlayers from '../../RecordPlayers';
+import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
 
-export const rows = (
-  data?: { value: number; names: { id: string; name: string }[] }[],
-  loading?: boolean
-) => {
+type StatsObj = NonNullable<FETCH_SQUAD_RECORDS_QUERY['stats']>;
+type StatArray = NonNullable<StatsObj[keyof StatsObj]>;
+
+export const rows = (stats?: StatArray | null, loading?: boolean) => {
   const arr = new Array(5).fill({});
-  const mappedData = loading || !data?.length ? arr : data?.map(item => item);
+  const mappedData = loading || !stats?.length ? arr : stats?.map(item => item);
 
   return mappedData.map((item, i) => {
     const { value } = item || { names: [] };

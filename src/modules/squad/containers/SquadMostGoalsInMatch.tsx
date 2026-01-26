@@ -7,7 +7,7 @@ import SquadRecordsInMatchesView from '../views/SquadRecordsInMatchesView';
 export default function SquadMostGoalsInMatch() {
   const { teamId } = useCustomParams();
   const { data, loading, error } = useQuery(FETCH_SQUAD_RECORD_GOALS_IN_MATCH, {
-    variables: { teamId },
+    variables: { teamId: teamId! },
   });
 
   return <SquadRecordsInMatchesView title="Goals" loading={loading} error={error} data={data} />;

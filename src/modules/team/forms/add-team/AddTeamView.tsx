@@ -2,7 +2,7 @@ import { ApolloError } from '@apollo/client';
 
 import AddTeamForm from './AddTeamForm';
 import { initialTeamDetailsState } from './state';
-import type { TeamFormData } from './validation';
+import type { TeamFormData } from './types';
 
 interface Props {
   loading: boolean;

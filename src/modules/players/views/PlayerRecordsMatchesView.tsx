@@ -2,10 +2,17 @@ import { ApolloError } from '@apollo/client';
 
 import PlayerRecordsMatchesModal from '../../squad/components/PlayerRecordsMatchesModal';
 import { useCustomParams } from '../../../hooks';
-import { IPlayerRecordMatch } from '../../squad/types';
+import {
+  FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY,
+  FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY,
+} from '../../squad/types';
+
+type MostInMatchItem =
+  | FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY['stats'][number]
+  | FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY['stats'][number];
 
 interface Props {
-  data?: IPlayerRecordMatch[];
+  data?: MostInMatchItem[];
   loading: boolean;
   error?: ApolloError;
   title: string;

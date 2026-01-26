@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { StreakTypes } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_PLAYER_STREAKS: TypedDocumentNode<{
-  streaks: StreakTypes;
-}> = gql`
+export const FETCH_PLAYER_STREAKS = gql`
   query FETCH_PLAYER_STREAKS($playerId: String!, $teamId: String!) {
     streaks: PLAYER_STREAKS(playerId: $playerId, teamId: $teamId) {
       currentPlayedStreak {

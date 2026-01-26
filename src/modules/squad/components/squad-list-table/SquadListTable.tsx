@@ -1,9 +1,9 @@
 import CustomTable from '../../../../components/tables/CustomTable';
-import { ISquadListStats } from '../../types';
 import { columns, rows, styles } from './config';
+import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../types';
 
 interface Props {
-  data?: { players: ISquadListStats[] };
+  data?: FETCH_SQUAD_LIST_BY_SEASON_QUERY;
   loading: boolean;
 }
 

@@ -4,11 +4,11 @@ import { IMAGE_TYPE } from '../../../constants';
 import { DataError, ImageAvatar, SectionContainer } from '../../../components';
 import { IListItem } from '../../../components/lists/types';
 import LinksList from '../../../components/lists/links-list/LinksList';
-import { IOrganization } from '../../organization/types';
+import { FETCH_ORGS_BY_USER_QUERY } from '../types';
 
 interface Props {
   loading: boolean;
-  data?: { orgs: IOrganization[] };
+  data?: FETCH_ORGS_BY_USER_QUERY;
   error?: ApolloError;
 }
 

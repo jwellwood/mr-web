@@ -2,7 +2,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { FORGOT_PASSWORD } from '../../graphql';
 import { PAGES } from '../../constants';
 import { AppDispatch, showAlert } from '../../../../store';
 import { AUTH_ROLES } from '../../../../constants';
@@ -10,9 +9,10 @@ import { PageContainer } from '../../../../components';
 import { AUTH_PATHS } from '../../router';
 import type { ForgotPasswordFormData } from './validation';
 import ForgotPasswordView from './ForgotPasswordView';
+import { Forgot_PasswordDocument } from '../../graphql/FORGOT_PASSWORD.generated';
 
 export default function ForgotPasswordContainer() {
-  const [forgotPassword, { loading, error }] = useMutation(FORGOT_PASSWORD);
+  const [forgotPassword, { loading, error }] = useMutation(Forgot_PasswordDocument);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 

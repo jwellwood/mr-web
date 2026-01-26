@@ -1,0 +1,838 @@
+"""Exposes a URL that specifies the behavior of this scalar."""
+directive @specifiedBy(
+  """The URL that specifies the behavior of this scalar."""
+  url: String!
+) on SCALAR
+
+input AddAwardInput {
+  awardName: String!
+  winners: [String!]!
+  awardValue: Float
+  comment: String
+}
+
+input AddOrganizationInput {
+  name: String!
+  website: String
+  yearFounded: String
+  city: String
+  country: String
+}
+
+input AddOrgSeasonInput {
+  yearStarted: String!
+  yearEnded: String!
+  isCurrent: Boolean!
+  comment: String
+}
+
+input AddPlayerInput {
+  name: String!
+  position: String!
+  squadNumber: String!
+  isCaptain: Boolean!
+  isViceCaptain: Boolean!
+  isHallOfFame: Boolean!
+  dateOfBirth: String
+  nationality: String
+  yearJoined: String!
+  seasonIds: [String!]!
+}
+
+input AddResultInput {
+  date: String!
+  gameWeek: Float!
+  competitionId: ID!
+  orgSeasonId: ID!
+  homeTeam: ID!
+  awayTeam: ID!
+  homeGoals: Float!
+  awayGoals: Float!
+}
+
+input AddTeamInput {
+  teamName: String!
+  yearFounded: String
+  location: String
+  country: String
+  isActive: Boolean!
+}
+
+input AddTeamSeasonInput {
+  yearStarted: String!
+  yearEnded: String!
+  leaguePosition: Float
+  totalFinalPositions: Float
+  division: String
+  comment: String
+}
+
+input AddTrophyInput {
+  name: String!
+  seasonId: String!
+  year: String!
+  isWinner: Boolean!
+  isFinal: Boolean!
+  comment: String
+  opponent: String
+}
+
+type AllPlayerStreaks {
+  playerId: String!
+  longestPlayedStreak: Float!
+}
+
+type Award {
+  _id: ID!
+  seasonId: TeamSeason!
+  awardName: String!
+  winners: [Player!]
+  awardValue: Float
+  comment: String
+}
+
+type AwardByPlayer {
+  _id: String!
+  season: String!
+  awardName: String!
+  awardValue: Float
+  comment: String
+}
+
+"""The Competition model"""
+type Competition {
+  _id: ID!
+  orgId: ID!
+  name: String!
+  competitionType: String!
+  matchMinutes: Float!
+  playersPerTeam: Float!
+  isActive: Boolean!
+  winners: [CompetitionWinner!]!
+}
+
+input CompetitionInput {
+  name: String!
+  competitionType: String!
+  matchMinutes: Float!
+  playersPerTeam: Float!
+  isActive: Boolean!
+}
+
+type CompetitionWinner {
+  year: String!
+  teamId: Team!
+  isWinner: Boolean!
+  isRunnerUp: Boolean!
+}
+
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian
+calendar.This scalar is serialized to a string in ISO 8601 format and parsed
+from a string in ISO 8601 format.
+"""
+scalar DateTimeISO
+
+input EditBadgeInput {
+  public_id: String!
+  url: String!
+}
+
+input EditImageInput {
+  public_id: String!
+  url: String!
+}
+
+input EditOrgBadgeInput {
+  public_id: String!
+  url: String!
+}
+
+input EditPasswordInput {
+  password: String!
+  newPassword: String!
+}
+
+input EditPhotoInput {
+  public_id: String!
+  url: String!
+}
+
+input EditPlayerInput {
+  name: String!
+  position: String!
+  squadNumber: String!
+  isCaptain: Boolean!
+  isViceCaptain: Boolean!
+  isHallOfFame: Boolean!
+  dateOfBirth: String
+  nationality: String
+  yearJoined: String!
+  seasonIds: [String!]!
+}
+
+input EditTrophyInput {
+  name: String!
+  seasonId: String!
+  year: String!
+  isWinner: Boolean!
+  isFinal: Boolean!
+  comment: String
+  opponent: String
+}
+
+input EditUserInput {
+  email: String!
+  username: String!
+  dateOfBirth: String
+  nationality: String
+}
+
+input ForgotPasswordInput {
+  email: String!
+}
+
+type LeagueTableByComp {
+  competition: ResultCompetiton!
+  data: [LeagueTableTeamData!]!
+}
+
+type LeagueTableTeamData {
+  team: ResultTeam!
+  played: Float!
+  wins: Float!
+  draws: Float!
+  losses: Float!
+  goalsFor: Float!
+  goalsAgainst: Float!
+  goalDiff: Float!
+  points: Float!
+}
+
+"""The Match model"""
+type Match {
+  _id: ID!
+  date: String!
+  competitionId: Competition!
+  seasonId: TeamSeason!
+  teamId: Team!
+  opponentId: Team!
+  teamGoals: Float!
+  opponentGoals: Float!
+  isHome: Boolean!
+  isForfeit: Boolean!
+  leaguePosition: Float
+  cupRound: String
+  matchPlayers: [PlayerInMatch!]!
+}
+
+type MostInMatch {
+  matchId: String!
+  date: String!
+  player: String!
+  opponentName: String!
+  teamGoals: Float!
+  opponentGoals: Float!
+  total: Float!
+}
+
+type Mutation {
+  ADD_PLAYER(data: AddPlayerInput!, teamId: String!): Player!
+  EDIT_PLAYER(data: EditPlayerInput!, playerId: String!, teamId: String!): Player!
+  EDIT_PLAYER_PHOTO(data: EditPhotoInput!, playerId: String!, teamId: String!): Player!
+  DELETE_PLAYER(playerId: String!, teamId: String!): Player!
+  addTeam(data: AddTeamInput!, orgId: String!): Team!
+  updateTeamDetails(data: UpdateTeamInput!, teamId: String!): Team!
+  updateTeamRoles(data: UpdateTeamRolesInput!, teamId: String!): Team!
+  deleteTeamRole(roleId: String!, teamId: String!): Team!
+  editTeamBadge(data: EditBadgeInput!, teamId: String!): Team!
+  deleteTeam(teamId: String!): Team!
+  addTeamSeason(data: AddTeamSeasonInput!, teamId: String!): TeamSeason!
+  editSeason(data: AddTeamSeasonInput!, seasonId: String!, teamId: String!): TeamSeason!
+  deleteSeason(seasonId: String!, teamId: String!): TeamSeason!
+  addOrgSeason(data: AddOrgSeasonInput!, orgId: String!): OrgSeason!
+  editOrgSeason(data: AddOrgSeasonInput!, seasonId: String!, orgId: String!): OrgSeason!
+  deleteOrgSeason(orgSeasonId: String!, orgId: String!): OrgSeason!
+  logOutUser: User!
+  signInUser(data: SignInUserInput!): User!
+  registerUser(data: RegisterUserInput!): User!
+  editUser(data: EditUserInput!): User!
+  deleteUser: User!
+  editPassword(data: EditPasswordInput!): User!
+  editProfileImage(data: EditImageInput!): User!
+  forgotPassword(data: ForgotPasswordInput!): User!
+  resetPassword(data: ResetPasswordInput!): User!
+  addResult(data: AddResultInput!, orgId: String!): Result!
+  editResult(data: AddResultInput!, resultId: String!, orgId: String!): Result!
+  deleteResult(resultId: String!, orgId: String!): Result!
+  addOrganization(data: AddOrganizationInput!): Organization!
+  updateOrganization(data: UpdateOrganizationInput!, orgId: String!): Organization!
+  editOrgBadge(data: EditOrgBadgeInput!, orgId: String!): Organization!
+  deleteOrg(orgId: String!): Organization!
+  addTeamToOrg(teamId: String!, orgId: String!): Organization!
+  addMatch(data: TAddMatchInput!): Match!
+  editMatch(data: TAddMatchInput!, matchId: String!): Match!
+  deleteMatch(matchId: String!, teamId: String!): Match!
+  addCompetition(data: CompetitionInput!, orgId: String!): Competition!
+  updateCompetition(data: CompetitionInput!, compId: String!, orgId: String!): Competition!
+  deleteCompetition(competitionId: String!, orgId: String!): Competition!
+  addTrophy(data: AddTrophyInput!, teamId: String!): Trophy!
+  editTrophy(data: EditTrophyInput!, trophyId: String!, teamId: String!): Trophy!
+  deleteTrophy(trophyId: String!, teamId: String!): Trophy!
+  addSeasonAward(data: AddAwardInput!, seasonId: String!, teamId: String!): Award!
+  editAward(data: AddAwardInput!, awardId: String!, teamId: String!): Award!
+  deleteAward(awardId: String!, teamId: String!): Award!
+}
+
+"""The Organization model"""
+type Organization {
+  _id: ID!
+  name: String!
+  website: String
+  isVerified: Boolean!
+  badge: UploadedImage!
+  city: String
+  country: String
+  yearFounded: String
+  competitions: [Competition!]!
+  adminIds: [String!]!
+  teamIds: [String!]!
+  createdAt: DateTimeISO
+  updatedAt: DateTimeISO
+}
+
+"""The Org Season model"""
+type OrgSeason {
+  _id: ID!
+  name: String!
+  yearStarted: String!
+  yearEnded: String!
+  orgId: ID!
+  comment: String
+  isCurrent: Boolean!
+}
+
+type PastPlayer {
+  _id: String!
+  name: String!
+  image: String!
+  position: String!
+  nationality: String!
+  joined: String!
+  left: String!
+  seasons: Float!
+}
+
+"""The Player model"""
+type Player {
+  _id: ID!
+  name: String!
+  position: String!
+  squadNumber: String!
+  isCaptain: Boolean!
+  isViceCaptain: Boolean!
+  image: UploadedImage!
+  dateOfBirth: String
+  nationality: String
+  description: String
+  yearJoined: String!
+  isHallOfFame: Boolean!
+  createdAt: DateTimeISO
+  updatedAt: DateTimeISO
+  teamIds: [Team!]!
+  seasonIds: [TeamSeason!]!
+}
+
+type PlayerInMatch {
+  _id: ID!
+  playerId: Player!
+  match: Match!
+  matchPosition: String
+  apps: Float!
+  isStarter: Boolean!
+  goals: Float!
+  assists: Float!
+  mvp: Boolean!
+  conceded: Float!
+  ownGoals: Float!
+  pensScored: Float!
+  pensMissed: Float!
+  pensSaved: Float!
+  cleanSheet: Boolean!
+  redCard: Boolean!
+  yellowCards: Float!
+}
+
+type PlayerMatchesWithRecords {
+  _id: String!
+  teamGoals: Float!
+  opponentGoals: Float!
+  date: String!
+  opponent: String!
+}
+
+type PlayerMatchRecords {
+  maxGoals: Float!
+  maxAssists: Float!
+  maxCombined: Float!
+}
+
+type PlayerOpponentStats {
+  opponentId: String!
+  opponent: String!
+  opponentName: String!
+  opponentBadge: String
+  matches: Float!
+  goals: Float!
+  assists: Float!
+  conceded: Float!
+}
+
+type PlayerStats {
+  _id: String
+  apps: Float
+  isStarter: Boolean
+  goals: Float
+  assists: Float
+  mvp: Float
+  conceded: Float
+  ownGoals: Float
+  pensScored: Float
+  pensMissed: Float
+  pensSaved: Float
+  cleanSheet: Float
+  redCard: Float
+  yellowCards: Float
+  goalsFor: Float
+  goalsAgainst: Float
+  difference: Float
+  wins: Float
+  draws: Float
+  defeats: Float
+  gamesWithGoal: Float
+  gamesWithAssist: Float
+  gamesWithGoalAndAssist: Float
+  gamesWithGoalOrAssist: Float
+}
+
+type PlayerStreaks {
+  currentPlayedStreak: Streak!
+  currentGoalStreak: Streak!
+  currentAssistStreak: Streak!
+  currentContributionStreak: Streak!
+  playedStreak: Streak!
+  goalStreak: Streak!
+  assistStreak: Streak!
+  contributionStreak: Streak!
+}
+
+type PositionFinishes {
+  seasonId: String
+  name: String
+  position: Float
+  totalFinalPositions: Float
+  division: String
+}
+
+type Query {
+  competitionsByOrg(orgId: String!): [Competition!]!
+  competitionById(compId: String!): Competition!
+  orgSeasons(orgId: String!): [OrgSeason!]!
+  orgSeasonById(seasonId: String!): OrgSeason!
+  PLAYER_BY_ID(playerId: String!): Player!
+  PLAYER_STATS(competitionId: String!, seasonId: String!, playerId: String!): PlayerStats!
+  PLAYER_STREAKS(teamId: String!, playerId: String!): PlayerStreaks!
+  PLAYER_OPPONENT_STATS(playerId: String!): [PlayerOpponentStats!]!
+  PLAYER_MATCH_RECORDS(playerId: String!, teamId: String!): PlayerMatchRecords!
+  PLAYER_MATCHES_WITH_RECORD_GOALS(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
+  PLAYER_MATCHES_WITH_RECORD_COMBINED(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
+  PLAYER_MATCHES_WITH_RECORD_ASSISTS(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
+  PLAYER_SEASONS_SUMMARY(playerId: String!): [TPlayerSeasonsSummary!]!
+  teamById(teamId: String!): Team!
+  teamBySearch(filter: String!): [Team!]!
+  userTeams: [Team!]!
+  getTeams: Team!
+  FETCH_SEASONS(teamId: String!): [TeamSeason!]!
+  FETCH_SEASON(seasonId: String!): TeamSeason!
+  FETCH_SEASONS_POSITION(teamId: String!): [PositionFinishes!]!
+  FETCH_USER: User!
+  getUsers: [User!]!
+  results(orgSeasonId: String!, orgId: String!): [Result!]!
+  resultById(resultId: String!): Result!
+  getLeagueTableData(orgSeasonId: String!, orgId: String!): [LeagueTableByComp!]!
+  SQUAD_LIST_BY_SEASON(seasonId: String!, teamId: String!): [SquadListBySeason!]!
+  SQUAD_STATS(competitionId: String!, seasonId: String!, teamId: String!): [TSquadStats!]!
+  PAST_PLAYERS(teamId: String!): [PastPlayer!]!
+  HALL_OF_FAME_PLAYERS(teamId: String!): [Player!]!
+  SQUAD_RECORDS(teamId: String!): SquadRecordStats!
+  SQUAD_RECORD_GOALS_IN_MATCH(teamId: String!): [MostInMatch!]!
+  SQUAD_RECORD_ASSISTS_IN_MATCH(teamId: String!): [MostInMatch!]!
+  SQUAD_STREAKS(teamId: String!): [AllPlayerStreaks!]!
+  SQUAD_BY_SEASON(seasonId: String!, teamId: String!): [Player!]!
+  SQUAD_SINGLE_SEASON_RECORDS(teamId: String!): TSquadSingleSeasonRecords!
+  organizationById(orgId: String!): Organization!
+  userOrganizations: [Organization!]!
+  teamsByOrg(orgId: String!): [Team!]!
+  FETCH_MATCHES(seasonId: String!, teamId: String!): [TMatch!]!
+  FETCH_MATCH(matchId: String!): Match!
+  FETCH_MATCHES_BY_OPPONENT(opponentId: String!, teamId: String!): [TMatch!]!
+  FETCH_MATCHES_STATS(seasonId: String!, teamId: String!): TMatchStats!
+  FETCH_MATCHES_ALL_TIME_STATS(teamId: String!): TMatchStats!
+  FETCH_MATCHES_RECORDS(teamId: String!): TMatchRecords!
+  FETCH_MATCH_OPPONENTS(teamId: String!): [TMatchOpponent!]!
+  FETCH_TROPHIES(teamId: String!): [TrophyResponse!]!
+  PLAYER_TROPHIES(playerId: String!): [Trophy!]!
+  FETCH_TROPHY(trophyId: String!): TrophyResponse!
+  FETCH_AWARDS(seasonId: String!): [Award!]!
+  awardsByPlayer(playerId: String!): [AwardByPlayer!]!
+  FETCH_AWARD(awardId: String!): Award!
+}
+
+input RegisterUserInput {
+  email: String!
+  password: String!
+  username: String
+}
+
+input ResetPasswordInput {
+  password: String!
+  token: String!
+}
+
+"""The Result model"""
+type Result {
+  _id: ID!
+  date: String!
+  gameWeek: Float!
+  competitionId: Competition!
+  homeTeam: Team!
+  awayTeam: Team!
+  homeGoals: Float!
+  awayGoals: Float!
+  orgSeasonId: OrgSeason!
+}
+
+type ResultCompetiton {
+  _id: String!
+  name: String!
+}
+
+type ResultTeam {
+  _id: String!
+  teamName: String!
+}
+
+input SignInUserInput {
+  email: String!
+  password: String!
+}
+
+type SingleSeasonRecord {
+  value: Float!
+  players: [SingleSeasonRecordPlayer!]!
+  seasons: [SingleSeasonRecordSeason!]!
+}
+
+type SingleSeasonRecordPlayer {
+  id: String!
+  name: String!
+}
+
+type SingleSeasonRecordSeason {
+  id: String!
+  name: String!
+}
+
+type SquadListBySeason {
+  _id: String!
+  name: String!
+  position: String!
+  number: Float!
+  nationality: String!
+  image: UploadedImage!
+  apps: Float!
+  goals: Float!
+  assists: Float!
+}
+
+type SquadRecordStats {
+  apps: [TopStatNames!]
+  goals: [TopStatNames!]
+  assists: [TopStatNames!]
+  mvp: [TopStatNames!]
+}
+
+type Streak {
+  length: Float
+  startDate: String
+  endDate: String
+}
+
+input TAddMatchInput {
+  date: String!
+  competitionId: ID!
+  seasonId: ID!
+  teamId: ID!
+  opponentId: ID!
+  teamGoals: Float!
+  opponentGoals: Float!
+  isHome: Boolean!
+  isForfeit: Boolean!
+  leaguePosition: Float
+  cupRound: String
+  matchPlayers: [TPlayerInMatchInput!]!
+}
+
+"""The Team model"""
+type Team {
+  _id: ID!
+  teamName: String!
+  createdAt: DateTimeISO
+  updatedAt: DateTimeISO
+  isVerified: Boolean!
+  isActive: Boolean!
+  teamBadge: UploadedImage
+  yearFounded: String
+  location: String
+  country: String
+  stadiumName: String
+  stadiumLocation: String
+  stadiumCapacity: String
+  stadiumSurface: String
+  homeShirt: String
+  homeShorts: String
+  homeSocks: String
+  awayShirt: String
+  awayShorts: String
+  awaySocks: String
+  kitsBackground: String
+  teamRoles: [TeamRole!]!
+  trophies: [ID!]!
+  seasonIds: [ID!]!
+  adminIds: [ID!]!
+  playerIds: [ID!]!
+  orgId: Organization!
+}
+
+type TeamRole {
+  roleId: String!
+  role: String!
+  name: String!
+  contact: String!
+}
+
+"""The Team Season model"""
+type TeamSeason {
+  _id: ID!
+  name: String!
+  yearStarted: String!
+  yearEnded: String!
+  awards: [Award!]!
+  leaguePosition: Float
+  totalFinalPositions: Float
+  division: String
+  teamId: ID!
+  comment: String
+}
+
+type TMatch {
+  _id: String!
+  date: String!
+  isHome: Boolean!
+  teamName: String!
+  opponentName: String!
+  opponentBadge: String
+  teamGoals: Float!
+  opponentGoals: Float!
+  competition: String!
+  isForfeit: Boolean!
+}
+
+type TMatchOpponent {
+  _id: String!
+  opponentName: String!
+  opponentBadge: String
+  total: Float!
+  wins: Float!
+  draws: Float!
+  losses: Float!
+  totalGoalsScored: Float!
+  totalGoalsConceded: Float!
+  totalGoalDifference: Float!
+  isActive: Boolean!
+}
+
+type TMatchRecords {
+  maxDiff: [TRecordMatch!]
+  minDiff: [TRecordMatch!]
+  maxGoals: [TRecordMatch!]
+  maxConceded: [TRecordMatch!]
+}
+
+type TMatchStats {
+  _id: String
+  total: Float
+  scored: Float
+  teamAvg: Float
+  conceded: Float
+  oppAvg: Float
+  wins: Float
+  draws: Float
+  defeats: Float
+  difference: Float
+}
+
+type TopStatName {
+  id: String!
+  name: String!
+}
+
+type TopStatNames {
+  _id: Float!
+  value: Float!
+  names: [TopStatName!]!
+}
+
+input TPlayerInMatchInput {
+  playerId: ID!
+  isStarter: Boolean!
+  matchPosition: String
+  goals: Float!
+  assists: Float!
+  mvp: Boolean!
+  conceded: Float!
+  ownGoals: Float!
+  pensScored: Float!
+  pensMissed: Float!
+  pensSaved: Float!
+  cleanSheet: Boolean!
+  redCard: Boolean!
+  yellowCards: Float!
+}
+
+type TPlayerSeasonsSummary {
+  seasonName: String!
+  seasonId: String!
+  apps: Float!
+  goals: Float!
+  assists: Float!
+}
+
+type TRecordMatch {
+  _id: String!
+  opponentName: String!
+  opponentId: String!
+  teamGoals: Float!
+  opponentGoals: Float!
+  date: String!
+  isHome: Boolean!
+}
+
+"""The Trophy model"""
+type Trophy {
+  _id: ID!
+  teamId: Team!
+  seasonId: TeamSeason!
+  name: String!
+  year: String!
+  isWinner: Boolean!
+  isFinal: Boolean!
+  comment: String
+  opponent: String
+}
+
+type TrophyResponse {
+  _id: String!
+  name: String!
+  season: String
+  isWinner: Boolean!
+  isFinal: Boolean!
+  comment: String
+  opponent: String
+  year: String
+}
+
+type TSquadSingleSeasonRecords {
+  goals: SingleSeasonRecord
+  assists: SingleSeasonRecord
+  combined: SingleSeasonRecord
+}
+
+type TSquadStats {
+  _id: String!
+  name: String!
+  nationality: String
+  dateOfBirth: String
+  apps: Float!
+  goals: Float!
+  assists: Float!
+  mvp: Float!
+  goalsPerGame: Float!
+  assistsPerGame: Float!
+  concededPerGame: Float!
+  mvpPerGame: Float!
+  conceded: Float!
+  cleanSheets: Float!
+}
+
+input UpdateOrganizationInput {
+  name: String!
+  website: String
+  yearFounded: String
+  city: String
+  country: String
+}
+
+input UpdateTeamInput {
+  teamName: String!
+  yearFounded: String
+  location: String
+  country: String
+  stadiumName: String
+  stadiumLocation: String
+  stadiumCapacity: String
+  stadiumSurface: String
+  homeShirt: String
+  homeShorts: String
+  homeSocks: String
+  awayShirt: String
+  awayShorts: String
+  awaySocks: String
+  kitsBackground: String
+  isActive: Boolean!
+}
+
+input UpdateTeamRolesInput {
+  role: String!
+  name: String!
+  contact: String
+}
+
+type UploadedImage {
+  url: String!
+  public_id: String!
+}
+
+"""The User model"""
+type User {
+  _id: ID!
+  roles: [String!]!
+  username: String!
+  password: String!
+  email: String!
+  createdAt: DateTimeISO
+  updatedAt: DateTimeISO
+  isVerified: Boolean!
+  verificationToken: String
+  image: UploadedImage!
+  dateOfBirth: String
+  nationality: String
+  yearJoined: String!
+  playerId: ID!
+  teamIds: [ID!]!
+  orgIds: [ID!]!
+  token: String
+}
+

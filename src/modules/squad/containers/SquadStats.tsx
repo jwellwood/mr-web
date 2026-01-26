@@ -12,7 +12,11 @@ export default function SquadStats() {
   const [filters, setFilters] = useState<TFilters>({ seasons: 'all', competitions: 'all' });
 
   const { loading, error, data } = useQuery(FETCH_SQUAD_STATS, {
-    variables: { teamId, seasonId: filters?.seasons, competitionId: filters?.competitions },
+    variables: {
+      teamId: teamId!,
+      seasonId: filters?.seasons,
+      competitionId: filters?.competitions,
+    },
     notifyOnNetworkStatusChange: true,
     fetchPolicy: 'network-only',
   });

@@ -10,7 +10,7 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
-import { TeamDetailsSchema, type TeamFormData } from './validation';
+import { TeamDetailsSchema, type TeamFormData } from './types';
 
 interface Props {
   onSubmit: (data: TeamFormData) => void;

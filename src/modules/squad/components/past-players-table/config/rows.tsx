@@ -1,12 +1,11 @@
 import { ImageAvatar, NameCell } from '../../../../../components';
 import FlagIcon from '../../../../../components/icons/FlagIcon';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
-import { IPastPlayer } from '../../../types';
+import { FETCH_PAST_PLAYERS_QUERY } from '../../../types';
 
-export const rows = (data?: { players: IPastPlayer[] }, loading?: boolean) => {
+export const rows = (data?: FETCH_PAST_PLAYERS_QUERY, loading?: boolean) => {
   const arr = new Array(15).fill({});
-  const mappedPlayers =
-    loading || !data?.players ? arr : data?.players.map((player): IPastPlayer => player);
+  const mappedPlayers = loading || !data?.players ? arr : data?.players.map(player => player);
 
   return mappedPlayers?.map(player => ({
     position: loading ? <StatSkeleton /> : player.position,

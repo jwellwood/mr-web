@@ -9,14 +9,15 @@ import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
-import type { EditTeamFormData } from './validation';
+import type { EditTeamFormData } from './types';
+import { mapFormDataToMutationInput, mapTeamDataToFormData } from './state';
 import EditTeamView from './EditTeamView';
 
 export default function EditTeam() {
   const { teamId } = useCustomParams();
   const navigate = useNavigate();
   const { loading, error, data, refetch } = useQuery(FETCH_TEAM, {
-    variables: { teamId },
+    variables: { teamId: teamId! },
     notifyOnNetworkStatusChange: true,
   });
   const [updateTeamDetails, { loading: updateLoading, error: updateError }] =
@@ -28,14 +29,16 @@ export default function EditTeam() {
   useEffect(() => {
     if (data) {
       const { team } = data;
-      setDefaultValues({ ...team, yearFounded: new Date(team.yearFounded) });
+      setDefaultValues(mapTeamDataToFormData(team));
     }
   }, [data]);
 
   const onSubmit = (formData: EditTeamFormData) => {
     try {
-      updateTeamDetails({ variables: { teamId, ...formData } }).then(() => {
-        refetch({ teamId });
+      updateTeamDetails({
+        variables: { teamId: teamId!, ...mapFormDataToMutationInput(formData) },
+      }).then(() => {
+        refetch({ teamId: teamId! });
         dispatch(
           showAlert({
             text: TeamSuccess.edit,

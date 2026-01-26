@@ -1,9 +1,9 @@
 import CustomTable from '../../../../components/tables/CustomTable';
-import { ISquadSingleSeasonRecords } from '../../types';
+import { FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {
-  data?: { stats: ISquadSingleSeasonRecords };
+  data?: FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY;
   loading: boolean;
 }
 

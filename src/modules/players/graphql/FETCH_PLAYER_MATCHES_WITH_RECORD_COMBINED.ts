@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IPlayerRecordMatches } from '../../matches/types';
+import { gql } from '@apollo/client';
 
-export const FETCH_PLAYER_MATCHES_WITH_RECORD_COMBINED: TypedDocumentNode<{
-  stats: IPlayerRecordMatches[];
-}> = gql`
+export const FETCH_PLAYER_MATCHES_WITH_RECORD_COMBINED = gql`
   query FETCH_PLAYER_MATCHES_WITH_RECORD_COMBINED(
     $teamId: String!
     $playerId: String!

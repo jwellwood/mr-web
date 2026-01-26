@@ -1,13 +1,12 @@
 import { ApolloError } from '@apollo/client';
 
 import { DataError, NoDataText, SectionContainer } from '../../../components';
-import { IPastPlayer } from '../types';
-import PlayersByNumbers from '../components/PlayersByNumbers';
 import PastPlayersTable from '../components/past-players-table/PastPlayersTable';
+import { FETCH_PAST_PLAYERS_QUERY } from '../types';
 
 interface Props {
   error?: ApolloError;
-  data?: { players: IPastPlayer[] };
+  data?: FETCH_PAST_PLAYERS_QUERY;
   loading: boolean;
 }
 
@@ -16,10 +15,7 @@ export default function PastPlayersView({ error, data, loading }: Props) {
     data?.players.length === 0 ? (
       <NoDataText>No past players yet</NoDataText>
     ) : (
-      <>
-        <PlayersByNumbers players={data?.players} showAge={false} loading={loading} />
-        <PastPlayersTable data={data} loading={loading} />
-      </>
+      <PastPlayersTable data={data} loading={loading} />
     );
 
   return <SectionContainer>{error ? <DataError error={error} /> : renderData}</SectionContainer>;

@@ -2,10 +2,10 @@ import { IMAGE_TYPE } from '../../../constants';
 import FlagIcon from '../../../components/icons/FlagIcon';
 import { LinksList, ImageAvatar } from '../../../components';
 import { CustomTypography, NoDataText } from '../../../components/typography';
-import { ITeamResponse } from '../../team/types';
+import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';
 
 interface Props {
-  teams?: ITeamResponse[];
+  teams?: FETCH_TEAMS_BY_SEARCH_QUERY['teams'];
   isSearchComplete: boolean;
   loading: boolean;
 }
@@ -22,7 +22,7 @@ export default function TeamList({ teams, isSearchComplete, loading }: Props) {
           ),
           secondary: (
             <CustomTypography bold size="sm" color="label">
-              {team.location} <FlagIcon nationality={team.country} />
+              {team.location} <FlagIcon nationality={team.country || ''} />
             </CustomTypography>
           ),
           link: `/org/${team.orgId._id}/team/${team._id}`,

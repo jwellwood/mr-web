@@ -14,14 +14,14 @@ interface Props {
   title?: string;
   badge?: string;
   data?: { label: string; value: ReactNode }[];
-  city?: string;
-  country?: string;
+  city?: string | null;
+  country?: string | null;
   type?: IIconType;
   loading?: boolean;
 }
 
 const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type, loading }) => {
-  const { countryName } = useNationality(country);
+  const { countryName } = useNationality(country ?? undefined);
 
   return (
     <ModuleHeaderContainer>
@@ -48,7 +48,7 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
               <div>
                 {city && city}
                 {city && ', '}
-                {countryName} <FlagIcon nationality={country} />
+                {countryName} <FlagIcon nationality={country || ''} />
               </div>
             )}
           </CustomTypography>

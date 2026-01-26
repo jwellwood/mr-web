@@ -2,9 +2,9 @@ import { ApolloError } from '@apollo/client';
 
 import PresentationModal from '../../../components/modals/PresentationModal';
 import { CustomButton } from '../../../components';
-import { ITeamResponse } from '../../team/types';
 import SearchForm from './TeamSearchForm';
 import TeamList from '../components/TeamList';
+import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';
 
 interface Props {
   searchTerm: string;
@@ -12,7 +12,7 @@ interface Props {
   onSubmit: (data: { teamName: string }) => void;
   loading: boolean;
   error?: ApolloError;
-  data?: { teams: ITeamResponse[] };
+  data?: FETCH_TEAMS_BY_SEARCH_QUERY;
 }
 
 export default function TeamSearchView({

@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form';
 
-import type { DeleteTeamFormData } from './validation';
 import { FormContainer, ControlledTextInput } from '../../../../components';
 import { CenteredGrid } from '../../../../components/grids';
+import type { DeleteTeamFormData } from './types';
 
 interface Props {
   onSubmit: (data: DeleteTeamFormData) => void;

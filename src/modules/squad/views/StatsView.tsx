@@ -2,15 +2,15 @@ import { ApolloError } from '@apollo/client';
 
 import { DataError, SectionContainer, NoDataText } from '../../../components';
 import PlayersByNumbers from '../components/PlayersByNumbers';
-import { ISquadSeasonStats } from '../types';
 import SeasonStatsTable from '../components/season-stats-table/SquadStatsTable';
 import StatFilters from '../forms/StatsFilters';
 import { TFilters } from '../context/FiltersContext';
+import { FETCH_SQUAD_STATS_QUERY } from '../types';
 
 interface Props {
   error?: ApolloError;
   loading: boolean;
-  data?: { stats: ISquadSeasonStats[] };
+  data?: FETCH_SQUAD_STATS_QUERY;
   filters: TFilters;
 }
 

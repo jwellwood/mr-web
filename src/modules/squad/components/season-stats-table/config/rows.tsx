@@ -1,9 +1,9 @@
 import { NameCell } from '../../../../../components';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { returnStatAsZero } from '../../../../../utils/helpers/returnZero';
-import { ISquadSeasonStats } from '../../../types';
+import { FETCH_SQUAD_STATS_QUERY } from '../../../types';
 
-export const rows = (data?: { stats: ISquadSeasonStats[] }, loading?: boolean) => {
+export const rows = (data?: FETCH_SQUAD_STATS_QUERY, loading?: boolean) => {
   const arr = new Array(15).fill({});
   const dataToMap = loading && !data?.stats ? arr.map(stat => stat) : data?.stats.map(stat => stat);
 

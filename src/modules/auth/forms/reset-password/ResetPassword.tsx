@@ -20,7 +20,7 @@ export default function ResetPasswordContainer() {
   const navigate = useNavigate();
 
   const onSubmit = (formData: IResetPasswordInput) => {
-    resetPassword({ variables: { password: formData.password, token } })
+    resetPassword({ variables: { password: formData.password, token: token! } })
       .then(() => {
         dispatch(
           showAlert({

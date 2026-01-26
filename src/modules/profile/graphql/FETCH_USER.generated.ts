@@ -1,0 +1,10 @@
+import * as Types from '../../../types/__generated__/graphql';
+
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type Fetch_UserQueryVariables = Types.Exact<{ [key: string]: never; }>;
+
+
+export type Fetch_UserQuery = { user: { __typename: 'User', _id: string, isVerified: boolean, username: string, email: string, roles: Array<string>, teamIds: Array<string>, orgIds: Array<string>, createdAt: unknown | null, updatedAt: unknown | null, dateOfBirth: string | null, nationality: string | null, image: { __typename: 'UploadedImage', url: string, public_id: string } } };
+
+
+export const Fetch_UserDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FETCH_USER"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"user"},"name":{"kind":"Name","value":"FETCH_USER"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"isVerified"}},{"kind":"Field","name":{"kind":"Name","value":"username"}},{"kind":"Field","name":{"kind":"Name","value":"email"}},{"kind":"Field","name":{"kind":"Name","value":"roles"}},{"kind":"Field","name":{"kind":"Name","value":"teamIds"}},{"kind":"Field","name":{"kind":"Name","value":"orgIds"}},{"kind":"Field","name":{"kind":"Name","value":"createdAt"}},{"kind":"Field","name":{"kind":"Name","value":"updatedAt"}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}},{"kind":"Field","name":{"kind":"Name","value":"public_id"}}]}},{"kind":"Field","name":{"kind":"Name","value":"dateOfBirth"}},{"kind":"Field","name":{"kind":"Name","value":"nationality"}}]}}]}}]} as unknown as DocumentNode<Fetch_UserQuery, Fetch_UserQueryVariables>;

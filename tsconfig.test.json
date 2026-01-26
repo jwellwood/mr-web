@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "es2022",
     "moduleResolution": "node",
-    "types": ["jest", "node", "@testing-library/jest-dom"],
+    "types": ["jest", "node", "@testing-library/jest-dom", "vite/client"],
     "esModuleInterop": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "jest.config.ts", "jest.setup.ts"]

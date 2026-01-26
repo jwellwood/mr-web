@@ -9,7 +9,16 @@ import prettierPlugin from 'eslint-plugin-prettier';
 import prettierConfig from 'eslint-config-prettier';
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  {
+    ignores: [
+      'dist',
+      'schema.json',
+      'src/types/__generated__/**',
+      'src/**/__generated__/**',
+      'src/**/graphql/*.generated.ts',
+      'src/**/graphql/*.generated.tsx',
+    ],
+  },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended, prettierConfig],
     files: ['**/*.{ts,tsx}'],

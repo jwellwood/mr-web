@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_PROFILE, FETCH_USER } from '../../graphql';
+import { backendToFrontend, frontendToBackend } from './mappers';
 import { PAGES } from '../../constants';
 import { showAlert } from '../../../../store';
 import { AUTH_ROLES } from '../../../../constants';
@@ -24,13 +25,14 @@ export default function EditProfile() {
   useEffect(() => {
     if (data) {
       const { user } = data;
-      setDefaultValues({ ...user } as EditProfileFormData);
+      setDefaultValues(backendToFrontend(user));
     }
   }, [data]);
 
   const onSubmit = async (formData: EditProfileFormData) => {
+    const variables = frontendToBackend(formData);
     return await editUser({
-      variables: { ...formData },
+      variables,
     })
       .then(() => {
         dispatch(showAlert({ text: 'Profile updated!', type: 'success' }));

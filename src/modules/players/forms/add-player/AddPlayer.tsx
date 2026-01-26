@@ -36,7 +36,7 @@ export default function AddPlayer() {
 
   const onSubmit = async (formData: PlayerFormData) => {
     try {
-      return addPlayer({ variables: { teamId: teamId, ...mapPlayerForm(formData) } }).then(() => {
+      return addPlayer({ variables: { teamId: teamId!, ...mapPlayerForm(formData) } }).then(() => {
         dispatch(showAlert({ text: 'Player added successfully!', type: 'success' }));
         navigate(-1);
       });

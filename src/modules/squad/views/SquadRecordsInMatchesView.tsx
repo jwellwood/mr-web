@@ -2,10 +2,13 @@ import { ApolloError } from '@apollo/client';
 
 import { DataError, NoDataText, SectionContainer } from '../../../components';
 import MostInMatch from '../components/MostInMatch';
-import { IMostGoalsInMatch } from '../../matches/types';
+import {
+  FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY,
+  FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY,
+} from '../types';
 
 interface Props {
-  data?: { stats: IMostGoalsInMatch[] };
+  data?: FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY | FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY;
   title: string;
   loading: boolean;
   error?: ApolloError;

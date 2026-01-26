@@ -1,12 +1,16 @@
 import { CustomButton, CustomTypography } from '../../../../../components';
+import type { ReactNode } from 'react';
 import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { PresentationModal } from '../../../../../components/modals';
-import { ISquadRecords } from '../../../types';
 import RecordPlayers from '../../RecordPlayers';
 import TopSquadRecordsTable from '../../top-squad-records/TopSquadRecordsTable';
+import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
 
-export const rows = (data?: { stats: ISquadRecords }, loading?: boolean) => {
+export const rows = (
+  data?: FETCH_SQUAD_RECORDS_QUERY,
+  loading = false
+): { label: string; value: ReactNode; names: ReactNode; more: ReactNode }[] => {
   const { apps, goals, assists, mvp } = data?.stats || {
     apps: [{ value: 0, names: [] }],
     goals: [{ value: 0, names: [] }],
@@ -18,18 +22,28 @@ export const rows = (data?: { stats: ISquadRecords }, loading?: boolean) => {
     {
       type: 'apps',
       label: 'Most Apps',
-      names: apps[0]?.names,
-      value: apps[0]?.value,
+      names: apps ? apps[0]?.names : [],
+      value: apps ? apps[0]?.value : 0,
     },
-    { type: 'goals', label: 'Most Goals', names: goals[0]?.names, value: goals[0]?.value },
+    {
+      type: 'goals',
+      label: 'Most Goals',
+      names: goals ? goals[0]?.names : [],
+      value: goals ? goals[0]?.value : 0,
+    },
     {
       type: 'assists',
       label: 'Most Assists',
-      names: assists[0]?.names,
-      value: assists[0]?.value,
+      names: assists ? assists[0]?.names : [],
+      value: assists ? assists[0]?.value : 0,
     },
-    { type: 'mvp', label: 'Most MVPs', names: mvp[0]?.names, value: mvp[0]?.value },
-  ];
+    {
+      type: 'mvp',
+      label: 'Most MVPs',
+      names: mvp ? mvp[0]?.names : [],
+      value: mvp ? mvp[0]?.value : 0,
+    },
+  ] as const;
 
   return tableData.map(item => {
     return {
@@ -53,10 +67,7 @@ export const rows = (data?: { stats: ISquadRecords }, loading?: boolean) => {
             </CustomButton>
           }
         >
-          <TopSquadRecordsTable
-            data={data?.stats[item.type as keyof ISquadRecords]}
-            loading={loading}
-          />
+          <TopSquadRecordsTable stats={data?.stats?.[item.type]} loading={loading} />
         </PresentationModal>
       ),
     };

@@ -2,11 +2,11 @@ import { makeStyles } from '@mui/styles';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
 
-import { ITeamResponse } from '../types';
 import { SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import { type FETCH_TEAM_QUERY } from '../types';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface Props {
-  team?: ITeamResponse;
+  team?: FETCH_TEAM_QUERY['team'];
   loading: boolean;
 }
 
@@ -56,16 +56,23 @@ export default function Kits({ team, loading }: Props) {
             <CustomTypography bold color="data" size="sm">
               {item.title}
             </CustomTypography>
-            <div style={{ background: kitsBackground }} className={classes.container}>
+            <div
+              style={{ background: kitsBackground || 'transparent' }}
+              className={classes.container}
+            >
               {loading ? (
                 <CustomSkeleton height="75px" />
               ) : (
                 <CenteredGrid>
-                  <FaTshirt size="3.5rem" color={item.kit.shirt} className={classes.shirt} />
+                  <FaTshirt
+                    size="3.5rem"
+                    color={item.kit.shirt || 'white'}
+                    className={classes.shirt}
+                  />
 
                   <GiUnderwearShorts
                     size="2.4rem"
-                    color={item.kit.shorts}
+                    color={item.kit.shorts || 'white'}
                     className={classes.shorts}
                   />
                 </CenteredGrid>

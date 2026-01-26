@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeam } from '../types';
+import { gql } from '@apollo/client';
 
-export const ADD_TEAM: TypedDocumentNode<{
-  team: ITeam;
-}> = gql`
+export const ADD_TEAM = gql`
   mutation ADD_TEAM(
     $orgId: String!
     $teamName: String!
@@ -22,7 +19,6 @@ export const ADD_TEAM: TypedDocumentNode<{
         isActive: $isActive
       }
     ) {
-      _id
       teamName
       isActive
       yearFounded

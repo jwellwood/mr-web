@@ -4,10 +4,10 @@ import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { ITeamResponse } from '../types';
+import { FETCH_TEAM_QUERY } from '../types';
 
 interface Props {
-  team?: ITeamResponse;
+  team?: FETCH_TEAM_QUERY['team'];
   loading: boolean;
 }
 

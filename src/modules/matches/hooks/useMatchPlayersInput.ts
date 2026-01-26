@@ -7,12 +7,12 @@ export const useMatchPlayersInput = (teamId: string | undefined, seasonId: strin
   const [players, setPlayers] = useState<IPlayer[]>([]);
 
   const { data, loading, error } = useQuery(FETCH_SQUAD_BY_SEASON, {
-    variables: { teamId, seasonId },
+    variables: { teamId: teamId!, seasonId: seasonId! },
   });
 
   useEffect(() => {
     if (data) {
-      setPlayers(data.players);
+      setPlayers(data.players as unknown as IPlayer[]);
     }
   }, [data]);
 

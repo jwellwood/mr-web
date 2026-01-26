@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeam } from '../types';
+import { gql } from '@apollo/client';
 
-export const EDIT_TEAM_BADGE: TypedDocumentNode<{
-  team: ITeam;
-}> = gql`
+export const EDIT_TEAM_BADGE = gql`
   mutation EDIT_TEAM_BADGE($teamId: String!, $public_id: String!, $url: String!) {
     editTeamBadge(teamId: $teamId, data: { public_id: $public_id, url: $url }) {
       _id

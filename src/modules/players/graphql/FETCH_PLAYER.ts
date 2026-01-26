@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IPlayer } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_PLAYER: TypedDocumentNode<{
-  player: IPlayer;
-}> = gql`
+export const FETCH_PLAYER = gql`
   query FETCH_PLAYER($playerId: String!) {
     player: PLAYER_BY_ID(playerId: $playerId) {
       _id

@@ -2,7 +2,7 @@ import { ApolloError } from '@apollo/client';
 
 import EditTeamForm from './EditTeamForm';
 import { Spinner } from '../../../../components/loaders';
-import type { EditTeamFormData } from './validation';
+import type { EditTeamFormData } from './types';
 
 interface Props {
   loading: boolean;

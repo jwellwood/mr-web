@@ -1,11 +1,11 @@
 import { ApolloError } from '@apollo/client';
 
-import { ISquadRecords } from '../types';
 import { DataError, SectionContainer, NoDataText } from '../../../components';
 import SquadRecordTable from '../components/squad-record-table/SquadRecordTable';
+import { FETCH_SQUAD_RECORDS_QUERY } from '../types';
 
 interface Props {
-  data?: { stats: ISquadRecords };
+  data?: FETCH_SQUAD_RECORDS_QUERY;
   loading: boolean;
   error?: ApolloError;
 }
@@ -13,7 +13,7 @@ interface Props {
 export default function RecordsView({ data, loading, error }: Props) {
   const renderContent = () => (
     <SectionContainer title="Overall Records">
-      {data && !data.stats?.apps[0]?.value ? (
+      {data && !data.stats.apps ? (
         <NoDataText>No records yet</NoDataText>
       ) : (
         <SquadRecordTable data={data} loading={loading} />

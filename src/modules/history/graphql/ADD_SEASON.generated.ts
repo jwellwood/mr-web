@@ -1,0 +1,18 @@
+import * as Types from '../../../types/__generated__/graphql';
+
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type Add_SeasonMutationVariables = Types.Exact<{
+  teamId: Types.Scalars['String']['input'];
+  yearStarted: Types.Scalars['String']['input'];
+  yearEnded: Types.Scalars['String']['input'];
+  division?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  leaguePosition?: Types.InputMaybe<Types.Scalars['Float']['input']>;
+  totalFinalPositions?: Types.InputMaybe<Types.Scalars['Float']['input']>;
+  comment?: Types.InputMaybe<Types.Scalars['String']['input']>;
+}>;
+
+
+export type Add_SeasonMutation = { season: { __typename: 'TeamSeason', _id: string, name: string } };
+
+
+export const Add_SeasonDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ADD_SEASON"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"teamId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"yearStarted"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"yearEnded"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"division"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"leaguePosition"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"totalFinalPositions"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"Float"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"comment"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"season"},"name":{"kind":"Name","value":"addTeamSeason"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"teamId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"teamId"}}},{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"yearStarted"},"value":{"kind":"Variable","name":{"kind":"Name","value":"yearStarted"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"yearEnded"},"value":{"kind":"Variable","name":{"kind":"Name","value":"yearEnded"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"division"},"value":{"kind":"Variable","name":{"kind":"Name","value":"division"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"leaguePosition"},"value":{"kind":"Variable","name":{"kind":"Name","value":"leaguePosition"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"totalFinalPositions"},"value":{"kind":"Variable","name":{"kind":"Name","value":"totalFinalPositions"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"comment"},"value":{"kind":"Variable","name":{"kind":"Name","value":"comment"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<Add_SeasonMutation, Add_SeasonMutationVariables>;

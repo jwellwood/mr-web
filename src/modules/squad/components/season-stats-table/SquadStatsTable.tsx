@@ -2,11 +2,11 @@ import { ReactNode } from 'react';
 
 import CustomTable from '../../../../components/tables/CustomTable';
 import { TFilters } from '../../context/FiltersContext';
-import { ISquadSeasonStats } from '../../types';
 import { columns, columns_averages, rows, rows_averages, styles, styles_averages } from './config';
+import { FETCH_SQUAD_STATS_QUERY } from '../../types';
 
 interface Props {
-  data?: { stats: ISquadSeasonStats[] };
+  data?: FETCH_SQUAD_STATS_QUERY;
   loading: boolean;
   filters: TFilters;
 }

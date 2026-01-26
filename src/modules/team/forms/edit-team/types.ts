@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { TeamDetailsSchema } from '../add-team/validation';
+import { TeamDetailsSchema } from '../add-team/types';
 
 export const EditTeamSchema = TeamDetailsSchema;
 

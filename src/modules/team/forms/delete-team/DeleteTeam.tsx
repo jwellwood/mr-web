@@ -16,7 +16,7 @@ export default function DeleteTeam() {
   const { teamId } = useCustomParams();
   const { refetch } = useQuery(FETCH_TEAMS_BY_USER);
   const { loading, error, data } = useQuery(FETCH_TEAM, {
-    variables: { teamId },
+    variables: { teamId: teamId! },
     notifyOnNetworkStatusChange: true,
   });
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function DeleteTeam() {
   const [deleteTeam, { loading: deleteLoading }] = useMutation(DELETE_TEAM);
 
   const onDelete = async () => {
-    return deleteTeam({ variables: { teamId } })
+    return deleteTeam({ variables: { teamId: teamId! } })
       .then(() => {
         refetch();
         dispatch(showAlert({ text: 'Team deleted', type: 'success' }));

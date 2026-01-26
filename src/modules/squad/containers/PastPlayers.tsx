@@ -8,7 +8,7 @@ export default function PastPlayers() {
   const { teamId } = useCustomParams();
 
   const { loading, data, error } = useQuery(FETCH_PAST_PLAYERS, {
-    variables: { teamId },
+    variables: { teamId: teamId! },
   });
 
   return <PastPlayersView error={error} loading={loading} data={data} />;

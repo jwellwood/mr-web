@@ -3,10 +3,10 @@ import { CenteredGrid, GridItem } from '../../../components/grids';
 import AppIcon from '../../../components/icons/AppIcon';
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
-import { ITeamResponse } from '../types';
+import { FETCH_TEAM_QUERY } from '../types';
 
 interface Props {
-  team?: ITeamResponse;
+  team?: FETCH_TEAM_QUERY['team'];
   loading: boolean;
 }
 

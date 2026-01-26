@@ -1,0 +1,12 @@
+import * as Types from '../../../types/__generated__/graphql';
+
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type Fetch_PlayerQueryVariables = Types.Exact<{
+  playerId: Types.Scalars['String']['input'];
+}>;
+
+
+export type Fetch_PlayerQuery = { player: { __typename: 'Player', _id: string, name: string, position: string, squadNumber: string, nationality: string | null, isCaptain: boolean, isViceCaptain: boolean, isHallOfFame: boolean, dateOfBirth: string | null, yearJoined: string, seasonIds: Array<{ __typename: 'TeamSeason', _id: string, name: string }>, image: { __typename: 'UploadedImage', url: string } } };
+
+
+export const Fetch_PlayerDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FETCH_PLAYER"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"playerId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"player"},"name":{"kind":"Name","value":"PLAYER_BY_ID"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"playerId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"playerId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"position"}},{"kind":"Field","name":{"kind":"Name","value":"squadNumber"}},{"kind":"Field","name":{"kind":"Name","value":"position"}},{"kind":"Field","name":{"kind":"Name","value":"nationality"}},{"kind":"Field","name":{"kind":"Name","value":"isCaptain"}},{"kind":"Field","name":{"kind":"Name","value":"isViceCaptain"}},{"kind":"Field","name":{"kind":"Name","value":"isHallOfFame"}},{"kind":"Field","name":{"kind":"Name","value":"dateOfBirth"}},{"kind":"Field","name":{"kind":"Name","value":"yearJoined"}},{"kind":"Field","name":{"kind":"Name","value":"seasonIds"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"url"}}]}}]}}]}}]} as unknown as DocumentNode<Fetch_PlayerQuery, Fetch_PlayerQueryVariables>;

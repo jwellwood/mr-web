@@ -3,13 +3,13 @@ import { ApolloError } from '@apollo/client';
 import { IMAGE_TYPE } from '../../../constants';
 import ModuleHeader from '../../../components/shared/module-header/ModuleHeader';
 import { DataError } from '../../../components';
-import { ITeamResponse } from '../types';
 import Organization from '../components/Organization';
 import Kits from '../components/Kits';
 import Stadium from '../components/Stadium';
+import { FETCH_TEAM_QUERY } from '../types';
 
 interface Props {
-  data?: { team: ITeamResponse };
+  data?: FETCH_TEAM_QUERY;
   loading: boolean;
   error?: ApolloError;
 }

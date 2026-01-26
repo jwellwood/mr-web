@@ -1,9 +1,9 @@
 import CustomTable from '../../../../components/tables/CustomTable';
-import { IPastPlayer } from '../../types';
 import { columns, rows, styles } from './config';
+import { FETCH_PAST_PLAYERS_QUERY } from '../../types';
 
 interface Props {
-  data?: { players: IPastPlayer[] };
+  data?: FETCH_PAST_PLAYERS_QUERY;
   loading: boolean;
 }
 

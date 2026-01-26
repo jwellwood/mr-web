@@ -7,7 +7,7 @@ import { SIGN_IN_USER } from '../../graphql';
 import { PAGES } from '../../constants';
 import { AppDispatch, showAlert, setAuth } from '../../../../store';
 import { useAuth } from '../../../../hooks';
-import { AUTH_ROLES } from '../../../../constants';
+import { AUTH_ROLES, TAuthRoles } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import { PROFILE_PATHS } from '../../../profile/router';
 import type { SignInFormData } from './validation';
@@ -33,7 +33,7 @@ export default function SignInContainer() {
           }
           dispatch(
             setAuth({
-              roles: user.roles,
+              roles: user.roles as TAuthRoles[],
               teamIds: user.teamIds,
               orgIds: user.orgIds,
               username: user.username,

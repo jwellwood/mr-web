@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { ISquadSingleSeasonRecords } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_SQUAD_SINGLE_SEASON_RECORDS: TypedDocumentNode<{
-  stats: ISquadSingleSeasonRecords;
-}> = gql`
+export const FETCH_SQUAD_SINGLE_SEASON_RECORDS = gql`
   query FETCH_SQUAD_SINGLE_SEASON_RECORDS($teamId: String!) {
     stats: SQUAD_SINGLE_SEASON_RECORDS(teamId: $teamId) {
       goals {

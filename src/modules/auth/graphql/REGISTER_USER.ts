@@ -1,7 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IUser } from '../types';
+import { gql } from '@apollo/client';
 
-export const REGISTER_USER: TypedDocumentNode<{ user: IUser }> = gql`
+export const REGISTER_USER = gql`
   mutation REGISTER_USER($username: String!, $email: String!, $password: String!) {
     user: registerUser(data: { username: $username, email: $email, password: $password }) {
       username

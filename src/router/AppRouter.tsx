@@ -7,6 +7,7 @@ import { FETCH_USER } from '../modules/profile/graphql';
 import { useAuth } from '../hooks';
 import { resetAuth, setAuth } from '../store';
 import { CustomAlert, ErrorBoundary, BackgroundContainer } from '../components';
+import { TAuthRoles } from '../constants';
 
 const AppRoutes = lazy(() => import('./routes/Routes'));
 
@@ -19,7 +20,7 @@ function AppRouter() {
     if (data?.user && !loading) {
       dispatch(
         setAuth({
-          roles: data.user?.roles,
+          roles: data.user?.roles as TAuthRoles[],
           teamIds: data.user?.teamIds,
           orgIds: data.user?.orgIds,
           username: data.user.username,

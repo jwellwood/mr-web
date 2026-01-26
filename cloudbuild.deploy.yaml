@@ -1,4 +1,26 @@
 steps:
+  - id: 'Check codegen output'
+    name: 'node:18'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        set -euo pipefail
+        npm ci
+        # Prefer a checked-in schema file to avoid requiring introspection on production
+        export CODEGEN_SCHEMA_PATH="./schema.graphql"
+        if [ -n "$${CODEGEN_SCHEMA_PATH:-}" ] && [ ! -f "$${CODEGEN_SCHEMA_PATH}" ]; then
+          echo "schema file '$${CODEGEN_SCHEMA_PATH}' not found. Add a schema.graphql to the repo or enable introspection on your GraphQL endpoint."
+          exit 1
+        fi
+        npm run codegen
+        git add -A
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "Generated files are out-of-date. Run: npm run codegen && git add -A && git commit -m 'Update generated files'"
+          git --no-pager status --porcelain
+          exit 1
+        fi
+
   - id: 'build docker image'
     name: 'gcr.io/cloud-builders/docker'
     args:

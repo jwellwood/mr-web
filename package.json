@@ -1,7 +1,7 @@
 {
   "name": "web-mr",
   "private": true,
-  "version": "2.19.0",
+  "version": "2.20.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,12 +9,15 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "preview": "vite preview",
+    "codegen": "graphql-codegen --config codegen.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:wrapper": "jest src/utils/test-helpers/__tests__/TestWrapper.test.tsx",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "prepare": "husky install",
+    "codegen:schema": "npx get-graphql-schema http://localhost:3002/graphql > schema.graphql"
   },
   "dependencies": {
     "@apollo/client": "^3.13.8",
@@ -48,6 +51,10 @@
     "@babel/preset-typescript": "^7.27.1",
     "@chromatic-com/storybook": "^4.1.1",
     "@eslint/js": "^9.25.0",
+    "@graphql-codegen/cli": "^6.1.1",
+    "@graphql-codegen/near-operation-file-preset": "^4.0.0",
+    "@graphql-codegen/typescript": "^5.0.7",
+    "@graphql-codegen/typescript-operations": "^5.0.7",
     "@jest/globals": "^29.7.0",
     "@storybook/addon-a11y": "^9.1.10",
     "@storybook/addon-vitest": "^9.1.10",
@@ -86,6 +93,7 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
     "vite": "^6.3.5",
-    "vitest": "^3.2.4"
+    "vitest": "^3.2.4",
+    "husky": "^8.0.3"
   }
 }

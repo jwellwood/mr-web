@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeamResponse } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_TEAM: TypedDocumentNode<{
-  team: ITeamResponse;
-}> = gql`
+export const FETCH_TEAM = gql`
   query FETCH_TEAM($teamId: String!) {
     team: teamById(teamId: $teamId) {
       _id

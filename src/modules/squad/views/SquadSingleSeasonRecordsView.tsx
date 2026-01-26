@@ -1,13 +1,13 @@
 import { ApolloError } from '@apollo/client';
 
-import { ISquadSingleSeasonRecords } from '../types';
 import { DataError, SectionContainer, NoDataText } from '../../../components';
 import SquadSingleSeasonRecordsTable from '../components/squad-single-season-records-table/SquadSingleSeasonRecordsTable';
+import { type FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../types';
 
 interface Props {
   loading: boolean;
   error?: ApolloError;
-  data?: { stats: ISquadSingleSeasonRecords };
+  data?: FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY;
 }
 
 export default function SquadSingleSeasonRecordsView({ data, loading, error }: Props) {

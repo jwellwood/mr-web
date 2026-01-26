@@ -17,11 +17,11 @@ export default function EditTeamBadge() {
     loading: loadingTeam,
     refetch,
   } = useQuery(FETCH_TEAM, {
-    variables: { teamId },
+    variables: { teamId: teamId! },
     notifyOnNetworkStatusChange: true,
   });
   const [editTeamBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_TEAM_BADGE, {
-    variables: { teamId },
+    variables: { teamId: teamId!, public_id: '', url: '' }, // TODO
   });
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadTeamBadge,
