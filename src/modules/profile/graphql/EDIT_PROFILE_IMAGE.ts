@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IUser } from '../../auth/types';
+import { gql } from '@apollo/client';
 
-export const EDIT_PROFILE_IMAGE: TypedDocumentNode<{
-  user: IUser;
-}> = gql`
+export const EDIT_PROFILE_IMAGE = gql`
   mutation EDIT_PROFILE_IMAGE($public_id: String!, $url: String!) {
     editProfileImage(data: { public_id: $public_id, url: $url }) {
       _id

@@ -27,13 +27,13 @@ export default function AddTrophy() {
   }, []);
 
   const [addTrophy, { error, loading }] = useMutation(ADD_TROPHY, {
-    refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId } }],
+    refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId: teamId! } }],
   });
 
   const onSubmit = async (formData: TrophyFormData) => {
     const mappedFormData = { ...formData, year: String(formData.year) };
     try {
-      return addTrophy({ variables: { teamId, ...mappedFormData } }).then(() => {
+      return addTrophy({ variables: { teamId: teamId!, ...mappedFormData } }).then(() => {
         dispatch(showAlert({ text: 'Trophy added successfully', type: 'success' }));
         navigate(-1);
       });

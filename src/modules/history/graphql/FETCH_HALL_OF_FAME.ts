@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IPlayer } from '../../players/types';
+import { gql } from '@apollo/client';
 
-export const FETCH_HALL_OF_FAME: TypedDocumentNode<{
-  players: IPlayer[];
-}> = gql`
+export const FETCH_HALL_OF_FAME = gql`
   query FETCH_HALL_OF_FAME($teamId: String!) {
     players: HALL_OF_FAME_PLAYERS(teamId: $teamId) {
       _id

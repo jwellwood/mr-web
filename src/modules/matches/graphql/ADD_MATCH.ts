@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMatch } from '../types';
+import { gql } from '@apollo/client';
 
-export const ADD_MATCH: TypedDocumentNode<{
-  match: IMatch;
-}> = gql`
+export const ADD_MATCH = gql`
   mutation ADD_MATCH(
     $teamId: ID!
     $seasonId: ID!
@@ -15,7 +12,6 @@ export const ADD_MATCH: TypedDocumentNode<{
     $isHome: Boolean!
     $isForfeit: Boolean!
     $leaguePosition: Float
-    $cupRound: String
     $matchPlayers: [TPlayerInMatchInput!]!
   ) {
     match: addMatch(
@@ -30,7 +26,6 @@ export const ADD_MATCH: TypedDocumentNode<{
         isHome: $isHome
         isForfeit: $isForfeit
         leaguePosition: $leaguePosition
-        cupRound: $cupRound
         matchPlayers: $matchPlayers
       }
     ) {

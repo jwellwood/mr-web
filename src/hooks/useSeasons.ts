@@ -13,7 +13,7 @@ export const useSeasons = () => {
   const seasonParam = searchParams.get('season');
 
   const { data, loading, error } = useQuery(FETCH_SEASONS, {
-    variables: { teamId },
+    variables: { teamId: teamId! },
   });
 
   const seasonOptions: ISelectOptions[] = [];

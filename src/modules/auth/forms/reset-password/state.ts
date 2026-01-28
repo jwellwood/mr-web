@@ -1,4 +1,6 @@
-export const resetPasswordFormState = {
+import { ResetPasswordFormData } from './validation';
+
+export const resetPasswordFormState: ResetPasswordFormData = {
   password: '',
   confirmPassword: '',
 };

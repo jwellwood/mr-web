@@ -11,7 +11,7 @@ import { AppDispatch, showAlert } from '../../../../store';
 import RouteGuard from '../../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
-import { mapPlayerForm } from '../../helpers/mapPlayerForm';
+import { mapFormToPlayer } from '../../helpers/mapPlayerForm';
 import { PageHeader } from '../../../../components';
 import { initialPlayerState } from './state';
 import type { PlayerFormData } from './validation';
@@ -36,10 +36,12 @@ export default function AddPlayer() {
 
   const onSubmit = async (formData: PlayerFormData) => {
     try {
-      return addPlayer({ variables: { teamId: teamId!, ...mapPlayerForm(formData) } }).then(() => {
-        dispatch(showAlert({ text: 'Player added successfully!', type: 'success' }));
-        navigate(-1);
-      });
+      return addPlayer({ variables: { teamId: teamId!, ...mapFormToPlayer(formData) } }).then(
+        () => {
+          dispatch(showAlert({ text: 'Player added successfully!', type: 'success' }));
+          navigate(-1);
+        }
+      );
     } catch (error) {
       console.error("Couldn't add player: ", error);
       dispatch(showAlert({ text: 'Something went wrong', type: 'error' }));

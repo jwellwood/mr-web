@@ -1,12 +1,12 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import { IPlayerInMatch } from '../../../modules/matches/types';
+import { ITempMatchPlayers } from '../../../modules/matches/types';
 
 interface IPlayerState {
-  players: IPlayerInMatch[];
+  matchPlayers: ITempMatchPlayers[];
 }
 
 const initialState: IPlayerState = {
-  players: [],
+  matchPlayers: [],
 };
 
 const playersSlice = createSlice({

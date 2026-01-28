@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_PLAYER_MATCHES_WITH_RECORD_COMBINED } from '../graphql';
 import { useCustomParams } from '../../../hooks';
-import PlayerRecordsMatchesView from '../views/PlayerRecordsMatchesView';
+import PlayerRecordsMatchesView from '../components/player-records/player-match-records/PlayerRecordsMatchesView';
 
 interface Props {
   record: number;
@@ -11,11 +11,9 @@ interface Props {
 export default function PlayerMatchesWithMostCombined({ record }: Props) {
   const { teamId, playerId } = useCustomParams();
   const { data, loading, error } = useQuery(FETCH_PLAYER_MATCHES_WITH_RECORD_COMBINED, {
-    variables: { teamId, playerId, record },
+    variables: { teamId: teamId!, playerId: playerId!, record },
     skip: !record,
   });
 
-  return (
-    <PlayerRecordsMatchesView data={data?.stats} loading={loading} title="Combined" error={error} />
-  );
+  return <PlayerRecordsMatchesView data={data} loading={loading} title="Combined" error={error} />;
 }

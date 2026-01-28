@@ -4,7 +4,7 @@ import { AUTH_ROLES } from '../../../constants';
 import { useCustomParams } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
 import RouteGuard from '../../../router/RouteGuard';
-import SquadView from '../views/SquadView';
+import SquadView from '../components/squad-overview/SquadView';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../graphql';
 
 export default function Squad() {

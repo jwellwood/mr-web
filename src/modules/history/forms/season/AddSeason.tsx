@@ -15,6 +15,7 @@ import { PageHeader } from '../../../../components';
 import type { SeasonFormData } from './validation';
 import { initialTeamSeasonState } from './state';
 import SeasonForm from './SeasonForm';
+import { mapSeasonForm } from '../../helpers/mapSeasonForm';
 
 export default function AddTeamSeason() {
   const { orgId, teamId } = useCustomParams();
@@ -37,8 +38,8 @@ export default function AddTeamSeason() {
     try {
       return addTeamSeason({
         variables: {
-          teamId,
-          ...formData,
+          teamId: teamId!,
+          ...mapSeasonForm.toVariables(formData),
         },
       }).then(() => {
         dispatch(showAlert({ text: 'Season added successfully', type: 'success' }));

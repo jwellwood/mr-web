@@ -3,7 +3,7 @@ import { EDIT_TEAM_MUTATION_INPUT, FETCH_TEAM_QUERY } from '../../types';
 
 export const mapFormDataToMutationInput = (
   data: EditTeamFormData
-): EDIT_TEAM_MUTATION_INPUT['updateTeamDetails'] => {
+): EDIT_TEAM_MUTATION_INPUT['EDIT_TEAM'] => {
   return {
     teamName: data.teamName,
     yearFounded: data.yearFounded ? data.yearFounded.toISOString() : null,

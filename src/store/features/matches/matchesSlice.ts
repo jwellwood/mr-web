@@ -1,32 +1,30 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { ITempMatch } from '../../../modules/matches/types';
 
-const date = new Date().toISOString();
-
 export const initialMatchState: ITempMatch = {
-  _id: '',
-  teamId: '',
-  seasonId: '',
-  teamName: '',
-  opponentId: '',
-  opponentName: '',
-  competitionId: '',
-  competition: null,
-  date,
+  date: new Date().toISOString(), // > convert to date object when used
   isHome: true,
   teamGoals: 0,
   opponentGoals: 0,
-  leaguePosition: 1,
-  cupRound: '',
+  leaguePosition: null,
   isForfeit: false,
-  matchPlayers: [],
+  seasonId: '',
+  competitionId: '',
+  competitionName: '',
+  teamName: '',
+  teamBadgeUrl: null,
+  opponentId: '',
+  opponentName: '',
+  opponentBadgeUrl: null,
+  teamId: '',
+  _id: '',
 };
 
 const matchesSlice = createSlice({
   name: 'matches',
   initialState: initialMatchState,
   reducers: {
-    setState: (state, action: PayloadAction<Partial<ITempMatch>>) => {
+    setState: (state, action: PayloadAction<ITempMatch>) => {
       return {
         ...state,
         ...action.payload,

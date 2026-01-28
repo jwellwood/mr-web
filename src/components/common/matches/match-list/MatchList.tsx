@@ -1,15 +1,14 @@
 import { IMAGE_TYPE } from '../../../../constants';
 import { useCustomParams } from '../../../../hooks';
-import { IMatchList } from '../../../../modules/matches/types';
 import { ImageAvatar } from '../../../avatars';
 import { LinksList } from '../../../lists';
-
 import MatchListLabel from './MatchListLabel';
 import MatchListScoreBox from './MatchListScoreBox';
 import MatchLoading from './MatchLoading';
+import { IMatchesListMatch } from '../types';
 
 interface Props {
-  matches?: IMatchList[];
+  matches?: IMatchesListMatch[];
   loading: boolean;
   showBadge?: boolean;
   showComp?: boolean;
@@ -17,7 +16,7 @@ interface Props {
 export default function MatchList({ matches, loading, showBadge = true, showComp = true }: Props) {
   const { orgId, teamId, matchId } = useCustomParams();
 
-  const data = matches?.map((match: IMatchList) => {
+  const data = matches?.map(match => {
     return {
       avatar: showBadge ? (
         <ImageAvatar

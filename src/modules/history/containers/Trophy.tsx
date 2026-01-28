@@ -6,14 +6,14 @@ import { PAGES, TROPHY_ADMIN_LINKS } from '../constants';
 import { useAuth, useCustomParams } from '../../../hooks';
 import RouteGuard from '../../../router/RouteGuard';
 import { PageHeader } from '../../../components';
-import TrophyView from '../views/TrophyView';
+import TrophyView from '../components/trophies/TrophyView';
 
 export default function Trophy() {
   const { teamId, trophyId } = useCustomParams();
   const { isTeamAuth } = useAuth(teamId);
 
   const { data, loading, error } = useQuery(FETCH_TROPHY, {
-    variables: { trophyId },
+    variables: { trophyId: trophyId! },
   });
 
   return (

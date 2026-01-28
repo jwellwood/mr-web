@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IAward } from '../types';
+import { gql } from '@apollo/client';
 
-export const DELETE_AWARD: TypedDocumentNode<{
-  award: IAward;
-}> = gql`
+export const DELETE_AWARD = gql`
   mutation DELETE_AWARD($teamId: String!, $awardId: String!) {
     award: deleteAward(teamId: $teamId, awardId: $awardId) {
       _id

@@ -1,12 +1,12 @@
 import { useQuery } from '@apollo/client';
 import { useCustomParams } from '../../../hooks';
 import { FETCH_PLAYER_OPPONENT_STATS } from '../graphql';
-import PlayerOpponentStatsView from '../views/PlayerOpponentStatsView';
+import PlayerOpponentStatsView from '../components/player-opponents/PlayerOpponentStatsView';
 
 export default function PlayerOpponentStats() {
   const { playerId } = useCustomParams();
   const { data, loading, error } = useQuery(FETCH_PLAYER_OPPONENT_STATS, {
-    variables: { playerId },
+    variables: { playerId: playerId! },
   });
 
   return <PlayerOpponentStatsView data={data} loading={loading} error={error} />;

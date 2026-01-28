@@ -11,13 +11,13 @@ import {
 } from '../../../../components';
 import TextList from '../../../../components/lists/TextList';
 import { CustomTypography } from '../../../../components/typography';
-import { IPlayer } from '../../../players/types';
+import { T_FETCH_PLAYERS_FOR_MATCH_INPUT } from '../../types';
 
 interface Props {
   onSubmit: (data: AddMatchPlayersFormValues) => void;
-  defaultValues: AddMatchPlayersFormValues;
+  defaultValues: { matchPlayers: string[] };
   playersOptions: ISelectOptions[];
-  players: IPlayer[];
+  players: T_FETCH_PLAYERS_FOR_MATCH_INPUT['players'];
   loading: boolean;
   error?: ApolloError;
 }

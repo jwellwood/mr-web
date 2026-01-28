@@ -1,181 +1,88 @@
-import { ICompetition } from '../organization/types';
-import { ITeam } from '../team/types';
-import { IPlayer } from '../players/types';
-import { TPosition } from '../../constants';
+import { DeepOmitTypename } from '../../utils';
 
-export interface IPlayerResponse extends Omit<IPlayerInMatch, 'playerId'> {
-  playerId: string | IPlayer;
-}
+import { Add_MatchMutation } from './graphql/ADD_MATCH.generated';
+import { Edit_MatchMutation } from './graphql/EDIT_MATCH.generated';
+import { Delete_MatchMutation } from './graphql/DELETE_MATCH.generated';
+import { Fetch_MatchQuery } from './graphql/FETCH_MATCH.generated';
+import { Fetch_MatchesQuery } from './graphql/FETCH_MATCHES.generated';
+import { Fetch_Matches_StatsQuery } from './graphql/FETCH_MATCHES_STATS.generated';
+import { Fetch_Matches_All_Time_StatsQuery } from './graphql/FETCH_MATCHES_ALL_TIME_STATS.generated';
+import { Fetch_Matches_By_OpponentQuery } from './graphql/FETCH_MATCHES_BY_OPPONENT.generated';
+import { Fetch_Matches_RecordsQuery } from './graphql/FETCH_MATCHES_RECORDS.generated';
+import { Fetch_Match_OpponentsQuery } from './graphql/FETCH_MATCH_OPPONENTS.generated';
+import { Fetch_Players_For_Match_InputQuery } from './graphql/FETCH_PLAYERS_FOR_MATCH_INPUT.generated';
 
-export interface IMostMatch {
+export type T_ADD_MATCH = DeepOmitTypename<Add_MatchMutation>;
+export type T_EDIT_MATCH = DeepOmitTypename<Edit_MatchMutation>;
+export type T_DELETE_MATCH = DeepOmitTypename<Delete_MatchMutation>;
+export type T_FETCH_MATCH = DeepOmitTypename<Fetch_MatchQuery>;
+export type T_FETCH_MATCHES = DeepOmitTypename<Fetch_MatchesQuery>;
+export type T_FETCH_MATCHES_STATS = DeepOmitTypename<Fetch_Matches_StatsQuery>;
+export type T_FETCH_MATCHES_ALL_TIME_STATS = DeepOmitTypename<Fetch_Matches_All_Time_StatsQuery>;
+export type T_FETCH_MATCHES_BY_OPPONENT = DeepOmitTypename<Fetch_Matches_By_OpponentQuery>;
+export type T_FETCH_MATCHES_RECORDS = DeepOmitTypename<Fetch_Matches_RecordsQuery>;
+export type T_FETCH_MATCH_OPPONENTS = DeepOmitTypename<Fetch_Match_OpponentsQuery>;
+export type T_FETCH_PLAYERS_FOR_MATCH_INPUT = DeepOmitTypename<Fetch_Players_For_Match_InputQuery>;
+
+export interface ITempMatch {
   _id: string;
-  opponent: string;
-  opponentId: string;
+  date: string; // > needs to be string in redux, but Date in form
+  isHome: boolean;
   teamGoals: number;
   opponentGoals: number;
-  date: string;
-  isHome: boolean;
-}
-
-export interface IMatchRecords {
-  maxDiff: IMatchList[];
-  minDiff: IMatchList[];
-  maxGoals: IMatchList[];
-  maxConceded: IMatchList[];
-}
-
-export type IMatchList = {
-  _id: string;
-  date: string;
-  isHome: boolean;
-  teamName: string;
-  opponentName: string;
-  opponentBadge: string;
-  teamGoals: number;
-  opponentGoals: number;
-  competition: string;
+  leaguePosition: number | null;
   isForfeit: boolean;
-};
-
-export interface IPlayerInMatch {
-  _id?: string;
-  playerId: string | Partial<IPlayer>;
-  name: string;
-  matchId: string;
-  isStarter: boolean;
-  matchPosition: TPosition;
-  position?: TPosition;
-  apps?: number;
-  goals: number;
-  assists: number;
-  conceded: number;
-  pensScored: number;
-  pensMissed: number;
-  pensSaved: number;
-  ownGoals: number;
-  yellowCards: number;
-  mvp: boolean;
-  redCard: boolean;
-  cleanSheet: boolean;
-}
-
-export interface IPlayerStats {
-  apps: number;
-  goals: number;
-  assists: number;
-  conceded: number;
-  pensScored: number;
-  pensMissed: number;
-  pensSaved: number;
-  ownGoals: number;
-  yellowCards: number;
-  mvp: number;
-  redCard: number;
-  cleanSheet: number;
-  wins: number;
-  draws: number;
-  defeats: number;
-  goalsFor: number;
-  goalsAgainst: number;
-  goalDiff: number;
-  gamesWithGoal: number;
-  gamesWithAssist: number;
-  gamesWithGoalAndAssist: number;
-  gamesWithGoalOrAssist: number;
-}
-
-export interface IMatch {
-  _id: string;
-  teamId: string;
-  date: string;
-  competitionId: string;
   seasonId: string;
-  opponentId: string;
-  teamGoals: number;
-  opponentGoals: number;
-  isHome: boolean;
-  leaguePosition: number;
-  cupRound: string;
-  isForfeit: boolean;
-  matchPlayers: Partial<IPlayerInMatch>[];
-}
-
-export interface ITempMatch extends IMatch {
+  // seasonId: {
+  //   _id: string;
+  // };
+  competitionId: string;
+  competitionName: string;
+  // competitionId: { _id: string; name: string; competitionType: string };
+  teamId: string;
   teamName: string;
-  opponentName: string;
-  competition: ICompetition | null;
-}
-
-interface IMatchPlayer extends Omit<IPlayerInMatch, 'playerId'> {
-  playerId: Pick<IPlayer, '_id' | 'name' | 'position'>;
-}
-
-export type MatchStatsKeys = keyof IMatch;
-
-export interface IMatchResponse
-  extends Omit<IMatch, 'teamId' | 'opponentId' | 'matchPlayers' | 'competitionId'> {
-  opponentId: string | ITeam;
-  teamId: string | ITeam;
-  competitionId: string | ICompetition;
-  matchPlayers: IMatchPlayer[];
-}
-
-export interface IMatchStats {
-  total: number;
-  wins: number;
-  draws: number;
-  defeats: number;
-  scored: number;
-  conceded: number;
-  difference: number;
-  teamAvg: number;
-  oppAvg: number;
-}
-
-export interface IMostGoalsInMatch {
-  matchId: string;
-  player: string;
-  date: string;
-  opponentName: string;
-  teamGoals: number;
-  opponentGoals: number;
-  total: number;
-}
-
-export interface IPlayerMatchRecords {
-  maxGoals: number;
-  maxAssists: number;
-  maxCombined: number;
-}
-
-export interface IPlayerRecordMatches {
-  _id: string;
-  date: string;
-  opponent: string;
-  teamGoals: number;
-  opponentGoals: number;
-}
-
-export interface IOpponentTable {
-  _id: string;
-  isActive: boolean;
-  opponentName: string;
-  opponentBadge: string;
-  total: number;
-  wins: number;
-  draws: number;
-  losses: number;
-  totalGoalsScored: number;
-  totalGoalsConceded: number;
-  totalGoalDifference: number;
-}
-
-export interface IPlayerVsStats {
+  teamBadgeUrl: string | null;
   opponentId: string;
-  opponent: string;
-  opponentBadge: string;
-  matches: number;
+  opponentName: string;
+  opponentBadgeUrl: string | null;
+  // teamId: {
+  //   _id: string;
+  //   teamName: string;
+  //   teamBadge: {
+  //     public_id: string;
+  //     url: string;
+  //   } | null;
+  // };
+
+  // opponentId: {
+  //   _id: string;
+  //   teamName: string;
+  //   teamBadge: {
+  //     public_id: string;
+  //     url: string;
+  //   } | null;
+  // };
+}
+
+export interface ITempMatchPlayers {
+  playerName: string;
+  playerId: string;
+  matchPosition: string;
+  // playerId: {
+  //   _id: string;
+  //   name: string;
+  //   position: string;
+  // };
+  isStarter: boolean;
   goals: number;
   assists: number;
+  pensScored: number;
+  pensMissed: number;
+  pensSaved: number;
+  yellowCards: number;
+  redCard: boolean;
   conceded: number;
+  ownGoals: number;
+  cleanSheet: boolean;
+  mvp: boolean;
 }

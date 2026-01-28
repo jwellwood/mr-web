@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITrophy } from '../types';
+import { gql } from '@apollo/client';
 
-export const ADD_TROPHY: TypedDocumentNode<{
-  trophy: ITrophy;
-}> = gql`
+export const ADD_TROPHY = gql`
   mutation ADD_TROPHY(
     $teamId: String!
     $seasonId: String!

@@ -1,6 +1,5 @@
 import { IImage } from '../../components/avatars/image-avatar/types';
 import { DeepOmitTypename } from '../../utils';
-import { IOrganization } from '../organization/types';
 
 import { type Fetch_TeamQuery } from './graphql/FETCH_TEAM.generated';
 import { type Add_TeamMutation } from './graphql/ADD_TEAM.generated';
@@ -13,13 +12,6 @@ export type ADD_TEAM_MUTATION_INPUT = DeepOmitTypename<Add_TeamMutation>;
 export type EDIT_TEAM_MUTATION_INPUT = DeepOmitTypename<Edit_TeamMutation>;
 export type EDIT_TEAM_BADGE_MUTATION_INPUT = DeepOmitTypename<Edit_Team_BadgeMutation>;
 export type DELETE_TEAM_MUTATION_INPUT = DeepOmitTypename<Delete_TeamMutation>;
-
-export interface ITeamRoles {
-  name: string;
-  role: string;
-  contact?: string;
-  roleId: string;
-}
 
 export interface ITeam {
   id?: string;
@@ -41,10 +33,6 @@ export interface ITeam {
   awayShorts?: string;
   awaySocks?: string;
   kitsBackground: string;
-  teamRoles?: ITeamRoles[];
+  teamRoles?: unknown[];
   isActive?: boolean;
-}
-
-export interface ITeamResponse extends Omit<ITeam, 'orgId'> {
-  orgId: IOrganization;
 }

@@ -14,6 +14,7 @@ import { useMatchPlayersInput } from '../../../matches/hooks/useMatchPlayersInpu
 import { PageHeader, type ISelectOptions } from '../../../../components';
 import type { AwardFormData } from './validation';
 import AwardForm from './AwardForm';
+import { mapAwardToForm, mapFormToEditAwardVariables } from '../../helpers/mapAwardForm';
 
 export default function EditAward() {
   const { awardId, teamId, seasonId } = useCustomParams();
@@ -23,17 +24,16 @@ export default function EditAward() {
   const [defaultValues, setDefaultValues] = useState<AwardFormData | null>(null);
 
   const { loading, error, data, refetch } = useQuery(FETCH_AWARD, {
-    variables: { awardId },
+    variables: { awardId: awardId! },
     notifyOnNetworkStatusChange: true,
   });
 
   const [editAward, { error: editError, loading: editLoading }] = useMutation(EDIT_AWARD, {
-    variables: { teamId, awardId },
-    refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId } }],
+    refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId: seasonId! } }],
   });
 
   const [deleteAward, { error: deleteError, loading: deleteLoading }] = useMutation(DELETE_AWARD, {
-    refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId } }],
+    refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId: seasonId! } }],
   });
 
   const {
@@ -52,27 +52,12 @@ export default function EditAward() {
   );
 
   useEffect(() => {
-    if (data?.award) {
-      const { award } = data;
-      const mappedValues = () =>
-        award?.winners
-          ?.map(winner =>
-            typeof winner === 'object' && winner !== null && '_id' in winner
-              ? (winner as { _id: string })._id
-              : undefined
-          )
-          .filter(p => p !== undefined);
-
-      setDefaultValues({
-        ...award,
-        winners: mappedValues(),
-      });
-    }
-  }, [data, players]);
+    setDefaultValues(mapAwardToForm(data?.award));
+  }, [data]);
 
   const onDelete = async () => {
     try {
-      return deleteAward({ variables: { teamId, awardId } }).then(() => {
+      return deleteAward({ variables: { teamId: teamId!, awardId: awardId! } }).then(() => {
         dispatch(showAlert({ text: 'Award deleted successfully', type: 'success' }));
         navigate(-2);
       });
@@ -84,8 +69,13 @@ export default function EditAward() {
 
   const onSubmit = async (formData: Partial<AwardFormData>) => {
     try {
+      const variables = mapFormToEditAwardVariables(formData);
       return editAward({
-        variables: { teamId, awardId, ...formData, awardValue: +(formData.awardValue || 0) },
+        variables: {
+          teamId: teamId!,
+          awardId: awardId!,
+          ...variables,
+        },
       }).then(() => {
         refetch();
         dispatch(showAlert({ text: 'Award updated successfully', type: 'success' }));

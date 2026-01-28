@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMatchList } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_MATCHES: TypedDocumentNode<{
-  matches: IMatchList[];
-}> = gql`
+export const FETCH_MATCHES = gql`
   query FETCH_MATCHES($teamId: String!, $seasonId: String!) {
     matches: FETCH_MATCHES(teamId: $teamId, seasonId: $seasonId) {
       _id

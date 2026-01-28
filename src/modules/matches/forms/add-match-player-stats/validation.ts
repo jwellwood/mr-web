@@ -1,10 +1,8 @@
 import { z } from 'zod';
 
 export const AddMatchPlayerStatsSchema = z.object({
-  name: z.string().min(1),
   isStarter: z.boolean(),
-  position: z.string().optional(),
-  matchPosition: z.string().min(1),
+  matchPosition: z.string(),
   goals: z.number().int().min(0),
   pensScored: z.number().int().min(0),
   assists: z.number().int().min(0),

@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITeamSeason } from '../types';
+import { gql } from '@apollo/client';
 
-export const EDIT_SEASON: TypedDocumentNode<{
-  season: ITeamSeason;
-}> = gql`
+export const EDIT_SEASON = gql`
   mutation EDIT_SEASON(
     $teamId: String!
     $seasonId: String!

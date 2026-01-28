@@ -4,12 +4,12 @@ import { useMutation } from '@apollo/client';
 
 import { RESET_PASSWORD } from '../../graphql';
 import { PAGES } from '../../constants';
-import { IResetPasswordInput } from '../../types';
 import { AppDispatch, showAlert } from '../../../../store';
 import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import { AUTH_PATHS } from '../../router';
 import ResetPasswordView from './ResetPasswordView';
+import { ResetPasswordFormData } from './validation';
 
 export default function ResetPasswordContainer() {
   const { token } = useParams<{ token: string }>();
@@ -19,7 +19,7 @@ export default function ResetPasswordContainer() {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onSubmit = (formData: IResetPasswordInput) => {
+  const onSubmit = (formData: ResetPasswordFormData) => {
     resetPassword({ variables: { password: formData.password, token: token! } })
       .then(() => {
         dispatch(

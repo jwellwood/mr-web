@@ -7,7 +7,7 @@ import { PAGES, PROFILE_ADMIN_LINKS } from '../constants';
 import { PageContainer } from '../../../components';
 import { useAuth } from '../../../hooks';
 
-const ProfileView = lazy(() => import('../views/ProfileView'));
+const ProfileView = lazy(() => import('../components/ProfileView'));
 const ProfileOrganizations = lazy(() => import('./ProfileOrganization'));
 const ProfileTeams = lazy(() => import('./ProfileTeams'));
 

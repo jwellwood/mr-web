@@ -19,12 +19,12 @@ export default function EditPlayerImage() {
     loading: loadingTeam,
     refetch,
   } = useQuery(FETCH_PLAYER, {
-    variables: { playerId: playerId },
+    variables: { playerId: playerId! },
     notifyOnNetworkStatusChange: true,
   });
   const [editPlayerPhoto, { loading: editLoading, error: editError }] = useMutation(
     EDIT_PLAYER_PHOTO,
-    { variables: { teamId, playerId } }
+    { variables: { teamId: teamId!, playerId: playerId!, public_id: '', url: '' } } // TODO
   );
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadPlayerPhoto,
@@ -32,7 +32,7 @@ export default function EditPlayerImage() {
     graphqlFunc: editPlayerPhoto,
     refetchFunc: refetch,
     url: data?.player?.image.url,
-    public_id: data?.player?.image?.public_id,
+    public_id: '', //TODO
   });
 
   useEffect(() => {

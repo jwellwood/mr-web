@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IUser } from '../../auth/types';
+import { gql } from '@apollo/client';
 
-export const FETCH_USER: TypedDocumentNode<{
-  user: IUser;
-}> = gql`
+export const FETCH_USER = gql`
   query FETCH_USER {
     user: FETCH_USER {
       _id

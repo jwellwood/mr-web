@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IUser } from '../../auth/types';
+import { gql } from '@apollo/client';
 
-export const EDIT_PROFILE: TypedDocumentNode<{
-  user: IUser;
-}> = gql`
+export const EDIT_PROFILE = gql`
   mutation EDIT_PROFILE(
     $username: String!
     $email: String!

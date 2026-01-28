@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_ORGS_BY_USER } from '../graphql';
 
-const ProfileOrgView = lazy(() => import('../views/ProfileOrgView'));
+const ProfileOrgView = lazy(() => import('../components/ProfileOrgView'));
 
 export default function ProfileOrganizations() {
   const { data, loading, error } = useQuery(FETCH_ORGS_BY_USER);

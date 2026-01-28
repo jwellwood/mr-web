@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const FETCH_TEAM = gql`
   query FETCH_TEAM($teamId: String!) {
-    team: teamById(teamId: $teamId) {
+    team: FETCH_TEAM(teamId: $teamId) {
       _id
       teamName
       yearFounded

@@ -3,17 +3,17 @@ import { lazy } from 'react';
 import { CustomTabs, ITab } from '../../components/tabs';
 import { AUTH_ROLES, TAB_TYPES } from '../../constants';
 import { PageContainer } from '../../components';
-import Player from './containers/Player';
 import { PAGES, PLAYER_ADMIN_LINKS } from './constants';
 import { useAuth, useCustomParams } from '../../hooks';
-import PlayerGameStreaks from './containers/PlayerGameStreaks';
 
+const Player = lazy(() => import('./containers/Player'));
 const PlayerTrophies = lazy(() => import('./containers/PlayerTrophies'));
 const PlayerStats = lazy(() => import('./containers/PlayerStats'));
 const PlayerOpponentStats = lazy(() => import('./containers/PlayerOpponentStats'));
 const PlayerAwards = lazy(() => import('./containers/PlayerAwards'));
 const PlayerSeasonsSummary = lazy(() => import('./containers/PlayerSeasonsSummary'));
 const PlayerMatchRecords = lazy(() => import('./containers/PlayerMatchRecords'));
+const PlayerGameStreaks = lazy(() => import('./containers/PlayerGameStreaks'));
 
 export default function PlayerTabs() {
   const { teamId } = useCustomParams();

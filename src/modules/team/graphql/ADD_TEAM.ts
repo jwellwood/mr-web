@@ -9,7 +9,7 @@ export const ADD_TEAM = gql`
     $country: String
     $isActive: Boolean!
   ) {
-    team: addTeam(
+    team: ADD_TEAM(
       orgId: $orgId
       data: {
         teamName: $teamName

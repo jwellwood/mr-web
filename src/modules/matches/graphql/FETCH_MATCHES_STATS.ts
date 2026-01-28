@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IMatchStats } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_MATCHES_STATS: TypedDocumentNode<{
-  stats: IMatchStats;
-}> = gql`
+export const FETCH_MATCHES_STATS = gql`
   query FETCH_MATCHES_STATS($teamId: String!, $seasonId: String!) {
     stats: FETCH_MATCHES_STATS(teamId: $teamId, seasonId: $seasonId) {
       total

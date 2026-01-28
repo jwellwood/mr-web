@@ -1,18 +1,18 @@
+import { IMatchesAveragesStats } from '../../../components';
 import { getAvg } from '../../../utils/helpers';
-import { IPlayerStats } from '../types';
+import { T_FETCH_PLAYER_STATS } from '../types';
 
-export const mapPlayerAverages = (player?: IPlayerStats) => {
-  return player
-    ? {
-        total: player.apps,
-        wins: player.wins,
-        draws: player.draws,
-        defeats: player.defeats,
-        teamAvg: +getAvg(player.goalsFor, player.apps, 2) || 0,
-        oppAvg: +getAvg(player.goalsAgainst, player.apps, 2) || 0,
-        scored: player.goalsFor,
-        conceded: player.goalsAgainst,
-        difference: player.goalsFor - player.goalsAgainst,
-      }
-    : null;
+export const mapPlayerAverages = (
+  player?: T_FETCH_PLAYER_STATS['player']
+): IMatchesAveragesStats => {
+  const genValue = (value?: number | null) => value || 0;
+  return {
+    total: genValue(player?.apps),
+    wins: genValue(player?.wins),
+    draws: genValue(player?.draws),
+    defeats: genValue(player?.defeats),
+    teamAvg: +getAvg(genValue(player?.goalsFor), genValue(player?.apps), 2) || 0,
+    oppAvg: +getAvg(genValue(player?.goalsAgainst), genValue(player?.apps), 2) || 0,
+    difference: genValue(genValue(player?.goalsFor) - genValue(player?.goalsAgainst)),
+  };
 };

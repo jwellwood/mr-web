@@ -13,6 +13,7 @@ import { Spinner } from '../../../../components/loaders';
 import { PageHeader } from '../../../../components';
 import type { TrophyFormData } from './validation';
 import TrophyForm from './TrophyForm';
+import { mapTrophyToForm, mapFormToEditTrophyVariables } from '../../helpers/mapTrophyForm';
 
 export default function EditTrophy() {
   const { teamId, trophyId } = useCustomParams();
@@ -22,34 +23,28 @@ export default function EditTrophy() {
   const [defaultValues, setDefaultValues] = useState<TrophyFormData | null>(null);
 
   const { loading, error, data, refetch } = useQuery(FETCH_TROPHY, {
-    variables: { trophyId },
+    variables: { trophyId: trophyId! },
     notifyOnNetworkStatusChange: true,
   });
 
   const [editTrophy, { error: editError, loading: editLoading }] = useMutation(EDIT_TROPHY, {
-    refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId } }],
+    refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId: teamId! } }],
   });
 
   const [deleteTrophy, { error: deleteError, loading: deleteLoading }] = useMutation(
     DELETE_TROPHY,
     {
-      refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId } }],
+      refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId: teamId! } }],
     }
   );
 
   useEffect(() => {
-    if (data?.trophy && seasonOptions.length) {
-      const { trophy } = data;
-      const seasonId =
-        (seasonOptions?.find(season => season.label === trophy.season)?.value as string) || '';
-      setDefaultValues({ ...trophy, year: new Date(trophy.year), seasonId });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+    setDefaultValues(mapTrophyToForm(data?.trophy, seasonOptions));
+  }, [data, seasonOptions]);
 
   const onDelete = async () => {
     try {
-      return deleteTrophy({ variables: { teamId, trophyId } }).then(() => {
+      return deleteTrophy({ variables: { teamId: teamId!, trophyId: trophyId! } }).then(() => {
         dispatch(showAlert({ text: 'Trophy deleted successfully', type: 'success' }));
         navigate(-2);
       });
@@ -61,11 +56,14 @@ export default function EditTrophy() {
 
   const onSubmit = async (formData: TrophyFormData) => {
     try {
-      return editTrophy({ variables: { teamId, trophyId, ...formData } }).then(() => {
-        refetch();
-        dispatch(showAlert({ text: 'Trophy updated successfully', type: 'success' }));
-        navigate(-1);
-      });
+      const variables = mapFormToEditTrophyVariables(formData);
+      return editTrophy({ variables: { teamId: teamId!, trophyId: trophyId!, ...variables } }).then(
+        () => {
+          refetch();
+          dispatch(showAlert({ text: 'Trophy updated successfully', type: 'success' }));
+          navigate(-1);
+        }
+      );
     } catch (error) {
       console.error(error);
       dispatch(showAlert({ text: 'There was a problem', type: 'error' }));

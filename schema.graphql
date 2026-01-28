@@ -224,7 +224,6 @@ type Match {
   isHome: Boolean!
   isForfeit: Boolean!
   leaguePosition: Float
-  cupRound: String
   matchPlayers: [PlayerInMatch!]!
 }
 
@@ -243,12 +242,12 @@ type Mutation {
   EDIT_PLAYER(data: EditPlayerInput!, playerId: String!, teamId: String!): Player!
   EDIT_PLAYER_PHOTO(data: EditPhotoInput!, playerId: String!, teamId: String!): Player!
   DELETE_PLAYER(playerId: String!, teamId: String!): Player!
-  addTeam(data: AddTeamInput!, orgId: String!): Team!
-  updateTeamDetails(data: UpdateTeamInput!, teamId: String!): Team!
+  ADD_TEAM(data: AddTeamInput!, orgId: String!): Team!
+  EDIT_TEAM(data: UpdateTeamInput!, teamId: String!): Team!
   updateTeamRoles(data: UpdateTeamRolesInput!, teamId: String!): Team!
   deleteTeamRole(roleId: String!, teamId: String!): Team!
-  editTeamBadge(data: EditBadgeInput!, teamId: String!): Team!
-  deleteTeam(teamId: String!): Team!
+  EDIT_TEAM_BADGE(data: EditBadgeInput!, teamId: String!): Team!
+  DELETE_TEAM(teamId: String!): Team!
   addTeamSeason(data: AddTeamSeasonInput!, teamId: String!): TeamSeason!
   editSeason(data: AddTeamSeasonInput!, seasonId: String!, teamId: String!): TeamSeason!
   deleteSeason(seasonId: String!, teamId: String!): TeamSeason!
@@ -450,7 +449,7 @@ type Query {
   PLAYER_MATCHES_WITH_RECORD_COMBINED(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
   PLAYER_MATCHES_WITH_RECORD_ASSISTS(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
   PLAYER_SEASONS_SUMMARY(playerId: String!): [TPlayerSeasonsSummary!]!
-  teamById(teamId: String!): Team!
+  FETCH_TEAM(teamId: String!): Team!
   teamBySearch(filter: String!): [Team!]!
   userTeams: [Team!]!
   getTeams: Team!
@@ -581,7 +580,6 @@ input TAddMatchInput {
   isHome: Boolean!
   isForfeit: Boolean!
   leaguePosition: Float
-  cupRound: String
   matchPlayers: [TPlayerInMatchInput!]!
 }
 

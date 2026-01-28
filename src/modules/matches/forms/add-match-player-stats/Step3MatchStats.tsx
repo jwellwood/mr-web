@@ -3,19 +3,18 @@ import { ApolloError } from '@apollo/client';
 
 import { validateStats } from '../../helpers/statsValidation';
 import AddMatchValidation from '../components/AddMatchValidation';
-import { getTempMatch } from '../../../../store';
-import { IPlayerInMatch } from '../../types';
+import { getTempMatch, getTempPlayers } from '../../../../store';
 import { SubmitButton } from '../../../../components';
 import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';
 
 interface Props {
   onNextClick: () => void;
-  currentPlayers: IPlayerInMatch[];
   error?: ApolloError;
 }
 
-export default function Step3MatchStats({ onNextClick, currentPlayers, error }: Props) {
+export default function Step3MatchStats({ onNextClick, error }: Props) {
   const currentMatch = useSelector(getTempMatch);
+  const currentPlayers = useSelector(getTempPlayers);
   const { isValid } = validateStats(currentMatch, currentPlayers);
 
   return (

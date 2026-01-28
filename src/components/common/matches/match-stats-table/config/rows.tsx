@@ -1,16 +1,17 @@
-import { IMatchStats } from '../../../../../modules/matches/types';
 import StatSkeleton from '../../../../loaders/StatSkeleton';
+import { IMatchesStatsTable } from '../../types';
 
-export const rows = (stats?: IMatchStats, loading?: boolean) => {
+export const rows = (stats?: IMatchesStatsTable, loading?: boolean) => {
+  const getValue = (value?: number) => (loading ? <StatSkeleton /> : value || 0);
   return [
     {
-      played: loading ? <StatSkeleton /> : stats?.total,
-      wins: loading ? <StatSkeleton /> : stats?.wins,
-      draws: loading ? <StatSkeleton /> : stats?.draws,
-      defeats: loading ? <StatSkeleton /> : stats?.defeats,
-      goalsFor: loading ? <StatSkeleton /> : stats?.scored,
-      goalsAgainst: loading ? <StatSkeleton /> : stats?.conceded,
-      difference: loading ? <StatSkeleton /> : stats?.difference,
+      played: getValue(stats?.played),
+      wins: getValue(stats?.wins),
+      draws: getValue(stats?.draws),
+      defeats: getValue(stats?.defeats),
+      goalsFor: getValue(stats?.goalsFor),
+      goalsAgainst: getValue(stats?.goalsAgainst),
+      difference: getValue(stats?.difference),
     },
   ] as const;
 };

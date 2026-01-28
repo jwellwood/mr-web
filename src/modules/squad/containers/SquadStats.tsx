@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { FETCH_SQUAD_STATS } from '../graphql';
 import { useCustomParams } from '../../../hooks';
 import { FiltersContext, TFilters } from '../context/FiltersContext';
-import StatsView from '../views/StatsView';
+import StatsView from '../components/squad-stats/StatsView';
 
 export default function SquadStats() {
   const { teamId } = useCustomParams();

@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IAward } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_AWARD: TypedDocumentNode<{
-  award: IAward;
-}> = gql`
+export const FETCH_AWARD = gql`
   query FETCH_AWARD($awardId: String!) {
     award: FETCH_AWARD(awardId: $awardId) {
       _id

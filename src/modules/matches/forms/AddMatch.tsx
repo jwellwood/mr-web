@@ -6,8 +6,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql/';
 import { PAGES } from '../constants';
-import { mapMatch } from '../helpers';
-import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import {
   AppDispatch,
@@ -21,8 +19,9 @@ import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import MatchFormStepper from './components/MatchFormStepper';
-import { IPlayerInMatch, ITempMatch } from '../types';
 import { DataError, PageHeader } from '../../../components';
+import { ITempMatch, ITempMatchPlayers } from '../types';
+import { mapTempMatchToMutation } from './mappers';
 
 export default function AddMatch() {
   const { teamId } = useCustomParams();
@@ -32,10 +31,10 @@ export default function AddMatch() {
 
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<ITempMatch | null>(null);
-  const [currentPlayers, setCurrentPlayers] = useState<IPlayerInMatch[]>([]);
+  const [currentMatch, setCurrentMatch] = useState<ITempMatch | null>(null);
+  const [currentPlayers, setCurrentPlayers] = useState<ITempMatchPlayers[]>([]);
 
-  const [addMatch, { error, loading: addLoading }] = useMutation(ADD_MATCH, {
+  const [addMatch, { error, loading }] = useMutation(ADD_MATCH, {
     refetchQueries: [
       {
         query: FETCH_MATCHES,
@@ -57,16 +56,8 @@ export default function AddMatch() {
     ],
   });
 
-  const {
-    opponents,
-    competitions,
-    seasonOptions,
-    loading,
-    error: inputError,
-  } = useMatchDetailsInput();
-
   useEffect(() => {
-    setDefaultValues(currentTempMatch);
+    setCurrentMatch(currentTempMatch);
   }, [currentTempMatch]);
 
   useEffect(() => {
@@ -78,8 +69,10 @@ export default function AddMatch() {
       console.error('Missing team id');
       return;
     }
-    const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
-    addMatch({ variables: { ...data } })
+
+    addMatch({
+      variables: { ...mapTempMatchToMutation(teamId!, currentMatch!, currentPlayers) },
+    })
       .then(() => {
         dispatch(showAlert({ text: 'Match added successfully!', type: 'success' }));
         dispatch(resetTmpMatch());
@@ -91,21 +84,10 @@ export default function AddMatch() {
         console.error('Add match error', err);
       });
   };
-  const isLoading = loading || addLoading;
 
   const renderContent = () => {
-    return defaultValues ? (
-      <MatchFormStepper
-        defaultValues={defaultValues}
-        currentPlayers={currentPlayers}
-        teamId={teamId as string}
-        seasonOptions={seasonOptions}
-        opponents={opponents}
-        competitions={competitions}
-        onSubmit={onSubmit}
-        loading={isLoading}
-        error={error || inputError}
-      />
+    return currentMatch ? (
+      <MatchFormStepper onSubmit={onSubmit} loading={loading} error={error} />
     ) : (
       <Spinner />
     );

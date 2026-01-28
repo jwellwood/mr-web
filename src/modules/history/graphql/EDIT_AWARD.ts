@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { IAward } from '../types';
+import { gql } from '@apollo/client';
 
-export const EDIT_AWARD: TypedDocumentNode<{
-  award: IAward;
-}> = gql`
+export const EDIT_AWARD = gql`
   mutation EDIT_AWARD(
     $awardId: String!
     $teamId: String!

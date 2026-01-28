@@ -10,8 +10,6 @@ import {
   type ISelectOptions,
 } from '../../../../components';
 import { getIntegers } from '../../../../utils/helpers';
-import { ICompetition } from '../../../organization/types';
-import { cupRoundOptions } from '../../../../constants';
 import AddMatchDetailsSchema, { AddMatchDetailsFormValues } from './validation';
 
 interface Props {
@@ -20,7 +18,6 @@ interface Props {
   seasonOptions: ISelectOptions[];
   opponentOptions: ISelectOptions[];
   competitionOptions: ISelectOptions[];
-  competitions: ICompetition[];
   loading: boolean;
   error?: ApolloError;
 }
@@ -30,21 +27,14 @@ export default function AddMatchDetailsForm({
   defaultValues,
   seasonOptions,
   opponentOptions,
-  competitions,
   competitionOptions,
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control, watch } = useForm<AddMatchDetailsFormValues>({
+  const { handleSubmit, control } = useForm<AddMatchDetailsFormValues>({
     defaultValues,
     resolver: zodResolver(AddMatchDetailsSchema),
   });
-
-  const competitionId = watch('competitionId');
-  const selectedCompetition = competitions.find(comp => comp._id === competitionId);
-  const isCup =
-    selectedCompetition?.competitionType === 'Cup' ||
-    selectedCompetition?.competitionType === 'Tournament';
 
   return (
     <FormContainer
@@ -87,15 +77,6 @@ export default function AddMatchDetailsForm({
         label="Goals Conceded"
         options={getIntegers(99)}
       />
-
-      {isCup && (
-        <ControlledSelectInput
-          control={control}
-          name="cupRound"
-          label="Cup Round"
-          options={cupRoundOptions}
-        />
-      )}
     </FormContainer>
   );
 }

@@ -1,10 +1,10 @@
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../../typography';
 import { parseDate } from '../../../../utils/helpers';
-import { IMatchList } from '../../../../modules/matches/types';
+import { IMatchesListMatch } from '../types';
 
 interface Props {
-  match: IMatchList;
+  match: IMatchesListMatch;
   loading?: boolean;
   showComp?: boolean;
 }

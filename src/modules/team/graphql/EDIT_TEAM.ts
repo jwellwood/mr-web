@@ -20,7 +20,7 @@ export const EDIT_TEAM = gql`
     $kitsBackground: String
     $isActive: Boolean!
   ) {
-    updateTeamDetails(
+    EDIT_TEAM(
       teamId: $teamId
       data: {
         teamName: $teamName

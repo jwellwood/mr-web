@@ -3,5 +3,5 @@ import { selectSelf } from '../../store';
 
 export const getTempPlayers = createSelector(
   selectSelf,
-  ({ playersReducer }) => playersReducer.players
+  ({ playersReducer }) => playersReducer.matchPlayers
 );

@@ -7,8 +7,6 @@ import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
 import MatchFormStepper from './components/MatchFormStepper';
 import { PAGES } from '../constants';
-import { mapMatch } from '../helpers';
-import { mapMatchResponseToTempMatch } from '../helpers/mapMatchResponseToTempMatch';
 import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
 import { useCustomParams } from '../../../hooks';
 import {
@@ -24,8 +22,13 @@ import {
 import RouteGuard from '../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
-import { IPlayerInMatch, ITempMatch } from '../types';
 import { DataError, PageHeader } from '../../../components';
+import {
+  mapFetchedMatchToTempMatch,
+  mapFetchedPlayersToTempPlayers,
+  mapTempMatchToMutation,
+} from './mappers';
+import { ITempMatch, ITempMatchPlayers } from '../types';
 
 export default function EditMatch() {
   const { teamId, matchId } = useCustomParams();
@@ -33,10 +36,10 @@ export default function EditMatch() {
   const dispatch: AppDispatch = useDispatch();
 
   const [defaultValues, setDefaultValues] = useState<ITempMatch | null>(null);
-  const [currentPlayers, setCurrentPlayers] = useState<IPlayerInMatch[]>([]);
+  const [currentPlayers, setCurrentPlayers] = useState<ITempMatchPlayers[]>([]);
 
   const { data, loading, error } = useQuery(FETCH_MATCH, {
-    variables: { matchId },
+    variables: { matchId: matchId! },
   });
 
   const currentTempMatch = useSelector(getTempMatch);
@@ -51,17 +54,17 @@ export default function EditMatch() {
         variables: {
           limit: 5,
           offset: 0,
-          teamId,
+          teamId: teamId!,
           seasonId: currentTempMatch.seasonId,
         },
       },
       {
         query: FETCH_SQUAD_LIST_BY_SEASON,
-        variables: { teamId, seasonId: currentTempMatch.seasonId },
+        variables: { teamId: teamId!, seasonId: currentTempMatch.seasonId },
       },
       {
         query: FETCH_MATCHES_STATS,
-        variables: { teamId, seasonId: currentTempMatch.seasonId },
+        variables: { teamId: teamId!, seasonId: currentTempMatch.seasonId },
       },
       {
         query: FETCH_MATCH,
@@ -72,8 +75,10 @@ export default function EditMatch() {
 
   useEffect(() => {
     if (data?.match) {
-      dispatch(setTmpMatch(mapMatchResponseToTempMatch(data.match)));
-      dispatch(setTmpPlayers({ players: data.match?.matchPlayers as IPlayerInMatch[] }));
+      dispatch(setTmpMatch(mapFetchedMatchToTempMatch(data.match)));
+      dispatch(
+        setTmpPlayers({ matchPlayers: mapFetchedPlayersToTempPlayers(data.match.matchPlayers) })
+      );
     }
   }, [data, dispatch]);
 
@@ -90,8 +95,8 @@ export default function EditMatch() {
       console.error('Missing team id');
       return;
     }
-    const data = mapMatch(teamId, currentTempMatch, currentTempPlayers);
-    editMatch({ variables: { matchId, ...data } })
+    const data = mapTempMatchToMutation(teamId, currentTempMatch, currentTempPlayers);
+    editMatch({ variables: { matchId: matchId!, ...data } })
       .then(() => {
         dispatch(showAlert({ text: 'Match updated successfully!', type: 'success' }));
         dispatch(resetTmpMatch());
@@ -106,19 +111,10 @@ export default function EditMatch() {
 
   const renderContent = () => {
     const isLoading = loading && editLoading;
-    const hasValues = defaultValues?._id && currentPlayers;
+    const hasValues = defaultValues && currentPlayers;
     const hasOptions = competitions.length && seasonOptions.length && opponents.length;
     return !isLoading && hasValues && hasOptions ? (
-      <MatchFormStepper
-        defaultValues={defaultValues}
-        currentPlayers={currentPlayers}
-        teamId={teamId as string}
-        seasonOptions={seasonOptions}
-        opponents={opponents}
-        competitions={competitions}
-        onSubmit={onSubmit}
-        loading={isLoading}
-      />
+      <MatchFormStepper onSubmit={onSubmit} loading={isLoading} error={error || editError} />
     ) : (
       <Spinner />
     );

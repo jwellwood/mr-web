@@ -1,9 +1,6 @@
-import { gql, TypedDocumentNode } from '@apollo/client';
-import { IMatchRecords } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_MATCHES_RECORDS: TypedDocumentNode<{
-  stats: IMatchRecords;
-}> = gql`
+export const FETCH_MATCHES_RECORDS = gql`
   query FETCH_MATCHES_RECORDS($teamId: String!) {
     stats: FETCH_MATCHES_RECORDS(teamId: $teamId) {
       maxDiff {

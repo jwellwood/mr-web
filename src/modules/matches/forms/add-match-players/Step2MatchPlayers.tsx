@@ -7,20 +7,19 @@ import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
 import { useMatchPlayersInput } from '../../hooks/useMatchPlayersInput';
 import { AppDispatch, getTempMatch, getTempPlayers, setTmpPlayers } from '../../../../store';
-import { IPlayerInMatch } from '../../types';
 import { initPlayerInMatch } from './state';
 import { AddMatchPlayersFormValues } from './validation';
 import AddMatchPlayersForm from './AddMatchPlayersForm';
+import { ITempMatchPlayers } from '../../types';
 
 interface Props {
   onNextClick: () => void;
-  teamId: string;
   loading: boolean;
   error?: ApolloError;
 }
 
-export default function Step2MatchPlayers({ onNextClick, teamId, loading, error }: Props) {
-  const { matchId } = useCustomParams();
+export default function Step2MatchPlayers({ onNextClick, loading, error }: Props) {
+  const { matchId, teamId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
   const currentPlayers = useSelector(getTempPlayers);
   const currentMatch = useSelector(getTempMatch);
@@ -35,35 +34,34 @@ export default function Step2MatchPlayers({ onNextClick, teamId, loading, error 
 
   const onSubmit = (formData: AddMatchPlayersFormValues) => {
     const { matchPlayers } = formData;
-    const selectedPlayers: IPlayerInMatch[] = [];
+    const selectedPlayers: ITempMatchPlayers[] = [];
     // if id is in current players keep current stats, else remove it
     currentPlayers.forEach(player => {
-      const id = typeof player.playerId === 'object' ? player.playerId?._id : player._id;
+      const id = typeof player.playerId === 'object' ? player.playerId : player.playerId;
       if (id && matchPlayers.includes(id)) {
         const mappedPlayer = {
           ...player,
-          _id: id,
-          name: (typeof player.playerId === 'object' ? player.playerId?.name : player.name) || '-',
+          playerId: id,
+          playerName:
+            (typeof player.playerId === 'object' ? player.playerId : player.playerName) || '-',
         };
         selectedPlayers.push(mappedPlayer);
       }
     });
     // if id is not in current players but in form, add it with init
-    const selectedPlayersIds = selectedPlayers.map(player => player._id);
+    const selectedPlayersIds = selectedPlayers.map(player => player.playerId);
     matchPlayers.forEach((playerId: string) => {
       const selectedPlayer = players.find(pl => pl._id === playerId);
       if (!selectedPlayersIds.includes(playerId)) {
         selectedPlayers.push({
           ...initPlayerInMatch,
           matchPosition: selectedPlayer?.position || '',
-          _id: playerId,
           playerId,
-          matchId: matchId as string,
-          name: selectedPlayer?.name as string,
+          playerName: selectedPlayer?.name as string,
         });
       }
     });
-    dispatch(setTmpPlayers({ players: selectedPlayers }));
+    dispatch(setTmpPlayers({ matchPlayers: selectedPlayers }));
     onNextClick();
   };
 
@@ -78,7 +76,7 @@ export default function Step2MatchPlayers({ onNextClick, teamId, loading, error 
   useEffect(() => {
     const mappedValues = () =>
       currentPlayers
-        .map(player => (typeof player?.playerId === 'object' ? player.playerId._id : player._id))
+        .map(player => (typeof player?.playerId === 'object' ? player.playerId : player.playerId))
         .filter(p => p !== undefined);
 
     setValues({ matchPlayers: mappedValues() });

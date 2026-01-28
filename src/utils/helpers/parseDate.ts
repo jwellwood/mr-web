@@ -6,7 +6,7 @@ export function parseDate(rawDate?: string | Date): string | null {
   return date.toDateString().substring(4);
 }
 
-export function getShortDate(rawDate?: string | Date): string | null {
+export function getShortDate(rawDate?: string | Date | null): string | null {
   if (!rawDate) {
     return null;
   }

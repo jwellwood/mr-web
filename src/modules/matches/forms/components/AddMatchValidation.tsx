@@ -1,12 +1,13 @@
-import { DataContainer, SectionContainer } from '../../../../components';
+import { SectionContainer } from '../../../../components';
+import TextList from '../../../../components/lists/TextList';
 import { IListItem } from '../../../../components/lists/types';
 import { CustomTypography } from '../../../../components/typography';
 import { validateStats } from '../../helpers/statsValidation';
-import { IPlayerInMatch, ITempMatch } from '../../types';
+import { ITempMatch, ITempMatchPlayers } from '../../types';
 
 interface Props {
   match: ITempMatch;
-  players: IPlayerInMatch[];
+  players: ITempMatchPlayers[];
 }
 
 export default function AddMatchValidation({ match, players }: Props) {
@@ -38,14 +39,13 @@ export default function AddMatchValidation({ match, players }: Props) {
 
   validationArray.forEach(stat => {
     const { label, value, total, isValid, isExact } = stat;
-    if (value && total) {
-      data.push({ label, value: valueText(value, total, isValid, isExact) });
-    }
+
+    data.push({ label, value: valueText(value, total, isValid, isExact) });
   });
 
   return (
     <SectionContainer>
-      <DataContainer data={data} />
+      <TextList data={data} />
     </SectionContainer>
   );
 }

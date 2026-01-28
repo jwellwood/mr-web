@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_SQUAD_SINGLE_SEASON_RECORDS } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import SingleSeasonRecordsView from '../views/SquadSingleSeasonRecordsView';
+import SingleSeasonRecordsView from '../components/squad-records/squad-single-season-records/SquadSingleSeasonRecordsView';
 
 export default function SquadSingleSeasonRecords() {
   const { teamId } = useCustomParams();

@@ -1,9 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
-import { ITrophyResponse } from '../types';
+import { gql } from '@apollo/client';
 
-export const FETCH_TROPHIES: TypedDocumentNode<{
-  trophies: ITrophyResponse[];
-}> = gql`
+export const FETCH_TROPHIES = gql`
   query FETCH_TROPHIES($teamId: String!) {
     trophies: FETCH_TROPHIES(teamId: $teamId) {
       _id

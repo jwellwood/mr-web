@@ -1,6 +1,6 @@
-import { TypedDocumentNode, gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-export const EDIT_PASSWORD: TypedDocumentNode = gql`
+export const EDIT_PASSWORD = gql`
   mutation EDIT_PASSWORD($password: String!, $newPassword: String!) {
     editPassword(data: { password: $password, newPassword: $newPassword }) {
       _id

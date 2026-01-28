@@ -20,7 +20,7 @@ export default function DeleteMatch() {
   const navigate = useNavigate();
   const { teamId, matchId } = useCustomParams();
   const [deleteMatch, { error, loading }] = useMutation(DELETE_MATCH, {
-    variables: { teamId, matchId },
+    variables: { teamId: teamId!, matchId: matchId! },
     refetchQueries: [
       {
         query: FETCH_MATCHES,

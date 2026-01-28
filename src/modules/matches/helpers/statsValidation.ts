@@ -1,8 +1,8 @@
-import { IPlayerInMatch, ITempMatch } from '../types';
+import { ITempMatch, ITempMatchPlayers } from '../types';
 
 export const validateStats = (
   match: ITempMatch,
-  players: IPlayerInMatch[]
+  players: ITempMatchPlayers[]
 ): {
   isValid: boolean;
   validationArray: readonly {
@@ -13,21 +13,16 @@ export const validateStats = (
     total: number;
   }[];
 } => {
-  const { teamGoals, opponentGoals, competition } = match;
-  const { playersPerTeam } = competition || {};
+  const { teamGoals, opponentGoals } = match;
 
-  const getTotalArray = (type: keyof IPlayerInMatch) => {
+  const getTotalArray = (type: keyof ITempMatchPlayers) => {
     return players.map(player => +(player[type] || 0)).reduce((prev, curr) => prev + curr, 0);
-  };
-  const getTotalTrue = (type: keyof IPlayerInMatch) => {
-    return players.filter(player => player[type]).length;
   };
 
   const goals = getTotalArray('goals');
   const assists = getTotalArray('assists');
   const conceded = getTotalArray('conceded');
   const ownGoals = getTotalArray('ownGoals');
-  const starters = getTotalTrue('isStarter');
 
   const validateScored = (stat: number) => {
     return +stat <= +teamGoals;
@@ -37,13 +32,6 @@ export const validateStats = (
   };
 
   const validationArray = [
-    {
-      label: 'Starters',
-      value: starters,
-      isValid: (playersPerTeam && starters <= playersPerTeam) || false,
-      isExact: +starters === playersPerTeam,
-      total: playersPerTeam || 0,
-    },
     {
       label: 'Goals',
       value: goals,

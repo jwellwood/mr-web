@@ -3,37 +3,38 @@ import { CenteredGrid, GridItem } from '../../../grids';
 import StatSkeleton from '../../../loaders/StatSkeleton';
 import { CustomTypography } from '../../../typography';
 import { getPercentage } from '../../../../utils/helpers';
-import { IMatchStats } from '../../../../modules/matches/types';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import { CustomPieChart } from '../../../charts';
+import { IMatchesAveragesStats } from '../types';
 
 interface Props {
-  stats?: IMatchStats | null;
+  stats?: IMatchesAveragesStats;
   loading: boolean;
 }
 
 export default function MatchAverages({ stats, loading }: Props) {
-  const { total, wins, draws, defeats, teamAvg, oppAvg } = stats || {
+  const { total, wins, draws, defeats, teamAvg, oppAvg, difference } = stats || {
     total: 0,
     wins: 0,
     draws: 0,
     defeats: 0,
     teamAvg: 0,
     oppAvg: 0,
+    difference: 0,
   };
-  const avDiff = teamAvg - oppAvg;
+
   const percentageData = [
     {
       label: 'Win %',
-      value: loading ? <StatSkeleton /> : `${getPercentage(wins, total, 1)}%`,
+      value: loading ? <StatSkeleton /> : `${getPercentage(wins || 0, total || 0, 1)}%`,
     },
     {
       label: 'Draw %',
-      value: loading ? <StatSkeleton /> : `${getPercentage(draws, total, 1)}%`,
+      value: loading ? <StatSkeleton /> : `${getPercentage(draws || 0, total || 0, 1)}%`,
     },
     {
       label: 'Defeat %',
-      value: loading ? <StatSkeleton /> : `${getPercentage(defeats, total, 1)}%`,
+      value: loading ? <StatSkeleton /> : `${getPercentage(defeats || 0, total || 0, 1)}%`,
     },
     {
       label: 'Av. Goals',
@@ -44,8 +45,8 @@ export default function MatchAverages({ stats, loading }: Props) {
       value: loading ? (
         <StatSkeleton />
       ) : (
-        <CustomTypography bold size="xs" color={avDiff > 0 ? 'success' : 'error'}>
-          {avDiff.toFixed(2)}
+        <CustomTypography bold size="xs" color={difference > 0 ? 'success' : 'error'}>
+          {difference.toFixed(2)}
         </CustomTypography>
       ),
     },

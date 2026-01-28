@@ -50,8 +50,8 @@ export default function AddAward() {
       return addAward({
         variables: {
           ...formData,
-          teamId,
-          seasonId,
+          teamId: teamId!,
+          seasonId: seasonId!,
           awardValue: +(formData.awardValue || 0),
         },
       }).then(() => {

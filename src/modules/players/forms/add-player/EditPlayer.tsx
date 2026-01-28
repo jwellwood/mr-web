@@ -10,9 +10,8 @@ import { AppDispatch, showAlert } from '../../../../store';
 import RouteGuard from '../../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
-import { mapPlayerForm } from '../../helpers/mapPlayerForm';
+import { mapFormToPlayer, mapPlayerToForm } from '../../helpers/mapPlayerForm';
 import { PageHeader } from '../../../../components';
-import { ISeasonID } from '../../types';
 import type { PlayerFormData } from './validation';
 import PlayerForm from './PlayerForm';
 
@@ -22,7 +21,7 @@ export default function EditPlayer() {
 
   const navigate = useNavigate();
   const { loading, error, data, refetch } = useQuery(FETCH_PLAYER, {
-    variables: { playerId },
+    variables: { playerId: playerId! },
     notifyOnNetworkStatusChange: true,
   });
   const [updatePlayer, { loading: updateLoading, error: updateError }] = useMutation(EDIT_PLAYER);
@@ -34,12 +33,7 @@ export default function EditPlayer() {
     if (data) {
       const { player } = data;
 
-      setDefaultValues({
-        ...player,
-        dateOfBirth: new Date(player.dateOfBirth),
-        yearJoined: new Date(player.yearJoined),
-        seasonIds: player?.seasonIds?.map((season: ISeasonID) => season._id) || [],
-      });
+      setDefaultValues(mapPlayerToForm(player));
     }
   }, [data]);
 
@@ -47,12 +41,12 @@ export default function EditPlayer() {
     try {
       updatePlayer({
         variables: {
-          teamId,
-          playerId,
-          ...mapPlayerForm(formData),
+          teamId: teamId!,
+          playerId: playerId!,
+          ...mapFormToPlayer(formData),
         },
       }).then(() => {
-        refetch({ playerId });
+        refetch({ playerId: playerId! });
         dispatch(
           showAlert({
             text: 'Player updated',

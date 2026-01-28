@@ -19,6 +19,7 @@ import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { PAGES } from '../../constants';
 import SeasonForm from './SeasonForm';
+import { mapSeasonForm } from '../../helpers/mapSeasonForm';
 import { PageHeader } from '../../../../components';
 import type { SeasonFormData } from './validation';
 
@@ -28,14 +29,14 @@ export default function EditSeason() {
   const dispatch: AppDispatch = useDispatch();
   const [defaultValues, setDefaultValues] = useState<SeasonFormData | null>(null);
   const { loading, error, data, refetch } = useQuery(FETCH_SEASON, {
-    variables: { seasonId },
+    variables: { seasonId: seasonId! },
     notifyOnNetworkStatusChange: true,
   });
 
   const [editSeason, { error: editError, loading: editLoading }] = useMutation(EDIT_SEASON, {
     refetchQueries: [
-      { query: FETCH_SEASONS, variables: { teamId } },
-      { query: FETCH_SEASONS_POSITION, variables: { teamId } },
+      { query: FETCH_SEASONS, variables: { teamId: teamId! } },
+      { query: FETCH_SEASONS_POSITION, variables: { teamId: teamId! } },
     ],
   });
 
@@ -45,27 +46,19 @@ export default function EditSeason() {
     DELETE_SEASON,
     {
       refetchQueries: [
-        { query: FETCH_TROPHIES, variables: { teamId } },
-        { query: FETCH_SEASONS_POSITION, variables: { teamId } },
+        { query: FETCH_TROPHIES, variables: { teamId: teamId! } },
+        { query: FETCH_SEASONS_POSITION, variables: { teamId: teamId! } },
       ],
     }
   );
 
   useEffect(() => {
-    if (data) {
-      const { season } = data;
-      setDefaultValues({
-        ...season,
-        totalFinalPositions: season.totalFinalPositions || 10,
-        yearStarted: new Date(season.yearStarted),
-        yearEnded: new Date(season.yearEnded),
-      });
-    }
+    setDefaultValues(mapSeasonForm.toForm(data?.season));
   }, [data]);
 
   const onDelete = async () => {
     try {
-      return deleteSeason({ variables: { teamId, seasonId } }).then(() => {
+      return deleteSeason({ variables: { teamId: teamId!, seasonId: seasonId! } }).then(() => {
         dispatch(showAlert({ text: 'Season deleted successfully', type: 'success' }));
         navigate(-2);
       });
@@ -77,17 +70,14 @@ export default function EditSeason() {
 
   const onSubmit = async (formData: SeasonFormData) => {
     try {
-      return editSeason({
-        variables: {
-          teamId,
-          seasonId,
-          ...formData,
-        },
-      }).then(() => {
-        refetch();
-        dispatch(showAlert({ text: 'Season updated successfully', type: 'success' }));
-        navigate(-2);
-      });
+      const variables = mapSeasonForm.toVariables(formData);
+      return editSeason({ variables: { teamId: teamId!, seasonId: seasonId!, ...variables } }).then(
+        () => {
+          refetch();
+          dispatch(showAlert({ text: 'Season updated successfully', type: 'success' }));
+          navigate(-2);
+        }
+      );
     } catch (error) {
       console.error(error);
       dispatch(showAlert({ text: 'There was a problem', type: 'error' }));

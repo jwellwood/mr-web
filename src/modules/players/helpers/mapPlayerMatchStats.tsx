@@ -1,18 +1,18 @@
-import StatSkeleton from '../../../components/loaders/StatSkeleton';
-import { IPlayerStats } from '../types';
+import { IMatchesStatsTable } from '../../../components';
+import { T_FETCH_PLAYER_STATS } from '../types';
 
-export const mapPlayerMatchStats = (player?: IPlayerStats, loading?: boolean) => {
-  const genValue = (value: number) => (!loading ? value : <StatSkeleton />);
+export const mapPlayerMatchStats = (
+  player?: T_FETCH_PLAYER_STATS['player'] | null
+): IMatchesStatsTable => {
+  const genValue = (value?: number | null) => value || 0;
 
-  return player
-    ? {
-        total: genValue(player.apps),
-        wins: genValue(player.wins),
-        draws: genValue(player.draws),
-        defeats: genValue(player.defeats),
-        scored: genValue(player.goalsFor),
-        conceded: genValue(player.goalsAgainst),
-        difference: genValue(player.goalDiff || player.goalsFor - player.goalsAgainst),
-      }
-    : null;
+  return {
+    played: genValue(player?.apps),
+    wins: genValue(player?.wins),
+    draws: genValue(player?.draws),
+    defeats: genValue(player?.defeats),
+    goalsFor: genValue(player?.goalsFor),
+    goalsAgainst: genValue(player?.goalsAgainst),
+    difference: genValue(genValue(player?.goalsFor) - genValue(player?.goalsAgainst)),
+  };
 };

@@ -1,38 +1,18 @@
-import { ReactElement, ReactNode } from 'react';
 import { ApolloError } from '@apollo/client';
 
-import { IPlayerInMatch } from '../../../../types';
 import AddStats from '../../../add-match-player-stats/AddStats';
 import { CustomTypography, PositionCell } from '../../../../../../components';
 import StatIcon from '../../../../../../components/icons/StatIcon';
 import { STAT_ICONS } from '../../../../../../components/icons/icons';
+import { ITempMatchPlayers } from '../../../../types';
 
-export const rows = (
-  currentPlayers: Partial<IPlayerInMatch[]>,
-  error?: ApolloError
-): {
-  playerName: { value: ReactNode };
-  isStarter: { value: ReactNode };
-  matchPosition: string | ReactElement;
-  goals: string | number;
-  assists: string | number;
-  mvp: string | number;
-  pensScored: string | number;
-  pensMissed: string | number;
-  ownGoals: string | number;
-  conceded: string | number;
-  pensSaved: string | number;
-  cleanSheet: string | number;
-  yellowCards: string | number;
-  redCard: string | number;
-}[] => {
-  const players = currentPlayers?.filter(cp => cp !== undefined) || [];
-  return players.map(player => {
+export const rows = (currentPlayers: ITempMatchPlayers[], error?: ApolloError) => {
+  return currentPlayers.map(player => {
     const {
-      name,
+      playerName,
       isStarter,
       matchPosition,
-      _id,
+      playerId,
       goals,
       pensMissed,
       pensScored,
@@ -48,12 +28,11 @@ export const rows = (
 
     const nameData = (
       <AddStats
-        playerId={_id as string}
-        title={name}
-        currentPlayers={players}
+        playerId={playerId as string}
+        title={playerName}
         buttonElement={
           <CustomTypography bold size="sm" color="data">
-            {name}
+            {playerName}
           </CustomTypography>
         }
         error={error}

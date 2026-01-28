@@ -1,16 +1,14 @@
+import { useSelector } from 'react-redux';
 import { SectionContainer } from '../../../../components';
 import { CenteredGrid, GridItem } from '../../../../components/grids';
 import { CustomTypography } from '../../../../components/typography';
+import { getTempMatch } from '../../../../store';
 import { parseDate } from '../../../../utils/helpers';
-import { ITempMatch } from '../../types';
 
-interface Props {
-  currentTempMatch: ITempMatch;
-}
-
-export default function MatchOverview({ currentTempMatch }: Props) {
-  const { teamName, opponentName, teamGoals, opponentGoals, date, isHome, competition } =
-    currentTempMatch;
+export default function MatchOverview() {
+  const currentMatch = useSelector(getTempMatch);
+  const { teamName, opponentName, teamGoals, opponentGoals, date, isHome, competitionName } =
+    currentMatch;
   const homeTeam = isHome ? teamName : opponentName;
   const awayTeam = !isHome ? teamName : opponentName;
   const homeScore = isHome ? teamGoals : opponentGoals;
@@ -25,7 +23,7 @@ export default function MatchOverview({ currentTempMatch }: Props) {
           <CustomTypography color="data" bold>{`${homeScore}-${awayScore} `}</CustomTypography>
           <CustomTypography color="label">{awayTeam}</CustomTypography>
         </GridItem>
-        <CustomTypography color="label">{competition?.name}</CustomTypography>
+        <CustomTypography color="label">{competitionName}</CustomTypography>
       </CenteredGrid>
     </SectionContainer>
   );
