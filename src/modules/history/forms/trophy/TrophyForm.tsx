@@ -10,14 +10,12 @@ import {
   type ISelectOptions,
   ControlledDateInput,
 } from '../../../../components';
-import { DeleteModal } from '../../../../components/modals';
 import { TrophySchema, type TrophyFormData } from './validation';
 
 interface Props {
   onSubmit: (data: TrophyFormData) => void;
   defaultValues: TrophyFormData;
   seasonOptions: ISelectOptions[];
-  onDelete?: () => void;
   loading: boolean;
   error?: ApolloError;
 }
@@ -26,7 +24,6 @@ export default function TrophyForm({
   onSubmit,
   defaultValues,
   seasonOptions,
-  onDelete,
   loading,
   error,
 }: Props) {
@@ -52,7 +49,6 @@ export default function TrophyForm({
       <ControlledSwitchInput control={control} label="Is a final?" name="isFinal" />
       {isFinal && <ControlledTextInput control={control} name="opponent" label="Opponent" />}
       <ControlledTextInput control={control} name="comment" label="Comment" multiline />
-      {onDelete && <DeleteModal onDelete={onDelete} title="Trophy" loading={loading} />}
     </FormContainer>
   );
 }

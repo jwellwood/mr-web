@@ -5,7 +5,7 @@ export const FETCH_ORG: TypedDocumentNode<{
   org: IOrganization;
 }> = gql`
   query FETCH_ORG($orgId: String!) {
-    org: organizationById(orgId: $orgId) {
+    org: ORGANIZATION(orgId: $orgId) {
       _id
       name
       website

@@ -5,7 +5,7 @@ export const FETCH_ORG_SEASON: TypedDocumentNode<{
   orgSeason: IOrgSeason;
 }> = gql`
   query FETCH_ORG_SEASON($seasonId: String!) {
-    orgSeason: orgSeasonById(seasonId: $seasonId) {
+    orgSeason: ORG_SEASON(seasonId: $seasonId) {
       _id
       name
       yearStarted

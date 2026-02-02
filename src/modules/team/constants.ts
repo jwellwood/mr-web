@@ -31,7 +31,6 @@ export const PAGES = {
   ADD_TEAM: 'Add Team',
   EDIT_TEAM: 'Edit Team',
   EDIT_BADGE: 'Edit Team Badge',
-  DELETE_TEAM: 'Delete Team',
 } as const;
 
 export const TeamSuccess = {

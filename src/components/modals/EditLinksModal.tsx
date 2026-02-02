@@ -18,15 +18,13 @@ interface Props {
 const EditLinksModal: React.FC<Props> = ({ data, title }) => {
   const addLinks = data.filter(item => item.type === 'add');
   const editLinks = data.filter(item => item.type === 'edit');
-  const deleteLinks = data.filter(item => item.type === 'delete');
   const {
-    palette: { success, warning, error },
+    palette: { success, warning },
   } = theme;
 
   const sections = [
     { links: addLinks, color: success.light },
     { links: editLinks, color: warning.main },
-    { links: deleteLinks, color: error.main },
   ];
 
   const [open, setOpen] = React.useState(false);

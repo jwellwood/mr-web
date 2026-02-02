@@ -14,7 +14,7 @@ export const ADD_MATCH = gql`
     $leaguePosition: Float
     $matchPlayers: [TPlayerInMatchInput!]!
   ) {
-    match: addMatch(
+    match: ADD_MATCH(
       data: {
         teamId: $teamId
         seasonId: $seasonId

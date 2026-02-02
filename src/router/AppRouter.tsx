@@ -17,21 +17,19 @@ function AppRouter() {
   const { isAuth } = useAuth();
 
   useEffect(() => {
-    if (!loading) {
-      if (data?.user) {
-        dispatch(
-          setAuth({
-            roles: data.user?.roles as TAuthRoles[],
-            teamIds: data.user?.teamIds,
-            orgIds: data.user?.orgIds,
-            username: data.user.username,
-          })
-        );
-      } else {
-        dispatch(resetAuth());
-      }
+    if (data?.user && !loading) {
+      dispatch(
+        setAuth({
+          roles: data.user?.roles as TAuthRoles[],
+          teamIds: data.user?.teamIds,
+          orgIds: data.user?.orgIds,
+          username: data.user.username,
+        })
+      );
+    } else {
+      dispatch(resetAuth());
     }
-  }, [data, dispatch, loading, isAuth]);
+  }, [data, dispatch, loading]);
 
   return (
     <BrowserRouter>

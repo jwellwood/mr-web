@@ -15,7 +15,7 @@ export const ADD_RESULT: TypedDocumentNode<{
     $homeGoals: Float!
     $awayGoals: Float!
   ) {
-    result: addResult(
+    result: ADD_RESULT(
       orgId: $orgId
       data: {
         date: $date

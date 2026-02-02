@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-import { ADD_SEASON, FETCH_SEASONS_POSITION } from '../../graphql';
+import { ADD_SEASON, FETCH_SEASONS, FETCH_SEASONS_POSITION } from '../../graphql';
 import { PAGES } from '../../constants';
 import { useSeasonInput } from '../../hooks/useSeasonInput';
 import { useCustomParams } from '../../../../hooks';
@@ -27,7 +27,10 @@ export default function AddTeamSeason() {
   const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
   const [addTeamSeason, { error, loading }] = useMutation(ADD_SEASON, {
-    refetchQueries: [{ query: FETCH_SEASONS_POSITION, variables: { teamId } }],
+    refetchQueries: [
+      { query: FETCH_SEASONS_POSITION, variables: { teamId } },
+      { query: FETCH_SEASONS, variables: { teamId } },
+    ],
   });
 
   useEffect(() => {

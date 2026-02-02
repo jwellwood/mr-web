@@ -13,7 +13,7 @@ export const EDIT_COMPETITION: TypedDocumentNode<{
     $competitionType: String!
     $isActive: Boolean!
   ) {
-    updateCompetition(
+    EDIT_COMPETITION(
       compId: $compId
       orgId: $orgId
       data: {

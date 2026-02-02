@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import {
@@ -7,15 +8,12 @@ import {
   ControlledMultiSelectInput,
   type ISelectOptions,
 } from '../../../../components';
-import DeleteModal from '../../../../components/modals/DeleteModal';
 import { AwardSchema, type AwardFormData } from './validation';
-import { ApolloError } from '@apollo/client';
 
 interface Props {
   onSubmit: (data: AwardFormData) => void;
   defaultValues: AwardFormData;
   playersOptions: ISelectOptions[];
-  onDelete?: () => void;
   loading: boolean;
   error?: ApolloError;
 }
@@ -23,7 +21,6 @@ export default function AwardForm({
   onSubmit,
   defaultValues,
   playersOptions,
-  onDelete,
   loading,
   error,
 }: Props) {
@@ -50,7 +47,6 @@ export default function AwardForm({
       />
       <ControlledTextInput control={control} name="awardValue" label="Value" />
       <ControlledTextInput control={control} name="comment" label="Comment" />
-      {onDelete && <DeleteModal onDelete={onDelete} title="Award" loading={loading} />}
     </FormContainer>
   );
 }

@@ -15,7 +15,7 @@ export const EDIT_MATCH = gql`
     $leaguePosition: Float
     $matchPlayers: [TPlayerInMatchInput!]!
   ) {
-    editMatch(
+    EDIT_MATCH(
       matchId: $matchId
       data: {
         teamId: $teamId

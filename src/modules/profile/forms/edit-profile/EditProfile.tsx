@@ -8,10 +8,12 @@ import { backendToFrontend, frontendToBackend } from './mappers';
 import { PAGES } from '../../constants';
 import { showAlert } from '../../../../store';
 import { AUTH_ROLES } from '../../../../constants';
-import { PageContainer } from '../../../../components';
+import { MutationError, PageContainer } from '../../../../components';
 import { PROFILE_PATHS } from '../../router/paths';
 import type { EditProfileFormData } from './validation';
-import EditProfileView from './EditProfileView';
+import { Spinner } from '../../../../components/loaders';
+import DeleteAccount from '../delete-account/DeleteAccount';
+import EditProfileForm from './EditProfileForm';
 
 export default function EditProfile() {
   const dispatch = useDispatch();
@@ -46,12 +48,19 @@ export default function EditProfile() {
 
   return (
     <PageContainer auth={AUTH_ROLES.USER} title={PAGES.EDIT_PROFILE_PAGE}>
-      <EditProfileView
-        loading={loading || editLoading}
-        error={error || editError}
-        onSubmit={onSubmit}
-        defaultValues={defaultValues}
-      />
+      {defaultValues ? (
+        <>
+          <EditProfileForm
+            onSubmit={onSubmit}
+            defaultValues={defaultValues}
+            loading={loading || editLoading}
+          />
+          {error && <MutationError error={error || editError} />}
+          <DeleteAccount />
+        </>
+      ) : (
+        <Spinner />
+      )}
     </PageContainer>
   );
 }

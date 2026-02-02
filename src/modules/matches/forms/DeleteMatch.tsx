@@ -4,15 +4,9 @@ import { useMutation } from '@apollo/client';
 
 import { DELETE_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
-import { PAGES } from '../constants';
 import { useSeasons, useCustomParams } from '../../../hooks';
 import { showAlert } from '../../../store';
-import RouteGuard from '../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../constants';
-import { CustomTypography } from '../../../components/typography';
 import { DeleteModal } from '../../../components/modals';
-import { Spinner } from '../../../components/loaders';
-import { DataError, PageHeader } from '../../../components';
 
 export default function DeleteMatch() {
   const { seasonId } = useSeasons();
@@ -58,24 +52,5 @@ export default function DeleteMatch() {
       });
   };
 
-  const renderContent = () => {
-    return !loading ? (
-      <>
-        <CustomTypography color="warning">
-          This will remove the match and all associated stats
-        </CustomTypography>
-        <DeleteModal title="Match" loading={loading} onDelete={onDeleteMatch} />
-      </>
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.DELETE_MATCH}>
-        {error ? <DataError error={error} /> : renderContent()}
-      </PageHeader>
-    </RouteGuard>
-  );
+  return <DeleteModal title="Match" loading={loading} onDelete={onDeleteMatch} error={error} />;
 }

@@ -257,56 +257,95 @@ export type MostInMatch = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  ADD_AWARD: Award;
+  ADD_COMPETITION: Competition;
+  ADD_MATCH: Match;
+  ADD_ORGANIZATION: Organization;
+  ADD_ORG_SEASON: OrgSeason;
   ADD_PLAYER: Player;
+  ADD_RESULT: Result;
+  ADD_SEASON: TeamSeason;
   ADD_TEAM: Team;
+  ADD_TEAM_TO_ORG: Organization;
+  ADD_TROPHY: Trophy;
+  DELETE_AWARD: Award;
+  DELETE_COMPETITION: Competition;
+  DELETE_MATCH: Match;
+  DELETE_ORGANIZATION: Organization;
+  DELETE_ORG_SEASON: OrgSeason;
   DELETE_PLAYER: Player;
+  DELETE_RESULT: Result;
+  DELETE_SEASON: TeamSeason;
   DELETE_TEAM: Team;
+  DELETE_TROPHY: Trophy;
+  DELETE_USER: User;
+  EDIT_AWARD: Award;
+  EDIT_COMPETITION: Competition;
+  EDIT_MATCH: Match;
+  EDIT_ORGANIZATION: Organization;
+  EDIT_ORG_BADGE: Organization;
+  EDIT_ORG_SEASON: OrgSeason;
+  EDIT_PASSWORD: User;
   EDIT_PLAYER: Player;
   EDIT_PLAYER_PHOTO: Player;
+  EDIT_PROFILE_IMAGE: User;
+  EDIT_RESULT: Result;
+  EDIT_SEASON: TeamSeason;
   EDIT_TEAM: Team;
   EDIT_TEAM_BADGE: Team;
-  addCompetition: Competition;
-  addMatch: Match;
-  addOrgSeason: OrgSeason;
-  addOrganization: Organization;
-  addResult: Result;
-  addSeasonAward: Award;
-  addTeamSeason: TeamSeason;
-  addTeamToOrg: Organization;
-  addTrophy: Trophy;
-  deleteAward: Award;
-  deleteCompetition: Competition;
-  deleteMatch: Match;
-  deleteOrg: Organization;
-  deleteOrgSeason: OrgSeason;
-  deleteResult: Result;
-  deleteSeason: TeamSeason;
-  deleteTeamRole: Team;
-  deleteTrophy: Trophy;
-  deleteUser: User;
-  editAward: Award;
-  editMatch: Match;
-  editOrgBadge: Organization;
-  editOrgSeason: OrgSeason;
-  editPassword: User;
-  editProfileImage: User;
-  editResult: Result;
-  editSeason: TeamSeason;
-  editTrophy: Trophy;
-  editUser: User;
-  forgotPassword: User;
-  logOutUser: User;
-  registerUser: User;
-  resetPassword: User;
-  signInUser: User;
-  updateCompetition: Competition;
-  updateOrganization: Organization;
-  updateTeamRoles: Team;
+  EDIT_TROPHY: Trophy;
+  EDIT_USER: User;
+  FORGOT_PASSWORD: User;
+  LOG_OUT_USER: User;
+  REGISTER_USER: User;
+  RESET_PASSWORD: User;
+  SIGN_IN_USER: User;
+};
+
+
+export type MutationAdd_AwardArgs = {
+  data: AddAwardInput;
+  seasonId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
+export type MutationAdd_CompetitionArgs = {
+  data: CompetitionInput;
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationAdd_MatchArgs = {
+  data: TAddMatchInput;
+};
+
+
+export type MutationAdd_OrganizationArgs = {
+  data: AddOrganizationInput;
+};
+
+
+export type MutationAdd_Org_SeasonArgs = {
+  data: AddOrgSeasonInput;
+  orgId: Scalars['String']['input'];
 };
 
 
 export type MutationAdd_PlayerArgs = {
   data: AddPlayerInput;
+  teamId: Scalars['String']['input'];
+};
+
+
+export type MutationAdd_ResultArgs = {
+  data: AddResultInput;
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationAdd_SeasonArgs = {
+  data: AddTeamSeasonInput;
   teamId: Scalars['String']['input'];
 };
 
@@ -317,14 +356,117 @@ export type MutationAdd_TeamArgs = {
 };
 
 
+export type MutationAdd_Team_To_OrgArgs = {
+  orgId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
+export type MutationAdd_TrophyArgs = {
+  data: AddTrophyInput;
+  teamId: Scalars['String']['input'];
+};
+
+
+export type MutationDelete_AwardArgs = {
+  awardId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
+export type MutationDelete_CompetitionArgs = {
+  competitionId: Scalars['String']['input'];
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationDelete_MatchArgs = {
+  matchId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
+export type MutationDelete_OrganizationArgs = {
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationDelete_Org_SeasonArgs = {
+  orgId: Scalars['String']['input'];
+  orgSeasonId: Scalars['String']['input'];
+};
+
+
 export type MutationDelete_PlayerArgs = {
   playerId: Scalars['String']['input'];
   teamId: Scalars['String']['input'];
 };
 
 
+export type MutationDelete_ResultArgs = {
+  orgId: Scalars['String']['input'];
+  resultId: Scalars['String']['input'];
+};
+
+
+export type MutationDelete_SeasonArgs = {
+  seasonId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
 export type MutationDelete_TeamArgs = {
   teamId: Scalars['String']['input'];
+};
+
+
+export type MutationDelete_TrophyArgs = {
+  teamId: Scalars['String']['input'];
+  trophyId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_AwardArgs = {
+  awardId: Scalars['String']['input'];
+  data: AddAwardInput;
+  teamId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_CompetitionArgs = {
+  compId: Scalars['String']['input'];
+  data: CompetitionInput;
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_MatchArgs = {
+  data: TAddMatchInput;
+  matchId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_OrganizationArgs = {
+  data: UpdateOrganizationInput;
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_Org_BadgeArgs = {
+  data: EditOrgBadgeInput;
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_Org_SeasonArgs = {
+  data: AddOrgSeasonInput;
+  orgId: Scalars['String']['input'];
+  seasonId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_PasswordArgs = {
+  data: EditPasswordInput;
 };
 
 
@@ -342,6 +484,25 @@ export type MutationEdit_Player_PhotoArgs = {
 };
 
 
+export type MutationEdit_Profile_ImageArgs = {
+  data: EditImageInput;
+};
+
+
+export type MutationEdit_ResultArgs = {
+  data: AddResultInput;
+  orgId: Scalars['String']['input'];
+  resultId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_SeasonArgs = {
+  data: AddTeamSeasonInput;
+  seasonId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
 export type MutationEdit_TeamArgs = {
   data: UpdateTeamInput;
   teamId: Scalars['String']['input'];
@@ -354,210 +515,35 @@ export type MutationEdit_Team_BadgeArgs = {
 };
 
 
-export type MutationAddCompetitionArgs = {
-  data: CompetitionInput;
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationAddMatchArgs = {
-  data: TAddMatchInput;
-};
-
-
-export type MutationAddOrgSeasonArgs = {
-  data: AddOrgSeasonInput;
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationAddOrganizationArgs = {
-  data: AddOrganizationInput;
-};
-
-
-export type MutationAddResultArgs = {
-  data: AddResultInput;
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationAddSeasonAwardArgs = {
-  data: AddAwardInput;
-  seasonId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationAddTeamSeasonArgs = {
-  data: AddTeamSeasonInput;
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationAddTeamToOrgArgs = {
-  orgId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationAddTrophyArgs = {
-  data: AddTrophyInput;
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteAwardArgs = {
-  awardId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteCompetitionArgs = {
-  competitionId: Scalars['String']['input'];
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteMatchArgs = {
-  matchId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteOrgArgs = {
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteOrgSeasonArgs = {
-  orgId: Scalars['String']['input'];
-  orgSeasonId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteResultArgs = {
-  orgId: Scalars['String']['input'];
-  resultId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteSeasonArgs = {
-  seasonId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteTeamRoleArgs = {
-  roleId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationDeleteTrophyArgs = {
-  teamId: Scalars['String']['input'];
-  trophyId: Scalars['String']['input'];
-};
-
-
-export type MutationEditAwardArgs = {
-  awardId: Scalars['String']['input'];
-  data: AddAwardInput;
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationEditMatchArgs = {
-  data: TAddMatchInput;
-  matchId: Scalars['String']['input'];
-};
-
-
-export type MutationEditOrgBadgeArgs = {
-  data: EditOrgBadgeInput;
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationEditOrgSeasonArgs = {
-  data: AddOrgSeasonInput;
-  orgId: Scalars['String']['input'];
-  seasonId: Scalars['String']['input'];
-};
-
-
-export type MutationEditPasswordArgs = {
-  data: EditPasswordInput;
-};
-
-
-export type MutationEditProfileImageArgs = {
-  data: EditImageInput;
-};
-
-
-export type MutationEditResultArgs = {
-  data: AddResultInput;
-  orgId: Scalars['String']['input'];
-  resultId: Scalars['String']['input'];
-};
-
-
-export type MutationEditSeasonArgs = {
-  data: AddTeamSeasonInput;
-  seasonId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type MutationEditTrophyArgs = {
+export type MutationEdit_TrophyArgs = {
   data: EditTrophyInput;
   teamId: Scalars['String']['input'];
   trophyId: Scalars['String']['input'];
 };
 
 
-export type MutationEditUserArgs = {
+export type MutationEdit_UserArgs = {
   data: EditUserInput;
 };
 
 
-export type MutationForgotPasswordArgs = {
+export type MutationForgot_PasswordArgs = {
   data: ForgotPasswordInput;
 };
 
 
-export type MutationRegisterUserArgs = {
+export type MutationRegister_UserArgs = {
   data: RegisterUserInput;
 };
 
 
-export type MutationResetPasswordArgs = {
+export type MutationReset_PasswordArgs = {
   data: ResetPasswordInput;
 };
 
 
-export type MutationSignInUserArgs = {
+export type MutationSign_In_UserArgs = {
   data: SignInUserInput;
-};
-
-
-export type MutationUpdateCompetitionArgs = {
-  compId: Scalars['String']['input'];
-  data: CompetitionInput;
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationUpdateOrganizationArgs = {
-  data: UpdateOrganizationInput;
-  orgId: Scalars['String']['input'];
-};
-
-
-export type MutationUpdateTeamRolesArgs = {
-  data: UpdateTeamRolesInput;
-  teamId: Scalars['String']['input'];
 };
 
 /** The Org Season model */
@@ -723,15 +709,11 @@ export type PositionFinishes = {
 
 export type Query = {
   __typename?: 'Query';
-  FETCH_AWARD: Award;
-  FETCH_AWARDS: Array<Award>;
-  FETCH_MATCH: Match;
-  FETCH_MATCHES: Array<TMatch>;
-  FETCH_MATCHES_ALL_TIME_STATS: TMatchStats;
-  FETCH_MATCHES_BY_OPPONENT: Array<TMatch>;
-  FETCH_MATCHES_RECORDS: TMatchRecords;
-  FETCH_MATCHES_STATS: TMatchStats;
-  FETCH_MATCH_OPPONENTS: Array<TMatchOpponent>;
+  AWARD: Award;
+  AWARDS: Array<Award>;
+  AWARDS_BY_PLAYER: Array<AwardByPlayer>;
+  COMPETITIONS_BY_ORG: Array<Competition>;
+  COMPETITION_BY_ID: Competition;
   FETCH_SEASON: TeamSeason;
   FETCH_SEASONS: Array<TeamSeason>;
   FETCH_SEASONS_POSITION: Array<PositionFinishes>;
@@ -740,6 +722,17 @@ export type Query = {
   FETCH_TROPHY: TrophyResponse;
   FETCH_USER: User;
   HALL_OF_FAME_PLAYERS: Array<Player>;
+  LEAGUE_TABLE_DATA: Array<LeagueTableByComp>;
+  MATCH: Match;
+  MATCHES: Array<TMatch>;
+  MATCHES_ALL_TIME_STATS: TMatchStats;
+  MATCHES_BY_OPPONENT: Array<TMatch>;
+  MATCHES_RECORDS: TMatchRecords;
+  MATCHES_STATS: TMatchStats;
+  MATCH_OPPONENTS: Array<TMatchOpponent>;
+  ORGANIZATION: Organization;
+  ORG_SEASON: OrgSeason;
+  ORG_SEASONS: Array<OrgSeason>;
   PAST_PLAYERS: Array<PastPlayer>;
   PLAYER_BY_ID: Player;
   PLAYER_MATCHES_WITH_RECORD_ASSISTS: Array<PlayerMatchesWithRecords>;
@@ -751,6 +744,8 @@ export type Query = {
   PLAYER_STATS: PlayerStats;
   PLAYER_STREAKS: PlayerStreaks;
   PLAYER_TROPHIES: Array<Trophy>;
+  RESULT: Result;
+  RESULTS: Array<Result>;
   SQUAD_BY_SEASON: Array<Player>;
   SQUAD_LIST_BY_SEASON: Array<SquadListBySeason>;
   SQUAD_RECORDS: SquadRecordStats;
@@ -759,69 +754,35 @@ export type Query = {
   SQUAD_SINGLE_SEASON_RECORDS: TSquadSingleSeasonRecords;
   SQUAD_STATS: Array<TSquadStats>;
   SQUAD_STREAKS: Array<AllPlayerStreaks>;
-  awardsByPlayer: Array<AwardByPlayer>;
-  competitionById: Competition;
-  competitionsByOrg: Array<Competition>;
-  getLeagueTableData: Array<LeagueTableByComp>;
-  getTeams: Team;
-  getUsers: Array<User>;
-  orgSeasonById: OrgSeason;
-  orgSeasons: Array<OrgSeason>;
-  organizationById: Organization;
-  resultById: Result;
-  results: Array<Result>;
-  teamBySearch: Array<Team>;
-  teamsByOrg: Array<Team>;
-  userOrganizations: Array<Organization>;
-  userTeams: Array<Team>;
+  TEAMS_BY_ORG: Array<Team>;
+  TEAM_BY_SEARCH: Array<Team>;
+  USER_ORGANIZATIONS: Array<Organization>;
+  USER_TEAMS: Array<Team>;
 };
 
 
-export type QueryFetch_AwardArgs = {
+export type QueryAwardArgs = {
   awardId: Scalars['String']['input'];
 };
 
 
-export type QueryFetch_AwardsArgs = {
+export type QueryAwardsArgs = {
   seasonId: Scalars['String']['input'];
 };
 
 
-export type QueryFetch_MatchArgs = {
-  matchId: Scalars['String']['input'];
+export type QueryAwards_By_PlayerArgs = {
+  playerId: Scalars['String']['input'];
 };
 
 
-export type QueryFetch_MatchesArgs = {
-  seasonId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
+export type QueryCompetitions_By_OrgArgs = {
+  orgId: Scalars['String']['input'];
 };
 
 
-export type QueryFetch_Matches_All_Time_StatsArgs = {
-  teamId: Scalars['String']['input'];
-};
-
-
-export type QueryFetch_Matches_By_OpponentArgs = {
-  opponentId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type QueryFetch_Matches_RecordsArgs = {
-  teamId: Scalars['String']['input'];
-};
-
-
-export type QueryFetch_Matches_StatsArgs = {
-  seasonId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
-};
-
-
-export type QueryFetch_Match_OpponentsArgs = {
-  teamId: Scalars['String']['input'];
+export type QueryCompetition_By_IdArgs = {
+  compId: Scalars['String']['input'];
 };
 
 
@@ -857,6 +818,65 @@ export type QueryFetch_TrophyArgs = {
 
 export type QueryHall_Of_Fame_PlayersArgs = {
   teamId: Scalars['String']['input'];
+};
+
+
+export type QueryLeague_Table_DataArgs = {
+  orgId: Scalars['String']['input'];
+  orgSeasonId: Scalars['String']['input'];
+};
+
+
+export type QueryMatchArgs = {
+  matchId: Scalars['String']['input'];
+};
+
+
+export type QueryMatchesArgs = {
+  seasonId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryMatches_All_Time_StatsArgs = {
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryMatches_By_OpponentArgs = {
+  opponentId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryMatches_RecordsArgs = {
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryMatches_StatsArgs = {
+  seasonId: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryMatch_OpponentsArgs = {
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryOrganizationArgs = {
+  orgId: Scalars['String']['input'];
+};
+
+
+export type QueryOrg_SeasonArgs = {
+  seasonId: Scalars['String']['input'];
+};
+
+
+export type QueryOrg_SeasonsArgs = {
+  orgId: Scalars['String']['input'];
 };
 
 
@@ -925,6 +945,17 @@ export type QueryPlayer_TrophiesArgs = {
 };
 
 
+export type QueryResultArgs = {
+  resultId: Scalars['String']['input'];
+};
+
+
+export type QueryResultsArgs = {
+  orgId: Scalars['String']['input'];
+  orgSeasonId: Scalars['String']['input'];
+};
+
+
 export type QuerySquad_By_SeasonArgs = {
   seasonId: Scalars['String']['input'];
   teamId: Scalars['String']['input'];
@@ -969,60 +1000,13 @@ export type QuerySquad_StreaksArgs = {
 };
 
 
-export type QueryAwardsByPlayerArgs = {
-  playerId: Scalars['String']['input'];
-};
-
-
-export type QueryCompetitionByIdArgs = {
-  compId: Scalars['String']['input'];
-};
-
-
-export type QueryCompetitionsByOrgArgs = {
+export type QueryTeams_By_OrgArgs = {
   orgId: Scalars['String']['input'];
 };
 
 
-export type QueryGetLeagueTableDataArgs = {
-  orgId: Scalars['String']['input'];
-  orgSeasonId: Scalars['String']['input'];
-};
-
-
-export type QueryOrgSeasonByIdArgs = {
-  seasonId: Scalars['String']['input'];
-};
-
-
-export type QueryOrgSeasonsArgs = {
-  orgId: Scalars['String']['input'];
-};
-
-
-export type QueryOrganizationByIdArgs = {
-  orgId: Scalars['String']['input'];
-};
-
-
-export type QueryResultByIdArgs = {
-  resultId: Scalars['String']['input'];
-};
-
-
-export type QueryResultsArgs = {
-  orgId: Scalars['String']['input'];
-  orgSeasonId: Scalars['String']['input'];
-};
-
-
-export type QueryTeamBySearchArgs = {
+export type QueryTeam_By_SearchArgs = {
   filter: Scalars['String']['input'];
-};
-
-
-export type QueryTeamsByOrgArgs = {
-  orgId: Scalars['String']['input'];
 };
 
 export type RegisterUserInput = {
@@ -1259,7 +1243,6 @@ export type Team = {
   kitsBackground?: Maybe<Scalars['String']['output']>;
   location?: Maybe<Scalars['String']['output']>;
   orgId: Organization;
-  playerIds: Array<Scalars['ID']['output']>;
   seasonIds: Array<Scalars['ID']['output']>;
   stadiumCapacity?: Maybe<Scalars['String']['output']>;
   stadiumLocation?: Maybe<Scalars['String']['output']>;
@@ -1268,7 +1251,6 @@ export type Team = {
   teamBadge?: Maybe<UploadedImage>;
   teamName: Scalars['String']['output'];
   teamRoles: Array<TeamRole>;
-  trophies: Array<Scalars['ID']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   yearFounded?: Maybe<Scalars['String']['output']>;
 };
@@ -1360,12 +1342,6 @@ export type UpdateTeamInput = {
   stadiumSurface?: InputMaybe<Scalars['String']['input']>;
   teamName: Scalars['String']['input'];
   yearFounded?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type UpdateTeamRolesInput = {
-  contact?: InputMaybe<Scalars['String']['input']>;
-  name: Scalars['String']['input'];
-  role: Scalars['String']['input'];
 };
 
 export type UploadedImage = {

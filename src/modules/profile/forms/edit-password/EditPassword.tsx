@@ -10,7 +10,7 @@ import { changePasswordFormState } from './state';
 import { PROFILE_PATHS } from '../../router';
 import { PageContainer } from '../../../../components';
 import type { ChangePasswordFormData } from './validation';
-import EditPasswordView from './EditPasswordView';
+import EditPasswordForm from './EditPasswordForm';
 
 export default function ChangePasswordContainer() {
   const navigate = useNavigate();
@@ -36,7 +36,7 @@ export default function ChangePasswordContainer() {
 
   return (
     <PageContainer auth={AUTH_ROLES.USER} title={PAGES.CHANGE_PASSWORD_PAGE}>
-      <EditPasswordView
+      <EditPasswordForm
         onSubmit={onSubmit}
         defaultValues={changePasswordFormState}
         loading={loading}

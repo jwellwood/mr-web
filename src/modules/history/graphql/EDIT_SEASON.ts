@@ -11,7 +11,7 @@ export const EDIT_SEASON = gql`
     $division: String
     $comment: String
   ) {
-    season: editSeason(
+    season: EDIT_SEASON(
       teamId: $teamId
       seasonId: $seasonId
       data: {

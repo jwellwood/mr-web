@@ -5,7 +5,7 @@ export const FETCH_COMPETITIONS: TypedDocumentNode<{
   org: IOrganization;
 }> = gql`
   query FETCH_COMPETITIONS($orgId: String!) {
-    org: organizationById(orgId: $orgId) {
+    org: ORGANIZATION(orgId: $orgId) {
       _id
       competitions {
         _id

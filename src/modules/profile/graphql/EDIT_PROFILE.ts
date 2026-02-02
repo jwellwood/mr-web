@@ -7,7 +7,7 @@ export const EDIT_PROFILE = gql`
     $dateOfBirth: String
     $nationality: String
   ) {
-    editUser(
+    EDIT_USER(
       data: {
         username: $username
         email: $email

@@ -9,7 +9,6 @@ import {
   ControlledTextInput,
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
-import { DeleteModal } from '../../../../components/modals';
 import { getIntegers } from '../../../../utils/helpers';
 import { SeasonSchema, type SeasonFormData } from './validation';
 
@@ -17,7 +16,6 @@ interface Props {
   onSubmit: (formData: SeasonFormData) => void;
   defaultValues: SeasonFormData;
   competitionOptions: ISelectOptions[];
-  onDelete?: () => void;
   loading: boolean;
   error?: ApolloError;
 }
@@ -26,7 +24,6 @@ export default function SeasonForm({
   onSubmit,
   defaultValues,
   competitionOptions,
-  onDelete,
   loading,
   error,
 }: Props) {
@@ -68,7 +65,6 @@ export default function SeasonForm({
         />
       ) : null}
       <ControlledTextInput multiline control={control} name="comment" label="Comment" />
-      {onDelete && <DeleteModal onDelete={onDelete} title="Season" loading={loading} />}
     </FormContainer>
   );
 }

@@ -20,7 +20,7 @@ export default function SignUpForm({ onSubmit, defaultValues, loading, error }: 
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} height="206px">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
       <ControlledTextInput control={control} name="username" label="Username" />
       <ControlledTextInput control={control} name="email" label="Email Address" />
       <ControlledTextInput control={control} name="password" isPassword={true} label="Password" />

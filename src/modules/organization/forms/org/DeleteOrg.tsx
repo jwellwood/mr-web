@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { DELETE_ORG } from '../../graphql';
-import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
 import { showAlert } from '../../../../store';
 import { PROFILE_PATHS } from '../../../profile/router/paths';
@@ -27,9 +26,5 @@ export default function DeleteOrg() {
       });
   };
 
-  return !loading ? (
-    <DeleteModal title="Organization" onDelete={onDelete} error={error} />
-  ) : (
-    <Spinner />
-  );
+  return <DeleteModal title="Organization" onDelete={onDelete} error={error} loading={loading} />;
 }

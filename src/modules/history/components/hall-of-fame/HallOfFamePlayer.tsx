@@ -20,7 +20,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
   const { name, nationality, image, position, squadNumber, description } = player;
 
   return (
-    <SectionContainer isSpecial={!loading}>
+    <SectionContainer type={!loading ? 'winner' : undefined}>
       <Stack spacing={1} direction="row">
         <ImageAvatar
           size="80px"

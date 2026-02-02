@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
-import { EDIT_AWARD, FETCH_AWARD, FETCH_AWARDS, DELETE_AWARD } from '../../graphql';
+import { EDIT_AWARD, FETCH_AWARD, FETCH_AWARDS } from '../../graphql';
 import { PAGES } from '../../constants';
 import { useCustomParams, useSeasons } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
@@ -15,6 +15,7 @@ import { PageHeader, type ISelectOptions } from '../../../../components';
 import type { AwardFormData } from './validation';
 import AwardForm from './AwardForm';
 import { mapAwardToForm, mapFormToEditAwardVariables } from '../../helpers/mapAwardForm';
+import DeleteAward from './DeleteAward';
 
 export default function EditAward() {
   const { awardId, teamId, seasonId } = useCustomParams();
@@ -29,10 +30,6 @@ export default function EditAward() {
   });
 
   const [editAward, { error: editError, loading: editLoading }] = useMutation(EDIT_AWARD, {
-    refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId: seasonId! } }],
-  });
-
-  const [deleteAward, { error: deleteError, loading: deleteLoading }] = useMutation(DELETE_AWARD, {
     refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId: seasonId! } }],
   });
 
@@ -55,18 +52,6 @@ export default function EditAward() {
     setDefaultValues(mapAwardToForm(data?.award));
   }, [data]);
 
-  const onDelete = async () => {
-    try {
-      return deleteAward({ variables: { teamId: teamId!, awardId: awardId! } }).then(() => {
-        dispatch(showAlert({ text: 'Award deleted successfully', type: 'success' }));
-        navigate(-2);
-      });
-    } catch (error) {
-      console.error(error);
-      dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
-    }
-  };
-
   const onSubmit = async (formData: Partial<AwardFormData>) => {
     try {
       const variables = mapFormToEditAwardVariables(formData);
@@ -87,18 +72,20 @@ export default function EditAward() {
     }
   };
 
-  const isLoading = loading || editLoading || loadingSeasons || playersLoading || deleteLoading;
+  const isLoading = loading || editLoading || loadingSeasons || playersLoading;
 
   const renderContent = () => {
     return defaultValues ? (
-      <AwardForm
-        defaultValues={defaultValues}
-        playersOptions={playerOptions}
-        onSubmit={onSubmit}
-        onDelete={onDelete}
-        loading={isLoading}
-        error={error || editError || deleteError || playersError}
-      />
+      <>
+        <AwardForm
+          defaultValues={defaultValues}
+          playersOptions={playerOptions}
+          onSubmit={onSubmit}
+          loading={isLoading}
+          error={error || editError || playersError}
+        />
+        <DeleteAward />
+      </>
     ) : (
       <Spinner />
     );

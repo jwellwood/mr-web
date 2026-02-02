@@ -1,7 +1,6 @@
 export const TEAM_PATHS = {
   TEAM: 'team/:teamId',
   EDIT: 'edit',
-  DELETE_TEAM: 'delete',
   EDIT_ROLES: 'edit_roles',
   EDIT_BADGE: 'edit_badge',
   ADD_PLAYER: 'add_player',

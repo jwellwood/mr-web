@@ -11,7 +11,7 @@ export const ADD_TROPHY = gql`
     $opponent: String
     $comment: String
   ) {
-    trophy: addTrophy(
+    trophy: ADD_TROPHY(
       teamId: $teamId
       data: {
         name: $name

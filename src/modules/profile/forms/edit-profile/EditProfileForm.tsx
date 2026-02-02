@@ -26,7 +26,7 @@ export default function EditProfileForm({ onSubmit, defaultValues, loading }: Pr
   const { nationalityOptions } = useNationality();
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} height="293px">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading}>
       <ControlledTextInput control={control} name="username" label="Username" />
       <ControlledTextInput control={control} name="email" label="Email Address" />
       <ControlledDateInput control={control} name="dateOfBirth" label="Date of Birth" />

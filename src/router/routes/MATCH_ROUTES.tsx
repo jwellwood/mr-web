@@ -8,7 +8,6 @@ export const MATCH_ROUTES = () => (
       <Route index={true} element={<MATCH.Match />} />
       <Route path={MATCH.MATCH_PATHS.ADD_MATCH} element={<MATCH.AddMatch />} />
       <Route path={MATCH.MATCH_PATHS.EDIT_MATCH} element={<MATCH.EditMatch />} />
-      <Route path={MATCH.MATCH_PATHS.DELETE_MATCH} element={<MATCH.DeleteMatch />} />
     </Route>
   </>
 );

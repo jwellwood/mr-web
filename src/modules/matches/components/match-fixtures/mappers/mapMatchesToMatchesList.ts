@@ -12,6 +12,7 @@ export const mapMatchesToMatchesList = (
     teamGoals: match.teamGoals,
     opponentGoals: match.opponentGoals,
     opponentName: match.opponentName,
+    opponentBadge: match.opponentBadge || undefined,
     isHome: match.isHome,
   }));
 };

@@ -39,7 +39,7 @@ export default function PlayerForm({
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} height="785px">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
       <ControlledTextInput control={control} name="name" label="Name" />
       <ControlledSelectInput
         control={control}

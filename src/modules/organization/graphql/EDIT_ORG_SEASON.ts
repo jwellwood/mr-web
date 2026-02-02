@@ -12,7 +12,7 @@ export const EDIT_ORG_SEASON: TypedDocumentNode<{
     $isCurrent: Boolean!
     $comment: String
   ) {
-    editOrgSeason(
+    EDIT_ORG_SEASON(
       orgId: $orgId
       seasonId: $seasonId
       data: {

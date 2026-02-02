@@ -11,7 +11,7 @@ export const ADD_ORG_SEASON: TypedDocumentNode<{
     $isCurrent: Boolean!
     $comment: String
   ) {
-    season: addOrgSeason(
+    season: ADD_ORG_SEASON(
       orgId: $orgId
       data: {
         yearStarted: $yearStarted

@@ -4,9 +4,9 @@ import { Stack } from '@mui/material';
 
 import { SectionContainer } from '../../containers';
 import SubmitButton from '../submit-button/SubmitButton';
-import FormLoading from './FormLoading';
 import { ApolloError } from '@apollo/client';
 import { MutationError } from '../../errors';
+import { Spinner } from '../../loaders';
 
 interface ISubmitButton {
   text?: string;
@@ -19,7 +19,6 @@ interface Props {
   children: React.ReactNode;
   submitBtn?: ISubmitButton;
   resetBtn?: ReactElement;
-  height?: string;
   loading: boolean;
   error?: ApolloError;
 }
@@ -33,7 +32,6 @@ export default function FormContainer({
     disabled: false,
     fullWidth: true,
   },
-  height = 'calc(100vh - 200px)',
   loading,
   error,
 }: Props) {
@@ -58,7 +56,7 @@ export default function FormContainer({
       >
         <SectionContainer>
           {loading ? (
-            <FormLoading height={height} />
+            <Spinner />
           ) : (
             <Stack direction="column" spacing={1} minWidth={300}>
               {children}

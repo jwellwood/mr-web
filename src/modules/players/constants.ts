@@ -5,7 +5,6 @@ export const PAGES = {
   ADD_PLAYER: 'Add Player',
   EDIT_PLAYER: 'Edit Player',
   EDIT_PLAYER_PHOTO: 'Edit Player Photo',
-  DELETE_PLAYER: 'Delete Player',
 } as const;
 
 export const PLAYER_ADMIN_LINKS = [
@@ -18,10 +17,5 @@ export const PLAYER_ADMIN_LINKS = [
     label: 'Edit Photo',
     type: LINK_TYPE.EDIT,
     link: 'edit_photo',
-  },
-  {
-    label: 'Delete Player',
-    type: LINK_TYPE.DELETE,
-    link: 'delete',
   },
 ];

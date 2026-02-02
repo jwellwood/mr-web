@@ -20,7 +20,7 @@ export default function EditPasswordForm({ onSubmit, defaultValues, loading, err
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} height="221px">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
       <ControlledTextInput
         control={control}
         name="password"

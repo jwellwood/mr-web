@@ -7,7 +7,6 @@ export const PAGES = {
   EDIT_PROFILE_PAGE: 'Edit Profile',
   EDIT_USER_IMAGE_PAGE: 'Edit Photo',
   CHANGE_PASSWORD_PAGE: 'Change Password',
-  DELETE_ACCOUNT: 'Delete Account',
 };
 
 export const PROFILE_ADMIN_LINKS = [
@@ -19,5 +18,4 @@ export const PROFILE_ADMIN_LINKS = [
     type: LINK_TYPE.EDIT,
     link: PROFILE_PATHS.CHANGE_PASSWORD,
   },
-  { label: 'Delete Account', type: LINK_TYPE.DELETE, link: PROFILE_PATHS.DELETE },
 ];

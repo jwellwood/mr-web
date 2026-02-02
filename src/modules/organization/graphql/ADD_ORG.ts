@@ -11,7 +11,7 @@ export const ADD_ORG: TypedDocumentNode<{
     $city: String
     $country: String
   ) {
-    org: addOrganization(
+    org: ADD_ORGANIZATION(
       data: {
         name: $name
         website: $website

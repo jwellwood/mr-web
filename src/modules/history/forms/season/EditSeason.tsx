@@ -3,14 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
-import {
-  DELETE_SEASON,
-  EDIT_SEASON,
-  FETCH_SEASONS_POSITION,
-  FETCH_SEASON,
-  FETCH_SEASONS,
-  FETCH_TROPHIES,
-} from '../../graphql';
+import { EDIT_SEASON, FETCH_SEASONS_POSITION, FETCH_SEASON, FETCH_SEASONS } from '../../graphql';
 import { useSeasonInput } from '../../hooks/useSeasonInput';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
@@ -22,6 +15,7 @@ import SeasonForm from './SeasonForm';
 import { mapSeasonForm } from '../../helpers/mapSeasonForm';
 import { PageHeader } from '../../../../components';
 import type { SeasonFormData } from './validation';
+import DeleteSeason from './DeleteSeason';
 
 export default function EditSeason() {
   const { teamId, seasonId, orgId } = useCustomParams();
@@ -42,31 +36,9 @@ export default function EditSeason() {
 
   const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
-  const [deleteSeason, { error: deleteError, loading: deleteLoading }] = useMutation(
-    DELETE_SEASON,
-    {
-      refetchQueries: [
-        { query: FETCH_TROPHIES, variables: { teamId: teamId! } },
-        { query: FETCH_SEASONS_POSITION, variables: { teamId: teamId! } },
-      ],
-    }
-  );
-
   useEffect(() => {
     setDefaultValues(mapSeasonForm.toForm(data?.season));
   }, [data]);
-
-  const onDelete = async () => {
-    try {
-      return deleteSeason({ variables: { teamId: teamId!, seasonId: seasonId! } }).then(() => {
-        dispatch(showAlert({ text: 'Season deleted successfully', type: 'success' }));
-        navigate(-2);
-      });
-    } catch (error) {
-      console.error(error);
-      dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
-    }
-  };
 
   const onSubmit = async (formData: SeasonFormData) => {
     try {
@@ -84,18 +56,20 @@ export default function EditSeason() {
     }
   };
 
-  const isLoading = loading || orgLoading || editLoading || deleteLoading;
+  const isLoading = loading || orgLoading || editLoading;
 
   const renderContent = () => {
     return defaultValues ? (
-      <SeasonForm
-        competitionOptions={competitionOptions}
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        onDelete={onDelete}
-        loading={isLoading}
-        error={error || editError || orgError || deleteError}
-      />
+      <>
+        <SeasonForm
+          competitionOptions={competitionOptions}
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+          loading={isLoading}
+          error={error || editError || orgError}
+        />
+        <DeleteSeason />
+      </>
     ) : (
       <Spinner />
     );

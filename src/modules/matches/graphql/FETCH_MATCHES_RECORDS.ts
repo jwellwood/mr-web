@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const FETCH_MATCHES_RECORDS = gql`
   query FETCH_MATCHES_RECORDS($teamId: String!) {
-    stats: FETCH_MATCHES_RECORDS(teamId: $teamId) {
+    stats: MATCHES_RECORDS(teamId: $teamId) {
       maxDiff {
         _id
         teamGoals

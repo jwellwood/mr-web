@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
-import { FETCH_TROPHY, EDIT_TROPHY, DELETE_TROPHY, FETCH_TROPHIES } from '../../graphql';
+import { FETCH_TROPHY, EDIT_TROPHY, FETCH_TROPHIES } from '../../graphql';
 import { PAGES } from '../../constants';
 import { useCustomParams, useSeasons } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
@@ -14,6 +14,7 @@ import { PageHeader } from '../../../../components';
 import type { TrophyFormData } from './validation';
 import TrophyForm from './TrophyForm';
 import { mapTrophyToForm, mapFormToEditTrophyVariables } from '../../helpers/mapTrophyForm';
+import DeleteTrophy from './DeleteTrophy';
 
 export default function EditTrophy() {
   const { teamId, trophyId } = useCustomParams();
@@ -31,28 +32,9 @@ export default function EditTrophy() {
     refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId: teamId! } }],
   });
 
-  const [deleteTrophy, { error: deleteError, loading: deleteLoading }] = useMutation(
-    DELETE_TROPHY,
-    {
-      refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId: teamId! } }],
-    }
-  );
-
   useEffect(() => {
     setDefaultValues(mapTrophyToForm(data?.trophy, seasonOptions));
   }, [data, seasonOptions]);
-
-  const onDelete = async () => {
-    try {
-      return deleteTrophy({ variables: { teamId: teamId!, trophyId: trophyId! } }).then(() => {
-        dispatch(showAlert({ text: 'Trophy deleted successfully', type: 'success' }));
-        navigate(-2);
-      });
-    } catch (error) {
-      console.error(error);
-      dispatch(showAlert({ text: 'There was a problem', type: 'error' }));
-    }
-  };
 
   const onSubmit = async (formData: TrophyFormData) => {
     try {
@@ -70,18 +52,20 @@ export default function EditTrophy() {
     }
   };
 
-  const isLoading = loading || editLoading || loadingSeasons || deleteLoading;
+  const isLoading = loading || editLoading || loadingSeasons;
 
   const renderContent = () => {
     return defaultValues ? (
-      <TrophyForm
-        defaultValues={defaultValues}
-        seasonOptions={seasonOptions}
-        onSubmit={onSubmit}
-        onDelete={onDelete}
-        loading={isLoading}
-        error={error || editError || deleteError}
-      />
+      <>
+        <TrophyForm
+          defaultValues={defaultValues}
+          seasonOptions={seasonOptions}
+          onSubmit={onSubmit}
+          loading={isLoading}
+          error={error || editError}
+        />
+        <DeleteTrophy />
+      </>
     ) : (
       <Spinner />
     );

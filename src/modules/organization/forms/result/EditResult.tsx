@@ -17,7 +17,7 @@ import { useTeamOptions } from '../../hooks/useTeamOptions';
 import { useCompetitionOptions } from '../../hooks/useCompetitionOptions';
 import { useOrgSeasonOptions } from '../../hooks/useOrgSeasonOptions';
 import ResultForm from './ResultForm';
-import DeleteResult from '../../containers/DeleteResult';
+import DeleteResult from './DeleteResult';
 
 export default function EditResult() {
   const { orgId, orgSeasonId, resultId } = useCustomParams();

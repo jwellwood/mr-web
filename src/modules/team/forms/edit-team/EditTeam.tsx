@@ -11,7 +11,9 @@ import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import type { EditTeamFormData } from './types';
 import { mapFormDataToMutationInput, mapTeamDataToFormData } from './state';
-import EditTeamView from './EditTeamView';
+import { Spinner } from '../../../../components/loaders';
+import DeleteTeam from '../delete-team/DeleteTeam';
+import EditTeamForm from './EditTeamForm';
 
 export default function EditTeam() {
   const { teamId } = useCustomParams();
@@ -55,13 +57,20 @@ export default function EditTeam() {
 
   return (
     <PageContainer auth={AUTH_ROLES.TEAM_ADMIN} title={PAGES.EDIT_TEAM}>
-      <EditTeamView
-        loading={loading || updateLoading}
-        error={error || updateError}
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        countryOptions={nationalityOptions}
-      />
+      {defaultValues ? (
+        <>
+          <EditTeamForm
+            defaultValues={defaultValues}
+            onSubmit={onSubmit}
+            countryOptions={nationalityOptions}
+            loading={loading || updateLoading}
+            error={error || updateError}
+          />
+          <DeleteTeam />
+        </>
+      ) : (
+        <Spinner />
+      )}
     </PageContainer>
   );
 }

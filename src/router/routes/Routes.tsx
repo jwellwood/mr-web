@@ -27,7 +27,6 @@ export default function AppRoutes() {
         <Route path={PROFILE.PROFILE_PATHS.EDIT} element={<PROFILE.EditProfile />} />
         <Route path={PROFILE.PROFILE_PATHS.EDIT_IMAGE} element={<PROFILE.EditUserImage />} />
         <Route path={PROFILE.PROFILE_PATHS.CHANGE_PASSWORD} element={<PROFILE.EditPassword />} />
-        <Route path={PROFILE.PROFILE_PATHS.DELETE} element={<PROFILE.DeleteAccount />} />
       </Route>
       <Route path={ORG.ORG_PATHS.ORG}>
         <Route index={true} element={<ORG.Org />} />
@@ -68,7 +67,6 @@ export default function AppRoutes() {
           <Route path={MATCH.MATCH_PATHS.ADD_MATCH} element={<MATCH.AddMatch />} />
           <Route path={TEAM.TEAM_PATHS.EDIT_BADGE} element={<TEAM.EditBadge />} />
           <Route path={TEAM.TEAM_PATHS.EDIT} element={<TEAM.EditTeam />} />
-          <Route path={TEAM.TEAM_PATHS.DELETE_TEAM} element={<TEAM.DeleteTeam />} />
           {PLAYER_ROUTES()}
           {MATCH_ROUTES()}
         </Route>

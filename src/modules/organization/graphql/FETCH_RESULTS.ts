@@ -5,7 +5,7 @@ export const FETCH_RESULTS: TypedDocumentNode<{
   results: IResult[];
 }> = gql`
   query FETCH_RESULTS($orgId: String!, $orgSeasonId: String!) {
-    results: results(orgId: $orgId, orgSeasonId: $orgSeasonId) {
+    results: RESULTS(orgId: $orgId, orgSeasonId: $orgSeasonId) {
       _id
       date
       gameWeek

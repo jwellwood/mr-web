@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const FETCH_MATCHES = gql`
   query FETCH_MATCHES($teamId: String!, $seasonId: String!) {
-    matches: FETCH_MATCHES(teamId: $teamId, seasonId: $seasonId) {
+    matches: MATCHES(teamId: $teamId, seasonId: $seasonId) {
       _id
       date
       isHome

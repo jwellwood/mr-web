@@ -12,7 +12,7 @@ import RouteGuard from '../../../../router/RouteGuard';
 import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { mapFormToPlayer } from '../../helpers/mapPlayerForm';
-import { PageHeader } from '../../../../components';
+import { NoDataText, PageHeader } from '../../../../components';
 import { initialPlayerState } from './state';
 import type { PlayerFormData } from './validation';
 import PlayerForm from './PlayerForm';
@@ -50,14 +50,18 @@ export default function AddPlayer() {
   const isLoading = loading || addLoading;
   const renderContent = () => {
     return defaultValues ? (
-      <PlayerForm
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        countryOptions={nationalityOptions}
-        seasonOptions={seasonOptions}
-        loading={isLoading}
-        error={error}
-      />
+      !seasonOptions.length && !loading ? (
+        <NoDataText>Please add a season before adding players.</NoDataText>
+      ) : (
+        <PlayerForm
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+          countryOptions={nationalityOptions}
+          seasonOptions={seasonOptions}
+          loading={isLoading}
+          error={error}
+        />
+      )
     ) : (
       <Spinner />
     );

@@ -244,45 +244,43 @@ type Mutation {
   DELETE_PLAYER(playerId: String!, teamId: String!): Player!
   ADD_TEAM(data: AddTeamInput!, orgId: String!): Team!
   EDIT_TEAM(data: UpdateTeamInput!, teamId: String!): Team!
-  updateTeamRoles(data: UpdateTeamRolesInput!, teamId: String!): Team!
-  deleteTeamRole(roleId: String!, teamId: String!): Team!
   EDIT_TEAM_BADGE(data: EditBadgeInput!, teamId: String!): Team!
   DELETE_TEAM(teamId: String!): Team!
-  addTeamSeason(data: AddTeamSeasonInput!, teamId: String!): TeamSeason!
-  editSeason(data: AddTeamSeasonInput!, seasonId: String!, teamId: String!): TeamSeason!
-  deleteSeason(seasonId: String!, teamId: String!): TeamSeason!
-  addOrgSeason(data: AddOrgSeasonInput!, orgId: String!): OrgSeason!
-  editOrgSeason(data: AddOrgSeasonInput!, seasonId: String!, orgId: String!): OrgSeason!
-  deleteOrgSeason(orgSeasonId: String!, orgId: String!): OrgSeason!
-  logOutUser: User!
-  signInUser(data: SignInUserInput!): User!
-  registerUser(data: RegisterUserInput!): User!
-  editUser(data: EditUserInput!): User!
-  deleteUser: User!
-  editPassword(data: EditPasswordInput!): User!
-  editProfileImage(data: EditImageInput!): User!
-  forgotPassword(data: ForgotPasswordInput!): User!
-  resetPassword(data: ResetPasswordInput!): User!
-  addResult(data: AddResultInput!, orgId: String!): Result!
-  editResult(data: AddResultInput!, resultId: String!, orgId: String!): Result!
-  deleteResult(resultId: String!, orgId: String!): Result!
-  addOrganization(data: AddOrganizationInput!): Organization!
-  updateOrganization(data: UpdateOrganizationInput!, orgId: String!): Organization!
-  editOrgBadge(data: EditOrgBadgeInput!, orgId: String!): Organization!
-  deleteOrg(orgId: String!): Organization!
-  addTeamToOrg(teamId: String!, orgId: String!): Organization!
-  addMatch(data: TAddMatchInput!): Match!
-  editMatch(data: TAddMatchInput!, matchId: String!): Match!
-  deleteMatch(matchId: String!, teamId: String!): Match!
-  addCompetition(data: CompetitionInput!, orgId: String!): Competition!
-  updateCompetition(data: CompetitionInput!, compId: String!, orgId: String!): Competition!
-  deleteCompetition(competitionId: String!, orgId: String!): Competition!
-  addTrophy(data: AddTrophyInput!, teamId: String!): Trophy!
-  editTrophy(data: EditTrophyInput!, trophyId: String!, teamId: String!): Trophy!
-  deleteTrophy(trophyId: String!, teamId: String!): Trophy!
-  addSeasonAward(data: AddAwardInput!, seasonId: String!, teamId: String!): Award!
-  editAward(data: AddAwardInput!, awardId: String!, teamId: String!): Award!
-  deleteAward(awardId: String!, teamId: String!): Award!
+  ADD_SEASON(data: AddTeamSeasonInput!, teamId: String!): TeamSeason!
+  EDIT_SEASON(data: AddTeamSeasonInput!, seasonId: String!, teamId: String!): TeamSeason!
+  DELETE_SEASON(seasonId: String!, teamId: String!): TeamSeason!
+  ADD_ORG_SEASON(data: AddOrgSeasonInput!, orgId: String!): OrgSeason!
+  EDIT_ORG_SEASON(data: AddOrgSeasonInput!, seasonId: String!, orgId: String!): OrgSeason!
+  DELETE_ORG_SEASON(orgSeasonId: String!, orgId: String!): OrgSeason!
+  LOG_OUT_USER: User!
+  SIGN_IN_USER(data: SignInUserInput!): User!
+  REGISTER_USER(data: RegisterUserInput!): User!
+  EDIT_USER(data: EditUserInput!): User!
+  DELETE_USER: User!
+  EDIT_PASSWORD(data: EditPasswordInput!): User!
+  EDIT_PROFILE_IMAGE(data: EditImageInput!): User!
+  FORGOT_PASSWORD(data: ForgotPasswordInput!): User!
+  RESET_PASSWORD(data: ResetPasswordInput!): User!
+  ADD_RESULT(data: AddResultInput!, orgId: String!): Result!
+  EDIT_RESULT(data: AddResultInput!, resultId: String!, orgId: String!): Result!
+  DELETE_RESULT(resultId: String!, orgId: String!): Result!
+  ADD_ORGANIZATION(data: AddOrganizationInput!): Organization!
+  EDIT_ORGANIZATION(data: UpdateOrganizationInput!, orgId: String!): Organization!
+  EDIT_ORG_BADGE(data: EditOrgBadgeInput!, orgId: String!): Organization!
+  DELETE_ORGANIZATION(orgId: String!): Organization!
+  ADD_TEAM_TO_ORG(teamId: String!, orgId: String!): Organization!
+  ADD_MATCH(data: TAddMatchInput!): Match!
+  EDIT_MATCH(data: TAddMatchInput!, matchId: String!): Match!
+  DELETE_MATCH(matchId: String!, teamId: String!): Match!
+  ADD_COMPETITION(data: CompetitionInput!, orgId: String!): Competition!
+  EDIT_COMPETITION(data: CompetitionInput!, compId: String!, orgId: String!): Competition!
+  DELETE_COMPETITION(competitionId: String!, orgId: String!): Competition!
+  ADD_TROPHY(data: AddTrophyInput!, teamId: String!): Trophy!
+  EDIT_TROPHY(data: EditTrophyInput!, trophyId: String!, teamId: String!): Trophy!
+  DELETE_TROPHY(trophyId: String!, teamId: String!): Trophy!
+  ADD_AWARD(data: AddAwardInput!, seasonId: String!, teamId: String!): Award!
+  EDIT_AWARD(data: AddAwardInput!, awardId: String!, teamId: String!): Award!
+  DELETE_AWARD(awardId: String!, teamId: String!): Award!
 }
 
 """The Organization model"""
@@ -436,10 +434,10 @@ type PositionFinishes {
 }
 
 type Query {
-  competitionsByOrg(orgId: String!): [Competition!]!
-  competitionById(compId: String!): Competition!
-  orgSeasons(orgId: String!): [OrgSeason!]!
-  orgSeasonById(seasonId: String!): OrgSeason!
+  COMPETITIONS_BY_ORG(orgId: String!): [Competition!]!
+  COMPETITION_BY_ID(compId: String!): Competition!
+  ORG_SEASONS(orgId: String!): [OrgSeason!]!
+  ORG_SEASON(seasonId: String!): OrgSeason!
   PLAYER_BY_ID(playerId: String!): Player!
   PLAYER_STATS(competitionId: String!, seasonId: String!, playerId: String!): PlayerStats!
   PLAYER_STREAKS(teamId: String!, playerId: String!): PlayerStreaks!
@@ -450,17 +448,15 @@ type Query {
   PLAYER_MATCHES_WITH_RECORD_ASSISTS(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
   PLAYER_SEASONS_SUMMARY(playerId: String!): [TPlayerSeasonsSummary!]!
   FETCH_TEAM(teamId: String!): Team!
-  teamBySearch(filter: String!): [Team!]!
-  userTeams: [Team!]!
-  getTeams: Team!
+  TEAM_BY_SEARCH(filter: String!): [Team!]!
+  USER_TEAMS: [Team!]!
   FETCH_SEASONS(teamId: String!): [TeamSeason!]!
   FETCH_SEASON(seasonId: String!): TeamSeason!
   FETCH_SEASONS_POSITION(teamId: String!): [PositionFinishes!]!
   FETCH_USER: User!
-  getUsers: [User!]!
-  results(orgSeasonId: String!, orgId: String!): [Result!]!
-  resultById(resultId: String!): Result!
-  getLeagueTableData(orgSeasonId: String!, orgId: String!): [LeagueTableByComp!]!
+  RESULTS(orgSeasonId: String!, orgId: String!): [Result!]!
+  RESULT(resultId: String!): Result!
+  LEAGUE_TABLE_DATA(orgSeasonId: String!, orgId: String!): [LeagueTableByComp!]!
   SQUAD_LIST_BY_SEASON(seasonId: String!, teamId: String!): [SquadListBySeason!]!
   SQUAD_STATS(competitionId: String!, seasonId: String!, teamId: String!): [TSquadStats!]!
   PAST_PLAYERS(teamId: String!): [PastPlayer!]!
@@ -471,22 +467,22 @@ type Query {
   SQUAD_STREAKS(teamId: String!): [AllPlayerStreaks!]!
   SQUAD_BY_SEASON(seasonId: String!, teamId: String!): [Player!]!
   SQUAD_SINGLE_SEASON_RECORDS(teamId: String!): TSquadSingleSeasonRecords!
-  organizationById(orgId: String!): Organization!
-  userOrganizations: [Organization!]!
-  teamsByOrg(orgId: String!): [Team!]!
-  FETCH_MATCHES(seasonId: String!, teamId: String!): [TMatch!]!
-  FETCH_MATCH(matchId: String!): Match!
-  FETCH_MATCHES_BY_OPPONENT(opponentId: String!, teamId: String!): [TMatch!]!
-  FETCH_MATCHES_STATS(seasonId: String!, teamId: String!): TMatchStats!
-  FETCH_MATCHES_ALL_TIME_STATS(teamId: String!): TMatchStats!
-  FETCH_MATCHES_RECORDS(teamId: String!): TMatchRecords!
-  FETCH_MATCH_OPPONENTS(teamId: String!): [TMatchOpponent!]!
+  ORGANIZATION(orgId: String!): Organization!
+  USER_ORGANIZATIONS: [Organization!]!
+  TEAMS_BY_ORG(orgId: String!): [Team!]!
+  MATCHES(seasonId: String!, teamId: String!): [TMatch!]!
+  MATCH(matchId: String!): Match!
+  MATCHES_BY_OPPONENT(opponentId: String!, teamId: String!): [TMatch!]!
+  MATCHES_STATS(seasonId: String!, teamId: String!): TMatchStats!
+  MATCHES_ALL_TIME_STATS(teamId: String!): TMatchStats!
+  MATCHES_RECORDS(teamId: String!): TMatchRecords!
+  MATCH_OPPONENTS(teamId: String!): [TMatchOpponent!]!
   FETCH_TROPHIES(teamId: String!): [TrophyResponse!]!
   PLAYER_TROPHIES(playerId: String!): [Trophy!]!
   FETCH_TROPHY(trophyId: String!): TrophyResponse!
-  FETCH_AWARDS(seasonId: String!): [Award!]!
-  awardsByPlayer(playerId: String!): [AwardByPlayer!]!
-  FETCH_AWARD(awardId: String!): Award!
+  AWARDS(seasonId: String!): [Award!]!
+  AWARDS_BY_PLAYER(playerId: String!): [AwardByPlayer!]!
+  AWARD(awardId: String!): Award!
 }
 
 input RegisterUserInput {
@@ -607,10 +603,8 @@ type Team {
   awaySocks: String
   kitsBackground: String
   teamRoles: [TeamRole!]!
-  trophies: [ID!]!
   seasonIds: [ID!]!
   adminIds: [ID!]!
-  playerIds: [ID!]!
   orgId: Organization!
 }
 
@@ -800,12 +794,6 @@ input UpdateTeamInput {
   awaySocks: String
   kitsBackground: String
   isActive: Boolean!
-}
-
-input UpdateTeamRolesInput {
-  role: String!
-  name: String!
-  contact: String
 }
 
 type UploadedImage {

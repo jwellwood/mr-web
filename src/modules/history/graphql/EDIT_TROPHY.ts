@@ -12,7 +12,7 @@ export const EDIT_TROPHY = gql`
     $opponent: String
     $comment: String
   ) {
-    trophy: editTrophy(
+    trophy: EDIT_TROPHY(
       teamId: $teamId
       trophyId: $trophyId
       data: {

@@ -1,23 +1,19 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
-import { FETCH_USER, DELETE_USER } from '../../graphql';
-import { PAGES } from '../../constants';
+import { DELETE_USER } from '../../graphql';
 import { showAlert, resetAuth } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { apolloClient } from '../../../../services/graphql/apolloClient';
-import { PageContainer } from '../../../../components';
 import { AUTH_PATHS } from '../../../auth/router/';
-import DeleteProfileView from './DeleteProfileView';
+import { DeleteModal } from '../../../../components/modals';
 
-export default function DeleteAccountContainer() {
+export default function DeleteAccount() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data, loading, error } = useQuery(FETCH_USER);
-  const [deleteUser, { loading: deleteLoading, error: deleteError }] = useMutation(DELETE_USER);
+  const [deleteUser, { loading, error }] = useMutation(DELETE_USER);
 
-  const onSubmit = async () => {
+  const onDelete = async () => {
     return deleteUser()
       .then(async () => {
         dispatch(showAlert({ text: 'User account deleted successfully', type: 'success' }));
@@ -31,14 +27,5 @@ export default function DeleteAccountContainer() {
       });
   };
 
-  return (
-    <PageContainer auth={AUTH_ROLES.USER} title={PAGES.DELETE_ACCOUNT}>
-      <DeleteProfileView
-        data={data}
-        onSubmit={onSubmit}
-        loading={loading || deleteLoading}
-        error={error || deleteError}
-      />
-    </PageContainer>
-  );
+  return <DeleteModal title="Account" onDelete={onDelete} loading={loading} error={error} />;
 }

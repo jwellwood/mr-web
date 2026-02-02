@@ -21,7 +21,7 @@ export default function SignInForm({ defaultValues, onSubmit, loading, error }: 
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} height="166px">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
       <CenteredGrid dir="row">
         <ControlledTextInput control={control} name="email" label="Email Address" />
         <ControlledTextInput control={control} name="password" label="Password" isPassword={true} />

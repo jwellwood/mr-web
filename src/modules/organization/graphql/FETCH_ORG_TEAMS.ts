@@ -5,7 +5,7 @@ export const FETCH_ORG_TEAMS: TypedDocumentNode<{
   teams: ITeam[];
 }> = gql`
   query FETCH_ORG_TEAMS($orgId: String!) {
-    teams: teamsByOrg(orgId: $orgId) {
+    teams: TEAMS_BY_ORG(orgId: $orgId) {
       _id
       teamName
       isActive

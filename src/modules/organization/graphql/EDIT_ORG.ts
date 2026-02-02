@@ -12,7 +12,7 @@ export const EDIT_ORG: TypedDocumentNode<{
     $city: String
     $country: String
   ) {
-    updateOrganization(
+    EDIT_ORGANIZATION(
       orgId: $orgId
       data: {
         name: $name

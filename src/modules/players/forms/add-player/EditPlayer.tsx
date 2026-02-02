@@ -14,6 +14,7 @@ import { mapFormToPlayer, mapPlayerToForm } from '../../helpers/mapPlayerForm';
 import { PageHeader } from '../../../../components';
 import type { PlayerFormData } from './validation';
 import PlayerForm from './PlayerForm';
+import DeletePlayer from './DeletePlayer';
 
 export default function EditPlayer() {
   const { teamId, playerId } = useCustomParams();
@@ -68,14 +69,17 @@ export default function EditPlayer() {
   const isLoading = loading || seasonLoading || updateLoading;
   const renderContent = () => {
     return defaultValues ? (
-      <PlayerForm
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        countryOptions={nationalityOptions}
-        seasonOptions={seasonOptions}
-        loading={isLoading}
-        error={error || updateError}
-      />
+      <>
+        <PlayerForm
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+          countryOptions={nationalityOptions}
+          seasonOptions={seasonOptions}
+          loading={isLoading}
+          error={error || updateError}
+        />
+        <DeletePlayer />
+      </>
     ) : (
       <Spinner />
     );

@@ -37,7 +37,7 @@ export default function ItemDetails({
   );
 
   return (
-    <SectionContainer isSpecial={!loading}>
+    <SectionContainer type={!loading ? 'winner' : undefined}>
       <Stack spacing={2} alignItems="center">
         {loading ? (
           <CustomSkeleton width="50px" height="50px" />

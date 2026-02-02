@@ -7,6 +7,8 @@ import Step2AddPlayers from '../add-match-players/Step2MatchPlayers';
 import Step3MatchStats from '../add-match-player-stats/Step3MatchStats';
 import Step4SubmitMatch from '../submit-match/Step4SubmitMatch';
 import MatchOverview from './MatchOverview';
+import DeleteMatch from '../DeleteMatch';
+import { useCustomParams } from '../../../../hooks';
 
 interface Props {
   onSubmit: () => void;
@@ -15,6 +17,7 @@ interface Props {
 }
 
 export default function MatchFormStepper({ onSubmit, loading, error }: Props) {
+  const { matchId } = useCustomParams();
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -37,6 +40,7 @@ export default function MatchFormStepper({ onSubmit, loading, error }: Props) {
       <>
         {activeStep !== 0 && <MatchOverview />}
         {steps[activeStep]}
+        {activeStep === 0 && matchId && <DeleteMatch />}
       </>
     </FormStepper>
   );

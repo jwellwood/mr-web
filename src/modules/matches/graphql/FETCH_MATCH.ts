@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const FETCH_MATCH = gql`
   query FETCH_MATCH($matchId: String!) {
-    match: FETCH_MATCH(matchId: $matchId) {
+    match: MATCH(matchId: $matchId) {
       _id
       date
       isHome

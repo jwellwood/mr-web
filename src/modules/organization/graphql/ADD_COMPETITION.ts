@@ -9,7 +9,7 @@ export const ADD_COMPETITION: TypedDocumentNode = gql`
     $competitionType: String!
     $isActive: Boolean!
   ) {
-    addCompetition(
+    ADD_COMPETITION(
       orgId: $orgId
       data: {
         name: $name

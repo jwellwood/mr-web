@@ -25,7 +25,6 @@ export default function SearchForm({ defaultValues, onSubmit, loading, error }: 
       submitBtn={{ text: 'Search' }}
       loading={loading}
       error={error}
-      height="109px"
     >
       <ControlledTextInput control={control} name="teamName" label="Team Name" />
     </FormContainer>

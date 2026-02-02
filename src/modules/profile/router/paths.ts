@@ -3,5 +3,4 @@ export const PROFILE_PATHS = {
   EDIT: 'edit',
   EDIT_IMAGE: 'edit_image',
   CHANGE_PASSWORD: 'change_password',
-  DELETE: 'delete',
 } as const;

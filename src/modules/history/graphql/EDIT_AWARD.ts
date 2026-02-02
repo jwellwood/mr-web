@@ -9,7 +9,7 @@ export const EDIT_AWARD = gql`
     $awardValue: Float
     $comment: String
   ) {
-    editAward(
+    EDIT_AWARD(
       awardId: $awardId
       teamId: $teamId
       data: { winners: $winners, awardName: $awardName, awardValue: $awardValue, comment: $comment }

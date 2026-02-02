@@ -16,7 +16,7 @@ export const EDIT_RESULT: TypedDocumentNode<{
     $homeGoals: Float!
     $awayGoals: Float!
   ) {
-    result: editResult(
+    result: EDIT_RESULT(
       orgId: $orgId
       resultId: $resultId
       data: {

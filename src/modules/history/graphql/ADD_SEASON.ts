@@ -10,7 +10,7 @@ export const ADD_SEASON = gql`
     $totalFinalPositions: Float
     $comment: String
   ) {
-    season: addTeamSeason(
+    season: ADD_SEASON(
       teamId: $teamId
       data: {
         yearStarted: $yearStarted

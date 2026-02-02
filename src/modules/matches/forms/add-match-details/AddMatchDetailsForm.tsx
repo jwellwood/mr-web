@@ -42,7 +42,6 @@ export default function AddMatchDetailsForm({
       submitBtn={{ text: 'Next' }}
       loading={loading}
       error={error}
-      height="598px"
     >
       <ControlledDateInput control={control} name="date" label="Date" disableFuture={false} />
       <ControlledSwitchInput control={control} name="isHome" label="Home?" />

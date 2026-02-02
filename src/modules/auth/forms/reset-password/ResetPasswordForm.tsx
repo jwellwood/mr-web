@@ -21,7 +21,7 @@ export default function ResetPasswordForm({ onSubmit, defaultValues, loading, er
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} height="221px">
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
       <CenteredGrid dir="row">
         <ControlledTextInput
           control={control}
