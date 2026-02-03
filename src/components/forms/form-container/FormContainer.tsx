@@ -58,7 +58,7 @@ export default function FormContainer({
           {loading ? (
             <Spinner />
           ) : (
-            <Stack direction="column" spacing={1} minWidth={300}>
+            <Stack direction="column" spacing={1} width={'100%'}>
               {children}
             </Stack>
           )}

@@ -8,6 +8,7 @@ interface IAuthState {
   teamIds: string[];
   orgIds: string[];
   username?: string;
+  authInitialized: boolean;
 }
 
 const initialState: IAuthState = {
@@ -17,6 +18,7 @@ const initialState: IAuthState = {
   teamIds: [],
   orgIds: [],
   username: '',
+  authInitialized: false,
 };
 
 const authSlice = createSlice({
@@ -46,11 +48,12 @@ const authSlice = createSlice({
           teamIds,
           orgIds,
           username,
+          authInitialized: true,
         },
       };
     },
     resetState: () => {
-      return initialState;
+      return { ...initialState, authInitialized: true };
     },
   },
 });

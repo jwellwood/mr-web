@@ -9,8 +9,6 @@ export type IOrganization = {
   country: string;
   badge: IImage;
   competitions: ICompetition[];
-  teamIds: string[];
-  adminIds: string[];
 };
 
 export type IOrgSeason = {

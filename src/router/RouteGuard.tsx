@@ -16,9 +16,17 @@ interface Props {
 export default function RouteGuard({ children, authorization }: Props) {
   const dispatch = useDispatch();
   const { teamId, orgId } = useCustomParams();
-  const { isTeamAdmin, isSiteAdmin, isTeamAuth, isOrgAuth, isAuth } = useAuth(teamId, orgId);
+  const { isTeamAdmin, isSiteAdmin, isTeamAuth, isOrgAuth, isAuth, authInitialized } = useAuth(
+    teamId,
+    orgId
+  );
 
   const PROFILE = PROFILE_PATHS.PROFILE;
+
+  // Wait for auth to be initialized before making routing decisions
+  if (!authInitialized) {
+    return null;
+  }
 
   if (authorization === AUTH_ROLES.USER && !isAuth) {
     return <Navigate to={AUTH_PATHS.SIGN_IN} replace />;

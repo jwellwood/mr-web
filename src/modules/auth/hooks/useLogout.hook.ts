@@ -10,14 +10,18 @@ export const useLogout = () => {
   const [logOutUser] = useMutation(LOG_OUT_USER);
 
   const onLogout = () => {
+    localStorage.removeItem('token');
     dispatch(resetAuth());
-    logOutUser().then(() => {
-      localStorage.removeItem('token');
 
-      apolloClient.resetStore().then(() => {
+    // Clear the Apollo cache and logout on server
+    logOutUser()
+      .then(() => apolloClient.clearStore())
+      .then(() => {
+        dispatch(showAlert({ text: 'You have logged out. Bye!', type: 'success' }));
+      })
+      .catch(() => {
         dispatch(showAlert({ text: 'You have logged out. Bye!', type: 'success' }));
       });
-    });
   };
 
   return { onLogout };

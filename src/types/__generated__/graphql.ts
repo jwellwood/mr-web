@@ -266,7 +266,6 @@ export type Mutation = {
   ADD_RESULT: Result;
   ADD_SEASON: TeamSeason;
   ADD_TEAM: Team;
-  ADD_TEAM_TO_ORG: Organization;
   ADD_TROPHY: Trophy;
   DELETE_AWARD: Award;
   DELETE_COMPETITION: Competition;
@@ -353,12 +352,6 @@ export type MutationAdd_SeasonArgs = {
 export type MutationAdd_TeamArgs = {
   data: AddTeamInput;
   orgId: Scalars['String']['input'];
-};
-
-
-export type MutationAdd_Team_To_OrgArgs = {
-  orgId: Scalars['String']['input'];
-  teamId: Scalars['String']['input'];
 };
 
 
@@ -562,7 +555,6 @@ export type OrgSeason = {
 export type Organization = {
   __typename?: 'Organization';
   _id: Scalars['ID']['output'];
-  adminIds: Array<Scalars['String']['output']>;
   badge: UploadedImage;
   city?: Maybe<Scalars['String']['output']>;
   competitions: Array<Competition>;
@@ -570,7 +562,6 @@ export type Organization = {
   createdAt?: Maybe<Scalars['DateTimeISO']['output']>;
   isVerified: Scalars['Boolean']['output'];
   name: Scalars['String']['output'];
-  teamIds: Array<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   website?: Maybe<Scalars['String']['output']>;
   yearFounded?: Maybe<Scalars['String']['output']>;
@@ -1229,7 +1220,6 @@ export type TSquadStats = {
 export type Team = {
   __typename?: 'Team';
   _id: Scalars['ID']['output'];
-  adminIds: Array<Scalars['ID']['output']>;
   awayShirt?: Maybe<Scalars['String']['output']>;
   awayShorts?: Maybe<Scalars['String']['output']>;
   awaySocks?: Maybe<Scalars['String']['output']>;

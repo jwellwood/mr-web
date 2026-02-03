@@ -13,11 +13,14 @@ const AppRoutes = lazy(() => import('./routes/Routes'));
 
 function AppRouter() {
   const dispatch = useDispatch();
-  const { data, loading } = useQuery(FETCH_USER);
+  const token = localStorage.getItem('token');
+  const { data, loading } = useQuery(FETCH_USER, {
+    skip: !token,
+  });
   const { isAuth } = useAuth();
 
   useEffect(() => {
-    if (data?.user && !loading) {
+    if (data?.user && !loading && token) {
       dispatch(
         setAuth({
           roles: data.user?.roles as TAuthRoles[],
@@ -26,10 +29,10 @@ function AppRouter() {
           username: data.user.username,
         })
       );
-    } else {
+    } else if (!loading) {
       dispatch(resetAuth());
     }
-  }, [data, dispatch, loading]);
+  }, [data, dispatch, loading, token]);
 
   return (
     <BrowserRouter>

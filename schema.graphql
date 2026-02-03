@@ -268,7 +268,6 @@ type Mutation {
   EDIT_ORGANIZATION(data: UpdateOrganizationInput!, orgId: String!): Organization!
   EDIT_ORG_BADGE(data: EditOrgBadgeInput!, orgId: String!): Organization!
   DELETE_ORGANIZATION(orgId: String!): Organization!
-  ADD_TEAM_TO_ORG(teamId: String!, orgId: String!): Organization!
   ADD_MATCH(data: TAddMatchInput!): Match!
   EDIT_MATCH(data: TAddMatchInput!, matchId: String!): Match!
   DELETE_MATCH(matchId: String!, teamId: String!): Match!
@@ -294,8 +293,6 @@ type Organization {
   country: String
   yearFounded: String
   competitions: [Competition!]!
-  adminIds: [String!]!
-  teamIds: [String!]!
   createdAt: DateTimeISO
   updatedAt: DateTimeISO
 }
@@ -604,7 +601,6 @@ type Team {
   kitsBackground: String
   teamRoles: [TeamRole!]!
   seasonIds: [ID!]!
-  adminIds: [ID!]!
   orgId: Organization!
 }
 
