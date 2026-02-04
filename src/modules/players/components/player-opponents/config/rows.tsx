@@ -1,9 +1,10 @@
-import { CustomTypography, ImageAvatar, NoDataText } from '../../../../../components';
+import { CustomTypography, ImageAvatar } from '../../../../../components';
 import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { PresentationModal } from '../../../../../components/modals';
 import { IMAGE_TYPE } from '../../../../../constants';
 import { getAvg } from '../../../../../utils/helpers';
+import PlayerMatchesByOpponent from '../../../containers/PlayerMatchesByOpponent';
 import { T_FETCH_PLAYER_OPPONENT_STATS } from '../../../types';
 
 export const rows = (stats?: T_FETCH_PLAYER_OPPONENT_STATS, loading?: boolean) => {
@@ -12,8 +13,9 @@ export const rows = (stats?: T_FETCH_PLAYER_OPPONENT_STATS, loading?: boolean) =
   const statsToDisplay = loading || !dataStats?.length ? arr : dataStats;
 
   return statsToDisplay?.map(item => {
-    const { opponent, opponentBadge, matches, goals, assists, conceded } = item || {
+    const { opponent, opponentId, opponentBadge, matches, goals, assists, conceded } = item || {
       opponent: '',
+      opponentId: '',
       opponentBadge: { url: '' },
       matches: 0,
       goals: 0,
@@ -41,15 +43,14 @@ export const rows = (stats?: T_FETCH_PLAYER_OPPONENT_STATS, loading?: boolean) =
               <CustomSkeleton width="100px" />
             ) : (
               <PresentationModal
-                title="Matches"
-                fullScreen
+                title={`Matches vs ${opponent}`}
                 buttonElement={
                   <CustomTypography size="xs" color="data" bold>
                     {opponent}
                   </CustomTypography>
                 }
               >
-                <NoDataText>Feature coming soon!</NoDataText>
+                <PlayerMatchesByOpponent opponentId={opponentId} />
               </PresentationModal>
             )}
           </div>

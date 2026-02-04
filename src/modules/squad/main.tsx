@@ -10,6 +10,7 @@ const SquadSingleSeasonRecords = lazy(() => import('./containers/SquadSingleSeas
 const SquadMostGoalsInMatch = lazy(() => import('./containers/SquadMostGoalsInMatch'));
 const SquadMostAssistsInMatch = lazy(() => import('./containers/SquadMostAssistsInMatch'));
 const PastPlayers = lazy(() => import('./containers/PastPlayers'));
+const SquadStreaksRecords = lazy(() => import('./containers/SquadStreaks'));
 
 export default function SquadTabs() {
   const tabs: ITab[] = [
@@ -22,6 +23,7 @@ export default function SquadTabs() {
         <>
           <SquadRecords />
           <SquadSingleSeasonRecords />
+          <SquadStreaksRecords />
           <SquadMostGoalsInMatch />
           <SquadMostAssistsInMatch />
         </>

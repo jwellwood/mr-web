@@ -7,7 +7,7 @@ export const columns = [
   {
     id: 'value',
     label: <></>,
-    width: 40,
+    width: 50,
   },
   {
     id: 'names',

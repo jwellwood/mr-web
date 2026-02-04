@@ -6,3 +6,4 @@ export { Fetch_Squad_StreaksDocument as FETCH_SQUAD_STREAKS } from './FETCH_SQUA
 export { Fetch_Squad_Record_Goals_In_MatchDocument as FETCH_SQUAD_RECORD_GOALS_IN_MATCH } from './FETCH_SQUAD_RECORD_GOALS_IN_MATCH.generated';
 export { Fetch_Squad_Record_Assists_In_MatchDocument as FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH } from './FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH.generated';
 export { Fetch_Squad_Single_Season_RecordsDocument as FETCH_SQUAD_SINGLE_SEASON_RECORDS } from './FETCH_SQUAD_SINGLE_SEASON_RECORDS.generated';
+export { Fetch_Top_Player_StreaksDocument as FETCH_TOP_PLAYER_STREAKS } from './FETCH_TOP_PLAYER_STREAKS.generated';

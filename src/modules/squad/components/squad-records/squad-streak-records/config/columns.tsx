@@ -1,20 +1,20 @@
 export const columns = [
   {
     id: 'label',
-    label: <></>,
+    label: '',
     width: 90,
   },
   {
     id: 'value',
-    label: <></>,
+    label: '',
     width: 50,
   },
   {
-    id: 'names',
+    id: 'players',
     label: <></>,
   },
   {
-    id: 'seasons',
+    id: 'more',
     label: <></>,
     width: 50,
   },

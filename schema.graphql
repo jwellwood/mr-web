@@ -339,6 +339,11 @@ type Player {
   seasonIds: [TeamSeason!]!
 }
 
+type PlayerInfo {
+  playerId: String!
+  playerName: String!
+}
+
 type PlayerInMatch {
   _id: ID!
   playerId: Player!
@@ -357,6 +362,15 @@ type PlayerInMatch {
   cleanSheet: Boolean!
   redCard: Boolean!
   yellowCards: Float!
+}
+
+type PlayerMatchesByOpponent {
+  _id: String!
+  teamGoals: Float!
+  opponentGoals: Float!
+  date: String!
+  opponent: String!
+  isHome: Boolean!
 }
 
 type PlayerMatchesWithRecords {
@@ -439,6 +453,7 @@ type Query {
   PLAYER_STATS(competitionId: String!, seasonId: String!, playerId: String!): PlayerStats!
   PLAYER_STREAKS(teamId: String!, playerId: String!): PlayerStreaks!
   PLAYER_OPPONENT_STATS(playerId: String!): [PlayerOpponentStats!]!
+  PLAYER_MATCHES_BY_OPPONENT(opponentId: String!, playerId: String!): [PlayerMatchesByOpponent!]!
   PLAYER_MATCH_RECORDS(playerId: String!, teamId: String!): PlayerMatchRecords!
   PLAYER_MATCHES_WITH_RECORD_GOALS(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
   PLAYER_MATCHES_WITH_RECORD_COMBINED(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
@@ -464,6 +479,8 @@ type Query {
   SQUAD_STREAKS(teamId: String!): [AllPlayerStreaks!]!
   SQUAD_BY_SEASON(seasonId: String!, teamId: String!): [Player!]!
   SQUAD_SINGLE_SEASON_RECORDS(teamId: String!): TSquadSingleSeasonRecords!
+  SQUAD_STREAK_RECORDS(teamId: String!): SquadStreakRecords!
+  TOP_PLAYER_STREAKS(sortBy: String!, teamId: String!): [TopPlayerStreaks!]!
   ORGANIZATION(orgId: String!): Organization!
   USER_ORGANIZATIONS: [Organization!]!
   TEAMS_BY_ORG(orgId: String!): [Team!]!
@@ -556,10 +573,22 @@ type SquadRecordStats {
   mvp: [TopStatNames!]
 }
 
+type SquadStreakRecords {
+  played: StreakRecord!
+  goals: StreakRecord!
+  assists: StreakRecord!
+  combined: StreakRecord!
+}
+
 type Streak {
   length: Float
   startDate: String
   endDate: String
+}
+
+type StreakRecord {
+  value: Float!
+  players: [PlayerInfo!]!
 }
 
 input TAddMatchInput {
@@ -670,6 +699,15 @@ type TMatchStats {
   draws: Float
   defeats: Float
   difference: Float
+}
+
+type TopPlayerStreaks {
+  playerId: String!
+  playerName: String!
+  played: Float!
+  goals: Float!
+  assists: Float!
+  combined: Float!
 }
 
 type TopStatName {

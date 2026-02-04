@@ -34,7 +34,7 @@ export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks'], loading?: bool
       ...getRowData('assistStreak', 'currentAssistStreak'),
     },
     {
-      label: 'Contributions',
+      label: 'Combined',
       ...getRowData('contributionStreak', 'currentContributionStreak'),
     },
   ];

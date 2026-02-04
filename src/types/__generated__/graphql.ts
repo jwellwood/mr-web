@@ -621,11 +621,27 @@ export type PlayerInMatch = {
   yellowCards: Scalars['Float']['output'];
 };
 
+export type PlayerInfo = {
+  __typename?: 'PlayerInfo';
+  playerId: Scalars['String']['output'];
+  playerName: Scalars['String']['output'];
+};
+
 export type PlayerMatchRecords = {
   __typename?: 'PlayerMatchRecords';
   maxAssists: Scalars['Float']['output'];
   maxCombined: Scalars['Float']['output'];
   maxGoals: Scalars['Float']['output'];
+};
+
+export type PlayerMatchesByOpponent = {
+  __typename?: 'PlayerMatchesByOpponent';
+  _id: Scalars['String']['output'];
+  date: Scalars['String']['output'];
+  isHome: Scalars['Boolean']['output'];
+  opponent: Scalars['String']['output'];
+  opponentGoals: Scalars['Float']['output'];
+  teamGoals: Scalars['Float']['output'];
 };
 
 export type PlayerMatchesWithRecords = {
@@ -726,6 +742,7 @@ export type Query = {
   ORG_SEASONS: Array<OrgSeason>;
   PAST_PLAYERS: Array<PastPlayer>;
   PLAYER_BY_ID: Player;
+  PLAYER_MATCHES_BY_OPPONENT: Array<PlayerMatchesByOpponent>;
   PLAYER_MATCHES_WITH_RECORD_ASSISTS: Array<PlayerMatchesWithRecords>;
   PLAYER_MATCHES_WITH_RECORD_COMBINED: Array<PlayerMatchesWithRecords>;
   PLAYER_MATCHES_WITH_RECORD_GOALS: Array<PlayerMatchesWithRecords>;
@@ -745,8 +762,10 @@ export type Query = {
   SQUAD_SINGLE_SEASON_RECORDS: TSquadSingleSeasonRecords;
   SQUAD_STATS: Array<TSquadStats>;
   SQUAD_STREAKS: Array<AllPlayerStreaks>;
+  SQUAD_STREAK_RECORDS: SquadStreakRecords;
   TEAMS_BY_ORG: Array<Team>;
   TEAM_BY_SEARCH: Array<Team>;
+  TOP_PLAYER_STREAKS: Array<TopPlayerStreaks>;
   USER_ORGANIZATIONS: Array<Organization>;
   USER_TEAMS: Array<Team>;
 };
@@ -881,6 +900,12 @@ export type QueryPlayer_By_IdArgs = {
 };
 
 
+export type QueryPlayer_Matches_By_OpponentArgs = {
+  opponentId: Scalars['String']['input'];
+  playerId: Scalars['String']['input'];
+};
+
+
 export type QueryPlayer_Matches_With_Record_AssistsArgs = {
   playerId: Scalars['String']['input'];
   record: Scalars['Float']['input'];
@@ -991,6 +1016,11 @@ export type QuerySquad_StreaksArgs = {
 };
 
 
+export type QuerySquad_Streak_RecordsArgs = {
+  teamId: Scalars['String']['input'];
+};
+
+
 export type QueryTeams_By_OrgArgs = {
   orgId: Scalars['String']['input'];
 };
@@ -998,6 +1028,12 @@ export type QueryTeams_By_OrgArgs = {
 
 export type QueryTeam_By_SearchArgs = {
   filter: Scalars['String']['input'];
+};
+
+
+export type QueryTop_Player_StreaksArgs = {
+  sortBy: Scalars['String']['input'];
+  teamId: Scalars['String']['input'];
 };
 
 export type RegisterUserInput = {
@@ -1082,11 +1118,25 @@ export type SquadRecordStats = {
   mvp?: Maybe<Array<TopStatNames>>;
 };
 
+export type SquadStreakRecords = {
+  __typename?: 'SquadStreakRecords';
+  assists: StreakRecord;
+  combined: StreakRecord;
+  goals: StreakRecord;
+  played: StreakRecord;
+};
+
 export type Streak = {
   __typename?: 'Streak';
   endDate?: Maybe<Scalars['String']['output']>;
   length?: Maybe<Scalars['Float']['output']>;
   startDate?: Maybe<Scalars['String']['output']>;
+};
+
+export type StreakRecord = {
+  __typename?: 'StreakRecord';
+  players: Array<PlayerInfo>;
+  value: Scalars['Float']['output'];
 };
 
 export type TAddMatchInput = {
@@ -1266,6 +1316,16 @@ export type TeamSeason = {
   totalFinalPositions?: Maybe<Scalars['Float']['output']>;
   yearEnded: Scalars['String']['output'];
   yearStarted: Scalars['String']['output'];
+};
+
+export type TopPlayerStreaks = {
+  __typename?: 'TopPlayerStreaks';
+  assists: Scalars['Float']['output'];
+  combined: Scalars['Float']['output'];
+  goals: Scalars['Float']['output'];
+  played: Scalars['Float']['output'];
+  playerId: Scalars['String']['output'];
+  playerName: Scalars['String']['output'];
 };
 
 export type TopStatName = {

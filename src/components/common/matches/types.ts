@@ -11,10 +11,10 @@ export interface IMatchesAveragesStats {
 export interface IMatchesListMatch {
   _id: string;
   date: string;
-  competition: string;
+  competition?: string;
   teamGoals: number;
   opponentGoals: number;
-  opponentName: string;
+  opponentName?: string;
   isHome: boolean;
   isForfeit?: boolean;
   opponentBadge?: string;

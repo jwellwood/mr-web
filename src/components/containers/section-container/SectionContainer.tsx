@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Box, Fade, Paper } from '@mui/material';
+import { Box, Fade, Paper, Stack } from '@mui/material';
 
 import { CustomTypography } from '../../typography';
 import { theme } from '../../../theme';
@@ -7,6 +7,7 @@ import { theme } from '../../../theme';
 interface Props {
   title?: string | ReactNode;
   subtitle?: string | ReactNode;
+  secondaryAction?: ReactNode;
   children: React.ReactNode;
   type?: string;
 }
@@ -15,7 +16,13 @@ const specialBackground = `linear-gradient(315deg,
 ${theme.palette.warning.light} 0%,
 ${theme.palette.secondary.dark} 12%, ${theme.palette.dark.main} 100%)`;
 
-export default function SectionContainer({ title, subtitle, children, type }: Props) {
+export default function SectionContainer({
+  title,
+  subtitle,
+  secondaryAction,
+  children,
+  type,
+}: Props) {
   const { palette, spacing } = theme;
 
   const border = () => {
@@ -50,11 +57,15 @@ export default function SectionContainer({ title, subtitle, children, type }: Pr
               background: palette.secondary.main,
             }}
           >
-            <CustomTypography color="data" size="sm" bold>
-              {title}
-            </CustomTypography>
+            <Stack direction="row" justifyContent="space-between" alignItems="center">
+              <CustomTypography color="data" size="sm" bold>
+                {title}
+              </CustomTypography>
+              {secondaryAction ? <div>{secondaryAction}</div> : null}
+            </Stack>
           </div>
         )}
+
         {subtitle && (
           <div
             style={{
