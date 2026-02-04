@@ -27,6 +27,9 @@ export default function CustomTableHead<
         {columns.map(headCell => {
           const renderSort = sortBy === headCell.id && sortBy !== 'position';
 
+          const hasHeaderLabel = columns.some(
+            column => typeof column.label === 'string' && column.label !== ''
+          );
           const stringCell = () =>
             typeof headCell.label === 'string' && headCell.label !== '' ? (
               <CustomTypography bold color={renderSort ? 'secondary' : 'label'} size="xs">
@@ -45,6 +48,7 @@ export default function CustomTableHead<
                 minWidth: headCell.width,
                 lineHeight: '0',
                 background: renderSort ? theme.palette.primary.main : theme.palette.secondary.dark,
+                borderBottom: hasHeaderLabel ? '1px solid white' : 'none',
               }}
               sortDirection={renderSort ? 'desc' : false}
             >

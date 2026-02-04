@@ -14,7 +14,7 @@ interface Props {
 export default function SquadOverallRecordsView({ data, loading, error }: Props) {
   const renderContent = () => (
     <SectionContainer title="Overall Records">
-      {data && !data.stats.apps ? (
+      {data?.stats && !data.stats.apps?.length ? (
         <NoDataText>No records yet</NoDataText>
       ) : (
         <CustomTable

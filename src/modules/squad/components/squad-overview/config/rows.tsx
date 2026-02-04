@@ -5,11 +5,11 @@ import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { POSITIONS } from '../../../../../constants';
 import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../../types';
 
-export const rows = (data?: FETCH_SQUAD_LIST_BY_SEASON_QUERY, loading?: boolean) => {
+export const rows = (data?: FETCH_SQUAD_LIST_BY_SEASON_QUERY['players'], loading?: boolean) => {
   const arr = new Array(15).fill({});
-  const mappedPlayers = loading || !data?.players.length ? arr : data?.players;
+  const mappedPlayers = loading ? arr : data;
 
-  return mappedPlayers.map(player => {
+  return mappedPlayers?.map(player => {
     const { _id, number, position, nationality, image, name, apps, goals, assists } = player || {};
     return {
       number: number || <StatSkeleton />,

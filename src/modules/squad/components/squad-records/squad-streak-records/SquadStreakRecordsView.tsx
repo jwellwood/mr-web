@@ -13,7 +13,7 @@ interface Props {
 
 export default function SquadStreakRecordsView({ data, loading, error }: Props) {
   const renderContent = () => {
-    return data && !data.streaks ? (
+    return data && !data.streaks.played.value ? (
       <NoDataText>No records yet</NoDataText>
     ) : (
       <CustomTable

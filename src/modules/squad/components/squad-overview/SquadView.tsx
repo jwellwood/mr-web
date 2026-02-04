@@ -14,12 +14,12 @@ interface Props {
 
 export default function SquadView({ error, data, loading, seasonReady }: Props) {
   const renderData = () => {
-    return (seasonReady && !data && !loading) || (!loading && data?.players.length === 0) ? (
+    return !loading && seasonReady && (!data || data.players.length === 0) ? (
       <NoDataText>No players yet</NoDataText>
     ) : (
       <CustomTable
         columns={columns}
-        rows={rows(data, loading) || []}
+        rows={rows(data?.players, loading) ?? []}
         isSortable
         sortByString="position"
         cellIndexStyles={styles}

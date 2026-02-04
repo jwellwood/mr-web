@@ -20,7 +20,7 @@ export default function SquadTopStreaksView({ data, loading, error, streakType }
       ) : (
         <CustomTable
           columns={columns}
-          rows={rows(data?.streaks ?? [], streakType, loading)}
+          rows={rows(streakType, data?.streaks, loading)}
           isSortable={false}
           cellIndexStyles={styles}
         />
