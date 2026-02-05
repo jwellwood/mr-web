@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApolloError } from '@apollo/client';
 
 import { Spinner } from '../../../../components/loaders';
-import FormModal from '../../../../components/modals/FormModal';
+import { FormModal } from '../../../../components';
 import { getGoalsOptions } from '../../helpers';
 import { AppDispatch, getTempMatch, getTempPlayers, setTmpPlayers } from '../../../../store';
 import { initPlayerInMatch } from '../add-match-players/state';

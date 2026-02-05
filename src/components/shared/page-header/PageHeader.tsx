@@ -4,7 +4,7 @@ import React, { ReactElement } from 'react';
 import { BackButton } from '../../buttons';
 import { CustomTypography } from '../../typography';
 import { theme } from '../../../theme';
-import EditLinksModal from '../../modals/EditLinksModal';
+import { EditLinksModal } from '../../modals';
 import { IListItem } from '../../lists/types';
 import NavMenu from '../../navigation/nav-menu/NavMenu';
 import { useAuth } from '../../../hooks';

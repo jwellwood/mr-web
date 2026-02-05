@@ -5,12 +5,12 @@ export type TFilters = {
   competitions: string;
 };
 
-type FiltersContextType = {
+type PlayerStatsFiltersContextType = {
   filters: TFilters;
   setFilters: React.Dispatch<React.SetStateAction<TFilters>>;
 };
 
-export const StatsFiltersContext = createContext<FiltersContextType | undefined>({
+export const PlayerStatsFiltersContext = createContext<PlayerStatsFiltersContextType | undefined>({
   filters: { seasons: 'all', competitions: 'all' },
   setFilters: () => {},
 });

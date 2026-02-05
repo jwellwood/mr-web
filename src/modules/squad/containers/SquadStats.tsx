@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_SQUAD_STATS } from '../graphql';
 import { useCustomParams } from '../../../hooks';
-import { FiltersContext, TFilters } from '../context/FiltersContext';
+import { SquadStatsFiltersContext, TFilters } from '../context/SquadStatsFiltersContext';
 import StatsView from '../components/squad-stats/StatsView';
 
 export default function SquadStats() {
@@ -22,8 +22,8 @@ export default function SquadStats() {
   });
 
   return (
-    <FiltersContext.Provider value={{ filters, setFilters }}>
+    <SquadStatsFiltersContext.Provider value={{ filters, setFilters }}>
       <StatsView data={data} loading={loading} error={error} filters={filters} />
-    </FiltersContext.Provider>
+    </SquadStatsFiltersContext.Provider>
   );
 }

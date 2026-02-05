@@ -1,6 +1,6 @@
 import { Box, Chip, Stack } from '@mui/material';
 
-import { useFilters } from '../../context';
+import { usePlayerStatsFilters } from '../../context';
 import type { ISelectOptions } from '../../../../components';
 import AppIcon from '../../../../components/icons/AppIcon';
 import { CustomTypography } from '../../../../components';
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function StatsFiltersDisplay({ seasonOptions, competitionOptions }: Props) {
-  const { filters } = useFilters();
+  const { filters } = usePlayerStatsFilters();
   const { seasons, competitions } = filters;
   const selectedComp = competitionOptions.find(comp => comp.value === competitions);
   const selectedSeason = seasonOptions.find(season => season.value === seasons);

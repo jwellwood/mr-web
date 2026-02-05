@@ -14,7 +14,6 @@ export const styles: ICellStyleByIndex[] = [
     index: 1,
     border: STANDARD,
   },
-  { index: 3, border: STANDARD, textColor: 'label' },
-  { index: 5, border: STANDARD, textColor: 'label' },
-  { index: 7, border: STANDARD, textColor: 'label' },
+  { index: 4, border: STANDARD },
+  { index: 7, border: STANDARD },
 ] as const;

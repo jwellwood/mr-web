@@ -1,10 +1,10 @@
 import { useStatsFilters } from '../../../../hooks';
-import { TFilters, useFilters } from '../../context';
+import { TFilters, usePlayerStatsFilters } from '../../context';
 import StatsFiltersForm from './StatsFiltersForm';
 
 export default function StatsFilters() {
   const { seasonOptions, competitionOptions } = useStatsFilters();
-  const { setFilters } = useFilters();
+  const { setFilters } = usePlayerStatsFilters();
 
   const onSubmit = (values: TFilters) => setFilters(values);
 

@@ -657,12 +657,17 @@ export type PlayerOpponentStats = {
   __typename?: 'PlayerOpponentStats';
   assists: Scalars['Float']['output'];
   conceded: Scalars['Float']['output'];
+  draws: Scalars['Float']['output'];
   goals: Scalars['Float']['output'];
+  goalsAgainst: Scalars['Float']['output'];
+  goalsFor: Scalars['Float']['output'];
+  losses: Scalars['Float']['output'];
   matches: Scalars['Float']['output'];
   opponent: Scalars['String']['output'];
   opponentBadge?: Maybe<Scalars['String']['output']>;
   opponentId: Scalars['String']['output'];
   opponentName: Scalars['String']['output'];
+  wins: Scalars['Float']['output'];
 };
 
 export type PlayerStats = {
@@ -935,6 +940,7 @@ export type QueryPlayer_Match_RecordsArgs = {
 
 export type QueryPlayer_Opponent_StatsArgs = {
   playerId: Scalars['String']['input'];
+  showAll: Scalars['Boolean']['input'];
 };
 
 

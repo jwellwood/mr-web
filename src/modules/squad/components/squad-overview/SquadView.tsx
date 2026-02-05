@@ -9,12 +9,11 @@ interface Props {
   error?: ApolloError;
   data?: FETCH_SQUAD_LIST_BY_SEASON_QUERY;
   loading: boolean;
-  seasonReady: boolean;
 }
 
-export default function SquadView({ error, data, loading, seasonReady }: Props) {
+export default function SquadView({ error, data, loading }: Props) {
   const renderData = () => {
-    return !loading && seasonReady && (!data || data.players.length === 0) ? (
+    return data && data.players.length === 0 ? (
       <NoDataText>No players yet</NoDataText>
     ) : (
       <CustomTable

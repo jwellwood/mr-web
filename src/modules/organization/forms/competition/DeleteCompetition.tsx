@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/client';
 import { DELETE_COMPETITION, FETCH_COMPETITIONS } from '../../graphql';
 import { useCustomParams } from '../../../../hooks';
 import { showAlert } from '../../../../store';
-import DeleteModal from '../../../../components/modals/DeleteModal';
+import { DeleteModal } from '../../../../components';
 
 export default function DeleteCompetition() {
   const { orgId, competitionId } = useCustomParams();

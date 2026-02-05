@@ -13,3 +13,4 @@ export * from './common';
 export * from './charts';
 export * from './inputs';
 export * from './forms';
+export * from './modals';

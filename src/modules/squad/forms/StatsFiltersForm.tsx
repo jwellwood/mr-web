@@ -3,13 +3,13 @@ import { useForm } from 'react-hook-form';
 import {
   CustomButton,
   FormContainer,
+  FormModal,
   ControlledSelectInput,
   ControlledSwitchInput,
+  type ISelectOptions,
 } from '../../../components';
-import FormModal from '../../../components/modals/FormModal';
-import type { ISelectOptions } from '../../../components';
 import StatsFiltersDisplay from './StatsFiltersDisplay';
-import { TFilters } from '../context/FiltersContext';
+import { TFilters } from '../context/SquadStatsFiltersContext';
 
 interface Props {
   onSubmit: (values: { seasons: string; competitions: string }) => void;

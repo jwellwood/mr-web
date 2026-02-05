@@ -6,12 +6,12 @@ export type TFilters = {
   showAverages?: boolean;
 };
 
-type FiltersContextType = {
+type SquadStatsFiltersContextType = {
   filters: TFilters;
   setFilters: React.Dispatch<React.SetStateAction<TFilters>>;
 };
 
-export const FiltersContext = createContext<FiltersContextType | undefined>({
+export const SquadStatsFiltersContext = createContext<SquadStatsFiltersContextType | undefined>({
   filters: { seasons: 'all', competitions: 'all', showAverages: false },
   setFilters: () => {},
 });

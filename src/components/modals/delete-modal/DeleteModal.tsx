@@ -7,11 +7,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 
-import AppIcon from '../icons/AppIcon';
-import { Spinner } from '../loaders';
-import { CustomTypography } from '../typography';
-import { MutationError } from '../errors';
-import { SectionContainer } from '../containers';
+import AppIcon from '../../icons/AppIcon';
+import { Spinner } from '../../loaders';
+import { CustomTypography } from '../../typography';
+import { MutationError } from '../../errors';
+import { SectionContainer } from '../../containers';
 
 interface Props {
   title: string;

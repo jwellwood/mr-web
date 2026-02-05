@@ -5,7 +5,7 @@ import { DataError, SectionContainer, NoDataText } from '../../../../components'
 import CustomTable from '../../../../components/tables/CustomTable';
 import PlayersByNumbers from './PlayersByNumbers';
 import StatFilters from '../../forms/StatsFilters';
-import { TFilters } from '../../context/FiltersContext';
+import { TFilters } from '../../context/SquadStatsFiltersContext';
 import { FETCH_SQUAD_STATS_QUERY } from '../../types';
 import { columns, columns_averages, rows, rows_averages, styles, styles_averages } from './config';
 

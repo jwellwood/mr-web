@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
-import { CustomTypography } from '../typography';
+import { CustomTypography } from '../../typography';
 
 interface Props {
   title?: string;

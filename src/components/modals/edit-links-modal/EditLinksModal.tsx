@@ -4,18 +4,19 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import { CustomButton } from '../buttons';
-import { SectionContainer } from '../containers';
-import LinksList from '../lists/links-list/LinksList';
-import { theme } from '../../theme';
-import { IListItem } from '../lists/types';
+
+import { CustomButton } from '../../buttons';
+import { SectionContainer } from '../../containers';
+import LinksList from '../../lists/links-list/LinksList';
+import { theme } from '../../../theme';
+import { IListItem } from '../../lists/types';
 
 interface Props {
   data: IListItem[];
   title?: string | ReactNode;
 }
 
-const EditLinksModal: React.FC<Props> = ({ data, title }) => {
+export default function EditLinksModal({ data, title }: Props) {
   const addLinks = data.filter(item => item.type === 'add');
   const editLinks = data.filter(item => item.type === 'edit');
   const {
@@ -72,6 +73,4 @@ const EditLinksModal: React.FC<Props> = ({ data, title }) => {
       </Dialog>
     </>
   );
-};
-
-export default EditLinksModal;
+}

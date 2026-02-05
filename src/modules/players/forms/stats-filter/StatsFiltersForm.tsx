@@ -2,9 +2,13 @@ import { Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import { TFilters } from '../../context';
-import type { ISelectOptions } from '../../../../components';
-import FormModal from '../../../../components/modals/FormModal';
-import { CustomButton, FormContainer, ControlledSelectInput } from '../../../../components';
+import {
+  CustomButton,
+  FormContainer,
+  ControlledSelectInput,
+  FormModal,
+  type ISelectOptions,
+} from '../../../../components';
 import StatsFiltersDisplay from './StatsFiltersDisplay';
 
 interface Props {

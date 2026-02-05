@@ -6,7 +6,7 @@ import { DELETE_ORG } from '../../graphql';
 import { useCustomParams } from '../../../../hooks';
 import { showAlert } from '../../../../store';
 import { PROFILE_PATHS } from '../../../profile/router/paths';
-import DeleteModal from '../../../../components/modals/DeleteModal';
+import { DeleteModal } from '../../../../components';
 
 export default function DeleteOrg() {
   const { orgId } = useCustomParams();

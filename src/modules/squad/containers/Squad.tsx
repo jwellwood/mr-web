@@ -17,17 +17,14 @@ export default function Squad() {
     data,
   } = useQuery(FETCH_SQUAD_LIST_BY_SEASON, {
     variables: { teamId: teamId!, seasonId: seasonId! },
-    skip: !seasonId,
+    skip: !seasonReady,
+    fetchPolicy: 'cache-and-network',
+    notifyOnNetworkStatusChange: true,
   });
 
   return (
     <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <SquadView
-        data={data}
-        loading={loading || statsLoading}
-        error={error}
-        seasonReady={seasonReady}
-      />
+      <SquadView data={data} loading={loading || statsLoading} error={error} />
     </RouteGuard>
   );
 }

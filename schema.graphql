@@ -393,6 +393,11 @@ type PlayerOpponentStats {
   opponentName: String!
   opponentBadge: String
   matches: Float!
+  wins: Float!
+  draws: Float!
+  losses: Float!
+  goalsFor: Float!
+  goalsAgainst: Float!
   goals: Float!
   assists: Float!
   conceded: Float!
@@ -452,7 +457,7 @@ type Query {
   PLAYER_BY_ID(playerId: String!): Player!
   PLAYER_STATS(competitionId: String!, seasonId: String!, playerId: String!): PlayerStats!
   PLAYER_STREAKS(teamId: String!, playerId: String!): PlayerStreaks!
-  PLAYER_OPPONENT_STATS(playerId: String!): [PlayerOpponentStats!]!
+  PLAYER_OPPONENT_STATS(showAll: Boolean!, playerId: String!): [PlayerOpponentStats!]!
   PLAYER_MATCHES_BY_OPPONENT(opponentId: String!, playerId: String!): [PlayerMatchesByOpponent!]!
   PLAYER_MATCH_RECORDS(playerId: String!, teamId: String!): PlayerMatchRecords!
   PLAYER_MATCHES_WITH_RECORD_GOALS(record: Float!, playerId: String!, teamId: String!): [PlayerMatchesWithRecords!]!
