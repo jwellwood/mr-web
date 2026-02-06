@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -7,6 +7,7 @@ import { FETCH_USER } from '../modules/profile/graphql';
 import { useAuth } from '../hooks';
 import { resetAuth, setAuth } from '../store';
 import { CustomAlert, ErrorBoundary, BackgroundContainer } from '../components';
+import { Spinner } from '../components/loaders';
 import { TAuthRoles } from '../constants';
 
 const AppRoutes = lazy(() => import('./routes/Routes'));
@@ -38,7 +39,11 @@ function AppRouter() {
     <BrowserRouter>
       <ErrorBoundary>
         <BackgroundContainer>
-          {isAuth !== null && !loading && <AppRoutes />}
+          {isAuth !== null && !loading && (
+            <Suspense fallback={<Spinner />}>
+              <AppRoutes />
+            </Suspense>
+          )}
           <CustomAlert />
         </BackgroundContainer>
       </ErrorBoundary>

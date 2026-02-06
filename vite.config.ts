@@ -31,6 +31,25 @@ export default defineConfig(({ mode }) => {
     base: '/',
     build: {
       sourcemap: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            // Split React and related libraries
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            // Split Apollo Client
+            'apollo-vendor': ['@apollo/client', 'graphql'],
+            // Split Material-UI into smaller chunks
+            'mui-core': ['@mui/material', '@mui/system'],
+            'mui-extras': ['@mui/x-charts', '@mui/x-date-pickers'],
+            // Split form libraries
+            'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+            // Split Redux
+            'redux-vendor': ['@reduxjs/toolkit', 'react-redux'],
+            // Split date utilities
+            'date-vendor': ['date-fns'],
+          },
+        },
+      },
     },
     test: {
       projects: [
