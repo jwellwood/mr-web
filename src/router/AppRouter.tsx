@@ -9,12 +9,13 @@ import { resetAuth, setAuth } from '../store';
 import { CustomAlert, ErrorBoundary, BackgroundContainer } from '../components';
 import { Spinner } from '../components/loaders';
 import { TAuthRoles } from '../constants';
+import { authStorage } from '../utils';
 
 const AppRoutes = lazy(() => import('./routes/Routes'));
 
 function AppRouter() {
   const dispatch = useDispatch();
-  const token = localStorage.getItem('token');
+  const token = authStorage.getToken();
   const { data, loading } = useQuery(FETCH_USER, {
     skip: !token,
   });

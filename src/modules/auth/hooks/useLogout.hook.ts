@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
 import { apolloClient } from '../../../services/graphql/apolloClient';
+import { authStorage } from '../../../utils';
 
 import { LOG_OUT_USER } from '../graphql';
 import { AppDispatch, resetAuth, showAlert } from '../../../store';
@@ -10,7 +11,7 @@ export const useLogout = () => {
   const [logOutUser] = useMutation(LOG_OUT_USER);
 
   const onLogout = () => {
-    localStorage.removeItem('token');
+    authStorage.removeToken();
     dispatch(resetAuth());
 
     // Clear the Apollo cache and logout on server

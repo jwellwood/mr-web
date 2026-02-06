@@ -1,9 +1,24 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+echo "🔍 Running pre-commit checks..."
+
+# Run ESLint and auto-fix issues
+echo "📝 Linting and fixing code..."
+npm run lint-fix
+
+# Stage any auto-fixed files
+git add -u
+
+# Run codegen
+echo "🔧 Running GraphQL codegen..."
 npm run codegen
-# Stage generated files so the commit includes the latest outputs.
+
+# Stage generated files so the commit includes the latest outputs
 git add -A
+
 if [ -n "$(git status --porcelain)" ]; then
-  echo "Note: codegen ran and changes were staged. Commit will include generated files."
+  echo "✅ Codegen ran and changes were staged. Commit will include generated files."
 fi
+
+echo "✅ Pre-commit checks passed!"

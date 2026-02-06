@@ -10,6 +10,7 @@ import { useAuth } from '../../../../hooks';
 import { AUTH_ROLES, TAuthRoles } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import { PROFILE_PATHS } from '../../../profile/router';
+import { authStorage } from '../../../../utils';
 import type { SignInFormData } from './validation';
 import SignInView from './SignInView';
 
@@ -29,7 +30,7 @@ export default function SignInContainer() {
           const { user } = res.data;
           dispatch(showAlert({ text: `Welcome ${user.username}!`, type: 'success' }));
           if (user?.token) {
-            localStorage.setItem('token', user.token);
+            authStorage.setToken(user.token);
           }
           dispatch(
             setAuth({
