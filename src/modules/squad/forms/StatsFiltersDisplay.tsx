@@ -1,9 +1,6 @@
-import { Box, Chip, Stack } from '@mui/material';
-
 import { useSquadStatsFilters } from '../context/useSquadStatsFilters';
 import type { ISelectOptions } from '../../../components';
-import AppIcon from '../../../components/icons/AppIcon';
-import { CustomTypography } from '../../../components';
+import { FilterBox } from '../../../components/filters';
 
 interface Props {
   competitionOptions: ISelectOptions[];
@@ -16,40 +13,23 @@ export default function StatsFiltersDisplay({ seasonOptions, competitionOptions 
   const selectedComp = competitionOptions.find(comp => comp.value === competitions);
   const selectedSeason = seasonOptions.find(season => season.value === seasons);
 
-  const filterDisplay = (label?: ISelectOptions['label'], type?: string, applied?: boolean) => {
-    return (
-      <Chip
-        color={applied ? 'primary' : 'default'}
-        variant={applied ? 'filled' : 'outlined'}
-        label={
-          <CustomTypography color={applied ? 'secondary' : 'white'} bold>
-            {label === 'All' ? `All ${type}` : label}
-          </CustomTypography>
-        }
-      />
-    );
-  };
+  const filterData = [
+    {
+      label:
+        selectedSeason?.value === 'all' ? 'All seasons' : selectedSeason?.label?.toString() || '',
+      applied: selectedSeason?.value !== 'all',
+    },
+    {
+      label:
+        selectedComp?.value === 'all' ? 'All competitions' : selectedComp?.label?.toString() || '',
+      applied: selectedComp?.value !== 'all',
+    },
+  ];
 
   return (
-    <Box>
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-        }}
-      >
-        <AppIcon
-          size="30px"
-          icon={competitions === 'all' && seasons === 'all' ? 'filter' : 'filter-applied'}
-          color={competitions === 'all' && seasons === 'all' ? 'data' : 'primary'}
-        />
-        <Stack direction="row">
-          {filterDisplay(selectedSeason?.label, 'seasons', selectedSeason?.value !== 'all')}
-          {filterDisplay(selectedComp?.label, 'competitions', selectedComp?.value !== 'all')}
-        </Stack>
-      </Stack>
-    </Box>
+    <FilterBox
+      filterData={filterData}
+      applied={selectedSeason?.value !== 'all' || selectedComp?.value !== 'all'}
+    />
   );
 }

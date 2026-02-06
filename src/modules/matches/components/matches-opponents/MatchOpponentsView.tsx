@@ -1,11 +1,11 @@
-import { useState } from 'react';
 import { ApolloError } from '@apollo/client';
+import { useMemo } from 'react';
 
-import { CustomSwitch } from '../../../../components/inputs';
 import { T_FETCH_MATCH_OPPONENTS } from '../../types';
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
 import { columns, rows, styles } from './config';
+import MatchOpponentsFilters from './filters/MatchOpponentsFilters';
 
 interface Props {
   data?: T_FETCH_MATCH_OPPONENTS;
@@ -15,25 +15,14 @@ interface Props {
 }
 
 export default function MatchOpponentsView({ data, loading, error, seasonReady }: Props) {
-  const [showAllTeams, setShowAllTeams] = useState(false);
-
-  const filteredStats = () => {
-    if (showAllTeams) {
-      return data?.stats;
-    }
-    return data?.stats?.filter(team => team.isActive);
-  };
-
-  const toggleSwitch = () => {
-    setShowAllTeams(!showAllTeams);
-  };
+  const tableRows = useMemo(() => rows(loading, data?.stats), [loading, data?.stats]);
 
   const renderContent = () => {
-    return seasonReady && data?.stats && data?.stats.length === 0 ? (
+    return seasonReady && data && data.stats.length === 0 ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
       <CustomTable
-        rows={rows(loading, filteredStats())}
+        rows={tableRows}
         columns={columns}
         isSortable
         sortByString="played"
@@ -43,17 +32,7 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
   };
 
   return (
-    <SectionContainer
-      title={
-        <CustomSwitch
-          checked={showAllTeams}
-          onCheck={toggleSwitch}
-          label={'Show all teams'}
-          placement="start"
-          errors={[]}
-        />
-      }
-    >
+    <SectionContainer title={<MatchOpponentsFilters />}>
       {error ? <DataError error={error} /> : renderContent()}
     </SectionContainer>
   );

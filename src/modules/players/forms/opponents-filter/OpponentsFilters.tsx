@@ -8,15 +8,13 @@ export default function OpponentsFilters() {
 
   const onReset = () => setFilters({ showAllOpponents: false, showAverages: false });
   return (
-    <>
-      <OpponentsFiltersForm
-        onSubmit={onSubmit}
-        onReset={onReset}
-        defaultValues={{
-          showAllOpponents: false,
-          showAverages: false,
-        }}
-      />
-    </>
+    <OpponentsFiltersForm
+      onSubmit={onSubmit}
+      onReset={onReset}
+      defaultValues={{
+        showAllOpponents: false,
+        showAverages: false,
+      }}
+    />
   );
 }

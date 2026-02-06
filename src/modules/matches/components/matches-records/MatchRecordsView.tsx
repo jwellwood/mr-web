@@ -3,6 +3,7 @@ import { ApolloError } from '@apollo/client';
 import { DataError, MatchList, NoDataText, SectionContainer } from '../../../../components';
 import { T_FETCH_MATCHES_RECORDS } from '../../types';
 import { mapMatchRecordsMatchesToMatchesList } from './mappers';
+import MatchesStreaks from '../../containers/MatchesStreaks';
 
 interface Props {
   data?: T_FETCH_MATCHES_RECORDS;
@@ -24,18 +25,23 @@ export default function MatchRecordsView({ data, loading, error }: Props) {
     return (data?.stats && !data?.stats.maxDiff) || (data?.stats && !data?.stats?.minDiff) ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
-      listData.map(item => {
-        return (
-          <SectionContainer key={item.title} title={item.title}>
-            <MatchList
-              matches={mapMatchRecordsMatchesToMatchesList(item.stat || [])}
-              loading={loading}
-              showBadge={false}
-              showComp={false}
-            />
-          </SectionContainer>
-        );
-      })
+      <>
+        {listData.map(item => {
+          return (
+            <SectionContainer key={item.title} title={item.title}>
+              <MatchList
+                matches={mapMatchRecordsMatchesToMatchesList(item.stat || [])}
+                loading={loading}
+                showBadge={false}
+                showComp={false}
+              />
+            </SectionContainer>
+          );
+        })}
+        <SectionContainer title="Streaks">
+          <MatchesStreaks />
+        </SectionContainer>
+      </>
     );
   };
 

@@ -9,3 +9,4 @@ export { Fetch_Matches_By_OpponentDocument as FETCH_MATCHES_BY_OPPONENT } from '
 export { Fetch_Matches_RecordsDocument as FETCH_MATCHES_RECORDS } from './FETCH_MATCHES_RECORDS.generated';
 export { Fetch_Match_OpponentsDocument as FETCH_MATCH_OPPONENTS } from './FETCH_MATCH_OPPONENTS.generated';
 export { Fetch_Players_For_Match_InputDocument as FETCH_PLAYERS_FOR_MATCH_INPUT } from './FETCH_PLAYERS_FOR_MATCH_INPUT.generated';
+export { Fetch_Matches_StreaksDocument as FETCH_MATCHES_STREAK } from './FETCH_MATCHES_STREAKS.generated';

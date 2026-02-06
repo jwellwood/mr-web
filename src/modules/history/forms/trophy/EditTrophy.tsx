@@ -33,8 +33,11 @@ export default function EditTrophy() {
   });
 
   useEffect(() => {
-    setDefaultValues(mapTrophyToForm(data?.trophy, seasonOptions));
-  }, [data, seasonOptions]);
+    if (data?.trophy && seasonOptions.length > 0) {
+      setDefaultValues(mapTrophyToForm(data.trophy, seasonOptions));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data?.trophy, seasonOptions.length]);
 
   const onSubmit = async (formData: TrophyFormData) => {
     try {

@@ -227,6 +227,19 @@ type Match {
   matchPlayers: [PlayerInMatch!]!
 }
 
+type MatchStreak {
+  length: Float
+  startDate: String
+  endDate: String
+}
+
+type MatchStreaks {
+  longestWinStreak: MatchStreak!
+  longestLossStreak: MatchStreak!
+  longestUnbeatenStreak: MatchStreak!
+  longestWinlessStreak: MatchStreak!
+}
+
 type MostInMatch {
   matchId: String!
   date: String!
@@ -492,10 +505,11 @@ type Query {
   MATCHES(seasonId: String!, teamId: String!): [TMatch!]!
   MATCH(matchId: String!): Match!
   MATCHES_BY_OPPONENT(opponentId: String!, teamId: String!): [TMatch!]!
-  MATCHES_STATS(seasonId: String!, teamId: String!): TMatchStats!
-  MATCHES_ALL_TIME_STATS(teamId: String!): TMatchStats!
+  MATCHES_STATS(includeForfeits: Boolean!, competitionId: String!, seasonId: String!, teamId: String!): TMatchStats!
+  MATCHES_ALL_TIME_STATS(includeForfeits: Boolean!, competitionId: String!, teamId: String!): TMatchStats!
   MATCHES_RECORDS(teamId: String!): TMatchRecords!
-  MATCH_OPPONENTS(teamId: String!): [TMatchOpponent!]!
+  MATCH_OPPONENTS(includeForfeits: Boolean!, showAllTeams: Boolean!, teamId: String!): [TMatchOpponent!]!
+  MATCHES_STREAKS(teamId: String!): MatchStreaks!
   FETCH_TROPHIES(teamId: String!): [TrophyResponse!]!
   PLAYER_TROPHIES(playerId: String!): [Trophy!]!
   FETCH_TROPHY(trophyId: String!): TrophyResponse!

@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function MatchAverages({ stats, loading }: Props) {
-  const { total, wins, draws, defeats, teamAvg, oppAvg, difference } = stats || {
+  const { total, wins, draws, defeats, teamAvg, oppAvg } = stats || {
     total: 0,
     wins: 0,
     draws: 0,
@@ -23,6 +23,7 @@ export default function MatchAverages({ stats, loading }: Props) {
     difference: 0,
   };
 
+  const difference = teamAvg - oppAvg;
   const percentageData = [
     {
       label: 'Win %',

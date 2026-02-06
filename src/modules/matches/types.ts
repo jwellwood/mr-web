@@ -11,6 +11,7 @@ import { Fetch_Matches_By_OpponentQuery } from './graphql/FETCH_MATCHES_BY_OPPON
 import { Fetch_Matches_RecordsQuery } from './graphql/FETCH_MATCHES_RECORDS.generated';
 import { Fetch_Match_OpponentsQuery } from './graphql/FETCH_MATCH_OPPONENTS.generated';
 import { Fetch_Players_For_Match_InputQuery } from './graphql/FETCH_PLAYERS_FOR_MATCH_INPUT.generated';
+import { Fetch_Matches_StreaksQuery } from './graphql/FETCH_MATCHES_STREAKS.generated';
 
 export type T_ADD_MATCH = DeepOmitTypename<Add_MatchMutation>;
 export type T_EDIT_MATCH = DeepOmitTypename<Edit_MatchMutation>;
@@ -23,6 +24,7 @@ export type T_FETCH_MATCHES_BY_OPPONENT = DeepOmitTypename<Fetch_Matches_By_Oppo
 export type T_FETCH_MATCHES_RECORDS = DeepOmitTypename<Fetch_Matches_RecordsQuery>;
 export type T_FETCH_MATCH_OPPONENTS = DeepOmitTypename<Fetch_Match_OpponentsQuery>;
 export type T_FETCH_PLAYERS_FOR_MATCH_INPUT = DeepOmitTypename<Fetch_Players_For_Match_InputQuery>;
+export type T_FETCH_MATCHES_STREAK = DeepOmitTypename<Fetch_Matches_StreaksQuery>;
 
 export interface ITempMatch {
   _id: string;

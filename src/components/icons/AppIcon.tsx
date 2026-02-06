@@ -37,7 +37,7 @@ import { HiHome, HiViewGrid } from 'react-icons/hi';
 import { IoMdPodium, IoMdPeople } from 'react-icons/io';
 import { LiaMedalSolid } from 'react-icons/lia';
 import { MdLocationOn } from 'react-icons/md';
-import { BsFilter, BsFillFilterCircleFill } from 'react-icons/bs';
+import { BsFilter } from 'react-icons/bs';
 
 import { RiBarChartHorizontalFill, RiArrowUpDownLine, RiUserStarLine } from 'react-icons/ri';
 import { TfiMenu } from 'react-icons/tfi';
@@ -161,8 +161,6 @@ const AppIcon: React.FC<Props> = ({ icon, size = '1rem', color = theme.palette.p
       return <FaRegFlag size={size} color={iconColor} />;
     case icons.filter:
       return <BsFilter size={size} color={iconColor} />;
-    case icons.filterApplied:
-      return <BsFillFilterCircleFill size={size} color={iconColor} />;
 
     default:
       break;

@@ -244,6 +244,21 @@ export type Match = {
   teamId: Team;
 };
 
+export type MatchStreak = {
+  __typename?: 'MatchStreak';
+  endDate?: Maybe<Scalars['String']['output']>;
+  length?: Maybe<Scalars['Float']['output']>;
+  startDate?: Maybe<Scalars['String']['output']>;
+};
+
+export type MatchStreaks = {
+  __typename?: 'MatchStreaks';
+  longestLossStreak: MatchStreak;
+  longestUnbeatenStreak: MatchStreak;
+  longestWinStreak: MatchStreak;
+  longestWinlessStreak: MatchStreak;
+};
+
 export type MostInMatch = {
   __typename?: 'MostInMatch';
   date: Scalars['String']['output'];
@@ -741,6 +756,7 @@ export type Query = {
   MATCHES_BY_OPPONENT: Array<TMatch>;
   MATCHES_RECORDS: TMatchRecords;
   MATCHES_STATS: TMatchStats;
+  MATCHES_STREAKS: MatchStreaks;
   MATCH_OPPONENTS: Array<TMatchOpponent>;
   ORGANIZATION: Organization;
   ORG_SEASON: OrgSeason;
@@ -854,6 +870,8 @@ export type QueryMatchesArgs = {
 
 
 export type QueryMatches_All_Time_StatsArgs = {
+  competitionId: Scalars['String']['input'];
+  includeForfeits: Scalars['Boolean']['input'];
   teamId: Scalars['String']['input'];
 };
 
@@ -870,12 +888,21 @@ export type QueryMatches_RecordsArgs = {
 
 
 export type QueryMatches_StatsArgs = {
+  competitionId: Scalars['String']['input'];
+  includeForfeits: Scalars['Boolean']['input'];
   seasonId: Scalars['String']['input'];
   teamId: Scalars['String']['input'];
 };
 
 
+export type QueryMatches_StreaksArgs = {
+  teamId: Scalars['String']['input'];
+};
+
+
 export type QueryMatch_OpponentsArgs = {
+  includeForfeits: Scalars['Boolean']['input'];
+  showAllTeams: Scalars['Boolean']['input'];
   teamId: Scalars['String']['input'];
 };
 
