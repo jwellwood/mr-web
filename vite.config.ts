@@ -34,52 +34,20 @@ export default defineConfig(({ mode }) => {
       sourcemap: true,
       rollupOptions: {
         output: {
-          manualChunks: id => {
-            // Core dependencies that rarely change
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
-                return 'react-vendor';
-              }
-              if (id.includes('@apollo/client') || id.includes('graphql')) {
-                return 'apollo-vendor';
-              }
-              if (
-                id.includes('@mui/material') ||
-                id.includes('@mui/system') ||
-                id.includes('@emotion')
-              ) {
-                return 'mui-core';
-              }
-              if (id.includes('@mui/x-')) {
-                return 'mui-extras';
-              }
-              if (
-                id.includes('react-hook-form') ||
-                id.includes('zod') ||
-                id.includes('@hookform')
-              ) {
-                return 'form-vendor';
-              }
-              if (id.includes('redux') || id.includes('react-redux')) {
-                return 'redux-vendor';
-              }
-              if (id.includes('date-fns')) {
-                return 'date-vendor';
-              }
-              if (id.includes('react-icons')) {
-                return 'icons-vendor';
-              }
-              // All other node_modules
-              return 'vendor';
-            }
-
-            // Split your app code by module
-            if (id.includes('src/modules/')) {
-              const moduleName = id.split('src/modules/')[1]?.split('/')[0];
-              if (moduleName) {
-                return `module-${moduleName}`;
-              }
-            }
+          manualChunks: {
+            // Split React and related libraries
+            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            // Split Apollo Client
+            'apollo-vendor': ['@apollo/client', 'graphql'],
+            // Split Material-UI into smaller chunks
+            'mui-core': ['@mui/material', '@mui/system'],
+            'mui-extras': ['@mui/x-charts', '@mui/x-date-pickers'],
+            // Split form libraries
+            'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+            // Split Redux
+            'redux-vendor': ['@reduxjs/toolkit', 'react-redux'],
+            // Split date utilities
+            'date-vendor': ['date-fns'],
           },
         },
       },
