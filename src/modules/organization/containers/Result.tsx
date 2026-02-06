@@ -2,11 +2,10 @@ import { useQuery } from '@apollo/client';
 
 import { FETCH_RESULT } from '../graphql';
 
-import { AUTH_ROLES, LINK_TYPE } from '../../../constants';
+import { LINK_TYPE } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import RouteGuard from '../../../router/RouteGuard';
 import { PAGES } from '../constants';
 import { IListItem } from '../../../components/lists/types';
 import { DataError, NoDataText, PageHeader } from '../../../components';
@@ -37,10 +36,8 @@ export default function Result() {
   const renderContent = () => (loading ? <Spinner /> : renderData);
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-      <PageHeader title={PAGES.RESULT} links={isOrgAuth ? links : undefined}>
-        {error ? <DataError error={error} /> : renderContent()}
-      </PageHeader>
-    </RouteGuard>
+    <PageHeader title={PAGES.RESULT} links={isOrgAuth ? links : undefined}>
+      {error ? <DataError error={error} /> : renderContent()}
+    </PageHeader>
   );
 }

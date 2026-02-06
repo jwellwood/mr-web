@@ -8,8 +8,6 @@ import { EDIT_RESULT, FETCH_LEAGUE_TABLES, FETCH_RESULT, FETCH_RESULTS } from '.
 import { PAGES } from '../../constants';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { PageHeader } from '../../../../components';
 import type { ResultFormData } from './validation';
@@ -95,9 +93,5 @@ export default function EditResult() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-      <PageHeader title={PAGES.EDIT_RESULT}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.EDIT_RESULT}>{renderContent()}</PageHeader>;
 }

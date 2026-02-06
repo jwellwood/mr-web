@@ -7,7 +7,7 @@ import { SIGN_IN_USER } from '../../graphql';
 import { PAGES } from '../../constants';
 import { AppDispatch, showAlert, setAuth } from '../../../../store';
 import { useAuth } from '../../../../hooks';
-import { AUTH_ROLES, TAuthRoles } from '../../../../constants';
+import { TAuthRoles } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import { PROFILE_PATHS } from '../../../profile/router';
 import { authStorage } from '../../../../utils';
@@ -54,7 +54,7 @@ export default function SignInContainer() {
   };
 
   return (
-    <PageContainer title={PAGES.SIGN_IN_PAGE} auth={AUTH_ROLES.NONE}>
+    <PageContainer title={PAGES.SIGN_IN_PAGE}>
       <SignInView
         loading={loading}
         email={email}

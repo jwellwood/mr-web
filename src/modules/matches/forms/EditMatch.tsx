@@ -19,8 +19,6 @@ import {
   setTmpMatch,
   showAlert,
 } from '../../../store';
-import RouteGuard from '../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { DataError, PageHeader } from '../../../components';
 import {
@@ -123,10 +121,8 @@ export default function EditMatch() {
   const hasError = error || editError;
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_MATCH}>
-        {hasError ? <DataError error={error || (editError as ApolloError)} /> : renderContent()}
-      </PageHeader>
-    </RouteGuard>
+    <PageHeader title={PAGES.EDIT_MATCH}>
+      {hasError ? <DataError error={error || (editError as ApolloError)} /> : renderContent()}
+    </PageHeader>
   );
 }

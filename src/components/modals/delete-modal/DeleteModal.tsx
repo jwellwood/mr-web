@@ -61,7 +61,7 @@ export default function DeleteModal({ title, loading, onDelete, disabled, error 
                 </CustomTypography>
               ) : (
                 <Box sx={{ width: 280, height: 56 }}>
-                  <Spinner isSecondary />
+                  <Spinner />
                 </Box>
               )}
             </SectionContainer>

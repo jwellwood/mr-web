@@ -7,7 +7,6 @@ import { EDIT_PROFILE, FETCH_USER } from '../../graphql';
 import { backendToFrontend, frontendToBackend } from './mappers';
 import { PAGES } from '../../constants';
 import { showAlert } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { MutationError, PageContainer } from '../../../../components';
 import { PROFILE_PATHS } from '../../router/paths';
 import type { EditProfileFormData } from './validation';
@@ -47,7 +46,7 @@ export default function EditProfile() {
   };
 
   return (
-    <PageContainer auth={AUTH_ROLES.USER} title={PAGES.EDIT_PROFILE_PAGE}>
+    <PageContainer title={PAGES.EDIT_PROFILE_PAGE}>
       {defaultValues ? (
         <>
           <EditProfileForm

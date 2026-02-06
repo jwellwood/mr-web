@@ -8,8 +8,6 @@ import { FETCH_USER, FETCH_ORGS_BY_USER } from '../../../profile/graphql';
 import { PAGES } from '../../constants';
 import { AppDispatch, showAlert } from '../../../../store';
 import { useNationality } from '../../../../hooks';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { initialOrgDetailsState } from './state';
 import { PageHeader } from '../../../../components';
@@ -57,9 +55,5 @@ export default function AddOrg() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.USER}>
-      <PageHeader title={PAGES.ADD}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.ADD}>{renderContent()}</PageHeader>;
 }

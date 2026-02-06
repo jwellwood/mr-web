@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { useSelector } from 'react-redux';
 
-import { AUTH_ROLES, TAB_TYPES } from '../../constants';
+import { TAB_TYPES } from '../../constants';
 import NavIcon from '../../components/icons/NavIcon';
 import { NAV_ICONS } from '../../components/icons/icons';
 import { CustomTabs, ITab } from '../../components/tabs';
@@ -49,11 +49,7 @@ export default function Team() {
   ];
 
   return (
-    <PageContainer
-      auth={AUTH_ROLES.PUBLIC}
-      title={PAGES.TEAM}
-      links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}
-    >
+    <PageContainer title={PAGES.TEAM} links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}>
       <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
     </PageContainer>
   );

@@ -7,8 +7,6 @@ import { PAGES } from '../../constants';
 import { FETCH_PLAYER, EDIT_PLAYER } from '../../graphql';
 import { useCustomParams, useSeasons, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { mapFormToPlayer, mapPlayerToForm } from '../../helpers/mapPlayerForm';
 import { PageHeader } from '../../../../components';
@@ -85,9 +83,5 @@ export default function EditPlayer() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_PLAYER}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.EDIT_PLAYER}>{renderContent()}</PageHeader>;
 }

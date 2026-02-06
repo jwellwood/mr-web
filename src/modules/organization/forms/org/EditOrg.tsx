@@ -7,8 +7,6 @@ import { FETCH_ORG, EDIT_ORG } from '../../graphql';
 import { PAGES } from '../../constants';
 import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import type { OrganizationFormData } from './validation';
 import { PageHeader } from '../../../../components';
@@ -64,9 +62,5 @@ export default function EditOrg() {
       <Spinner />
     );
   };
-  return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-      <PageHeader title={PAGES.EDIT}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.EDIT}>{renderContent()}</PageHeader>;
 }

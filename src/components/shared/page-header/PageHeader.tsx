@@ -1,5 +1,5 @@
 import { AppBar, Toolbar, Slide, useScrollTrigger } from '@mui/material';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, Suspense } from 'react';
 
 import { BackButton } from '../../buttons';
 import { CustomTypography } from '../../typography';
@@ -8,6 +8,7 @@ import { EditLinksModal } from '../../modals';
 import { IListItem } from '../../lists/types';
 import NavMenu from '../../navigation/nav-menu/NavMenu';
 import { useAuth } from '../../../hooks';
+import { LazyLoader } from '../../loaders';
 
 interface Props {
   title: string;
@@ -47,7 +48,7 @@ export default function PageHeader({ title, children, backButton = true, links }
         </AppBar>
       </HideOnScroll>
       <Toolbar />
-      {children}
+      <Suspense fallback={<LazyLoader />}>{children}</Suspense>
     </>
   );
 }

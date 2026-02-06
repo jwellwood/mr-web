@@ -2,12 +2,10 @@ import { useEffect } from 'react';
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../../graphql';
-import { AUTH_ROLES } from '../../../../constants';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useUpload } from '../../../../hooks';
 import { PAGES } from '../../constants';
-import RouteGuard from '../../../../router/RouteGuard';
 import { removePlayerPhoto, uploadPlayerPhoto } from '../../../../services/images/player-images';
 import { DataError, PageHeader } from '../../../../components';
 
@@ -59,14 +57,12 @@ export default function EditPlayerImage() {
   };
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_PLAYER_PHOTO}>
-        {error || editError ? (
-          <DataError error={(error || editError) as ApolloError} />
-        ) : (
-          renderContent()
-        )}
-      </PageHeader>
-    </RouteGuard>
+    <PageHeader title={PAGES.EDIT_PLAYER_PHOTO}>
+      {error || editError ? (
+        <DataError error={(error || editError) as ApolloError} />
+      ) : (
+        renderContent()
+      )}
+    </PageHeader>
   );
 }

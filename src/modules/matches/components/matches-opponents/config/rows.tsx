@@ -1,8 +1,10 @@
+import { lazy } from 'react';
 import { OpponentModal } from '../../../../../components';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { getAvg, getPercentage } from '../../../../../utils/helpers';
-import HeadToHead from '../../../containers/HeadToHead';
 import { T_FETCH_MATCH_OPPONENTS } from '../../../types';
+
+const HeadToHead = lazy(() => import('../../../containers/HeadToHead'));
 
 export const rows = (loading: boolean, data?: T_FETCH_MATCH_OPPONENTS['stats']) => {
   const arr = new Array(15).fill({});

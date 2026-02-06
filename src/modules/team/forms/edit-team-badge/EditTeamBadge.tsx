@@ -3,7 +3,6 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import { FETCH_TEAM, EDIT_TEAM_BADGE } from '../../graphql';
 import { PAGES } from '../../constants';
-import { AUTH_ROLES } from '../../../../constants';
 import { removeTeamBadge, uploadTeamBadge } from '../../../../services/images';
 import { useUpload, useCustomParams } from '../../../../hooks';
 import { PageContainer } from '../../../../components';
@@ -41,7 +40,7 @@ export default function EditTeamBadge() {
   const isLoading = loading || loadingTeam || editLoading;
 
   return (
-    <PageContainer auth={AUTH_ROLES.TEAM_ADMIN} title={PAGES.EDIT_BADGE}>
+    <PageContainer title={PAGES.EDIT_BADGE}>
       <EditTeamBadgeView
         onSubmit={onSubmit}
         loading={isLoading}

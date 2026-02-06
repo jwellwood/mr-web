@@ -7,8 +7,6 @@ import { FETCH_TROPHY, EDIT_TROPHY, FETCH_TROPHIES } from '../../graphql';
 import { PAGES } from '../../constants';
 import { useCustomParams, useSeasons } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { PageHeader } from '../../../../components';
 import type { TrophyFormData } from './validation';
@@ -74,9 +72,5 @@ export default function EditTrophy() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_TROPHY}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.EDIT_TROPHY}>{renderContent()}</PageHeader>;
 }

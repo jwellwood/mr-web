@@ -7,8 +7,6 @@ import { EDIT_AWARD, FETCH_AWARD, FETCH_AWARDS } from '../../graphql';
 import { PAGES } from '../../constants';
 import { useCustomParams, useSeasons } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { useMatchPlayersInput } from '../../../matches/hooks/useMatchPlayersInput';
 import { PageHeader, type ISelectOptions } from '../../../../components';
@@ -91,9 +89,5 @@ export default function EditAward() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.EDIT_AWARD}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.EDIT_AWARD}>{renderContent()}</PageHeader>;
 }

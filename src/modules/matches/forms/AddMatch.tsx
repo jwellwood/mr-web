@@ -15,8 +15,6 @@ import {
   resetTmpPlayers,
   showAlert,
 } from '../../../store';
-import RouteGuard from '../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import MatchFormStepper from './components/MatchFormStepper';
 import { DataError, PageHeader } from '../../../components';
@@ -94,10 +92,8 @@ export default function AddMatch() {
   };
 
   return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.ADD_MATCH}>
-        {error ? <DataError error={error} /> : renderContent()}
-      </PageHeader>
-    </RouteGuard>
+    <PageHeader title={PAGES.ADD_MATCH}>
+      {error ? <DataError error={error} /> : renderContent()}
+    </PageHeader>
   );
 }

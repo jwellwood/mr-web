@@ -111,7 +111,7 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
 
       {tabsToShow.map((tab: ITab, i: number) => (
         <TabPanel key={i} value={value[type]} index={i}>
-          <>{tab.component}</>
+          {tab.component}
         </TabPanel>
       ))}
     </>

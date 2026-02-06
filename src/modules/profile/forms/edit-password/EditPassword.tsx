@@ -5,7 +5,6 @@ import { useMutation } from '@apollo/client';
 import { EDIT_PASSWORD, FETCH_USER } from '../../graphql';
 import { PAGES } from '../../constants';
 import { showAlert } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { changePasswordFormState } from './state';
 import { PROFILE_PATHS } from '../../router';
 import { PageContainer } from '../../../../components';
@@ -35,7 +34,7 @@ export default function ChangePasswordContainer() {
   };
 
   return (
-    <PageContainer auth={AUTH_ROLES.USER} title={PAGES.CHANGE_PASSWORD_PAGE}>
+    <PageContainer title={PAGES.CHANGE_PASSWORD_PAGE}>
       <EditPasswordForm
         onSubmit={onSubmit}
         defaultValues={changePasswordFormState}

@@ -8,8 +8,6 @@ import { PAGES } from '../../constants';
 import { useSeasonInput } from '../../hooks/useSeasonInput';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders/';
 import { PageHeader } from '../../../../components';
 import type { SeasonFormData } from './validation';
@@ -68,9 +66,5 @@ export default function AddTeamSeason() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.ADD_SEASON}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.ADD_SEASON}>{renderContent()}</PageHeader>;
 }

@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 
 import { PAGES } from '../../constants';
 import { AppDispatch, showAlert } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import { AUTH_PATHS } from '../../router';
 import type { ForgotPasswordFormData } from './validation';
@@ -33,7 +32,7 @@ export default function ForgotPasswordContainer() {
   };
 
   return (
-    <PageContainer auth={AUTH_ROLES.NONE} title={PAGES.FORGOT_PASSWORD_PAGE}>
+    <PageContainer title={PAGES.FORGOT_PASSWORD_PAGE}>
       <ForgotPasswordView onSubmit={onSubmit} loading={loading} error={error} />
     </PageContainer>
   );

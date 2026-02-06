@@ -1,10 +1,8 @@
-import { Suspense } from 'react';
 import { Route } from 'react-router-dom';
 
 import * as PLAYER from '../../modules/players/router';
-import * as TEAM from '../../modules/team/router';
-import { Trophy } from '../../modules/history/router';
-import { Spinner } from '../../components/loaders';
+import RouteGuard from '../RouteGuard';
+import { AUTH_ROLES } from '../../constants';
 
 export const PLAYER_ROUTES = () => (
   <>
@@ -12,33 +10,25 @@ export const PLAYER_ROUTES = () => (
       <Route
         index={true}
         element={
-          <Suspense fallback={<Spinner />}>
+          <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
             <PLAYER.Player />
-          </Suspense>
+          </RouteGuard>
         }
       />
       <Route
         path={PLAYER.PLAYER_PATHS.EDIT}
         element={
-          <Suspense fallback={<Spinner />}>
+          <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
             <PLAYER.EditPlayer />
-          </Suspense>
+          </RouteGuard>
         }
       />
       <Route
         path={PLAYER.PLAYER_PATHS.EDIT_PHOTO}
         element={
-          <Suspense fallback={<Spinner />}>
+          <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
             <PLAYER.EditPlayerPhoto />
-          </Suspense>
-        }
-      />
-      <Route
-        path={TEAM.TEAM_PATHS.TROPHY}
-        element={
-          <Suspense fallback={<Spinner />}>
-            <Trophy />
-          </Suspense>
+          </RouteGuard>
         }
       />
     </Route>

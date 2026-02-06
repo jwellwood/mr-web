@@ -8,8 +8,6 @@ import { PAGES } from '../../constants';
 import { ADD_PLAYER } from '../../graphql';
 import { useCustomParams, useNationality, useSeasons } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { mapFormToPlayer } from '../../helpers/mapPlayerForm';
 import { NoDataText, PageHeader } from '../../../../components';
@@ -67,9 +65,5 @@ export default function AddPlayer() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.ADD_PLAYER}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.ADD_PLAYER}>{renderContent()}</PageHeader>;
 }

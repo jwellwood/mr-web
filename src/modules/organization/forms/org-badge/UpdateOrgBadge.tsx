@@ -2,13 +2,11 @@ import { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_ORG_BADGE, FETCH_ORG } from '../../graphql';
-import { AUTH_ROLES } from '../../../../constants';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useUpload } from '../../../../hooks';
 import { PAGES } from '../../constants';
 import { removeOrgBadge, uploadOrgBadge } from '../../../../services/images';
-import RouteGuard from '../../../../router/RouteGuard';
 import { PageHeader } from '../../../../components';
 
 export default function UpdateOrgBadge() {
@@ -58,9 +56,5 @@ export default function UpdateOrgBadge() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-      <PageHeader title={PAGES.EDIT_BADGE}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.EDIT_BADGE}>{renderContent()}</PageHeader>;
 }

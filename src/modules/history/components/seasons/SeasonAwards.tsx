@@ -1,7 +1,9 @@
+import { lazy } from 'react';
 import AppIcon from '../../../../components/icons/AppIcon';
 import StatSkeleton from '../../../../components/loaders/StatSkeleton';
 import { PresentationModal } from '../../../../components/modals';
-import Awards from '../../containers/Awards';
+
+const Awards = lazy(() => import('../../containers/Awards'));
 
 interface Props {
   seasonId?: string;

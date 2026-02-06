@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 
 import { CustomTabs, ITab } from '../../components/tabs';
-import { AUTH_ROLES, TAB_TYPES } from '../../constants';
+import { TAB_TYPES } from '../../constants';
 import { PageContainer } from '../../components';
 import { PAGES, PLAYER_ADMIN_LINKS } from './constants';
 import { useAuth, useCustomParams } from '../../hooks';
@@ -51,11 +51,7 @@ export default function PlayerTabs() {
   ];
 
   return (
-    <PageContainer
-      auth={AUTH_ROLES.PUBLIC}
-      title={PAGES.PLAYER}
-      links={isTeamAuth ? PLAYER_ADMIN_LINKS : undefined}
-    >
+    <PageContainer title={PAGES.PLAYER} links={isTeamAuth ? PLAYER_ADMIN_LINKS : undefined}>
       <>
         <Player />
         <CustomTabs type={TAB_TYPES.PLAYER} tabs={tabs} level="primary" />

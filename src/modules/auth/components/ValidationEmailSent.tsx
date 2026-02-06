@@ -1,6 +1,4 @@
-import { AUTH_ROLES } from '../../../constants';
 import { CustomTypography } from '../../../components/typography';
-import RouteGuard from '../../../router/RouteGuard';
 
 interface Props {
   email: string;
@@ -8,12 +6,8 @@ interface Props {
 
 export default function ValidationEmailSent({ email }: Props) {
   return (
-    <>
-      <RouteGuard authorization={AUTH_ROLES.NONE}>
-        <CustomTypography color="data">
-          An email has been sent to {email}. Click the link to validate your account
-        </CustomTypography>
-      </RouteGuard>
-    </>
+    <CustomTypography color="data">
+      An email has been sent to {email}. Click the link to validate your account
+    </CustomTypography>
   );
 }

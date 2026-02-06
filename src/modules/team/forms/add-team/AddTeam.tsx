@@ -8,7 +8,6 @@ import { FETCH_TEAMS_BY_USER } from '../../../profile/graphql';
 import { PAGES, TeamError, TeamSuccess } from '../../constants';
 import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import type { TeamFormData } from './types';
 import AddTeamView from './AddTeamView';
@@ -52,7 +51,7 @@ export default function AddTeam() {
   };
 
   return (
-    <PageContainer auth={AUTH_ROLES.USER} title={PAGES.ADD_TEAM}>
+    <PageContainer title={PAGES.ADD_TEAM}>
       <AddTeamView
         error={error}
         onSubmit={onSubmit}

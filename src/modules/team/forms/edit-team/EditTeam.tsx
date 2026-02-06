@@ -7,7 +7,6 @@ import { FETCH_TEAM, EDIT_TEAM } from '../../graphql';
 import { PAGES, TeamError, TeamSuccess } from '../../constants';
 import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import type { EditTeamFormData } from './types';
 import { mapFormDataToMutationInput, mapTeamDataToFormData } from './state';
@@ -56,7 +55,7 @@ export default function EditTeam() {
   };
 
   return (
-    <PageContainer auth={AUTH_ROLES.TEAM_ADMIN} title={PAGES.EDIT_TEAM}>
+    <PageContainer title={PAGES.EDIT_TEAM}>
       {defaultValues ? (
         <>
           <EditTeamForm

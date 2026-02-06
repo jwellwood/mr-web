@@ -7,8 +7,6 @@ import { ADD_TROPHY, FETCH_TROPHIES } from '../../graphql';
 import { PAGES } from '../../constants';
 import { useCustomParams, useSeasons } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { PageHeader } from '../../../../components';
 import { initialTrophyFormState } from './state';
@@ -59,9 +57,5 @@ export default function AddTrophy() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.ADD_TROPHY}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.ADD_TROPHY}>{renderContent()}</PageHeader>;
 }

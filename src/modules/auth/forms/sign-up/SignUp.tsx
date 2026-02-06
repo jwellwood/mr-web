@@ -5,7 +5,6 @@ import { useMutation } from '@apollo/client';
 import { REGISTER_USER } from '../../graphql';
 import { PAGES } from '../../constants';
 import { AppDispatch, showAlert } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import type { SignUpFormData } from './validation';
 import SignUpView from './SignUpView';
@@ -29,7 +28,7 @@ export default function SignUpContainer() {
       });
 
   return (
-    <PageContainer auth={AUTH_ROLES.NONE} title={PAGES.SIGN_UP_PAGE}>
+    <PageContainer title={PAGES.SIGN_UP_PAGE}>
       <SignUpView loading={loading} onSubmit={onSubmit} email={email} error={error} />
     </PageContainer>
   );

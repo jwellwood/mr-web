@@ -4,11 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_RESULT, FETCH_RESULTS } from '../../graphql';
-import { AUTH_ROLES } from '../../../../constants';
 import { PAGES } from '../../constants';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
 import Spinner from '../../../../components/loaders/Spinner';
 import { PageHeader } from '../../../../components';
 import { useTeamOptions, useCompetitionOptions, useOrgSeasonOptions } from '../../hooks';
@@ -70,9 +68,5 @@ export default function AddResult() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-      <PageHeader title={PAGES.ADD_RESULT}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.ADD_RESULT}>{renderContent()}</PageHeader>;
 }

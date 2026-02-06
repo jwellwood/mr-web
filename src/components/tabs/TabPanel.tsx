@@ -1,5 +1,7 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, Suspense } from 'react';
 import Typography from '@mui/material/Typography';
+
+import { LazyLoader, TabLoader } from '../loaders';
 
 interface TabPanelProps {
   children: ReactElement;
@@ -8,17 +10,25 @@ interface TabPanelProps {
 }
 
 const TabPanel: React.FC<TabPanelProps> = ({ children, value, index }) => {
-  const content = <>{children}</>;
+  if (value !== index) return null;
 
   return (
     <Typography
       component="div"
       role="tabpanel"
-      hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
     >
-      {value === index && content}
+      <Suspense
+        fallback={
+          <>
+            <LazyLoader />
+            <TabLoader />
+          </>
+        }
+      >
+        {children}
+      </Suspense>
     </Typography>
   );
 };

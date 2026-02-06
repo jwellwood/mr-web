@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
 import { Route } from 'react-router-dom';
 
 import * as MATCH from '../../modules/matches/router';
-import { Spinner } from '../../components/loaders';
+import RouteGuard from '../RouteGuard';
+import { AUTH_ROLES } from '../../constants';
 
 export const MATCH_ROUTES = () => (
   <>
@@ -10,25 +10,25 @@ export const MATCH_ROUTES = () => (
       <Route
         index={true}
         element={
-          <Suspense fallback={<Spinner />}>
+          <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
             <MATCH.Match />
-          </Suspense>
+          </RouteGuard>
         }
       />
       <Route
         path={MATCH.MATCH_PATHS.ADD_MATCH}
         element={
-          <Suspense fallback={<Spinner />}>
+          <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
             <MATCH.AddMatch />
-          </Suspense>
+          </RouteGuard>
         }
       />
       <Route
         path={MATCH.MATCH_PATHS.EDIT_MATCH}
         element={
-          <Suspense fallback={<Spinner />}>
+          <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
             <MATCH.EditMatch />
-          </Suspense>
+          </RouteGuard>
         }
       />
     </Route>

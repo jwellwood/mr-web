@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
-import { AUTH_ROLES } from '../../../constants';
 import { Spinner } from '../../../components/loaders';
 import { PAGES } from '../constants';
 import { verifyEmail } from '../services/validation';
@@ -35,7 +34,7 @@ export default function ValidatedEmailContainer() {
   return loading ? (
     <Spinner />
   ) : (
-    <PageContainer auth={AUTH_ROLES.NONE} title={PAGES.VALIDATED_EMAIL_PAGE}>
+    <PageContainer title={PAGES.VALIDATED_EMAIL_PAGE}>
       <ValidatedEmail success={successfulValidation} errorMessage={error} />
     </PageContainer>
   );

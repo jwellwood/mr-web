@@ -8,8 +8,6 @@ import { PAGES } from '../../constants';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { useMatchPlayersInput } from '../../../matches/hooks/useMatchPlayersInput';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { PageHeader } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
@@ -78,9 +76,5 @@ export default function AddAward() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-      <PageHeader title={PAGES.ADD_AWARD}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.ADD_AWARD}>{renderContent()}</PageHeader>;
 }

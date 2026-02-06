@@ -1,4 +1,3 @@
-import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import * as AUTH from '../../modules/auth/router';
@@ -10,143 +9,180 @@ import * as PLAYER from '../../modules/players/router';
 import * as PROFILE from '../../modules/profile/router';
 import * as TEAM from '../../modules/team/router';
 import NotFound from '../NotFound';
+import RouteGuard from '../RouteGuard';
 import { PLAYER_ROUTES, MATCH_ROUTES } from './';
-import { Spinner } from '../../components/loaders';
+import { AUTH_ROLES } from '../../constants';
 
 export default function AppRoutes() {
   return (
     <Routes>
+      {/* Public Routes */}
       <Route path={HOME.HOME_PATHS.HOME} element={<HOME.HomePage />} />
       <Route path="*" element={<NotFound />} />
 
-      {/* Auth Routes */}
-      <Route path={AUTH.AUTH_PATHS.SIGN_IN} element={<AUTH.SignIn />} />
-      <Route path={AUTH.AUTH_PATHS.SIGN_UP} element={<AUTH.SignUp />} />
-      <Route path={AUTH.AUTH_PATHS.FORGOT} element={<AUTH.ForgotPassword />} />
-      <Route path={AUTH.AUTH_PATHS.RESET} element={<AUTH.ResetPassword />} />
+      {/* Auth Routes - only accessible when NOT logged in */}
+      <Route
+        path={AUTH.AUTH_PATHS.SIGN_IN}
+        element={
+          <RouteGuard authorization="none">
+            <AUTH.SignIn />
+          </RouteGuard>
+        }
+      />
+      <Route
+        path={AUTH.AUTH_PATHS.SIGN_UP}
+        element={
+          <RouteGuard authorization="none">
+            <AUTH.SignUp />
+          </RouteGuard>
+        }
+      />
+      <Route
+        path={AUTH.AUTH_PATHS.FORGOT}
+        element={
+          <RouteGuard authorization="none">
+            <AUTH.ForgotPassword />
+          </RouteGuard>
+        }
+      />
+      <Route
+        path={AUTH.AUTH_PATHS.RESET}
+        element={
+          <RouteGuard authorization="none">
+            <AUTH.ResetPassword />
+          </RouteGuard>
+        }
+      />
       <Route path={AUTH.AUTH_PATHS.VERIFY} element={<AUTH.ValidatedEmail />} />
 
-      {/* Organization Routes */}
-      <Route path={ORG.ORG_PATHS.ADD} element={<ORG.AddOrg />} />
+      {/* Protected: Authenticated Users */}
+      <Route
+        path={ORG.ORG_PATHS.ADD}
+        element={
+          <RouteGuard authorization={AUTH_ROLES.USER}>
+            <ORG.AddOrg />
+          </RouteGuard>
+        }
+      />
 
-      {/* Profile Routes */}
+      {/* Profile Routes - User only */}
       <Route path={PROFILE.PROFILE_PATHS.PROFILE}>
         <Route
           index={true}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.USER}>
               <PROFILE.Profile />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={PROFILE.PROFILE_PATHS.EDIT}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.USER}>
               <PROFILE.EditProfile />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={PROFILE.PROFILE_PATHS.EDIT_IMAGE}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.USER}>
               <PROFILE.EditUserImage />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={PROFILE.PROFILE_PATHS.CHANGE_PASSWORD}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.USER}>
               <PROFILE.EditPassword />
-            </Suspense>
+            </RouteGuard>
           }
         />
       </Route>
 
-      {/* Organization Routes */}
+      {/* Organization Routes - ORG_ADMIN only for forms */}
       <Route path={ORG.ORG_PATHS.ORG}>
         <Route
           index={true}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
               <ORG.Org />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={ORG.ORG_PATHS.EDIT}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
               <ORG.EditOrg />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={ORG.ORG_PATHS.ADD_TEAM}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
               <TEAM.AddTeam />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={ORG.ORG_PATHS.ADD_COMPETITION}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
               <ORG.AddCompetition />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={ORG.ORG_PATHS.ADD_ORG_SEASON}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
               <ORG.AddOrgSeason />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route
           path={ORG.ORG_PATHS.ADD_RESULT}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
               <ORG.AddResult />
-            </Suspense>
+            </RouteGuard>
           }
         />
         <Route path={ORG.ORG_PATHS.ORG_SEASON}>
           <Route
             index={true}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                 <ORG.OrgSeason />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={ORG.ORG_PATHS.EDIT_ORG_SEASON}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
                 <ORG.EditOrgSeason />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route path={ORG.ORG_PATHS.RESULT}>
             <Route
               index={true}
               element={
-                <Suspense fallback={<Spinner />}>
+                <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                   <ORG.Result />
-                </Suspense>
+                </RouteGuard>
               }
             />
             <Route
               path={ORG.ORG_PATHS.EDIT_RESULT}
               element={
-                <Suspense fallback={<Spinner />}>
+                <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
                   <ORG.EditResult />
-                </Suspense>
+                </RouteGuard>
               }
             />
           </Route>
@@ -155,76 +191,78 @@ export default function AppRoutes() {
           <Route
             index={true}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                 <ORG.Competition />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={ORG.ORG_PATHS.EDIT_COMPETITION}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
                 <ORG.EditCompetition />
-              </Suspense>
+              </RouteGuard>
             }
           />
         </Route>
         <Route
           path={ORG.ORG_PATHS.EDIT_BADGE}
           element={
-            <Suspense fallback={<Spinner />}>
+            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
               <ORG.EditOrgBadge />
-            </Suspense>
+            </RouteGuard>
           }
         />
+
+        {/* Team Routes - TEAM_ADMIN only for forms */}
         <Route path={TEAM.TEAM_PATHS.TEAM}>
           <Route
             index={true}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                 <TEAM.Team />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={TEAM.TEAM_PATHS.ADD_PLAYER}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <PLAYER.AddPlayer />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route path={TEAM.TEAM_PATHS.SEASON}>
             <Route
               index={true}
               element={
-                <Suspense fallback={<Spinner />}>
+                <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                   <HISTORY.Season />
-                </Suspense>
+                </RouteGuard>
               }
             />
             <Route
               path={HISTORY.AWARD_PATHS.AWARD}
               element={
-                <Suspense fallback={<Spinner />}>
+                <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                   <HISTORY.Award />
-                </Suspense>
+                </RouteGuard>
               }
             />
             <Route
               path={HISTORY.AWARD_PATHS.ADD_AWARD}
               element={
-                <Suspense fallback={<Spinner />}>
+                <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                   <HISTORY.AddAward />
-                </Suspense>
+                </RouteGuard>
               }
             />
             <Route
               path={HISTORY.AWARD_PATHS.EDIT_AWARD}
               element={
-                <Suspense fallback={<Spinner />}>
+                <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                   <HISTORY.EditAward />
-                </Suspense>
+                </RouteGuard>
               }
             />
             {PLAYER_ROUTES()}
@@ -233,65 +271,65 @@ export default function AppRoutes() {
           <Route
             path={TEAM.TEAM_PATHS.ADD_SEASON}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <HISTORY.AddTeamSeason />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={TEAM.TEAM_PATHS.EDIT_SEASON}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <HISTORY.EditTeamSeason />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={TEAM.TEAM_PATHS.TROPHY}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                 <HISTORY.Trophy />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={TEAM.TEAM_PATHS.ADD_TROPHY}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <HISTORY.AddTrophy />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={TEAM.TEAM_PATHS.EDIT_TROPHY}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <HISTORY.EditTrophy />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={MATCH.MATCH_PATHS.ADD_MATCH}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <MATCH.AddMatch />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={TEAM.TEAM_PATHS.EDIT_BADGE}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <TEAM.EditBadge />
-              </Suspense>
+              </RouteGuard>
             }
           />
           <Route
             path={TEAM.TEAM_PATHS.EDIT}
             element={
-              <Suspense fallback={<Spinner />}>
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
                 <TEAM.EditTeam />
-              </Suspense>
+              </RouteGuard>
             }
           />
           {PLAYER_ROUTES()}

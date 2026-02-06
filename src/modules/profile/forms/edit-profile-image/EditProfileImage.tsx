@@ -1,7 +1,6 @@
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
 
 import { EDIT_PROFILE_IMAGE, FETCH_USER } from '../../graphql';
-import { AUTH_ROLES } from '../../../../constants';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
 import { PAGES } from '../../constants';
@@ -39,7 +38,7 @@ export default function EditUserImage() {
     );
 
   return (
-    <PageContainer auth={AUTH_ROLES.USER} title={PAGES.EDIT_USER_IMAGE_PAGE}>
+    <PageContainer title={PAGES.EDIT_USER_IMAGE_PAGE}>
       {error || editError ? (
         <DataError error={(error || editError) as ApolloError} />
       ) : (

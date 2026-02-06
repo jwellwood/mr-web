@@ -7,8 +7,6 @@ import { FETCH_COMPETITION, EDIT_COMPETITION, FETCH_COMPETITIONS } from '../../g
 import { PAGES } from '../../constants';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import RouteGuard from '../../../../router/RouteGuard';
-import { AUTH_ROLES } from '../../../../constants';
 import { Spinner } from '../../../../components/loaders';
 import { PageHeader } from '../../../../components';
 import type { CompetitionFormData } from './validation';
@@ -75,9 +73,5 @@ export default function EditCompetition() {
     );
   };
 
-  return (
-    <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-      <PageHeader title={PAGES.EDIT_COMP}>{renderContent()}</PageHeader>
-    </RouteGuard>
-  );
+  return <PageHeader title={PAGES.EDIT_COMP}>{renderContent()}</PageHeader>;
 }

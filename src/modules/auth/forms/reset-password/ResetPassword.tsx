@@ -5,7 +5,6 @@ import { useMutation } from '@apollo/client';
 import { RESET_PASSWORD } from '../../graphql';
 import { PAGES } from '../../constants';
 import { AppDispatch, showAlert } from '../../../../store';
-import { AUTH_ROLES } from '../../../../constants';
 import { PageContainer } from '../../../../components';
 import { AUTH_PATHS } from '../../router';
 import ResetPasswordView from './ResetPasswordView';
@@ -36,7 +35,7 @@ export default function ResetPasswordContainer() {
   };
 
   return (
-    <PageContainer auth={AUTH_ROLES.NONE} title={PAGES.RESET_PASSWORD_PAGE}>
+    <PageContainer title={PAGES.RESET_PASSWORD_PAGE}>
       <ResetPasswordView loading={loading} onSubmit={onSubmit} />
     </PageContainer>
   );
