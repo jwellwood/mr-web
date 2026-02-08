@@ -1,17 +1,13 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { FETCH_ORG, FETCH_ORG_TEAMS } from '../../organization/graphql';
-import { ICompetition } from '../../organization/types';
-import { ITeam } from '../../team/types';
 import { ISelectOptions } from '../../../components';
 import { emptySelectOption } from '../../../constants';
 
 export const useMatchDetailsInput = () => {
   const { orgId, teamId } = useCustomParams();
-  const [opponents, setOpponents] = useState<ITeam[]>([]);
-  const [competitions, setCompetitions] = useState<ICompetition[]>([]);
   const { loading: loadingSeasons, seasonOptions } = useSeasons();
   const [getTeamByOrg, { data: teams, loading: teamsLoading, error: teamsError }] = useLazyQuery(
     FETCH_ORG_TEAMS,
@@ -30,18 +26,14 @@ export const useMatchDetailsInput = () => {
     }
   }, [getOrgById, getTeamByOrg, orgId]);
 
-  useEffect(() => {
-    if (teams) {
-      setOpponents(teams.teams);
-    }
-
-    if (orgData) {
-      setCompetitions(orgData.org.competitions);
-    }
-  }, [teams, orgData]);
-
   const loading = teamsLoading || loadingSeasons || orgLoading;
   const error = teamsError || orgError;
+
+  // Track if data has been fetched (even if empty)
+  const dataFetched = Boolean(teams) && Boolean(orgData);
+
+  const opponents = useMemo(() => teams?.teams || [], [teams]);
+  const competitions = useMemo(() => orgData?.org.competitions || [], [orgData]);
 
   const opponentOptions: ISelectOptions[] = useMemo(
     () => [
@@ -73,6 +65,7 @@ export const useMatchDetailsInput = () => {
     seasonOptions: formattedSeasonOptions,
     opponents,
     opponentOptions,
+    dataFetched,
     competitions,
     competitionOptions,
     loading,

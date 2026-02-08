@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -6,13 +6,27 @@ import { useQuery } from '@apollo/client';
 import { FETCH_USER } from '../modules/profile/graphql';
 import { resetAuth, setAuth } from '../store';
 import { CustomAlert, ErrorBoundary, BackgroundContainer } from '../components';
+import { LazyLoader } from '../components/loaders';
 import { TAuthRoles } from '../constants';
 import { authStorage } from '../utils';
 
-const AppRoutes = lazy(() => import('./routes/Routes'));
+// Lazy load routes with retry logic for chunk load errors
+const AppRoutes = lazy(() =>
+  import('./routes/Routes').catch(error => {
+    // If chunk loading fails (e.g., after deployment), reload the page
+    if (error?.message?.includes('Failed to fetch') || error?.message?.includes('Importing')) {
+      window.location.reload();
+    }
+    throw error;
+  })
+);
 
 function AppContent() {
-  return <AppRoutes />;
+  return (
+    <Suspense fallback={<LazyLoader fullHeight />}>
+      <AppRoutes />
+    </Suspense>
+  );
 }
 
 function AppRouter() {

@@ -22,6 +22,7 @@ export default function Step1MatchDetails({ onNextClick, loading, error }: Props
     opponentOptions,
     competitionOptions,
     loading: inputLoading,
+    dataFetched,
   } = useMatchDetailsInput();
   const dispatch: AppDispatch = useDispatch();
   const currentTempMatch = useSelector(getTempMatch);
@@ -52,29 +53,28 @@ export default function Step1MatchDetails({ onNextClick, loading, error }: Props
     onNextClick();
   };
 
-  const renderMessage = () => {
-    if (loading || inputLoading) {
-      return null;
-    }
-    if (!seasonOptions.length) {
+  const isLoading = loading || inputLoading;
+
+  // Only show no-data messages after data has been fetched
+  // Options arrays always have at least the empty option, so length <= 1 means no real data
+  if (dataFetched && !isLoading) {
+    if (seasonOptions.length <= 1) {
       return <NoDataText>Please add a season before adding a match.</NoDataText>;
     }
-    if (!competitionOptions.find(comp => comp.value !== '')) {
+    if (competitionOptions.length <= 1) {
       return <NoDataText>Please add a competition before adding a match.</NoDataText>;
     }
-    return null;
-  };
+  }
+
   return (
-    renderMessage() || (
-      <AddMatchDetailsForm
-        onSubmit={onSubmit}
-        defaultValues={mapTempMatchToFormData(currentTempMatch)}
-        seasonOptions={seasonOptions}
-        opponentOptions={opponentOptions}
-        competitionOptions={competitionOptions}
-        loading={loading}
-        error={error}
-      />
-    )
+    <AddMatchDetailsForm
+      onSubmit={onSubmit}
+      defaultValues={mapTempMatchToFormData(currentTempMatch)}
+      seasonOptions={seasonOptions}
+      opponentOptions={opponentOptions}
+      competitionOptions={competitionOptions}
+      loading={isLoading}
+      error={error}
+    />
   );
 }
