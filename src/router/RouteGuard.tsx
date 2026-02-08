@@ -7,6 +7,7 @@ import { AUTH_ROLES, TAuthRoles } from '../constants';
 import { showAlert } from '../store';
 import { AUTH_PATHS } from '../modules/auth/router';
 import { PROFILE_PATHS } from '../modules/profile/router';
+import { AuthLoader } from '../components/loaders';
 
 interface Props {
   children: ReactNode;
@@ -25,7 +26,7 @@ export default function RouteGuard({ children, authorization }: Props) {
 
   // Wait for auth to be initialized before making routing decisions
   if (!authInitialized) {
-    return null;
+    return <AuthLoader />;
   }
 
   if (authorization === AUTH_ROLES.USER && !isAuth) {

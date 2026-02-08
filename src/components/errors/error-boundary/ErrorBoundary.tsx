@@ -25,9 +25,21 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, State> 
   componentDidCatch(error: Error, info: ErrorInfo) {
     this.logErrorToServices(error.toString(), info.componentStack);
   }
-  // A fake logging service for now // TODO
-  // eslint-disable-next-line no-console
-  logErrorToServices = console.log;
+
+  logErrorToServices = (error: string, stack?: string | null) => {
+    // Log to console in development
+    if (import.meta.env.DEV) {
+      // eslint-disable-next-line no-console
+      console.log(error, stack);
+    }
+
+    // TODO: Add production error tracking (Sentry, LogRocket, etc.)
+    // if (import.meta.env.PROD) {
+    //   Sentry.captureException(new Error(error), {
+    //     extra: { componentStack: stack }
+    //   });
+    // }
+  };
   render() {
     if (this.state.errorMessage) {
       return (

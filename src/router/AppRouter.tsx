@@ -20,7 +20,7 @@ function AppRouter() {
   const token = authStorage.getToken();
 
   // Fetch user data but don't block rendering
-  useQuery(FETCH_USER, {
+  const { loading } = useQuery(FETCH_USER, {
     skip: !token,
     fetchPolicy: 'cache-first',
     onCompleted: data => {
@@ -33,6 +33,9 @@ function AppRouter() {
             username: data.user.username,
           })
         );
+      } else {
+        // User query completed but no user data - clear auth
+        dispatch(resetAuth());
       }
     },
     onError: () => {
@@ -42,12 +45,12 @@ function AppRouter() {
     },
   });
 
-  // Set initial auth state from token immediately
+  // Initialize auth state immediately if no token
   useEffect(() => {
-    if (!token) {
+    if (!token && !loading) {
       dispatch(resetAuth());
     }
-  }, [token, dispatch]);
+  }, [token, loading, dispatch]);
 
   return (
     <BrowserRouter>

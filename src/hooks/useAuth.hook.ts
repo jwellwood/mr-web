@@ -7,5 +7,13 @@ export const useAuth = (teamId?: string, orgId?: string) => {
   const isTeamAuth = teamId && teamIds && isTeamAdmin && teamIds.includes(teamId);
 
   const isOrgAuth = orgId && orgIds && orgIds.includes(orgId);
-  return { isAuth, isTeamAdmin, isTeamAuth, isSiteAdmin, isOrgAuth, username, authInitialized };
+  return {
+    isAuth,
+    isTeamAdmin,
+    isTeamAuth,
+    isSiteAdmin,
+    isOrgAuth,
+    username,
+    authInitialized,
+  };
 };

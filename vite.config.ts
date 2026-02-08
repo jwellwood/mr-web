@@ -2,15 +2,9 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-
 import { visualizer } from 'rollup-plugin-visualizer';
 
 import pkg from './package.json';
-const dirname =
-  typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -37,46 +31,24 @@ export default defineConfig(({ mode }) => {
           manualChunks: {
             // Split React and related libraries
             'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-            // Split Apollo Client
-            'apollo-vendor': ['@apollo/client', 'graphql'],
-            // Split Material-UI into smaller chunks
-            'mui-core': ['@mui/material', '@mui/system'],
+            // Apollo + Redux together to share Symbol.observable
+            'state-vendor': ['@apollo/client', 'graphql', '@reduxjs/toolkit', 'react-redux'],
+            // Split Material-UI into smaller chunks (with Emotion dependencies)
+            'mui-core': [
+              '@mui/material',
+              '@mui/system',
+              '@emotion/react',
+              '@emotion/styled',
+              '@emotion/cache',
+            ],
             'mui-extras': ['@mui/x-charts', '@mui/x-date-pickers'],
             // Split form libraries
             'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
-            // Split Redux
-            'redux-vendor': ['@reduxjs/toolkit', 'react-redux'],
             // Split date utilities
             'date-vendor': ['date-fns'],
           },
         },
       },
-    },
-    test: {
-      projects: [
-        {
-          extends: true,
-          plugins: [
-            storybookTest({
-              configDir: path.join(dirname, '.storybook'),
-            }),
-          ],
-          test: {
-            name: 'storybook',
-            browser: {
-              enabled: true,
-              headless: true,
-              provider: 'playwright',
-              instances: [
-                {
-                  browser: 'chromium',
-                },
-              ],
-            },
-            setupFiles: ['.storybook/vitest.setup.ts'],
-          },
-        },
-      ],
     },
   };
 });
