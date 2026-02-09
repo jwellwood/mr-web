@@ -1,13 +1,12 @@
 import { lazy } from 'react';
 import { useSelector } from 'react-redux';
-
-import { TAB_TYPES } from '../../constants';
-import { CustomTabs, ITab } from '../../components/tabs';
-import { useAuth, useCustomParams } from '../../hooks';
-import { PAGES, TEAM_ADMIN_LINKS } from './constants';
-import { getTabIndex } from '../../store';
 import { PageContainer } from '../../components';
 import { APP_ICONS, AppIcon, AppIconType } from '../../components/icons';
+import { CustomTabs, ITab } from '../../components/tabs';
+import { TAB_TYPES } from '../../constants';
+import { useAuth, useCustomParams } from '../../hooks';
+import { getTabIndex } from '../../store';
+import { PAGES, TEAM_ADMIN_LINKS } from './constants';
 
 export const TeamOverview = lazy(() => import('./containers/TeamOverview'));
 export const SquadTabs = lazy(() => import('../squad/main'));

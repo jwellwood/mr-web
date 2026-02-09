@@ -1,17 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-
-import { FETCH_ORG, EDIT_ORG } from '../../graphql';
-import { PAGES } from '../../constants';
+import { PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { Spinner } from '../../../../components/loaders';
-import type { OrganizationFormData } from './validation';
-import { PageHeader } from '../../../../components';
-import OrgForm from './OrgForm';
+import { PAGES } from '../../constants';
+import { FETCH_ORG, EDIT_ORG } from '../../graphql';
 import DeleteOrg from './DeleteOrg';
+import OrgForm from './OrgForm';
+import type { OrganizationFormData } from './validation';
 
 export default function EditOrg() {
   const { orgId } = useCustomParams();
@@ -24,14 +23,11 @@ export default function EditOrg() {
     useMutation(EDIT_ORG);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<OrganizationFormData | null>(null);
 
-  useEffect(() => {
-    if (data) {
-      const { org } = data;
-      setDefaultValues({ ...org } as OrganizationFormData);
-    }
-  }, [data]);
+  const defaultValues: OrganizationFormData | null = useMemo(
+    () => (data?.org ? ({ ...data.org } as OrganizationFormData) : null),
+    [data]
+  );
 
   const onSubmit = (formData: OrganizationFormData) => {
     try {

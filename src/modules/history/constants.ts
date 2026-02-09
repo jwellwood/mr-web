@@ -1,5 +1,5 @@
-import { LINK_TYPE } from '../../constants';
 import { IListItem } from '../../components/lists/types';
+import { LINK_TYPE } from '../../constants';
 import { theme } from '../../theme';
 
 // Replace the enum with this const object

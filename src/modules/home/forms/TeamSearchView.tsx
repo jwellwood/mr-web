@@ -1,10 +1,9 @@
 import { ApolloError } from '@apollo/client';
-
-import PresentationModal from '../../../components/modals/PresentationModal';
 import { CustomButton } from '../../../components';
-import SearchForm from './TeamSearchForm';
+import PresentationModal from '../../../components/modals/PresentationModal';
 import TeamList from '../components/TeamList';
 import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';
+import SearchForm from './TeamSearchForm';
 
 interface Props {
   searchTerm: string;

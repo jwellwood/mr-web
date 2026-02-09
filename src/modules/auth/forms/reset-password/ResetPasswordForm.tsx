@@ -1,10 +1,9 @@
-import { useForm } from 'react-hook-form';
+import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
-
+import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../../components';
 import { CenteredGrid } from '../../../../components/grids';
 import { ResetPasswordSchema, type ResetPasswordFormData } from './validation';
-import { ApolloError } from '@apollo/client';
 
 interface Props {
   onSubmit: (data: ResetPasswordFormData) => void;

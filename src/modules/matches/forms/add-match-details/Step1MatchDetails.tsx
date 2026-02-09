@@ -1,13 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { ApolloError } from '@apollo/client';
-
-import { AppDispatch, getTempMatch, setTmpMatch } from '../../../../store';
-import { AddMatchDetailsFormValues } from './validation';
-import AddMatchDetailsForm from './AddMatchDetailsForm';
-import { useMatchDetailsInput } from '../../hooks/useMatchDetailsInput';
-import { useCustomParams } from '../../../../hooks';
+import { useDispatch, useSelector } from 'react-redux';
 import { ISelectOptions, NoDataText } from '../../../../components';
+import { useCustomParams } from '../../../../hooks';
+import { AppDispatch, getTempMatch, setTmpMatch } from '../../../../store';
+import { useMatchDetailsInput } from '../../hooks/useMatchDetailsInput';
 import { mapTempMatchToFormData } from '../mappers';
+import AddMatchDetailsForm from './AddMatchDetailsForm';
+import { AddMatchDetailsFormValues } from './validation';
 
 interface Props {
   onNextClick: () => void;

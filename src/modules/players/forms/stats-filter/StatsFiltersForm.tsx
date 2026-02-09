@@ -1,7 +1,5 @@
-import { Stack } from '@mui/material';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
-import { TFilters } from '../../context';
 import {
   CustomButton,
   FormContainer,
@@ -9,6 +7,7 @@ import {
   FormModal,
   type ISelectOptions,
 } from '../../../../components';
+import { TFilters } from '../../context';
 import StatsFiltersDisplay from './StatsFiltersDisplay';
 
 interface Props {
@@ -26,6 +25,7 @@ export default function StatsFiltersForm({
   competitionOptions,
   defaultValues,
 }: Props) {
+  const [open, setOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm<TFilters>({ defaultValues });
 
   const resetForm = () => {
@@ -33,28 +33,30 @@ export default function StatsFiltersForm({
     onReset();
   };
 
+  const submitHandler = (values: { seasons: string; competitions: string }) => {
+    onSubmit(values);
+    setOpen(false);
+  };
+
   return (
-    <FormModal
-      title="Filters"
-      buttonElement={
+    <>
+      <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
         <StatsFiltersDisplay
           seasonOptions={seasonOptions}
           competitionOptions={competitionOptions}
         />
-      }
-      closeForm={() => true}
-    >
-      <FormContainer
-        loading={false}
-        onSubmit={handleSubmit(onSubmit)}
-        submitBtn={{ text: 'Apply' }}
-        resetBtn={
-          <CustomButton onClick={resetForm} color="error">
-            Reset
-          </CustomButton>
-        }
-      >
-        <Stack spacing={2} sx={{ width: '300px', marginTop: '8px' }}>
+      </span>
+      <FormModal title="Filters" open={open} onClose={() => setOpen(false)}>
+        <FormContainer
+          loading={false}
+          onSubmit={handleSubmit(submitHandler)}
+          submitBtn={{ text: 'Apply' }}
+          resetBtn={
+            <CustomButton onClick={resetForm} color="error">
+              Reset
+            </CustomButton>
+          }
+        >
           <ControlledSelectInput
             name="seasons"
             options={seasonOptions}
@@ -67,8 +69,8 @@ export default function StatsFiltersForm({
             label={'Competitions'}
             control={control}
           />
-        </Stack>
-      </FormContainer>
-    </FormModal>
+        </FormContainer>
+      </FormModal>
+    </>
   );
 }

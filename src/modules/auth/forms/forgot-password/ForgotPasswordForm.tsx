@@ -1,9 +1,8 @@
-import { useForm } from 'react-hook-form';
+import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
-
+import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../../components';
 import { ForgotPasswordSchema, type ForgotPasswordFormData } from './validation';
-import { ApolloError } from '@apollo/client';
 
 interface Props {
   defaultValues: ForgotPasswordFormData;

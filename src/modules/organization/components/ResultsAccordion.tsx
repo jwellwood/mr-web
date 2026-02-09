@@ -1,10 +1,10 @@
+import { SectionContainer } from '../../../components';
 import { CustomAccordion } from '../../../components/accordion';
-import { IListItem } from '../../../components/lists/types';
 import LinksList from '../../../components/lists/links-list/LinksList';
+import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
 import { IResult } from '../types';
 import ResultBox from './ResultBox';
-import { SectionContainer } from '../../../components';
 
 interface Props {
   results: IResult[];

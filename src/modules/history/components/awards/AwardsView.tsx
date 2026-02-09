@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
-import AwardList from './AwardList';
 import { DataError, NoDataText } from '../../../../components';
 import { T_FETCH_AWARDS } from '../../types';
+import AwardList from './AwardList';
 
 interface Props {
   data?: T_FETCH_AWARDS;

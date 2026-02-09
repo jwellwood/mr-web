@@ -1,13 +1,12 @@
+import { ApolloError } from '@apollo/client';
 import React, { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { ApolloError } from '@apollo/client';
-
+import { IMAGE_TYPE } from '../../constants';
+import { button_text } from '../../i18n';
+import ImageAvatar from '../avatars/image-avatar/ImageAvatar';
 import { CustomButton } from '../buttons';
 import { CenteredGrid } from '../grids';
 import FileInput from '../inputs/file-input/FileInput';
-import { button_text } from '../../i18n';
-import ImageAvatar from '../avatars/image-avatar/ImageAvatar';
-import { IMAGE_TYPE } from '../../constants';
 import FormContainer from './form-container/FormContainer';
 
 interface Props {

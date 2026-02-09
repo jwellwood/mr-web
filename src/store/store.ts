@@ -1,10 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 import { alertsReducer } from './features/alerts/alertsSlice';
-import { tabsReducer } from './features/tabs/tabsSlice';
 import { authReducer } from './features/auth/authSlice';
 import { matchesReducer } from './features/matches/matchesSlice';
 import { playersReducer } from './features/players/playersSlice';
+import { tabsReducer } from './features/tabs/tabsSlice';
 
 export const store = configureStore({
   reducer: {

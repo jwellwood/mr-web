@@ -1,26 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_SEASON, FETCH_SEASONS, FETCH_SEASONS_POSITION } from '../../graphql';
-import { PAGES } from '../../constants';
-import { useSeasonInput } from '../../hooks/useSeasonInput';
+import { PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders/';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { Spinner } from '../../../../components/loaders/';
-import { PageHeader } from '../../../../components';
-import type { SeasonFormData } from './validation';
-import { initialTeamSeasonState } from './state';
-import SeasonForm from './SeasonForm';
+import { PAGES } from '../../constants';
+import { ADD_SEASON, FETCH_SEASONS, FETCH_SEASONS_POSITION } from '../../graphql';
 import { mapSeasonForm } from '../../helpers/mapSeasonForm';
+import { useSeasonInput } from '../../hooks/useSeasonInput';
+import SeasonForm from './SeasonForm';
+import { initialTeamSeasonState } from './state';
+import type { SeasonFormData } from './validation';
 
 export default function AddTeamSeason() {
   const { orgId, teamId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<SeasonFormData | null>(null);
+  const defaultValues: SeasonFormData = useMemo(() => ({ ...initialTeamSeasonState }), []);
 
   const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
@@ -30,10 +29,6 @@ export default function AddTeamSeason() {
       { query: FETCH_SEASONS, variables: { teamId } },
     ],
   });
-
-  useEffect(() => {
-    setDefaultValues({ ...initialTeamSeasonState });
-  }, []);
 
   const onSubmit = async (formData: SeasonFormData) => {
     try {
@@ -52,19 +47,19 @@ export default function AddTeamSeason() {
     }
   };
 
-  const renderContent = () => {
-    return defaultValues ? (
-      <SeasonForm
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        competitionOptions={competitionOptions}
-        loading={loading || orgLoading}
-        error={error || orgError}
-      />
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return <PageHeader title={PAGES.ADD_SEASON}>{renderContent()}</PageHeader>;
+  return (
+    <PageHeader title={PAGES.ADD_SEASON}>
+      {competitionOptions ? (
+        <SeasonForm
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+          competitionOptions={competitionOptions}
+          loading={loading || orgLoading}
+          error={error || orgError}
+        />
+      ) : (
+        <Spinner />
+      )}
+    </PageHeader>
+  );
 }

@@ -1,5 +1,5 @@
-import type { Edit_AwardMutationVariables } from '../graphql/EDIT_AWARD.generated';
 import type { AwardFormData } from '../forms/award/validation';
+import type { Edit_AwardMutationVariables } from '../graphql/EDIT_AWARD.generated';
 import { T_FETCH_AWARD } from '../types';
 
 export function mapAwardToForm(award: T_FETCH_AWARD['award'] | null | undefined): AwardFormData {

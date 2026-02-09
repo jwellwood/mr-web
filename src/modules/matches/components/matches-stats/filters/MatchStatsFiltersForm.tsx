@@ -1,6 +1,5 @@
-import { Stack } from '@mui/material';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import {
   CustomButton,
   FormContainer,
@@ -9,8 +8,8 @@ import {
   ISelectOptions,
   ControlledSelectInput,
 } from '../../../../../components';
-import MatchStatsFiltersDisplay from './MatchStatsFiltersDisplay';
 import { TMatchStatsFilters } from '../../../context';
+import MatchStatsFiltersDisplay from './MatchStatsFiltersDisplay';
 
 interface Props {
   onSubmit: (values: TMatchStatsFilters) => void;
@@ -25,29 +24,34 @@ export default function MatchStatsFiltersForm({
   defaultValues,
   competitionOptions,
 }: Props) {
+  const [open, setOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm<TMatchStatsFilters>({ defaultValues });
   const resetForm = () => {
     reset();
     onReset();
   };
 
+  const submitHandler = (values: TMatchStatsFilters) => {
+    onSubmit(values);
+    setOpen(false);
+  };
+
   return (
-    <FormModal
-      title="Filters"
-      buttonElement={<MatchStatsFiltersDisplay competitionOptions={competitionOptions} />}
-      closeForm={() => true}
-    >
-      <FormContainer
-        loading={false}
-        onSubmit={handleSubmit(onSubmit)}
-        submitBtn={{ text: 'Apply' }}
-        resetBtn={
-          <CustomButton onClick={resetForm} color="error">
-            Reset
-          </CustomButton>
-        }
-      >
-        <Stack spacing={2} sx={{ width: '300px', marginTop: '8px' }}>
+    <>
+      <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
+        <MatchStatsFiltersDisplay competitionOptions={competitionOptions} />
+      </span>
+      <FormModal title="Filters" open={open} onClose={() => setOpen(false)}>
+        <FormContainer
+          loading={false}
+          onSubmit={handleSubmit(submitHandler)}
+          submitBtn={{ text: 'Apply' }}
+          resetBtn={
+            <CustomButton onClick={resetForm} color="error">
+              Reset
+            </CustomButton>
+          }
+        >
           <ControlledSelectInput
             name="competition"
             options={competitionOptions}
@@ -59,8 +63,8 @@ export default function MatchStatsFiltersForm({
             label="Include forfeits"
             control={control}
           />
-        </Stack>
-      </FormContainer>
-    </FormModal>
+        </FormContainer>
+      </FormModal>
+    </>
   );
 }

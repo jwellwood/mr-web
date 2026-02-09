@@ -1,5 +1,4 @@
 import { useQuery } from '@apollo/client';
-
 import { useCustomParams } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
 import SquadView from '../components/squad-overview/SquadView';

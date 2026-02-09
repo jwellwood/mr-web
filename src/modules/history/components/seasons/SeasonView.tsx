@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
-import { T_FETCH_SEASON } from '../../types';
 import { DataError } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
+import { T_FETCH_SEASON } from '../../types';
 import SeasonTabs from './SeasonTabs';
 
 interface Props {

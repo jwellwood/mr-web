@@ -1,10 +1,9 @@
-import { useSelector } from 'react-redux';
 import { ApolloError } from '@apollo/client';
-
+import { useSelector } from 'react-redux';
+import { SubmitButton } from '../../../../components';
+import { getTempMatch, getTempPlayers } from '../../../../store';
 import { validateStats } from '../../helpers/statsValidation';
 import AddMatchValidation from '../components/AddMatchValidation';
-import { getTempMatch, getTempPlayers } from '../../../../store';
-import { SubmitButton } from '../../../../components';
 import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';
 
 interface Props {

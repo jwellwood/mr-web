@@ -1,14 +1,13 @@
-import { ReactNode, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { ApolloError } from '@apollo/client';
-
-import { Spinner } from '../../../../components/loaders';
+import { ReactNode, useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FormModal } from '../../../../components';
-import { getGoalsOptions } from '../../helpers';
+import { Spinner } from '../../../../components/loaders';
 import { AppDispatch, getTempMatch, getTempPlayers, setTmpPlayers } from '../../../../store';
+import { getGoalsOptions } from '../../helpers';
 import { initPlayerInMatch } from '../add-match-players/state';
-import type { AddMatchPlayerStatsFormValues } from './validation';
 import AddMatchPlayerStatsForm from './AddMatchPlayerStatsForm';
+import type { AddMatchPlayerStatsFormValues } from './validation';
 
 interface Props {
   playerId: string;
@@ -21,24 +20,18 @@ export default function AddStats({ playerId, title, buttonElement, error }: Prop
   const currentMatch = useSelector(getTempMatch);
   const currentPlayers = useSelector(getTempPlayers);
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<AddMatchPlayerStatsFormValues | null>(null);
+  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
+  const defaultValues: AddMatchPlayerStatsFormValues | null = useMemo(() => {
     const selectedPlayer = currentPlayers?.find(player => player.playerId === playerId);
-
     if (selectedPlayer) {
-      setDefaultValues({
+      return {
         ...selectedPlayer,
         matchPosition: selectedPlayer.matchPosition,
-      });
-    } else {
-      setDefaultValues({
-        ...initPlayerInMatch,
-      });
+      } as AddMatchPlayerStatsFormValues;
     }
+    return initPlayerInMatch as AddMatchPlayerStatsFormValues;
   }, [currentPlayers, playerId]);
-
-  const closeForm = () => true;
 
   const onSubmit = async (formData: AddMatchPlayerStatsFormValues) => {
     const playerIndex = currentPlayers?.findIndex(player => player.playerId === playerId);
@@ -46,7 +39,6 @@ export default function AddStats({ playerId, title, buttonElement, error }: Prop
     const matchPlayersToUpdate = [...currentPlayers];
 
     if (!matchPlayersToUpdate || playerIndex === undefined || playerIndex < 0) {
-      closeForm();
       return;
     }
 
@@ -59,7 +51,7 @@ export default function AddStats({ playerId, title, buttonElement, error }: Prop
     matchPlayersToUpdate[playerIndex] = updated;
 
     dispatch(setTmpPlayers({ matchPlayers: matchPlayersToUpdate }));
-    closeForm();
+    setOpen(false);
   };
 
   const goalOptions = getGoalsOptions(currentMatch.teamGoals);
@@ -68,16 +60,21 @@ export default function AddStats({ playerId, title, buttonElement, error }: Prop
   return (
     <>
       {defaultValues && currentPlayers?.length ? (
-        <FormModal buttonElement={buttonElement} title={title} closeForm={closeForm}>
-          <AddMatchPlayerStatsForm
-            defaultValues={defaultValues}
-            onSubmit={onSubmit}
-            goalOptions={goalOptions}
-            concededOptions={concededOptions}
-            loading={false}
-            error={error}
-          />
-        </FormModal>
+        <>
+          <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
+            {buttonElement}
+          </span>
+          <FormModal title={title} open={open} onClose={() => setOpen(false)}>
+            <AddMatchPlayerStatsForm
+              defaultValues={defaultValues}
+              onSubmit={onSubmit}
+              goalOptions={goalOptions}
+              concededOptions={concededOptions}
+              loading={false}
+              error={error}
+            />
+          </FormModal>
+        </>
       ) : (
         <Spinner />
       )}

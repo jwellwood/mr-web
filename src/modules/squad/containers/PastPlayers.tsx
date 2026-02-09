@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_PAST_PLAYERS } from '../graphql';
 import { useCustomParams } from '../../../hooks';
 import PastPlayersView from '../components/past-players/PastPlayersView';
+import { FETCH_PAST_PLAYERS } from '../graphql';
 
 export default function PastPlayers() {
   const { teamId } = useCustomParams();

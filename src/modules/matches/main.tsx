@@ -1,7 +1,6 @@
 import { lazy } from 'react';
-
-import { TAB_TYPES } from '../../constants';
 import { CustomTabs, ITab } from '../../components/tabs';
+import { TAB_TYPES } from '../../constants';
 
 const Matches = lazy(() => import('./containers/Matches'));
 const MatchRecords = lazy(() => import('./containers/MatchRecords'));

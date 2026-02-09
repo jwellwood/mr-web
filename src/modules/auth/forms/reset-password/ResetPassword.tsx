@@ -1,11 +1,10 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { RESET_PASSWORD } from '../../graphql';
-import { PAGES } from '../../constants';
-import { AppDispatch, showAlert } from '../../../../store';
 import { PageContainer } from '../../../../components';
+import { AppDispatch, showAlert } from '../../../../store';
+import { PAGES } from '../../constants';
+import { RESET_PASSWORD } from '../../graphql';
 import { AUTH_PATHS } from '../../router';
 import ResetPasswordView from './ResetPasswordView';
 import { ResetPasswordFormData } from './validation';

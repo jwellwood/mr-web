@@ -1,25 +1,23 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_AWARD, FETCH_AWARDS } from '../../graphql';
-import { PAGES } from '../../constants';
+import { PageHeader } from '../../../../components';
+import type { ISelectOptions } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { useMatchPlayersInput } from '../../../matches/hooks/useMatchPlayersInput';
-import { Spinner } from '../../../../components/loaders';
-import { PageHeader } from '../../../../components';
-import type { ISelectOptions } from '../../../../components';
+import { PAGES } from '../../constants';
+import { ADD_AWARD, FETCH_AWARDS } from '../../graphql';
+import AwardForm from './AwardForm';
 import { initialAwardState } from './state';
 import type { AwardFormData } from './validation';
-import AwardForm from './AwardForm';
 
 export default function AddAward() {
   const { teamId, seasonId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<null | AwardFormData>(null);
+  const defaultValues: AwardFormData = initialAwardState;
   const {
     players,
     loading: playersLoading,
@@ -34,11 +32,6 @@ export default function AddAward() {
       })),
     [players]
   );
-
-  useEffect(() => {
-    setDefaultValues({ ...initialAwardState });
-  }, [players]);
-
   const [addAward, { error, loading }] = useMutation(ADD_AWARD, {
     refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId } }],
   });
@@ -62,19 +55,15 @@ export default function AddAward() {
     }
   };
 
-  const renderContent = () => {
-    return defaultValues ? (
+  return (
+    <PageHeader title={PAGES.ADD_AWARD}>
       <AwardForm
         onSubmit={onSubmit}
         defaultValues={defaultValues}
         playersOptions={playerOptions}
-        loading={loading || playersLoading || !defaultValues}
+        loading={loading || playersLoading}
         error={error || playersError}
       />
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return <PageHeader title={PAGES.ADD_AWARD}>{renderContent()}</PageHeader>;
+    </PageHeader>
+  );
 }

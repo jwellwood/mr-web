@@ -1,11 +1,10 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { DELETE_COMPETITION, FETCH_COMPETITIONS } from '../../graphql';
+import { DeleteModal } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { showAlert } from '../../../../store';
-import { DeleteModal } from '../../../../components';
+import { DELETE_COMPETITION, FETCH_COMPETITIONS } from '../../graphql';
 
 export default function DeleteCompetition() {
   const { orgId, competitionId } = useCustomParams();

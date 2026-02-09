@@ -1,13 +1,11 @@
 import { ApolloError } from '@apollo/client';
-
 import AuthLayout from '../../components/AuthLayout';
-import ResendVerification from '../../containers/ResendVerification';
 import AuthorizationLinks from '../../components/AuthorizationLinks';
 import { SIGN_IN_LINKS } from '../../constants';
-
+import ResendVerification from '../../containers/ResendVerification';
+import SignInForm from './SignInForm';
 import { signInFormState } from './state';
 import type { SignInFormData } from './validation';
-import SignInForm from './SignInForm';
 
 interface Props {
   loading: boolean;

@@ -1,10 +1,8 @@
 import { ApolloError } from '@apollo/client';
-
+import { DataError, NoDataText } from '../../../../components';
 import { T_FETCH_TROPHIES } from '../../types';
 import TrophiesOrderBy from './TrophiesOrderBy';
-
 import TrophiesTotals from './TrophiesTotals';
-import { DataError, NoDataText } from '../../../../components';
 
 interface Props {
   data?: T_FETCH_TROPHIES;

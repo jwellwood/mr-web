@@ -1,9 +1,8 @@
-import { PickerValue } from '@mui/x-date-pickers/internals';
 import { MobileDatePicker, LocalizationProvider, DateView } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-
-import FormErrorMessage from '../form-error-message/FormErrorMessage';
+import { PickerValue } from '@mui/x-date-pickers/internals';
 import { theme } from '../../../theme';
+import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import { TypedFormError } from '../types';
 
 interface Props {

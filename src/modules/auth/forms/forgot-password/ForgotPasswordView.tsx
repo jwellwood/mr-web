@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
 import AuthLayout from '../../components/AuthLayout';
-import { forgotPasswordFormState } from './state';
 import ForgotPasswordForm from './ForgotPasswordForm';
+import { forgotPasswordFormState } from './state';
 import type { ForgotPasswordFormData } from './validation';
 
 interface Props {

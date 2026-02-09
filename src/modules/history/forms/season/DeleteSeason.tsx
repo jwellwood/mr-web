@@ -1,16 +1,15 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
+import { DeleteModal } from '../../../../components/modals';
+import { useCustomParams } from '../../../../hooks';
+import { AppDispatch, showAlert } from '../../../../store';
 import {
   DELETE_SEASON,
   FETCH_SEASONS,
   FETCH_SEASONS_POSITION,
   FETCH_TROPHIES,
 } from '../../graphql';
-import { useCustomParams } from '../../../../hooks';
-import { AppDispatch, showAlert } from '../../../../store';
-import { DeleteModal } from '../../../../components/modals';
 
 export default function DeleteSeason() {
   const { teamId, seasonId } = useCustomParams();

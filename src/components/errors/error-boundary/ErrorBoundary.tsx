@@ -1,11 +1,10 @@
-import React, { Component, ErrorInfo } from 'react';
 import { Stack } from '@mui/material';
-
-import { CustomButton, LinkButton } from '../../buttons';
-import { SectionContainer } from '../..';
-import { CustomTypography } from '../../typography';
+import React, { Component, ErrorInfo } from 'react';
 import { ErrorText } from '..';
+import { SectionContainer } from '../..';
 import { ROOT_URL } from '../../../constants';
+import { CustomButton, LinkButton } from '../../buttons';
+import { CustomTypography } from '../../typography';
 
 interface State {
   errorMessage: string;

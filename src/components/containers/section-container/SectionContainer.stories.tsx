@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-
 import SectionContainer from './SectionContainer';
 
 //👇 This default export determines where your story goes in the story list

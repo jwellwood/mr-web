@@ -4,7 +4,6 @@ import InputLabel from '@mui/material/InputLabel';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import { TypedFormError, ISelectOptions } from '../types';
 

@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import SquadRecordsInMatchesView from '../components/squad-records/squad-most-in-match-records/SquadRecordsInMatchesView';
+import { FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH } from '../graphql';
 
 export default function SquadMostAssistsInMatch() {
   const { teamId } = useCustomParams();

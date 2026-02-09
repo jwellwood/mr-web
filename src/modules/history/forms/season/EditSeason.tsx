@@ -1,25 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-
-import { EDIT_SEASON, FETCH_SEASONS_POSITION, FETCH_SEASON, FETCH_SEASONS } from '../../graphql';
-import { useSeasonInput } from '../../hooks/useSeasonInput';
+import { PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { Spinner } from '../../../../components/loaders';
 import { PAGES } from '../../constants';
-import SeasonForm from './SeasonForm';
+import { EDIT_SEASON, FETCH_SEASONS_POSITION, FETCH_SEASON, FETCH_SEASONS } from '../../graphql';
 import { mapSeasonForm } from '../../helpers/mapSeasonForm';
-import { PageHeader } from '../../../../components';
-import type { SeasonFormData } from './validation';
+import { useSeasonInput } from '../../hooks/useSeasonInput';
 import DeleteSeason from './DeleteSeason';
+import SeasonForm from './SeasonForm';
+import type { SeasonFormData } from './validation';
 
 export default function EditSeason() {
   const { teamId, seasonId, orgId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<SeasonFormData | null>(null);
   const { loading, error, data, refetch } = useQuery(FETCH_SEASON, {
     variables: { seasonId: seasonId! },
     notifyOnNetworkStatusChange: true,
@@ -34,9 +32,10 @@ export default function EditSeason() {
 
   const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
-  useEffect(() => {
-    setDefaultValues(mapSeasonForm.toForm(data?.season));
-  }, [data]);
+  const defaultValues: SeasonFormData | null = useMemo(
+    () => (data?.season ? mapSeasonForm.toForm(data.season) : null),
+    [data]
+  );
 
   const onSubmit = async (formData: SeasonFormData) => {
     try {

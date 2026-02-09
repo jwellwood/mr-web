@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { ApolloError } from '@apollo/client';
-
-import AddMatchPlayersSchema, { AddMatchPlayersFormValues } from './validation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useMemo } from 'react';
+import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   ControlledMultiSelectInput,
@@ -12,6 +10,7 @@ import {
 import TextList from '../../../../components/lists/TextList';
 import { CustomTypography } from '../../../../components/typography';
 import { T_FETCH_PLAYERS_FOR_MATCH_INPUT } from '../../types';
+import AddMatchPlayersSchema, { AddMatchPlayersFormValues } from './validation';
 
 interface Props {
   onSubmit: (data: AddMatchPlayersFormValues) => void;
@@ -29,7 +28,6 @@ export default function AddMatchPlayersForm({
   loading,
   error,
 }: Props) {
-  const [playerList, setPlayerList] = useState<{ label: string }[]>([]);
   const { handleSubmit, control, watch } = useForm<AddMatchPlayersFormValues>({
     defaultValues,
     resolver: zodResolver(AddMatchPlayersSchema),
@@ -37,13 +35,14 @@ export default function AddMatchPlayersForm({
 
   const matchPlayers = watch('matchPlayers');
 
-  useEffect(() => {
+  const playerList = useMemo(() => {
     const list: { label: string }[] = [];
-    matchPlayers?.forEach(player => {
+
+    (matchPlayers || []).forEach(player => {
       const selectedPlayer = players.find(p => p._id === (player as unknown as string));
       list.push({ label: selectedPlayer?.name || '' });
     });
-    setPlayerList(list);
+    return list;
   }, [matchPlayers, players]);
 
   return (

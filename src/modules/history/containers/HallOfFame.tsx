@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_HALL_OF_FAME } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import HallOfFameView from '../components/hall-of-fame/HallOfFameView';
+import { FETCH_HALL_OF_FAME } from '../graphql';
 
 export default function HallOfFame() {
   const { teamId } = useCustomParams();

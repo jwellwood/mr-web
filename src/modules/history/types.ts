@@ -1,5 +1,4 @@
 import { DeepOmitTypename } from '../../utils';
-
 import { Add_AwardMutation } from './graphql/ADD_AWARD.generated';
 import { Add_SeasonMutation } from './graphql/ADD_SEASON.generated';
 import { Add_TrophyMutation } from './graphql/ADD_TROPHY.generated';
@@ -13,8 +12,8 @@ import { Fetch_AwardQuery } from './graphql/FETCH_AWARD.generated';
 import { Fetch_AwardsQuery } from './graphql/FETCH_AWARDS.generated';
 import { Fetch_Hall_Of_FameQuery } from './graphql/FETCH_HALL_OF_FAME.generated';
 import { Fetch_SeasonQuery } from './graphql/FETCH_SEASON.generated';
-import { Fetch_Seasons_PositionQuery } from './graphql/FETCH_SEASONS_POSITION.generated';
 import { Fetch_SeasonsQuery } from './graphql/FETCH_SEASONS.generated';
+import { Fetch_Seasons_PositionQuery } from './graphql/FETCH_SEASONS_POSITION.generated';
 import { Fetch_TrophiesQuery } from './graphql/FETCH_TROPHIES.generated';
 import { Fetch_TrophyQuery } from './graphql/FETCH_TROPHY.generated';
 

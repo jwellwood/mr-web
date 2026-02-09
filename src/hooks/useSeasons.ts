@@ -1,13 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-
+import { useCallback, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import type { ISelectOptions } from '../components';
 import { FETCH_SEASONS } from '../modules/history/graphql';
 import { useCustomParams } from './useCustomParams';
-import type { ISelectOptions } from '../components';
 
 export const useSeasons = () => {
-  const [seasonToUse, setSeasonToUse] = useState('');
+  // derive seasonToUse from params or data
   const { teamId, seasonId } = useCustomParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const seasonParam = searchParams.get('season');
@@ -29,18 +28,11 @@ export const useSeasons = () => {
     });
   }
 
-  useEffect(() => {
-    if (seasonId) {
-      setSeasonToUse(seasonId);
-    }
-    if (seasonParam) {
-      setSeasonToUse(seasonParam);
-    }
-    const defaultSeason = data?.seasons.length ? data?.seasons[0]._id : '';
-    if (!seasonId && !seasonParam) {
-      setSeasonToUse(defaultSeason);
-    }
-  }, [data?.seasons, seasonId, seasonParam]);
+  const seasonToUse = useMemo(() => {
+    if (seasonId) return seasonId;
+    if (seasonParam) return seasonParam;
+    return data?.seasons?.[0]?._id ?? '';
+  }, [seasonId, seasonParam, data?.seasons]);
 
   const onSelectSeason = useCallback(
     (seasonId: string) => {

@@ -3,8 +3,8 @@ import CustomSkeleton from '../../../../../../../components/loaders/CustomSkelet
 import StatSkeleton from '../../../../../../../components/loaders/StatSkeleton';
 import { PresentationModal } from '../../../../../../../components/modals';
 import CustomTable from '../../../../../../../components/tables/CustomTable';
-import * as ALL_SEASONS_CONFIG from '../all-seasons';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../../../types';
+import * as ALL_SEASONS_CONFIG from '../all-seasons';
 
 export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?: boolean) => {
   const maxGoals = Math.max(...(data?.map(season => season.goals) || [0]));

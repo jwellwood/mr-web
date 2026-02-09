@@ -1,5 +1,4 @@
 import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
-
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import type { ISelectOptions, TypedFormError } from '../types';
 

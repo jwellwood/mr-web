@@ -1,4 +1,3 @@
-import React from 'react';
 import { ApolloError } from '@apollo/client';
 import { Box, DialogContent, Stack } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -6,12 +5,12 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-
+import React from 'react';
+import { SectionContainer } from '../../containers';
+import { MutationError } from '../../errors';
+import { AppIcon } from '../../icons';
 import { Spinner } from '../../loaders';
 import { CustomTypography } from '../../typography';
-import { MutationError } from '../../errors';
-import { SectionContainer } from '../../containers';
-import { AppIcon } from '../../icons';
 
 interface Props {
   title: string;

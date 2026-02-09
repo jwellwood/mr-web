@@ -6,13 +6,13 @@ import {
   MatchStatsTable,
   MatchAverages,
 } from '../../../../components';
-import { mapPlayerMatchStats } from '../../helpers/mapPlayerMatchStats';
-import { mapPlayerAverages } from '../../helpers';
-import StatsFilters from '../../forms/stats-filter/StatsFilters';
 import CustomTable from '../../../../components/tables/CustomTable';
-import * as OVERALL_STATS_CONFIG from './config/overall-stats';
-import * as GAMES_WITH_STAT_CONFIG from './config/games-with-stat';
+import StatsFilters from '../../forms/stats-filter/StatsFilters';
+import { mapPlayerAverages } from '../../helpers';
+import { mapPlayerMatchStats } from '../../helpers/mapPlayerMatchStats';
 import { T_FETCH_PLAYER_STATS } from '../../types';
+import * as GAMES_WITH_STAT_CONFIG from './config/games-with-stat';
+import * as OVERALL_STATS_CONFIG from './config/overall-stats';
 
 interface Props {
   data?: T_FETCH_PLAYER_STATS;

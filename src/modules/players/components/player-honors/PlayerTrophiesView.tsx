@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, LinksList, NoDataText, SectionContainer } from '../../../../components';
-import { getTrophyListItem } from './getTrophyListItem';
 import { T_FETCH_PLAYER_TROPHIES } from '../../types';
+import { getTrophyListItem } from './getTrophyListItem';
 
 interface Props {
   data?: T_FETCH_PLAYER_TROPHIES;

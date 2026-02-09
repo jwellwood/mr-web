@@ -1,18 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-
-import { PAGES } from '../../constants';
-import { FETCH_PLAYER, EDIT_PLAYER } from '../../graphql';
+import { PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useSeasons, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { Spinner } from '../../../../components/loaders';
+import { PAGES } from '../../constants';
+import { FETCH_PLAYER, EDIT_PLAYER } from '../../graphql';
 import { mapFormToPlayer, mapPlayerToForm } from '../../helpers/mapPlayerForm';
-import { PageHeader } from '../../../../components';
-import type { PlayerFormData } from './validation';
-import PlayerForm from './PlayerForm';
 import DeletePlayer from './DeletePlayer';
+import PlayerForm from './PlayerForm';
+import type { PlayerFormData } from './validation';
 
 export default function EditPlayer() {
   const { teamId, playerId } = useCustomParams();
@@ -26,15 +24,9 @@ export default function EditPlayer() {
   const [updatePlayer, { loading: updateLoading, error: updateError }] = useMutation(EDIT_PLAYER);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<PlayerFormData | null>(null);
 
-  useEffect(() => {
-    if (data) {
-      const { player } = data;
-
-      setDefaultValues(mapPlayerToForm(player));
-    }
-  }, [data]);
+  // Derive form values directly from query data
+  const defaultValues = data?.player ? mapPlayerToForm(data.player) : null;
 
   const onSubmit = (formData: PlayerFormData) => {
     try {
@@ -64,24 +56,26 @@ export default function EditPlayer() {
       );
     }
   };
-  const isLoading = loading || seasonLoading || updateLoading;
-  const renderContent = () => {
-    return defaultValues ? (
-      <>
-        <PlayerForm
-          defaultValues={defaultValues}
-          onSubmit={onSubmit}
-          countryOptions={nationalityOptions}
-          seasonOptions={seasonOptions}
-          loading={isLoading}
-          error={error || updateError}
-        />
-        <DeletePlayer />
-      </>
-    ) : (
-      <Spinner />
-    );
-  };
 
-  return <PageHeader title={PAGES.EDIT_PLAYER}>{renderContent()}</PageHeader>;
+  const isLoading = loading || seasonLoading || updateLoading;
+
+  return (
+    <PageHeader title={PAGES.EDIT_PLAYER}>
+      {isLoading || !defaultValues ? (
+        <Spinner />
+      ) : (
+        <>
+          <PlayerForm
+            defaultValues={defaultValues}
+            onSubmit={onSubmit}
+            countryOptions={nationalityOptions}
+            seasonOptions={seasonOptions}
+            loading={isLoading}
+            error={error || updateError}
+          />
+          <DeletePlayer />
+        </>
+      )}
+    </PageHeader>
+  );
 }

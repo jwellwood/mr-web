@@ -1,10 +1,9 @@
-import { lazy } from 'react';
 import { useQuery } from '@apollo/client';
-
-import { FETCH_USER } from '../graphql';
-import { PAGES, PROFILE_ADMIN_LINKS } from '../constants';
+import { lazy } from 'react';
 import { PageContainer } from '../../../components';
 import { useAuth } from '../../../hooks';
+import { PAGES, PROFILE_ADMIN_LINKS } from '../constants';
+import { FETCH_USER } from '../graphql';
 
 const ProfileView = lazy(() => import('../components/ProfileView'));
 const ProfileOrganizations = lazy(() => import('./ProfileOrganization'));

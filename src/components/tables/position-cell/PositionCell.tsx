@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
 import { amber, blue, green, red } from '@mui/material/colors';
-import { CustomTypography } from '../../typography';
+import { ReactElement } from 'react';
 import { POSITIONS } from '../../../constants';
+import { CustomTypography } from '../../typography';
 
 interface Props {
   children: string | number | ReactElement;

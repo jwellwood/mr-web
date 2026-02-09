@@ -2,7 +2,6 @@
 import '@testing-library/jest-dom';
 import { expect, describe, it } from '@jest/globals';
 import { render } from '@testing-library/react';
-
 import TestWrapper from '../TestWrapper';
 
 describe('TestWrapper', () => {

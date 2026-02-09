@@ -1,15 +1,15 @@
+import { IconType } from 'react-icons';
 import { BiHistory, BiGlobe, BiFootball, BiTrophy, BiArrowBack, BiTrashAlt } from 'react-icons/bi';
-import { FaRegFlag } from 'react-icons/fa6';
 import { BsShieldShaded, BsFilter } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
+import { FaRegFlag } from 'react-icons/fa6';
+import { IoShieldSharp } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
 import { MdLocationOn } from 'react-icons/md';
-import { TfiMenu } from 'react-icons/tfi';
 import { TbSoccerField, TbUsers } from 'react-icons/tb';
-import { FaUserCircle } from 'react-icons/fa';
-import { IoShieldSharp } from 'react-icons/io5';
-import { IconType } from 'react-icons';
-import { getIconColor } from '../utils/getIconColor';
+import { TfiMenu } from 'react-icons/tfi';
 import { theme } from '../../../theme';
+import { getIconColor } from '../utils/getIconColor';
 import { APP_ICONS, AppIconType } from './icons';
 
 interface Props {

@@ -1,7 +1,6 @@
 import React from 'react';
-
-import { PageHeader } from '../../shared';
 import { TLinkType } from '../../../constants';
+import { PageHeader } from '../../shared';
 
 interface Props {
   children: React.ReactElement;

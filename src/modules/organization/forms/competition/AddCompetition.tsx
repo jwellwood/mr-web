@@ -1,32 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_COMPETITION, FETCH_COMPETITIONS } from '../../graphql';
-import { PAGES } from '../../constants';
+import { PageHeader } from '../../../../components';
+import Spinner from '../../../../components/loaders/Spinner';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import Spinner from '../../../../components/loaders/Spinner';
-import { PageHeader } from '../../../../components';
+import { PAGES } from '../../constants';
+import { ADD_COMPETITION, FETCH_COMPETITIONS } from '../../graphql';
+import CompetitionForm from './CompetitionForm';
 import { initialCompetitionState } from './state';
 import type { CompetitionFormData } from './validation';
-import CompetitionForm from './CompetitionForm';
 
 export default function AddCompetition() {
   const { orgId } = useCustomParams();
   const navigate = useNavigate();
+
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<CompetitionFormData | null>(null);
+  const defaultValues: CompetitionFormData = useMemo(() => ({ ...initialCompetitionState }), []);
 
   const [addCompetition, { error, loading }] = useMutation(ADD_COMPETITION, {
     refetchQueries: [{ query: FETCH_COMPETITIONS, variables: { orgId } }],
   });
-
-  useEffect(() => {
-    setDefaultValues({ ...initialCompetitionState });
-  }, []);
 
   const onSubmit = async (formData: CompetitionFormData) => {
     try {

@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
-import { ImageAvatar } from '../../avatars';
-import { PresentationModal } from '../../modals';
 import { IMAGE_TYPE } from '../../../constants';
-import { CustomTypography } from '../../typography';
+import { ImageAvatar } from '../../avatars';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
+import { PresentationModal } from '../../modals';
+import { CustomTypography } from '../../typography';
 
 interface Props {
   name: string;

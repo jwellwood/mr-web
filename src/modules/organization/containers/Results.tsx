@@ -1,10 +1,9 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_RESULTS } from '../graphql';
-import { useCustomParams } from '../../../hooks/useCustomParams';
-import { Spinner } from '../../../components/loaders';
-import ResultsAccordion from '../components/ResultsAccordion';
 import { DataError, NoDataText } from '../../../components';
+import { Spinner } from '../../../components/loaders';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import ResultsAccordion from '../components/ResultsAccordion';
+import { FETCH_RESULTS } from '../graphql';
 
 export default function Results() {
   const { orgId, orgSeasonId } = useCustomParams();

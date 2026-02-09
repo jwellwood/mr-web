@@ -1,8 +1,7 @@
 import { Route } from 'react-router-dom';
-
+import { AUTH_ROLES } from '../../constants';
 import * as PLAYER from '../../modules/players/router';
 import RouteGuard from '../RouteGuard';
-import { AUTH_ROLES } from '../../constants';
 
 export const PLAYER_ROUTES = () => (
   <>

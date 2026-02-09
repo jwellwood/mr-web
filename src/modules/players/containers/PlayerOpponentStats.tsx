@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import { useQuery } from '@apollo/client';
+import { useState } from 'react';
 import { useCustomParams } from '../../../hooks';
-import { FETCH_PLAYER_OPPONENT_STATS } from '../graphql';
 import PlayerOpponentStatsView from '../components/player-opponents/PlayerOpponentStatsView';
 import { PlayerOpponentFiltersContext, TPlayerOpponentFilters } from '../context';
+import { FETCH_PLAYER_OPPONENT_STATS } from '../graphql';
 
 export default function PlayerOpponentStats() {
   const [filters, setFilters] = useState<TPlayerOpponentFilters>({

@@ -1,5 +1,5 @@
-import { CustomTypography } from '../../typography';
 import { form_error_text } from '../../../i18n';
+import { CustomTypography } from '../../typography';
 import { TypedFormError } from '../types';
 
 interface Props {

@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-
+import { PageContainer } from '../../../components';
 import { Spinner } from '../../../components/loaders';
+import { AppDispatch } from '../../../store';
+import ValidatedEmail from '../components/ValidatedEmail.component';
 import { PAGES } from '../constants';
 import { verifyEmail } from '../services/validation';
-import { AppDispatch } from '../../../store';
-import { PageContainer } from '../../../components';
-import ValidatedEmail from '../components/ValidatedEmail.component';
 
 export default function ValidatedEmailContainer() {
   const { token } = useParams<{ token: string }>();

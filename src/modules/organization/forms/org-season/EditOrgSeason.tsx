@@ -1,24 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-
-import { EDIT_ORG_SEASON, FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../../graphql';
-import { PAGES } from '../../constants';
+import { PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { Spinner } from '../../../../components/loaders';
-import { PageHeader } from '../../../../components';
-import type { OrgSeasonFormData } from './validation';
-import OrgSeasonForm from './OrgSeasonForm';
+import { PAGES } from '../../constants';
+import { EDIT_ORG_SEASON, FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../../graphql';
 import DeleteOrgSeason from './DeleteOrgSeason';
+import OrgSeasonForm from './OrgSeasonForm';
+import type { OrgSeasonFormData } from './validation';
 
 export default function EditOrgSeason() {
   const { orgId, orgSeasonId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-
-  const [defaultValues, setDefaultValues] = useState<OrgSeasonFormData | null>(null);
 
   const { loading, error, data, refetch } = useQuery(FETCH_ORG_SEASON, {
     variables: { seasonId: orgSeasonId },
@@ -30,16 +27,14 @@ export default function EditOrgSeason() {
     refetchQueries: [{ query: FETCH_ORG_SEASONS, variables: { orgId } }],
   });
 
-  useEffect(() => {
-    if (data?.orgSeason) {
-      const season = data.orgSeason;
-
-      setDefaultValues({
-        ...season,
-        yearStarted: new Date(season.yearStarted),
-        yearEnded: new Date(season.yearEnded),
-      });
-    }
+  const defaultValues: OrgSeasonFormData | null = useMemo(() => {
+    if (!data?.orgSeason) return null;
+    const season = data.orgSeason;
+    return {
+      ...season,
+      yearStarted: new Date(season.yearStarted),
+      yearEnded: new Date(season.yearEnded),
+    } as OrgSeasonFormData;
   }, [data]);
 
   const onSubmit = async (formData: OrgSeasonFormData) => {

@@ -1,5 +1,4 @@
 import { Typography } from '@mui/material';
-
 import { CenteredGrid, GridItem } from '../../../components/grids';
 import { CustomTypography } from '../../../components/typography';
 

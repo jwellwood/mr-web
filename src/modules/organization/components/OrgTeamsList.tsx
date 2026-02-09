@@ -1,9 +1,9 @@
-import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
-import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import { SectionContainer } from '../../../components';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTabs, ITab } from '../../../components/tabs';
+import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import { ITeam } from '../../team/types';
 
 interface Props {

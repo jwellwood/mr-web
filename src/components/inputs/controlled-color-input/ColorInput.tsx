@@ -1,9 +1,8 @@
-import React from 'react';
 import { Box, Stack, TextField } from '@mui/material';
-
+import React from 'react';
+import { CustomTypography } from '../../typography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import type { TypedFormError } from '../types';
-import { CustomTypography } from '../../typography';
 
 interface Props {
   inputName: string;

@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-
-import { useAuth, useCustomParams } from '../hooks';
+import { AuthLoader } from '../components/loaders';
 import { AUTH_ROLES, TAuthRoles } from '../constants';
-import { showAlert } from '../store';
+import { useAuth, useCustomParams } from '../hooks';
 import { AUTH_PATHS } from '../modules/auth/router';
 import { PROFILE_PATHS } from '../modules/profile/router';
-import { AuthLoader } from '../components/loaders';
+import { showAlert } from '../store';
 
 interface Props {
   children: ReactNode;

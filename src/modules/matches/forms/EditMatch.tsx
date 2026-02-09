@@ -1,13 +1,9 @@
-import { useEffect, useState } from 'react';
+import { ApolloError, useMutation, useQuery } from '@apollo/client';
+import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { ApolloError, useMutation, useQuery } from '@apollo/client';
-
-import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
-import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
-import MatchFormStepper from './components/MatchFormStepper';
-import { PAGES } from '../constants';
-import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
+import { DataError, PageHeader } from '../../../components';
+import { Spinner } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks';
 import {
   AppDispatch,
@@ -19,29 +15,38 @@ import {
   setTmpMatch,
   showAlert,
 } from '../../../store';
-import { Spinner } from '../../../components/loaders';
-import { DataError, PageHeader } from '../../../components';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
+import { PAGES } from '../constants';
+import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
+import { useMatchDetailsInput } from '../hooks/useMatchDetailsInput';
+import { ITempMatch, ITempMatchPlayers } from '../types';
+import MatchFormStepper from './components/MatchFormStepper';
 import {
   mapFetchedMatchToTempMatch,
   mapFetchedPlayersToTempPlayers,
   mapTempMatchToMutation,
 } from './mappers';
-import { ITempMatch, ITempMatchPlayers } from '../types';
 
 export default function EditMatch() {
   const { teamId, matchId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<ITempMatch | null>(null);
-  const [currentPlayers, setCurrentPlayers] = useState<ITempMatchPlayers[]>([]);
+  const currentTempMatch = useSelector(getTempMatch);
+  const currentTempPlayers = useSelector(getTempPlayers);
+
+  const defaultValues: ITempMatch | null = useMemo(
+    () => currentTempMatch || null,
+    [currentTempMatch]
+  );
+  const currentPlayers: ITempMatchPlayers[] = useMemo(
+    () => currentTempPlayers || [],
+    [currentTempPlayers]
+  );
 
   const { data, loading, error } = useQuery(FETCH_MATCH, {
     variables: { matchId: matchId! },
   });
-
-  const currentTempMatch = useSelector(getTempMatch);
-  const currentTempPlayers = useSelector(getTempPlayers);
 
   const { opponents, competitions, seasonOptions } = useMatchDetailsInput();
 
@@ -79,14 +84,6 @@ export default function EditMatch() {
       );
     }
   }, [data, dispatch]);
-
-  useEffect(() => {
-    setDefaultValues(currentTempMatch);
-  }, [currentTempMatch]);
-
-  useEffect(() => {
-    setCurrentPlayers(currentTempPlayers);
-  }, [currentTempPlayers]);
 
   const onSubmit = () => {
     if (!teamId) {

@@ -1,5 +1,4 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError } from '../../../../components';
 import ItemDetails from '../../../../components/common/history/item-details/ItemDetails';
 import { T_FETCH_AWARD } from '../../types';

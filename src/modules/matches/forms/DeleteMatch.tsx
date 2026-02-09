@@ -1,12 +1,11 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { DELETE_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
-import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
+import { DeleteModal } from '../../../components/modals';
 import { useSeasons, useCustomParams } from '../../../hooks';
 import { showAlert } from '../../../store';
-import { DeleteModal } from '../../../components/modals';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
+import { DELETE_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
 
 export default function DeleteMatch() {
   const { seasonId } = useSeasons();

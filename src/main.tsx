@@ -1,15 +1,14 @@
-import { Provider } from 'react-redux';
 import { ApolloProvider } from '@apollo/client';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-import { createRoot } from 'react-dom/client';
 import { StrictMode } from 'react';
-
+import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import ErrorBoundary from './components/errors/error-boundary/ErrorBoundary';
+import AppRouter from './router/AppRouter';
 import { apolloClient } from './services/graphql/apolloClient';
 import { store } from './store';
 import { theme } from './theme';
-import ErrorBoundary from './components/errors/error-boundary/ErrorBoundary';
-import AppRouter from './router/AppRouter';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);

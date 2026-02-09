@@ -1,13 +1,12 @@
+import { useQuery } from '@apollo/client';
 import { lazy, useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-
-import { FETCH_USER } from '../modules/profile/graphql';
-import { resetAuth, setAuth } from '../store';
 import { CustomAlert, ErrorBoundary, BackgroundContainer } from '../components';
 import { LazyLoader } from '../components/loaders';
 import { TAuthRoles } from '../constants';
+import { FETCH_USER } from '../modules/profile/graphql';
+import { resetAuth, setAuth } from '../store';
 import { authStorage } from '../utils';
 
 // Lazy load routes with retry logic for chunk load errors

@@ -1,11 +1,11 @@
-import { CustomTypography } from '../../../../../components/typography';
-import { parseDate } from '../../../../../utils/helpers';
-import { PresentationModal } from '../../../../../components/modals';
+import { ApolloError } from '@apollo/client';
+import { DataError } from '../../../../../components';
 import { CustomButton } from '../../../../../components/buttons';
 import LinksList from '../../../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../../../components/lists/types';
-import { ApolloError } from '@apollo/client';
-import { DataError } from '../../../../../components';
+import { PresentationModal } from '../../../../../components/modals';
+import { CustomTypography } from '../../../../../components/typography';
+import { parseDate } from '../../../../../utils/helpers';
 import { T_PLAYER_MATCH_WITH_RECORD } from '../../../types';
 
 interface Props {

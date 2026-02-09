@@ -1,13 +1,12 @@
-import { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-
-import { EDIT_ORG_BADGE, FETCH_ORG } from '../../graphql';
+import { useEffect } from 'react';
+import { PageHeader } from '../../../../components';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useUpload } from '../../../../hooks';
-import { PAGES } from '../../constants';
 import { removeOrgBadge, uploadOrgBadge } from '../../../../services/images';
-import { PageHeader } from '../../../../components';
+import { PAGES } from '../../constants';
+import { EDIT_ORG_BADGE, FETCH_ORG } from '../../graphql';
 
 export default function UpdateOrgBadge() {
   const { orgId } = useCustomParams();

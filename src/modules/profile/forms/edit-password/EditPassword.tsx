@@ -1,15 +1,14 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { EDIT_PASSWORD, FETCH_USER } from '../../graphql';
-import { PAGES } from '../../constants';
-import { showAlert } from '../../../../store';
-import { changePasswordFormState } from './state';
-import { PROFILE_PATHS } from '../../router';
 import { PageContainer } from '../../../../components';
-import type { ChangePasswordFormData } from './validation';
+import { showAlert } from '../../../../store';
+import { PAGES } from '../../constants';
+import { EDIT_PASSWORD, FETCH_USER } from '../../graphql';
+import { PROFILE_PATHS } from '../../router';
 import EditPasswordForm from './EditPasswordForm';
+import { changePasswordFormState } from './state';
+import type { ChangePasswordFormData } from './validation';
 
 export default function ChangePasswordContainer() {
   const navigate = useNavigate();

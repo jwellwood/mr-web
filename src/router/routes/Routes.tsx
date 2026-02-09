@@ -1,8 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-
+import { AUTH_ROLES } from '../../constants';
 import * as AUTH from '../../modules/auth/router';
-import * as HOME from '../../modules/home/router';
 import * as HISTORY from '../../modules/history/router';
+import * as HOME from '../../modules/home/router';
 import * as MATCH from '../../modules/matches/router';
 import * as ORG from '../../modules/organization/router';
 import * as PLAYER from '../../modules/players/router';
@@ -11,7 +11,6 @@ import * as TEAM from '../../modules/team/router';
 import NotFound from '../NotFound';
 import RouteGuard from '../RouteGuard';
 import { PLAYER_ROUTES, MATCH_ROUTES } from './';
-import { AUTH_ROLES } from '../../constants';
 
 export default function AppRoutes() {
   return (

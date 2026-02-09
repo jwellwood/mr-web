@@ -1,12 +1,12 @@
-import React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import React from 'react';
+import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
 import { IListItem } from './types';
-import CustomSkeleton from '../loaders/CustomSkeleton';
 
 interface Props {
   data?: readonly IListItem[];

@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
-import { useDateOfBirth } from '../../../../hooks';
 import { DataError, ModuleHeader, PositionCell } from '../../../../components';
 import { IMAGE_TYPE } from '../../../../constants';
+import { useDateOfBirth } from '../../../../hooks';
 import { T_FETCH_PLAYER } from '../../types';
 
 interface Props {

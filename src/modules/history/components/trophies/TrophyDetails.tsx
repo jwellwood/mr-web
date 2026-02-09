@@ -1,6 +1,6 @@
+import { CustomTypography } from '../../../../components';
 import ItemDetails from '../../../../components/common/history/item-details/ItemDetails';
 import { T_FETCH_TROPHY } from '../../types';
-import { CustomTypography } from '../../../../components';
 
 interface Props {
   trophy?: T_FETCH_TROPHY['trophy'];

@@ -1,9 +1,9 @@
 import { ApolloError } from '@apollo/client';
-import NoDataText from '../../../../components/errors/error-text/ErrorText';
-import { T_FETCH_MATCHES_STREAK } from '../../types';
-import CustomTable from '../../../../components/tables/CustomTable';
-import { columns, rows, styles } from './config';
 import { DataError } from '../../../../components';
+import NoDataText from '../../../../components/errors/error-text/ErrorText';
+import CustomTable from '../../../../components/tables/CustomTable';
+import { T_FETCH_MATCHES_STREAK } from '../../types';
+import { columns, rows, styles } from './config';
 
 interface Props {
   data?: T_FETCH_MATCHES_STREAK;

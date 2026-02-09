@@ -1,10 +1,9 @@
 import { Stack } from '@mui/material';
 import { ReactElement } from 'react';
-
 import { SectionContainer } from '../../../containers';
-import { CustomTypography } from '../../../typography';
-import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import { AppIcon, AppIconType } from '../../../icons';
+import CustomSkeleton from '../../../loaders/CustomSkeleton';
+import { CustomTypography } from '../../../typography';
 
 interface Props {
   icon: AppIconType;

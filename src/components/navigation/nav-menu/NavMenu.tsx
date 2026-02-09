@@ -1,21 +1,20 @@
-import * as React from 'react';
+import { Stack } from '@mui/material';
 import Box from '@mui/material/Box';
-import Menu from '@mui/material/Menu';
 import Divider from '@mui/material/Divider';
-
-import { CustomAvatar } from '../../avatars';
-import { LogoutButton } from '../../buttons';
-import { useLogout } from '../../../modules/auth/hooks/useLogout.hook';
-import { getInitials } from '../../../utils/helpers';
-import { CustomTypography } from '../../typography';
+import Menu from '@mui/material/Menu';
+import * as React from 'react';
 import { useAuth } from '../../../hooks';
-import { SectionContainer } from '../../containers';
-import { LinksList } from '../../lists';
+import { useLogout } from '../../../modules/auth/hooks/useLogout.hook';
 import { HOME_PATHS } from '../../../modules/home/router';
 import { PROFILE_PATHS } from '../../../modules/profile/router';
-import Footer from '../Footer';
-import { Stack } from '@mui/material';
+import { getInitials } from '../../../utils/helpers';
+import { CustomAvatar } from '../../avatars';
+import { LogoutButton } from '../../buttons';
+import { SectionContainer } from '../../containers';
 import { AppIcon } from '../../icons';
+import { LinksList } from '../../lists';
+import { CustomTypography } from '../../typography';
+import Footer from '../Footer';
 
 interface Props {
   username?: string;

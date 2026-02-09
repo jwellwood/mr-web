@@ -1,14 +1,13 @@
-import { useState } from 'react';
 import { ApolloError } from '@apollo/client';
-
+import { useState } from 'react';
 import { FormStepper } from '../../../../components';
+import { useCustomParams } from '../../../../hooks';
 import Step1MatchDetails from '../add-match-details/Step1MatchDetails';
-import Step2AddPlayers from '../add-match-players/Step2MatchPlayers';
 import Step3MatchStats from '../add-match-player-stats/Step3MatchStats';
+import Step2AddPlayers from '../add-match-players/Step2MatchPlayers';
+import DeleteMatch from '../DeleteMatch';
 import Step4SubmitMatch from '../submit-match/Step4SubmitMatch';
 import MatchOverview from './MatchOverview';
-import DeleteMatch from '../DeleteMatch';
-import { useCustomParams } from '../../../../hooks';
 
 interface Props {
   onSubmit: () => void;

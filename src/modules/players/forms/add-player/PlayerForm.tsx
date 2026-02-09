@@ -1,8 +1,6 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { ApolloError } from '@apollo/client';
-
-import { positionOptions } from '../../../../constants';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   ControlledDateInput,
@@ -12,6 +10,7 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
+import { positionOptions } from '../../../../constants';
 import { getIntegers } from '../../../../utils/helpers';
 import { type PlayerFormData, PlayerSchema } from './validation';
 

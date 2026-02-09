@@ -1,7 +1,7 @@
-import type { Fetch_TrophyQuery } from '../graphql/FETCH_TROPHY.generated';
-import type { Edit_TrophyMutationVariables } from '../graphql/EDIT_TROPHY.generated';
-import type { TrophyFormData } from '../forms/trophy/validation';
 import type { ISelectOptions } from '../../../components';
+import type { TrophyFormData } from '../forms/trophy/validation';
+import type { Edit_TrophyMutationVariables } from '../graphql/EDIT_TROPHY.generated';
+import type { Fetch_TrophyQuery } from '../graphql/FETCH_TROPHY.generated';
 
 export function mapTrophyToForm(
   trophy: Fetch_TrophyQuery['trophy'] | null | undefined,

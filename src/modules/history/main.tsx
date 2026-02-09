@@ -1,7 +1,6 @@
 import { lazy } from 'react';
-
-import { TAB_TYPES } from '../../constants';
 import { CustomTabs, ITab } from '../../components/tabs';
+import { TAB_TYPES } from '../../constants';
 
 const HallOfFame = lazy(() => import('./containers/HallOfFame'));
 const Seasons = lazy(() => import('./containers/Seasons'));

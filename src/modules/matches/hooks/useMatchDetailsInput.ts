@@ -1,10 +1,10 @@
-import { useEffect, useMemo } from 'react';
 import { useLazyQuery } from '@apollo/client';
+import { useEffect, useMemo } from 'react';
+import { ISelectOptions } from '../../../components';
+import { emptySelectOption } from '../../../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import { FETCH_ORG, FETCH_ORG_TEAMS } from '../../organization/graphql';
-import { ISelectOptions } from '../../../components';
-import { emptySelectOption } from '../../../constants';
 
 export const useMatchDetailsInput = () => {
   const { orgId, teamId } = useCustomParams();

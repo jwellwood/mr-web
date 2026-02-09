@@ -1,6 +1,6 @@
-import { LINK_TYPE } from '../../constants';
 import type { ISelectOptions } from '../../components';
 import { IListItem } from '../../components/lists/types';
+import { LINK_TYPE } from '../../constants';
 import { ORG_PATHS } from './router/paths';
 
 export const PAGES = {

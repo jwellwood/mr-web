@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_MATCHES_BY_OPPONENT } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import HeadToHeadView from '../components/match/HeadToHeadView';
+import { FETCH_MATCHES_BY_OPPONENT } from '../graphql';
 
 interface Props {
   opponentId?: string;

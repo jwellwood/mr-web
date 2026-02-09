@@ -1,6 +1,5 @@
-import { lazy } from 'react';
 import { useQuery } from '@apollo/client';
-
+import { lazy } from 'react';
 import { FETCH_ORGS_BY_USER } from '../graphql';
 
 const ProfileOrgView = lazy(() => import('../components/ProfileOrgView'));

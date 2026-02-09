@@ -1,12 +1,11 @@
-import { lazy } from 'react';
 import { ApolloError } from '@apollo/client';
-
-import { POSITIONS, TAB_TYPES } from '../../../../constants';
+import { lazy } from 'react';
+import { DataError, SectionContainer } from '../../../../components';
+import CustomTable from '../../../../components/tables/CustomTable';
 import { CustomTabs, ITab } from '../../../../components/tabs';
 import { NoDataText } from '../../../../components/typography';
-import { DataError, SectionContainer } from '../../../../components';
+import { POSITIONS, TAB_TYPES } from '../../../../constants';
 import { T_FETCH_MATCH } from '../../types';
-import CustomTable from '../../../../components/tables/CustomTable';
 import { columns, rows, styles } from './config';
 
 const MatchDetails = lazy(() => import('./MatchDetails'));

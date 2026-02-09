@@ -1,6 +1,6 @@
+import { IconButton } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IconButton } from '@mui/material';
 import { AppIcon } from '../../icons';
 
 const BackButton: React.FC = () => {

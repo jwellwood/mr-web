@@ -1,11 +1,10 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_SEASON } from '../graphql';
+import { PageHeader } from '../../../components';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { PAGES, SEASON_ADMIN_LINKS } from '../constants';
-import { PageHeader } from '../../../components';
 import SeasonView from '../components/seasons/SeasonView';
+import { PAGES, SEASON_ADMIN_LINKS } from '../constants';
+import { FETCH_SEASON } from '../graphql';
 
 export default function Season() {
   const { teamId, seasonId } = useCustomParams();

@@ -1,8 +1,7 @@
 import List from '@mui/material/List';
-
-import ListItemLink from './ListItemLink';
-import { IListItem } from '../types';
 import ListLoading from '../list-loading/ListLoading';
+import { IListItem } from '../types';
+import ListItemLink from './ListItemLink';
 
 interface Props {
   links?: IListItem[];

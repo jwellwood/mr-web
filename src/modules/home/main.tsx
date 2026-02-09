@@ -1,5 +1,5 @@
-import { CenteredGrid, GridItem } from '../../components/grids';
 import { PageContainer } from '../../components';
+import { CenteredGrid, GridItem } from '../../components/grids';
 import AppTitle from './components/AppTitle';
 import TeamSearch from './forms/TeamSearch';
 

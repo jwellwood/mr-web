@@ -1,11 +1,10 @@
 import { makeStyles } from '@mui/styles';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
-
 import { SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
-import { CustomTypography } from '../../../components/typography';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import { CustomTypography } from '../../../components/typography';
 import { type FETCH_TEAM_QUERY } from '../types';
 
 const useStyles = makeStyles(() => ({

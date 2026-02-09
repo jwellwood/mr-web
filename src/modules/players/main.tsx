@@ -1,10 +1,9 @@
 import { lazy } from 'react';
-
+import { PageContainer } from '../../components';
 import { CustomTabs, ITab } from '../../components/tabs';
 import { TAB_TYPES } from '../../constants';
-import { PageContainer } from '../../components';
-import { PAGES, PLAYER_ADMIN_LINKS } from './constants';
 import { useAuth, useCustomParams } from '../../hooks';
+import { PAGES, PLAYER_ADMIN_LINKS } from './constants';
 
 const Player = lazy(() => import('./containers/Player'));
 const PlayerTrophies = lazy(() => import('./containers/PlayerTrophies'));

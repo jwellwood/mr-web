@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import { Control, Path, useController } from 'react-hook-form';
-
 import CustomSwitch from './CustomSwitch';
 
 type Props<T extends object> = {

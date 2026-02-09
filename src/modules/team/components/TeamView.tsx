@@ -1,10 +1,9 @@
 import { ApolloError } from '@apollo/client';
-
-import { IMAGE_TYPE } from '../../../constants';
-import ModuleHeader from '../../../components/shared/module-header/ModuleHeader';
 import { DataError } from '../../../components';
-import Organization from '../components/Organization';
+import ModuleHeader from '../../../components/shared/module-header/ModuleHeader';
+import { IMAGE_TYPE } from '../../../constants';
 import Kits from '../components/Kits';
+import Organization from '../components/Organization';
 import Stadium from '../components/Stadium';
 import { FETCH_TEAM_QUERY } from '../types';
 

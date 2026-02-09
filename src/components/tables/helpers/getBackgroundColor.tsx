@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
-
 import { BACKGROUND_STYLE } from '../../../constants';
-import type { ICellStyleByIndex } from '../types';
 import { theme } from '../../../theme';
 import { getOpaqueValue } from '../../../utils/colors/getOpaqueValue';
+import type { ICellStyleByIndex } from '../types';
 
 export const getBackgroundColor = (
   item: [string, ReactNode | number | object],

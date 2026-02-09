@@ -1,6 +1,5 @@
-import { lazy } from 'react';
 import { useQuery } from '@apollo/client';
-
+import { lazy } from 'react';
 import { FETCH_TEAMS_BY_USER } from '../graphql';
 
 const ProfileTeamsView = lazy(() => import('../components/ProfileTeamsView'));

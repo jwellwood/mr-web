@@ -1,5 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
+import React from 'react';
 import { returnStatAsZero } from '../returnZero';
 
 describe('return stat as zero tests', () => {

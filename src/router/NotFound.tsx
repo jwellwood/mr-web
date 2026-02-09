@@ -1,6 +1,6 @@
-import { CustomTypography } from '../components/typography';
 import { NOT_FOUND_PAGE } from '../components/navigation/constants';
 import { PageHeader } from '../components/shared';
+import { CustomTypography } from '../components/typography';
 
 export default function NotFound() {
   return (

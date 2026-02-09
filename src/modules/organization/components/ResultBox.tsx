@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
-import { IResult } from '../types';
 import { CustomTypography } from '../../../components/typography';
+import { IResult } from '../types';
 
 interface Props {
   result: IResult;

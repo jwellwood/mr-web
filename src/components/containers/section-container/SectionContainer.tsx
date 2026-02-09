@@ -1,8 +1,7 @@
-import React, { ReactNode } from 'react';
 import { Box, Fade, Paper } from '@mui/material';
-
-import { CustomTypography } from '../../typography';
+import React, { ReactNode } from 'react';
 import { theme } from '../../../theme';
+import { CustomTypography } from '../../typography';
 
 interface Props {
   title?: string | ReactNode;

@@ -1,8 +1,7 @@
 import { Stack } from '@mui/material';
-
-import Spinner from '../Spinner';
-import LazyLoader from '../lazy-loader/LazyLoader';
 import { CustomTypography } from '../../typography';
+import LazyLoader from '../lazy-loader/LazyLoader';
+import Spinner from '../Spinner';
 
 export default function AuthLoader() {
   return (

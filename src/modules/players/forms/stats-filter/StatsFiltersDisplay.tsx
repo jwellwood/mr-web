@@ -1,6 +1,6 @@
-import { usePlayerStatsFilters } from '../../context';
 import type { ISelectOptions } from '../../../../components';
 import { FilterBox } from '../../../../components/filters';
+import { usePlayerStatsFilters } from '../../context';
 
 interface Props {
   competitionOptions: ISelectOptions[];

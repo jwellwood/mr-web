@@ -1,14 +1,13 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { ApolloError } from '@apollo/client';
-
-import { positionOptions } from '../../../../constants';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   ControlledSelectInput,
   ControlledSwitchInput,
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
+import { positionOptions } from '../../../../constants';
 import { getIntegers } from '../../../../utils/helpers';
 import AddMatchPlayerStatsSchema, { AddMatchPlayerStatsFormValues } from './validation';
 

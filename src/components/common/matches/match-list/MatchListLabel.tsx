@@ -1,6 +1,6 @@
+import { parseDate } from '../../../../utils/helpers';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../../typography';
-import { parseDate } from '../../../../utils/helpers';
 import { IMatchesListMatch } from '../types';
 
 interface Props {

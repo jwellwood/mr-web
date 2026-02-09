@@ -1,10 +1,9 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_ORG } from '../graphql';
+import { DataError } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import CompetitionsList from '../components/CompetitionsList';
-import { DataError } from '../../../components';
+import { FETCH_ORG } from '../graphql';
 
 export default function Competitions() {
   const { orgId } = useCustomParams();

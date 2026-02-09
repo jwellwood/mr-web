@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_TOP_PLAYER_STREAKS } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import SquadTopStreaksView from '../components/squad-records/squad-top-streaks/SquadTopStreaksView';
+import { FETCH_TOP_PLAYER_STREAKS } from '../graphql';
 
 interface Props {
   streakType: string;

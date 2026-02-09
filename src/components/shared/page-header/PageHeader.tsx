@@ -1,14 +1,13 @@
 import { AppBar, Toolbar, Slide, useScrollTrigger } from '@mui/material';
 import React, { ReactElement, Suspense } from 'react';
-
-import { BackButton } from '../../buttons';
-import { CustomTypography } from '../../typography';
-import { theme } from '../../../theme';
-import { EditLinksModal } from '../../modals';
-import { IListItem } from '../../lists/types';
-import NavMenu from '../../navigation/nav-menu/NavMenu';
 import { useAuth } from '../../../hooks';
+import { theme } from '../../../theme';
+import { BackButton } from '../../buttons';
+import { IListItem } from '../../lists/types';
 import { LazyLoader } from '../../loaders';
+import { EditLinksModal } from '../../modals';
+import NavMenu from '../../navigation/nav-menu/NavMenu';
+import { CustomTypography } from '../../typography';
 
 interface Props {
   title: string;

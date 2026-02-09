@@ -1,16 +1,16 @@
-import { IMAGE_TYPE } from '../../../../constants';
+import { ImageAvatar, ModuleHeaderContainer } from '../../../../components';
 import { CenteredGrid } from '../../../../components/grids';
 import TextList from '../../../../components/lists/TextList';
+import { IListItem } from '../../../../components/lists/types';
+import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../../components/typography';
+import { IMAGE_TYPE } from '../../../../constants';
 import { parseDate } from '../../../../utils/helpers';
-import { getPoints } from '../../helpers';
 import { ICompetition } from '../../../organization/types';
 import { ITeam } from '../../../team/types';
+import { getPoints } from '../../helpers';
 import { T_FETCH_MATCH } from '../../types';
-import { IListItem } from '../../../../components/lists/types';
-import { ImageAvatar, ModuleHeaderContainer } from '../../../../components';
 import ScoreBox from './ScoreBox';
-import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
 
 interface Props {
   match?: T_FETCH_MATCH['match'];

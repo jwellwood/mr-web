@@ -1,11 +1,10 @@
-import { useEffect } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
-
-import { FETCH_TEAM, EDIT_TEAM_BADGE } from '../../graphql';
-import { PAGES } from '../../constants';
-import { removeTeamBadge, uploadTeamBadge } from '../../../../services/images';
-import { useUpload, useCustomParams } from '../../../../hooks';
+import { useEffect } from 'react';
 import { PageContainer } from '../../../../components';
+import { useUpload, useCustomParams } from '../../../../hooks';
+import { removeTeamBadge, uploadTeamBadge } from '../../../../services/images';
+import { PAGES } from '../../constants';
+import { FETCH_TEAM, EDIT_TEAM_BADGE } from '../../graphql';
 import EditTeamBadgeView from './EditTeamBadgeView';
 
 export default function EditTeamBadge() {

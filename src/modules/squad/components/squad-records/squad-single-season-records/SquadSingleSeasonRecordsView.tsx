@@ -1,9 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, SectionContainer, NoDataText } from '../../../../../components';
-
-import { type FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../types';
 import CustomTable from '../../../../../components/tables/CustomTable';
+import { type FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {

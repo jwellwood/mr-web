@@ -1,7 +1,7 @@
-import { MouseEvent, ReactNode } from 'react';
 import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
-import { CustomTypography } from '../../typography';
+import { MouseEvent, ReactNode } from 'react';
 import { theme } from '../../../theme';
+import { CustomTypography } from '../../typography';
 
 type Props<T extends Record<string, string | number | object | ReactNode>> = {
   onRequestSort: (event: MouseEvent, property: keyof T) => void;

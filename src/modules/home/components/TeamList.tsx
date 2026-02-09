@@ -1,7 +1,7 @@
-import { IMAGE_TYPE } from '../../../constants';
-import { FlagIcon } from '../../../components/icons';
 import { LinksList, ImageAvatar } from '../../../components';
+import { FlagIcon } from '../../../components/icons';
 import { CustomTypography, NoDataText } from '../../../components/typography';
+import { IMAGE_TYPE } from '../../../constants';
 import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';
 
 interface Props {

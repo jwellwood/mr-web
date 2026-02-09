@@ -1,7 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react-vite';
-
-import DataError from './DataError';
 import { ApolloError } from '@apollo/client';
+import { Meta, StoryObj } from '@storybook/react-vite';
+import DataError from './DataError';
 
 const meta: Meta<typeof DataError> = {
   title: 'Errors/DataError',

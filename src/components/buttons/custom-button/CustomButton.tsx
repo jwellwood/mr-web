@@ -1,8 +1,7 @@
-import React, { ReactNode } from 'react';
 import Button from '@mui/material/Button';
-
-import { TColor, TVariant } from '../types';
+import React, { ReactNode } from 'react';
 import ButtonLoader from '../../loaders/ButtonLoader';
+import { TColor, TVariant } from '../types';
 
 interface Props {
   children?: string | ReactNode;

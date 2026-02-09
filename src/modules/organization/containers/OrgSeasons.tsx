@@ -1,11 +1,10 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_ORG_SEASONS } from '../graphql';
-import { useCustomParams } from '../../../hooks/useCustomParams';
-import { Spinner } from '../../../components/loaders';
+import { DataError, NoDataText, SectionContainer } from '../../../components';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
-import { DataError, NoDataText, SectionContainer } from '../../../components';
+import { Spinner } from '../../../components/loaders';
+import { useCustomParams } from '../../../hooks/useCustomParams';
+import { FETCH_ORG_SEASONS } from '../graphql';
 
 export default function OrgSeasons() {
   const { orgId } = useCustomParams();

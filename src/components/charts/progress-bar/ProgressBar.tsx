@@ -1,7 +1,7 @@
-import { getPercentage } from '../../../utils/helpers';
 import { theme } from '../../../theme';
-import { CustomTypography } from '../../typography';
+import { getPercentage } from '../../../utils/helpers';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
+import { CustomTypography } from '../../typography';
 
 interface Props {
   max: number;

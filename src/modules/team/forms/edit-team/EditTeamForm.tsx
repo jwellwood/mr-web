@@ -1,8 +1,6 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { ApolloError } from '@apollo/client';
-
-import { surfaceOptions } from '../../constants';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   ControlledTextInput,
@@ -12,6 +10,7 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
+import { surfaceOptions } from '../../constants';
 import { EditTeamSchema, type EditTeamFormData } from './types';
 
 interface Props {

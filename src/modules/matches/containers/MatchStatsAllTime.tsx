@@ -1,9 +1,8 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_MATCHES_ALL_TIME_STATS } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import MatchStatsAllTimeView from '../components/matches-stats/MatchStatsAllTimeView';
 import { useMatchStatsFilters } from '../context';
+import { FETCH_MATCHES_ALL_TIME_STATS } from '../graphql';
 
 export default function MatchStatsAllTime() {
   const { filters } = useMatchStatsFilters();

@@ -1,12 +1,11 @@
 import { ApolloError } from '@apollo/client';
-
-import { DataError, NoDataText, SectionContainer } from '../../../../components';
-import { T_FETCH_PLAYER_OPPONENT_STATS } from '../../types';
-import CustomTable from '../../../../components/tables/CustomTable';
-import * as CONFIG from './config';
-import OpponentsFilters from '../../forms/opponents-filter/OpponentsFilters';
-import { usePlayerOpponentFilters } from '../../context';
 import { ReactNode } from 'react';
+import { DataError, NoDataText, SectionContainer } from '../../../../components';
+import CustomTable from '../../../../components/tables/CustomTable';
+import { usePlayerOpponentFilters } from '../../context';
+import OpponentsFilters from '../../forms/opponents-filter/OpponentsFilters';
+import { T_FETCH_PLAYER_OPPONENT_STATS } from '../../types';
+import * as CONFIG from './config';
 
 interface Props {
   data?: T_FETCH_PLAYER_OPPONENT_STATS;

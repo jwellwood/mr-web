@@ -1,11 +1,10 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { DELETE_TROPHY, FETCH_TROPHIES } from '../../graphql';
+import { DeleteModal } from '../../../../components/modals';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { DeleteModal } from '../../../../components/modals';
+import { DELETE_TROPHY, FETCH_TROPHIES } from '../../graphql';
 
 export default function DeleteTrophy() {
   const { teamId, trophyId } = useCustomParams();

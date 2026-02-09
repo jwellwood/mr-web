@@ -1,13 +1,12 @@
 import React, { Fragment, ReactNode } from 'react';
-
-import { CenteredGrid, GridItem } from '../../grids';
-import { AppIconType, FlagIcon } from '../../icons';
-import CustomSkeleton from '../../loaders/CustomSkeleton';
-import { CustomTypography } from '../../typography';
 import { useNationality } from '../../../hooks';
 import { theme } from '../../../theme';
 import ImageAvatar from '../../avatars/image-avatar/ImageAvatar';
 import { ModuleHeaderContainer } from '../../containers';
+import { CenteredGrid, GridItem } from '../../grids';
+import { AppIconType, FlagIcon } from '../../icons';
+import CustomSkeleton from '../../loaders/CustomSkeleton';
+import { CustomTypography } from '../../typography';
 
 interface Props {
   title?: string;

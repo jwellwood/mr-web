@@ -6,10 +6,10 @@ import {
   PositionCell,
   SectionContainer,
 } from '../../../../components';
-import { T_FETCH_HALL_OF_FAME } from '../../types';
+import { FlagIcon } from '../../../../components/icons';
 import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
 import { theme } from '../../../../theme';
-import { FlagIcon } from '../../../../components/icons';
+import { T_FETCH_HALL_OF_FAME } from '../../types';
 
 interface Props {
   player: T_FETCH_HALL_OF_FAME['players'][number];

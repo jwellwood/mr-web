@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-
-import { FETCH_PLAYER_STATS } from '../graphql';
+import { useState } from 'react';
 import { useCustomParams } from '../../../hooks';
-import { PlayerStatsFiltersContext, TFilters } from '../context';
 import PlayerStatsView from '../components/player-stats/PlayerStatsView';
+import { PlayerStatsFiltersContext, TFilters } from '../context';
+import { FETCH_PLAYER_STATS } from '../graphql';
 
 export default function PlayerStats() {
   const [filters, setFilters] = useState<TFilters>({ seasons: 'all', competitions: 'all' });

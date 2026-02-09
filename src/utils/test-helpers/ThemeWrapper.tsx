@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
+import React, { ReactElement } from 'react';
 import { theme } from '../../theme';
 
 interface Props {

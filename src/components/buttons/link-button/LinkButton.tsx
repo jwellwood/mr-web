@@ -1,6 +1,6 @@
+import Button from '@mui/material/Button';
 import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '@mui/material/Button';
 
 interface Props {
   children: ReactNode | string;

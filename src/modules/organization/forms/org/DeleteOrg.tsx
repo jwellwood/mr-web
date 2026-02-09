@@ -1,12 +1,11 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { DELETE_ORG } from '../../graphql';
+import { DeleteModal } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { showAlert } from '../../../../store';
 import { PROFILE_PATHS } from '../../../profile/router/paths';
-import { DeleteModal } from '../../../../components';
+import { DELETE_ORG } from '../../graphql';
 
 export default function DeleteOrg() {
   const { orgId } = useCustomParams();

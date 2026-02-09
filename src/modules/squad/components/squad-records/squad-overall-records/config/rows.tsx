@@ -1,11 +1,11 @@
-import { CustomButton, CustomTypography } from '../../../../../../components';
 import type { ReactNode } from 'react';
+import { CustomButton, CustomTypography } from '../../../../../../components';
 import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
 import { PresentationModal } from '../../../../../../components/modals';
+import { FETCH_SQUAD_RECORDS_QUERY } from '../../../../types';
 import RecordPlayers from '../../RecordPlayers';
 import TopSquadRecordsTable from '../../top-squad-records/TopSquadRecordsTable';
-import { FETCH_SQUAD_RECORDS_QUERY } from '../../../../types';
 
 export const rows = (
   data?: FETCH_SQUAD_RECORDS_QUERY,

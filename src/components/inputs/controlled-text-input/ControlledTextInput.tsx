@@ -1,5 +1,4 @@
 import { type Control, type Path, useController } from 'react-hook-form';
-
 import TextInput from './TextInput';
 
 type Props<T extends object> = {

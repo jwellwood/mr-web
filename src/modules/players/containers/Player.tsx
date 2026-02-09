@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
+import { useCustomParams } from '../../../hooks';
 import PlayerView from '../components/player-overview/PlayerView';
 import { FETCH_PLAYER } from '../graphql';
-import { useCustomParams } from '../../../hooks';
 
 export default function Player() {
   const { playerId } = useCustomParams();

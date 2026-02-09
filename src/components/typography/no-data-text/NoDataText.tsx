@@ -1,6 +1,6 @@
+import { Alert, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Alert, Typography } from '@mui/material';
 
 interface Props {
   children: React.ReactNode;

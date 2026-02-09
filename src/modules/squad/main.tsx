@@ -1,7 +1,6 @@
 import { lazy } from 'react';
-
-import { TAB_TYPES } from '../../constants';
 import { CustomTabs, ITab } from '../../components/tabs';
+import { TAB_TYPES } from '../../constants';
 
 const Squad = lazy(() => import('./containers/Squad'));
 const SquadStats = lazy(() => import('./containers/SquadStats'));

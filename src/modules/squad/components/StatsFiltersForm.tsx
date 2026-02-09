@@ -1,6 +1,5 @@
-import { Stack } from '@mui/material';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import {
   CustomButton,
   FormContainer,
@@ -9,8 +8,8 @@ import {
   FormModal,
   type ISelectOptions,
 } from '../../../components';
-import StatsFiltersDisplay from '../forms/StatsFiltersDisplay';
 import { TFilters } from '../context/SquadStatsFiltersContext';
+import StatsFiltersDisplay from '../forms/StatsFiltersDisplay';
 
 interface Props {
   onSubmit: (values: { seasons: string; competitions: string }) => void;
@@ -27,6 +26,7 @@ export default function StatsFiltersForm({
   competitionOptions,
   defaultValues,
 }: Props) {
+  const [open, setOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm<TFilters>({ defaultValues });
 
   const resetForm = () => {
@@ -34,28 +34,30 @@ export default function StatsFiltersForm({
     onReset();
   };
 
+  const submitHandler = (values: { seasons: string; competitions: string }) => {
+    onSubmit(values);
+    setOpen(false);
+  };
+
   return (
-    <FormModal
-      title="Filters"
-      buttonElement={
+    <>
+      <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
         <StatsFiltersDisplay
           seasonOptions={seasonOptions}
           competitionOptions={competitionOptions}
         />
-      }
-      closeForm={() => true}
-    >
-      <FormContainer
-        onSubmit={handleSubmit(onSubmit)}
-        loading={false}
-        submitBtn={{ text: 'Apply' }}
-        resetBtn={
-          <CustomButton onClick={resetForm} color="error">
-            Reset
-          </CustomButton>
-        }
-      >
-        <Stack spacing={2} sx={{ width: '300px', marginTop: '8px' }}>
+      </span>
+      <FormModal title="Filters" open={open} onClose={() => setOpen(false)}>
+        <FormContainer
+          onSubmit={handleSubmit(submitHandler)}
+          loading={false}
+          submitBtn={{ text: 'Apply' }}
+          resetBtn={
+            <CustomButton onClick={resetForm} color="error">
+              Reset
+            </CustomButton>
+          }
+        >
           <ControlledSelectInput
             name="seasons"
             options={seasonOptions}
@@ -70,8 +72,8 @@ export default function StatsFiltersForm({
           />
 
           <ControlledSwitchInput name="showAverages" label="Show Averages" control={control} />
-        </Stack>
-      </FormContainer>
-    </FormModal>
+        </FormContainer>
+      </FormModal>
+    </>
   );
 }

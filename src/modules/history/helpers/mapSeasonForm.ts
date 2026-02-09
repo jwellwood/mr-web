@@ -1,6 +1,6 @@
-import type { Fetch_SeasonQuery } from '../graphql/FETCH_SEASON.generated';
-import type { Edit_SeasonMutationVariables } from '../graphql/EDIT_SEASON.generated';
 import type { SeasonFormData } from '../forms/season/validation';
+import type { Edit_SeasonMutationVariables } from '../graphql/EDIT_SEASON.generated';
+import type { Fetch_SeasonQuery } from '../graphql/FETCH_SEASON.generated';
 
 export function mapSeasonToForm(
   season: Fetch_SeasonQuery['season'] | null | undefined

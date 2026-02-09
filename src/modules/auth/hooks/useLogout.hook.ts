@@ -1,10 +1,9 @@
-import { useDispatch } from 'react-redux';
 import { useMutation } from '@apollo/client';
+import { useDispatch } from 'react-redux';
 import { apolloClient } from '../../../services/graphql/apolloClient';
-import { authStorage } from '../../../utils';
-
-import { LOG_OUT_USER } from '../graphql';
 import { AppDispatch, resetAuth, showAlert } from '../../../store';
+import { authStorage } from '../../../utils';
+import { LOG_OUT_USER } from '../graphql';
 
 export const useLogout = () => {
   const dispatch: AppDispatch = useDispatch();

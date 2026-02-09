@@ -1,9 +1,8 @@
 import { ApolloError } from '@apollo/client';
-
-import AddStats from '../../../add-match-player-stats/AddStats';
 import { CustomTypography, PositionCell } from '../../../../../../components';
 import { STAT_ICONS, StatIcon } from '../../../../../../components/icons';
 import { ITempMatchPlayers } from '../../../../types';
+import AddStats from '../../../add-match-player-stats/AddStats';
 
 export const rows = (currentPlayers: ITempMatchPlayers[], error?: ApolloError) => {
   return currentPlayers.map(player => {

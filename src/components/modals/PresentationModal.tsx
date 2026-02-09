@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import React, { ReactNode } from 'react';
 import { CustomButton } from '../buttons';
-import { CustomTypography } from '../typography';
 import { SectionContainer } from '../containers';
+import { CustomTypography } from '../typography';
 
 interface Props {
   children: ReactNode;

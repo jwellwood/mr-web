@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-
 import ImageAvatar from './ImageAvatar';
 
 const mockBadge =

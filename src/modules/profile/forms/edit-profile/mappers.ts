@@ -1,5 +1,5 @@
-import type { EditProfileFormData } from './validation';
 import { FETCH_USER_QUERY } from '../../types';
+import type { EditProfileFormData } from './validation';
 
 export function backendToFrontend(user: FETCH_USER_QUERY['user']): EditProfileFormData {
   return {

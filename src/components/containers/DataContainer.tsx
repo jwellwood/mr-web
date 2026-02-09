@@ -1,11 +1,11 @@
-import React from 'react';
 import { Grid, Paper } from '@mui/material';
 import { GridDirection } from '@mui/system';
+import React from 'react';
+import { theme } from '../../theme';
 import { CenteredGrid, GridItem } from '../grids';
+import { IListItem } from '../lists/types';
 import CustomSkeleton from '../loaders/CustomSkeleton';
 import { CustomTypography } from '../typography';
-import { theme } from '../../theme';
-import { IListItem } from '../lists/types';
 
 interface Props {
   data: IListItem[];

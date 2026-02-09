@@ -4,9 +4,8 @@ import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { getAvg, getPercentage } from '../../../../../utils/helpers';
 import { T_FETCH_MATCH_OPPONENTS } from '../../../types';
 
-const HeadToHead = lazy(() => import('../../../containers/HeadToHead'));
-
 export const rows = (loading: boolean, data?: T_FETCH_MATCH_OPPONENTS['stats']) => {
+  const HeadToHead = lazy(() => import('../../../containers/HeadToHead'));
   const arr = new Array(15).fill({});
   const mappedData = loading || !data?.length ? arr : data;
   const getPoints = (wins: number, draws: number) => {

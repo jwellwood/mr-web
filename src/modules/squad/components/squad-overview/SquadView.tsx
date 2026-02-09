@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
-import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../types';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {

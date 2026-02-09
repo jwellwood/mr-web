@@ -1,9 +1,8 @@
 import { ApolloError } from '@apollo/client';
 import { useMemo } from 'react';
-
-import { T_FETCH_MATCH_OPPONENTS } from '../../types';
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { T_FETCH_MATCH_OPPONENTS } from '../../types';
 import { columns, rows, styles } from './config';
 import MatchOpponentsFilters from './filters/MatchOpponentsFilters';
 

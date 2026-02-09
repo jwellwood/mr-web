@@ -1,5 +1,4 @@
 import { Avatar } from '@mui/material';
-
 import { CustomTypography } from '../../../../components/typography';
 
 interface Props {

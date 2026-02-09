@@ -1,7 +1,7 @@
-import { CenteredGrid, GridItem } from '../../../components/grids';
 import { LinkButton } from '../../../components/buttons';
-import { CustomTypography } from '../../../components/typography';
+import { CenteredGrid, GridItem } from '../../../components/grids';
 import { IListItem } from '../../../components/lists/types';
+import { CustomTypography } from '../../../components/typography';
 
 interface Props {
   links: IListItem[];

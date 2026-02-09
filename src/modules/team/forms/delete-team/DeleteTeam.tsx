@@ -1,13 +1,12 @@
+import { useMutation, useQuery } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-
-import { DELETE_TEAM } from '../../graphql';
-import { FETCH_TEAMS_BY_USER } from '../../../profile/graphql';
+import { DeleteModal } from '../../../../components/modals';
 import { useCustomParams } from '../../../../hooks';
 import { showAlert } from '../../../../store';
+import { FETCH_TEAMS_BY_USER } from '../../../profile/graphql';
 import { PROFILE_PATHS } from '../../../profile/router';
-import { DeleteModal } from '../../../../components/modals';
+import { DELETE_TEAM } from '../../graphql';
 
 export default function DeleteTeam() {
   const { teamId } = useCustomParams();

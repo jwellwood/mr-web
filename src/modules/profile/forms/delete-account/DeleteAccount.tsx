@@ -1,12 +1,11 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { DELETE_USER } from '../../graphql';
-import { showAlert, resetAuth } from '../../../../store';
-import { apolloClient } from '../../../../services/graphql/apolloClient';
-import { AUTH_PATHS } from '../../../auth/router/';
 import { DeleteModal } from '../../../../components/modals';
+import { apolloClient } from '../../../../services/graphql/apolloClient';
+import { showAlert, resetAuth } from '../../../../store';
+import { AUTH_PATHS } from '../../../auth/router/';
+import { DELETE_USER } from '../../graphql';
 
 export default function DeleteAccount() {
   const navigate = useNavigate();

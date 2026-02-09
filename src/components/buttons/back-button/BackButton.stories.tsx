@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-
 import BackButton from './BackButton';
 
 //👇 This default export determines where your story goes in the story list

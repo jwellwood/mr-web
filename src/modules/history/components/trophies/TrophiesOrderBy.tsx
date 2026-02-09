@@ -1,10 +1,9 @@
 import { useState } from 'react';
-
 import { SectionContainer, SelectInput } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
-import { T_FETCH_TROPHIES } from '../../types';
 import LinksList from '../../../../components/lists/links-list/LinksList';
 import { getTrophyListItemTeam } from '../../helpers/getTrophyListItemTeam';
+import { T_FETCH_TROPHIES } from '../../types';
 import TrophiesOrderByCompetition from './TrophiesOrderByCompetition';
 import TrophiesOrderByType from './TrophiesOrderByType';
 

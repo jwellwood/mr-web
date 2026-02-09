@@ -1,33 +1,28 @@
-import { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_ORG } from '../../graphql';
+import { PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
+import { useNationality } from '../../../../hooks';
+import { AppDispatch, showAlert } from '../../../../store';
 import { FETCH_USER, FETCH_ORGS_BY_USER } from '../../../profile/graphql';
 import { PAGES } from '../../constants';
-import { AppDispatch, showAlert } from '../../../../store';
-import { useNationality } from '../../../../hooks';
-import { Spinner } from '../../../../components/loaders';
-import { initialOrgDetailsState } from './state';
-import { PageHeader } from '../../../../components';
-import type { OrganizationFormData } from './validation';
+import { ADD_ORG } from '../../graphql';
 import OrgForm from './OrgForm';
+import { initialOrgDetailsState } from './state';
+import type { OrganizationFormData } from './validation';
 
 export default function AddOrg() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
   const { nationalityOptions } = useNationality();
 
-  const [defaultValues, setDefaultValues] = useState<OrganizationFormData | null>(null);
+  const defaultValues: OrganizationFormData = useMemo(() => ({ ...initialOrgDetailsState }), []);
 
   const [addOrg, { error, loading }] = useMutation(ADD_ORG, {
     refetchQueries: [{ query: FETCH_USER }, { query: FETCH_ORGS_BY_USER }],
   });
-
-  useEffect(() => {
-    setDefaultValues({ ...initialOrgDetailsState });
-  }, []);
 
   const onSubmit = async (data: OrganizationFormData) => {
     try {

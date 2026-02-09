@@ -1,11 +1,11 @@
-import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import { SectionContainer } from '../../../components';
+import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { FETCH_TEAM_QUERY } from '../types';
 import { IMAGE_TYPE } from '../../../constants';
+import { FETCH_TEAM_QUERY } from '../types';
 
 interface Props {
   team?: FETCH_TEAM_QUERY['team'];

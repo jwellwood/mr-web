@@ -1,8 +1,8 @@
 import { SectionContainer } from '../../../../components';
 import LinksList from '../../../../components/lists/links-list/LinksList';
+import { IListItem } from '../../../../components/lists/types';
 import { getTrophyListItemTeam } from '../../helpers/getTrophyListItemTeam';
 import { T_FETCH_TROPHIES } from '../../types';
-import { IListItem } from '../../../../components/lists/types';
 
 interface Props {
   trophies?: T_FETCH_TROPHIES['trophies'];

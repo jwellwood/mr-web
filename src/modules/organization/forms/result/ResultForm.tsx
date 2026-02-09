@@ -1,12 +1,11 @@
-import { useForm } from 'react-hook-form';
+import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import type { ResultFormData } from './validation';
-import { ResultSchema } from './validation';
+import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledDateInput, ControlledSelectInput } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
 import { getIntegers } from '../../../../utils/helpers';
-import { ApolloError } from '@apollo/client';
+import type { ResultFormData } from './validation';
+import { ResultSchema } from './validation';
 
 interface Props {
   onSubmit: (formData: ResultFormData) => void;

@@ -1,10 +1,9 @@
 import { lazy } from 'react';
-
-import { TAB_TYPES } from '../../constants';
+import { PageHeader } from '../../components';
 import { CustomTabs, ITab } from '../../components/tabs';
+import { TAB_TYPES } from '../../constants';
 import { useAuth, useCustomParams } from '../../hooks';
 import { PAGES, ORG_ADMIN_LINKS } from './constants';
-import { PageHeader } from '../../components';
 
 const Org = lazy(() => import('./containers/Org'));
 const OrgTeams = lazy(() => import('./containers/OrgTeams'));

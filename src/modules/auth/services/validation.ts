@@ -1,5 +1,5 @@
-import { API_PATH } from '../../../constants';
 import axios from 'axios';
+import { API_PATH } from '../../../constants';
 
 const api = {
   VERIFY_EMAIL_ROUTE: `${API_PATH.PUBLIC}/verify_email?token=`,

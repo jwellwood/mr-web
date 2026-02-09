@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_SEASONS_POSITION } from '../graphql';
 import { useCustomParams } from '../../../hooks';
 import SeasonsView from '../components/seasons/SeasonsView';
+import { FETCH_SEASONS_POSITION } from '../graphql';
 
 export default function Seasons() {
   const { teamId } = useCustomParams();

@@ -1,5 +1,4 @@
 import { ApolloError } from '@apollo/client';
-
 import AuthLayout from '../../components/AuthLayout';
 import ResetPasswordForm from './ResetPasswordForm';
 import { resetPasswordFormState } from './state';

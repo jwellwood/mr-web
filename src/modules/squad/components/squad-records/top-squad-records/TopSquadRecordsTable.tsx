@@ -1,6 +1,6 @@
 import CustomTable from '../../../../../components/tables/CustomTable';
-import { columns, rows, styles } from './config';
 import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
+import { columns, rows, styles } from './config';
 
 type StatsObj = NonNullable<FETCH_SQUAD_RECORDS_QUERY['stats']>;
 type StatArray = NonNullable<StatsObj[keyof StatsObj]>;

@@ -1,8 +1,7 @@
 import { Route } from 'react-router-dom';
-
+import { AUTH_ROLES } from '../../constants';
 import * as MATCH from '../../modules/matches/router';
 import RouteGuard from '../RouteGuard';
-import { AUTH_ROLES } from '../../constants';
 
 export const MATCH_ROUTES = () => (
   <>

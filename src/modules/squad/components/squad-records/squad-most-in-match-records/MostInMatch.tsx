@@ -1,7 +1,7 @@
-import { CustomTypography } from '../../../../../components/typography';
-import { parseDate } from '../../../../../utils/helpers';
 import LinksList from '../../../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../../../components/lists/types';
+import { CustomTypography } from '../../../../../components/typography';
+import { parseDate } from '../../../../../utils/helpers';
 import {
   FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY,
   FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY,

@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
-import { T_FETCH_SEASONS_POSITION } from '../../types';
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { T_FETCH_SEASONS_POSITION } from '../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {

@@ -1,6 +1,5 @@
-import React, { ReactElement, Suspense } from 'react';
 import Typography from '@mui/material/Typography';
-
+import React, { ReactElement, Suspense } from 'react';
 import { LazyLoader, TabLoader } from '../loaders';
 
 interface TabPanelProps {

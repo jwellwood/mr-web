@@ -1,12 +1,11 @@
-import { useForm } from 'react-hook-form';
 import { ApolloError } from '@apollo/client';
-
+import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 import { FormContainer, SectionContainer } from '../../../../components';
 import TextList from '../../../../components/lists/TextList';
 import { IListItem } from '../../../../components/lists/types';
-import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';
 import { getTempMatch, getTempPlayers } from '../../../../store';
-import { useSelector } from 'react-redux';
+import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';
 
 interface Props {
   onSubmit: () => void;

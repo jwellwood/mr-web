@@ -1,11 +1,9 @@
+import { useMutation } from '@apollo/client';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
-import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql/';
-import { PAGES } from '../constants';
+import { DataError, PageHeader } from '../../../components';
+import { Spinner } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import {
   AppDispatch,
@@ -15,10 +13,11 @@ import {
   resetTmpPlayers,
   showAlert,
 } from '../../../store';
-import { Spinner } from '../../../components/loaders';
-import MatchFormStepper from './components/MatchFormStepper';
-import { DataError, PageHeader } from '../../../components';
+import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql/';
+import { PAGES } from '../constants';
+import { ADD_MATCH, FETCH_MATCHES, FETCH_MATCHES_STATS } from '../graphql';
 import { ITempMatch, ITempMatchPlayers } from '../types';
+import MatchFormStepper from './components/MatchFormStepper';
 import { mapTempMatchToMutation } from './mappers';
 
 export default function AddMatch() {

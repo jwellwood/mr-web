@@ -1,5 +1,4 @@
 import { Control, useController, Path } from 'react-hook-form';
-
 import ColorInput from './ColorInput';
 
 type Props<T extends object> = {

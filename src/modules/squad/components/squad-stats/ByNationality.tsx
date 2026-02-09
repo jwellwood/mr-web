@@ -1,10 +1,9 @@
 import countryList from 'react-select-country-list';
-
-import { CustomTypography } from '../../../../components/typography';
+import { CustomAccordion } from '../../../../components';
 import { FlagIcon } from '../../../../components/icons';
 import TextList from '../../../../components/lists/TextList';
 import { PresentationModal } from '../../../../components/modals';
-import { CustomAccordion } from '../../../../components';
+import { CustomTypography } from '../../../../components/typography';
 import { FETCH_SQUAD_STATS_QUERY } from '../../types';
 import { groupNationalities } from '../../utils';
 

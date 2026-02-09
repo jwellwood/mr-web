@@ -1,10 +1,9 @@
 import { ApolloError } from '@apollo/client';
-
-import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import { DataError, ImageAvatar, SectionContainer } from '../../../components';
-import { IListItem } from '../../../components/lists/types';
 import LinksList from '../../../components/lists/links-list/LinksList';
+import { IListItem } from '../../../components/lists/types';
 import { CustomTabs, ITab } from '../../../components/tabs';
+import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import { FETCH_TEAMS_BY_USER_QUERY } from '../types';
 
 interface Props {

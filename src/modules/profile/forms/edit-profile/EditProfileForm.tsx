@@ -1,13 +1,12 @@
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-
-import { useNationality } from '../../../../hooks';
+import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   ControlledTextInput,
   ControlledDateInput,
   ControlledSelectInput,
 } from '../../../../components';
+import { useNationality } from '../../../../hooks';
 import { EditProfileSchema, type EditProfileFormData } from './validation';
 
 interface Props {

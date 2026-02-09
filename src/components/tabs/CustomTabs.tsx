@@ -1,10 +1,9 @@
-import React, { ReactElement, SyntheticEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import AppBar from '@mui/material/AppBar';
 import { styled } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
-
+import React, { ReactElement, SyntheticEvent } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, getTabIndex, setTabIndex, type TabIndex } from '../../store';
 import { theme } from '../../theme';
 import TabPanel from './TabPanel';
@@ -22,6 +21,65 @@ interface TabProps {
   level: 'primary' | 'secondary';
 }
 
+interface StyledTabsProps {
+  children?: React.ReactNode;
+  value: number;
+  onChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+
+const StyledTabs = styled((props: StyledTabsProps) => (
+  <Tabs
+    {...props}
+    TabIndicatorProps={{
+      children: <span className="MuiTabs-indicatorSpan" />,
+    }}
+  />
+))({
+  '& .MuiTabs-indicator': {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  '& .MuiTabs-indicatorSpan': {
+    maxWidth: 40,
+    width: '100%',
+    backgroundColor: theme.palette.primary.dark,
+  },
+  '& .MuiTabs-flexContainer': {
+    height: '48px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+interface StyledTabProps {
+  label: string | ReactElement;
+  icon?: string | ReactElement;
+}
+
+const StyledTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: 'none',
+    fontWeight: 'bold',
+    fontSize: '12px',
+    marginRight: theme.spacing(1),
+    color: 'rgba(255, 255, 255, 0.7)',
+    '&.Mui-selected': {
+      color: '#fff',
+      fontSize: '14px',
+    },
+    '&.MuiTab-fullWidth': {
+      padding: '0px',
+      marginRight: '0px',
+    },
+    '&.MuiTab-root': {
+      padding: '0px',
+      marginRight: '0px',
+    },
+  })
+);
+
 const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
   const dispatch: AppDispatch = useDispatch();
   const value = useSelector(getTabIndex);
@@ -30,65 +88,6 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
     dispatch(setTabIndex({ type, newValue }));
   };
-
-  interface StyledTabsProps {
-    children?: React.ReactNode;
-    value: number;
-    onChange: (event: React.SyntheticEvent, newValue: number) => void;
-  }
-
-  const StyledTabs = styled((props: StyledTabsProps) => (
-    <Tabs
-      {...props}
-      TabIndicatorProps={{
-        children: <span className="MuiTabs-indicatorSpan" />,
-      }}
-    />
-  ))({
-    '& .MuiTabs-indicator': {
-      display: 'flex',
-      justifyContent: 'center',
-      backgroundColor: 'transparent',
-    },
-    '& .MuiTabs-indicatorSpan': {
-      maxWidth: 40,
-      width: '100%',
-      backgroundColor: theme.palette.primary.dark,
-    },
-    '& .MuiTabs-flexContainer': {
-      height: '48px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
-
-  interface StyledTabProps {
-    label: string | ReactElement;
-    icon?: string | ReactElement;
-  }
-
-  const StyledTab = styled((props: StyledTabProps) => <Tab disableRipple {...props} />)(
-    ({ theme }) => ({
-      textTransform: 'none',
-      fontWeight: 'bold',
-      fontSize: '12px',
-      marginRight: theme.spacing(1),
-      color: 'rgba(255, 255, 255, 0.7)',
-      '&.Mui-selected': {
-        color: '#fff',
-        fontSize: '14px',
-      },
-      '&.MuiTab-fullWidth': {
-        padding: '0px',
-        marginRight: '0px',
-      },
-      '&.MuiTab-root': {
-        padding: '0px',
-        marginRight: '0px',
-      },
-    })
-  );
 
   return (
     <>

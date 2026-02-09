@@ -1,6 +1,6 @@
 import ReactCountryFlag from 'react-country-flag';
-import AppIcon from '../app-icon/AppIcon';
 import StatSkeleton from '../../loaders/StatSkeleton';
+import AppIcon from '../app-icon/AppIcon';
 
 interface Props {
   nationality?: string;

@@ -1,11 +1,11 @@
+import { Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { CustomTypography } from '../../../../../components';
+import ProgressBar from '../../../../../components/charts/progress-bar/ProgressBar';
 import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import { T_FETCH_SEASONS_POSITION } from '../../../types';
-import ProgressBar from '../../../../../components/charts/progress-bar/ProgressBar';
 import FinalPosition from '../FinalPosition';
 import SeasonAwards from '../SeasonAwards';
-import { Link } from 'react-router-dom';
-import { Box } from '@mui/material';
 
 export const rows = (data?: T_FETCH_SEASONS_POSITION['position'], loading?: boolean) => {
   const arr = new Array(15).fill({});

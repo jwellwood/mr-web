@@ -1,12 +1,11 @@
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
-
-import { EDIT_PROFILE_IMAGE, FETCH_USER } from '../../graphql';
+import { DataError, PageContainer } from '../../../../components';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
-import { PAGES } from '../../constants';
-import { removeUserImage, uploadUserImage } from '../../../../services/images';
 import { useUpload } from '../../../../hooks';
-import { DataError, PageContainer } from '../../../../components';
+import { removeUserImage, uploadUserImage } from '../../../../services/images';
+import { PAGES } from '../../constants';
+import { EDIT_PROFILE_IMAGE, FETCH_USER } from '../../graphql';
 
 export default function EditUserImage() {
   const { data, error, loading: loadingUser, refetch } = useQuery(FETCH_USER);

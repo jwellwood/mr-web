@@ -1,12 +1,11 @@
-import React, { FormEvent, ReactElement } from 'react';
-import Container from '@mui/material/Container';
-import { Stack } from '@mui/material';
-
-import { SectionContainer } from '../../containers';
-import SubmitButton from '../submit-button/SubmitButton';
 import { ApolloError } from '@apollo/client';
+import { Stack } from '@mui/material';
+import Container from '@mui/material/Container';
+import React, { FormEvent, ReactElement } from 'react';
+import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
 import { Spinner } from '../../loaders';
+import SubmitButton from '../submit-button/SubmitButton';
 
 interface ISubmitButton {
   text?: string;
@@ -58,7 +57,7 @@ export default function FormContainer({
           {loading ? (
             <Spinner />
           ) : (
-            <Stack direction="column" spacing={1} width={'100%'}>
+            <Stack direction="column" spacing={1} width={'100%'} minWidth={300}>
               {children}
             </Stack>
           )}

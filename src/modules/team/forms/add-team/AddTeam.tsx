@@ -1,17 +1,16 @@
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_TEAM } from '../../graphql';
+import { PageContainer } from '../../../../components';
+import { useCustomParams, useNationality } from '../../../../hooks';
+import { AppDispatch, showAlert } from '../../../../store';
 import { FETCH_ORG_TEAMS } from '../../../organization/graphql';
 import { FETCH_TEAMS_BY_USER } from '../../../profile/graphql';
 import { PAGES, TeamError, TeamSuccess } from '../../constants';
-import { useCustomParams, useNationality } from '../../../../hooks';
-import { AppDispatch, showAlert } from '../../../../store';
-import { PageContainer } from '../../../../components';
-import type { TeamFormData } from './types';
+import { ADD_TEAM } from '../../graphql';
 import AddTeamView from './AddTeamView';
 import { mapFormDataToMutationInput } from './state';
+import type { TeamFormData } from './types';
 
 export default function AddTeam() {
   const { orgId } = useCustomParams();

@@ -1,17 +1,17 @@
-import { useState, MouseEvent, useMemo, ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
+import { useState, MouseEvent, useMemo, ReactNode } from 'react';
 import CustomTableHead from './custom-table-head/CustomTableHead';
-import { getComparator, stableSort } from './helpers/sort';
 import CustomCellValue from './CustomCellValue';
 import { getBackgroundColor } from './helpers/getBackgroundColor';
 import { getBorderStyle } from './helpers/getBorderStyle';
-import { ICellStyleByIndex } from './types';
+import { getComparator, stableSort } from './helpers/sort';
 import PositionCell from './position-cell/PositionCell';
+import { ICellStyleByIndex } from './types';
 
 type Props<T extends Record<string, number | object | ReactNode>> = {
   rows: readonly T[];

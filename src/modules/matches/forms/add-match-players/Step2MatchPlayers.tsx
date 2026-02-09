@@ -1,16 +1,15 @@
-import { useEffect, useMemo, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { ApolloError } from '@apollo/client';
-
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import type { ISelectOptions } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
-import { useMatchPlayersInput } from '../../hooks/useMatchPlayersInput';
 import { AppDispatch, getTempMatch, getTempPlayers, setTmpPlayers } from '../../../../store';
+import { useMatchPlayersInput } from '../../hooks/useMatchPlayersInput';
+import { ITempMatchPlayers } from '../../types';
+import AddMatchPlayersForm from './AddMatchPlayersForm';
 import { initPlayerInMatch } from './state';
 import { AddMatchPlayersFormValues } from './validation';
-import AddMatchPlayersForm from './AddMatchPlayersForm';
-import { ITempMatchPlayers } from '../../types';
 
 interface Props {
   onNextClick: () => void;
@@ -19,12 +18,19 @@ interface Props {
 }
 
 export default function Step2MatchPlayers({ onNextClick, loading, error }: Props) {
-  const { matchId, teamId } = useCustomParams();
+  const { teamId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
   const currentPlayers = useSelector(getTempPlayers);
   const currentMatch = useSelector(getTempMatch);
 
-  const [values, setValues] = useState<{ matchPlayers: string[] } | null>(null);
+  const values = useMemo<{ matchPlayers: string[] } | null>(() => {
+    if (!currentPlayers) return null;
+    const mappedValues = () =>
+      currentPlayers
+        .map(player => (typeof player?.playerId === 'object' ? player.playerId : player.playerId))
+        .filter(p => p !== undefined);
+    return { matchPlayers: mappedValues() };
+  }, [currentPlayers]);
 
   const {
     players,
@@ -73,14 +79,6 @@ export default function Step2MatchPlayers({ onNextClick, loading, error }: Props
       })),
     [players]
   );
-  useEffect(() => {
-    const mappedValues = () =>
-      currentPlayers
-        .map(player => (typeof player?.playerId === 'object' ? player.playerId : player.playerId))
-        .filter(p => p !== undefined);
-
-    setValues({ matchPlayers: mappedValues() });
-  }, [currentPlayers, matchId]);
 
   return values ? (
     <AddMatchPlayersForm

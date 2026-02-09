@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_AWARDS_BY_PLAYER } from '../graphql';
 import { useCustomParams } from '../../../hooks';
 import PlayerAwardsView from '../components/player-honors/PlayerAwardsView';
+import { FETCH_AWARDS_BY_PLAYER } from '../graphql';
 
 export default function PlayerAwards() {
   const { playerId } = useCustomParams();

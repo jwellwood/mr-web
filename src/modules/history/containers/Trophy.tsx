@@ -1,10 +1,9 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_TROPHY } from '../graphql';
-import { PAGES, TROPHY_ADMIN_LINKS } from '../constants';
-import { useAuth, useCustomParams } from '../../../hooks';
 import { PageHeader } from '../../../components';
+import { useAuth, useCustomParams } from '../../../hooks';
 import TrophyView from '../components/trophies/TrophyView';
+import { PAGES, TROPHY_ADMIN_LINKS } from '../constants';
+import { FETCH_TROPHY } from '../graphql';
 
 export default function Trophy() {
   const { teamId, trophyId } = useCustomParams();

@@ -1,11 +1,11 @@
+import { ApolloError } from '@apollo/client';
 import AuthLayout from '../../components/AuthLayout';
 import AuthorizationLinks from '../../components/AuthorizationLinks';
+import ValidationEmailSent from '../../components/ValidationEmailSent';
 import { SIGN_UP_LINKS } from '../../constants';
 import SignUpForm from '../../forms/sign-up/SignUpForm';
-import ValidationEmailSent from '../../components/ValidationEmailSent';
 import { signUpFormState } from './state';
 import type { SignUpFormData } from './validation';
-import { ApolloError } from '@apollo/client';
 
 interface Props {
   loading: boolean;

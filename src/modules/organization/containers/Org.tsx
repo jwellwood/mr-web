@@ -1,9 +1,8 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_ORG } from '../graphql';
+import { DataError, ModuleHeader } from '../../../components';
 import { IMAGE_TYPE } from '../../../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { DataError, ModuleHeader } from '../../../components';
+import { FETCH_ORG } from '../graphql';
 
 export default function Org() {
   const { orgId } = useCustomParams();

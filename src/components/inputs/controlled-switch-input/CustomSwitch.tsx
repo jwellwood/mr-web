@@ -1,10 +1,9 @@
-import React, { ReactElement } from 'react';
-import Switch from '@mui/material/Switch';
 import { Box, Stack } from '@mui/material';
-
+import Switch from '@mui/material/Switch';
+import React, { ReactElement } from 'react';
 import CustomTypography from '../../typography/CustomTypography';
-import { TypedFormError } from '../types';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
+import { TypedFormError } from '../types';
 
 interface Props {
   name?: string;

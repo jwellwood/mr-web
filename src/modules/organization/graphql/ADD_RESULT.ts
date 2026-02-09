@@ -1,5 +1,5 @@
-import { IResult } from './../types';
 import { TypedDocumentNode, gql } from '@apollo/client';
+import { IResult } from './../types';
 
 export const ADD_RESULT: TypedDocumentNode<{
   result: IResult;

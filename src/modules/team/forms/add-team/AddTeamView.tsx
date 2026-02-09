@@ -1,5 +1,4 @@
 import { ApolloError } from '@apollo/client';
-
 import AddTeamForm from './AddTeamForm';
 import { initialTeamDetailsState } from './state';
 import type { TeamFormData } from './types';

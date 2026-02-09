@@ -1,5 +1,4 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
 import { FETCH_PAST_PLAYERS_QUERY } from '../../types';

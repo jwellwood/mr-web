@@ -1,5 +1,5 @@
-import { usePlayerOpponentFilters } from '../../context';
 import { FilterBox } from '../../../../components/filters';
+import { usePlayerOpponentFilters } from '../../context';
 
 export default function OpponentFiltersDisplay() {
   const { filters } = usePlayerOpponentFilters();

@@ -1,9 +1,8 @@
 import { ApolloError } from '@apollo/client';
-
-import { IMAGE_TYPE } from '../../../constants';
 import { DataError, ImageAvatar, SectionContainer } from '../../../components';
-import { IListItem } from '../../../components/lists/types';
 import LinksList from '../../../components/lists/links-list/LinksList';
+import { IListItem } from '../../../components/lists/types';
+import { IMAGE_TYPE } from '../../../constants';
 import { FETCH_ORGS_BY_USER_QUERY } from '../types';
 
 interface Props {

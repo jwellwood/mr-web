@@ -1,5 +1,5 @@
-import type { EditTeamFormData } from './types';
 import { EDIT_TEAM_MUTATION_INPUT, FETCH_TEAM_QUERY } from '../../types';
+import type { EditTeamFormData } from './types';
 
 export const mapFormDataToMutationInput = (
   data: EditTeamFormData

@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
+import { DataError } from '../../../../components';
 import { T_FETCH_TROPHY } from '../../types';
 import TrophyDetails from './TrophyDetails';
-import { DataError } from '../../../../components';
 
 interface Props {
   data?: T_FETCH_TROPHY;

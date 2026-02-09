@@ -1,11 +1,10 @@
 import { useQuery } from '@apollo/client';
-import { FETCH_AWARD } from '../graphql';
-
+import { PageHeader } from '../../../components';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { AWARD_ADMIN_LINKS, PAGES } from '../constants';
-import { PageHeader } from '../../../components';
 import AwardView from '../components/awards/AwardView';
+import { AWARD_ADMIN_LINKS, PAGES } from '../constants';
+import { FETCH_AWARD } from '../graphql';
 
 export default function Award() {
   const { teamId, awardId } = useCustomParams();

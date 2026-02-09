@@ -1,14 +1,13 @@
-import { lazy } from 'react';
 import { useQuery } from '@apollo/client';
-
-import { FETCH_ORG_SEASON } from '../graphql';
+import { lazy } from 'react';
+import { DataError, PageHeader } from '../../../components';
+import { SectionContainer } from '../../../components/containers';
 import { Spinner } from '../../../components/loaders';
+import { CustomTabs } from '../../../components/tabs';
 import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { ORG_SEASON_ADMIN_LINKS, PAGES } from '../constants';
-import { SectionContainer } from '../../../components/containers';
-import { DataError, PageHeader } from '../../../components';
-import { CustomTabs } from '../../../components/tabs';
+import { FETCH_ORG_SEASON } from '../graphql';
 
 const LeagueTables = lazy(() => import('./LeagueTables'));
 const Results = lazy(() => import('./Results'));

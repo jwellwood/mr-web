@@ -1,18 +1,17 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { ApolloError } from '@apollo/client';
-
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   FormContainer,
   ControlledTextInput,
   ControlledSelectInput,
   ControlledSwitchInput,
 } from '../../../../components';
-import { competitionOptions } from '../../constants';
+import { getMinutesOptions } from '../../../../utils';
 import { getIntegers } from '../../../../utils/helpers';
+import { competitionOptions } from '../../constants';
 import type { CompetitionFormData } from './validation';
 import { CompetitionSchema } from './validation';
-import { getMinutesOptions } from '../../../../utils';
 
 interface Props {
   onSubmit: (data: CompetitionFormData) => void;

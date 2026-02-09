@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError } from '../../../../components';
-import { Spinner } from '../../../../components/loaders';
 import ImageForm from '../../../../components/forms/ImageForm';
+import { Spinner } from '../../../../components/loaders';
 import { FETCH_TEAM_QUERY } from '../../types';
 
 interface Props {

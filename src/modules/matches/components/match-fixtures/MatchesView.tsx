@@ -1,5 +1,4 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, MatchList, NoDataText, SectionContainer } from '../../../../components';
 import { T_FETCH_MATCHES } from '../../types';
 import { mapMatchesToMatchesList } from './mappers';

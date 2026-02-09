@@ -1,9 +1,8 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, MatchList, NoDataText, SectionContainer } from '../../../../components';
+import MatchesStreaks from '../../containers/MatchesStreaks';
 import { T_FETCH_MATCHES_RECORDS } from '../../types';
 import { mapMatchRecordsMatchesToMatchesList } from './mappers';
-import MatchesStreaks from '../../containers/MatchesStreaks';
 
 interface Props {
   data?: T_FETCH_MATCHES_RECORDS;

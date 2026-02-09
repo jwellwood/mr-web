@@ -1,37 +1,46 @@
-import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-
-import { EDIT_RESULT, FETCH_LEAGUE_TABLES, FETCH_RESULT, FETCH_RESULTS } from '../../graphql';
-
-import { PAGES } from '../../constants';
+import { PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { Spinner } from '../../../../components/loaders';
-import { PageHeader } from '../../../../components';
-import type { ResultFormData } from './validation';
-import { useTeamOptions } from '../../hooks/useTeamOptions';
+import { PAGES } from '../../constants';
+import { EDIT_RESULT, FETCH_LEAGUE_TABLES, FETCH_RESULT, FETCH_RESULTS } from '../../graphql';
 import { useCompetitionOptions } from '../../hooks/useCompetitionOptions';
 import { useOrgSeasonOptions } from '../../hooks/useOrgSeasonOptions';
-import ResultForm from './ResultForm';
+import { useTeamOptions } from '../../hooks/useTeamOptions';
 import DeleteResult from './DeleteResult';
+import ResultForm from './ResultForm';
+import type { ResultFormData } from './validation';
 
 export default function EditResult() {
   const { orgId, orgSeasonId, resultId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<ResultFormData | null>(null);
-
   const { teamOptions, loading: teamsLoading } = useTeamOptions();
   const { competitionOptions, loading: competitionsLoading } = useCompetitionOptions();
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
-
   const { loading, error, data, refetch } = useQuery(FETCH_RESULT, {
     variables: { resultId },
     notifyOnNetworkStatusChange: true,
   });
+
+  const defaultValues: ResultFormData | null = useMemo(() => {
+    if (!data?.result) return null;
+    const result = data.result;
+    const { homeTeam, awayTeam, competitionId, orgSeasonId } = result;
+    return {
+      ...result,
+      date: new Date(result.date),
+      competitionId: competitionId._id,
+      orgSeasonId: orgSeasonId._id,
+      homeTeam: homeTeam._id,
+      awayTeam: awayTeam._id,
+    } as ResultFormData;
+  }, [data]);
 
   const [editResult, { error: editError, loading: editLoading }] = useMutation(EDIT_RESULT, {
     variables: { orgId, orgSeasonId, resultId },
@@ -40,21 +49,6 @@ export default function EditResult() {
       { query: FETCH_LEAGUE_TABLES, variables: { orgId, orgSeasonId } },
     ],
   });
-
-  useEffect(() => {
-    if (data?.result) {
-      const result = data.result;
-      const { homeTeam, awayTeam, competitionId, orgSeasonId } = result;
-      setDefaultValues({
-        ...result,
-        date: new Date(result.date),
-        competitionId: competitionId._id,
-        orgSeasonId: orgSeasonId._id,
-        homeTeam: homeTeam._id,
-        awayTeam: awayTeam._id,
-      } as ResultFormData);
-    }
-  }, [data]);
 
   const onSubmit = async (formData: ResultFormData) => {
     try {

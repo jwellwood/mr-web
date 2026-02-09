@@ -2,10 +2,10 @@ import { IMAGE_TYPE } from '../../../../constants';
 import { useCustomParams } from '../../../../hooks';
 import { ImageAvatar } from '../../../avatars';
 import { LinksList } from '../../../lists';
+import { IMatchesListMatch } from '../types';
 import MatchListLabel from './MatchListLabel';
 import MatchListScoreBox from './MatchListScoreBox';
 import MatchLoading from './MatchLoading';
-import { IMatchesListMatch } from '../types';
 
 interface Props {
   matches?: IMatchesListMatch[];

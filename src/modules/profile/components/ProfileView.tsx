@@ -1,10 +1,9 @@
 import { ApolloError } from '@apollo/client';
-
+import { DataError, SectionContainer, ModuleHeader } from '../../../components';
+import TextList from '../../../components/lists/TextList';
 import { IMAGE_TYPE } from '../../../constants';
 import { useDateOfBirth } from '../../../hooks';
 import { parseDate } from '../../../utils/helpers';
-import { DataError, SectionContainer, ModuleHeader } from '../../../components';
-import TextList from '../../../components/lists/TextList';
 import { FETCH_USER_QUERY } from '../types';
 
 interface Props {

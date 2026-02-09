@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import MatchStatsAllTime from '../../containers/MatchStatsAllTime';
 import MatchStatsSeason from '../../containers/MatchStatsSeason';
 import { MatchStatsContext, TMatchStatsFilters } from '../../context';

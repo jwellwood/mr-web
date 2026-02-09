@@ -1,7 +1,6 @@
 import { Control, Path, useController } from 'react-hook-form';
-
-import MultiSelectInput from './MultiSelectInput';
 import { ISelectOptions } from '../types';
+import MultiSelectInput from './MultiSelectInput';
 
 type Props<T extends object> = {
   name: Path<T>;

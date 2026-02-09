@@ -1,10 +1,9 @@
-import { Provider, useDispatch } from 'react-redux';
 import { Meta, StoryObj } from '@storybook/react-vite';
-
+import { Provider, useDispatch } from 'react-redux';
 import { createStoryStore } from '../../../../.storybook/createStorybookStore';
 import { showAlert } from '../../../store/features/alerts/alertsSlice';
-import CustomAlert from './CustomAlert';
 import { IAlertType } from '../types';
+import CustomAlert from './CustomAlert';
 
 //👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof CustomAlert> = {

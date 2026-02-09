@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { ApolloQueryResult, FetchResult } from '@apollo/client';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { ApolloQueryResult, FetchResult } from '@apollo/client';
-
 import { showAlert } from '../store';
 
 interface UseUpload {
@@ -24,14 +23,8 @@ export const useUpload = ({
 }: UseUpload) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(url ?? null);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (url) {
-      setImageUrl(url);
-    }
-  }, [url]);
 
   const onSubmit = (formData: { imageFile: File | null }) => {
     if (!formData.imageFile) return;

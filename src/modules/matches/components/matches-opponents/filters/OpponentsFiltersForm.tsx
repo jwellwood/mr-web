@@ -1,14 +1,13 @@
-import { Stack } from '@mui/material';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import {
   CustomButton,
   FormContainer,
   FormModal,
   ControlledSwitchInput,
 } from '../../../../../components';
-import OpponentFiltersDisplay from './OpponentFiltersDisplay';
 import { TMatchOpponentFilters } from '../../../context';
+import OpponentFiltersDisplay from './OpponentFiltersDisplay';
 
 interface Props {
   onSubmit: (values: TMatchOpponentFilters) => void;
@@ -17,33 +16,42 @@ interface Props {
 }
 
 export default function OpponentsFiltersForm({ onSubmit, onReset, defaultValues }: Props) {
+  const [open, setOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm<TMatchOpponentFilters>({ defaultValues });
   const resetForm = () => {
     reset();
     onReset();
   };
 
+  const submitHandler = (values: TMatchOpponentFilters) => {
+    onSubmit(values);
+    setOpen(false);
+  };
+
   return (
-    <FormModal title="Filters" buttonElement={<OpponentFiltersDisplay />} closeForm={() => true}>
-      <FormContainer
-        loading={false}
-        onSubmit={handleSubmit(onSubmit)}
-        submitBtn={{ text: 'Apply' }}
-        resetBtn={
-          <CustomButton onClick={resetForm} color="error">
-            Reset
-          </CustomButton>
-        }
-      >
-        <Stack spacing={2} sx={{ width: '300px', marginTop: '8px' }}>
+    <>
+      <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
+        <OpponentFiltersDisplay />
+      </span>
+      <FormModal title="Filters" open={open} onClose={() => setOpen(false)}>
+        <FormContainer
+          loading={false}
+          onSubmit={handleSubmit(submitHandler)}
+          submitBtn={{ text: 'Apply' }}
+          resetBtn={
+            <CustomButton onClick={resetForm} color="error">
+              Reset
+            </CustomButton>
+          }
+        >
           <ControlledSwitchInput name="showAllTeams" label="Show all teams" control={control} />
           <ControlledSwitchInput
             name="includeForfeits"
             label="Include forfeits"
             control={control}
           />
-        </Stack>
-      </FormContainer>
-    </FormModal>
+        </FormContainer>
+      </FormModal>
+    </>
   );
 }

@@ -1,9 +1,8 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
+import CustomTable from '../../../../../components/tables/CustomTable';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
 import { columns, rows } from './config/top-seasons';
-import CustomTable from '../../../../../components/tables/CustomTable';
 
 interface Props {
   data?: T_FETCH_PLAYER_SEASONS_SUMMARY;

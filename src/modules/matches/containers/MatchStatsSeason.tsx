@@ -1,10 +1,9 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_MATCHES_STATS } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import MatchStatsSeasonView from '../components/matches-stats/MatchStatsSeasonView';
 import { useMatchStatsFilters } from '../context';
+import { FETCH_MATCHES_STATS } from '../graphql';
 
 export default function MatchStatsSeason() {
   const { filters } = useMatchStatsFilters();

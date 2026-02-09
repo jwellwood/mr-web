@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
+import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
-
-import { FETCH_TEAM, EDIT_TEAM } from '../../graphql';
-import { PAGES, TeamError, TeamSuccess } from '../../constants';
+import { PageContainer } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { PageContainer } from '../../../../components';
-import type { EditTeamFormData } from './types';
-import { mapFormDataToMutationInput, mapTeamDataToFormData } from './state';
-import { Spinner } from '../../../../components/loaders';
+import { PAGES, TeamError, TeamSuccess } from '../../constants';
+import { FETCH_TEAM, EDIT_TEAM } from '../../graphql';
 import DeleteTeam from '../delete-team/DeleteTeam';
 import EditTeamForm from './EditTeamForm';
+import { mapFormDataToMutationInput, mapTeamDataToFormData } from './state';
+import type { EditTeamFormData } from './types';
 
 export default function EditTeam() {
   const { teamId } = useCustomParams();
@@ -25,14 +24,11 @@ export default function EditTeam() {
     useMutation(EDIT_TEAM);
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
-  const [defaultValues, setDefaultValues] = useState<EditTeamFormData | null>(null);
 
-  useEffect(() => {
-    if (data) {
-      const { team } = data;
-      setDefaultValues(mapTeamDataToFormData(team));
-    }
-  }, [data]);
+  const defaultValues: EditTeamFormData | null = useMemo(
+    () => (data?.team ? mapTeamDataToFormData(data.team) : null),
+    [data]
+  );
 
   const onSubmit = (formData: EditTeamFormData) => {
     try {

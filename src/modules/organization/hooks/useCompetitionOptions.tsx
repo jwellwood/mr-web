@@ -1,32 +1,23 @@
-import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-
-import { useCustomParams } from '../../../hooks';
+import { useMemo } from 'react';
 import type { ISelectOptions } from '../../../components';
+import { useCustomParams } from '../../../hooks';
 import { FETCH_COMPETITIONS } from '../graphql';
 
 export const useCompetitionOptions = () => {
   const { orgId } = useCustomParams();
-  const [competitionOptions, setCompetitionOptions] = useState<ISelectOptions[]>([]);
 
   const { data, error, loading } = useQuery(FETCH_COMPETITIONS, {
     variables: { orgId },
   });
 
-  useEffect(() => {
-    if (error) {
-      setCompetitionOptions([]);
-    }
-    if (data?.org?.competitions.length) {
-      const competitions = data.org.competitions.map(comp => {
-        return {
-          value: comp._id,
-          label: comp.name,
-        };
-      }) as ISelectOptions[];
-      setCompetitionOptions(competitions);
-    }
-  }, [data, error]);
+  const competitionOptions = useMemo<ISelectOptions[]>(() => {
+    if (!data?.org?.competitions?.length) return [];
+    return data.org.competitions.map(comp => ({
+      value: comp._id,
+      label: comp.name,
+    })) as ISelectOptions[];
+  }, [data]);
 
-  return { competitionOptions, loading };
+  return { competitionOptions, loading, error };
 };

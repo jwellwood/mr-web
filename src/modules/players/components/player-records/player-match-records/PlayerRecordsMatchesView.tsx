@@ -1,7 +1,7 @@
 import { ApolloError } from '@apollo/client';
 import { useCustomParams } from '../../../../../hooks';
-import PlayerRecordsMatchesModal from './PlayerRecordsMatchesModal';
 import { T_PLAYER_MATCH_WITH_RECORD } from '../../../types';
+import PlayerRecordsMatchesModal from './PlayerRecordsMatchesModal';
 
 interface Props {
   data?: T_PLAYER_MATCH_WITH_RECORD;

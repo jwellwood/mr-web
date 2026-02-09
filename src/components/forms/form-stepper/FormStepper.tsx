@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
+import { ReactNode } from 'react';
 import { theme } from '../../../theme';
 
 interface Props {

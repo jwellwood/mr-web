@@ -1,36 +1,18 @@
-import React, { ReactNode, useEffect, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import React, { ReactNode } from 'react';
 import { CustomTypography } from '../../typography';
 
 interface Props {
   title?: string;
   children: ReactNode;
-  buttonElement: ReactNode;
-  closeForm: () => boolean;
+  open: boolean;
+  onClose: () => void;
 }
 
-const FormModal: React.FC<Props> = ({ title, children, buttonElement, closeForm }) => {
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  useEffect(() => {
-    if (closeForm()) {
-      setOpen(false);
-    }
-  }, [closeForm]);
-
+const FormModal: React.FC<Props> = ({ title, children, open, onClose }) => {
   return (
     <div>
-      <span role="button" style={{ cursor: 'pointer' }} onClick={handleOpen}>
-        {buttonElement}
-      </span>
-      <Dialog open={open} onClose={handleClose} aria-labelledby="responsive-dialog-title">
+      <Dialog open={open} onClose={onClose} aria-labelledby="responsive-dialog-title">
         {title ? (
           <DialogTitle id="responsive-dialog-title" color="primary">
             <CustomTypography color="secondary" bold>
@@ -40,7 +22,7 @@ const FormModal: React.FC<Props> = ({ title, children, buttonElement, closeForm 
         ) : null}
         <DialogContent>{children}</DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="tertiary">
+          <Button onClick={onClose} color="tertiary">
             Back
           </Button>
         </DialogActions>

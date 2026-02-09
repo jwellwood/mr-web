@@ -1,6 +1,6 @@
+import { LinksList, SectionContainer } from '../../../../components';
 import { PresentationModal } from '../../../../components/modals';
 import { CustomTypography } from '../../../../components/typography';
-import { LinksList, SectionContainer } from '../../../../components';
 
 interface Props {
   names: {

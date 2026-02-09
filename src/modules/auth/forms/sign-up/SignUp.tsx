@@ -1,13 +1,12 @@
+import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useMutation } from '@apollo/client';
-
-import { REGISTER_USER } from '../../graphql';
-import { PAGES } from '../../constants';
-import { AppDispatch, showAlert } from '../../../../store';
 import { PageContainer } from '../../../../components';
-import type { SignUpFormData } from './validation';
+import { AppDispatch, showAlert } from '../../../../store';
+import { PAGES } from '../../constants';
+import { REGISTER_USER } from '../../graphql';
 import SignUpView from './SignUpView';
+import type { SignUpFormData } from './validation';
 
 export default function SignUpContainer() {
   const dispatch: AppDispatch = useDispatch();

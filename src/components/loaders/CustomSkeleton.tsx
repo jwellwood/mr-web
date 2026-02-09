@@ -1,5 +1,5 @@
-import React from 'react';
 import { Skeleton } from '@mui/material';
+import React from 'react';
 
 interface Props {
   variant?: 'text' | 'rectangular' | 'rounded' | 'circular';

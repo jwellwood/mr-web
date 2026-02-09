@@ -1,5 +1,5 @@
-import { yearOptions } from '../yearOptions';
 import { BASE_YEAR, MAX_YEAR } from '../../../constants';
+import { yearOptions } from '../yearOptions';
 
 describe('year options tests', () => {
   test('should return an array when years are zero', () => {

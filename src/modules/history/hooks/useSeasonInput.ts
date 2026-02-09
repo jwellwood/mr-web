@@ -1,15 +1,10 @@
-import { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-
-import { FETCH_ORG } from '../../organization/graphql';
-import { ICompetition } from '../../organization/types';
+import { useEffect, useMemo } from 'react';
 import type { ISelectOptions } from '../../../components';
 import { emptySelectOption } from '../../../constants/rounds';
+import { FETCH_ORG } from '../../organization/graphql';
 
 export const useSeasonInput = (orgId?: string) => {
-  const [competitions, setCompetitions] = useState<ICompetition[]>([]);
-  const [competitionOptions, setCompetitionOptions] = useState<ISelectOptions[]>([]);
-
   const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] = useLazyQuery(
     FETCH_ORG,
     { variables: { orgId } }
@@ -21,21 +16,17 @@ export const useSeasonInput = (orgId?: string) => {
     }
   }, [getOrgById, orgId]);
 
-  useEffect(() => {
-    if (orgData) {
-      setCompetitions(orgData.org.competitions);
-      const options: ISelectOptions[] = [
-        emptySelectOption,
-        ...competitions
-          .filter(comp => comp.competitionType === 'League')
-          .map(competition => ({
-            label: competition.name,
-            value: competition.name,
-          })),
-      ];
-      setCompetitionOptions(options);
-    }
-  }, [competitions, orgData]);
+  const competitionOptions = useMemo<ISelectOptions[]>(() => {
+    const competitions = orgData?.org?.competitions ?? [];
+    if (!competitions?.length) return [];
+    return [
+      emptySelectOption,
+      ...competitions
+        .filter(comp => comp.competitionType === 'League')
+        .map(competition => ({ label: competition.name, value: competition.name })),
+    ] as ISelectOptions[];
+  }, [orgData]);
+
   return {
     competitionOptions,
     orgError,

@@ -1,7 +1,7 @@
 import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
-import RecordPlayers from '../../RecordPlayers';
 import { FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../../types';
+import RecordPlayers from '../../RecordPlayers';
 
 export const rows = (data?: FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY, loading?: boolean) => {
   const { goals, assists, combined } = data?.stats.combined

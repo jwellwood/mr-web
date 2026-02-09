@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import { useQuery } from '@apollo/client';
-
-import { FETCH_MATCH_OPPONENTS } from '../graphql';
+import { useState } from 'react';
+import { useSeasons } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import MatchOpponentsView from '../components/matches-opponents/MatchOpponentsView';
-import { useSeasons } from '../../../hooks';
 import { MatchOpponentsContext, TMatchOpponentFilters } from '../context';
+import { FETCH_MATCH_OPPONENTS } from '../graphql';
 
 export default function MatchOpponents() {
   const [filters, setFilters] = useState<TMatchOpponentFilters>({

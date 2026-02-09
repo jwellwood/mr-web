@@ -1,8 +1,7 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_AWARDS } from '../graphql';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import AwardsView from '../components/awards/AwardsView';
+import { FETCH_AWARDS } from '../graphql';
 
 interface Props {
   season_id?: string;

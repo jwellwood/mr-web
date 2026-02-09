@@ -1,18 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { ADD_RESULT, FETCH_RESULTS } from '../../graphql';
-import { PAGES } from '../../constants';
+import { PageHeader } from '../../../../components';
+import Spinner from '../../../../components/loaders/Spinner';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import Spinner from '../../../../components/loaders/Spinner';
-import { PageHeader } from '../../../../components';
+import { PAGES } from '../../constants';
+import { ADD_RESULT, FETCH_RESULTS } from '../../graphql';
 import { useTeamOptions, useCompetitionOptions, useOrgSeasonOptions } from '../../hooks';
+import ResultForm from './ResultForm';
 import { initialResultState } from './state';
 import type { ResultFormData } from './validation';
-import ResultForm from './ResultForm';
 
 export default function AddResult() {
   const { orgId, orgSeasonId } = useCustomParams();
@@ -24,17 +23,13 @@ export default function AddResult() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const [defaultValues, setDefaultValues] = useState<ResultFormData | null>(null);
+  const [defaultValues] = useState<ResultFormData>(initialResultState);
 
   const [addResult, { error, loading }] = useMutation(ADD_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
     ],
   });
-
-  useEffect(() => {
-    setDefaultValues({ ...initialResultState });
-  }, []);
 
   const onSubmit = async (formData: ResultFormData) => {
     try {
@@ -52,8 +47,16 @@ export default function AddResult() {
 
   const isLoading = loading || teamsLoading || orgSeasonsLoading || competitionsLoading;
 
-  const renderContent = () => {
-    return defaultValues ? (
+  if (isLoading) {
+    return (
+      <PageHeader title={PAGES.ADD_RESULT}>
+        <Spinner />
+      </PageHeader>
+    );
+  }
+
+  return (
+    <PageHeader title={PAGES.ADD_RESULT}>
       <ResultForm
         competitionOptions={competitionOptions}
         teamOptions={teamOptions}
@@ -63,10 +66,6 @@ export default function AddResult() {
         loading={isLoading}
         error={error}
       />
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return <PageHeader title={PAGES.ADD_RESULT}>{renderContent()}</PageHeader>;
+    </PageHeader>
+  );
 }

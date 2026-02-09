@@ -1,10 +1,10 @@
+import { getPercentage } from '../../../../utils/helpers';
+import { CustomPieChart } from '../../../charts';
 import { DataContainer } from '../../../containers';
 import { CenteredGrid, GridItem } from '../../../grids';
+import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import StatSkeleton from '../../../loaders/StatSkeleton';
 import { CustomTypography } from '../../../typography';
-import { getPercentage } from '../../../../utils/helpers';
-import CustomSkeleton from '../../../loaders/CustomSkeleton';
-import { CustomPieChart } from '../../../charts';
 import { IMatchesAveragesStats } from '../types';
 
 interface Props {

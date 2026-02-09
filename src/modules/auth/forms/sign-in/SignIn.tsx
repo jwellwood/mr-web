@@ -1,18 +1,17 @@
+import { useMutation } from '@apollo/client';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
-import { SIGN_IN_USER } from '../../graphql';
-import { PAGES } from '../../constants';
-import { AppDispatch, showAlert, setAuth } from '../../../../store';
-import { useAuth } from '../../../../hooks';
-import { TAuthRoles } from '../../../../constants';
 import { PageContainer } from '../../../../components';
-import { PROFILE_PATHS } from '../../../profile/router';
+import { TAuthRoles } from '../../../../constants';
+import { useAuth } from '../../../../hooks';
+import { AppDispatch, showAlert, setAuth } from '../../../../store';
 import { authStorage } from '../../../../utils';
-import type { SignInFormData } from './validation';
+import { PROFILE_PATHS } from '../../../profile/router';
+import { PAGES } from '../../constants';
+import { SIGN_IN_USER } from '../../graphql';
 import SignInView from './SignInView';
+import type { SignInFormData } from './validation';
 
 export default function SignInContainer() {
   const navigate = useNavigate();

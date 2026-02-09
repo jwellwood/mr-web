@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-
 import {
   CustomButton,
   FormContainer,
@@ -8,8 +8,8 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../components';
-import StatsFiltersDisplay from './StatsFiltersDisplay';
 import { TFilters } from '../context/SquadStatsFiltersContext';
+import StatsFiltersDisplay from './StatsFiltersDisplay';
 
 interface Props {
   onSubmit: (values: { seasons: string; competitions: string }) => void;
@@ -26,6 +26,7 @@ export default function StatsFiltersForm({
   competitionOptions,
   defaultValues,
 }: Props) {
+  const [open, setOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm<TFilters>({ defaultValues });
 
   const resetForm = () => {
@@ -33,42 +34,46 @@ export default function StatsFiltersForm({
     onReset();
   };
 
+  const submitHandler = (values: { seasons: string; competitions: string }) => {
+    onSubmit(values);
+    setOpen(false);
+  };
+
   return (
-    <FormModal
-      title="Filters"
-      buttonElement={
+    <>
+      <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
         <StatsFiltersDisplay
           seasonOptions={seasonOptions}
           competitionOptions={competitionOptions}
         />
-      }
-      closeForm={() => true}
-    >
-      <FormContainer
-        onSubmit={handleSubmit(onSubmit)}
-        loading={false}
-        submitBtn={{ text: 'Apply' }}
-        resetBtn={
-          <CustomButton onClick={resetForm} color="error">
-            Reset
-          </CustomButton>
-        }
-      >
-        <ControlledSelectInput
-          name="seasons"
-          options={seasonOptions}
-          label={'Season'}
-          control={control}
-        />
-        <ControlledSelectInput
-          name="competitions"
-          options={competitionOptions}
-          label={'Competitions'}
-          control={control}
-        />
+      </span>
+      <FormModal title="Filters" open={open} onClose={() => setOpen(false)}>
+        <FormContainer
+          onSubmit={handleSubmit(submitHandler)}
+          loading={false}
+          submitBtn={{ text: 'Apply' }}
+          resetBtn={
+            <CustomButton onClick={resetForm} color="error">
+              Reset
+            </CustomButton>
+          }
+        >
+          <ControlledSelectInput
+            name="seasons"
+            options={seasonOptions}
+            label={'Season'}
+            control={control}
+          />
+          <ControlledSelectInput
+            name="competitions"
+            options={competitionOptions}
+            label={'Competitions'}
+            control={control}
+          />
 
-        <ControlledSwitchInput name="showAverages" label="Show Averages" control={control} />
-      </FormContainer>
-    </FormModal>
+          <ControlledSwitchInput name="showAverages" label="Show Averages" control={control} />
+        </FormContainer>
+      </FormModal>
+    </>
   );
 }

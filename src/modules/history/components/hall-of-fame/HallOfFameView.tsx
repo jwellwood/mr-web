@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, NoDataText } from '../../../../components';
-import HallOfFamePlayer from './HallOfFamePlayer';
 import { T_FETCH_HALL_OF_FAME } from '../../types';
+import HallOfFamePlayer from './HallOfFamePlayer';
 
 interface Props {
   data?: T_FETCH_HALL_OF_FAME;

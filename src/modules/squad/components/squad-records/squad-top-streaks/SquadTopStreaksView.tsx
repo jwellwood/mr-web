@@ -1,5 +1,4 @@
 import { ApolloError } from '@apollo/client';
-
 import { DataError, NoDataText } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/CustomTable';
 import { T_FETCH_TOP_PLAYER_STREAKS_QUERY } from '../../../types';

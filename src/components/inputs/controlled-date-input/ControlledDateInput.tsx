@@ -1,6 +1,5 @@
-import { Control, Path, useController } from 'react-hook-form';
 import { DateView } from '@mui/x-date-pickers';
-
+import { Control, Path, useController } from 'react-hook-form';
 import DateInput from './DateInput';
 
 type Props<T extends object> = {

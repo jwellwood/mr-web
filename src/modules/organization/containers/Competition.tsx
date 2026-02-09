@@ -1,12 +1,11 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_COMPETITION } from '../graphql';
+import { DataError, PageHeader } from '../../../components';
 import { Spinner } from '../../../components/loaders';
+import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import CompetitionDetails from '../components/CompetitionDetails';
 import { COMP_ADMIN_LINKS, PAGES } from '../constants';
-import { useAuth } from '../../../hooks';
-import { DataError, PageHeader } from '../../../components';
+import { FETCH_COMPETITION } from '../graphql';
 
 export default function Competition() {
   const { teamId, orgId, competitionId } = useCustomParams();

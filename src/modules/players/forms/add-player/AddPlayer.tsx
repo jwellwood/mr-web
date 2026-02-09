@@ -1,19 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useMutation } from '@apollo/client';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-
+import { NoDataText, PageHeader } from '../../../../components';
+import { Spinner } from '../../../../components/loaders';
+import { useCustomParams, useNationality, useSeasons } from '../../../../hooks';
+import { AppDispatch, showAlert } from '../../../../store';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../../../squad/graphql';
 import { PAGES } from '../../constants';
 import { ADD_PLAYER } from '../../graphql';
-import { useCustomParams, useNationality, useSeasons } from '../../../../hooks';
-import { AppDispatch, showAlert } from '../../../../store';
-import { Spinner } from '../../../../components/loaders';
 import { mapFormToPlayer } from '../../helpers/mapPlayerForm';
-import { NoDataText, PageHeader } from '../../../../components';
+import PlayerForm from './PlayerForm';
 import { initialPlayerState } from './state';
 import type { PlayerFormData } from './validation';
-import PlayerForm from './PlayerForm';
 
 export default function AddPlayer() {
   const { teamId } = useCustomParams();
@@ -22,15 +20,11 @@ export default function AddPlayer() {
   const { nationalityOptions } = useNationality();
   const { seasonOptions, seasonId, loading } = useSeasons();
 
-  const [defaultValues, setDefaultValues] = useState<PlayerFormData | null>(null);
+  const defaultValues: PlayerFormData = initialPlayerState;
 
   const [addPlayer, { error, loading: addLoading }] = useMutation(ADD_PLAYER, {
     refetchQueries: [{ query: FETCH_SQUAD_LIST_BY_SEASON, variables: { teamId, seasonId } }],
   });
-
-  useEffect(() => {
-    setDefaultValues({ ...initialPlayerState });
-  }, []);
 
   const onSubmit = async (formData: PlayerFormData) => {
     try {
@@ -46,9 +40,12 @@ export default function AddPlayer() {
     }
   };
   const isLoading = loading || addLoading;
-  const renderContent = () => {
-    return defaultValues ? (
-      !seasonOptions.length && !loading ? (
+
+  return (
+    <PageHeader title={PAGES.ADD_PLAYER}>
+      {loading ? (
+        <Spinner />
+      ) : !seasonOptions.length ? (
         <NoDataText>Please add a season before adding players.</NoDataText>
       ) : (
         <PlayerForm
@@ -59,11 +56,7 @@ export default function AddPlayer() {
           loading={isLoading}
           error={error}
         />
-      )
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return <PageHeader title={PAGES.ADD_PLAYER}>{renderContent()}</PageHeader>;
+      )}
+    </PageHeader>
+  );
 }

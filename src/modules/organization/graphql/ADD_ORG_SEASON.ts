@@ -1,5 +1,5 @@
-import { IOrgSeason } from './../types';
 import { TypedDocumentNode, gql } from '@apollo/client';
+import { IOrgSeason } from './../types';
 
 export const ADD_ORG_SEASON: TypedDocumentNode<{
   season: IOrgSeason;

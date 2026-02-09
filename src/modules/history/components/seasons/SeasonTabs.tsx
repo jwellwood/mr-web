@@ -1,9 +1,8 @@
 import { lazy } from 'react';
-
-import { TAB_TYPES } from '../../../../constants';
 import { CustomTabs, ITab } from '../../../../components/tabs';
-import SeasonHeader from './SeasonHeader';
+import { TAB_TYPES } from '../../../../constants';
 import { T_FETCH_SEASON } from '../../types';
+import SeasonHeader from './SeasonHeader';
 
 const Matches = lazy(() => import('../../../matches/containers/Matches'));
 const Squad = lazy(() => import('../../../squad/containers/Squad'));

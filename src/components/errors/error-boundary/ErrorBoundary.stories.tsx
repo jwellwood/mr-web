@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
-
 import ErrorBoundary from './ErrorBoundary';
 
 const meta: Meta<typeof ErrorBoundary> = {

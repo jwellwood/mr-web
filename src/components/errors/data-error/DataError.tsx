@@ -1,8 +1,7 @@
 import { ApolloError } from '@apollo/client';
-
+import { ErrorText } from '..';
 import { SectionContainer } from '../../containers';
 import { CustomTypography } from '../../typography';
-import { ErrorText } from '..';
 
 interface Props {
   error: ApolloError;

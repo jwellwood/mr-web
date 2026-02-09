@@ -1,13 +1,12 @@
-import { useEffect } from 'react';
 import { ApolloError, useMutation, useQuery } from '@apollo/client';
-
-import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../../graphql';
+import { useEffect } from 'react';
+import { DataError, PageHeader } from '../../../../components';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useUpload } from '../../../../hooks';
-import { PAGES } from '../../constants';
 import { removePlayerPhoto, uploadPlayerPhoto } from '../../../../services/images/player-images';
-import { DataError, PageHeader } from '../../../../components';
+import { PAGES } from '../../constants';
+import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../../graphql';
 
 export default function EditPlayerImage() {
   const { teamId, playerId } = useCustomParams();

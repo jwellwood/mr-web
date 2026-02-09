@@ -1,13 +1,12 @@
+import { Box } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
-import { AppDispatch, showAlert } from '../../../store';
-import { Spinner } from '../../../components/loaders';
 import { CustomButton } from '../../../components';
+import { Spinner } from '../../../components/loaders';
+import { AppDispatch, showAlert } from '../../../store';
 import { PROFILE_PATHS } from '../../profile/router';
 import { resendValidationEmail } from '../services/validation';
-import { Box } from '@mui/material';
 
 interface Props {
   email: string | null;

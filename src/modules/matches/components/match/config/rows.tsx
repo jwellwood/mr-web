@@ -2,10 +2,10 @@ import { ReactElement } from 'react';
 import { CustomTypography, SectionContainer } from '../../../../../components';
 import { STAT_ICONS, StatIcon } from '../../../../../components/icons';
 import TextList from '../../../../../components/lists/TextList';
-import { PresentationModal } from '../../../../../components/modals';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
-import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import { IListItem } from '../../../../../components/lists/types';
+import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
+import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { PresentationModal } from '../../../../../components/modals';
 import { T_FETCH_MATCH } from '../../../types';
 
 export const rows = (

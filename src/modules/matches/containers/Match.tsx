@@ -1,11 +1,10 @@
 import { useQuery } from '@apollo/client';
-
-import { FETCH_MATCH } from '../graphql';
+import { PageHeader } from '../../../components';
+import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import MatchView from '../components/match/MatchView';
-import { PageHeader } from '../../../components';
 import { MATCH_ADMIN_LINKS, PAGES } from '../constants';
-import { useAuth } from '../../../hooks';
+import { FETCH_MATCH } from '../graphql';
 
 export default function Match() {
   const { teamId, matchId } = useCustomParams();

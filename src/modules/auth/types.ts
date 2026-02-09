@@ -1,10 +1,9 @@
 import { DeepOmitTypename } from '../../utils';
-
-import { type Sign_In_UserMutation } from './graphql/SIGN_IN_USER.generated';
-import { type Register_UserMutation } from './graphql/REGISTER_USER.generated';
-import { type Log_Out_UserMutation } from './graphql/LOG_OUT_USER.generated';
 import { type Forgot_PasswordMutation } from './graphql/FORGOT_PASSWORD.generated';
+import { type Log_Out_UserMutation } from './graphql/LOG_OUT_USER.generated';
+import { type Register_UserMutation } from './graphql/REGISTER_USER.generated';
 import { type Reset_PasswordMutation } from './graphql/RESET_PASSWORD.generated';
+import { type Sign_In_UserMutation } from './graphql/SIGN_IN_USER.generated';
 
 export type T_SIGN_IN_USER = DeepOmitTypename<Sign_In_UserMutation>;
 

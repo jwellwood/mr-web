@@ -1,8 +1,7 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { Slide, SlideProps } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
-import { Slide, SlideProps } from '@mui/material';
-
+import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, getAlert, showAlert } from '../../../store';
 import type { IAlert } from '../types';
 
