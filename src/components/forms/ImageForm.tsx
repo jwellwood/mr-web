@@ -74,7 +74,7 @@ const ImageForm: React.FC<Props> = ({
         <ImageAvatar
           imageUrl={imageUrl}
           size="150px"
-          fallbackIcon={IMAGE_TYPE.TEAM}
+          fallbackIcon={IMAGE_TYPE.BADGE}
           iconSize="100px"
         />
         <CustomButton type="reset" onClick={resetImage}>

@@ -1,6 +1,6 @@
 import { DataContainer, SectionContainer } from '../../../components';
 import { CenteredGrid, GridItem } from '../../../components/grids';
-import AppIcon from '../../../components/icons/AppIcon';
+import { AppIcon } from '../../../components/icons';
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
 import { FETCH_TEAM_QUERY } from '../types';

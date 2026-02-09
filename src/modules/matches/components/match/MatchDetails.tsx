@@ -45,7 +45,7 @@ export default function MatchDetails({ match, loading }: Props) {
           size="50px"
           iconSize="30px"
           imageUrl={homeTeam.badge}
-          fallbackIcon={IMAGE_TYPE.TEAM}
+          fallbackIcon={IMAGE_TYPE.BADGE}
           loading={loading}
         />
       ),
@@ -62,7 +62,7 @@ export default function MatchDetails({ match, loading }: Props) {
           size="50px"
           iconSize="30px"
           imageUrl={awayTeam.badge}
-          fallbackIcon={IMAGE_TYPE.TEAM}
+          fallbackIcon={IMAGE_TYPE.BADGE}
           loading={loading}
         />
       ),

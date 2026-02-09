@@ -2,8 +2,7 @@ import { ApolloError } from '@apollo/client';
 
 import AddStats from '../../../add-match-player-stats/AddStats';
 import { CustomTypography, PositionCell } from '../../../../../../components';
-import StatIcon from '../../../../../../components/icons/StatIcon';
-import { STAT_ICONS } from '../../../../../../components/icons/icons';
+import { STAT_ICONS, StatIcon } from '../../../../../../components/icons';
 import { ITempMatchPlayers } from '../../../../types';
 
 export const rows = (currentPlayers: ITempMatchPlayers[], error?: ApolloError) => {

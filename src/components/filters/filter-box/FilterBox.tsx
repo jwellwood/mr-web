@@ -1,7 +1,8 @@
 import { Box, Stack } from '@mui/material';
-import AppIcon from '../../icons/AppIcon';
+
 import FilterChip from '../filter-chip/FilterChip';
 import { theme } from '../../../theme';
+import { AppIcon } from '../../icons';
 
 interface Props {
   filterData: { label: string; applied: boolean }[];

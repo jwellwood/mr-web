@@ -1,5 +1,4 @@
-import StatIcon from '../../../../components/icons/StatIcon';
-import { STAT_ICONS } from '../../../../components/icons/icons';
+import { STAT_ICONS, StatIcon } from '../../../../components/icons';
 import { CustomTypography } from '../../../../components/typography';
 import LinksList from '../../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../../components/lists/types';

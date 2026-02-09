@@ -1,7 +1,7 @@
 import { lazy } from 'react';
-import AppIcon from '../../../../components/icons/AppIcon';
 import StatSkeleton from '../../../../components/loaders/StatSkeleton';
 import { PresentationModal } from '../../../../components/modals';
+import { AppIcon } from '../../../../components/icons';
 
 const Awards = lazy(() => import('../../containers/Awards'));
 

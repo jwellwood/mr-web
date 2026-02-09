@@ -6,7 +6,6 @@ import Divider from '@mui/material/Divider';
 import { CustomAvatar } from '../../avatars';
 import { LogoutButton } from '../../buttons';
 import { useLogout } from '../../../modules/auth/hooks/useLogout.hook';
-import AppIcon from '../../icons/AppIcon';
 import { getInitials } from '../../../utils/helpers';
 import { CustomTypography } from '../../typography';
 import { useAuth } from '../../../hooks';
@@ -16,6 +15,7 @@ import { HOME_PATHS } from '../../../modules/home/router';
 import { PROFILE_PATHS } from '../../../modules/profile/router';
 import Footer from '../Footer';
 import { Stack } from '@mui/material';
+import { AppIcon } from '../../icons';
 
 interface Props {
   username?: string;

@@ -1,6 +1,6 @@
 import { LinkButton } from '../../../components/buttons';
 import { CenteredGrid } from '../../../components/grids';
-import StatIcon from '../../../components/icons/StatIcon';
+import { StatIcon } from '../../../components/icons';
 import { CustomTypography } from '../../../components/typography';
 import { AUTH_PATHS } from '../router';
 

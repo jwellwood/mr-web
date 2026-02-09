@@ -7,7 +7,7 @@ import {
   NoDataText,
   SectionContainer,
 } from '../../../../components';
-import StatIcon from '../../../../components/icons/StatIcon';
+import { StatIcon } from '../../../../components/icons';
 import { IListItem } from '../../../../components/lists/types';
 import { T_FETCH_AWARDS_BY_PLAYER } from '../../types';
 

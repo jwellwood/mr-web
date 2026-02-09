@@ -18,20 +18,3 @@ export const STAT_ICONS = {
 } as const;
 
 export type StatIconType = (typeof STAT_ICONS)[keyof typeof STAT_ICONS];
-
-export const NAV_ICONS = {
-  MENU: 'menu',
-  OVERVIEW: 'team',
-  SQUAD: 'squad',
-  MATCHES: 'results',
-  HISTORY: 'history',
-} as const;
-
-export type NavIconType = (typeof NAV_ICONS)[keyof typeof NAV_ICONS];
-
-export const HISTORY_ICONS = {
-  WINNER: 'trophy',
-  RUNNER_UP: 'medal',
-} as const;
-
-export type HistoryIconType = (typeof HISTORY_ICONS)[keyof typeof HISTORY_ICONS];

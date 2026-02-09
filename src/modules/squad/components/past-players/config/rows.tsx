@@ -1,5 +1,5 @@
 import { ImageAvatar, NameCell } from '../../../../../components';
-import FlagIcon from '../../../../../components/icons/FlagIcon';
+import { FlagIcon } from '../../../../../components/icons';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { FETCH_PAST_PLAYERS_QUERY } from '../../../types';
 

@@ -1,11 +1,9 @@
 import { IconButton } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-
-import { IIconType } from '../../icons/types';
-import AppIcon from '../../icons/AppIcon';
+import { AppIcon, AppIconType } from '../../icons';
 
 interface Props {
-  icon: IIconType;
+  icon: AppIconType;
   size?: string;
   color?: string;
   onClick: (event: React.MouseEvent | undefined) => void;

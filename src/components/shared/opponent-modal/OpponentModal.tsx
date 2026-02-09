@@ -24,7 +24,7 @@ export default function OpponentModal({ children, name, badge, loading }: Props)
       <ImageAvatar
         size="24px"
         imageUrl={badge || 'default'}
-        fallbackIcon={IMAGE_TYPE.TEAM}
+        fallbackIcon={IMAGE_TYPE.BADGE}
         loading={loading}
       />
       <div style={{ marginRight: '4px' }} />

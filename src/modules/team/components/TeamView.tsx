@@ -28,7 +28,7 @@ export default function TeamView({ data, loading, error }: Props) {
             badge={teamBadge?.url}
             city={location}
             country={country}
-            type={IMAGE_TYPE.TEAM}
+            type={IMAGE_TYPE.BADGE}
             loading={loading}
           />
           <Organization team={data?.team} loading={loading} />

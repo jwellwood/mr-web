@@ -21,7 +21,7 @@ export default function ProfileOrgsView({ data, loading, error }: Props) {
           label: org.name,
           link: `/org/${org._id}`,
           avatar: (
-            <ImageAvatar imageUrl={org.badge.url} alt={org.name} fallbackIcon={IMAGE_TYPE.TEAM} />
+            <ImageAvatar imageUrl={org.badge.url} alt={org.name} fallbackIcon={IMAGE_TYPE.BADGE} />
           ),
         };
       })

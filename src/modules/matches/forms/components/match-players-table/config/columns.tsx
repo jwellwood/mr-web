@@ -1,5 +1,4 @@
-import { STAT_ICONS } from '../../../../../../components/icons/icons';
-import StatIcon from '../../../../../../components/icons/StatIcon';
+import { STAT_ICONS, StatIcon } from '../../../../../../components/icons';
 
 export const columns = [
   {

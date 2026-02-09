@@ -66,7 +66,7 @@ export const rows_averages = (
             <ImageAvatar
               size="24px"
               imageUrl={opponentBadge || 'default'}
-              fallbackIcon={IMAGE_TYPE.TEAM}
+              fallbackIcon={IMAGE_TYPE.BADGE}
               loading={loading}
             />
             <div style={{ marginRight: '4px' }} />

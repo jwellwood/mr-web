@@ -53,7 +53,7 @@ export const rows = (stats?: T_FETCH_PLAYER_OPPONENT_STATS['stats'], loading?: b
             <ImageAvatar
               size="24px"
               imageUrl={opponentBadge || 'default'}
-              fallbackIcon={IMAGE_TYPE.TEAM}
+              fallbackIcon={IMAGE_TYPE.BADGE}
               loading={loading}
             />
             <div style={{ marginRight: '4px' }} />

@@ -1,5 +1,5 @@
 import { IMAGE_TYPE } from '../../../constants';
-import FlagIcon from '../../../components/icons/FlagIcon';
+import { FlagIcon } from '../../../components/icons';
 import { LinksList, ImageAvatar } from '../../../components';
 import { CustomTypography, NoDataText } from '../../../components/typography';
 import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';
@@ -14,7 +14,7 @@ export default function TeamList({ teams, isSearchComplete, loading }: Props) {
   const links = teams?.length
     ? teams?.map(team => {
         return {
-          avatar: <ImageAvatar imageUrl={team?.teamBadge?.url} fallbackIcon={IMAGE_TYPE.TEAM} />,
+          avatar: <ImageAvatar imageUrl={team?.teamBadge?.url} fallbackIcon={IMAGE_TYPE.BADGE} />,
           label: (
             <CustomTypography bold size="sm" color="data">
               {team.teamName}

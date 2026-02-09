@@ -1,5 +1,4 @@
-import { STAT_ICONS } from '../../../../../../components/icons/icons';
-import StatIcon from '../../../../../../components/icons/StatIcon';
+import { STAT_ICONS, StatIcon } from '../../../../../../components/icons';
 import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
 import { getAvg, getPercentage } from '../../../../../../utils/helpers';
 import { T_FETCH_PLAYER_STATS } from '../../../../types';

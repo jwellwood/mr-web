@@ -17,7 +17,7 @@ export default function Org() {
         badge={data?.org.badge.url}
         country={data?.org.country}
         city={data?.org.city}
-        type={IMAGE_TYPE.TEAM}
+        type={IMAGE_TYPE.BADGE}
       />
     );
   };

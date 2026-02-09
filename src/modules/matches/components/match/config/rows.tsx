@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { CustomTypography, SectionContainer } from '../../../../../components';
-import { STAT_ICONS } from '../../../../../components/icons/icons';
-import StatIcon from '../../../../../components/icons/StatIcon';
+import { STAT_ICONS, StatIcon } from '../../../../../components/icons';
 import TextList from '../../../../../components/lists/TextList';
 import { PresentationModal } from '../../../../../components/modals';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';

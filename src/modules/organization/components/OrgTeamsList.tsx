@@ -1,4 +1,4 @@
-import { TAB_TYPES } from '../../../constants';
+import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
 import { SectionContainer } from '../../../components';
 import LinksList from '../../../components/lists/links-list/LinksList';
@@ -16,7 +16,7 @@ export default function OrgTeamsList({ teams }: Props) {
 
   const activeLinks: IListItem[] = activeTeams.map(team => {
     return {
-      avatar: <ImageAvatar imageUrl={team.teamBadge?.url} fallbackIcon="team" />,
+      avatar: <ImageAvatar imageUrl={team.teamBadge?.url} fallbackIcon={IMAGE_TYPE.BADGE} />,
       label: team.teamName,
       link: `team/${team._id}`,
     };

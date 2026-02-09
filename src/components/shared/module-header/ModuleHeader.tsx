@@ -1,14 +1,13 @@
 import React, { Fragment, ReactNode } from 'react';
 
 import { CenteredGrid, GridItem } from '../../grids';
-import FlagIcon from '../../icons/FlagIcon';
+import { AppIconType, FlagIcon } from '../../icons';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../typography';
 import { useNationality } from '../../../hooks';
 import { theme } from '../../../theme';
 import ImageAvatar from '../../avatars/image-avatar/ImageAvatar';
 import { ModuleHeaderContainer } from '../../containers';
-import { IIconType } from '../../icons/types';
 
 interface Props {
   title?: string;
@@ -16,7 +15,7 @@ interface Props {
   data?: { label: string; value: ReactNode }[];
   city?: string | null;
   country?: string | null;
-  type?: IIconType;
+  type?: AppIconType;
   loading?: boolean;
 }
 

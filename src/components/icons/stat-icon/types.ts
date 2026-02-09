@@ -1,0 +1,16 @@
+export type IStatIcon =
+  | 'app'
+  | 'starter'
+  | 'goal'
+  | 'assist'
+  | 'conceded'
+  | 'ownGoal'
+  | 'yellowCard'
+  | 'redCard'
+  | 'penScored'
+  | 'penMissed'
+  | 'penSaved'
+  | 'cleanSheet'
+  | 'mvp'
+  | 'subIn'
+  | 'subOut';

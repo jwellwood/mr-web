@@ -12,13 +12,15 @@ interface Props {
 }
 
 export default function MatchesView({ data, loading, error, seasonReady }: Props) {
-  const renderContent = () =>
-    (seasonReady && !loading && !data) ||
-    (seasonReady && data?.matches && data?.matches.length === 0) ? (
-      <NoDataText>No matches yet</NoDataText>
-    ) : (
-      <MatchList matches={mapMatchesToMatchesList(data?.matches)} loading={loading} />
-    );
+  const renderContent = () => {
+    const hasNoMatches = seasonReady && data?.matches && data.matches.length === 0;
+
+    if (hasNoMatches) {
+      return <NoDataText>No matches yet</NoDataText>;
+    }
+
+    return <MatchList matches={mapMatchesToMatchesList(data?.matches)} loading={loading} />;
+  };
 
   return (
     <SectionContainer>{error ? <DataError error={error} /> : renderContent()}</SectionContainer>

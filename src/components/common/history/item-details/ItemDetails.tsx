@@ -1,13 +1,13 @@
 import { Stack } from '@mui/material';
+import { ReactElement } from 'react';
+
 import { SectionContainer } from '../../../containers';
 import { CustomTypography } from '../../../typography';
-import AppIcon from '../../../icons/AppIcon';
-import { IIconType } from '../../../icons/types';
-import { ReactElement } from 'react';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
+import { AppIcon, AppIconType } from '../../../icons';
 
 interface Props {
-  icon: IIconType;
+  icon: AppIconType;
   iconColor: string;
   header: string;
   subHeader: string;

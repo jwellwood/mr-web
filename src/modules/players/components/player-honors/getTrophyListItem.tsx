@@ -1,5 +1,4 @@
-import { HISTORY_ICONS } from '../../../../components/icons/icons';
-import AppIcon from '../../../../components/icons/AppIcon';
+import { APP_ICONS, AppIcon } from '../../../../components/icons';
 import { CustomTypography } from '../../../../components/typography';
 import { T_FETCH_PLAYER_TROPHIES } from '../../types';
 
@@ -9,7 +8,7 @@ export const getTrophyListItem = (trophy: T_FETCH_PLAYER_TROPHIES['trophies'][nu
       <AppIcon
         size="1.4rem"
         color={trophy.isWinner ? 'gold' : 'silver'}
-        icon={trophy.isWinner ? HISTORY_ICONS.WINNER : HISTORY_ICONS.RUNNER_UP}
+        icon={trophy.isWinner ? APP_ICONS.TROPHY : APP_ICONS.MEDAL}
       />
     ),
     link: `trophy/${trophy._id}`,

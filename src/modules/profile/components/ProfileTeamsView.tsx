@@ -24,7 +24,7 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
         return {
           label: teamName,
           link: `/org/${orgId._id}/team/${_id}`,
-          avatar: <ImageAvatar imageUrl={teamBadge?.url || ''} fallbackIcon={IMAGE_TYPE.TEAM} />,
+          avatar: <ImageAvatar imageUrl={teamBadge?.url || ''} fallbackIcon={IMAGE_TYPE.BADGE} />,
         };
       })
     : [];

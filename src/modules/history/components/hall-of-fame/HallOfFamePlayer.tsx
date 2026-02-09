@@ -9,7 +9,7 @@ import {
 import { T_FETCH_HALL_OF_FAME } from '../../types';
 import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
 import { theme } from '../../../../theme';
-import FlagIcon from '../../../../components/icons/FlagIcon';
+import { FlagIcon } from '../../../../components/icons';
 
 interface Props {
   player: T_FETCH_HALL_OF_FAME['players'][number];

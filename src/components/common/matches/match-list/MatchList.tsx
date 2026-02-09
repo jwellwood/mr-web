@@ -21,7 +21,7 @@ export default function MatchList({ matches, loading, showBadge = true, showComp
       avatar: showBadge ? (
         <ImageAvatar
           size="40px"
-          fallbackIcon={IMAGE_TYPE.TEAM}
+          fallbackIcon={IMAGE_TYPE.BADGE}
           loading={loading}
           imageUrl={match.opponentBadge || ''}
         />
