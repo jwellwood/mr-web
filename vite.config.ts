@@ -22,15 +22,21 @@ export default defineConfig(({ mode }) => {
       port: 3000,
     },
     base: '/',
+    optimizeDeps: {
+      include: ['react', 'react-dom', 'react-redux'],
+    },
+    resolve: {
+      dedupe: ['react', 'react-dom'],
+    },
     build: {
       sourcemap: true,
       rollupOptions: {
         output: {
           manualChunks: {
-            // Split React and related libraries
-            'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+            // Split React and related libraries (including react-redux to avoid duplicate React instances)
+            'react-vendor': ['react', 'react-dom', 'react-router-dom', 'react-redux'],
             // Apollo + Redux together to share Symbol.observable
-            'state-vendor': ['@apollo/client', 'graphql', '@reduxjs/toolkit', 'react-redux'],
+            'state-vendor': ['@apollo/client', 'graphql', '@reduxjs/toolkit'],
             // Split Material-UI into smaller chunks (with Emotion dependencies)
             'mui-core': [
               '@mui/material',
