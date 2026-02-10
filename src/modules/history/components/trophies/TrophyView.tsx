@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_TROPHY } from '../../types';
 import TrophyDetails from './TrophyDetails';
 
 interface Props {
   data?: T_FETCH_TROPHY;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function TrophyView({ data, loading, error }: Props) {

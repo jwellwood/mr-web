@@ -1,15 +1,15 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, ImageAvatar, SectionContainer } from '../../../components';
 import LinksList from '../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
+import { TApolloError } from '../../../types/apollo';
 import { FETCH_TEAMS_BY_USER_QUERY } from '../types';
 
 interface Props {
   loading: boolean;
   data?: FETCH_TEAMS_BY_USER_QUERY;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function ProfileTeamsView({ data, loading, error }: Props) {

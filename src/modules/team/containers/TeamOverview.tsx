@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import TeamView from '../components/TeamView';
 import { FETCH_TEAM } from '../graphql';

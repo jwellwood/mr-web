@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -8,6 +7,7 @@ import {
   ControlledTextInput,
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { getIntegers } from '../../../../utils/helpers';
 import { SeasonSchema, type SeasonFormData } from './validation';
 
@@ -16,7 +16,7 @@ interface Props {
   defaultValues: SeasonFormData;
   competitionOptions: ISelectOptions[];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function SeasonForm({

@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { PageHeader } from '../../../components';
 import { useAuth, useCustomParams } from '../../../hooks';
 import TrophyView from '../components/trophies/TrophyView';

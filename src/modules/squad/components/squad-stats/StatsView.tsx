@@ -1,7 +1,7 @@
-import { ApolloError } from '@apollo/client';
 import { ReactNode } from 'react';
 import { DataError, SectionContainer, NoDataText } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../types/apollo';
 import { TFilters } from '../../context/SquadStatsFiltersContext';
 import StatFilters from '../../forms/StatsFilters';
 import { FETCH_SQUAD_STATS_QUERY } from '../../types';
@@ -9,7 +9,7 @@ import { columns, columns_averages, rows, rows_averages, styles, styles_averages
 import PlayersByNumbers from './PlayersByNumbers';
 
 interface Props {
-  error?: ApolloError;
+  error?: TApolloError;
   loading: boolean;
   data?: FETCH_SQUAD_STATS_QUERY;
   filters: TFilters;

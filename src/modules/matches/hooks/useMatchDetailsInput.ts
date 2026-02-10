@@ -1,4 +1,4 @@
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client/react';
 import { useEffect, useMemo } from 'react';
 import { ISelectOptions } from '../../../components';
 import { emptySelectOption } from '../../../constants';
@@ -9,20 +9,16 @@ import { FETCH_ORG, FETCH_ORG_TEAMS } from '../../organization/graphql';
 export const useMatchDetailsInput = () => {
   const { orgId, teamId } = useCustomParams();
   const { loading: loadingSeasons, seasonOptions } = useSeasons();
-  const [getTeamByOrg, { data: teams, loading: teamsLoading, error: teamsError }] = useLazyQuery(
-    FETCH_ORG_TEAMS,
-    { variables: { orgId } }
-  );
+  const [getTeamByOrg, { data: teams, loading: teamsLoading, error: teamsError }] =
+    useLazyQuery(FETCH_ORG_TEAMS);
 
-  const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] = useLazyQuery(
-    FETCH_ORG,
-    { variables: { orgId } }
-  );
+  const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] =
+    useLazyQuery(FETCH_ORG);
 
   useEffect(() => {
     if (orgId) {
-      getTeamByOrg();
-      getOrgById();
+      getTeamByOrg({ variables: { orgId } });
+      getOrgById({ variables: { orgId } });
     }
   }, [getOrgById, getTeamByOrg, orgId]);
 
@@ -33,7 +29,7 @@ export const useMatchDetailsInput = () => {
   const dataFetched = Boolean(teams) && Boolean(orgData);
 
   const opponents = useMemo(() => teams?.teams || [], [teams]);
-  const competitions = useMemo(() => orgData?.org.competitions || [], [orgData]);
+  const competitions = useMemo(() => orgData?.org?.competitions || [], [orgData]);
 
   const opponentOptions: ISelectOptions[] = useMemo(
     () => [

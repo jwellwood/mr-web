@@ -1,8 +1,8 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledDateInput, ControlledSelectInput } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { getIntegers } from '../../../../utils/helpers';
 import type { ResultFormData } from './validation';
 import { ResultSchema } from './validation';
@@ -14,7 +14,7 @@ interface Props {
   orgSeasonOptions: ISelectOptions[];
   defaultValues: ResultFormData;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function ResultForm({

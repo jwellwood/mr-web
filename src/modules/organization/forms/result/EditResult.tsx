@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -25,7 +25,6 @@ export default function EditResult() {
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
   const { loading, error, data, refetch } = useQuery(FETCH_RESULT, {
     variables: { resultId },
-    notifyOnNetworkStatusChange: true,
   });
 
   const defaultValues: ResultFormData | null = useMemo(() => {

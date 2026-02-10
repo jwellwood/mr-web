@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useState } from 'react';
 import { useCustomParams } from '../../../hooks';
 import PlayerOpponentStatsView from '../components/player-opponents/PlayerOpponentStatsView';

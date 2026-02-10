@@ -1,13 +1,13 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, ModuleHeader, PositionCell } from '../../../../components';
 import { IMAGE_TYPE } from '../../../../constants';
 import { useDateOfBirth } from '../../../../hooks';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYER } from '../../types';
 
 interface Props {
   data?: T_FETCH_PLAYER;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function PlayerView({ data, loading, error }: Props) {

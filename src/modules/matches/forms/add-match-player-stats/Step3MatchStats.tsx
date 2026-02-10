@@ -1,14 +1,14 @@
-import { ApolloError } from '@apollo/client';
 import { useSelector } from 'react-redux';
 import { SubmitButton } from '../../../../components';
 import { getTempMatch, getTempPlayers } from '../../../../store';
+import { TApolloError } from '../../../../types/apollo';
 import { validateStats } from '../../helpers/statsValidation';
 import AddMatchValidation from '../components/AddMatchValidation';
 import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';
 
 interface Props {
   onNextClick: () => void;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function Step3MatchStats({ onNextClick, error }: Props) {

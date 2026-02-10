@@ -1,13 +1,13 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../../types/apollo';
 import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {
   data?: T_FETCH_SQUAD_STREAKS_QUERY;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function SquadStreakRecordsView({ data, loading, error }: Props) {

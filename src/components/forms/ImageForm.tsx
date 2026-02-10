@@ -1,8 +1,8 @@
-import { ApolloError } from '@apollo/client';
 import React, { useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { IMAGE_TYPE } from '../../constants';
 import { button_text } from '../../i18n';
+import { TApolloError } from '../../types/apollo';
 import ImageAvatar from '../avatars/image-avatar/ImageAvatar';
 import { CustomButton } from '../buttons';
 import { CenteredGrid } from '../grids';
@@ -16,7 +16,7 @@ interface Props {
   currentUrl?: string;
   removeImage: () => void;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 const ImageForm: React.FC<Props> = ({

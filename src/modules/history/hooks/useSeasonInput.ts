@@ -1,18 +1,16 @@
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client/react';
 import { useEffect, useMemo } from 'react';
 import type { ISelectOptions } from '../../../components';
 import { emptySelectOption } from '../../../constants/rounds';
 import { FETCH_ORG } from '../../organization/graphql';
 
 export const useSeasonInput = (orgId?: string) => {
-  const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] = useLazyQuery(
-    FETCH_ORG,
-    { variables: { orgId } }
-  );
+  const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] =
+    useLazyQuery(FETCH_ORG);
 
   useEffect(() => {
     if (orgId) {
-      getOrgById();
+      getOrgById({ variables: { orgId } });
     }
   }, [getOrgById, orgId]);
 

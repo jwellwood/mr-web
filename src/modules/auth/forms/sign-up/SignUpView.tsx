@@ -1,4 +1,4 @@
-import { ApolloError } from '@apollo/client';
+import { TApolloError } from '../../../../types/apollo';
 import AuthLayout from '../../components/AuthLayout';
 import AuthorizationLinks from '../../components/AuthorizationLinks';
 import ValidationEmailSent from '../../components/ValidationEmailSent';
@@ -11,7 +11,7 @@ interface Props {
   loading: boolean;
   onSubmit: (formData: SignUpFormData) => void;
   email: string | null;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function SignUpView({ loading, onSubmit, email, error }: Props) {

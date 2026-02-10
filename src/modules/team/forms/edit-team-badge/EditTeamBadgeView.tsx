@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../../components';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
+import { TApolloError } from '../../../../types/apollo';
 import { FETCH_TEAM_QUERY } from '../../types';
 
 interface Props {
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
   onSubmit: (formData: { imageFile: File | null }) => void;
   imageUrl?: string;
   setImageUrl: React.Dispatch<React.SetStateAction<string | null>>;

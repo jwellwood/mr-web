@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { lazy } from 'react';
 import { PageContainer } from '../../../components';
 import { useAuth } from '../../../hooks';

@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_AWARDS } from '../../types';
 import AwardList from './AwardList';
 
 interface Props {
   data?: T_FETCH_AWARDS;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
   seasonId?: string;
 }
 

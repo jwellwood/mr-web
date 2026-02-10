@@ -1,10 +1,10 @@
-import { ApolloError } from '@apollo/client';
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { ISelectOptions } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, getTempMatch, getTempPlayers, setTmpPlayers } from '../../../../store';
+import { TApolloError } from '../../../../types/apollo';
 import { useMatchPlayersInput } from '../../hooks/useMatchPlayersInput';
 import { ITempMatchPlayers } from '../../types';
 import AddMatchPlayersForm from './AddMatchPlayersForm';
@@ -14,7 +14,7 @@ import { AddMatchPlayersFormValues } from './validation';
 interface Props {
   onNextClick: () => void;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function Step2MatchPlayers({ onNextClick, loading, error }: Props) {

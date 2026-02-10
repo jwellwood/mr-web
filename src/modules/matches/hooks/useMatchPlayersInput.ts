@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { FETCH_PLAYERS_FOR_MATCH_INPUT } from '../graphql';
 
 export const useMatchPlayersInput = (teamId: string | undefined, seasonId: string | undefined) => {

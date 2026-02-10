@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useEffect } from 'react';
 import { PageContainer } from '../../../../components';
 import { useUpload, useCustomParams } from '../../../../hooks';
@@ -16,7 +16,6 @@ export default function EditTeamBadge() {
     refetch,
   } = useQuery(FETCH_TEAM, {
     variables: { teamId: teamId! },
-    notifyOnNetworkStatusChange: true,
   });
   const [editTeamBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_TEAM_BADGE, {
     variables: { teamId: teamId!, public_id: '', url: '' }, // TODO

@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_HALL_OF_FAME } from '../../types';
 import HallOfFamePlayer from './HallOfFamePlayer';
 
 interface Props {
   data?: T_FETCH_HALL_OF_FAME;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function HallOfFameView({ data, loading, error }: Props) {

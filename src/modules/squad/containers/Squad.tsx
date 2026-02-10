@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
 import SquadView from '../components/squad-overview/SquadView';
@@ -16,7 +16,6 @@ export default function Squad() {
     variables: { teamId: teamId!, seasonId: seasonId! },
     skip: !seasonReady,
     fetchPolicy: 'cache-and-network',
-    notifyOnNetworkStatusChange: true,
   });
 
   return <SquadView data={data} loading={loading || statsLoading} error={error} />;

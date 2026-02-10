@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -7,6 +6,7 @@ import {
   ControlledSelectInput,
   ControlledSwitchInput,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { getMinutesOptions } from '../../../../utils';
 import { getIntegers } from '../../../../utils/helpers';
 import { competitionOptions } from '../../constants';
@@ -17,7 +17,7 @@ interface Props {
   onSubmit: (data: CompetitionFormData) => void;
   defaultValues: CompetitionFormData;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function CompetitionForm({ onSubmit, defaultValues, loading, error }: Props) {

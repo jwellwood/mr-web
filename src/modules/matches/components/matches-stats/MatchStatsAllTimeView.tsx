@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import {
   DataError,
   MatchAverages,
@@ -6,13 +5,14 @@ import {
   NoDataText,
   SectionContainer,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCHES_ALL_TIME_STATS } from '../../types';
 import { mapMatchesStatsToMatchesAverages, mapMatchesStatsToMatchesTable } from './mappers';
 
 interface Props {
   data?: T_FETCH_MATCHES_ALL_TIME_STATS;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function MatchStatsAllTimeView({ data, loading, error }: Props) {

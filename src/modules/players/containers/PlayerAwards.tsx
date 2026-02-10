@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks';
 import PlayerAwardsView from '../components/player-honors/PlayerAwardsView';
 import { FETCH_AWARDS_BY_PLAYER } from '../graphql';

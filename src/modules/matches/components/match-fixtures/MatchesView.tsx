@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, MatchList, NoDataText, SectionContainer } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCHES } from '../../types';
 import { mapMatchesToMatchesList } from './mappers';
 
 interface Props {
   data?: T_FETCH_MATCHES;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
   seasonReady: boolean;
 }
 

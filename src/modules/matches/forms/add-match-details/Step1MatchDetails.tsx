@@ -1,8 +1,8 @@
-import { ApolloError } from '@apollo/client';
 import { useDispatch, useSelector } from 'react-redux';
 import { ISelectOptions, NoDataText } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, getTempMatch, setTmpMatch } from '../../../../store';
+import { TApolloError } from '../../../../types/apollo';
 import { useMatchDetailsInput } from '../../hooks/useMatchDetailsInput';
 import { mapTempMatchToFormData } from '../mappers';
 import AddMatchDetailsForm from './AddMatchDetailsForm';
@@ -11,7 +11,7 @@ import { AddMatchDetailsFormValues } from './validation';
 interface Props {
   onNextClick: () => void;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function Step1MatchDetails({ onNextClick, loading, error }: Props) {

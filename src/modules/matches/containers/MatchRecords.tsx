@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import MatchRecordsView from '../components/matches-records/MatchRecordsView';
 import { FETCH_MATCHES_RECORDS } from '../graphql';

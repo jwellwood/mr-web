@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import type { ISelectOptions } from '../../../components';
 import { useCustomParams } from '../../../hooks';

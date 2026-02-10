@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -10,6 +9,7 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { surfaceOptions } from '../../constants';
 import { EditTeamSchema, type EditTeamFormData } from './types';
 
@@ -18,7 +18,7 @@ interface Props {
   defaultValues: EditTeamFormData;
   countryOptions: ISelectOptions[];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function EditTeamForm({

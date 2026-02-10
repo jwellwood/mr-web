@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { lazy } from 'react';
 import { FETCH_ORGS_BY_USER } from '../graphql';
 

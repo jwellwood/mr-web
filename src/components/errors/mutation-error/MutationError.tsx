@@ -1,8 +1,8 @@
-import { ApolloError } from '@apollo/client';
 import { Alert, Typography } from '@mui/material';
+import { TApolloError } from '../../../types/apollo';
 
 interface Props {
-  error: ApolloError;
+  error: TApolloError;
 }
 
 export default function MutationError({ error }: Props) {

@@ -1,7 +1,7 @@
-import { ApolloError } from '@apollo/client';
 import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
-import React, { FormEvent, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
+import { TApolloError } from '../../../types/apollo';
 import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
 import { Spinner } from '../../loaders';
@@ -14,12 +14,12 @@ interface ISubmitButton {
 }
 
 interface Props {
-  onSubmit: (formData: FormEvent) => void;
+  onSubmit: React.SubmitEventHandler<HTMLFormElement>;
   children: React.ReactNode;
   submitBtn?: ISubmitButton;
   resetBtn?: ReactElement;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function FormContainer({

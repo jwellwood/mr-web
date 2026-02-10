@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -7,6 +6,7 @@ import {
   ControlledMultiSelectInput,
   type ISelectOptions,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { AwardSchema, type AwardFormData } from './validation';
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
   defaultValues: AwardFormData;
   playersOptions: ISelectOptions[];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 export default function AwardForm({
   onSubmit,

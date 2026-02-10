@@ -1,4 +1,4 @@
-import { ApolloError, useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ import {
   setTmpMatch,
   showAlert,
 } from '../../../store';
+import { TApolloError } from '../../../types/apollo';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../../squad/graphql';
 import { PAGES } from '../constants';
 import { EDIT_MATCH, FETCH_MATCHES, FETCH_MATCH, FETCH_MATCHES_STATS } from '../graphql';
@@ -119,7 +120,7 @@ export default function EditMatch() {
 
   return (
     <PageHeader title={PAGES.EDIT_MATCH}>
-      {hasError ? <DataError error={error || (editError as ApolloError)} /> : renderContent()}
+      {hasError ? <DataError error={error || (editError as TApolloError)} /> : renderContent()}
     </PageHeader>
   );
 }

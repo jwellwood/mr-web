@@ -1,15 +1,15 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../../components';
 import { CenteredGrid } from '../../../../components/grids';
+import { TApolloError } from '../../../../types/apollo';
 import { SignInSchema, type SignInFormData } from './validation';
 
 interface Props {
   defaultValues: SignInFormData;
   onSubmit: (data: SignInFormData) => void;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function SignInForm({ defaultValues, onSubmit, loading, error }: Props) {

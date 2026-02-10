@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, SectionContainer, NoDataText } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../../types/apollo';
 import { type FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
   data?: FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY;
 }
 

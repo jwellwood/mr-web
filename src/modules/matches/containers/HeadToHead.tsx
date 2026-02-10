@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import HeadToHeadView from '../components/match/HeadToHeadView';
 import { FETCH_MATCHES_BY_OPPONENT } from '../graphql';

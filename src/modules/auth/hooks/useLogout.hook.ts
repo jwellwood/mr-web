@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client/react';
 import { useDispatch } from 'react-redux';
 import { apolloClient } from '../../../services/graphql/apolloClient';
 import { AppDispatch, resetAuth, showAlert } from '../../../store';

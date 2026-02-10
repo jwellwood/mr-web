@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, LinksList, NoDataText, SectionContainer } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYER_TROPHIES } from '../../types';
 import { getTrophyListItem } from './getTrophyListItem';
 
 interface Props {
   data?: T_FETCH_PLAYER_TROPHIES;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function PlayerTrophiesView({ data, loading, error }: Props) {

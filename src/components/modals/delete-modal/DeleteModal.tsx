@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { Box, DialogContent, Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -6,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import React from 'react';
+import { TApolloError } from '../../../types/apollo';
 import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
 import { AppIcon } from '../../icons';
@@ -17,7 +17,7 @@ interface Props {
   loading: boolean;
   onDelete: () => void;
   disabled?: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function DeleteModal({ title, loading, onDelete, disabled, error }: Props) {

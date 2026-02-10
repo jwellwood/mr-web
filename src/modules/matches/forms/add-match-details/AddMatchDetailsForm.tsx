@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -8,6 +7,7 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { getIntegers } from '../../../../utils/helpers';
 import AddMatchDetailsSchema, { AddMatchDetailsFormValues } from './validation';
 
@@ -18,7 +18,7 @@ interface Props {
   opponentOptions: ISelectOptions[];
   competitionOptions: ISelectOptions[];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function AddMatchDetailsForm({

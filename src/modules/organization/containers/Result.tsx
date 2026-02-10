@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { DataError, NoDataText, PageHeader } from '../../../components';
 import { IListItem } from '../../../components/lists/types';
 import { Spinner } from '../../../components/loaders';

@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import {
   CustomTypography,
   DataError,
@@ -8,12 +7,13 @@ import {
 } from '../../../../components';
 import { StatIcon } from '../../../../components/icons';
 import { IListItem } from '../../../../components/lists/types';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_AWARDS_BY_PLAYER } from '../../types';
 
 interface Props {
   data?: T_FETCH_AWARDS_BY_PLAYER;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function PlayerAwardsView({ data, loading, error }: Props) {

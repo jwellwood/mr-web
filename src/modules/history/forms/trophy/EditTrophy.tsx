@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,6 @@ export default function EditTrophy() {
 
   const { loading, error, data, refetch } = useQuery(FETCH_TROPHY, {
     variables: { trophyId: trophyId! },
-    notifyOnNetworkStatusChange: true,
   });
 
   const defaultValues: TrophyFormData | null = useMemo(() => {

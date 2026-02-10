@@ -1,7 +1,7 @@
-import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../components';
 import ModuleHeader from '../../../components/shared/module-header/ModuleHeader';
 import { IMAGE_TYPE } from '../../../constants';
+import { TApolloError } from '../../../types/apollo';
 import Kits from '../components/Kits';
 import Organization from '../components/Organization';
 import Stadium from '../components/Stadium';
@@ -10,7 +10,7 @@ import { FETCH_TEAM_QUERY } from '../types';
 interface Props {
   data?: FETCH_TEAM_QUERY;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function TeamView({ data, loading, error }: Props) {

@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks';
 import PastPlayersView from '../components/past-players/PastPlayersView';
 import { FETCH_PAST_PLAYERS } from '../graphql';

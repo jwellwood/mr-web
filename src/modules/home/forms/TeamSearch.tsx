@@ -1,13 +1,11 @@
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery } from '@apollo/client/react';
 import { useMemo, useState } from 'react';
 import { FETCH_TEAMS_BY_SEARCH } from '../graphql';
 import TeamSearchView from './TeamSearchView';
 
 export default function TeamSearch() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [fetchTeamsBySearch, { loading, error, data }] = useLazyQuery(FETCH_TEAMS_BY_SEARCH, {
-    variables: { filter: searchTerm },
-  });
+  const [fetchTeamsBySearch, { loading, error, data }] = useLazyQuery(FETCH_TEAMS_BY_SEARCH);
   const isSearchComplete = useMemo(
     () => Boolean(data?.teams?.length && searchTerm.length > 0),
     [data?.teams, searchTerm]

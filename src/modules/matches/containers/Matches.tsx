@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
 import MatchesView from '../components/match-fixtures/MatchesView';
@@ -10,7 +10,7 @@ export default function Matches() {
 
   const { data, error, loading } = useQuery(FETCH_MATCHES, {
     variables: { teamId: teamId!, seasonId: seasonId! },
-    notifyOnNetworkStatusChange: true,
+
     skip: !seasonId,
   });
 

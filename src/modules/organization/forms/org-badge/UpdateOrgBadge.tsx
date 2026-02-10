@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useEffect } from 'react';
 import { PageHeader } from '../../../../components';
 import ImageForm from '../../../../components/forms/ImageForm';
@@ -17,7 +17,6 @@ export default function UpdateOrgBadge() {
     refetch,
   } = useQuery(FETCH_ORG, {
     variables: { orgId },
-    notifyOnNetworkStatusChange: true,
   });
   const [editOrgBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_ORG_BADGE, {
     variables: { orgId: orgId },

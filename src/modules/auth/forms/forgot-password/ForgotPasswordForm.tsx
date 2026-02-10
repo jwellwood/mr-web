@@ -1,14 +1,14 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { ForgotPasswordSchema, type ForgotPasswordFormData } from './validation';
 
 interface Props {
   defaultValues: ForgotPasswordFormData;
   onSubmit: (data: ForgotPasswordFormData) => void;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function ForgotPasswordForm({ defaultValues, onSubmit, loading, error }: Props) {

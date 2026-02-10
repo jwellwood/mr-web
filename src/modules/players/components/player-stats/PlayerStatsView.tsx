@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import {
   DataError,
   NoDataText,
@@ -7,6 +6,7 @@ import {
   MatchAverages,
 } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../types/apollo';
 import StatsFilters from '../../forms/stats-filter/StatsFilters';
 import { mapPlayerAverages } from '../../helpers';
 import { mapPlayerMatchStats } from '../../helpers/mapPlayerMatchStats';
@@ -17,7 +17,7 @@ import * as OVERALL_STATS_CONFIG from './config/overall-stats';
 interface Props {
   data?: T_FETCH_PLAYER_STATS;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function PlayerStatsView({ data, loading, error }: Props) {

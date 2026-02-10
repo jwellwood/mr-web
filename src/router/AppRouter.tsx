@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { lazy, useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -33,37 +33,42 @@ function AppRouter() {
   const token = authStorage.getToken();
 
   // Fetch user data but don't block rendering
-  const { loading } = useQuery(FETCH_USER, {
+  const { data, error } = useQuery(FETCH_USER, {
     skip: !token,
     fetchPolicy: 'cache-first',
-    onCompleted: data => {
-      if (data?.user && token) {
-        dispatch(
-          setAuth({
-            roles: data.user.roles as TAuthRoles[],
-            teamIds: data.user.teamIds,
-            orgIds: data.user.orgIds,
-            username: data.user.username,
-          })
-        );
-      } else {
-        // User query completed but no user data - clear auth
-        dispatch(resetAuth());
-      }
-    },
-    onError: () => {
-      // Clear auth state and token on error
-      dispatch(resetAuth());
-      authStorage.removeToken();
-    },
   });
 
-  // Initialize auth state immediately if no token
+  // Handle successful data (replaces deprecated onCompleted)
   useEffect(() => {
-    if (!token && !loading) {
+    if (data?.user) {
+      dispatch(
+        setAuth({
+          roles: data.user.roles as TAuthRoles[],
+          teamIds: data.user.teamIds,
+          orgIds: data.user.orgIds,
+          username: data.user.username,
+        })
+      );
+    } else if (data && !data.user) {
+      // Query returned but no user - clear auth
       dispatch(resetAuth());
     }
-  }, [token, loading, dispatch]);
+  }, [data, dispatch]);
+
+  // Handle errors (replaces deprecated onError)
+  useEffect(() => {
+    if (error) {
+      dispatch(resetAuth());
+      authStorage.removeToken();
+    }
+  }, [error, dispatch]);
+
+  // Initialize auth state if no token
+  useEffect(() => {
+    if (!token) {
+      dispatch(resetAuth());
+    }
+  }, [token, dispatch]);
 
   return (
     <BrowserRouter>

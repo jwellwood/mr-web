@@ -1,13 +1,13 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../../types/apollo';
 import { T_FETCH_PLAYER_STREAKS } from '../../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {
   data?: T_FETCH_PLAYER_STREAKS;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function PlayerGameStreaksView({ data, loading, error }: Props) {

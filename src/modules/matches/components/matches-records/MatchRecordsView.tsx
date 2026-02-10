@@ -1,5 +1,5 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, MatchList, NoDataText, SectionContainer } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import MatchesStreaks from '../../containers/MatchesStreaks';
 import { T_FETCH_MATCHES_RECORDS } from '../../types';
 import { mapMatchRecordsMatchesToMatchesList } from './mappers';
@@ -7,7 +7,7 @@ import { mapMatchRecordsMatchesToMatchesList } from './mappers';
 interface Props {
   data?: T_FETCH_MATCHES_RECORDS;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function MatchRecordsView({ data, loading, error }: Props) {

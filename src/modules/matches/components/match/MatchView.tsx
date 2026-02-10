@@ -1,10 +1,10 @@
-import { ApolloError } from '@apollo/client';
 import { lazy } from 'react';
 import { DataError, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
 import { CustomTabs, ITab } from '../../../../components/tabs';
 import { NoDataText } from '../../../../components/typography';
 import { POSITIONS, TAB_TYPES } from '../../../../constants';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCH } from '../../types';
 import { columns, rows, styles } from './config';
 
@@ -14,7 +14,7 @@ const HeadToHead = lazy(() => import('../../containers/HeadToHead'));
 interface Props {
   data?: T_FETCH_MATCH;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function MatchView({ data, loading, error }: Props) {

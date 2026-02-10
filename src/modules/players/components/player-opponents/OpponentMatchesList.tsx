@@ -1,5 +1,5 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, MatchList, MatchStatsTable, NoDataText } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYER_MATCHES_BY_OPPONENT } from '../../types';
 import { mapMatchesToMatchStats } from './mapMatchesToMatchesStats';
 import { mapMatchesToMatchList } from './mapMatchesToMatchList';
@@ -7,7 +7,7 @@ import { mapMatchesToMatchList } from './mapMatchesToMatchList';
 interface Props {
   data?: T_FETCH_PLAYER_MATCHES_BY_OPPONENT;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function OpponentMatchesList({ data, loading, error }: Props) {

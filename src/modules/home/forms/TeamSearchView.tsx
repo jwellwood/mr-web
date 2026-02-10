@@ -1,6 +1,6 @@
-import { ApolloError } from '@apollo/client';
 import { CustomButton } from '../../../components';
 import PresentationModal from '../../../components/modals/PresentationModal';
+import { TApolloError } from '../../../types/apollo';
 import TeamList from '../components/TeamList';
 import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';
 import SearchForm from './TeamSearchForm';
@@ -10,7 +10,7 @@ interface Props {
   isSearchComplete: boolean;
   onSubmit: (data: { teamName: string }) => void;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
   data?: FETCH_TEAMS_BY_SEARCH_QUERY;
 }
 

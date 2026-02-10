@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,6 @@ export default function EditAward() {
 
   const { loading, error, data, refetch } = useQuery(FETCH_AWARD, {
     variables: { awardId: awardId! },
-    notifyOnNetworkStatusChange: true,
   });
 
   const [editAward, { error: editError, loading: editLoading }] = useMutation(EDIT_AWARD, {

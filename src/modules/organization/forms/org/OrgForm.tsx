@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -8,6 +7,7 @@ import {
   ControlledSelectInput,
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { OrganizationSchema, type OrganizationFormData } from './validation';
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
   defaultValues: OrganizationFormData;
   countryOptions: ISelectOptions[];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function OrgForm({

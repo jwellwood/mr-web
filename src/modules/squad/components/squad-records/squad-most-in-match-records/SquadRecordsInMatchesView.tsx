@@ -1,5 +1,5 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
+import { TApolloError } from '../../../../../types/apollo';
 import {
   FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY,
   FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY,
@@ -10,7 +10,7 @@ interface Props {
   data?: FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY | FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY;
   title: string;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function SquadRecordsInMatchesView({ data, loading, error, title }: Props) {

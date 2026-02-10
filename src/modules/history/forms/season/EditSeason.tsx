@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -20,7 +20,6 @@ export default function EditSeason() {
   const dispatch: AppDispatch = useDispatch();
   const { loading, error, data, refetch } = useQuery(FETCH_SEASON, {
     variables: { seasonId: seasonId! },
-    notifyOnNetworkStatusChange: true,
   });
 
   const [editSeason, { error: editError, loading: editLoading }] = useMutation(EDIT_SEASON, {

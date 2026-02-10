@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import {
   DataError,
   MatchList,
@@ -6,13 +5,14 @@ import {
   NoDataText,
   SectionContainer,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCHES_BY_OPPONENT } from '../../types';
 import { mapHeadToHeadMatchesList, mapHeadToHeadMatchesTable } from './mappers';
 
 interface Props {
   data?: T_FETCH_MATCHES_BY_OPPONENT;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function HeadToHeadView({ data, loading, error }: Props) {

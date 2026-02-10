@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { useCustomParams } from '../../../../../hooks';
+import { TApolloError } from '../../../../../types/apollo';
 import { T_PLAYER_MATCH_WITH_RECORD } from '../../../types';
 import PlayerRecordsMatchesModal from './PlayerRecordsMatchesModal';
 
 interface Props {
   data?: T_PLAYER_MATCH_WITH_RECORD;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
   title: string;
 }
 

@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks';
 import SeasonsView from '../components/seasons/SeasonsView';
 import { FETCH_SEASONS_POSITION } from '../graphql';

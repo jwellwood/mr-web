@@ -1,15 +1,15 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, SectionContainer, ModuleHeader } from '../../../components';
 import TextList from '../../../components/lists/TextList';
 import { IMAGE_TYPE } from '../../../constants';
 import { useDateOfBirth } from '../../../hooks';
+import { TApolloError } from '../../../types/apollo';
 import { parseDate } from '../../../utils/helpers';
 import { FETCH_USER_QUERY } from '../types';
 
 interface Props {
   data?: FETCH_USER_QUERY;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function ProfileView({ data, loading, error }: Props) {

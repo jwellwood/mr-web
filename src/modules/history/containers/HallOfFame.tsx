@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import HallOfFameView from '../components/hall-of-fame/HallOfFameView';
 import { FETCH_HALL_OF_FAME } from '../graphql';

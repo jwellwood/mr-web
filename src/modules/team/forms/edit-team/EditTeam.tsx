@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +18,6 @@ export default function EditTeam() {
   const navigate = useNavigate();
   const { loading, error, data, refetch } = useQuery(FETCH_TEAM, {
     variables: { teamId: teamId! },
-    notifyOnNetworkStatusChange: true,
   });
   const [updateTeamDetails, { loading: updateLoading, error: updateError }] =
     useMutation(EDIT_TEAM);

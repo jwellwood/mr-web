@@ -1,5 +1,5 @@
-import { ApolloError } from '@apollo/client';
 import { Meta, StoryObj } from '@storybook/react-vite';
+import { TApolloError } from '../../../types/apollo';
 import DataError from './DataError';
 
 const meta: Meta<typeof DataError> = {
@@ -11,13 +11,10 @@ export default meta;
 
 type Story = StoryObj<typeof DataError>;
 
-const error = new ApolloError({
-  networkError: {
-    name: 'Mock Error',
-    message: 'Mock error message',
-    result: { errors: [{ message: 'error text here' }] },
-  },
-});
+const error: TApolloError = {
+  message: 'Mock error message',
+  networkError: new Error('Mock network error'),
+};
 
 export const Basic: Story = {
   render: () => <DataError error={error} />,

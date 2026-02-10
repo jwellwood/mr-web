@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../../components';
 import ItemDetails from '../../../../components/common/history/item-details/ItemDetails';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_AWARD } from '../../types';
 
 interface Props {
   data?: T_FETCH_AWARD;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function AwardView({ data, loading, error }: Props) {

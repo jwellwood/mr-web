@@ -1,14 +1,14 @@
-import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../../components';
 import NoDataText from '../../../../components/errors/error-text/ErrorText';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCHES_STREAK } from '../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {
   data?: T_FETCH_MATCHES_STREAK;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function MatchesStreaksView({ data, loading, error }: Props) {

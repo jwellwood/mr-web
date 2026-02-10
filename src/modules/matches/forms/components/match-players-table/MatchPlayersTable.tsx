@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { SectionContainer } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../../types/apollo';
 import { ITempMatchPlayers } from '../../../types';
 import { rows, columns, styles } from './config';
 
 interface Props {
   currentPlayers: ITempMatchPlayers[];
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function MatchPlayersTable({ currentPlayers, error }: Props) {

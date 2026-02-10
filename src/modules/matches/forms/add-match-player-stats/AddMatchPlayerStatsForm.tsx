@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -8,6 +7,7 @@ import {
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
 import { positionOptions } from '../../../../constants';
+import { TApolloError } from '../../../../types/apollo';
 import { getIntegers } from '../../../../utils/helpers';
 import AddMatchPlayerStatsSchema, { AddMatchPlayerStatsFormValues } from './validation';
 
@@ -17,7 +17,7 @@ interface Props {
   goalOptions: ISelectOptions[];
   concededOptions: ISelectOptions[];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function AddMatchPlayerStatsForm({

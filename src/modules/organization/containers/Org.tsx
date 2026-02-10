@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { DataError, ModuleHeader } from '../../../components';
 import { IMAGE_TYPE } from '../../../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';

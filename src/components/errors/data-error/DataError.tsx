@@ -1,20 +1,16 @@
-import { ApolloError } from '@apollo/client';
 import { ErrorText } from '..';
+import { TApolloError } from '../../../types/apollo';
 import { SectionContainer } from '../../containers';
 import { CustomTypography } from '../../typography';
 
 interface Props {
-  error: ApolloError;
+  error: TApolloError;
 }
 
 export default function DataError({ error }: Props) {
-  const { networkError } = error;
   return (
     <SectionContainer title={<ErrorText>Something went wrong</ErrorText>}>
-      <CustomTypography color="warning">
-        {networkError ? 'Network error: ' : 'Server error: '}
-        {error.message}
-      </CustomTypography>
+      <CustomTypography color="warning">{error.message}</CustomTypography>
     </SectionContainer>
   );
 }

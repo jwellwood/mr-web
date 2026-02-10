@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks';
 import PlayerBestSeasonView from '../components/player-records/player-season-records/PlayerBestSeasonView';
 import { FETCH_PLAYER_SEASONS_SUMMARY } from '../graphql';

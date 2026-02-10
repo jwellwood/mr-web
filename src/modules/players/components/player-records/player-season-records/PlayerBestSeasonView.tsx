@@ -1,13 +1,13 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../../types/apollo';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
 import { columns, rows } from './config/top-seasons';
 
 interface Props {
   data?: T_FETCH_PLAYER_SEASONS_SUMMARY;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function PlayerBestSeasonView({ data, loading, error }: Props) {

@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import MatchStatsAllTimeView from '../components/matches-stats/MatchStatsAllTimeView';
 import { useMatchStatsFilters } from '../context';

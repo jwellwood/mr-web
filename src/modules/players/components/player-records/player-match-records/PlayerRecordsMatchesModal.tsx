@@ -1,10 +1,10 @@
-import { ApolloError } from '@apollo/client';
 import { DataError } from '../../../../../components';
 import { CustomButton } from '../../../../../components/buttons';
 import LinksList from '../../../../../components/lists/links-list/LinksList';
 import { IListItem } from '../../../../../components/lists/types';
 import { PresentationModal } from '../../../../../components/modals';
 import { CustomTypography } from '../../../../../components/typography';
+import { TApolloError } from '../../../../../types/apollo';
 import { parseDate } from '../../../../../utils/helpers';
 import { T_PLAYER_MATCH_WITH_RECORD } from '../../../types';
 
@@ -14,7 +14,7 @@ interface Props {
   orgId?: string;
   teamId?: string;
   title?: string;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function PlayerRecordsMatchesModal({

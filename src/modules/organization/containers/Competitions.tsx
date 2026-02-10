@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { DataError } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks/useCustomParams';

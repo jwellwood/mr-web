@@ -1,6 +1,5 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import createUploadLink from 'apollo-upload-client/createUploadLink.mjs';
 import { authStorage } from '../../utils/storage';
 
 const gqlUrl = import.meta.env.PROD
@@ -18,12 +17,17 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const uploadLink = createUploadLink({
+const httpLink = new HttpLink({
   uri: gqlUrl,
   credentials: 'include',
 });
 
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
-  link: authLink.concat(uploadLink),
+  link: authLink.concat(httpLink),
+  clientAwareness: {
+    name: 'football-stats',
+    version: import.meta.env.VERSION,
+  },
+  devtools: { enabled: import.meta.env.DEV },
 });

@@ -1,7 +1,7 @@
-import { ApolloError } from '@apollo/client';
 import { useMemo } from 'react';
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCH_OPPONENTS } from '../../types';
 import { columns, rows, styles } from './config';
 import MatchOpponentsFilters from './filters/MatchOpponentsFilters';
@@ -9,7 +9,7 @@ import MatchOpponentsFilters from './filters/MatchOpponentsFilters';
 interface Props {
   data?: T_FETCH_MATCH_OPPONENTS;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
   seasonReady: boolean;
 }
 

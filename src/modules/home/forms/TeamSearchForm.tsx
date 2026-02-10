@@ -1,14 +1,14 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../components';
+import { TApolloError } from '../../../types/apollo';
 import { SearchFormData, SearchFormSchema } from './validation';
 
 interface Props {
   defaultValues: { teamName: string };
   onSubmit: (data: SearchFormData) => void;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function SearchForm({ defaultValues, onSubmit, loading, error }: Props) {

@@ -1,5 +1,5 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_TROPHIES } from '../../types';
 import TrophiesOrderBy from './TrophiesOrderBy';
 import TrophiesTotals from './TrophiesTotals';
@@ -7,7 +7,7 @@ import TrophiesTotals from './TrophiesTotals';
 interface Props {
   data?: T_FETCH_TROPHIES;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function TrophiesView({ data, loading, error }: Props) {

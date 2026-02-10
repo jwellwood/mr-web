@@ -1,4 +1,4 @@
-import { ApolloError } from '@apollo/client';
+import { TApolloError } from '../../../../types/apollo';
 import AuthLayout from '../../components/AuthLayout';
 import ForgotPasswordForm from './ForgotPasswordForm';
 import { forgotPasswordFormState } from './state';
@@ -7,7 +7,7 @@ import type { ForgotPasswordFormData } from './validation';
 interface Props {
   loading: boolean;
   onSubmit: (formData: ForgotPasswordFormData) => void;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function ForgotPasswordView({ loading, error, onSubmit }: Props) {

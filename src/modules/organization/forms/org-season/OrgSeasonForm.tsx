@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -7,13 +6,14 @@ import {
   ControlledTextInput,
   ControlledSwitchInput,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { OrgSeasonSchema, type OrgSeasonFormData } from './validation';
 
 interface Props {
   onSubmit: (formData: OrgSeasonFormData) => void;
   defaultValues: OrgSeasonFormData;
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function OrgSeasonForm({ onSubmit, defaultValues, loading, error }: Props) {

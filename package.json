@@ -1,7 +1,7 @@
 {
   "name": "web-mr",
   "private": true,
-  "version": "2.31.1",
+  "version": "2.32.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -21,7 +21,7 @@
     "codegen:schema": "npx get-graphql-schema http://localhost:3002/graphql > schema.graphql"
   },
   "dependencies": {
-    "@apollo/client": "^3.13.8",
+    "@apollo/client": "^4.1.4",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
     "@hookform/resolvers": "^5.2.2",
@@ -31,9 +31,10 @@
     "@mui/x-charts": "^8.27.0",
     "@mui/x-date-pickers": "^8.27.0",
     "@reduxjs/toolkit": "^2.11.2",
-    "apollo-upload-client": "^18.0.1",
+    "apollo-upload-client": "^19.0.0",
     "axios": "^1.13.5",
     "date-fns": "^4.1.0",
+    "graphql": "^16.12.0",
     "i18n": "^0.15.3",
     "react": "^19.2.4",
     "react-country-flag": "^3.1.0",
@@ -43,6 +44,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.13.0",
     "react-select-country-list": "^2.2.3",
+    "rxjs": "^7.8.2",
     "zod": "^4.3.6"
   },
   "devDependencies": {

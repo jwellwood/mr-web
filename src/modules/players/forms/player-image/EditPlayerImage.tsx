@@ -1,10 +1,11 @@
-import { ApolloError, useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useEffect } from 'react';
 import { DataError, PageHeader } from '../../../../components';
 import ImageForm from '../../../../components/forms/ImageForm';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useUpload } from '../../../../hooks';
 import { removePlayerPhoto, uploadPlayerPhoto } from '../../../../services/images/player-images';
+import { TApolloError } from '../../../../types/apollo';
 import { PAGES } from '../../constants';
 import { EDIT_PLAYER_PHOTO, FETCH_PLAYER } from '../../graphql';
 
@@ -17,7 +18,6 @@ export default function EditPlayerImage() {
     refetch,
   } = useQuery(FETCH_PLAYER, {
     variables: { playerId: playerId! },
-    notifyOnNetworkStatusChange: true,
   });
   const [editPlayerPhoto, { loading: editLoading, error: editError }] = useMutation(
     EDIT_PLAYER_PHOTO,
@@ -58,7 +58,7 @@ export default function EditPlayerImage() {
   return (
     <PageHeader title={PAGES.EDIT_PLAYER_PHOTO}>
       {error || editError ? (
-        <DataError error={(error || editError) as ApolloError} />
+        <DataError error={(error || editError) as TApolloError} />
       ) : (
         renderContent()
       )}

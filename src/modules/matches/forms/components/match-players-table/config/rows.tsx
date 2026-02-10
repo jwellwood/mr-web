@@ -1,10 +1,10 @@
-import { ApolloError } from '@apollo/client';
 import { CustomTypography, PositionCell } from '../../../../../../components';
 import { STAT_ICONS, StatIcon } from '../../../../../../components/icons';
+import { TApolloError } from '../../../../../../types/apollo';
 import { ITempMatchPlayers } from '../../../../types';
 import AddStats from '../../../add-match-player-stats/AddStats';
 
-export const rows = (currentPlayers: ITempMatchPlayers[], error?: ApolloError) => {
+export const rows = (currentPlayers: ITempMatchPlayers[], error?: TApolloError) => {
   return currentPlayers.map(player => {
     const {
       playerName,

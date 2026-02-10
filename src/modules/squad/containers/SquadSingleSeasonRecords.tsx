@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import SingleSeasonRecordsView from '../components/squad-records/squad-single-season-records/SquadSingleSeasonRecordsView';
 import { FETCH_SQUAD_SINGLE_SEASON_RECORDS } from '../graphql';

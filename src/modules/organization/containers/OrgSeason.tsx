@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { lazy } from 'react';
 import { DataError, PageHeader } from '../../../components';
 import { SectionContainer } from '../../../components/containers';

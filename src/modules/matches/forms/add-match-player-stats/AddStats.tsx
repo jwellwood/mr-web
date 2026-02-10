@@ -1,9 +1,9 @@
-import { ApolloError } from '@apollo/client';
 import { ReactNode, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FormModal } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { AppDispatch, getTempMatch, getTempPlayers, setTmpPlayers } from '../../../../store';
+import { TApolloError } from '../../../../types/apollo';
 import { getGoalsOptions } from '../../helpers';
 import { initPlayerInMatch } from '../add-match-players/state';
 import AddMatchPlayerStatsForm from './AddMatchPlayerStatsForm';
@@ -13,7 +13,7 @@ interface Props {
   playerId: string;
   title?: string;
   buttonElement: ReactNode;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function AddStats({ playerId, title, buttonElement, error }: Props) {

@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
@@ -9,6 +8,7 @@ import {
 } from '../../../../components';
 import TextList from '../../../../components/lists/TextList';
 import { CustomTypography } from '../../../../components/typography';
+import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYERS_FOR_MATCH_INPUT } from '../../types';
 import AddMatchPlayersSchema, { AddMatchPlayersFormValues } from './validation';
 
@@ -18,7 +18,7 @@ interface Props {
   playersOptions: ISelectOptions[];
   players: T_FETCH_PLAYERS_FOR_MATCH_INPUT['players'];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 export default function AddMatchPlayersForm({
   onSubmit,

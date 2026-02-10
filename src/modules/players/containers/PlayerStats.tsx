@@ -1,4 +1,4 @@
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { useState } from 'react';
 import { useCustomParams } from '../../../hooks';
 import PlayerStatsView from '../components/player-stats/PlayerStatsView';
@@ -15,7 +15,6 @@ export default function PlayerStats() {
       seasonId: filters?.seasons,
       competitionId: filters?.competitions,
     },
-    notifyOnNetworkStatusChange: true,
     fetchPolicy: 'network-only',
   });
 

@@ -1,4 +1,3 @@
-import { ApolloError } from '@apollo/client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import {
@@ -9,6 +8,7 @@ import {
   type ISelectOptions,
   ControlledDateInput,
 } from '../../../../components';
+import { TApolloError } from '../../../../types/apollo';
 import { TrophySchema, type TrophyFormData } from './validation';
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
   defaultValues: TrophyFormData;
   seasonOptions: ISelectOptions[];
   loading: boolean;
-  error?: ApolloError;
+  error?: TApolloError;
 }
 
 export default function TrophyForm({

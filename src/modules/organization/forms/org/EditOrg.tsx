@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +17,6 @@ export default function EditOrg() {
   const navigate = useNavigate();
   const { loading, error, data, refetch } = useQuery(FETCH_ORG, {
     variables: { orgId },
-    notifyOnNetworkStatusChange: true,
   });
   const [updateOrganization, { loading: updateLoading, error: updateError }] =
     useMutation(EDIT_ORG);

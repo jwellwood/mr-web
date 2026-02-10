@@ -1,4 +1,4 @@
-import { ApolloQueryResult, FetchResult } from '@apollo/client';
+import { ApolloLink, ApolloClient } from '@apollo/client';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -9,8 +9,10 @@ interface UseUpload {
   removeFunc: (public_id: string) => Promise<void>;
   url?: string;
   public_id?: string;
-  graphqlFunc: (data?: object) => Promise<FetchResult<unknown>>;
-  refetchFunc: (data?: object) => Promise<ApolloQueryResult<unknown>>;
+  graphqlFunc: (data?: object) => Promise<ApolloLink.Result<unknown>>;
+  refetchFunc: (
+    variables?: Partial<{ [key: string]: never | undefined }> | undefined
+  ) => Promise<ApolloClient.QueryResult<unknown | undefined>>;
 }
 
 export const useUpload = ({

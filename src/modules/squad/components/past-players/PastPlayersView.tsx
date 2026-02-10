@@ -1,12 +1,12 @@
-import { ApolloError } from '@apollo/client';
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/CustomTable';
+import { TApolloError } from '../../../../types/apollo';
 import { FETCH_PAST_PLAYERS_QUERY } from '../../types';
 import { columns, rows, styles } from './config';
 
 interface Props {
   data?: FETCH_PAST_PLAYERS_QUERY;
-  error?: ApolloError;
+  error?: TApolloError;
   loading: boolean;
 }
 
