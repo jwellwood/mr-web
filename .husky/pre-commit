@@ -10,6 +10,10 @@ npm run lint-fix
 # Stage any auto-fixed files
 git add -u
 
+# Run tests with coverage
+echo "🧪 Running tests with coverage checks..."
+npm run test:coverage
+
 # Run codegen
 echo "🔧 Running GraphQL codegen..."
 npm run codegen

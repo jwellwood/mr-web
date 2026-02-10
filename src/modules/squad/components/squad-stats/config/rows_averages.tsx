@@ -1,11 +1,10 @@
 import { NameCell } from '../../../../../components';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
-import { returnStatAsZero } from '../../../../../utils/helpers/returnZero';
 import { FETCH_SQUAD_STATS_QUERY } from '../../../types';
 
 export const rows_averages = (data?: FETCH_SQUAD_STATS_QUERY, loading?: boolean) => {
   const arr = new Array(15).fill({});
-  const dataToMap = loading && !data?.stats ? arr.map(stat => stat) : data?.stats.map(stat => stat);
+  const dataToMap = loading && !data?.stats ? arr : data?.stats;
 
   return dataToMap?.map(stats => {
     const {
@@ -29,16 +28,16 @@ export const rows_averages = (data?: FETCH_SQUAD_STATS_QUERY, loading?: boolean)
           </NameCell>
         ),
       },
-      apps: loading ? <StatSkeleton /> : returnStatAsZero(apps),
-      goals: loading ? <StatSkeleton /> : returnStatAsZero(goals),
-      goalsPerGame: loading ? <StatSkeleton /> : returnStatAsZero(+goalsPerGame?.toFixed(2)),
-      assists: loading ? <StatSkeleton /> : returnStatAsZero(assists),
-      assistsPerGame: loading ? <StatSkeleton /> : returnStatAsZero(+assistsPerGame?.toFixed(2)),
-      mvp: loading ? <StatSkeleton /> : returnStatAsZero(mvp),
-      mvpPerGame: loading ? <StatSkeleton /> : returnStatAsZero(+mvpPerGame?.toFixed(2)),
-      conceded: loading ? <StatSkeleton /> : returnStatAsZero(conceded),
-      concededPerGame: loading ? <StatSkeleton /> : returnStatAsZero(+concededPerGame?.toFixed(2)),
-      cleanSheets: loading ? <StatSkeleton /> : returnStatAsZero(cleanSheets),
+      apps: loading ? <StatSkeleton /> : apps,
+      goals: loading ? <StatSkeleton /> : goals,
+      goalsPerGame: loading ? <StatSkeleton /> : +goalsPerGame?.toFixed(2),
+      assists: loading ? <StatSkeleton /> : assists,
+      assistsPerGame: loading ? <StatSkeleton /> : +assistsPerGame?.toFixed(2),
+      mvp: loading ? <StatSkeleton /> : mvp,
+      mvpPerGame: loading ? <StatSkeleton /> : +mvpPerGame?.toFixed(2),
+      conceded: loading ? <StatSkeleton /> : conceded,
+      concededPerGame: loading ? <StatSkeleton /> : +concededPerGame?.toFixed(2),
+      cleanSheets: loading ? <StatSkeleton /> : cleanSheets,
     } as const;
   });
 };

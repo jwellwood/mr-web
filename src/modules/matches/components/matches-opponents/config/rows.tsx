@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { OpponentModal } from '../../../../../components';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
-import { getAvg, getPercentage } from '../../../../../utils/helpers';
+import { getAvg, getPercentage } from '../../../../../utils';
 import { T_FETCH_MATCH_OPPONENTS } from '../../../types';
 
 export const rows = (loading: boolean, data?: T_FETCH_MATCH_OPPONENTS['stats']) => {

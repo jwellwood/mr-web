@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -33,7 +32,7 @@ export default function ResendVerification({ email }: Props) {
   };
 
   return (
-    <Box sx={{ m: 2 }}>
+    <div style={{ margin: '16px' }}>
       {loading ? (
         <Spinner />
       ) : (
@@ -41,6 +40,6 @@ export default function ResendVerification({ email }: Props) {
           Resend Verification Link
         </CustomButton>
       )}
-    </Box>
+    </div>
   );
 }

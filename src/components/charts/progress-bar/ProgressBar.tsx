@@ -1,5 +1,5 @@
 import { theme } from '../../../theme';
-import { getPercentage } from '../../../utils/helpers';
+import { getPercentage } from '../../../utils';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../typography';
 

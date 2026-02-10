@@ -3,7 +3,7 @@ import { IAlert } from '../../../components/alerts/types';
 
 const initialState: IAlert = {
   text: '',
-  type: 'warning',
+  type: null,
 };
 
 const alertsSlice = createSlice({
@@ -16,11 +16,14 @@ const alertsSlice = createSlice({
         ...action.payload,
       };
     },
+    clearAlert: () => {
+      return initialState;
+    },
   },
 });
 
 // Export the action creators
-export const { showAlert } = alertsSlice.actions;
+export const { showAlert, clearAlert } = alertsSlice.actions;
 
 // Export the reducer
 export const { reducer: alertsReducer } = alertsSlice;

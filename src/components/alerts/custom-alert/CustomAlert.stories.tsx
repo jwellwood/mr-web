@@ -5,7 +5,6 @@ import { showAlert } from '../../../store/features/alerts/alertsSlice';
 import { IAlertType } from '../types';
 import CustomAlert from './CustomAlert';
 
-//👇 This default export determines where your story goes in the story list
 const meta: Meta<typeof CustomAlert> = {
   title: 'Alerts/CustomAlert',
   component: CustomAlert,

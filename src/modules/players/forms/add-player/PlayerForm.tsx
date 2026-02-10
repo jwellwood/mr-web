@@ -11,7 +11,7 @@ import {
 } from '../../../../components';
 import { positionOptions } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
-import { getIntegers } from '../../../../utils/helpers';
+import { getNumberOptions } from '../../../../utils';
 import { type PlayerFormData, PlayerSchema } from './validation';
 
 interface Props {
@@ -58,7 +58,7 @@ export default function PlayerForm({
         control={control}
         name="squadNumber"
         label="Squad Number"
-        options={getIntegers(99)}
+        options={getNumberOptions(99)}
       />
       <ControlledMultiSelectInput
         control={control}

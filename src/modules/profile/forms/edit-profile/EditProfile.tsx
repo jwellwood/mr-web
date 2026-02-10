@@ -2,7 +2,7 @@ import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { MutationError, PageContainer } from '../../../../components';
+import { PageContainer } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { showAlert } from '../../../../store';
 import { PAGES } from '../../constants';
@@ -49,8 +49,9 @@ export default function EditProfile() {
             onSubmit={onSubmit}
             defaultValues={defaultValues}
             loading={loading || editLoading}
+            error={error || editError}
           />
-          {error && <MutationError error={error || editError} />}
+
           <DeleteAccount />
         </>
       ) : (

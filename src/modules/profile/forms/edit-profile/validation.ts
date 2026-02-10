@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { zodDate } from '../../../../utils/zodDate';
+import { zodDate } from '../../../../utils/dev/zodDate';
 
 export const EditProfileSchema = z.object({
   username: z.string().min(2, 'Username is required'),

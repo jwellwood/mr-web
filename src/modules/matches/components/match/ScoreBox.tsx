@@ -1,4 +1,4 @@
-import { Avatar } from '@mui/material';
+import { CustomAvatar } from '../../../../components/avatars';
 import { CustomTypography } from '../../../../components/typography';
 
 interface Props {
@@ -8,15 +8,10 @@ interface Props {
 
 export default function ScoreBox({ goals }: Props) {
   return (
-    <Avatar
-      variant="square"
-      sx={{
-        background: '#fff',
-      }}
-    >
+    <CustomAvatar variant="square" bgColor={'#fff'} size="45px">
       <CustomTypography bold size="lg" color="secondary">
         {goals}
       </CustomTypography>
-    </Avatar>
+    </CustomAvatar>
   );
 }

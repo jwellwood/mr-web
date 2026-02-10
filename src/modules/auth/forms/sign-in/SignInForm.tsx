@@ -1,7 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import { CenteredGrid } from '../../../../components/grids';
 import { TApolloError } from '../../../../types/apollo';
 import { SignInSchema, type SignInFormData } from './validation';
 
@@ -21,10 +20,8 @@ export default function SignInForm({ defaultValues, onSubmit, loading, error }: 
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
-      <CenteredGrid dir="row">
-        <ControlledTextInput control={control} name="email" label="Email Address" />
-        <ControlledTextInput control={control} name="password" label="Password" isPassword={true} />
-      </CenteredGrid>
+      <ControlledTextInput control={control} name="email" label="Email Address" />
+      <ControlledTextInput control={control} name="password" label="Password" isPassword={true} />
     </FormContainer>
   );
 }

@@ -1,5 +1,5 @@
 import { differenceInYears } from 'date-fns';
-import { parseDate } from '../utils/helpers';
+import { parseDate } from '../utils';
 
 export const useDateOfBirth = (dateOfBirth?: string) => {
   if (!dateOfBirth)

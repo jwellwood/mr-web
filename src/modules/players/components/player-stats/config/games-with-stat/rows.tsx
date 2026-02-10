@@ -1,5 +1,5 @@
 import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
-import { getPercentage } from '../../../../../../utils/helpers';
+import { getPercentage } from '../../../../../../utils';
 import { T_FETCH_PLAYER_STATS } from '../../../../types';
 
 export const rows = (data?: T_FETCH_PLAYER_STATS['player'], loading?: boolean) => {

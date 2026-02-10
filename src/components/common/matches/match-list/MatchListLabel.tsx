@@ -1,4 +1,4 @@
-import { parseDate } from '../../../../utils/helpers';
+import { parseDate } from '../../../../utils';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../../typography';
 import { IMatchesListMatch } from '../types';

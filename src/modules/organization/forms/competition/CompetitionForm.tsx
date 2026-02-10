@@ -7,8 +7,7 @@ import {
   ControlledSwitchInput,
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { getMinutesOptions } from '../../../../utils';
-import { getIntegers } from '../../../../utils/helpers';
+import { getNumberOptions } from '../../../../utils';
 import { competitionOptions } from '../../constants';
 import type { CompetitionFormData } from './validation';
 import { CompetitionSchema } from './validation';
@@ -40,13 +39,13 @@ export default function CompetitionForm({ onSubmit, defaultValues, loading, erro
         control={control}
         name="playersPerTeam"
         label="Players Per Team"
-        options={getIntegers(15)}
+        options={getNumberOptions(15)}
       />
       <ControlledSelectInput
         control={control}
         name="matchMinutes"
         label="Minutes Per Match"
-        options={getMinutesOptions(120)}
+        options={getNumberOptions(120, 5, 5)}
       />
       <ControlledSwitchInput control={control} name="isActive" label="Currently active?" />
     </FormContainer>

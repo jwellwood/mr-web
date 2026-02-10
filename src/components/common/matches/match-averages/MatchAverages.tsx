@@ -1,7 +1,7 @@
-import { getPercentage } from '../../../../utils/helpers';
+import { getPercentage } from '../../../../utils';
 import { CustomPieChart } from '../../../charts';
 import { DataContainer } from '../../../containers';
-import { CenteredGrid, GridItem } from '../../../grids';
+import { CustomGridContainer, CustomGridItem } from '../../../grids';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import StatSkeleton from '../../../loaders/StatSkeleton';
 import { CustomTypography } from '../../../typography';
@@ -64,8 +64,8 @@ export default function MatchAverages({ stats, loading }: Props) {
   ];
 
   return (
-    <CenteredGrid dir="row">
-      <GridItem size={4}>
+    <CustomGridContainer>
+      <CustomGridItem size={4}>
         {loading ? (
           <CustomSkeleton variant="circular" height="110px" width="110px" />
         ) : (
@@ -74,10 +74,10 @@ export default function MatchAverages({ stats, loading }: Props) {
             colors={['rgb(47, 219, 145)', 'rgba(255, 159, 64, 1)', 'rgba(255, 99, 132, 1)']}
           />
         )}
-      </GridItem>
-      <GridItem size={8}>
+      </CustomGridItem>
+      <CustomGridItem size={8}>
         <DataContainer data={percentageData} loading={loading} />
-      </GridItem>
-    </CenteredGrid>
+      </CustomGridItem>
+    </CustomGridContainer>
   );
 }

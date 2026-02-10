@@ -2,7 +2,7 @@ import { makeStyles } from '@mui/styles';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
 import { SectionContainer } from '../../../components';
-import { CenteredGrid, GridItem } from '../../../components/grids';
+import { CustomGridContainer, CustomGridItem } from '../../../components/grids';
 import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { type FETCH_TEAM_QUERY } from '../types';
@@ -49,9 +49,9 @@ export default function Kits({ team, loading }: Props) {
 
   return (
     <SectionContainer title="Kits">
-      <CenteredGrid dir="row">
+      <CustomGridContainer>
         {items.map(item => (
-          <GridItem size={6} key={item.title}>
+          <CustomGridItem size={6} key={item.title}>
             <CustomTypography bold color="data" size="sm">
               {item.title}
             </CustomTypography>
@@ -62,7 +62,7 @@ export default function Kits({ team, loading }: Props) {
               {loading ? (
                 <CustomSkeleton height="75px" />
               ) : (
-                <CenteredGrid>
+                <CustomGridContainer direction="column">
                   <FaTshirt
                     size="3.5rem"
                     color={item.kit.shirt || 'white'}
@@ -74,12 +74,12 @@ export default function Kits({ team, loading }: Props) {
                     color={item.kit.shorts || 'white'}
                     className={classes.shorts}
                   />
-                </CenteredGrid>
+                </CustomGridContainer>
               )}
             </div>
-          </GridItem>
+          </CustomGridItem>
         ))}
-      </CenteredGrid>
+      </CustomGridContainer>
     </SectionContainer>
   );
 }

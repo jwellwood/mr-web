@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledDateInput, ControlledSelectInput } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { getIntegers } from '../../../../utils/helpers';
+import { getNumberOptions } from '../../../../utils';
 import type { ResultFormData } from './validation';
 import { ResultSchema } from './validation';
 
@@ -45,7 +45,7 @@ export default function ResultForm({
         control={control}
         name="gameWeek"
         label="Game Week"
-        options={getIntegers(52, 1)}
+        options={getNumberOptions(52, 1)}
       />
       <ControlledSelectInput
         control={control}
@@ -63,7 +63,7 @@ export default function ResultForm({
         control={control}
         name="homeGoals"
         label="Goals"
-        options={getIntegers(50, 0)}
+        options={getNumberOptions(50, 0)}
       />
       <ControlledSelectInput
         control={control}
@@ -75,7 +75,7 @@ export default function ResultForm({
         control={control}
         name="awayGoals"
         label="Goals"
-        options={getIntegers(50, 0)}
+        options={getNumberOptions(50, 0)}
       />
     </FormContainer>
   );

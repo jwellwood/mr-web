@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import '@testing-library/jest-dom';
-import { expect, describe, it } from '@jest/globals';
 import { render } from '@testing-library/react';
+import { expect, describe, it } from 'vitest';
 import TestWrapper from '../TestWrapper';
 
 describe('TestWrapper', () => {

@@ -5,7 +5,6 @@ import { button_text } from '../../i18n';
 import { TApolloError } from '../../types/apollo';
 import ImageAvatar from '../avatars/image-avatar/ImageAvatar';
 import { CustomButton } from '../buttons';
-import { CenteredGrid } from '../grids';
 import FileInput from '../inputs/file-input/FileInput';
 import FormContainer from './form-container/FormContainer';
 
@@ -46,50 +45,48 @@ const ImageForm: React.FC<Props> = ({
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
-      <CenteredGrid>
-        <Controller
-          control={control}
-          name="imageFile"
-          render={({ field: { name, value, onChange } }) => {
-            return (
-              <FileInput
-                inputName={name}
-                defaultValue={value || undefined}
-                onChange={event => {
-                  onChange(event.target?.files?.[0]);
-                  setImageUrl(URL.createObjectURL(event.target?.files?.[0] as File));
-                }}
-                errors={
-                  errors.imageFile
-                    ? Array.isArray(errors.imageFile)
-                      ? errors.imageFile.map(err => err)
-                      : [errors.imageFile]
-                    : []
-                }
-              />
-            );
-          }}
-        />
-        <ImageAvatar
-          imageUrl={imageUrl}
-          size="150px"
-          fallbackIcon={IMAGE_TYPE.BADGE}
-          iconSize="100px"
-        />
-        <CustomButton type="reset" onClick={resetImage}>
-          {button_text.DEFAULT}
-        </CustomButton>
-        <CustomButton
-          onClick={() => {
-            if (currentUrl) {
-              setImageUrl(currentUrl);
-            }
-          }}
-        >
-          Cancel
-        </CustomButton>
-        <CustomButton onClick={removeImage}>Remove image</CustomButton>
-      </CenteredGrid>
+      <Controller
+        control={control}
+        name="imageFile"
+        render={({ field: { name, value, onChange } }) => {
+          return (
+            <FileInput
+              inputName={name}
+              defaultValue={value || undefined}
+              onChange={event => {
+                onChange(event.target?.files?.[0]);
+                setImageUrl(URL.createObjectURL(event.target?.files?.[0] as File));
+              }}
+              errors={
+                errors.imageFile
+                  ? Array.isArray(errors.imageFile)
+                    ? errors.imageFile.map(err => err)
+                    : [errors.imageFile]
+                  : []
+              }
+            />
+          );
+        }}
+      />
+      <ImageAvatar
+        imageUrl={imageUrl}
+        size="150px"
+        fallbackIcon={IMAGE_TYPE.BADGE}
+        iconSize="100px"
+      />
+      <CustomButton type="reset" onClick={resetImage}>
+        {button_text.DEFAULT}
+      </CustomButton>
+      <CustomButton
+        onClick={() => {
+          if (currentUrl) {
+            setImageUrl(currentUrl);
+          }
+        }}
+      >
+        Cancel
+      </CustomButton>
+      <CustomButton onClick={removeImage}>Remove image</CustomButton>
     </FormContainer>
   );
 };

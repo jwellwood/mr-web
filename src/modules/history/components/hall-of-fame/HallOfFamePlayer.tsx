@@ -1,4 +1,3 @@
-import { Divider, Stack } from '@mui/material';
 import {
   CustomTypography,
   ImageAvatar,
@@ -6,9 +5,9 @@ import {
   PositionCell,
   SectionContainer,
 } from '../../../../components';
+import { CustomGridContainer, CustomStack } from '../../../../components/grids';
 import { FlagIcon } from '../../../../components/icons';
 import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
-import { theme } from '../../../../theme';
 import { T_FETCH_HALL_OF_FAME } from '../../types';
 
 interface Props {
@@ -21,7 +20,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
 
   return (
     <SectionContainer type={!loading ? 'winner' : undefined}>
-      <Stack spacing={1} direction="row">
+      <CustomGridContainer direction="row">
         <ImageAvatar
           size="80px"
           imageUrl={image.url}
@@ -30,14 +29,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
           loading={loading}
         />
 
-        <Stack
-          direction="column"
-          spacing={1}
-          sx={{
-            justifyContent: 'center',
-            alignItems: 'flex-start',
-          }}
-        >
+        <CustomStack direction="column" spacing={1} justify="center" align="flex-start">
           <LinkButton type="text" link={`player/${player._id}`}>
             {loading ? (
               <CustomSkeleton width="100px" height="30px" />
@@ -47,17 +39,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
               </CustomTypography>
             )}
           </LinkButton>
-          <Stack
-            direction="row"
-            spacing={1}
-            divider={
-              <Divider
-                orientation="vertical"
-                flexItem
-                sx={{ background: theme.palette.secondary.light }}
-              />
-            }
-          >
+          <CustomStack direction="row" spacing={1} divider>
             <SectionContainer>
               {loading ? (
                 <CustomSkeleton width="30px" height="30px" />
@@ -81,14 +63,14 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
                 <FlagIcon nationality={nationality || ''} size="20px" />
               )}
             </SectionContainer>
-          </Stack>
+          </CustomStack>
           {loading ? (
             <CustomSkeleton width="180px" height="20px" />
           ) : (
             <CustomTypography color="label">{description || 'No description yet'}</CustomTypography>
           )}
-        </Stack>
-      </Stack>
+        </CustomStack>
+      </CustomGridContainer>
     </SectionContainer>
   );
 }

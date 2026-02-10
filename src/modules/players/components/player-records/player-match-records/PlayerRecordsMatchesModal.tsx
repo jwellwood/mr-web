@@ -5,7 +5,7 @@ import { IListItem } from '../../../../../components/lists/types';
 import { PresentationModal } from '../../../../../components/modals';
 import { CustomTypography } from '../../../../../components/typography';
 import { TApolloError } from '../../../../../types/apollo';
-import { parseDate } from '../../../../../utils/helpers';
+import { parseDate } from '../../../../../utils';
 import { T_PLAYER_MATCH_WITH_RECORD } from '../../../types';
 
 interface Props {

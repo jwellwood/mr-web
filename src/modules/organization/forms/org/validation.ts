@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import zodDate from '../../../../utils/zodDate';
+import zodDate from '../../../../utils/dev/zodDate';
 
 export const OrganizationSchema = z.object({
   name: z.string().min(1, 'Organization name is required'),

@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { authStorage } from '../../utils/storage';
+import { authStorage } from '../../utils/dev/storage';
 
 const gqlUrl = import.meta.env.PROD
   ? import.meta.env.VITE_GRAPHQL_URL ||

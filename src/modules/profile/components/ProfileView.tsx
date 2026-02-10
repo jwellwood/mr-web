@@ -3,7 +3,7 @@ import TextList from '../../../components/lists/TextList';
 import { IMAGE_TYPE } from '../../../constants';
 import { useDateOfBirth } from '../../../hooks';
 import { TApolloError } from '../../../types/apollo';
-import { parseDate } from '../../../utils/helpers';
+import { parseDate } from '../../../utils';
 import { FETCH_USER_QUERY } from '../types';
 
 interface Props {

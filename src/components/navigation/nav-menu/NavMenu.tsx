@@ -7,7 +7,7 @@ import { useAuth } from '../../../hooks';
 import { useLogout } from '../../../modules/auth/hooks/useLogout.hook';
 import { HOME_PATHS } from '../../../modules/home/router';
 import { PROFILE_PATHS } from '../../../modules/profile/router';
-import { getInitials } from '../../../utils/helpers';
+import { getInitials } from '../../../utils';
 import { CustomAvatar } from '../../avatars';
 import { LogoutButton } from '../../buttons';
 import { SectionContainer } from '../../containers';

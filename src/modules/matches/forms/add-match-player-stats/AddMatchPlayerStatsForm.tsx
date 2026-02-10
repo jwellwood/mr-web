@@ -8,7 +8,7 @@ import {
 import type { ISelectOptions } from '../../../../components';
 import { positionOptions } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
-import { getIntegers } from '../../../../utils/helpers';
+import { getNumberOptions } from '../../../../utils';
 import AddMatchPlayerStatsSchema, { AddMatchPlayerStatsFormValues } from './validation';
 
 interface Props {
@@ -74,13 +74,13 @@ export default function AddMatchPlayerStatsForm({
         control={control}
         name="pensMissed"
         label="Pens Missed"
-        options={getIntegers(10)}
+        options={getNumberOptions(10)}
       />
       <ControlledSelectInput
         control={control}
         name="pensSaved"
         label="Pens Saved"
-        options={getIntegers(10)}
+        options={getNumberOptions(10)}
       />
       <ControlledSelectInput
         control={control}
@@ -92,7 +92,7 @@ export default function AddMatchPlayerStatsForm({
         control={control}
         name="yellowCards"
         label="Yellow Cards"
-        options={getIntegers(2, 0)}
+        options={getNumberOptions(2, 0)}
       />
       <ControlledSwitchInput control={control} name="mvp" label="Is MVP?" />
       <ControlledSwitchInput control={control} name="redCard" label="Red Card?" />

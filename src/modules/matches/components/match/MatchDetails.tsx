@@ -1,11 +1,11 @@
 import { ImageAvatar, ModuleHeaderContainer } from '../../../../components';
-import { CenteredGrid } from '../../../../components/grids';
+import CustomStack from '../../../../components/grids/custom-stack/CustomStack';
 import TextList from '../../../../components/lists/TextList';
 import { IListItem } from '../../../../components/lists/types';
 import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
 import { CustomTypography } from '../../../../components/typography';
 import { IMAGE_TYPE } from '../../../../constants';
-import { parseDate } from '../../../../utils/helpers';
+import { parseDate } from '../../../../utils';
 import { ICompetition } from '../../../organization/types';
 import { ITeam } from '../../../team/types';
 import { getPoints } from '../../helpers';
@@ -77,14 +77,14 @@ export default function MatchDetails({ match, loading }: Props) {
 
   return (
     <ModuleHeaderContainer>
-      <CenteredGrid>
+      <CustomStack justify="center" align="center" spacing={2}>
         <CustomTypography size="xs" color="label">
           {loading ? <CustomSkeleton width="40px" /> : matchDate}
         </CustomTypography>
         <CustomTypography color="label">
           {loading ? <CustomSkeleton width="70px" /> : (competitionId as ICompetition)?.name}
         </CustomTypography>
-      </CenteredGrid>
+      </CustomStack>
       <div style={{ marginLeft: 16 }}>
         <TextList data={scoreData} loading={loading} />
       </div>

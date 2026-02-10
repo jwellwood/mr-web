@@ -3,7 +3,7 @@ import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
 import { PresentationModal } from '../../../../../components/modals';
 import { IMAGE_TYPE } from '../../../../../constants';
-import { getAvg, getPercentage } from '../../../../../utils/helpers';
+import { getAvg, getPercentage } from '../../../../../utils';
 import PlayerMatchesByOpponent from '../../../containers/PlayerMatchesByOpponent';
 import { T_FETCH_PLAYER_OPPONENT_STATS } from '../../../types';
 

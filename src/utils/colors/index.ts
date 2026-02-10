@@ -1,2 +1,2 @@
-export * from './getStringColorByNumber';
 export * from './getThemeColorByType';
+export * from './getOpaqueValue';

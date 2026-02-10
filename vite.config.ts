@@ -18,6 +18,35 @@ export default defineConfig(({ mode }) => {
       mode === 'production' &&
         visualizer({ filename: 'dist/stats.html', open: false, gzipSize: true }),
     ].filter(Boolean),
+    test: {
+      globals: true,
+      environment: 'jsdom',
+      setupFiles: './vitest.setup.ts',
+      css: true,
+      coverage: {
+        provider: 'v8',
+        reporter: ['text', 'json', 'html', 'clover'],
+        all: true,
+        include: ['src/**/*.{ts,tsx}'],
+        exclude: [
+          'src/**/*.test.{ts,tsx}',
+          'src/**/*.spec.{ts,tsx}',
+          'src/**/*.stories.{ts,tsx}',
+          'src/**/test/**',
+          'src/**/*.d.ts',
+          'src/vite-env.d.ts',
+          'src/vitest.d.ts',
+          'src/main.tsx',
+        ],
+        thresholds: {
+          lines: 5,
+          functions: 2,
+          branches: 2,
+          statements: 5,
+          autoUpdate: false,
+        },
+      },
+    },
     server: {
       port: 3000,
     },

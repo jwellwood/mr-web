@@ -8,7 +8,7 @@ import {
   type ISelectOptions,
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { getIntegers } from '../../../../utils/helpers';
+import { getNumberOptions } from '../../../../utils';
 import AddMatchDetailsSchema, { AddMatchDetailsFormValues } from './validation';
 
 interface Props {
@@ -67,13 +67,13 @@ export default function AddMatchDetailsForm({
         control={control}
         name="teamGoals"
         label="Goals Scored"
-        options={getIntegers(99)}
+        options={getNumberOptions(99)}
       />
       <ControlledSelectInput
         control={control}
         name="opponentGoals"
         label="Goals Conceded"
-        options={getIntegers(99)}
+        options={getNumberOptions(99)}
       />
     </FormContainer>
   );

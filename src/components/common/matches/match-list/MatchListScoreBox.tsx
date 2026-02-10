@@ -1,6 +1,6 @@
 import { getPoints } from '../../../../modules/matches/helpers';
 import { theme } from '../../../../theme';
-import { getOpaqueValue } from '../../../../utils/colors/getOpaqueValue';
+import { getOpaqueValue } from '../../../../utils';
 import CustomSkeleton from '../../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../../typography';
 

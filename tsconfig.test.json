@@ -3,8 +3,14 @@
   "compilerOptions": {
     "module": "es2022",
     "moduleResolution": "node",
-    "types": ["jest", "node", "@testing-library/jest-dom", "vite/client"],
+    "types": ["vitest/globals", "node", "@testing-library/jest-dom", "vite/client"],
     "esModuleInterop": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "jest.config.ts", "jest.setup.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "vitest.setup.ts",
+    "vitest.shims.d.ts"
+  ]
 }

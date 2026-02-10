@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { zodDate } from '../../../../utils/zodDate';
+import { zodDate } from '../../../../utils/dev/zodDate';
 
 export const TeamDetailsSchema = z.object({
   teamName: z.string().min(2, 'Team name is required'),

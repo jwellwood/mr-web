@@ -80,7 +80,7 @@ const StyledTab = styled((props: StyledTabProps) => <Tab disableRipple {...props
   })
 );
 
-const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
+export default function CustomTabs({ type, tabs, level }: TabProps) {
   const dispatch: AppDispatch = useDispatch();
   const value = useSelector(getTabIndex);
   const tabsToShow = tabs.filter(tab => !tab.isHidden);
@@ -115,6 +115,4 @@ const CustomTabs: React.FC<TabProps> = ({ type, tabs, level }) => {
       ))}
     </>
   );
-};
-
-export default CustomTabs;
+}

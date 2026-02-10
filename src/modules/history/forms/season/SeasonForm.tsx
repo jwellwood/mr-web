@@ -8,7 +8,7 @@ import {
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { getIntegers } from '../../../../utils/helpers';
+import { getNumberOptions } from '../../../../utils/';
 import { SeasonSchema, type SeasonFormData } from './validation';
 
 interface Props {
@@ -53,14 +53,14 @@ export default function SeasonForm({
         control={control}
         name="totalFinalPositions"
         label="Number of Teams"
-        options={getIntegers(50, 0)}
+        options={getNumberOptions(50, 0)}
       />
       {totalTeams ? (
         <ControlledSelectInput
           control={control}
           name="leaguePosition"
           label="Final Position"
-          options={getIntegers(totalTeams, 0)}
+          options={getNumberOptions(totalTeams, 0)}
         />
       ) : null}
       <ControlledTextInput multiline control={control} name="comment" label="Comment" />

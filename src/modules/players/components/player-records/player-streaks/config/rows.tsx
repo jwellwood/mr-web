@@ -1,6 +1,6 @@
 import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
 import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
-import { getShortDate } from '../../../../../../utils/helpers';
+import { getShortDate } from '../../../../../../utils';
 import { T_FETCH_PLAYER_STREAKS } from '../../../../types';
 
 export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks'], loading?: boolean) => {

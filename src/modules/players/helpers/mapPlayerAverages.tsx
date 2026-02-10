@@ -1,5 +1,5 @@
 import { IMatchesAveragesStats } from '../../../components';
-import { getAvg } from '../../../utils/helpers';
+import { getAvg } from '../../../utils';
 import { T_FETCH_PLAYER_STATS } from '../types';
 
 export const mapPlayerAverages = (

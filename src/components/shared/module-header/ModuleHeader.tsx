@@ -1,9 +1,9 @@
-import React, { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { useNationality } from '../../../hooks';
 import { theme } from '../../../theme';
 import ImageAvatar from '../../avatars/image-avatar/ImageAvatar';
 import { ModuleHeaderContainer } from '../../containers';
-import { CenteredGrid, GridItem } from '../../grids';
+import { CustomGridContainer, CustomGridItem } from '../../grids';
 import { AppIconType, FlagIcon } from '../../icons';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
 import { CustomTypography } from '../../typography';
@@ -18,13 +18,13 @@ interface Props {
   loading?: boolean;
 }
 
-const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type, loading }) => {
+export default function ModuleHeader({ title, badge, data, city, country, type, loading }: Props) {
   const { countryName } = useNationality(country ?? undefined);
 
   return (
     <ModuleHeaderContainer>
-      <CenteredGrid dir="row">
-        <GridItem size={4}>
+      <CustomGridContainer>
+        <CustomGridItem size={4}>
           <ImageAvatar
             imageUrl={badge}
             fallbackIcon={type}
@@ -33,8 +33,8 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
             loading={loading}
             centered
           />
-        </GridItem>
-        <GridItem size={8} textAlign="left">
+        </CustomGridItem>
+        <CustomGridItem size={8} textAlign="left">
           <CustomTypography size="lg" bold color="data">
             {loading ? <CustomSkeleton height="32px" /> : title}
           </CustomTypography>
@@ -74,10 +74,8 @@ const ModuleHeader: React.FC<Props> = ({ title, badge, data, city, country, type
               );
             })}
           </div>
-        </GridItem>
-      </CenteredGrid>
+        </CustomGridItem>
+      </CustomGridContainer>
     </ModuleHeaderContainer>
   );
-};
-
-export default ModuleHeader;
+}

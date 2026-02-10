@@ -8,8 +8,10 @@ interface Props {
   size?: string;
   border?: string;
   shadow?: string;
+  bgColor?: string;
   alt?: string;
   loading?: boolean;
+  variant?: 'circular' | 'square';
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
@@ -18,8 +20,10 @@ export default function CustomAvatar({
   border,
   shadow,
   size = '30px',
+  bgColor,
   alt,
   loading,
+  variant = 'circular',
   onClick,
 }: Props) {
   const borderColor = getThemeColorByType(border);
@@ -31,10 +35,11 @@ export default function CustomAvatar({
     <Avatar
       onClick={onClick}
       alt={alt}
+      variant={variant}
       sx={{
         height: size,
         width: size,
-        bgcolor: 'transparent',
+        bgcolor: bgColor || 'transparent',
         fontWeight: 'bold',
         border: border ? `2px ${borderColor} solid` : '0px',
         boxShadow: shadow ? `0px 0px 5px 2px ${shadowColor}` : '',

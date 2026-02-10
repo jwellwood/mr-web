@@ -13,6 +13,8 @@ export default tseslint.config(
   {
     ignores: [
       'dist',
+      'coverage',
+      'coverage/**',
       'schema.json',
       'src/types/__generated__/**',
       'src/**/__generated__/**',

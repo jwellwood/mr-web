@@ -2,7 +2,7 @@ import { Slide, SlideProps } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, getAlert, showAlert } from '../../../store';
+import { AppDispatch, clearAlert, getAlert } from '../../../store';
 import type { IAlert } from '../types';
 
 function SlideTransition(props: SlideProps) {
@@ -14,7 +14,7 @@ export default function CustomAlert() {
   const dispatch: AppDispatch = useDispatch();
 
   const handleClose = () => {
-    dispatch(showAlert({ text: '', type: alert.type }));
+    dispatch(clearAlert());
   };
 
   return alert ? (
@@ -28,7 +28,7 @@ export default function CustomAlert() {
       onClose={handleClose}
       slots={{ transition: SlideTransition }}
     >
-      <Alert onClose={handleClose} severity={alert.type}>
+      <Alert onClose={handleClose} severity={alert.type || undefined}>
         {alert.text}
       </Alert>
     </Snackbar>

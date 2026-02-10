@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography';
-import React, { ReactElement, Suspense } from 'react';
+import { ReactElement, Suspense } from 'react';
 import { LazyLoader, TabLoader } from '../loaders';
 
 interface TabPanelProps {
@@ -8,7 +8,7 @@ interface TabPanelProps {
   index: number;
 }
 
-const TabPanel: React.FC<TabPanelProps> = ({ children, value, index }) => {
+export default function TabPanel({ children, value, index }: TabPanelProps) {
   if (value !== index) return null;
 
   return (
@@ -30,6 +30,4 @@ const TabPanel: React.FC<TabPanelProps> = ({ children, value, index }) => {
       </Suspense>
     </Typography>
   );
-};
-
-export default TabPanel;
+}

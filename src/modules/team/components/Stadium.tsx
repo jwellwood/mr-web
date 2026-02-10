@@ -1,5 +1,4 @@
 import { DataContainer, SectionContainer } from '../../../components';
-import { CenteredGrid, GridItem } from '../../../components/grids';
 import { AppIcon } from '../../../components/icons';
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
@@ -21,21 +20,17 @@ export default function Stadium({ team, loading }: Props) {
         >
           {
             <SectionContainer>
-              <CenteredGrid dir="row">
-                <GridItem size={4}>
-                  {team?.stadiumLocation ? (
-                    <iframe
-                      title="map"
-                      src={team?.stadiumLocation}
-                      height="250px"
-                      style={{ border: 0, width: '100%' }}
-                      aria-hidden="false"
-                    ></iframe>
-                  ) : (
-                    <CustomTypography color="warning">No map available yet!</CustomTypography>
-                  )}
-                </GridItem>
-              </CenteredGrid>
+              {team?.stadiumLocation ? (
+                <iframe
+                  title="map"
+                  src={team?.stadiumLocation}
+                  height="250px"
+                  style={{ border: 0, width: '100%' }}
+                  aria-hidden="false"
+                ></iframe>
+              ) : (
+                <CustomTypography color="warning">No map available yet!</CustomTypography>
+              )}
             </SectionContainer>
           }
         </PresentationModal>
