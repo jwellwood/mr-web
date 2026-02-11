@@ -1,20 +1,19 @@
 import { Box } from '@mui/material';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
-import * as React from 'react';
 import { theme } from '../../../theme';
 
+type PieData = {
+  name: string;
+  value: number;
+  color?: string;
+};
 interface Props {
-  data: {
-    name: string;
-    value: number;
-    color?: string;
-    children?: [];
-  }[];
+  data: PieData[];
   height?: number;
   colors?: string[];
 }
 
-const CustomPieChart: React.FC<Props> = ({ data, colors, height = 100 }) => {
+export default function CustomPieChart({ data, colors, height = 100 }: Props) {
   return (
     <Box sx={{ padding: '4px' }}>
       <PieChart
@@ -37,6 +36,4 @@ const CustomPieChart: React.FC<Props> = ({ data, colors, height = 100 }) => {
       />
     </Box>
   );
-};
-
-export default CustomPieChart;
+}

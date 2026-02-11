@@ -1,12 +1,11 @@
-import React, { type ReactElement } from 'react';
-import ThemeWrapper from './ThemeWrapper';
+import { ThemeProvider } from '@mui/material/styles';
+import { type ReactElement } from 'react';
+import { theme } from '../../theme';
 
 interface Props {
   children: ReactElement;
 }
 
-const TestWrapper: React.FC<Props> = ({ children }: Props) => {
-  return <ThemeWrapper>{children}</ThemeWrapper>;
-};
-
-export default TestWrapper;
+export default function TestWrapper({ children }: Props) {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+}

@@ -1,17 +1,15 @@
 import { theme } from '../../../theme';
 import { getPercentage } from '../../../utils';
 import CustomSkeleton from '../../loaders/CustomSkeleton';
-import { CustomTypography } from '../../typography';
 
 interface Props {
   max: number;
   value: number;
-  text?: string;
   width?: number;
   loading?: boolean;
 }
 
-export default function ProgressBar({ max, value, text, width = 130, loading }: Props) {
+export default function ProgressBar({ max, value, width = 130, loading }: Props) {
   const calcPercentage = () => {
     if (value === max) {
       return 95;
@@ -38,9 +36,6 @@ export default function ProgressBar({ max, value, text, width = 130, loading }: 
           background: value === 1 ? theme.palette.gold.main : theme.palette.primary.light,
         }}
       />
-      <CustomTypography size="xxs" color="data">
-        {text}
-      </CustomTypography>
     </div>
   );
 }

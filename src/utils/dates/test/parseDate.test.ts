@@ -11,4 +11,8 @@ describe('Date formatter tests', () => {
     expect(parseDate(date)).toBeDefined();
     expect(parseDate(date)).toHaveLength(11);
   });
+  test('returns null for missing input', () => {
+    expect(parseDate()).toBeNull();
+    expect(parseDate(undefined)).toBeNull();
+  });
 });

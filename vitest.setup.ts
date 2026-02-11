@@ -1,4 +1,5 @@
 // Import vitest-dom for DOM element assertions
+// This makes jest-dom matchers available globally (toBeInTheDocument, etc.)
 import '@testing-library/jest-dom/vitest';
 import { vi } from 'vitest';
 

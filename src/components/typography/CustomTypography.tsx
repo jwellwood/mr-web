@@ -44,7 +44,7 @@ const CustomTypography: React.FC<Props> = ({
   } = theme;
   let fontSize = '14px';
   let textColor = primary.main;
-  const textFont = theme.typography.secondaryFont || fontFamily || 'Roboto';
+  const textFont = theme.typography.secondaryFont?.fontFamily || fontFamily || 'Roboto';
   const textWeight = bold ? 'bold' : 'normal';
   const componentType = div ? 'div' : 'span';
 
