@@ -1,6 +1,5 @@
 import { CustomTypography, ImageAvatar } from '../../../../../components';
-import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../components/loaders';
 import { PresentationModal } from '../../../../../components/modals';
 import { IMAGE_TYPE } from '../../../../../constants';
 import { getAvg, getPercentage } from '../../../../../utils';

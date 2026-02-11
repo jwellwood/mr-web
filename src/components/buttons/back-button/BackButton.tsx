@@ -1,9 +1,8 @@
 import { IconButton } from '@mui/material';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppIcon } from '../../icons';
 
-const BackButton: React.FC = () => {
+export default function BackButton() {
   const navigate = useNavigate();
   const onClick = () => {
     navigate(-1);
@@ -14,6 +13,4 @@ const BackButton: React.FC = () => {
       <AppIcon icon="back" size="20px" color="white" />
     </IconButton>
   );
-};
-
-export default BackButton;
+}

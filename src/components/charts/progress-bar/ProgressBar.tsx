@@ -1,6 +1,6 @@
 import { theme } from '../../../theme';
 import { getPercentage } from '../../../utils';
-import CustomSkeleton from '../../loaders/CustomSkeleton';
+import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 
 interface Props {
   max: number;

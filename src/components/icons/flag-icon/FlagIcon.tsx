@@ -1,5 +1,5 @@
 import ReactCountryFlag from 'react-country-flag';
-import StatSkeleton from '../../loaders/StatSkeleton';
+import { StatSkeleton } from '../../loaders';
 import AppIcon from '../app-icon/AppIcon';
 
 interface Props {

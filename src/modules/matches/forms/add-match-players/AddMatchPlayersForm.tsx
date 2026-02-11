@@ -6,7 +6,7 @@ import {
   ControlledMultiSelectInput,
   type ISelectOptions,
 } from '../../../../components';
-import TextList from '../../../../components/lists/TextList';
+import { TextList } from '../../../../components/lists';
 import { CustomTypography } from '../../../../components/typography';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYERS_FOR_MATCH_INPUT } from '../../types';

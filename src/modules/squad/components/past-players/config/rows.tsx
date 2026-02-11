@@ -1,6 +1,6 @@
 import { ImageAvatar, NameCell } from '../../../../../components';
 import { FlagIcon } from '../../../../../components/icons';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton } from '../../../../../components/loaders';
 import { FETCH_PAST_PLAYERS_QUERY } from '../../../types';
 
 export const rows = (data?: FETCH_PAST_PLAYERS_QUERY, loading?: boolean) => {

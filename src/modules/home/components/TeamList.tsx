@@ -1,5 +1,6 @@
-import { LinksList, ImageAvatar } from '../../../components';
+import { ImageAvatar } from '../../../components/avatars';
 import { FlagIcon } from '../../../components/icons';
+import { LinksList } from '../../../components/lists';
 import { CustomTypography, NoDataText } from '../../../components/typography';
 import { IMAGE_TYPE } from '../../../constants';
 import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';

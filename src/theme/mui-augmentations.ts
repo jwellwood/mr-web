@@ -34,19 +34,6 @@ declare module '@mui/material/styles' {
     silver?: Palette['silver'];
     bronze?: Palette['bronze'];
   }
-
-  interface TypographyVariants {
-    secondaryFont: {
-      fontFamily: string;
-    };
-  }
-
-  // allow configuration using `createTheme`
-  interface TypographyVariantsOptions {
-    secondaryFont?: {
-      fontFamily?: string;
-    };
-  }
 }
 
 declare module '@mui/material/Button' {

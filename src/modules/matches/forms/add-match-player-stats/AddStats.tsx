@@ -1,7 +1,7 @@
 import { ReactNode, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { FormModal } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
+import { FormModal } from '../../../../components/modals';
 import { AppDispatch, getTempMatch, getTempPlayers, setTmpPlayers } from '../../../../store';
 import { TApolloError } from '../../../../types/apollo';
 import { getGoalsOptions } from '../../helpers';

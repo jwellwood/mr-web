@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PageHeader } from '../../../../components';
-import Spinner from '../../../../components/loaders/Spinner';
+import Spinner from '../../../../components/loaders/spinner/Spinner';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { PAGES } from '../../constants';

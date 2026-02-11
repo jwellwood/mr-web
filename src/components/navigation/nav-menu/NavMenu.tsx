@@ -3,18 +3,17 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import * as React from 'react';
-import { useAuth } from '../../../hooks';
-import { useLogout } from '../../../modules/auth/hooks/useLogout.hook';
+import { useAuth, useLogout } from '../../../hooks';
 import { HOME_PATHS } from '../../../modules/home/router';
 import { PROFILE_PATHS } from '../../../modules/profile/router';
 import { getInitials } from '../../../utils';
 import { CustomAvatar } from '../../avatars';
-import { LogoutButton } from '../../buttons';
+import { CustomButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
 import { AppIcon } from '../../icons';
 import { LinksList } from '../../lists';
 import { CustomTypography } from '../../typography';
-import Footer from '../Footer';
+import Footer from './Footer';
 
 interface Props {
   username?: string;
@@ -90,7 +89,9 @@ export default function NavMenu({ username }: Props) {
             <>
               <Divider sx={{ m: '20px' }} />
               <Stack onClick={handleClose}>
-                <LogoutButton onClick={onLogout} />
+                <CustomButton variant="text" color="tertiary" onClick={onLogout}>
+                  Sign out
+                </CustomButton>
               </Stack>
             </>
           )}

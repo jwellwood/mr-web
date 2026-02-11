@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client/react';
 import { DataError, NoDataText, SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../components/lists/types';
+import { LinksList, type IListItem } from '../../../components/lists';
 import { Spinner } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { FETCH_ORG_SEASONS } from '../graphql';

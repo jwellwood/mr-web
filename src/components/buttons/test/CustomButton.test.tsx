@@ -20,13 +20,6 @@ describe('CustomButton', () => {
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
 
-  it('renders as disabled when disabled prop is true', () => {
-    render(<CustomButton disabled>Click Me</CustomButton>);
-
-    const button = screen.getByRole('button');
-    expect(button).toBeDisabled();
-  });
-
   it('renders with correct variant', () => {
     const { container } = render(<CustomButton variant="contained">Click Me</CustomButton>);
 
@@ -39,26 +32,5 @@ describe('CustomButton', () => {
 
     const button = container.querySelector('.MuiButton-colorSecondary');
     expect(button).toBeInTheDocument();
-  });
-
-  it('renders full width when fullWidth prop is true', () => {
-    const { container } = render(<CustomButton fullWidth>Click Me</CustomButton>);
-
-    const button = container.querySelector('.MuiButton-fullWidth');
-    expect(button).toBeInTheDocument();
-  });
-
-  it('shows loading indicator when loading is true', () => {
-    render(<CustomButton loading>Click Me</CustomButton>);
-
-    const button = screen.getByRole('button');
-    expect(button).toBeInTheDocument();
-  });
-
-  it('renders with correct button type', () => {
-    render(<CustomButton type="submit">Submit</CustomButton>);
-
-    const button = screen.getByRole('button');
-    expect(button).toHaveAttribute('type', 'submit');
   });
 });

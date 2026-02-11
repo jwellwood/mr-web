@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client/react';
 import { DataError, NoDataText, PageHeader } from '../../../components';
-import { IListItem } from '../../../components/lists/types';
+import { type IListItem } from '../../../components/lists';
 import { Spinner } from '../../../components/loaders';
 import { LINK_TYPE } from '../../../constants';
 import { useAuth } from '../../../hooks';

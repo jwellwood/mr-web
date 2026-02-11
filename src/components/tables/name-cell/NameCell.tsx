@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import { Link as RouterLink } from 'react-router-dom';
 import { shortenString } from '../../../utils';
-import CustomSkeleton from '../../loaders/CustomSkeleton';
+import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../typography';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import { OpponentModal } from '../../../../../components';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton } from '../../../../../components/loaders';
 import { getAvg, getPercentage } from '../../../../../utils';
 import { T_FETCH_MATCH_OPPONENTS } from '../../../types';
 

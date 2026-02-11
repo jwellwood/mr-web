@@ -1,2 +1,3 @@
 export { default as LinksList } from './links-list/LinksList';
-export { default as ListLoading } from './list-loading/ListLoading';
+export { default as TextList } from './text-list/TextList';
+export * from './types';

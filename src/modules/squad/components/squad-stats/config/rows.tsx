@@ -1,5 +1,5 @@
 import { NameCell } from '../../../../../components';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton } from '../../../../../components/loaders';
 import { FETCH_SQUAD_STATS_QUERY } from '../../../types';
 
 export const rows = (data?: FETCH_SQUAD_STATS_QUERY, loading?: boolean) => {

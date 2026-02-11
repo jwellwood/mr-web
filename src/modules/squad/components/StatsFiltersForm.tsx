@@ -5,9 +5,9 @@ import {
   FormContainer,
   ControlledSelectInput,
   ControlledSwitchInput,
-  FormModal,
   type ISelectOptions,
 } from '../../../components';
+import { FormModal } from '../../../components/modals';
 import { TFilters } from '../context/SquadStatsFiltersContext';
 import StatsFiltersDisplay from '../forms/StatsFiltersDisplay';
 

@@ -1,43 +1,30 @@
 import Button from '@mui/material/Button';
-import React, { ReactNode } from 'react';
-import ButtonLoader from '../../loaders/ButtonLoader';
+import { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { TColor, TVariant } from '../types';
 
 interface Props {
   children?: string | ReactNode;
   onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset';
   variant?: TVariant;
   color?: TColor;
-  fullWidth?: boolean;
-  disabled?: boolean;
-  loading?: boolean;
+  link?: string;
 }
 
-const CustomButton: React.FC<Props> = ({
+export default function CustomButton({
   children,
   onClick,
-  type,
-  disabled,
   color = 'primary',
   variant = 'outlined',
-  fullWidth = false,
-  loading,
-}) => {
+  link,
+}: Props) {
+  const componentProps: Record<string, string | React.ElementType> = {
+    component: link ? (Link as React.ElementType) : ('button' as React.ElementType),
+  };
+  if (link) componentProps.to = link;
   return (
-    <Button
-      variant={variant}
-      onClick={onClick}
-      type={type}
-      disabled={disabled}
-      fullWidth={fullWidth}
-      color={color}
-      loading={loading}
-      loadingIndicator={loading ? <ButtonLoader /> : undefined}
-    >
+    <Button variant={variant} onClick={onClick} color={color} {...componentProps}>
       {children}
     </Button>
   );
-};
-
-export default CustomButton;
+}

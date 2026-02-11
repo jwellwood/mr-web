@@ -2,10 +2,10 @@ import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import React, { ReactElement } from 'react';
 import { TApolloError } from '../../../types/apollo';
+import { SubmitButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
 import { Spinner } from '../../loaders';
-import SubmitButton from '../submit-button/SubmitButton';
 
 interface ISubmitButton {
   text?: string;

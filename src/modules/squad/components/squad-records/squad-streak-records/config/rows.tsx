@@ -1,7 +1,6 @@
-import { CustomTypography } from '../../../../../../components';
-import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../../components/loaders';
 import { PresentationModal } from '../../../../../../components/modals';
+import { CustomTypography } from '../../../../../../components/typography';
 import SquadTopStreaks from '../../../../containers/SquadTopStreaks';
 import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../../types';
 import RecordPlayers from '../../RecordPlayers';

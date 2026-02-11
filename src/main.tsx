@@ -4,7 +4,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import ErrorBoundary from './components/errors/error-boundary/ErrorBoundary';
+import { ErrorBoundary } from './components/errors';
 import AppRouter from './router/AppRouter';
 import { apolloClient } from './services/graphql/apolloClient';
 import { store } from './store';

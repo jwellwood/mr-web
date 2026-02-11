@@ -1,13 +1,13 @@
 import {
+  CustomButton,
   CustomTypography,
   ImageAvatar,
-  LinkButton,
   PositionCell,
   SectionContainer,
 } from '../../../../components';
 import { CustomGridContainer, CustomStack } from '../../../../components/grids';
 import { FlagIcon } from '../../../../components/icons';
-import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
+import CustomSkeleton from '../../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { T_FETCH_HALL_OF_FAME } from '../../types';
 
 interface Props {
@@ -30,7 +30,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
         />
 
         <CustomStack direction="column" spacing={1} justify="center" align="flex-start">
-          <LinkButton type="text" link={`player/${player._id}`}>
+          <CustomButton variant="text" link={`player/${player._id}`}>
             {loading ? (
               <CustomSkeleton width="100px" height="30px" />
             ) : (
@@ -38,7 +38,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
                 {name}
               </CustomTypography>
             )}
-          </LinkButton>
+          </CustomButton>
           <CustomStack direction="row" spacing={1} divider>
             <SectionContainer>
               {loading ? (

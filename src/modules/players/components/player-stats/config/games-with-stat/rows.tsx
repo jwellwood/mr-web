@@ -1,4 +1,4 @@
-import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton } from '../../../../../../components/loaders';
 import { getPercentage } from '../../../../../../utils';
 import { T_FETCH_PLAYER_STATS } from '../../../../types';
 

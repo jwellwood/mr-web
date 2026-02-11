@@ -74,9 +74,7 @@ const ImageForm: React.FC<Props> = ({
         fallbackIcon={IMAGE_TYPE.BADGE}
         iconSize="100px"
       />
-      <CustomButton type="reset" onClick={resetImage}>
-        {button_text.DEFAULT}
-      </CustomButton>
+      <CustomButton onClick={resetImage}>{button_text.DEFAULT}</CustomButton>
       <CustomButton
         onClick={() => {
           if (currentUrl) {

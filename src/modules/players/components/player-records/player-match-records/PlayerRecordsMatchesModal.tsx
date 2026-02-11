@@ -1,7 +1,6 @@
-import { DataError } from '../../../../../components';
 import { CustomButton } from '../../../../../components/buttons';
-import LinksList from '../../../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../../../components/lists/types';
+import { DataError } from '../../../../../components/errors';
+import { LinksList, type IListItem } from '../../../../../components/lists';
 import { PresentationModal } from '../../../../../components/modals';
 import { CustomTypography } from '../../../../../components/typography';
 import { TApolloError } from '../../../../../types/apollo';

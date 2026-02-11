@@ -22,8 +22,8 @@ export default function ControlledTextInput<T extends object>({
     name,
     control,
   });
-  const { value, onChange } = field;
-  const { error, isDirty, invalid } = fieldState;
+  const { value, onChange, onBlur } = field;
+  const { error, isDirty, invalid, isTouched } = fieldState;
 
   return (
     <TextInput
@@ -33,7 +33,8 @@ export default function ControlledTextInput<T extends object>({
       label={label}
       multiline={multiline}
       onChange={onChange}
-      errors={error ? [error] : []}
+      onBlur={onBlur}
+      errors={isTouched && error ? [error] : []}
       placeholder={placeholder}
       isDirty={isDirty}
       isValid={!invalid}

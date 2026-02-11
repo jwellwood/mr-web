@@ -1,6 +1,5 @@
 import { STAT_ICONS, StatIcon } from '../../../../components/icons';
-import LinksList from '../../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../../components/lists/types';
+import { LinksList, type IListItem } from '../../../../components/lists';
 import { CustomTypography } from '../../../../components/typography';
 import { T_FETCH_AWARDS } from '../../types';
 
@@ -23,15 +22,11 @@ export default function AwardList({ awards, loading, seasonId }: Props) {
           secondary: (
             <>
               {award.winners?.map(winner => (
-                <CustomTypography
-                  key={typeof winner === 'object' ? winner._id : winner}
-                  color="data"
-                  bold
-                  size="sm"
-                  div
-                >
-                  {typeof winner === 'object' ? winner.name : winner}
-                </CustomTypography>
+                <div key={typeof winner === 'object' ? winner._id : winner}>
+                  <CustomTypography color="data" bold size="sm">
+                    {typeof winner === 'object' ? winner.name : winner}
+                  </CustomTypography>
+                </div>
               ))}
               {award.comment ? (
                 <CustomTypography size="sm" bold color="primary">

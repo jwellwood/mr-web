@@ -1,4 +1,4 @@
-import { IListItem } from '../../components/lists/types';
+import { type IListItem } from '../../components/lists';
 import { AUTH_PATHS } from './router';
 
 export const PAGES = {

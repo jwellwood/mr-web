@@ -1,4 +1,5 @@
-import { DataError, LinksList, NoDataText, SectionContainer } from '../../../../components';
+import { DataError, NoDataText, SectionContainer } from '../../../../components';
+import { LinksList } from '../../../../components/lists';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYER_TROPHIES } from '../../types';
 import { getTrophyListItem } from './getTrophyListItem';

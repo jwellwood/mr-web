@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { CustomTypography } from '../../typography';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
   onClose: () => void;
 }
 
-const FormModal: React.FC<Props> = ({ title, children, open, onClose }) => {
+export default function FormModal({ title, children, open, onClose }: Props) {
   return (
     <div>
       <Dialog open={open} onClose={onClose} aria-labelledby="responsive-dialog-title">
@@ -29,6 +29,4 @@ const FormModal: React.FC<Props> = ({ title, children, open, onClose }) => {
       </Dialog>
     </div>
   );
-};
-
-export default FormModal;
+}

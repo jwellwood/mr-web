@@ -1,2 +1,2 @@
-export { default as CustomTabs } from './CustomTabs';
-export * from './CustomTabs';
+export { default as CustomTabs } from './custom-tabs/CustomTabs';
+export * from './types';

@@ -1,5 +1,5 @@
 import { NameCell } from '../../../../../../../components';
-import StatSkeleton from '../../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton } from '../../../../../../../components/loaders';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../../../types';
 
 export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?: boolean) => {

@@ -1,6 +1,5 @@
 import { DataError, ImageAvatar, SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../components/lists/types';
+import { LinksList, type IListItem } from '../../../components/lists';
 import { IMAGE_TYPE } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
 import { FETCH_ORGS_BY_USER_QUERY } from '../types';

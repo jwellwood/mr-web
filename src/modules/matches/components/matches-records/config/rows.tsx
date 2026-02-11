@@ -1,5 +1,4 @@
-import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../components/loaders';
 import { getShortDate } from '../../../../../utils';
 import { T_FETCH_MATCHES_STREAK } from '../../../types';
 

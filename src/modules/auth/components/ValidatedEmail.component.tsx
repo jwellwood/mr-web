@@ -1,4 +1,4 @@
-import { LinkButton } from '../../../components/buttons';
+import { CustomButton } from '../../../components/buttons';
 import { StatIcon } from '../../../components/icons';
 import { CustomTypography } from '../../../components/typography';
 import { AUTH_PATHS } from '../router';
@@ -26,9 +26,9 @@ export default function ValidatedEmail({ success, errorMessage }: Props) {
           <div style={{ marginBottom: '10px' }}></div>
         </>
       )}
-      <LinkButton type="contained" link={AUTH_PATHS.SIGN_IN}>
+      <CustomButton variant="contained" link={AUTH_PATHS.SIGN_IN}>
         Go to sign in
-      </LinkButton>
+      </CustomButton>
     </div>
   );
 }

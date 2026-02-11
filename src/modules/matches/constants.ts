@@ -1,4 +1,4 @@
-import { IListItem } from '../../components/lists/types';
+import type { IListItem } from '../../components/lists';
 import { LINK_TYPE } from '../../constants';
 
 export const PAGES = {

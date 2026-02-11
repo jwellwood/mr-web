@@ -1,8 +1,7 @@
-import { SectionContainer } from '../../../components';
-import ImageAvatar from '../../../components/avatars/image-avatar/ImageAvatar';
-import LinksList from '../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../components/lists/types';
-import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import { ImageAvatar } from '../../../components/avatars';
+import { SectionContainer } from '../../../components/containers';
+import { LinksList, type IListItem } from '../../../components/lists';
+import CustomSkeleton from '../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { IMAGE_TYPE } from '../../../constants';
 import { FETCH_TEAM_QUERY } from '../types';

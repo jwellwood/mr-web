@@ -1,6 +1,5 @@
 import { SectionContainer } from '../../../../components';
-import TextList from '../../../../components/lists/TextList';
-import { IListItem } from '../../../../components/lists/types';
+import { TextList, type IListItem } from '../../../../components/lists';
 import { ITrophyTotals } from '../../types';
 
 interface Props {

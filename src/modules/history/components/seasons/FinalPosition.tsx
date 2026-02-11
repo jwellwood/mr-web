@@ -1,5 +1,5 @@
 import { CustomAvatar, CustomTypography } from '../../../../components';
-import StatSkeleton from '../../../../components/loaders/StatSkeleton';
+import { StatSkeleton } from '../../../../components/loaders';
 
 interface Props {
   position?: number;

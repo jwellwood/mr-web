@@ -1,7 +1,7 @@
 import countryList from 'react-select-country-list';
 import { CustomAccordion } from '../../../../components';
 import { FlagIcon } from '../../../../components/icons';
-import TextList from '../../../../components/lists/TextList';
+import { TextList } from '../../../../components/lists';
 import { PresentationModal } from '../../../../components/modals';
 import { CustomTypography } from '../../../../components/typography';
 import { FETCH_SQUAD_STATS_QUERY } from '../../types';
@@ -10,10 +10,9 @@ import { groupNationalities } from '../../utils';
 interface Props {
   players?: FETCH_SQUAD_STATS_QUERY['stats'];
   title: string;
-  textColor?: string;
 }
 
-export default function ByNationality({ players, title, textColor = 'primary' }: Props) {
+export default function ByNationality({ players, title }: Props) {
   const countryName = (code: string) => (code ? countryList().getLabel(code) : null);
 
   const playersByNationality = (item: { key: string; players: typeof players }) => {
@@ -43,7 +42,7 @@ export default function ByNationality({ players, title, textColor = 'primary' }:
     <PresentationModal
       title="Nationalities"
       buttonElement={
-        <CustomTypography color={textColor} size="sm" bold>
+        <CustomTypography color="primary" size="sm" bold>
           {title}
         </CustomTypography>
       }

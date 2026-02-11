@@ -1,8 +1,8 @@
 import { Grid, Paper } from '@mui/material';
 import { theme } from '../../../theme';
 import { CustomGridContainer, CustomGridItem } from '../../grids';
-import { IListItem } from '../../lists/types';
-import CustomSkeleton from '../../loaders/CustomSkeleton';
+import { type IListItem } from '../../lists';
+import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../typography';
 
 interface Props {

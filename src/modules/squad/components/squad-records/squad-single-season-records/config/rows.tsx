@@ -1,5 +1,4 @@
-import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../../components/loaders';
 import { FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../../types';
 import RecordPlayers from '../../RecordPlayers';
 

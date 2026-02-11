@@ -1,5 +1,5 @@
 import { SectionContainer } from '../../../components';
-import TextList from '../../../components/lists/TextList';
+import { TextList } from '../../../components/lists';
 import { parseDate } from '../../../utils';
 import { IResult } from '../types';
 import ResultBox from './ResultBox';

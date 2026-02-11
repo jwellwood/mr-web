@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 
 export interface TypedFormError {
-  type: string;
+  type?: string;
   message?: string;
   code?: string | number;
   meta?: Record<string, unknown>;

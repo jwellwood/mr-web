@@ -1,12 +1,6 @@
-import {
-  CustomTypography,
-  DataError,
-  LinksList,
-  NoDataText,
-  SectionContainer,
-} from '../../../../components';
+import { CustomTypography, DataError, NoDataText, SectionContainer } from '../../../../components';
 import { StatIcon } from '../../../../components/icons';
-import { IListItem } from '../../../../components/lists/types';
+import { LinksList, type IListItem } from '../../../../components/lists';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_AWARDS_BY_PLAYER } from '../../types';
 

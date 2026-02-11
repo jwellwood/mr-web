@@ -33,7 +33,6 @@ export default function FormStepper({ steps, activeStep, handleBack, children }:
         }
       />
       {children}
-      {/* <Box>{steps[activeStep]}</Box> */}
     </Box>
   );
 }

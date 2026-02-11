@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { CustomTypography } from '../../../../../components';
 import ProgressBar from '../../../../../components/charts/progress-bar/ProgressBar';
-import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
+import CustomSkeleton from '../../../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { T_FETCH_SEASONS_POSITION } from '../../../types';
 import FinalPosition from '../FinalPosition';
 import SeasonAwards from '../SeasonAwards';

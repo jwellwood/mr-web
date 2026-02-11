@@ -1,5 +1,5 @@
 import type { ISelectOptions } from '../../components';
-import { IListItem } from '../../components/lists/types';
+import type { IListItem } from '../../components/lists';
 import { LINK_TYPE } from '../../constants';
 import { ORG_PATHS } from './router/paths';
 

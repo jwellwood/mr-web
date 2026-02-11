@@ -1,8 +1,7 @@
 import { ImageAvatar, ModuleHeaderContainer } from '../../../../components';
-import CustomStack from '../../../../components/grids/custom-stack/CustomStack';
-import TextList from '../../../../components/lists/TextList';
-import { IListItem } from '../../../../components/lists/types';
-import CustomSkeleton from '../../../../components/loaders/CustomSkeleton';
+import { CustomStack } from '../../../../components/grids';
+import { TextList, type IListItem } from '../../../../components/lists';
+import CustomSkeleton from '../../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../../../components/typography';
 import { IMAGE_TYPE } from '../../../../constants';
 import { parseDate } from '../../../../utils';

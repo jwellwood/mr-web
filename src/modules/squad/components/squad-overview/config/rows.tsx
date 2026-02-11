@@ -1,7 +1,6 @@
 import { ImageAvatar, NameCell } from '../../../../../components';
 import { FlagIcon } from '../../../../../components/icons';
-import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../components/loaders';
 import { POSITIONS } from '../../../../../constants';
 import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../../types';
 

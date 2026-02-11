@@ -1,7 +1,6 @@
 import { NoDataText } from '../../../components';
 import { SectionContainer } from '../../../components';
-import LinksList from '../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../components/lists/types';
+import { LinksList, type IListItem } from '../../../components/lists';
 import { ICompetition } from '../types';
 
 interface Props {

@@ -1,7 +1,7 @@
 import Avatar from '@mui/material/Avatar';
 import React from 'react';
 import { getThemeColorByType } from '../../../utils';
-import CustomSkeleton from '../../loaders/CustomSkeleton';
+import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 
 interface Props {
   children?: React.ReactNode;

@@ -4,9 +4,9 @@ import {
   CustomButton,
   FormContainer,
   ControlledSelectInput,
-  FormModal,
   type ISelectOptions,
 } from '../../../../components';
+import { FormModal } from '../../../../components/modals';
 import { TFilters } from '../../context';
 import StatsFiltersDisplay from './StatsFiltersDisplay';
 

@@ -1,6 +1,5 @@
 import { CustomButton, CustomTypography } from '../../../../../../../components';
-import CustomSkeleton from '../../../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../../../components/loaders';
 import { PresentationModal } from '../../../../../../../components/modals';
 import CustomTable from '../../../../../../../components/tables/CustomTable';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../../../types';

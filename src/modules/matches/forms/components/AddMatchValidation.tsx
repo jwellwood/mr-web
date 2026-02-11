@@ -1,6 +1,5 @@
 import { SectionContainer } from '../../../../components';
-import TextList from '../../../../components/lists/TextList';
-import { IListItem } from '../../../../components/lists/types';
+import { TextList, type IListItem } from '../../../../components/lists';
 import { CustomTypography } from '../../../../components/typography';
 import { validateStats } from '../../helpers/statsValidation';
 import { ITempMatch, ITempMatchPlayers } from '../../types';

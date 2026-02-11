@@ -1,5 +1,5 @@
 import { DataError } from '../../../../components';
-import ItemDetails from '../../../../components/common/history/item-details/ItemDetails';
+import { HistoryItemDetails } from '../../../../components/composed';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_AWARD } from '../../types';
 
@@ -13,7 +13,7 @@ export default function AwardView({ data, loading, error }: Props) {
   const { winners, comment, awardName, awardValue } = data?.award || {};
 
   const renderContent = () => (
-    <ItemDetails
+    <HistoryItemDetails
       icon="trophy"
       iconColor="gold"
       header={awardName || ''}

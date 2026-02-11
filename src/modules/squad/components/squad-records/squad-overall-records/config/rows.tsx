@@ -1,7 +1,6 @@
 import type { ReactNode } from 'react';
 import { CustomButton, CustomTypography } from '../../../../../../components';
-import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../../components/loaders';
 import { PresentationModal } from '../../../../../../components/modals';
 import { FETCH_SQUAD_RECORDS_QUERY } from '../../../../types';
 import RecordPlayers from '../../RecordPlayers';

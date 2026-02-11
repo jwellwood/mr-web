@@ -1,6 +1,5 @@
 import { SectionContainer } from '../../../../components/containers';
-import TextList from '../../../../components/lists/TextList';
-import { IListItem } from '../../../../components/lists/types';
+import { TextList, type IListItem } from '../../../../components/lists';
 import { getAverageAge } from '../../../../utils';
 import { FETCH_SQUAD_STATS_QUERY } from '../../types';
 import ByNationality from './ByNationality';

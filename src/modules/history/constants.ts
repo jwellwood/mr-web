@@ -1,8 +1,6 @@
-import { IListItem } from '../../components/lists/types';
+import { type IListItem } from '../../components/lists';
 import { LINK_TYPE } from '../../constants';
-import { theme } from '../../theme';
 
-// Replace the enum with this const object
 export const PAGES = {
   TROPHY: 'Trophy',
   ADD_TROPHY: 'Add New Trophy',
@@ -44,24 +42,5 @@ export const TROPHY_ADMIN_LINKS: IListItem[] = [
     label: 'Edit Trophy',
     type: LINK_TYPE.EDIT,
     link: 'edit',
-  },
-];
-
-export const seasonColors = [
-  {
-    color: `${theme.palette.tertiary.main}`,
-    border: `${theme.palette.tertiary.main}`,
-  },
-  {
-    color: `${theme.palette.primary.main}`,
-    border: `${theme.palette.primary.main}`,
-  },
-  {
-    color: `${theme.palette.info.main}`,
-    border: `${theme.palette.info.light}`,
-  },
-  {
-    color: `${theme.palette.secondary.main}`,
-    border: `${theme.palette.secondary.light}`,
   },
 ];

@@ -1,7 +1,7 @@
 import Avatar from '@mui/material/Avatar';
 import { getThemeColorByType } from '../../../utils';
 import { AppIcon, AppIconType } from '../../icons';
-import CustomSkeleton from '../../loaders/CustomSkeleton';
+import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 
 interface Props {
   fallbackIcon?: AppIconType;

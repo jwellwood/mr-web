@@ -1,4 +1,4 @@
-import { IMatchesStatsTable } from '../../../components';
+import { IMatchesStatsTable } from '../../../components/composed';
 import { T_FETCH_PLAYER_STATS } from '../types';
 
 export const mapPlayerMatchStats = (

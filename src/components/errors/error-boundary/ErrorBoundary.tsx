@@ -3,7 +3,7 @@ import React, { Component, ErrorInfo } from 'react';
 import { ErrorText } from '..';
 import { SectionContainer } from '../..';
 import { ROOT_URL } from '../../../constants';
-import { CustomButton, LinkButton } from '../../buttons';
+import { CustomButton } from '../../buttons';
 import { CustomTypography } from '../../typography';
 
 interface State {
@@ -57,7 +57,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, State> 
             </CustomTypography>
             <Stack direction="row" spacing={2} mt={2} justifyContent="center">
               <CustomButton onClick={() => window.location.reload()}>Refresh</CustomButton>{' '}
-              <LinkButton link={ROOT_URL}>Home</LinkButton>
+              <CustomButton link={ROOT_URL}>Home</CustomButton>
             </Stack>
           </Stack>
         </SectionContainer>

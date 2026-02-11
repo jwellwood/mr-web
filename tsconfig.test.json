@@ -11,6 +11,7 @@
     "src/**/*.tsx",
     "src/**/*.d.ts",
     "vitest.setup.ts",
-    "vitest.shims.d.ts"
+    "vitest.shims.d.ts",
+    "src/hooks/useDateOfBirth.ts"
   ]
 }

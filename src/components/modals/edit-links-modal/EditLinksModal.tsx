@@ -7,8 +7,7 @@ import React, { ReactNode } from 'react';
 import { theme } from '../../../theme';
 import { CustomButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
-import LinksList from '../../lists/links-list/LinksList';
-import { IListItem } from '../../lists/types';
+import { LinksList, type IListItem } from '../../lists';
 
 interface Props {
   data: IListItem[];

@@ -1,5 +1,5 @@
 import { CustomButton } from '../../../components';
-import PresentationModal from '../../../components/modals/PresentationModal';
+import { PresentationModal } from '../../../components/modals';
 import { TApolloError } from '../../../types/apollo';
 import TeamList from '../components/TeamList';
 import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';

@@ -1,5 +1,4 @@
-import LinksList from '../../../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../../../components/lists/types';
+import { LinksList, type IListItem } from '../../../../../components/lists';
 import { CustomTypography } from '../../../../../components/typography';
 import { parseDate } from '../../../../../utils';
 import {

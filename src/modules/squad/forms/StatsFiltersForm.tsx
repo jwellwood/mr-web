@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form';
 import {
   CustomButton,
   FormContainer,
-  FormModal,
   ControlledSelectInput,
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../components';
+import { FormModal } from '../../../components/modals';
 import { TFilters } from '../context/SquadStatsFiltersContext';
 import StatsFiltersDisplay from './StatsFiltersDisplay';
 

@@ -1,10 +1,8 @@
 import { ReactElement } from 'react';
 import { CustomTypography, SectionContainer } from '../../../../../components';
 import { STAT_ICONS, StatIcon } from '../../../../../components/icons';
-import TextList from '../../../../../components/lists/TextList';
-import { IListItem } from '../../../../../components/lists/types';
-import CustomSkeleton from '../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../components/loaders/StatSkeleton';
+import { TextList, type IListItem } from '../../../../../components/lists';
+import { StatSkeleton, CustomSkeleton } from '../../../../../components/loaders';
 import { PresentationModal } from '../../../../../components/modals';
 import { T_FETCH_MATCH } from '../../../types';
 

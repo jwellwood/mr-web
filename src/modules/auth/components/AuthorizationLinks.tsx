@@ -1,4 +1,4 @@
-import { LinkButton } from '../../../components/buttons';
+import { CustomButton } from '../../../components/buttons';
 import { IListItem } from '../../../components/lists/types';
 import { CustomTypography } from '../../../components/typography';
 
@@ -14,9 +14,9 @@ export default function AuthorizationLinks({ links }: Props) {
           <CustomTypography color="label" size="sm">
             {item.label}
           </CustomTypography>
-          <LinkButton type="text" color="warning" link={item?.link as string}>
+          <CustomButton variant="text" color="warning" link={item?.link as string}>
             {item.value}
-          </LinkButton>
+          </CustomButton>
         </div>
       ))}
     </div>

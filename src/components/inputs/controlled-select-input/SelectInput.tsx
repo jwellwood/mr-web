@@ -25,6 +25,8 @@ export default function SelectInput({
   isDirty,
   isValid,
 }: Props) {
+  const defaultValueString = defaultValue !== undefined ? String(defaultValue) : '';
+
   return (
     <>
       <FormControl fullWidth variant="filled">
@@ -40,7 +42,7 @@ export default function SelectInput({
           labelId="single-select-label"
           id="single-select-input"
           name={inputName}
-          value={defaultValue || ''}
+          value={defaultValueString}
           label={label}
           onChange={onChange}
           disabled={disabled}

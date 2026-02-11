@@ -1,7 +1,7 @@
 import { Box, Stack } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import React, { ReactElement } from 'react';
-import CustomTypography from '../../typography/CustomTypography';
+import CustomTypography from '../../typography/custom-typography/CustomTypography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import { TypedFormError } from '../types';
 

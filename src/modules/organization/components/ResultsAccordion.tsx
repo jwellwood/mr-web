@@ -1,7 +1,6 @@
-import { SectionContainer } from '../../../components';
 import { CustomAccordion } from '../../../components/accordion';
-import LinksList from '../../../components/lists/links-list/LinksList';
-import { IListItem } from '../../../components/lists/types';
+import { SectionContainer } from '../../../components/containers';
+import { LinksList, type IListItem } from '../../../components/lists';
 import { CustomTypography } from '../../../components/typography';
 import { IResult } from '../types';
 import ResultBox from './ResultBox';

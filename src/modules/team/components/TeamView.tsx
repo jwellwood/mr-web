@@ -1,5 +1,5 @@
 import { DataError } from '../../../components';
-import ModuleHeader from '../../../components/shared/module-header/ModuleHeader';
+import { ModuleHeader } from '../../../components/composed';
 import { IMAGE_TYPE } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
 import Kits from '../components/Kits';

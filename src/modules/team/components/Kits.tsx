@@ -3,7 +3,7 @@ import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
 import { SectionContainer } from '../../../components';
 import { CustomGridContainer, CustomGridItem } from '../../../components/grids';
-import CustomSkeleton from '../../../components/loaders/CustomSkeleton';
+import CustomSkeleton from '../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { type FETCH_TEAM_QUERY } from '../types';
 

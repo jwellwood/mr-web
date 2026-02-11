@@ -1,5 +1,5 @@
 import { DataError, SectionContainer, ModuleHeader } from '../../../components';
-import TextList from '../../../components/lists/TextList';
+import { TextList } from '../../../components/lists';
 import { IMAGE_TYPE } from '../../../constants';
 import { useDateOfBirth } from '../../../hooks';
 import { TApolloError } from '../../../types/apollo';

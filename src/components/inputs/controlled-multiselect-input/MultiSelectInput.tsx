@@ -28,10 +28,29 @@ export default function MultipleSelectInput({
   isDirty,
   isValid,
 }: Props) {
-  const renderValue = (selected: string) => {
+  // Convert comma-separated string to array for MUI
+  const arrayValue = value ? value.split(',') : [];
+
+  // Convert array back to comma-separated string for onChange
+  const handleChange = (event: SelectChangeEvent<string[]>) => {
+    const newValue = event.target.value;
+    const stringValue = Array.isArray(newValue) ? newValue.join(',') : newValue;
+
+    // Create a new event with string value to match expected signature
+    const stringEvent = {
+      ...event,
+      target: { ...event.target, value: stringValue },
+    } as SelectChangeEvent<string>;
+
+    onChange(stringEvent);
+  };
+
+  const renderValue = (selected: string[]) => {
     if (showLabels) {
-      const label = options.filter(option => selected.includes(option.value as string));
-      return label.map((item, i) => `${item.label}${i !== label.length - 1 ? ', ' : ''}`);
+      const selectedLabels = options.filter(option => selected.includes(option.value as string));
+      return selectedLabels.map(
+        (item, i) => `${item.label}${i !== selectedLabels.length - 1 ? ', ' : ''}`
+      );
     }
     return `${selected.length} ${label}`;
   };
@@ -46,19 +65,19 @@ export default function MultipleSelectInput({
       >
         {label}
       </InputLabel>
-      <Select
+      <Select<string[]>
         labelId="seasons-played"
         id="multiple-checkbox"
         multiple
-        value={value}
-        onChange={onChange}
+        value={arrayValue}
+        onChange={handleChange}
         renderValue={selected => renderValue(selected)}
         MenuProps={{ PaperProps: { style: { maxHeight: 300 } } }}
         error={!!errors?.[0]}
       >
         {options?.map((option, i) => (
           <MenuItem key={(option.label, i)} value={option.value as string}>
-            <Checkbox checked={value.indexOf(option.value as string) > -1} />
+            <Checkbox checked={arrayValue.includes(option.value as string)} />
             <ListItemText primary={option.label} />
           </MenuItem>
         ))}

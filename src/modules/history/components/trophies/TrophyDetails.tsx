@@ -1,5 +1,5 @@
 import { CustomTypography } from '../../../../components';
-import ItemDetails from '../../../../components/common/history/item-details/ItemDetails';
+import { HistoryItemDetails } from '../../../../components/composed';
 import { T_FETCH_TROPHY } from '../../types';
 
 interface Props {
@@ -22,7 +22,7 @@ export default function TrophyDetails({ trophy, loading }: Props) {
   ) : null;
 
   return (
-    <ItemDetails
+    <HistoryItemDetails
       icon={isWinner ? 'trophy' : 'medal'}
       iconColor={isWinner ? 'gold' : 'silver'}
       header={name || ''}

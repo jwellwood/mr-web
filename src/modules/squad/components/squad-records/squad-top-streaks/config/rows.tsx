@@ -1,6 +1,5 @@
 import { CustomTypography } from '../../../../../../components';
-import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../../components/loaders';
 import { T_FETCH_TOP_PLAYER_STREAKS_QUERY } from '../../../../types';
 
 export const rows = (

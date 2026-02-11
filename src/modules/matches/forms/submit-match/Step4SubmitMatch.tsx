@@ -1,8 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { FormContainer, SectionContainer } from '../../../../components';
-import TextList from '../../../../components/lists/TextList';
-import { IListItem } from '../../../../components/lists/types';
+import { TextList, type IListItem } from '../../../../components/lists';
 import { getTempMatch, getTempPlayers } from '../../../../store';
 import { TApolloError } from '../../../../types/apollo';
 import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';

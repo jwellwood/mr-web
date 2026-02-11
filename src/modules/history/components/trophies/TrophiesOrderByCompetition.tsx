@@ -1,5 +1,5 @@
 import { SectionContainer } from '../../../../components';
-import LinksList from '../../../../components/lists/links-list/LinksList';
+import { LinksList } from '../../../../components/lists';
 import { getTrophyListItemTeam } from '../../helpers/getTrophyListItemTeam';
 import { T_FETCH_TROPHIES } from '../../types';
 

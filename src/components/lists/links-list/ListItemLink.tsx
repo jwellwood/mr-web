@@ -5,7 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import React from 'react';
 import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 import { CustomTypography } from '../../typography';
-import { IListItem } from '../types';
+import { type IListItem } from '../types';
 
 interface Props {
   data: IListItem;

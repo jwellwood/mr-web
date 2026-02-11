@@ -8,6 +8,7 @@ interface Props {
   inputName?: string;
   defaultValue?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   label?: string;
   errors: TypedFormError[];
   isPassword?: boolean;
@@ -32,6 +33,7 @@ export default function TextInput({
   disabled = false,
   placeholder,
   isDirty,
+  onBlur,
   isValid,
 }: Props) {
   return (
@@ -46,6 +48,7 @@ export default function TextInput({
         name={inputName}
         defaultValue={defaultValue}
         onChange={onChange}
+        onBlur={onBlur}
         label={label}
         fullWidth
         disabled={disabled}

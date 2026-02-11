@@ -1,5 +1,4 @@
-import CustomSkeleton from '../../../../../../components/loaders/CustomSkeleton';
-import StatSkeleton from '../../../../../../components/loaders/StatSkeleton';
+import { StatSkeleton, CustomSkeleton } from '../../../../../../components/loaders';
 import PlayerMatchesWithMostAssists from '../../../../containers/PlayerMatchesWithMostAssists';
 import PlayerMatchesWithMostCombined from '../../../../containers/PlayerMatchesWithMostCombined';
 import PlayerMatchesWithMostGoals from '../../../../containers/PlayerMatchesWithMostGoals';

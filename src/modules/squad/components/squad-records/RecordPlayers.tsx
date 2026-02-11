@@ -1,4 +1,5 @@
-import { LinksList, SectionContainer } from '../../../../components';
+import { SectionContainer } from '../../../../components/containers';
+import { LinksList } from '../../../../components/lists';
 import { PresentationModal } from '../../../../components/modals';
 import { CustomTypography } from '../../../../components/typography';
 
@@ -17,7 +18,7 @@ export default function RecordPlayers({ names, loading }: Props) {
     <LinksList
       links={names?.map(item => ({
         label: (
-          <CustomTypography color="bold" bold>
+          <CustomTypography color="label" bold>
             {item.name}
           </CustomTypography>
         ),

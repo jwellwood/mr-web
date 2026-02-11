@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import {
-  CustomButton,
-  FormContainer,
-  FormModal,
-  ControlledSwitchInput,
-} from '../../../../components';
+import { CustomButton, FormContainer, ControlledSwitchInput } from '../../../../components';
+import { FormModal } from '../../../../components/modals';
 import { TPlayerOpponentFilters } from '../../context';
 import OpponentFiltersDisplay from './OpponentFiltersDisplay';
 

@@ -10,7 +10,7 @@ export default function FormErrorMessage({ error }: Props) {
   const message = error?.message || form_error_text.default;
 
   return (
-    <CustomTypography size="xs" color="error" role="alert">
+    <CustomTypography size="xs" color="error">
       {message}
     </CustomTypography>
   );
