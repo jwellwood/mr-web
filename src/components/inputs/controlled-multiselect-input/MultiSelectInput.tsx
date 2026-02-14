@@ -9,9 +9,9 @@ import { TypedFormError, ISelectOptions } from '../types';
 
 interface Props {
   options: ISelectOptions[];
-  value: string;
+  value: string[];
   label: string;
-  onChange: (event: SelectChangeEvent<string>) => void;
+  onChange: (event: SelectChangeEvent<string[]>) => void;
   showLabels?: boolean;
   errors: TypedFormError[];
   isDirty?: boolean;
@@ -28,21 +28,10 @@ export default function MultipleSelectInput({
   isDirty,
   isValid,
 }: Props) {
-  // Convert comma-separated string to array for MUI
-  const arrayValue = value ? value.split(',') : [];
+  const arrayValue = value || [];
 
-  // Convert array back to comma-separated string for onChange
   const handleChange = (event: SelectChangeEvent<string[]>) => {
-    const newValue = event.target.value;
-    const stringValue = Array.isArray(newValue) ? newValue.join(',') : newValue;
-
-    // Create a new event with string value to match expected signature
-    const stringEvent = {
-      ...event,
-      target: { ...event.target, value: stringValue },
-    } as SelectChangeEvent<string>;
-
-    onChange(stringEvent);
+    onChange(event);
   };
 
   const renderValue = (selected: string[]) => {
@@ -65,7 +54,7 @@ export default function MultipleSelectInput({
       >
         {label}
       </InputLabel>
-      <Select<string[]>
+      <Select
         labelId="seasons-played"
         id="multiple-checkbox"
         multiple

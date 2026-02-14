@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
+import '@testing-library/jest-dom';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import MultiSelectInput from '../MultiSelectInput';
 
@@ -18,7 +19,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -37,7 +38,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -59,7 +60,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -80,7 +81,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value="red,blue"
+          value={['red', 'blue']}
           label="items"
           onChange={onChange}
           showLabels={false}
@@ -100,7 +101,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value="red,blue"
+          value={['red', 'blue']}
           label="Colors"
           onChange={onChange}
           showLabels={true}
@@ -123,7 +124,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[error]}
@@ -141,7 +142,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -160,7 +161,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[error]}
@@ -180,7 +181,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value="red,blue"
+          value={['red', 'blue']}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -204,7 +205,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -222,7 +223,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value="red"
+          value={['red']}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -242,7 +243,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={mockOptions}
-          value=""
+          value={[]}
           label="Colors"
           onChange={onChange}
           errors={[]}
@@ -267,7 +268,7 @@ describe('MultiSelectInput', () => {
       <TestWrapper>
         <MultiSelectInput
           options={manyOptions}
-          value=""
+          value={[]}
           label="Items"
           onChange={onChange}
           errors={[]}

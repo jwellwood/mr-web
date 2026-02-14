@@ -12,11 +12,11 @@ const mockOptions = [
 ];
 
 interface FormValues {
-  colors?: string;
+  colors?: string[];
 }
 
 function TestForm({
-  defaultValues = {},
+  defaultValues = { colors: [] },
   onSubmit = () => {},
   showLabels = false,
 }: {
@@ -46,7 +46,7 @@ describe('ControlledMultiSelectInput', () => {
   it('renders and integrates with react-hook-form', () => {
     render(
       <TestWrapper>
-        <TestForm defaultValues={{ colors: 'red,blue' }} />
+        <TestForm defaultValues={{ colors: ['red', 'blue'] }} />
       </TestWrapper>
     );
 
@@ -74,7 +74,7 @@ describe('ControlledMultiSelectInput', () => {
 
     render(
       <TestWrapper>
-        <TestForm defaultValues={{ colors: 'red,green' }} onSubmit={onSubmit} />
+        <TestForm defaultValues={{ colors: ['red', 'green'] }} onSubmit={onSubmit} />
       </TestWrapper>
     );
 
@@ -84,7 +84,7 @@ describe('ControlledMultiSelectInput', () => {
     await waitFor(() => {
       expect(onSubmit).toHaveBeenCalledWith(
         expect.objectContaining({
-          colors: 'red,green',
+          colors: ['red', 'green'],
         }),
         expect.anything()
       );
@@ -96,7 +96,7 @@ describe('ControlledMultiSelectInput', () => {
 
     render(
       <TestWrapper>
-        <TestForm defaultValues={{ colors: 'red,blue' }} />
+        <TestForm defaultValues={{ colors: ['red', 'blue'] }} />
       </TestWrapper>
     );
 
@@ -115,7 +115,7 @@ describe('ControlledMultiSelectInput', () => {
 
     render(
       <TestWrapper>
-        <TestForm defaultValues={{ colors: '' }} onSubmit={onSubmit} />
+        <TestForm defaultValues={{ colors: [] }} onSubmit={onSubmit} />
       </TestWrapper>
     );
 
@@ -136,7 +136,7 @@ describe('ControlledMultiSelectInput', () => {
   it('shows labels when showLabels is true', () => {
     render(
       <TestWrapper>
-        <TestForm defaultValues={{ colors: 'red,blue' }} showLabels={true} />
+        <TestForm defaultValues={{ colors: ['red', 'blue'] }} showLabels={true} />
       </TestWrapper>
     );
 
@@ -149,7 +149,7 @@ describe('ControlledMultiSelectInput', () => {
   it('shows count when showLabels is false', () => {
     render(
       <TestWrapper>
-        <TestForm defaultValues={{ colors: 'red,blue' }} showLabels={false} />
+        <TestForm defaultValues={{ colors: ['red', 'blue'] }} showLabels={false} />
       </TestWrapper>
     );
 
@@ -159,7 +159,7 @@ describe('ControlledMultiSelectInput', () => {
   it('handles empty selection', () => {
     render(
       <TestWrapper>
-        <TestForm defaultValues={{ colors: '' }} />
+        <TestForm defaultValues={{ colors: [] }} />
       </TestWrapper>
     );
 
@@ -182,7 +182,7 @@ describe('ControlledMultiSelectInput', () => {
   it('updates correctly in controlled form scenario', async () => {
     function ControlledForm() {
       const { control, watch } = useForm<FormValues>({
-        defaultValues: { colors: 'red' },
+        defaultValues: { colors: ['red'] },
       });
 
       const currentColors = watch('colors');
@@ -195,7 +195,7 @@ describe('ControlledMultiSelectInput', () => {
             label="Colors"
             options={mockOptions}
           />
-          <div data-testid="current-value">{currentColors}</div>
+          <div data-testid="current-value">{currentColors?.join(',')}</div>
         </div>
       );
     }
@@ -213,12 +213,12 @@ describe('ControlledMultiSelectInput', () => {
     const user = userEvent.setup();
 
     interface ManyFormValues {
-      items?: string;
+      items?: string[];
     }
 
     function ManyOptionsForm() {
       const { control } = useForm<ManyFormValues>({
-        defaultValues: { items: '' },
+        defaultValues: { items: [] },
       });
 
       const manyOptions = Array.from({ length: 30 }, (_, i) => ({
