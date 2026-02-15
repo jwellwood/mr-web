@@ -1,10 +1,9 @@
-import { StatSkeleton, CustomSkeleton } from '../../../../../../components/loaders';
 import PlayerMatchesWithMostAssists from '../../../../containers/PlayerMatchesWithMostAssists';
 import PlayerMatchesWithMostCombined from '../../../../containers/PlayerMatchesWithMostCombined';
 import PlayerMatchesWithMostGoals from '../../../../containers/PlayerMatchesWithMostGoals';
 import { T_FETCH_PLAYER_MATCH_RECORDS } from '../../../../types';
 
-export const rows = (stats?: T_FETCH_PLAYER_MATCH_RECORDS['stats'], loading?: boolean) => {
+export const rows = (stats?: T_FETCH_PLAYER_MATCH_RECORDS['stats']) => {
   const { maxGoals, maxAssists, maxCombined } = stats || {
     maxGoals: 0,
     maxAssists: 0,
@@ -32,8 +31,8 @@ export const rows = (stats?: T_FETCH_PLAYER_MATCH_RECORDS['stats'], loading?: bo
   return data.map(item => {
     return {
       label: item.label,
-      value: loading ? <StatSkeleton /> : item.value,
-      more: loading ? <CustomSkeleton width="50px" /> : { value: item.value ? item.component : '' },
+      value: item.value,
+      more: item.value ? item.component : '',
     };
   });
 };

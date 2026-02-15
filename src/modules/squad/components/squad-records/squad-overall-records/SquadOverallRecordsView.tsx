@@ -1,8 +1,8 @@
 import { DataError, SectionContainer, NoDataText } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/CustomTable';
+import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
+import { columns, rows } from '../../../tables/squad-overall-records';
 import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
-import { columns, rows, styles } from './config';
 
 interface Props {
   data?: FETCH_SQUAD_RECORDS_QUERY;
@@ -18,9 +18,10 @@ export default function SquadOverallRecordsView({ data, loading, error }: Props)
       ) : (
         <CustomTable
           columns={columns}
-          rows={rows(data, loading)}
+          rows={rows(data)}
           isSortable={false}
-          cellIndexStyles={styles}
+          loading={loading}
+          loadingRowCount={4}
         />
       )}
     </SectionContainer>

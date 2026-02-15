@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/CustomTable';
+import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
 import { T_FETCH_PLAYER_STREAKS } from '../../../types';
-import { columns, rows, styles } from './config';
+import { columns, rows } from './config';
 
 interface Props {
   data?: T_FETCH_PLAYER_STREAKS;
@@ -18,9 +18,9 @@ export default function PlayerGameStreaksView({ data, loading, error }: Props) {
     return (
       <CustomTable
         columns={columns}
-        rows={rows(data?.streaks, loading)}
+        rows={rows(data?.streaks)}
         isSortable={false}
-        cellIndexStyles={styles}
+        loading={loading}
       />
     );
   };

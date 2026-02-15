@@ -1,37 +1,64 @@
-export const columns = [
+import type { ColumnConfig } from '../../../tables/types';
+
+export const columns: readonly ColumnConfig[] = [
   {
     id: 'played',
     label: 'Pl',
-    width: 40,
+    styles: {
+      width: 40,
+      border: true,
+      background: true,
+    },
   },
   {
     id: 'wins',
     label: 'W',
-    width: 40,
+    styles: {
+      width: 40,
+      background: true,
+    },
   },
   {
     id: 'draws',
     label: 'D',
-    width: 40,
+    styles: {
+      width: 40,
+      background: true,
+    },
   },
   {
     id: 'defeats',
     label: 'L',
-    width: 40,
+    styles: {
+      width: 40,
+      border: true,
+      background: true,
+    },
   },
   {
     id: 'goalsFor',
     label: 'GF',
-    width: 40,
+    styles: {
+      width: 40,
+      background: true,
+    },
   },
   {
     id: 'goalsAgainst',
     label: 'GA',
-    width: 40,
+    styles: {
+      width: 40,
+      border: true,
+      background: true,
+    },
   },
   {
     id: 'difference',
+    type: 'difference',
     label: '+/-',
-    width: 40,
+    styles: {
+      width: 40,
+      background: true,
+    },
   },
 ] as const;

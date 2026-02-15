@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
+import '@testing-library/jest-dom';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import FormContainer from '../FormContainer';
 
@@ -50,10 +51,7 @@ describe('FormContainer', () => {
   it('renders submit button with custom text', () => {
     render(
       <TestWrapper>
-        <FormContainer
-          {...defaultProps}
-          submitBtn={{ text: 'Save Changes', disabled: false, fullWidth: true }}
-        />
+        <FormContainer {...defaultProps} submitBtn={{ text: 'Save Changes', disabled: false }} />
       </TestWrapper>
     );
 
@@ -63,10 +61,7 @@ describe('FormContainer', () => {
   it('disables submit button when submitBtn.disabled is true', () => {
     render(
       <TestWrapper>
-        <FormContainer
-          {...defaultProps}
-          submitBtn={{ text: 'Submit', disabled: true, fullWidth: true }}
-        />
+        <FormContainer {...defaultProps} submitBtn={{ text: 'Submit', disabled: true }} />
       </TestWrapper>
     );
 
@@ -207,12 +202,13 @@ describe('FormContainer', () => {
     expect(submitButton).toBeInTheDocument();
   });
 
-  it('renders submit button with custom fullWidth setting', () => {
+  it('renders submit button with custom minWidth setting', () => {
     render(
       <TestWrapper>
         <FormContainer
           {...defaultProps}
-          submitBtn={{ text: 'Submit', disabled: false, fullWidth: false }}
+          submitBtn={{ text: 'Submit', disabled: false }}
+          minWidth={100}
         />
       </TestWrapper>
     );

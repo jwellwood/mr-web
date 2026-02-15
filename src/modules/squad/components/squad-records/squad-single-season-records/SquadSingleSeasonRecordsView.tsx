@@ -1,8 +1,8 @@
 import { DataError, SectionContainer, NoDataText } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/CustomTable';
+import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
+import { columns, rows } from '../../../tables/squad-single-season-records';
 import { type FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../types';
-import { columns, rows, styles } from './config';
 
 interface Props {
   loading: boolean;
@@ -18,9 +18,10 @@ export default function SquadSingleSeasonRecordsView({ data, loading, error }: P
       ) : (
         <CustomTable
           columns={columns}
-          rows={rows(data, loading)}
+          rows={rows(data)}
           isSortable={false}
-          cellIndexStyles={styles}
+          loading={loading}
+          loadingRowCount={3}
         />
       )}
     </SectionContainer>

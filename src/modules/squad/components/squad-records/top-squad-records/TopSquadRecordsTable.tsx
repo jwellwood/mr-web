@@ -1,6 +1,6 @@
-import CustomTable from '../../../../../components/tables/CustomTable';
+import CustomTable from '../../../../../components/tables/custom-table/CustomTable';
+import { columns, rows } from '../../../tables/squad-top-records';
 import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
-import { columns, rows, styles } from './config';
 
 type StatsObj = NonNullable<FETCH_SQUAD_RECORDS_QUERY['stats']>;
 type StatArray = NonNullable<StatsObj[keyof StatsObj]>;
@@ -13,10 +13,11 @@ export default function TopSquadRecordsTable({ stats, loading }: Props) {
   return (
     <CustomTable
       columns={columns}
-      rows={rows(stats, loading)}
+      rows={rows(stats)}
       isSortable={false}
       sortByString="position"
-      cellIndexStyles={styles}
+      loading={loading}
+      loadingRowCount={5}
     />
   );
 }

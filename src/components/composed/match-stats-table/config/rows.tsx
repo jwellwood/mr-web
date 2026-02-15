@@ -1,17 +1,15 @@
-import { StatSkeleton } from '../../../loaders';
 import { IMatchesStatsTable } from '../../types';
 
-export const rows = (stats?: IMatchesStatsTable, loading?: boolean) => {
-  const getValue = (value?: number) => (loading ? <StatSkeleton /> : value || 0);
+export const rows = (stats?: IMatchesStatsTable) => {
   return [
     {
-      played: getValue(stats?.played),
-      wins: getValue(stats?.wins),
-      draws: getValue(stats?.draws),
-      defeats: getValue(stats?.defeats),
-      goalsFor: getValue(stats?.goalsFor),
-      goalsAgainst: getValue(stats?.goalsAgainst),
-      difference: getValue(stats?.difference),
+      played: stats?.played || 0,
+      wins: stats?.wins || 0,
+      draws: stats?.draws || 0,
+      defeats: stats?.defeats || 0,
+      goalsFor: stats?.goalsFor || 0,
+      goalsAgainst: stats?.goalsAgainst || 0,
+      difference: stats?.difference || 0,
     },
   ] as const;
 };

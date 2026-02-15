@@ -1,57 +1,92 @@
-export const columns = [
+import { ColumnConfig } from '../../../../../components';
+
+export const columns: readonly ColumnConfig[] = [
   {
     id: 'name',
     label: '',
-    width: 150,
+    styles: {
+      width: 150,
+      border: true,
+      align: 'left',
+    },
   },
   {
     id: 'played',
     label: 'Pl',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'wins',
     label: 'W',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'draws',
     label: 'D',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'defeats',
     label: 'L',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'goalsFor',
     label: 'GF',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'goalsAgainst',
     label: 'GA',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'difference',
+    type: 'difference',
     label: '+/-',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'points',
     label: 'Pts',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'winPercentage',
     label: 'Win %',
-    width: 50,
+    styles: {
+      width: 50,
+    },
   },
   {
     id: 'avgScore',
     label: 'Avg',
-    width: 50,
+    styles: {
+      width: 50,
+    },
   },
 ] as const;

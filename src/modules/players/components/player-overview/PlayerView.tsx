@@ -1,4 +1,4 @@
-import { DataError, ModuleHeader, PositionCell } from '../../../../components';
+import { DataError, ModuleHeader, PositionText } from '../../../../components';
 import { IMAGE_TYPE } from '../../../../constants';
 import { useDateOfBirth } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
@@ -16,7 +16,7 @@ export default function PlayerView({ data, loading, error }: Props) {
   const dataToDisplay = [
     {
       label: '',
-      value: <PositionCell>{data?.player.position || '-'}</PositionCell>,
+      value: <PositionText>{data?.player.position || '-'}</PositionText>,
     },
     { label: '', value: `#${data?.player.squadNumber || '-'}` },
     { label: '', value: `${age} years` },

@@ -1,26 +1,44 @@
-export const columns = [
+import { ColumnConfig } from '../../../../../../../components';
+
+export const columns: readonly ColumnConfig[] = [
   {
     id: 'season',
+    type: 'link',
     label: <></>,
+    styles: {
+      border: true,
+    },
   },
   {
     id: 'apps',
     label: 'Pl',
-    width: 50,
+    styles: {
+      width: 50,
+      background: true,
+    },
   },
   {
     id: 'goals',
-    width: 50,
     label: 'Gs',
+    styles: {
+      width: 50,
+      background: true,
+    },
   },
   {
     id: 'assists',
     label: 'As',
-    width: 50,
+    styles: {
+      width: 50,
+      background: true,
+    },
   },
   {
     id: 'combined',
     label: 'G+A',
-    width: 50,
+    styles: {
+      width: 50,
+      background: true,
+    },
   },
 ] as const;

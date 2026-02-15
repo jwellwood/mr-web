@@ -17,7 +17,6 @@ interface TabProps {
 export default function CustomTabs({ type, tabs, level }: TabProps) {
   const dispatch: AppDispatch = useDispatch();
   const value = useSelector(getTabIndex);
-  const tabsToShow = tabs.filter(tab => !tab.isHidden);
   const isPrimary = level === 'primary';
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
     dispatch(setTabIndex({ type, newValue }));
@@ -35,14 +34,14 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
           }}
         >
           <StyledTabs value={value[type]} onChange={handleChange}>
-            {tabsToShow.map((tab: ITab, i: number) => (
+            {tabs.map((tab: ITab, i: number) => (
               <StyledTab key={i} label={tab.label} icon={tab.icon} />
             ))}
           </StyledTabs>
         </AppBar>
       </>
 
-      {tabsToShow.map((tab: ITab, i: number) => (
+      {tabs.map((tab: ITab, i: number) => (
         <TabPanel key={i} value={value[type]} index={i}>
           {tab.component}
         </TabPanel>

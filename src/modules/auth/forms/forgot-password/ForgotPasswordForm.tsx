@@ -19,7 +19,7 @@ export default function ForgotPasswordForm({ defaultValues, onSubmit, loading, e
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} minWidth={100}>
       <ControlledTextInput control={control} name="email" label="Email Address" />
     </FormContainer>
   );

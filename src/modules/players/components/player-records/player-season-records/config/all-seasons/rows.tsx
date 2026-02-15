@@ -1,5 +1,3 @@
-import { NameCell } from '../../../../../../../components';
-import { StatSkeleton } from '../../../../../../../components/loaders';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../../../types';
 
 export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?: boolean) => {
@@ -9,15 +7,12 @@ export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?:
 
   return mappedSeasons?.map(season => ({
     season: {
-      value: (
-        <NameCell id={season?.seasonId} loading={loading}>
-          {season?.seasonName}
-        </NameCell>
-      ),
+      value: season?.seasonName,
+      link: season ? `season/${season.seasonId}` : undefined,
     },
-    apps: loading ? <StatSkeleton /> : season?.apps,
-    goals: loading ? <StatSkeleton /> : season.goals,
-    assists: loading ? <StatSkeleton /> : season.assists,
-    combined: loading ? <StatSkeleton /> : season.goals + season.assists,
+    apps: season?.apps,
+    goals: season?.goals,
+    assists: season?.assists,
+    combined: (season?.goals || 0) + (season?.assists || 0),
   }));
 };

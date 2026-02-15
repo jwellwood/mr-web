@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/CustomTable';
+import CustomTable from '../../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../../types/apollo';
+import { columns, rows } from '../../../tables/squad-streak-records';
 import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../types';
-import { columns, rows, styles } from './config';
 
 interface Props {
   data?: T_FETCH_SQUAD_STREAKS_QUERY;
@@ -17,10 +17,11 @@ export default function SquadStreakRecordsView({ data, loading, error }: Props) 
     ) : (
       <CustomTable
         columns={columns}
-        rows={rows(data?.streaks, loading)}
+        rows={rows(data?.streaks)}
         isSortable
         sortByString="played"
-        cellIndexStyles={styles}
+        loading={loading}
+        loadingRowCount={4}
       />
     );
   };

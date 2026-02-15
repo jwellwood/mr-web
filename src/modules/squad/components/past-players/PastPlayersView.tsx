@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
-import CustomTable from '../../../../components/tables/CustomTable';
+import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
+import { columns, rows } from '../../tables/past-players';
 import { FETCH_PAST_PLAYERS_QUERY } from '../../types';
-import { columns, rows, styles } from './config';
 
 interface Props {
   data?: FETCH_PAST_PLAYERS_QUERY;
@@ -17,10 +17,11 @@ export default function PastPlayersView({ error, data, loading }: Props) {
     ) : (
       <CustomTable
         columns={columns}
-        rows={rows(data, loading)}
+        rows={rows(data)}
         isSortable
         sortByString="seasons"
-        cellIndexStyles={styles}
+        loading={loading}
+        loadingRowCount={20}
       />
     );
 

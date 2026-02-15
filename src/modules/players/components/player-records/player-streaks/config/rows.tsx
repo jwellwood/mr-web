@@ -1,8 +1,7 @@
-import { StatSkeleton, CustomSkeleton } from '../../../../../../components/loaders';
 import { getShortDate } from '../../../../../../utils';
 import { T_FETCH_PLAYER_STREAKS } from '../../../../types';
 
-export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks'], loading?: boolean) => {
+export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks']) => {
   const getRowData = (
     streakType: keyof T_FETCH_PLAYER_STREAKS['streaks'],
     currentStreak: keyof T_FETCH_PLAYER_STREAKS['streaks']
@@ -12,10 +11,10 @@ export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks'], loading?: bool
     const start = streaks ? getShortDate(streaks[streakType]?.startDate) : '';
     const end = streaks ? getShortDate(streaks[streakType]?.endDate) : '';
     return {
-      current: loading ? <StatSkeleton /> : current,
-      longest: loading ? <StatSkeleton /> : longest,
-      start: loading ? <CustomSkeleton width="50px" /> : start,
-      end: loading ? <CustomSkeleton width="50px" /> : end,
+      current: current,
+      longest: longest,
+      start: start,
+      end: end,
     };
   };
 

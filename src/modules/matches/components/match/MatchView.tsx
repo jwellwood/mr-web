@@ -1,12 +1,12 @@
 import { lazy } from 'react';
 import { DataError, SectionContainer } from '../../../../components';
-import CustomTable from '../../../../components/tables/CustomTable';
+import { CustomTable } from '../../../../components/tables';
 import { CustomTabs, ITab } from '../../../../components/tabs';
 import { NoDataText } from '../../../../components/typography';
 import { POSITIONS, TAB_TYPES } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
+import { columns, rows } from '../../tables/match-players';
 import { T_FETCH_MATCH } from '../../types';
-import { columns, rows, styles } from './config';
 
 const MatchDetails = lazy(() => import('./MatchDetails'));
 const HeadToHead = lazy(() => import('../../containers/HeadToHead'));
@@ -20,14 +20,16 @@ interface Props {
 export default function MatchView({ data, loading, error }: Props) {
   const opponentId = data?.match?.opponentId;
   const { matchPlayers = [] as T_FETCH_MATCH['match']['matchPlayers'] } = data?.match || {};
-  const mappedPlayers = matchPlayers?.map(player => {
-    return {
-      ...player,
-      name: player.playerId.name,
-      position:
-        POSITIONS[(player.matchPosition || player.playerId.position) as keyof typeof POSITIONS],
-    };
-  });
+  const mappedPlayers = matchPlayers
+    ?.map(player => {
+      return {
+        ...player,
+        name: player.playerId.name,
+        position:
+          POSITIONS[(player.matchPosition || player.playerId.position) as keyof typeof POSITIONS],
+      };
+    })
+    .sort((a, b) => (a.position || '').localeCompare(b.position || ''));
 
   const tabs: ITab[] = [
     {
@@ -38,10 +40,11 @@ export default function MatchView({ data, loading, error }: Props) {
         <SectionContainer>
           <CustomTable
             columns={columns}
-            rows={rows(mappedPlayers, loading)}
+            rows={rows(mappedPlayers)}
             isSortable
             sortByString="position"
-            cellIndexStyles={styles}
+            loading={loading}
+            loadingRowCount={20}
           />
         </SectionContainer>
       ),

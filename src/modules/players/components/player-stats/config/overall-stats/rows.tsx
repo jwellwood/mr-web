@@ -1,9 +1,8 @@
 import { STAT_ICONS, StatIcon } from '../../../../../../components/icons';
-import { StatSkeleton } from '../../../../../../components/loaders';
 import { getAvg, getPercentage } from '../../../../../../utils';
 import { T_FETCH_PLAYER_STATS } from '../../../../types';
 
-export const rows = (stats?: T_FETCH_PLAYER_STATS['player'], loading?: boolean) => {
+export const rows = (stats?: T_FETCH_PLAYER_STATS['player']) => {
   const {
     apps,
     goals,
@@ -35,81 +34,67 @@ export const rows = (stats?: T_FETCH_PLAYER_STATS['player'], loading?: boolean) 
     {
       icon: <StatIcon icon={STAT_ICONS.GOAL} />,
       label: 'Goals',
-      value: loading ? <StatSkeleton /> : goals,
-      average: loading ? <StatSkeleton /> : getAvg(goals || 0, apps || 0) || 0,
+      value: goals,
+      average: getAvg(goals || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.ASSIST} />,
       label: 'Assists',
-      value: loading ? <StatSkeleton /> : assists,
-      average: loading ? <StatSkeleton /> : getAvg(assists || 0, apps || 0) || 0,
+      value: assists,
+      average: getAvg(assists || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.MVP} />,
       label: 'MVP',
-      value: loading ? <StatSkeleton /> : mvp,
-      average: loading ? <StatSkeleton /> : getAvg(mvp || 0, apps || 0) || 0,
+      value: mvp,
+      average: getAvg(mvp || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.PEN_SCORED} />,
       label: 'Pens Scored',
-      value: loading ? <StatSkeleton /> : pensScored,
-      average: loading ? (
-        <StatSkeleton />
-      ) : (
-        {
-          value: getPercentage(pensScored || 0, (pensScored || 0) + (pensMissed || 0)) || 0,
-          isPercentage: true,
-        }
-      ),
+      value: pensScored,
+      average: (getPercentage(pensScored || 0, (pensScored || 0) + (pensMissed || 0)) || 0) + '%',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.PEN_MISSED} />,
       label: 'Pens Missed',
-      value: loading ? <StatSkeleton /> : pensMissed,
-      average: loading ? (
-        <StatSkeleton />
-      ) : (
-        {
-          value: getPercentage(pensMissed || 0, (pensScored || 0) + (pensMissed || 0)) || 0,
-          isPercentage: true,
-        }
-      ),
+      value: pensMissed,
+      average: (getPercentage(pensMissed || 0, (pensScored || 0) + (pensMissed || 0)) || 0) + '%',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.OWN_GOAL} />,
       label: 'Own Goals',
-      value: loading ? <StatSkeleton /> : ownGoals,
-      average: loading ? <StatSkeleton /> : getAvg(ownGoals || 0, apps || 0) || 0,
+      value: ownGoals,
+      average: getAvg(ownGoals || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.CONCEDED} />,
       label: 'Conceded',
-      value: loading ? <StatSkeleton /> : conceded,
-      average: loading ? <StatSkeleton /> : getAvg(conceded || 0, apps || 0) || 0,
+      value: conceded,
+      average: getAvg(conceded || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.PEN_SAVED} />,
       label: 'Penalties Saved',
-      value: loading ? <StatSkeleton /> : pensSaved,
+      value: pensSaved,
       average: '',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.CLEAN_SHEET} />,
       label: 'Clean Sheets',
-      value: loading ? <StatSkeleton /> : cleanSheet,
+      value: cleanSheet,
       average: '',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.YELLOW_CARD} />,
       label: 'Yellow Cards',
-      value: loading ? <StatSkeleton /> : yellowCards,
+      value: yellowCards,
       average: '',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.RED_CARD} />,
       label: 'Red Cards',
-      value: loading ? <StatSkeleton /> : redCard,
+      value: redCard,
       average: '',
     },
   ];

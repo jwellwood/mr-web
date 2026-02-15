@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
-import CustomTable from '../../../../components/tables/CustomTable';
+import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCH_OPPONENTS } from '../../types';
-import { columns, rows, styles } from './config';
+import { columns, rows } from './config';
 import MatchOpponentsFilters from './filters/MatchOpponentsFilters';
 
 interface Props {
@@ -25,7 +25,7 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
         columns={columns}
         isSortable
         sortByString="played"
-        cellIndexStyles={styles}
+        loading={loading}
       />
     );
   };

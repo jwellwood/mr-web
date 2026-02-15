@@ -30,7 +30,6 @@ export default function OpponentModal({ children, name, badge, loading }: Props)
       <div style={{ marginRight: '4px' }} />
       <PresentationModal
         title="Head to Head"
-        fullScreen
         buttonElement={
           loading ? (
             <CustomSkeleton width="100px" />

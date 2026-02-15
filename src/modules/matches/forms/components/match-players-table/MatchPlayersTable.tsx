@@ -1,8 +1,8 @@
 import { SectionContainer } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/CustomTable';
+import CustomTable from '../../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../../types/apollo';
+import { rows, columns } from '../../../tables/match-form';
 import { ITempMatchPlayers } from '../../../types';
-import { rows, columns, styles } from './config';
 
 interface Props {
   currentPlayers: ITempMatchPlayers[];
@@ -15,8 +15,9 @@ export default function MatchPlayersTable({ currentPlayers, error }: Props) {
       <CustomTable
         rows={rows(currentPlayers, error)}
         columns={columns}
-        cellIndexStyles={styles}
         isSortable={false}
+        loading={false}
+        loadingRowCount={0}
       />
     </SectionContainer>
   );

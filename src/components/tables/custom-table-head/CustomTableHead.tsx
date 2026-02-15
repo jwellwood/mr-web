@@ -1,15 +1,12 @@
-import { TableHead, TableRow, TableCell, TableSortLabel } from '@mui/material';
+import { TableHead, TableRow } from '@mui/material';
 import { MouseEvent, ReactNode } from 'react';
 import { theme } from '../../../theme';
-import { CustomTypography } from '../../typography';
+import type { ColumnConfig } from '../types';
+import CustomHeadLabel from './CustomHeadLabel';
 
 type Props<T extends Record<string, string | number | object | ReactNode>> = {
   onRequestSort: (event: MouseEvent, property: keyof T) => void;
-  columns: {
-    id: keyof T;
-    label?: ReactNode;
-    width?: number;
-  }[];
+  columns: readonly ColumnConfig<T>[];
   sortBy?: string;
   isSortable: boolean;
 };
@@ -21,54 +18,25 @@ export default function CustomTableHead<
     onRequestSort(event, property);
   };
 
+  const hasHeaderLabel = columns.some(
+    column => typeof column.label === 'string' && column.label !== ''
+  );
+
   return (
     <TableHead sx={{ background: theme.palette.dark.main }}>
       <TableRow>
-        {columns.map(headCell => {
-          const renderSort = sortBy === headCell.id && sortBy !== 'position';
+        {columns.map(column => {
+          const isActive = sortBy === column.id && sortBy !== 'position';
 
-          const hasHeaderLabel = columns.some(
-            column => typeof column.label === 'string' && column.label !== ''
-          );
-          const stringCell = () =>
-            typeof headCell.label === 'string' && headCell.label !== '' ? (
-              <CustomTypography bold color={renderSort ? 'secondary' : 'label'} size="xs">
-                {headCell.label}
-              </CustomTypography>
-            ) : (
-              headCell.label
-            );
           return (
-            <TableCell
-              key={headCell.id as string}
-              align="center"
-              sx={{
-                padding: '0px 4px',
-                width: headCell.width,
-                minWidth: headCell.width,
-                lineHeight: '0',
-                background: renderSort ? theme.palette.primary.main : theme.palette.secondary.dark,
-                borderBottom: hasHeaderLabel ? '1px solid white' : 'none',
-              }}
-              sortDirection={renderSort ? 'desc' : false}
-            >
-              {isSortable ? (
-                <TableSortLabel
-                  active={renderSort}
-                  direction="desc"
-                  onClick={createSortHandler(headCell.id)}
-                  sx={{
-                    '& .MuiTableSortLabel-icon': {
-                      display: 'none !important',
-                    },
-                  }}
-                >
-                  {stringCell()}
-                </TableSortLabel>
-              ) : (
-                stringCell()
-              )}
-            </TableCell>
+            <CustomHeadLabel
+              key={column.id as string}
+              column={column}
+              isActive={isActive}
+              hasHeaderLabel={hasHeaderLabel}
+              isSortable={isSortable}
+              createSortHandler={createSortHandler}
+            />
           );
         })}
       </TableRow>

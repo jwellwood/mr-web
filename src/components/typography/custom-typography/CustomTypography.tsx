@@ -7,7 +7,7 @@ import { ColorToken, SizeToken } from './types';
 
 interface Props {
   children: React.ReactNode;
-  color: ColorToken;
+  color?: ColorToken;
   size?: SizeToken;
   bold?: boolean;
   link?: string;
@@ -30,7 +30,7 @@ export default function CustomTypography({
   if (link) componentProps.to = link;
 
   const sx: SxProps<Theme> = {
-    color: getColor(String(color)),
+    color: color ? getColor(String(color)) : 'inherit',
     fontSize: getSize(String(size)),
     fontFamily,
     fontWeight: bold ? 'bold' : 'normal',

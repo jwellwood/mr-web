@@ -1,8 +1,4 @@
-import { Box } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { CustomTypography } from '../../../../../components';
 import ProgressBar from '../../../../../components/charts/progress-bar/ProgressBar';
-import CustomSkeleton from '../../../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { T_FETCH_SEASONS_POSITION } from '../../../types';
 import FinalPosition from '../FinalPosition';
 import SeasonAwards from '../SeasonAwards';
@@ -16,35 +12,9 @@ export const rows = (data?: T_FETCH_SEASONS_POSITION['position'], loading?: bool
       item as T_FETCH_SEASONS_POSITION['position'] extends Array<infer U> ? U : never;
 
     return {
-      name: loading ? (
-        <CustomSkeleton width="50px" />
-      ) : (
-        <Box
-          component={Link}
-          to={`season/${seasonId}`}
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textDecoration: 'none',
-          }}
-        >
-          <CustomTypography size="xs" color="data" bold>
-            {name}
-          </CustomTypography>
-        </Box>
-      ),
-      division: loading ? (
-        <CustomSkeleton width="100px" />
-      ) : (
-        <CustomTypography size="sm" color="data" bold>
-          {division || '-'}
-        </CustomTypography>
-      ),
-
-      graph: loading ? (
-        <CustomSkeleton width="150px" />
-      ) : position ? (
+      name: { value: name, link: `season/${seasonId}` },
+      division: division || '-',
+      graph: position ? (
         <ProgressBar
           max={totalFinalPositions || 10}
           value={position}

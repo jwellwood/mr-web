@@ -1,26 +1,45 @@
-export const columns = [
+import { ColumnConfig } from '../../../../../components';
+
+export const columns: readonly ColumnConfig[] = [
   {
     id: 'name',
+    type: 'link',
     label: '',
-    width: 50,
+    styles: {
+      width: 50,
+    },
   },
   {
     id: 'division',
     label: 'Division',
+    styles: {
+      align: 'left',
+      color: 'label',
+      border: true,
+    },
   },
   {
     id: 'graph',
     label: 'Position',
-    width: 90,
+    styles: {
+      width: 90,
+      background: true,
+    },
   },
   {
     id: 'pos',
     label: '',
-    width: 30,
+    styles: {
+      width: 30,
+      background: true,
+    },
   },
   {
     id: 'more',
-    label: 'More',
-    width: 40,
+    label: '',
+    styles: {
+      width: 40,
+      background: true,
+    },
   },
 ] as const;

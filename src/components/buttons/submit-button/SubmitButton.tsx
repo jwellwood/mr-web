@@ -8,16 +8,9 @@ interface Props {
   disabled?: boolean;
   onClick?: () => void;
   loading?: boolean;
-  fullWidth?: boolean;
 }
 
-export default function SubmitButton({
-  children,
-  disabled,
-  loading,
-  onClick = () => {},
-  fullWidth,
-}: Props) {
+export default function SubmitButton({ children, disabled, loading, onClick = () => {} }: Props) {
   const loadingComp = () => {
     return <CustomSkeleton variant="rectangular" height={'24px'} />;
   };
@@ -26,8 +19,8 @@ export default function SubmitButton({
     loadingComp()
   ) : (
     <Button
+      fullWidth
       type="submit"
-      fullWidth={fullWidth}
       variant="contained"
       color="primary"
       disabled={disabled}

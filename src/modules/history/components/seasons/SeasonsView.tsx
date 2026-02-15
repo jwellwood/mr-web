@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
-import CustomTable from '../../../../components/tables/CustomTable';
+import { CustomTable } from '../../../../components/tables';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_SEASONS_POSITION } from '../../types';
-import { columns, rows, styles } from './config';
+import { columns, rows } from './config';
 
 interface Props {
   data?: T_FETCH_SEASONS_POSITION;
@@ -19,7 +19,7 @@ export default function SeasonsView({ data, loading, error }: Props) {
         columns={columns}
         rows={rows(data?.position, loading)}
         isSortable={false}
-        cellIndexStyles={styles}
+        loading={loading}
       />
     );
   };

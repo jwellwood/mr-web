@@ -10,7 +10,6 @@ import { Spinner } from '../../loaders';
 interface ISubmitButton {
   text?: string;
   disabled?: boolean;
-  fullWidth?: boolean;
 }
 
 interface Props {
@@ -20,6 +19,7 @@ interface Props {
   resetBtn?: ReactElement;
   loading: boolean;
   error?: TApolloError;
+  minWidth?: number;
 }
 
 export default function FormContainer({
@@ -29,17 +29,13 @@ export default function FormContainer({
   submitBtn = {
     text: 'Submit',
     disabled: false,
-    fullWidth: true,
   },
   loading,
   error,
+  minWidth,
 }: Props) {
   const submitButton = () => (
-    <SubmitButton
-      disabled={submitBtn?.disabled}
-      loading={loading}
-      fullWidth={submitBtn?.fullWidth || true}
-    >
+    <SubmitButton disabled={submitBtn?.disabled} loading={loading}>
       {submitBtn?.text}
     </SubmitButton>
   );
@@ -57,7 +53,7 @@ export default function FormContainer({
           {loading ? (
             <Spinner />
           ) : (
-            <Stack direction="column" spacing={1} width={'100%'} minWidth={300}>
+            <Stack direction="column" spacing={1} width={'100%'} minWidth={minWidth || 300}>
               {children}
             </Stack>
           )}

@@ -1,62 +1,103 @@
-export const columns = [
+import { ColumnConfig } from '../../../../../components';
+
+export const columns: readonly ColumnConfig[] = [
   {
     id: 'name',
     label: '',
-    width: 150,
+    styles: {
+      sticky: true,
+      width: 150,
+      align: 'left',
+      border: true,
+    },
   },
   {
     id: 'matches',
     label: 'Pl',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'wins',
     label: 'W',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'draws',
     label: 'D',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'losses',
     label: 'L',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'goalsFor',
     label: 'GF',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'goalsAgainst',
     label: 'GA',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'difference',
+    type: 'difference',
     label: '+/-',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'goals',
     label: 'Gs',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'assists',
     label: 'As',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'combined',
     label: 'G+A',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
   {
     id: 'conceded',
     label: 'Cn',
-    width: 35,
+    styles: {
+      width: 35,
+      background: true,
+    },
   },
 ] as const;

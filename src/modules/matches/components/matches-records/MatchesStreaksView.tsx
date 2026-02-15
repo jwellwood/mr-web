@@ -1,9 +1,9 @@
 import { DataError } from '../../../../components';
 import NoDataText from '../../../../components/errors/error-text/ErrorText';
-import CustomTable from '../../../../components/tables/CustomTable';
+import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
+import { columns, rows } from '../../tables/match-streaks';
 import { T_FETCH_MATCHES_STREAK } from '../../types';
-import { columns, rows, styles } from './config';
 
 interface Props {
   data?: T_FETCH_MATCHES_STREAK;
@@ -21,9 +21,10 @@ export default function MatchesStreaksView({ data, loading, error }: Props) {
   ) : (
     <CustomTable
       columns={columns}
-      rows={rows(data?.streaks, loading)}
-      cellIndexStyles={styles}
+      rows={rows(data?.streaks)}
       isSortable={false}
+      loading={loading}
+      loadingRowCount={4}
     />
   );
 }

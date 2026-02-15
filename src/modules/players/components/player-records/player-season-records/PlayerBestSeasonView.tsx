@@ -1,5 +1,5 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/CustomTable';
+import CustomTable from '../../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../../types/apollo';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
 import { columns, rows } from './config/top-seasons';
@@ -15,7 +15,14 @@ export default function PlayerBestSeasonView({ data, loading, error }: Props) {
     if (data && data.seasons.length === 0) {
       return <NoDataText>No season records</NoDataText>;
     }
-    return <CustomTable columns={columns} rows={rows(data?.seasons, loading)} isSortable={false} />;
+    return (
+      <CustomTable
+        columns={columns}
+        rows={rows(data?.seasons, loading)}
+        isSortable={false}
+        loading={loading}
+      />
+    );
   };
 
   return (

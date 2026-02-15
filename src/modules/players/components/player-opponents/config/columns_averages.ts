@@ -1,112 +1,70 @@
-export const columns_averages = [
-  {
-    id: 'name',
-    label: '',
-    width: 150,
-  },
-  {
-    id: 'matches',
-    label: 'Pl',
-    width: 35,
-  },
-  {
-    id: 'wins',
-    label: 'W',
-    width: 35,
-  },
-  {
+import { ColumnConfig } from '../../../../../components';
+import { columns as baseColumns } from './columns';
+
+const avgCols: Record<string, ColumnConfig> = {
+  winsAvg: {
     id: 'winsAvg',
     label: '%',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'draws',
-    label: 'D',
-    width: 35,
-  },
-  {
+  drawsAvg: {
     id: 'drawsAvg',
     label: '%',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'losses',
-    label: 'L',
-    width: 35,
-  },
-  {
+  lossesAvg: {
     id: 'lossesAvg',
     label: '%',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'goalsFor',
-    label: 'GF',
-    width: 35,
-  },
-  {
+  goalsForAvg: {
     id: 'goalsForAvg',
     label: 'Av',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'goalsAgainst',
-    label: 'GA',
-    width: 35,
-  },
-  {
+  goalsAgainstAvg: {
     id: 'goalsAgainstAvg',
     label: 'Av',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'difference',
-    label: '+/-',
-    width: 35,
-  },
-  {
+  differenceAvg: {
     id: 'differenceAvg',
+    type: 'difference',
     label: 'Av',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'goals',
-    label: 'Gs',
-    width: 35,
-  },
-  {
+  goalsAvg: {
     id: 'goalsAvg',
     label: 'Av',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'assists',
-    label: 'As',
-    width: 35,
-  },
-  {
+  assistsAvg: {
     id: 'assistsAvg',
     label: 'Av',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'combined',
-    label: 'G+A',
-    width: 35,
-  },
-  {
+  combinedAvg: {
     id: 'combinedAvg',
     label: 'Av',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-  {
-    id: 'conceded',
-    label: 'Cn',
-    width: 35,
-  },
-  {
+  concededAvg: {
     id: 'concededAvg',
     label: 'Av',
-    width: 35,
+    styles: { width: 35, color: 'label' },
   },
-] as const;
+};
+
+export const columns_averages: readonly ColumnConfig[] = baseColumns.flatMap(col => {
+  if (col.id === 'wins') return [col, avgCols.winsAvg];
+  if (col.id === 'draws') return [col, avgCols.drawsAvg];
+  if (col.id === 'losses') return [col, avgCols.lossesAvg];
+  if (col.id === 'goalsFor') return [col, avgCols.goalsForAvg];
+  if (col.id === 'goalsAgainst') return [col, avgCols.goalsAgainstAvg];
+  if (col.id === 'difference') return [col, avgCols.differenceAvg];
+  if (col.id === 'goals') return [col, avgCols.goalsAvg];
+  if (col.id === 'assists') return [col, avgCols.assistsAvg];
+  if (col.id === 'combined') return [col, avgCols.combinedAvg];
+  if (col.id === 'conceded') return [col, avgCols.concededAvg];
+  return [col];
+}) as readonly ColumnConfig[];

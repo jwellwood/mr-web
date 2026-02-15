@@ -1,7 +1,6 @@
 import { CustomButton, CustomTypography } from '../../../../../../../components';
-import { StatSkeleton, CustomSkeleton } from '../../../../../../../components/loaders';
 import { PresentationModal } from '../../../../../../../components/modals';
-import CustomTable from '../../../../../../../components/tables/CustomTable';
+import CustomTable from '../../../../../../../components/tables/custom-table/CustomTable';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../../../types';
 import * as ALL_SEASONS_CONFIG from '../all-seasons';
 
@@ -23,7 +22,7 @@ export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?:
         <CustomTable
           columns={ALL_SEASONS_CONFIG.columns}
           rows={ALL_SEASONS_CONFIG.rows(data, loading)}
-          cellIndexStyles={ALL_SEASONS_CONFIG.styles}
+          loading={loading}
           isSortable
         />
       </PresentationModal>
@@ -51,8 +50,8 @@ export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?:
   return rowData.map(item => {
     return {
       label: item.label,
-      value: loading ? <StatSkeleton /> : item.value,
-      more: loading ? <CustomSkeleton width="50px" /> : { value: item.seasons ? item.seasons : '' },
+      value: item.value,
+      more: item.seasons ? item.seasons : '',
     };
   });
 };

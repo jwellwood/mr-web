@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
-import CustomTable from '../../../../components/tables/CustomTable';
+import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
+import { columns, rows } from '../../tables/squad-overview';
 import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../types';
-import { columns, rows, styles } from './config';
 
 interface Props {
   error?: TApolloError;
@@ -20,7 +20,8 @@ export default function SquadView({ error, data, loading }: Props) {
         rows={rows(data?.players, loading) ?? []}
         isSortable
         sortByString="position"
-        cellIndexStyles={styles}
+        loading={loading}
+        loadingRowCount={20}
       />
     );
   };

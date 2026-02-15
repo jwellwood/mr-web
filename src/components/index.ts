@@ -1,4 +1,3 @@
-export * from './accordion';
 export * from './avatars';
 export * from './buttons';
 export * from './typography';

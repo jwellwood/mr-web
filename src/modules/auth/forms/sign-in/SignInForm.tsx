@@ -19,7 +19,7 @@ export default function SignInForm({ defaultValues, onSubmit, loading, error }: 
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} minWidth={100}>
       <ControlledTextInput control={control} name="email" label="Email Address" />
       <ControlledTextInput control={control} name="password" label="Password" isPassword={true} />
     </FormContainer>

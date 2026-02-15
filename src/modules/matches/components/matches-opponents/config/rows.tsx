@@ -1,6 +1,5 @@
 import { lazy } from 'react';
 import { OpponentModal } from '../../../../../components';
-import { StatSkeleton } from '../../../../../components/loaders';
 import { getAvg, getPercentage } from '../../../../../utils';
 import { T_FETCH_MATCH_OPPONENTS } from '../../../types';
 
@@ -19,26 +18,20 @@ export const rows = (loading: boolean, data?: T_FETCH_MATCH_OPPONENTS['stats']) 
   };
 
   return mappedData.map(item => ({
-    name: {
-      value: (
-        <OpponentModal name={item.opponentName} badge={item.opponentBadge} loading={loading}>
-          <HeadToHead opponentId={item._id} />
-        </OpponentModal>
-      ),
-    },
-    played: loading ? <StatSkeleton /> : item?.total,
-    wins: loading ? <StatSkeleton /> : item?.wins,
-    draws: loading ? <StatSkeleton /> : item?.draws,
-    defeats: loading ? <StatSkeleton /> : item?.losses,
-    goalsFor: loading ? <StatSkeleton /> : item?.totalGoalsScored,
-    goalsAgainst: loading ? <StatSkeleton /> : item?.totalGoalsConceded,
-    difference: loading ? <StatSkeleton /> : item?.totalGoalDifference,
-    points: loading ? <StatSkeleton /> : getPoints(item?.wins, item?.draws),
-    winPercentage: loading ? <StatSkeleton /> : getPercentage(item?.wins, item?.total, 1),
-    avgScore: loading ? (
-      <StatSkeleton />
-    ) : (
-      getAvgScore(item?.total, item?.totalGoalsScored, item?.totalGoalsConceded)
+    name: (
+      <OpponentModal name={item.opponentName} badge={item.opponentBadge} loading={loading}>
+        <HeadToHead opponentId={item._id} />
+      </OpponentModal>
     ),
+    played: item?.total,
+    wins: item?.wins,
+    draws: item?.draws,
+    defeats: item?.losses,
+    goalsFor: item?.totalGoalsScored,
+    goalsAgainst: item?.totalGoalsConceded,
+    difference: item?.totalGoalDifference,
+    points: getPoints(item?.wins, item?.draws),
+    winPercentage: getPercentage(item?.wins, item?.total, 1),
+    avgScore: getAvgScore(item?.total, item?.totalGoalsScored, item?.totalGoalsConceded),
   }));
 };

@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
 import { DataError, SectionContainer, NoDataText } from '../../../../components';
-import CustomTable from '../../../../components/tables/CustomTable';
+import { CustomTable, CellValue } from '../../../../components/tables';
 import { TApolloError } from '../../../../types/apollo';
 import { TFilters } from '../../context/SquadStatsFiltersContext';
 import StatFilters from '../../forms/StatsFilters';
+import { columns, columns_averages, rows } from '../../tables/squad-stats';
 import { FETCH_SQUAD_STATS_QUERY } from '../../types';
-import { columns, columns_averages, rows, rows_averages, styles, styles_averages } from './config';
 import PlayersByNumbers from './PlayersByNumbers';
 
 interface Props {
@@ -16,28 +16,20 @@ interface Props {
 }
 
 export default function StatsView({ error, loading, data, filters }: Props) {
-  const table_props = () => {
-    if (filters.showAverages) {
-      return {
-        columns: columns_averages,
-        rows: rows_averages(data, loading) as Record<string, object | ReactNode>[],
-        cellIndexStyles: styles_averages,
-      };
-    }
-    return {
-      columns,
-      rows: rows(data, loading) as Record<string, object | ReactNode>[],
-      cellIndexStyles: styles,
-    };
-  };
-
   const renderContent = () => {
     return data && data?.stats.length === 0 ? (
       <NoDataText>No players yet</NoDataText>
     ) : (
       <>
         <PlayersByNumbers players={data?.stats} loading={loading} />
-        <CustomTable {...table_props()} isSortable sortByString="apps" />
+        <CustomTable
+          rows={rows(data, filters.showAverages) as Record<string, CellValue | ReactNode>[]}
+          columns={filters.showAverages ? columns_averages : columns}
+          isSortable
+          sortByString="apps"
+          loading={loading}
+          loadingRowCount={20}
+        />
       </>
     );
   };

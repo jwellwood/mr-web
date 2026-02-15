@@ -5,7 +5,7 @@ import {
   MatchStatsTable,
   MatchAverages,
 } from '../../../../components';
-import CustomTable from '../../../../components/tables/CustomTable';
+import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
 import StatsFilters from '../../forms/stats-filter/StatsFilters';
 import { mapPlayerAverages } from '../../helpers';
@@ -42,17 +42,17 @@ export default function PlayerStatsView({ data, loading, error }: Props) {
           <SectionContainer title="Stats">
             <CustomTable
               columns={OVERALL_STATS_CONFIG.columns}
-              rows={OVERALL_STATS_CONFIG.rows(data?.player, loading)}
+              rows={OVERALL_STATS_CONFIG.rows(data?.player)}
               isSortable={false}
-              cellIndexStyles={OVERALL_STATS_CONFIG.styles}
+              loading={loading}
             />
           </SectionContainer>
           <SectionContainer title="Games with stats">
             <CustomTable
               columns={GAMES_WITH_STAT_CONFIG.columns}
-              rows={GAMES_WITH_STAT_CONFIG.rows(data?.player, loading)}
+              rows={GAMES_WITH_STAT_CONFIG.rows(data?.player)}
               isSortable={false}
-              cellIndexStyles={GAMES_WITH_STAT_CONFIG.styles}
+              loading={loading}
             />
           </SectionContainer>
         </>

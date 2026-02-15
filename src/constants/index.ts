@@ -5,7 +5,6 @@ export * from './links';
 export * from './tabs';
 export * from './auth';
 export * from './position';
-export * from './styles';
 export * from './rounds';
 
 export const ROOT_URL: string =

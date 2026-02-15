@@ -1,16 +1,29 @@
-export const columns = [
+import { ColumnConfig } from '../../../../../../components';
+
+export const columns: readonly ColumnConfig[] = [
   {
     id: 'label',
-    label: <></>,
+    label: '',
+    styles: {
+      align: 'left',
+      border: true,
+      color: 'label',
+    },
   },
   {
     id: 'value',
-    label: '',
-    width: 30,
+    label: <></>,
+    styles: {
+      width: 50,
+      background: true,
+    },
   },
   {
     id: 'more',
     label: '',
-    width: 50,
+    styles: {
+      width: 60,
+      background: true,
+    },
   },
 ] as const;

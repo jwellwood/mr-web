@@ -1,5 +1,5 @@
 import countryList from 'react-select-country-list';
-import { CustomAccordion } from '../../../../components';
+import { CustomAccordion } from '../../../../components/accordion';
 import { FlagIcon } from '../../../../components/icons';
 import { TextList } from '../../../../components/lists';
 import { PresentationModal } from '../../../../components/modals';

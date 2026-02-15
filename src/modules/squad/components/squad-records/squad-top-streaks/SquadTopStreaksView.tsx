@@ -1,8 +1,8 @@
 import { DataError, NoDataText } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/CustomTable';
+import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
+import { columns, rows } from '../../../tables/squad-top-streaks';
 import { T_FETCH_TOP_PLAYER_STREAKS_QUERY } from '../../../types';
-import { columns, rows, styles } from './config';
 
 interface Props {
   data?: T_FETCH_TOP_PLAYER_STREAKS_QUERY;
@@ -19,9 +19,10 @@ export default function SquadTopStreaksView({ data, loading, error, streakType }
       ) : (
         <CustomTable
           columns={columns}
-          rows={rows(streakType, data?.streaks, loading)}
+          rows={rows(streakType, data?.streaks)}
           isSortable={false}
-          cellIndexStyles={styles}
+          loading={loading}
+          loadingRowCount={10}
         />
       )}
     </>
