@@ -1,8 +1,8 @@
 import { DataError, SectionContainer, NoDataText } from '../../../../../components';
 import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
-import { columns, rows } from '../../../tables/squad-overall-records';
 import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
+import { columns, rows } from '../../tables/squad-overall-records';
 
 interface Props {
   data?: FETCH_SQUAD_RECORDS_QUERY;

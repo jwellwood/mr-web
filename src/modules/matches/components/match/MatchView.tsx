@@ -5,8 +5,8 @@ import { CustomTabs, ITab } from '../../../../components/tabs';
 import { NoDataText } from '../../../../components/typography';
 import { POSITIONS, TAB_TYPES } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
-import { columns, rows } from '../../tables/match-players';
 import { T_FETCH_MATCH } from '../../types';
+import { columns, rows } from '../tables/match-players';
 
 const MatchDetails = lazy(() => import('./MatchDetails'));
 const HeadToHead = lazy(() => import('../../containers/HeadToHead'));

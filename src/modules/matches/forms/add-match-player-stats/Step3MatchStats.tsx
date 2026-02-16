@@ -4,7 +4,7 @@ import { getTempMatch, getTempPlayers } from '../../../../store';
 import { TApolloError } from '../../../../types/apollo';
 import { validateStats } from '../../helpers/statsValidation';
 import AddMatchValidation from '../components/AddMatchValidation';
-import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';
+import MatchPlayersTable from '../components/MatchPlayersTable';
 
 interface Props {
   onNextClick: () => void;

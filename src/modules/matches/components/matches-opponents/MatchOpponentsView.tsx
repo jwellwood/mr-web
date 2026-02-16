@@ -3,7 +3,7 @@ import { DataError, NoDataText, SectionContainer } from '../../../../components'
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCH_OPPONENTS } from '../../types';
-import { columns, rows } from './config';
+import { columns, rows } from '../tables/match-opponents';
 import MatchOpponentsFilters from './filters/MatchOpponentsFilters';
 
 interface Props {

@@ -1,8 +1,8 @@
 import { DataError, NoDataText } from '../../../../../components';
 import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
-import { columns, rows } from '../../../tables/squad-top-streaks';
 import { T_FETCH_TOP_PLAYER_STREAKS_QUERY } from '../../../types';
+import { columns, rows } from '../../tables/squad-top-streaks';
 
 interface Props {
   data?: T_FETCH_TOP_PLAYER_STREAKS_QUERY;

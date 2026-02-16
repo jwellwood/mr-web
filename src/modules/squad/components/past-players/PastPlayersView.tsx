@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
-import { columns, rows } from '../../tables/past-players';
 import { FETCH_PAST_PLAYERS_QUERY } from '../../types';
+import { columns, rows } from '../tables/past-players';
 
 interface Props {
   data?: FETCH_PAST_PLAYERS_QUERY;

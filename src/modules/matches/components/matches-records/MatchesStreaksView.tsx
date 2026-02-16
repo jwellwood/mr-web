@@ -2,8 +2,8 @@ import { DataError } from '../../../../components';
 import NoDataText from '../../../../components/errors/error-text/ErrorText';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
-import { columns, rows } from '../../tables/match-streaks';
 import { T_FETCH_MATCHES_STREAK } from '../../types';
+import { columns, rows } from '../tables/match-streaks';
 
 interface Props {
   data?: T_FETCH_MATCHES_STREAK;

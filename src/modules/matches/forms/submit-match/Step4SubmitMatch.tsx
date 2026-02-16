@@ -4,7 +4,7 @@ import { FormContainer, SectionContainer } from '../../../../components';
 import { TextList, type IListItem } from '../../../../components/lists';
 import { getTempMatch, getTempPlayers } from '../../../../store';
 import { TApolloError } from '../../../../types/apollo';
-import MatchPlayersTable from '../components/match-players-table/MatchPlayersTable';
+import MatchPlayersTable from '../components/MatchPlayersTable';
 
 interface Props {
   onSubmit: () => void;

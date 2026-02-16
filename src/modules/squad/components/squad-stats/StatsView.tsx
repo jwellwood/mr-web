@@ -4,8 +4,8 @@ import { CustomTable, CellValue } from '../../../../components/tables';
 import { TApolloError } from '../../../../types/apollo';
 import { TFilters } from '../../context/SquadStatsFiltersContext';
 import StatFilters from '../../forms/StatsFilters';
-import { columns, columns_averages, rows } from '../../tables/squad-stats';
 import { FETCH_SQUAD_STATS_QUERY } from '../../types';
+import { columns, columns_averages, rows } from '../tables/squad-stats';
 import PlayersByNumbers from './PlayersByNumbers';
 
 interface Props {

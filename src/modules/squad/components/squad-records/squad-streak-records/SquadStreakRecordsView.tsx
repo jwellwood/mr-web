@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../../types/apollo';
-import { columns, rows } from '../../../tables/squad-streak-records';
 import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../types';
+import { columns, rows } from '../../tables/squad-streak-records';
 
 interface Props {
   data?: T_FETCH_SQUAD_STREAKS_QUERY;

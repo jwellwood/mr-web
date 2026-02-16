@@ -1,8 +1,8 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
-import { columns, rows } from '../../tables/squad-overview';
 import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../types';
+import { columns, rows } from '../tables/squad-overview';
 
 interface Props {
   error?: TApolloError;

@@ -1,8 +1,8 @@
 import { DataError, SectionContainer, NoDataText } from '../../../../../components';
 import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
-import { columns, rows } from '../../../tables/squad-single-season-records';
 import { type FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../types';
+import { columns, rows } from '../../tables/squad-single-season-records';
 
 interface Props {
   loading: boolean;
