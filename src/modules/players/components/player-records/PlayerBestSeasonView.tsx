@@ -1,8 +1,8 @@
-import { DataError, NoDataText, SectionContainer } from '../../../../../components';
-import CustomTable from '../../../../../components/tables/custom-table/CustomTable';
-import { TApolloError } from '../../../../../types/apollo';
-import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
-import { columns, rows } from './config/top-seasons';
+import { DataError, NoDataText, SectionContainer } from '../../../../components';
+import CustomTable from '../../../../components/tables/custom-table/CustomTable';
+import { TApolloError } from '../../../../types/apollo';
+import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../types';
+import { columns, rows } from '../tables/player-best-seasons';
 
 interface Props {
   data?: T_FETCH_PLAYER_SEASONS_SUMMARY;
@@ -21,6 +21,7 @@ export default function PlayerBestSeasonView({ data, loading, error }: Props) {
         rows={rows(data?.seasons, loading)}
         isSortable={false}
         loading={loading}
+        loadingRowCount={3}
       />
     );
   };

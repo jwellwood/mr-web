@@ -1,5 +1,5 @@
-import { getPercentage } from '../../../../../../utils';
-import { T_FETCH_PLAYER_STATS } from '../../../../types';
+import { getPercentage } from '../../../../../utils';
+import { T_FETCH_PLAYER_STATS } from '../../../types';
 
 export const rows = (data?: T_FETCH_PLAYER_STATS['player']) => {
   const { apps, gamesWithGoal, gamesWithAssist, gamesWithGoalAndAssist, gamesWithGoalOrAssist } =

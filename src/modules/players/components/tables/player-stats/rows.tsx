@@ -1,6 +1,6 @@
-import { STAT_ICONS, StatIcon } from '../../../../../../components/icons';
-import { getAvg, getPercentage } from '../../../../../../utils';
-import { T_FETCH_PLAYER_STATS } from '../../../../types';
+import { STAT_ICONS, StatIcon } from '../../../../../components/icons';
+import { getAvg, getPercentage } from '../../../../../utils';
+import { T_FETCH_PLAYER_STATS } from '../../../types';
 
 export const rows = (stats?: T_FETCH_PLAYER_STATS['player']) => {
   const {

@@ -1,5 +1,5 @@
-import { getShortDate } from '../../../../../../utils';
-import { T_FETCH_PLAYER_STREAKS } from '../../../../types';
+import { getShortDate } from '../../../../../utils';
+import { T_FETCH_PLAYER_STREAKS } from '../../../types';
 
 export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks']) => {
   const getRowData = (

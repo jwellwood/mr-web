@@ -1,4 +1,4 @@
-import { ColumnConfig } from '../../../../../../../components';
+import { ColumnConfig } from '../../../../../components';
 
 export const columns: readonly ColumnConfig[] = [
   {

@@ -7,5 +7,13 @@ interface Props {
   loading: boolean;
 }
 export default function MatchStatsTable({ stats, loading }: Props) {
-  return <CustomTable columns={columns} rows={rows(stats)} isSortable={false} loading={loading} />;
+  return (
+    <CustomTable
+      columns={columns}
+      rows={rows(stats)}
+      isSortable={false}
+      loading={loading}
+      loadingRowCount={1}
+    />
+  );
 }

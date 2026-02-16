@@ -1,4 +1,4 @@
-import { ColumnConfig } from '../../../../../components';
+import { ColumnConfig } from '../../../../../components/tables';
 import { columns as baseColumns } from './columns';
 
 const avgCols: Record<string, ColumnConfig> = {

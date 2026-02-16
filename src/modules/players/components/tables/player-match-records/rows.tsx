@@ -1,7 +1,7 @@
-import PlayerMatchesWithMostAssists from '../../../../containers/PlayerMatchesWithMostAssists';
-import PlayerMatchesWithMostCombined from '../../../../containers/PlayerMatchesWithMostCombined';
-import PlayerMatchesWithMostGoals from '../../../../containers/PlayerMatchesWithMostGoals';
-import { T_FETCH_PLAYER_MATCH_RECORDS } from '../../../../types';
+import PlayerMatchesWithMostAssists from '../../../containers/PlayerMatchesWithMostAssists';
+import PlayerMatchesWithMostCombined from '../../../containers/PlayerMatchesWithMostCombined';
+import PlayerMatchesWithMostGoals from '../../../containers/PlayerMatchesWithMostGoals';
+import { T_FETCH_PLAYER_MATCH_RECORDS } from '../../../types';
 
 export const rows = (stats?: T_FETCH_PLAYER_MATCH_RECORDS['stats']) => {
   const { maxGoals, maxAssists, maxCombined } = stats || {

@@ -13,7 +13,7 @@ type Props<T extends Record<string, CellValue>> = {
   isSortable: boolean;
   sortByString?: string;
   loading?: boolean;
-  loadingRowCount?: number;
+  loadingRowCount: number;
 };
 
 export default function CustomTable<T extends Record<string, CellValue>>({

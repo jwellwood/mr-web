@@ -1,21 +1,19 @@
-import { ColumnConfig } from '../../../../../../components';
+import { ColumnConfig } from '../../../../../components';
 
 export const columns: readonly ColumnConfig[] = [
   {
-    id: 'icon',
-    label: <></>,
-  },
-  {
     id: 'label',
-    label: <></>,
+    label: '',
+    isStatic: true,
     styles: {
       align: 'left',
+      color: 'label',
       border: true,
     },
   },
   {
     id: 'value',
-    label: <></>,
+    label: '',
     styles: {
       width: 50,
       background: true,
@@ -23,11 +21,12 @@ export const columns: readonly ColumnConfig[] = [
   },
   {
     id: 'average',
+    type: 'percentage',
     label: <></>,
     styles: {
       width: 50,
-      background: true,
       color: 'label',
+      background: true,
     },
   },
 ] as const;

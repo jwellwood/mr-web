@@ -20,6 +20,7 @@ export default function SeasonsView({ data, loading, error }: Props) {
         rows={rows(data?.position, loading)}
         isSortable={false}
         loading={loading}
+        loadingRowCount={10}
       />
     );
   };

@@ -7,7 +7,7 @@ export const rows = (currentPlayers?: T_FETCH_MATCH['match']['matchPlayers']) =>
   return players?.map(player => {
     return {
       isStarter: !player.isStarter && <StatIcon icon="subIn" />,
-      position: player.matchPosition,
+      position: player.matchPosition || player.playerId.position,
       name: { value: player.playerId.name, link: `player/${player.playerId._id}` },
       goals: player.goals || null,
       assists: player.assists || null,

@@ -26,7 +26,13 @@ export default function LeagueTable({ name, data, loading }: Props) {
   });
   return (
     <SectionContainer title={name}>
-      <CustomTable rows={rows} columns={league_table} isSortable={false} loading={loading} />
+      <CustomTable
+        rows={rows}
+        columns={league_table}
+        isSortable={false}
+        loading={loading}
+        loadingRowCount={20}
+      />
     </SectionContainer>
   );
 }

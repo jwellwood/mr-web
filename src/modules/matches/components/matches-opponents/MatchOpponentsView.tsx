@@ -26,6 +26,7 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
         isSortable
         sortByString="played"
         loading={loading}
+        loadingRowCount={20}
       />
     );
   };

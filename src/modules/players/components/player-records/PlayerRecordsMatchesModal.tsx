@@ -1,11 +1,11 @@
-import { CustomButton } from '../../../../../components/buttons';
-import { DataError } from '../../../../../components/errors';
-import { LinksList, type IListItem } from '../../../../../components/lists';
-import { PresentationModal } from '../../../../../components/modals';
-import { CustomTypography } from '../../../../../components/typography';
-import { TApolloError } from '../../../../../types/apollo';
-import { parseDate } from '../../../../../utils';
-import { T_PLAYER_MATCH_WITH_RECORD } from '../../../types';
+import { CustomButton } from '../../../../components/buttons';
+import { DataError } from '../../../../components/errors';
+import { LinksList, type IListItem } from '../../../../components/lists';
+import { PresentationModal } from '../../../../components/modals';
+import { CustomTypography } from '../../../../components/typography';
+import { TApolloError } from '../../../../types/apollo';
+import { parseDate } from '../../../../utils';
+import { T_PLAYER_MATCH_WITH_RECORD } from '../../types';
 
 interface Props {
   data?: T_PLAYER_MATCH_WITH_RECORD;

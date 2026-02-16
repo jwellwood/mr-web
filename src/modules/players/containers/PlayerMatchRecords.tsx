@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks';
-import PlayerMatchesWithRecordsView from '../components/player-records/player-match-records/PlayerMatchesWithRecordsView';
+import PlayerMatchesWithRecordsView from '../components/player-records/PlayerMatchesWithRecordsView';
 import { FETCH_PLAYER_MATCH_RECORDS } from '../graphql';
 
 export default function PlayerMatchesRecords() {

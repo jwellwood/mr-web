@@ -2,7 +2,7 @@ import { DataError, NoDataText, SectionContainer } from '../../../../../componen
 import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
 import { T_FETCH_PLAYER_STREAKS } from '../../../types';
-import { columns, rows } from './config';
+import { columns, rows } from './';
 
 interface Props {
   data?: T_FETCH_PLAYER_STREAKS;
@@ -21,6 +21,7 @@ export default function PlayerGameStreaksView({ data, loading, error }: Props) {
         rows={rows(data?.streaks)}
         isSortable={false}
         loading={loading}
+        loadingRowCount={4}
       />
     );
   };

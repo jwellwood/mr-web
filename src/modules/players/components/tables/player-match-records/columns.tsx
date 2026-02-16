@@ -1,4 +1,4 @@
-import { ColumnConfig } from '../../../../../../components';
+import { ColumnConfig } from '../../../../../components';
 
 export const columns: readonly ColumnConfig[] = [
   {
@@ -6,25 +6,23 @@ export const columns: readonly ColumnConfig[] = [
     label: '',
     styles: {
       align: 'left',
-      color: 'label',
       border: true,
+      color: 'label',
     },
   },
   {
     id: 'value',
-    label: '',
+    label: <></>,
     styles: {
       width: 50,
       background: true,
     },
   },
   {
-    id: 'average',
-    type: 'percentage',
-    label: <></>,
+    id: 'more',
+    label: '',
     styles: {
-      width: 50,
-      color: 'label',
+      width: 60,
       background: true,
     },
   },

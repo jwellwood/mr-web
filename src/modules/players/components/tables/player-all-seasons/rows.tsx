@@ -1,4 +1,4 @@
-import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../../../types';
+import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
 
 export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?: boolean) => {
   const arr = new Array(15).fill({});

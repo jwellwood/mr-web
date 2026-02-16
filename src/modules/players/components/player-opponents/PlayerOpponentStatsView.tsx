@@ -1,10 +1,10 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
-import CustomTable from '../../../../components/tables/custom-table/CustomTable';
+import { CustomTable } from '../../../../components/tables';
 import { TApolloError } from '../../../../types/apollo';
 import { usePlayerOpponentFilters } from '../../context';
 import OpponentsFilters from '../../forms/opponents-filter/OpponentsFilters';
 import { T_FETCH_PLAYER_OPPONENT_STATS } from '../../types';
-import { columns, columns_averages, rows } from './config';
+import { columns, columns_averages, rows } from '../tables/player-opponents';
 
 interface Props {
   data?: T_FETCH_PLAYER_OPPONENT_STATS;
@@ -28,6 +28,7 @@ export default function PlayerOpponentStatsView({ data, loading, error }: Props)
           isSortable
           sortByString="matches"
           loading={loading}
+          loadingRowCount={20}
         />
       )}
     </SectionContainer>
