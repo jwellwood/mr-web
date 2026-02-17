@@ -3,7 +3,8 @@ import { PresentationModal } from '../../../../../components/modals';
 import { CustomTable } from '../../../../../components/tables';
 import { CustomTypography } from '../../../../../components/typography';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
-import { columns } from './columns';
+import { rows as allSeasonsRows } from '../player-all-seasons';
+import { columns as allSeasonsColumns } from '../player-all-seasons';
 
 export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?: boolean) => {
   const maxGoals = Math.max(...(data?.map(season => season.goals) || [0]));
@@ -21,8 +22,8 @@ export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?:
     return (
       <PresentationModal buttonElement={btn} title="Seasons">
         <CustomTable
-          columns={columns}
-          rows={rows(data, loading)}
+          columns={allSeasonsColumns}
+          rows={allSeasonsRows(data, loading)}
           loading={loading}
           isSortable
           loadingRowCount={10}
