@@ -2,7 +2,7 @@ import { useLazyQuery } from '@apollo/client/react';
 import { useEffect, useMemo } from 'react';
 import type { ISelectOptions } from '../../../components';
 import { emptySelectOption } from '../../../constants/rounds';
-import { FETCH_ORG } from '../../organization/graphql';
+import { FETCH_ORG } from '../../organization/org/graphql';
 
 export const useSeasonInput = (orgId?: string) => {
   const [getOrgById, { data: orgData, loading: orgLoading, error: orgError }] =
@@ -10,7 +10,7 @@ export const useSeasonInput = (orgId?: string) => {
 
   useEffect(() => {
     if (orgId) {
-      getOrgById({ variables: { orgId } });
+      getOrgById({ variables: { orgId: orgId! } });
     }
   }, [getOrgById, orgId]);
 

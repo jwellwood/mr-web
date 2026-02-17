@@ -1,0 +1,16 @@
+import * as Types from '../../../../types/__generated__/graphql';
+
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type Add_OrgMutationVariables = Types.Exact<{
+  name: Types.Scalars['String']['input'];
+  website?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  yearFounded?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  city?: Types.InputMaybe<Types.Scalars['String']['input']>;
+  country?: Types.InputMaybe<Types.Scalars['String']['input']>;
+}>;
+
+
+export type Add_OrgMutation = { org: { __typename: 'Organization', _id: string, name: string, website: string | null, yearFounded: string | null, city: string | null, country: string | null } };
+
+
+export const Add_OrgDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"ADD_ORG"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"name"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"website"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"yearFounded"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"city"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"country"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"org"},"name":{"kind":"Name","value":"ADD_ORGANIZATION"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"name"},"value":{"kind":"Variable","name":{"kind":"Name","value":"name"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"website"},"value":{"kind":"Variable","name":{"kind":"Name","value":"website"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"yearFounded"},"value":{"kind":"Variable","name":{"kind":"Name","value":"yearFounded"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"city"},"value":{"kind":"Variable","name":{"kind":"Name","value":"city"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"country"},"value":{"kind":"Variable","name":{"kind":"Name","value":"country"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"website"}},{"kind":"Field","name":{"kind":"Name","value":"yearFounded"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"country"}}]}}]}}]} as unknown as DocumentNode<Add_OrgMutation, Add_OrgMutationVariables>;

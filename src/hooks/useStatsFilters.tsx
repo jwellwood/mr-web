@@ -1,8 +1,7 @@
 import { useLazyQuery } from '@apollo/client/react';
 import { useEffect, useMemo } from 'react';
 import type { ISelectOptions } from '../components';
-import { FETCH_ORG } from '../modules/organization/graphql';
-import { ICompetition } from '../modules/organization/types';
+import { FETCH_ORG } from '../modules/organization/org/graphql';
 import { useCustomParams, useSeasons } from '.';
 
 export const useStatsFilters = () => {
@@ -15,13 +14,13 @@ export const useStatsFilters = () => {
 
   useEffect(() => {
     if (orgId) {
-      getOrgById({ variables: { orgId } });
+      getOrgById({ variables: { orgId: orgId! } });
     }
   }, [getOrgById, orgId]);
 
   const competitionOptions = useMemo<ISelectOptions[]>(() => {
     if (!orgData?.org?.competitions?.length) return [];
-    return orgData.org.competitions.map((comp: ICompetition) => ({
+    return orgData.org.competitions.map(comp => ({
       label: comp.name,
       value: comp._id,
     })) as ISelectOptions[];

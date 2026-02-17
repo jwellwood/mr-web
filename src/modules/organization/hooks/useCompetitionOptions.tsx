@@ -2,13 +2,13 @@ import { useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import type { ISelectOptions } from '../../../components';
 import { useCustomParams } from '../../../hooks';
-import { FETCH_COMPETITIONS } from '../graphql';
+import { FETCH_COMPETITIONS } from '../competitions/graphql';
 
 export const useCompetitionOptions = () => {
   const { orgId } = useCustomParams();
 
   const { data, error, loading } = useQuery(FETCH_COMPETITIONS, {
-    variables: { orgId },
+    variables: { orgId: orgId! },
   });
 
   const competitionOptions = useMemo<ISelectOptions[]>(() => {

@@ -4,7 +4,7 @@ import { ISelectOptions } from '../../../components';
 import { emptySelectOption } from '../../../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
-import { FETCH_ORG, FETCH_ORG_TEAMS } from '../../organization/graphql';
+import { FETCH_ORG, FETCH_ORG_TEAMS } from '../../organization/org/graphql';
 
 export const useMatchDetailsInput = () => {
   const { orgId, teamId } = useCustomParams();
@@ -17,8 +17,8 @@ export const useMatchDetailsInput = () => {
 
   useEffect(() => {
     if (orgId) {
-      getTeamByOrg({ variables: { orgId } });
-      getOrgById({ variables: { orgId } });
+      getTeamByOrg({ variables: { orgId: orgId! } });
+      getOrgById({ variables: { orgId: orgId! } });
     }
   }, [getOrgById, getTeamByOrg, orgId]);
 

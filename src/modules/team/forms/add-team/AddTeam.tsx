@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { PageContainer } from '../../../../components';
 import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
-import { FETCH_ORG_TEAMS } from '../../../organization/graphql';
+import { FETCH_ORG_TEAMS } from '../../../organization/org/graphql';
 import { FETCH_TEAMS_BY_USER } from '../../../profile/graphql';
 import { PAGES, TeamError, TeamSuccess } from '../../constants';
 import { ADD_TEAM } from '../../graphql';
