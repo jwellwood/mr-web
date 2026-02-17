@@ -8,7 +8,7 @@ import { CustomTypography } from '../../typography';
 interface Props {
   name: string;
   badge: string;
-  loading: boolean;
+  loading?: boolean;
   children: ReactElement;
 }
 

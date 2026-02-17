@@ -4,9 +4,10 @@ import { CustomTable } from '../../../../components/tables';
 import { CustomTabs, ITab } from '../../../../components/tabs';
 import { NoDataText } from '../../../../components/typography';
 import { POSITIONS, TAB_TYPES } from '../../../../constants';
+import { useCustomParams } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCH } from '../../types';
-import { columns, rows } from '../tables/match-players';
+import { MATCH_PLAYER_TABLE } from '../tables/match-players';
 
 const MatchDetails = lazy(() => import('./MatchDetails'));
 const HeadToHead = lazy(() => import('../../containers/HeadToHead'));
@@ -18,6 +19,8 @@ interface Props {
 }
 
 export default function MatchView({ data, loading, error }: Props) {
+  const { teamId, orgId } = useCustomParams();
+  const baseUrl = `/org/${orgId}/team/${teamId}`;
   const opponentId = data?.match?.opponentId;
   const { matchPlayers = [] as T_FETCH_MATCH['match']['matchPlayers'] } = data?.match || {};
   const mappedPlayers = matchPlayers
@@ -39,8 +42,8 @@ export default function MatchView({ data, loading, error }: Props) {
       ) : (
         <SectionContainer>
           <CustomTable
-            columns={columns}
-            rows={rows(mappedPlayers)}
+            columns={MATCH_PLAYER_TABLE.columns}
+            rows={MATCH_PLAYER_TABLE.rows(mappedPlayers, baseUrl)}
             isSortable
             sortByString="position"
             loading={loading}

@@ -1,14 +1,14 @@
 import { StatIcon } from '../../../../../components/icons';
 import { T_FETCH_MATCH } from '../../../types';
 
-export const rows = (currentPlayers?: T_FETCH_MATCH['match']['matchPlayers']) => {
+export const rows = (currentPlayers?: T_FETCH_MATCH['match']['matchPlayers'], baseUrl?: string) => {
   const players = currentPlayers?.filter(cp => cp !== undefined) || [];
 
   return players?.map(player => {
     return {
       isStarter: !player.isStarter && <StatIcon icon="subIn" />,
       position: player.matchPosition || player.playerId.position,
-      name: { value: player.playerId.name, link: `player/${player.playerId._id}` },
+      name: { value: player.playerId.name, link: `${baseUrl}/player/${player.playerId._id}` },
       goals: player.goals || null,
       assists: player.assists || null,
       conceded: player.conceded || null,

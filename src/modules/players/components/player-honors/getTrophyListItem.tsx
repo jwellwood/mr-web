@@ -2,7 +2,10 @@ import { APP_ICONS, AppIcon } from '../../../../components/icons';
 import { CustomTypography } from '../../../../components/typography';
 import { T_FETCH_PLAYER_TROPHIES } from '../../types';
 
-export const getTrophyListItem = (trophy: T_FETCH_PLAYER_TROPHIES['trophies'][number]) => {
+export const getTrophyListItem = (
+  trophy: T_FETCH_PLAYER_TROPHIES['trophies'][number],
+  baseUrl: string
+) => {
   return {
     icon: (
       <AppIcon
@@ -11,7 +14,7 @@ export const getTrophyListItem = (trophy: T_FETCH_PLAYER_TROPHIES['trophies'][nu
         icon={trophy.isWinner ? APP_ICONS.TROPHY : APP_ICONS.MEDAL}
       />
     ),
-    link: `trophy/${trophy._id}`,
+    link: `${baseUrl}/trophy/${trophy._id}`,
     label: (
       <CustomTypography size="xs" bold color="data">
         {trophy.name}

@@ -2,7 +2,7 @@ import { SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
 import { rows } from '../../components/tables/match-form';
-import { columns } from '../../components/tables/match-players';
+import { columns } from '../../components/tables/match-form';
 import { ITempMatchPlayers } from '../../types';
 
 interface Props {

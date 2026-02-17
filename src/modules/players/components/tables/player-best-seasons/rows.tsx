@@ -1,52 +1,22 @@
-import { CustomButton } from '../../../../../components/buttons';
-import { PresentationModal } from '../../../../../components/modals';
-import { CustomTable } from '../../../../../components/tables';
-import { CustomTypography } from '../../../../../components/typography';
 import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
-import { rows as allSeasonsRows } from '../player-all-seasons';
-import { columns as allSeasonsColumns } from '../player-all-seasons';
 
-export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?: boolean) => {
+export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons']) => {
   const maxGoals = Math.max(...(data?.map(season => season.goals) || [0]));
   const maxAssists = Math.max(...(data?.map(season => season.assists) || [0]));
   const maxCombined = Math.max(...(data?.map(season => season.goals + season.assists) || [0]));
-
-  const seasonModal = () => {
-    const btn = (
-      <CustomButton variant="text">
-        <CustomTypography bold color="primary" size="xs">
-          Seasons
-        </CustomTypography>
-      </CustomButton>
-    );
-    return (
-      <PresentationModal buttonElement={btn} title="Seasons">
-        <CustomTable
-          columns={allSeasonsColumns}
-          rows={allSeasonsRows(data, loading)}
-          loading={loading}
-          isSortable
-          loadingRowCount={10}
-        />
-      </PresentationModal>
-    );
-  };
 
   const rowData = [
     {
       label: 'Goals',
       value: maxGoals,
-      seasons: seasonModal(),
     },
     {
       label: 'Assists',
       value: maxAssists,
-      seasons: seasonModal(),
     },
     {
       label: 'Combined',
       value: maxCombined,
-      seasons: seasonModal(),
     },
   ];
 
@@ -54,7 +24,6 @@ export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons'], loading?:
     return {
       label: item.label,
       value: item.value,
-      more: item.seasons ? item.seasons : '',
     };
   });
 };

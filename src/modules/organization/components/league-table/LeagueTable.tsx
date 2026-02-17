@@ -1,5 +1,6 @@
 import { SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
+import { useCustomParams } from '../../../../hooks';
 import { ILeagueTableTeam } from '../../types';
 import { league_table } from './config/columns';
 
@@ -10,10 +11,11 @@ interface Props {
 }
 
 export default function LeagueTable({ name, data, loading }: Props) {
+  const { orgId } = useCustomParams();
   const rows = data?.map((item, i) => {
     return {
       standing: i + 1,
-      name: { value: item.team.teamName, link: `team/${item.team._id}` },
+      name: { value: item.team.teamName, link: `/org/${orgId}/team/${item.team._id}` },
       played: item.played,
       wins: item.wins,
       draws: item.draws,

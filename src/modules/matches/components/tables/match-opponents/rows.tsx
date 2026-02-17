@@ -3,10 +3,9 @@ import { OpponentModal } from '../../../../../components';
 import { getAvg, getPercentage } from '../../../../../utils';
 import { T_FETCH_MATCH_OPPONENTS } from '../../../types';
 
-export const rows = (loading: boolean, data?: T_FETCH_MATCH_OPPONENTS['stats']) => {
+export const rows = (data?: T_FETCH_MATCH_OPPONENTS['stats']) => {
   const HeadToHead = lazy(() => import('../../../containers/HeadToHead'));
-  const arr = new Array(15).fill({});
-  const mappedData = loading || !data?.length ? arr : data;
+
   const getPoints = (wins: number, draws: number) => {
     return wins * 3 + draws;
   };
@@ -17,9 +16,9 @@ export const rows = (loading: boolean, data?: T_FETCH_MATCH_OPPONENTS['stats']) 
     return +(Number(avgScored) - Number(avgConceded)).toFixed(1);
   };
 
-  return mappedData.map(item => ({
-    name: (
-      <OpponentModal name={item.opponentName} badge={item.opponentBadge} loading={loading}>
+  return (data ?? []).map(item => ({
+    name: item && (
+      <OpponentModal name={item.opponentName} badge={item.opponentBadge || ''}>
         <HeadToHead opponentId={item._id} />
       </OpponentModal>
     ),

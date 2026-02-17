@@ -6,7 +6,7 @@ import { CustomTypography } from '../../typography';
 interface Props {
   title?: string | ReactNode;
   subtitle?: string | ReactNode;
-
+  secondaryAction?: ReactNode;
   children: React.ReactNode;
   type?: string;
 }
@@ -18,7 +18,7 @@ ${theme.palette.secondary.dark} 12%, ${theme.palette.dark.main} 100%)`;
 export default function SectionContainer({
   title,
   subtitle,
-
+  secondaryAction,
   children,
   type,
 }: Props) {
@@ -54,11 +54,14 @@ export default function SectionContainer({
               borderBottom: border(),
               padding: spacing(0.5),
               background: palette.secondary.main,
+              display: 'flex',
+              justifyContent: 'space-between',
             }}
           >
             <CustomTypography color="data" size="sm" bold>
               {title}
             </CustomTypography>
+            {secondaryAction && secondaryAction}
           </div>
         )}
 

@@ -18,12 +18,4 @@ export const columns: readonly ColumnConfig[] = [
       background: true,
     },
   },
-  {
-    id: 'more',
-    label: '',
-    styles: {
-      width: 60,
-      background: true,
-    },
-  },
 ] as const;

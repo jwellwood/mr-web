@@ -1,5 +1,6 @@
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import { LinksList } from '../../../../components/lists';
+import { useCustomParams } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYER_TROPHIES } from '../../types';
 import { getTrophyListItem } from './getTrophyListItem';
@@ -11,10 +12,16 @@ interface Props {
 }
 
 export default function PlayerTrophiesView({ data, loading, error }: Props) {
+  const { teamId, orgId } = useCustomParams();
+  const baseUrl = `/org/${orgId}/team/${teamId}`;
   const winner = () =>
-    data?.trophies.filter(trophy => trophy.isWinner).map(winner => getTrophyListItem(winner));
+    data?.trophies
+      .filter(trophy => trophy.isWinner)
+      .map(winner => getTrophyListItem(winner, baseUrl));
   const runnerUp = () =>
-    data?.trophies.filter(trophy => !trophy.isWinner).map(runnerUp => getTrophyListItem(runnerUp));
+    data?.trophies
+      .filter(trophy => !trophy.isWinner)
+      .map(runnerUp => getTrophyListItem(runnerUp, baseUrl));
 
   const renderContent = () => {
     if (data && data?.trophies.length === 0) {

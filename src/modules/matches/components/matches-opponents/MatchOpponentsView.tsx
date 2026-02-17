@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
@@ -14,14 +13,12 @@ interface Props {
 }
 
 export default function MatchOpponentsView({ data, loading, error, seasonReady }: Props) {
-  const tableRows = useMemo(() => rows(loading, data?.stats), [loading, data?.stats]);
-
   const renderContent = () => {
     return seasonReady && data && data.stats.length === 0 ? (
       <NoDataText>No matches yet</NoDataText>
     ) : (
       <CustomTable
-        rows={tableRows}
+        rows={rows(data?.stats)}
         columns={columns}
         isSortable
         sortByString="played"
