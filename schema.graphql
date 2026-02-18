@@ -48,6 +48,8 @@ input AddResultInput {
   awayTeam: ID!
   homeGoals: Float!
   awayGoals: Float!
+  isForfeit: Boolean!
+  isComplete: Boolean!
 }
 
 input AddTeamInput {
@@ -485,6 +487,7 @@ type Query {
   FETCH_SEASONS_POSITION(teamId: String!): [PositionFinishes!]!
   FETCH_USER: User!
   RESULTS(orgSeasonId: String!, orgId: String!): [Result!]!
+  FIXTURES(orgSeasonId: String!, orgId: String!): [Result!]!
   RESULT(resultId: String!): Result!
   LEAGUE_TABLE_DATA(orgSeasonId: String!, orgId: String!): [LeagueTableByComp!]!
   SQUAD_LIST_BY_SEASON(seasonId: String!, teamId: String!): [SquadListBySeason!]!
@@ -540,6 +543,8 @@ type Result {
   homeGoals: Float!
   awayGoals: Float!
   orgSeasonId: OrgSeason!
+  isForfeit: Boolean
+  isComplete: Boolean
 }
 
 type ResultCompetiton {

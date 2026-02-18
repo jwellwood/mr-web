@@ -9,4 +9,6 @@ export const initialResultState: ResultFormData = {
   awayTeam: '',
   homeGoals: 0,
   awayGoals: 0,
+  isForfeit: false,
+  isComplete: false,
 };

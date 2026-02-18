@@ -1,6 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { isFuture } from 'date-fns';
 import { useForm } from 'react-hook-form';
-import { FormContainer, ControlledDateInput, ControlledSelectInput } from '../../../../components';
+import {
+  FormContainer,
+  ControlledDateInput,
+  ControlledSelectInput,
+  ControlledSwitchInput,
+} from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
@@ -26,11 +32,15 @@ export default function ResultForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control } = useForm<ResultFormData>({
+  const { handleSubmit, control, watch } = useForm<ResultFormData>({
     defaultValues,
     resolver: zodResolver(ResultSchema),
     mode: 'onChange',
   });
+
+  const currentDate = watch('date');
+
+  const isFutureMatch = isFuture(new Date(currentDate));
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
@@ -59,24 +69,30 @@ export default function ResultForm({
         label="Home Team"
         options={teamOptions}
       />
-      <ControlledSelectInput
-        control={control}
-        name="homeGoals"
-        label="Goals"
-        options={getNumberOptions(50, 0)}
-      />
+      {!isFutureMatch && (
+        <ControlledSelectInput
+          control={control}
+          name="homeGoals"
+          label="Goals"
+          options={getNumberOptions(50, 0)}
+        />
+      )}
       <ControlledSelectInput
         control={control}
         name="awayTeam"
         label="Away Team"
         options={teamOptions}
       />
-      <ControlledSelectInput
-        control={control}
-        name="awayGoals"
-        label="Goals"
-        options={getNumberOptions(50, 0)}
-      />
+      {!isFutureMatch && (
+        <ControlledSelectInput
+          control={control}
+          name="awayGoals"
+          label="Goals"
+          options={getNumberOptions(50, 0)}
+        />
+      )}
+      <ControlledSwitchInput control={control} name="isForfeit" label="Forfeit" />
+      <ControlledSwitchInput control={control} name="isComplete" label="Completed" />
     </FormContainer>
   );
 }

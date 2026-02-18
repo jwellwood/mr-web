@@ -65,6 +65,8 @@ export type AddResultInput = {
   gameWeek: Scalars['Float']['input'];
   homeGoals: Scalars['Float']['input'];
   homeTeam: Scalars['ID']['input'];
+  isComplete: Scalars['Boolean']['input'];
+  isForfeit: Scalars['Boolean']['input'];
   orgSeasonId: Scalars['ID']['input'];
 };
 
@@ -748,6 +750,7 @@ export type Query = {
   FETCH_TROPHIES: Array<TrophyResponse>;
   FETCH_TROPHY: TrophyResponse;
   FETCH_USER: User;
+  FIXTURES: Array<Result>;
   HALL_OF_FAME_PLAYERS: Array<Player>;
   LEAGUE_TABLE_DATA: Array<LeagueTableByComp>;
   MATCH: Match;
@@ -844,6 +847,12 @@ export type QueryFetch_TrophiesArgs = {
 
 export type QueryFetch_TrophyArgs = {
   trophyId: Scalars['String']['input'];
+};
+
+
+export type QueryFixturesArgs = {
+  orgId: Scalars['String']['input'];
+  orgSeasonId: Scalars['String']['input'];
 };
 
 
@@ -1091,6 +1100,8 @@ export type Result = {
   gameWeek: Scalars['Float']['output'];
   homeGoals: Scalars['Float']['output'];
   homeTeam: Team;
+  isComplete?: Maybe<Scalars['Boolean']['output']>;
+  isForfeit?: Maybe<Scalars['Boolean']['output']>;
   orgSeasonId: OrgSeason;
 };
 

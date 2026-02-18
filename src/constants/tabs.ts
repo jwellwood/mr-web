@@ -11,6 +11,7 @@ export const TAB_TYPES = {
   PLAYER: 'player',
   HISTORY: 'history',
   SEASON: 'season',
+  RESULTS: 'results',
 } as const;
 
 export type TTabType = (typeof TAB_TYPES)[keyof typeof TAB_TYPES];

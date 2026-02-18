@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const FETCH_RESULTS = gql`
-  query FETCH_RESULTS($orgId: String!, $orgSeasonId: String!) {
-    results: RESULTS(orgId: $orgId, orgSeasonId: $orgSeasonId) {
+export const FETCH_FIXTURES = gql`
+  query FETCH_FIXTURES($orgId: String!, $orgSeasonId: String!) {
+    fixtures: FIXTURES(orgId: $orgId, orgSeasonId: $orgSeasonId) {
       _id
       date
       gameWeek
@@ -18,8 +18,6 @@ export const FETCH_RESULTS = gql`
         _id
         teamName
       }
-      homeGoals
-      awayGoals
       isForfeit
       isComplete
     }

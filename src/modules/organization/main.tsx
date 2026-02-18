@@ -10,7 +10,7 @@ const OrgTeams = lazy(() => import('./org/containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('./org-seasons/containers/OrgSeasons'));
 const LeagueTables = lazy(() => import('./results/containers/LeagueTables'));
 const Competitions = lazy(() => import('./competitions/containers/Competitions'));
-const Results = lazy(() => import('./results/containers/Results'));
+const Results = lazy(() => import('./results/main'));
 
 export default function Team() {
   const { orgId } = useCustomParams();
@@ -19,7 +19,7 @@ export default function Team() {
 
   const tabs: ITab[] = [
     {
-      label: 'Results',
+      label: 'Matches',
       component: <Results />,
     },
     {
@@ -45,7 +45,7 @@ export default function Team() {
     <PageHeader title={PAGES.ORG} links={isOrgAuth ? ORG_ADMIN_LINKS : undefined}>
       <>
         <Org />
-        <CustomTabs type={TAB_TYPES.ORG} tabs={tabs} level="primary" />
+        <CustomTabs type={TAB_TYPES.RESULTS} tabs={tabs} level="primary" />
       </>
     </PageHeader>
   );

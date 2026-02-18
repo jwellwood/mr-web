@@ -1,7 +1,7 @@
 import type { ResultFormData } from '../forms/validation';
+import { T_FETCH_RESULT } from '../graphql';
 import type { Add_ResultMutationVariables } from '../graphql/ADD_RESULT.generated';
 import type { Edit_ResultMutationVariables } from '../graphql/EDIT_RESULT.generated';
-import type { Fetch_ResultQuery } from '../graphql/FETCH_RESULT.generated';
 
 export const mapFormToAddResult = (
   formData: ResultFormData,
@@ -18,10 +18,12 @@ export const mapFormToAddResult = (
     awayTeam: formData.awayTeam || '',
     homeGoals: Number(formData.homeGoals) || 0,
     awayGoals: Number(formData.awayGoals) || 0,
+    isForfeit: formData.isForfeit || false,
+    isComplete: formData.isComplete || false,
   };
 };
 
-export const mapResultToForm = (result: Fetch_ResultQuery['result']): ResultFormData => {
+export const mapResultToForm = (result: T_FETCH_RESULT['result']): ResultFormData => {
   return {
     date: result.date ? new Date(result.date) : new Date(),
     gameWeek: result.gameWeek ?? 0,
@@ -31,6 +33,8 @@ export const mapResultToForm = (result: Fetch_ResultQuery['result']): ResultForm
     awayTeam: result.awayTeam?._id ?? '',
     homeGoals: result.homeGoals ?? 0,
     awayGoals: result.awayGoals ?? 0,
+    isForfeit: result.isForfeit ?? false,
+    isComplete: result.isComplete ?? false,
   } as ResultFormData;
 };
 
@@ -50,5 +54,7 @@ export const mapFormToEditResult = (
     awayTeam: formData.awayTeam || '',
     homeGoals: Number(formData.homeGoals) || 0,
     awayGoals: Number(formData.awayGoals) || 0,
+    isForfeit: formData.isForfeit || false,
+    isComplete: formData.isComplete || false,
   };
 };

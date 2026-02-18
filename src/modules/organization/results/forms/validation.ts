@@ -10,6 +10,8 @@ export const ResultSchema = z.object({
   awayTeam: z.string().optional(),
   homeGoals: z.union([z.string(), z.number()]).optional(),
   awayGoals: z.union([z.string(), z.number()]).optional(),
+  isForfeit: z.boolean(),
+  isComplete: z.boolean(),
 });
 
 export type ResultFormData = z.infer<typeof ResultSchema>;

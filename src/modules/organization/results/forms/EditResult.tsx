@@ -24,7 +24,7 @@ export default function EditResult() {
   const { teamOptions, loading: teamsLoading } = useTeamOptions();
   const { competitionOptions, loading: competitionsLoading } = useCompetitionOptions();
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
-  const { loading, error, data, refetch } = useQuery(FETCH_RESULT, {
+  const { loading, error, data } = useQuery(FETCH_RESULT, {
     variables: { resultId: resultId! },
   });
 
@@ -34,8 +34,8 @@ export default function EditResult() {
   }, [data]);
 
   const [editResult, { error: editError, loading: editLoading }] = useMutation(EDIT_RESULT, {
-    variables: { orgId: orgId!, orgSeasonId: orgSeasonId!, resultId: resultId! },
     refetchQueries: [
+      { query: FETCH_RESULT, variables: { resultId: resultId! } },
       { query: FETCH_RESULTS, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
       { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
     ],
@@ -44,9 +44,9 @@ export default function EditResult() {
   const onSubmit = async (formData: ResultFormData) => {
     try {
       const variables = mapFormToEditResult(formData, orgId!, resultId!);
+
       return editResult({ variables }).then(() => {
-        refetch();
-        dispatch(showAlert({ text: 'Season updated successfully', type: 'success' }));
+        dispatch(showAlert({ text: 'Result updated successfully', type: 'success' }));
         navigate(-1);
       });
     } catch (error) {

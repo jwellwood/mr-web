@@ -24,6 +24,8 @@ export const FETCH_RESULT = gql`
       }
       homeGoals
       awayGoals
+      isForfeit
+      isComplete
     }
   }
 `;

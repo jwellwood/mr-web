@@ -13,6 +13,7 @@ interface ITabsState {
   player: 0 | 1;
   history: 0 | 1 | 2;
   season: 0 | 1 | 2 | 3;
+  results: 0 | 1;
 }
 
 export type TabIndex = keyof ITabsState;
@@ -30,6 +31,7 @@ const initialState: ITabsState = {
   player: 0,
   history: 0,
   season: 0,
+  results: 0,
 };
 
 const tabsSlice = createSlice({
