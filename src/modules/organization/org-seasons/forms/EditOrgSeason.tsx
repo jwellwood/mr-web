@@ -7,6 +7,7 @@ import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { PAGES } from '../../constants';
+import { useCompetitionOptions, useTeamOptions } from '../../hooks';
 import { EDIT_ORG_SEASON, FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../graphql';
 import { mapOrgSeasonToForm, mapFormToEditOrgSeason } from '../helpers/mapOrgSeasonForm';
 import DeleteOrgSeason from './DeleteOrgSeason';
@@ -17,14 +18,19 @@ export default function EditOrgSeason() {
   const { orgId, orgSeasonId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
+  const { teamOptions, loading: teamOptionsLoading } = useTeamOptions();
+  const { competitionOptions, loading: competitionOptionsLoading } = useCompetitionOptions();
 
-  const { loading, error, data, refetch } = useQuery(FETCH_ORG_SEASON, {
+  const { loading, error, data } = useQuery(FETCH_ORG_SEASON, {
     variables: { seasonId: orgSeasonId! },
   });
 
   const [editOrgSeason, { error: editError, loading: editLoading }] = useMutation(EDIT_ORG_SEASON, {
     variables: { orgId, seasonId: orgSeasonId! },
-    refetchQueries: [{ query: FETCH_ORG_SEASONS, variables: { orgId } }],
+    refetchQueries: [
+      { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
+      { query: FETCH_ORG_SEASON, variables: { seasonId: orgSeasonId! } },
+    ],
   });
 
   const defaultValues: OrgSeasonFormData | null = useMemo(() => {
@@ -36,7 +42,6 @@ export default function EditOrgSeason() {
     try {
       const variables = mapFormToEditOrgSeason(formData, orgId!, orgSeasonId!);
       return editOrgSeason({ variables }).then(() => {
-        refetch();
         dispatch(showAlert({ text: 'Season updated successfully', type: 'success' }));
         navigate(-1);
       });
@@ -46,7 +51,7 @@ export default function EditOrgSeason() {
     }
   };
 
-  const isLoading = loading || editLoading;
+  const isLoading = loading || editLoading || teamOptionsLoading || competitionOptionsLoading;
 
   const renderContent = () => {
     return defaultValues ? (
@@ -56,6 +61,8 @@ export default function EditOrgSeason() {
           onSubmit={onSubmit}
           loading={isLoading}
           error={error || editError}
+          teamOptions={teamOptions}
+          competitionOptions={competitionOptions}
         />
         <DeleteOrgSeason />
       </>

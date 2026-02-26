@@ -14,6 +14,9 @@ type Props<T extends Record<string, CellValue>> = {
   sortByString?: string;
   loading?: boolean;
   loadingRowCount: number;
+  rowStyles?:
+    | ((index: number, row: T) => React.CSSProperties | undefined)
+    | Record<number, React.CSSProperties>;
 };
 
 export default function CustomTable<T extends Record<string, CellValue>>({
@@ -23,6 +26,7 @@ export default function CustomTable<T extends Record<string, CellValue>>({
   sortByString = '',
   loading,
   loadingRowCount = 10,
+  rowStyles,
 }: Props<T>) {
   const [sortBy, setSortBy] = useState(sortByString);
 
@@ -61,6 +65,7 @@ export default function CustomTable<T extends Record<string, CellValue>>({
             sortBy={sortBy}
             loading={loading}
             loadingRowCount={loadingRowCount}
+            rowStyles={rowStyles}
           />
         </Table>
       </TableContainer>

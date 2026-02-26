@@ -1,4 +1,4 @@
-import type { ColumnConfig } from '../../../../../../components/tables/types';
+import type { ColumnConfig } from '../../../../../components/tables/types';
 
 export const league_table: readonly ColumnConfig[] = [
   {
@@ -16,7 +16,7 @@ export const league_table: readonly ColumnConfig[] = [
     type: 'link',
     styles: {
       sticky: true,
-      width: 150,
+      width: 140,
       border: true,
       align: 'left',
     },
@@ -25,7 +25,7 @@ export const league_table: readonly ColumnConfig[] = [
     id: 'played',
     label: 'Pl',
     styles: {
-      width: 30,
+      width: 25,
       background: true,
     },
   },
@@ -33,7 +33,7 @@ export const league_table: readonly ColumnConfig[] = [
     id: 'wins',
     label: 'W',
     styles: {
-      width: 30,
+      width: 25,
       background: true,
     },
   },
@@ -41,7 +41,7 @@ export const league_table: readonly ColumnConfig[] = [
     id: 'draws',
     label: 'D',
     styles: {
-      width: 30,
+      width: 25,
       background: true,
     },
   },
@@ -49,7 +49,7 @@ export const league_table: readonly ColumnConfig[] = [
     id: 'losses',
     label: 'L',
     styles: {
-      width: 30,
+      width: 25,
       border: true,
       background: true,
     },

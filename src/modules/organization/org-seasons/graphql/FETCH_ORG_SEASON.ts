@@ -9,6 +9,21 @@ export const FETCH_ORG_SEASON = gql`
       yearEnded
       isCurrent
       comment
+      teamIds {
+        _id
+        teamName
+      }
+      competitionConfigs {
+        competitionId {
+          name
+          _id
+        }
+        rounds
+        relegationPositions
+        promotionPositions
+        splitIndexes
+        priority
+      }
     }
   }
 `;

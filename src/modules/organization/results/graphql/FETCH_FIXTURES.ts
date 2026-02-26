@@ -20,6 +20,21 @@ export const FETCH_FIXTURES = gql`
       }
       isForfeit
       isComplete
+      homeGoalscorers {
+        playerId {
+          _id
+          name
+        }
+        goals
+      }
+      awayGoalscorers {
+        playerId {
+          _id
+          name
+        }
+        goals
+      }
+      resultStatus
     }
   }
 `;

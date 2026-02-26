@@ -26,6 +26,21 @@ export const FETCH_RESULT = gql`
       awayGoals
       isForfeit
       isComplete
+      homeGoalscorers {
+        playerId {
+          _id
+          name
+        }
+        goals
+      }
+      awayGoalscorers {
+        playerId {
+          _id
+          name
+        }
+        goals
+      }
+      resultStatus
     }
   }
 `;

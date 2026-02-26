@@ -20,6 +20,9 @@ const config: CodegenConfig = {
   generates: {
     './src/types/__generated__/graphql.ts': {
       plugins: ['typescript'],
+      config: {
+        enumsAsTypes: true,
+      },
     },
     './src/': {
       preset: 'near-operation-file',

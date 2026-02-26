@@ -7,6 +7,10 @@ export const FETCH_LEAGUE_TABLES = gql`
         _id
         name
       }
+      splitIndexes
+      promotionPositions
+      relegationPositions
+      priority
       data {
         team {
           _id

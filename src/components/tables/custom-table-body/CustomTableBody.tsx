@@ -10,6 +10,9 @@ interface Props<T extends Record<string, CellValue>> {
   sortBy: string;
   loading?: boolean;
   loadingRowCount?: number;
+  rowStyles?:
+    | ((index: number, row: T) => React.CSSProperties | undefined)
+    | Record<number, React.CSSProperties>;
 }
 
 export default function CustomTableBody<T extends Record<string, CellValue>>({
@@ -18,8 +21,10 @@ export default function CustomTableBody<T extends Record<string, CellValue>>({
   sortBy,
   loading,
   loadingRowCount = 10,
+  rowStyles,
 }: Props<T>) {
   // Generate placeholder rows when loading and rows are empty or fewer than expected
+
   const displayRows = useMemo(() => {
     if (!loading || rows.length >= loadingRowCount) {
       return rows;
@@ -43,50 +48,57 @@ export default function CustomTableBody<T extends Record<string, CellValue>>({
 
   return (
     <TableBody>
-      {displayRows.map((row, rowIndex) => (
-        <TableRow hover key={rowIndex} sx={{ cursor: 'pointer' }}>
-          {Object.entries(row).map(([cellKey, cellValue]) => {
-            const column = columnMap.get(cellKey);
-            const styles = getCellStyles(
-              cellKey,
-              sortBy,
-              column as ColumnConfig<Record<string, unknown>> | undefined
-            );
+      {displayRows.map((row, rowIndex) => {
+        // resolve style from function or index map
+        const resolvedRowStyle =
+          typeof rowStyles === 'function' ? rowStyles(rowIndex, row) : rowStyles?.[rowIndex];
 
-            const cellType = column?.type;
+        return (
+          <TableRow hover key={rowIndex} sx={{ cursor: 'pointer' }}>
+            {Object.entries(row).map(([cellKey, cellValue]) => {
+              const column = columnMap.get(cellKey);
+              const styles = getCellStyles(
+                cellKey,
+                sortBy,
+                column as ColumnConfig<Record<string, unknown>> | undefined
+              );
 
-            return (
-              <TableCell
-                className="custom-table-cell"
-                size="small"
-                align={styles.align}
-                key={cellKey}
-                id={cellKey}
-                sx={{
-                  position: styles.sticky ? 'sticky' : 'relative',
-                  backgroundColor: styles.backgroundColor,
-                  zIndex: styles.sticky ? 1 : 0,
-                  left: 0,
-                  padding: styles.align === 'left' ? '0px 4px' : '0px',
-                  height: '32px',
-                  borderRight: styles.border,
-                  borderBottom: '0.5px solid rgba(244, 244, 244, 0.3)',
-                  color: styles.color || 'data',
-                }}
-              >
-                <CustomTableCell
-                  cellKey={cellKey}
-                  cellValue={cellValue}
-                  cellType={cellType}
-                  loading={loading}
-                  isStatic={Boolean(column?.isStatic)}
-                  styles={styles}
-                />
-              </TableCell>
-            );
-          })}
-        </TableRow>
-      ))}
+              const cellType = column?.type;
+
+              return (
+                <TableCell
+                  className="custom-table-cell"
+                  size="small"
+                  align={styles.align}
+                  key={cellKey}
+                  id={cellKey}
+                  sx={{
+                    position: styles.sticky ? 'sticky' : 'relative',
+                    backgroundColor: styles.backgroundColor,
+                    zIndex: styles.sticky ? 1 : 0,
+                    left: 0,
+                    padding: styles.align === 'left' ? '0px 4px' : '0px',
+                    height: '32px',
+                    borderRight: styles.border,
+                    borderBottom: '0.5px solid rgba(244, 244, 244, 0.3)',
+                    color: styles.color || 'data',
+                    ...resolvedRowStyle,
+                  }}
+                >
+                  <CustomTableCell
+                    cellKey={cellKey}
+                    cellValue={cellValue}
+                    cellType={cellType}
+                    loading={loading}
+                    isStatic={Boolean(column?.isStatic)}
+                    styles={styles}
+                  />
+                </TableCell>
+              );
+            })}
+          </TableRow>
+        );
+      })}
     </TableBody>
   );
 }

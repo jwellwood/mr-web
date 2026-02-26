@@ -11,6 +11,10 @@ input AddAwardInput {
   comment: String
 }
 
+input AddGoalscorersInput {
+  goalscorers: [GoalscorerInput!]!
+}
+
 input AddOrganizationInput {
   name: String!
   website: String
@@ -24,6 +28,8 @@ input AddOrgSeasonInput {
   yearEnded: String!
   isCurrent: Boolean!
   comment: String
+  teamIds: [String!]
+  competitionIds: [String!]
 }
 
 input AddPlayerInput {
@@ -50,6 +56,9 @@ input AddResultInput {
   awayGoals: Float!
   isForfeit: Boolean!
   isComplete: Boolean!
+  homeGoalscorers: [GoalscorerInput!]
+  awayGoalscorers: [GoalscorerInput!]
+  resultStatus: ResultStatus
 }
 
 input AddTeamInput {
@@ -113,6 +122,24 @@ type Competition {
   winners: [CompetitionWinner!]!
 }
 
+type CompetitionConfig {
+  competitionId: Competition!
+  rounds: Float
+  splitIndexes: [Float!]
+  relegationPositions: [Float!]
+  promotionPositions: [Float!]
+  priority: Float
+}
+
+input CompetitionConfigInput {
+  competitionId: String!
+  rounds: Float
+  splitIndexes: [Float!]
+  promotionPositions: [Float!]
+  relegationPositions: [Float!]
+  priority: Float
+}
+
 input CompetitionInput {
   name: String!
   competitionType: String!
@@ -126,6 +153,10 @@ type CompetitionWinner {
   teamId: Team!
   isWinner: Boolean!
   isRunnerUp: Boolean!
+}
+
+input ConfirmResultInput {
+  goalscorers: [GoalscorerInput!]
 }
 
 """
@@ -196,9 +227,24 @@ input ForgotPasswordInput {
   email: String!
 }
 
+"""A goalscorer entry within a result"""
+type Goalscorer {
+  playerId: Player!
+  goals: Float!
+}
+
+input GoalscorerInput {
+  playerId: ID!
+  goals: Int!
+}
+
 type LeagueTableByComp {
   competition: ResultCompetiton!
   data: [LeagueTableTeamData!]!
+  splitIndexes: [Float!]
+  promotionPositions: [Float!]
+  relegationPositions: [Float!]
+  priority: Float
 }
 
 type LeagueTableTeamData {
@@ -211,6 +257,7 @@ type LeagueTableTeamData {
   goalsAgainst: Float!
   goalDiff: Float!
   points: Float!
+  zone: String
 }
 
 """The Match model"""
@@ -267,6 +314,7 @@ type Mutation {
   ADD_ORG_SEASON(data: AddOrgSeasonInput!, orgId: String!): OrgSeason!
   EDIT_ORG_SEASON(data: AddOrgSeasonInput!, seasonId: String!, orgId: String!): OrgSeason!
   DELETE_ORG_SEASON(orgSeasonId: String!, orgId: String!): OrgSeason!
+  UPDATE_COMPETITION_CONFIGS(data: UpdateCompetitionConfigsInput!, seasonId: String!, orgId: String!): OrgSeason!
   LOG_OUT_USER: User!
   SIGN_IN_USER(data: SignInUserInput!): User!
   REGISTER_USER(data: RegisterUserInput!): User!
@@ -279,6 +327,9 @@ type Mutation {
   ADD_RESULT(data: AddResultInput!, orgId: String!): Result!
   EDIT_RESULT(data: AddResultInput!, resultId: String!, orgId: String!): Result!
   DELETE_RESULT(resultId: String!, orgId: String!): Result!
+  SUBMIT_RESULT(data: SubmitResultInput!, resultId: String!): Result!
+  CONFIRM_RESULT(data: ConfirmResultInput!, resultId: String!): Result!
+  ADD_GOALSCORERS(data: AddGoalscorersInput!, resultId: String!): Result!
   ADD_ORGANIZATION(data: AddOrganizationInput!): Organization!
   EDIT_ORGANIZATION(data: UpdateOrganizationInput!, orgId: String!): Organization!
   EDIT_ORG_BADGE(data: EditOrgBadgeInput!, orgId: String!): Organization!
@@ -321,6 +372,8 @@ type OrgSeason {
   orgId: ID!
   comment: String
   isCurrent: Boolean!
+  teamIds: [Team!]!
+  competitionConfigs: [CompetitionConfig!]
 }
 
 type PastPlayer {
@@ -542,14 +595,26 @@ type Result {
   awayTeam: Team!
   homeGoals: Float!
   awayGoals: Float!
+  homeGoalscorers: [Goalscorer!]
+  awayGoalscorers: [Goalscorer!]
   orgSeasonId: OrgSeason!
   isForfeit: Boolean
   isComplete: Boolean
+  resultStatus: ResultStatus
+  submittedByTeam: Team
+  confirmedByTeam: Team
 }
 
 type ResultCompetiton {
   _id: String!
   name: String!
+}
+
+"""The status of a result submission"""
+enum ResultStatus {
+  PENDING
+  CONFIRMED
+  DISPUTED
 }
 
 type ResultTeam {
@@ -613,6 +678,13 @@ type Streak {
 type StreakRecord {
   value: Float!
   players: [PlayerInfo!]!
+}
+
+input SubmitResultInput {
+  homeGoals: Int!
+  awayGoals: Int!
+  isForfeit: Boolean
+  goalscorers: [GoalscorerInput!]
 }
 
 input TAddMatchInput {
@@ -825,6 +897,10 @@ type TSquadStats {
   mvpPerGame: Float!
   conceded: Float!
   cleanSheets: Float!
+}
+
+input UpdateCompetitionConfigsInput {
+  competitionConfigs: [CompetitionConfigInput!]!
 }
 
 input UpdateOrganizationInput {

@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client/react';
-import { DataError, NoDataText, SectionContainer } from '../../../../components';
+import { CustomTypography, DataError, NoDataText, SectionContainer } from '../../../../components';
 import { LinksList, type IListItem } from '../../../../components/lists';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
@@ -13,6 +13,11 @@ export default function OrgSeasons() {
     data?.orgSeasons.map(season => {
       return {
         label: season.name,
+        secondary: season.isCurrent ? (
+          <CustomTypography color="primary">Current</CustomTypography>
+        ) : (
+          ''
+        ),
         link: `org_season/${season._id}`,
       };
     }) || [];

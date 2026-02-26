@@ -6,7 +6,9 @@ export const ORG_PATHS = {
   EDIT_BADGE: 'edit_badge',
   // Linked entities
   ADD_ORG_SEASON: 'add_org_season',
+  ADD_GAME_WEEK: 'add_game_week',
   EDIT_ORG_SEASON: 'edit',
+  ORG_SEASON_ADMIN: 'admin',
   ORG_SEASON: 'org_season/:orgSeasonId',
   ADD_RESULT: 'add_result',
   EDIT_RESULT: 'edit',

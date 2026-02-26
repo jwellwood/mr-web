@@ -29,9 +29,15 @@ export type AddAwardInput = {
   winners: Array<Scalars['String']['input']>;
 };
 
+export type AddGoalscorersInput = {
+  goalscorers: Array<GoalscorerInput>;
+};
+
 export type AddOrgSeasonInput = {
   comment?: InputMaybe<Scalars['String']['input']>;
+  competitionIds?: InputMaybe<Array<Scalars['String']['input']>>;
   isCurrent: Scalars['Boolean']['input'];
+  teamIds?: InputMaybe<Array<Scalars['String']['input']>>;
   yearEnded: Scalars['String']['input'];
   yearStarted: Scalars['String']['input'];
 };
@@ -59,15 +65,18 @@ export type AddPlayerInput = {
 
 export type AddResultInput = {
   awayGoals: Scalars['Float']['input'];
+  awayGoalscorers?: InputMaybe<Array<GoalscorerInput>>;
   awayTeam: Scalars['ID']['input'];
   competitionId: Scalars['ID']['input'];
   date: Scalars['String']['input'];
   gameWeek: Scalars['Float']['input'];
   homeGoals: Scalars['Float']['input'];
+  homeGoalscorers?: InputMaybe<Array<GoalscorerInput>>;
   homeTeam: Scalars['ID']['input'];
   isComplete: Scalars['Boolean']['input'];
   isForfeit: Scalars['Boolean']['input'];
   orgSeasonId: Scalars['ID']['input'];
+  resultStatus?: InputMaybe<ResultStatus>;
 };
 
 export type AddTeamInput = {
@@ -135,6 +144,25 @@ export type Competition = {
   winners: Array<CompetitionWinner>;
 };
 
+export type CompetitionConfig = {
+  __typename?: 'CompetitionConfig';
+  competitionId: Competition;
+  priority?: Maybe<Scalars['Float']['output']>;
+  promotionPositions?: Maybe<Array<Scalars['Float']['output']>>;
+  relegationPositions?: Maybe<Array<Scalars['Float']['output']>>;
+  rounds?: Maybe<Scalars['Float']['output']>;
+  splitIndexes?: Maybe<Array<Scalars['Float']['output']>>;
+};
+
+export type CompetitionConfigInput = {
+  competitionId: Scalars['String']['input'];
+  priority?: InputMaybe<Scalars['Float']['input']>;
+  promotionPositions?: InputMaybe<Array<Scalars['Float']['input']>>;
+  relegationPositions?: InputMaybe<Array<Scalars['Float']['input']>>;
+  rounds?: InputMaybe<Scalars['Float']['input']>;
+  splitIndexes?: InputMaybe<Array<Scalars['Float']['input']>>;
+};
+
 export type CompetitionInput = {
   competitionType: Scalars['String']['input'];
   isActive: Scalars['Boolean']['input'];
@@ -149,6 +177,10 @@ export type CompetitionWinner = {
   isWinner: Scalars['Boolean']['output'];
   teamId: Team;
   year: Scalars['String']['output'];
+};
+
+export type ConfirmResultInput = {
+  goalscorers?: InputMaybe<Array<GoalscorerInput>>;
 };
 
 export type EditBadgeInput = {
@@ -210,10 +242,26 @@ export type ForgotPasswordInput = {
   email: Scalars['String']['input'];
 };
 
+/** A goalscorer entry within a result */
+export type Goalscorer = {
+  __typename?: 'Goalscorer';
+  goals: Scalars['Float']['output'];
+  playerId: Player;
+};
+
+export type GoalscorerInput = {
+  goals: Scalars['Int']['input'];
+  playerId: Scalars['ID']['input'];
+};
+
 export type LeagueTableByComp = {
   __typename?: 'LeagueTableByComp';
   competition: ResultCompetiton;
   data: Array<LeagueTableTeamData>;
+  priority?: Maybe<Scalars['Float']['output']>;
+  promotionPositions?: Maybe<Array<Scalars['Float']['output']>>;
+  relegationPositions?: Maybe<Array<Scalars['Float']['output']>>;
+  splitIndexes?: Maybe<Array<Scalars['Float']['output']>>;
 };
 
 export type LeagueTableTeamData = {
@@ -227,6 +275,7 @@ export type LeagueTableTeamData = {
   points: Scalars['Float']['output'];
   team: ResultTeam;
   wins: Scalars['Float']['output'];
+  zone?: Maybe<Scalars['String']['output']>;
 };
 
 /** The Match model */
@@ -276,6 +325,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   ADD_AWARD: Award;
   ADD_COMPETITION: Competition;
+  ADD_GOALSCORERS: Result;
   ADD_MATCH: Match;
   ADD_ORGANIZATION: Organization;
   ADD_ORG_SEASON: OrgSeason;
@@ -284,6 +334,7 @@ export type Mutation = {
   ADD_SEASON: TeamSeason;
   ADD_TEAM: Team;
   ADD_TROPHY: Trophy;
+  CONFIRM_RESULT: Result;
   DELETE_AWARD: Award;
   DELETE_COMPETITION: Competition;
   DELETE_MATCH: Match;
@@ -316,6 +367,8 @@ export type Mutation = {
   REGISTER_USER: User;
   RESET_PASSWORD: User;
   SIGN_IN_USER: User;
+  SUBMIT_RESULT: Result;
+  UPDATE_COMPETITION_CONFIGS: OrgSeason;
 };
 
 
@@ -329,6 +382,12 @@ export type MutationAdd_AwardArgs = {
 export type MutationAdd_CompetitionArgs = {
   data: CompetitionInput;
   orgId: Scalars['String']['input'];
+};
+
+
+export type MutationAdd_GoalscorersArgs = {
+  data: AddGoalscorersInput;
+  resultId: Scalars['String']['input'];
 };
 
 
@@ -375,6 +434,12 @@ export type MutationAdd_TeamArgs = {
 export type MutationAdd_TrophyArgs = {
   data: AddTrophyInput;
   teamId: Scalars['String']['input'];
+};
+
+
+export type MutationConfirm_ResultArgs = {
+  data: ConfirmResultInput;
+  resultId: Scalars['String']['input'];
 };
 
 
@@ -556,14 +621,29 @@ export type MutationSign_In_UserArgs = {
   data: SignInUserInput;
 };
 
+
+export type MutationSubmit_ResultArgs = {
+  data: SubmitResultInput;
+  resultId: Scalars['String']['input'];
+};
+
+
+export type MutationUpdate_Competition_ConfigsArgs = {
+  data: UpdateCompetitionConfigsInput;
+  orgId: Scalars['String']['input'];
+  seasonId: Scalars['String']['input'];
+};
+
 /** The Org Season model */
 export type OrgSeason = {
   __typename?: 'OrgSeason';
   _id: Scalars['ID']['output'];
   comment?: Maybe<Scalars['String']['output']>;
+  competitionConfigs?: Maybe<Array<CompetitionConfig>>;
   isCurrent: Scalars['Boolean']['output'];
   name: Scalars['String']['output'];
   orgId: Scalars['ID']['output'];
+  teamIds: Array<Team>;
   yearEnded: Scalars['String']['output'];
   yearStarted: Scalars['String']['output'];
 };
@@ -1094,15 +1174,20 @@ export type Result = {
   __typename?: 'Result';
   _id: Scalars['ID']['output'];
   awayGoals: Scalars['Float']['output'];
+  awayGoalscorers?: Maybe<Array<Goalscorer>>;
   awayTeam: Team;
   competitionId: Competition;
+  confirmedByTeam?: Maybe<Team>;
   date: Scalars['String']['output'];
   gameWeek: Scalars['Float']['output'];
   homeGoals: Scalars['Float']['output'];
+  homeGoalscorers?: Maybe<Array<Goalscorer>>;
   homeTeam: Team;
   isComplete?: Maybe<Scalars['Boolean']['output']>;
   isForfeit?: Maybe<Scalars['Boolean']['output']>;
   orgSeasonId: OrgSeason;
+  resultStatus?: Maybe<ResultStatus>;
+  submittedByTeam?: Maybe<Team>;
 };
 
 export type ResultCompetiton = {
@@ -1110,6 +1195,12 @@ export type ResultCompetiton = {
   _id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
+
+/** The status of a result submission */
+export type ResultStatus =
+  | 'CONFIRMED'
+  | 'DISPUTED'
+  | 'PENDING';
 
 export type ResultTeam = {
   __typename?: 'ResultTeam';
@@ -1181,6 +1272,13 @@ export type StreakRecord = {
   __typename?: 'StreakRecord';
   players: Array<PlayerInfo>;
   value: Scalars['Float']['output'];
+};
+
+export type SubmitResultInput = {
+  awayGoals: Scalars['Int']['input'];
+  goalscorers?: InputMaybe<Array<GoalscorerInput>>;
+  homeGoals: Scalars['Int']['input'];
+  isForfeit?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type TAddMatchInput = {
@@ -1409,6 +1507,10 @@ export type TrophyResponse = {
   opponent?: Maybe<Scalars['String']['output']>;
   season?: Maybe<Scalars['String']['output']>;
   year?: Maybe<Scalars['String']['output']>;
+};
+
+export type UpdateCompetitionConfigsInput = {
+  competitionConfigs: Array<CompetitionConfigInput>;
 };
 
 export type UpdateOrganizationInput = {

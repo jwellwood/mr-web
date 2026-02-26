@@ -142,14 +142,7 @@ export default function AppRoutes() {
             </RouteGuard>
           }
         />
-        <Route
-          path={ORG.ORG_PATHS.ADD_RESULT}
-          element={
-            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-              <ORG.AddResult />
-            </RouteGuard>
-          }
-        />
+
         <Route path={ORG.ORG_PATHS.ORG_SEASON}>
           <Route
             index={true}
@@ -160,10 +153,35 @@ export default function AppRoutes() {
             }
           />
           <Route
+            path={ORG.ORG_PATHS.ADD_RESULT}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.AddResult />
+              </RouteGuard>
+            }
+          />
+
+          <Route
+            path={ORG.ORG_PATHS.ADD_GAME_WEEK}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.AddGameWeek />
+              </RouteGuard>
+            }
+          />
+          <Route
             path={ORG.ORG_PATHS.EDIT_ORG_SEASON}
             element={
               <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
                 <ORG.EditOrgSeason />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path={ORG.ORG_PATHS.ORG_SEASON_ADMIN}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.AdminOrgSeason />
               </RouteGuard>
             }
           />

@@ -7,6 +7,7 @@ import Spinner from '../../../../components/loaders/spinner/Spinner';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
 import { AppDispatch, showAlert } from '../../../../store';
 import { PAGES } from '../../constants';
+import { useCompetitionOptions, useTeamOptions } from '../../hooks';
 import { ADD_ORG_SEASON, FETCH_ORG_SEASONS } from '../graphql';
 import { mapFormToAddOrgSeason } from '../helpers/mapOrgSeasonForm';
 import OrgSeasonForm from './OrgSeasonForm';
@@ -17,7 +18,8 @@ export default function AddOrgSeason() {
   const { orgId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-
+  const { teamOptions, loading: teamOptionsLoading } = useTeamOptions();
+  const { competitionOptions, loading: competitionOptionsLoading } = useCompetitionOptions();
   const defaultValues: OrgSeasonFormData = useMemo(() => ({ ...initialOrgSeasonState }), []);
 
   const [addOrgSeason, { error, loading }] = useMutation(ADD_ORG_SEASON, {
@@ -39,18 +41,20 @@ export default function AddOrgSeason() {
     }
   };
 
-  const renderContent = () => {
-    return defaultValues ? (
-      <OrgSeasonForm
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        loading={loading}
-        error={error}
-      />
-    ) : (
-      <Spinner />
-    );
-  };
-
-  return <PageHeader title={PAGES.ADD_ORG_SEASON}>{renderContent()}</PageHeader>;
+  return (
+    <PageHeader title={PAGES.ADD_ORG_SEASON}>
+      {defaultValues ? (
+        <OrgSeasonForm
+          defaultValues={defaultValues}
+          onSubmit={onSubmit}
+          loading={loading || teamOptionsLoading || competitionOptionsLoading}
+          error={error}
+          teamOptions={teamOptions}
+          competitionOptions={competitionOptions}
+        />
+      ) : (
+        <Spinner />
+      )}
+    </PageHeader>
+  );
 }

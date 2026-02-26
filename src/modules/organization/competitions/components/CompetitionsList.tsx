@@ -23,5 +23,5 @@ export default function CompetitionsList({ competitions }: Props) {
     <NoDataText>No competitions yet</NoDataText>
   );
 
-  return <SectionContainer title="Competitions">{renderContent}</SectionContainer>;
+  return <SectionContainer>{renderContent}</SectionContainer>;
 }

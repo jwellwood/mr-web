@@ -3,7 +3,7 @@ import { ImageAvatar } from '../../../../components/avatars';
 import { LinksList, type IListItem } from '../../../../components/lists';
 import { CustomTabs, ITab } from '../../../../components/tabs';
 import { IMAGE_TYPE, TAB_TYPES } from '../../../../constants';
-import { T_FETCH_ORG_TEAMS } from '../graphql';
+import { T_FETCH_ORG_TEAMS } from '../../org/graphql';
 
 interface Props {
   teams: T_FETCH_ORG_TEAMS['teams'];
@@ -33,7 +33,7 @@ export default function OrgTeamsList({ teams }: Props) {
   ];
 
   return (
-    <SectionContainer title="Teams">
+    <SectionContainer>
       <CustomTabs type={TAB_TYPES.ORG_TEAMS} tabs={tabs} level="secondary" />
     </SectionContainer>
   );

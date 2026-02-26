@@ -18,7 +18,7 @@ export default function LeagueTables() {
         <LeagueTable
           key={comp.competition._id}
           name={comp.competition.name}
-          data={comp.data}
+          data={comp}
           loading={loading}
         />
       );

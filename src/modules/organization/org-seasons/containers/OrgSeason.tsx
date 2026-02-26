@@ -9,7 +9,7 @@ import { useCustomParams } from '../../../../hooks/useCustomParams';
 import { ORG_SEASON_ADMIN_LINKS, PAGES } from '../../constants';
 import { FETCH_ORG_SEASON } from '../graphql';
 
-const LeagueTables = lazy(() => import('../../results/containers/LeagueTables'));
+const LeagueTables = lazy(() => import('../../tables/containers/LeagueTables'));
 const Results = lazy(() => import('../../results/containers/Results'));
 
 export default function OrgSeason() {
@@ -42,10 +42,7 @@ export default function OrgSeason() {
     );
 
   return (
-    <PageHeader
-      title={PAGES.ORG_SEASON}
-      links={isOrgAuth ? ORG_SEASON_ADMIN_LINKS(orgId) : undefined}
-    >
+    <PageHeader title={PAGES.ORG_SEASON} links={isOrgAuth ? ORG_SEASON_ADMIN_LINKS() : undefined}>
       {error ? <DataError error={error} /> : renderContent()}
     </PageHeader>
   );

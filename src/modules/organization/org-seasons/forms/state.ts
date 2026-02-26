@@ -5,4 +5,6 @@ export const initialOrgSeasonState: OrgSeasonFormData = {
   yearEnded: new Date(),
   isCurrent: false,
   comment: '',
+  teamIds: [],
+  competitionIds: [],
 };

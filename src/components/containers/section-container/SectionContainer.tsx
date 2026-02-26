@@ -61,7 +61,7 @@ export default function SectionContainer({
             <CustomTypography color="data" size="sm" bold>
               {title}
             </CustomTypography>
-            {secondaryAction && secondaryAction}
+            {secondaryAction && <span>{secondaryAction}</span>}
           </div>
         )}
 

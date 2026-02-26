@@ -17,9 +17,11 @@ export const PAGES = {
   ORG_SEASON: 'Season',
   ADD_ORG_SEASON: 'Add Season',
   EDIT_ORG_SEASON: 'Edit Season',
+  ORG_SEASON_ADMIN: 'Season Admin',
   // Result
   RESULT: 'Result',
   ADD_RESULT: 'Add Result',
+  ADD_GAME_WEEK: 'Add Gameweek',
   EDIT_RESULT: 'Edit Result',
 } as const;
 
@@ -43,25 +45,29 @@ export const ORG_ADMIN_LINKS: IListItem[] = [
     type: LINK_TYPE.ADD,
     link: ORG_PATHS.ADD_ORG_SEASON,
   },
-  {
-    label: 'Add Result',
-    type: LINK_TYPE.ADD,
-    link: ORG_PATHS.ADD_RESULT,
-  },
   { label: 'Edit Organization', type: LINK_TYPE.EDIT, link: ORG_PATHS.EDIT },
   { label: 'Edit Org Badge', type: LINK_TYPE.EDIT, link: ORG_PATHS.EDIT_BADGE },
 ];
 
-export const ORG_SEASON_ADMIN_LINKS = (orgId?: string) => [
+export const ORG_SEASON_ADMIN_LINKS = () => [
+  { label: 'Season Admin', type: LINK_TYPE.EDIT, link: 'admin' },
+];
+
+export const ADMIN_LINKS = (orgId?: string, orgSeasonId?: string) => [
   {
     label: 'Add Result',
     type: LINK_TYPE.ADD,
-    link: `/org/${orgId}/${ORG_PATHS.ADD_RESULT}`,
+    link: `/org/${orgId}/org_season/${orgSeasonId}/${ORG_PATHS.ADD_RESULT}`,
   },
+  // {
+  //   label: 'Add Round of Fixtures',
+  //   type: LINK_TYPE.ADD,
+  //   link: `/org/${orgId}/org_season/${orgSeasonId}/${ORG_PATHS.ADD_GAME_WEEK}`,
+  // },
   {
     label: 'Edit Season',
     type: LINK_TYPE.EDIT,
-    link: 'edit',
+    link: `/org/${orgId}/org_season/${orgSeasonId}/${ORG_PATHS.EDIT_ORG_SEASON}`,
   },
 ];
 

@@ -7,6 +7,8 @@ export const ADD_ORG_SEASON = gql`
     $yearEnded: String!
     $isCurrent: Boolean!
     $comment: String
+    $teamIds: [String!]
+    $competitionIds: [String!]
   ) {
     season: ADD_ORG_SEASON(
       orgId: $orgId
@@ -15,6 +17,8 @@ export const ADD_ORG_SEASON = gql`
         yearEnded: $yearEnded
         isCurrent: $isCurrent
         comment: $comment
+        teamIds: $teamIds
+        competitionIds: $competitionIds
       }
     ) {
       _id
