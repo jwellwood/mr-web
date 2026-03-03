@@ -15,6 +15,6 @@ export const EditOrgSeason = lazy(() => import('../org-seasons/forms/EditOrgSeas
 export const AdminOrgSeason = lazy(() => import('../org-seasons/containers/SeasonAdmin'));
 // Result
 export const Result = lazy(() => import('../results/containers/Result'));
-export const AddResult = lazy(() => import('../results/forms/AddResult'));
-export const EditResult = lazy(() => import('../results/forms/EditResult'));
+export const AddResult = lazy(() => import('../results/forms/result/AddResult'));
+export const EditResult = lazy(() => import('../results/forms/result/EditResult'));
 export const AddGameWeek = lazy(() => import('../results/forms/AddGameWeek'));

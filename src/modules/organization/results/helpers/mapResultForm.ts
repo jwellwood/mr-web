@@ -1,4 +1,4 @@
-import type { ResultFormData } from '../forms/validation';
+import type { ResultFormData } from '../forms/result/validation';
 import { T_FETCH_RESULT } from '../graphql';
 import type { Add_ResultMutationVariables } from '../graphql/ADD_RESULT.generated';
 import type { Edit_ResultMutationVariables } from '../graphql/EDIT_RESULT.generated';

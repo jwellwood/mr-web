@@ -179,10 +179,6 @@ export type CompetitionWinner = {
   year: Scalars['String']['output'];
 };
 
-export type ConfirmResultInput = {
-  goalscorers?: InputMaybe<Array<GoalscorerInput>>;
-};
-
 export type EditBadgeInput = {
   public_id: Scalars['String']['input'];
   url: Scalars['String']['input'];
@@ -438,7 +434,7 @@ export type MutationAdd_TrophyArgs = {
 
 
 export type MutationConfirm_ResultArgs = {
-  data: ConfirmResultInput;
+  isConfirmed: Scalars['Boolean']['input'];
   resultId: Scalars['String']['input'];
 };
 
@@ -1200,7 +1196,8 @@ export type ResultCompetiton = {
 export type ResultStatus =
   | 'CONFIRMED'
   | 'DISPUTED'
-  | 'PENDING';
+  | 'PENDING'
+  | 'SUBMITTED';
 
 export type ResultTeam = {
   __typename?: 'ResultTeam';

@@ -16,6 +16,10 @@ export const APP_ICONS = {
   MATCHES: 'results',
   HISTORY: 'history',
   NATIONALITY: 'nationality',
+  CONFIRMED: 'confirmed',
+  SUBMITTED: 'submitted',
+  PENDING: 'pending',
+  DISPUTED: 'disputed',
 } as const;
 
 export type AppIconType = (typeof APP_ICONS)[keyof typeof APP_ICONS];

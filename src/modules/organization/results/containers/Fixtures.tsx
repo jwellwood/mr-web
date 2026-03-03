@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client/react';
 import { DataError, NoDataText } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
-import FixturesAccordion from '../components/FixturesAccordion';
+import ResultsAccordion from '../components/ResultsAccordion';
 import { FETCH_FIXTURES } from '../graphql';
 
 export default function Fixtures() {
@@ -12,7 +12,7 @@ export default function Fixtures() {
   });
 
   const renderData = data?.fixtures?.length ? (
-    <FixturesAccordion
+    <ResultsAccordion
       results={data?.fixtures}
       orgId={orgId as string}
       orgSeasonId={orgSeasonId || 'default'}

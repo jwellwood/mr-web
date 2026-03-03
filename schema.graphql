@@ -155,10 +155,6 @@ type CompetitionWinner {
   isRunnerUp: Boolean!
 }
 
-input ConfirmResultInput {
-  goalscorers: [GoalscorerInput!]
-}
-
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
@@ -328,7 +324,7 @@ type Mutation {
   EDIT_RESULT(data: AddResultInput!, resultId: String!, orgId: String!): Result!
   DELETE_RESULT(resultId: String!, orgId: String!): Result!
   SUBMIT_RESULT(data: SubmitResultInput!, resultId: String!): Result!
-  CONFIRM_RESULT(data: ConfirmResultInput!, resultId: String!): Result!
+  CONFIRM_RESULT(isConfirmed: Boolean!, resultId: String!): Result!
   ADD_GOALSCORERS(data: AddGoalscorersInput!, resultId: String!): Result!
   ADD_ORGANIZATION(data: AddOrganizationInput!): Organization!
   EDIT_ORGANIZATION(data: UpdateOrganizationInput!, orgId: String!): Organization!
@@ -613,8 +609,9 @@ type ResultCompetiton {
 """The status of a result submission"""
 enum ResultStatus {
   PENDING
-  CONFIRMED
+  SUBMITTED
   DISPUTED
+  CONFIRMED
 }
 
 type ResultTeam {

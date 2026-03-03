@@ -6,10 +6,10 @@ import {
   ControlledDateInput,
   ControlledSelectInput,
   ControlledSwitchInput,
-} from '../../../../components';
-import type { ISelectOptions } from '../../../../components';
-import { TApolloError } from '../../../../types/apollo';
-import { getNumberOptions } from '../../../../utils';
+} from '../../../../../components';
+import type { ISelectOptions } from '../../../../../components';
+import { TApolloError } from '../../../../../types/apollo';
+import { getNumberOptions } from '../../../../../utils';
 import type { ResultFormData } from './validation';
 import { ResultSchema } from './validation';
 

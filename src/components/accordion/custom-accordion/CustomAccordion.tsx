@@ -17,7 +17,7 @@ export default function CustomAccordion({ title, children, isExpanded }: Props) 
         <AccordionSummary sx={{ bgcolor: theme.palette.secondary.dark, border: 'none' }}>
           {title}
         </AccordionSummary>
-        <AccordionDetails sx={{ bgcolor: theme.palette.dark.main, border: 'none' }}>
+        <AccordionDetails sx={{ bgcolor: theme.palette.dark.main, border: 'none', padding: 1 }}>
           {children}
         </AccordionDetails>
       </Accordion>

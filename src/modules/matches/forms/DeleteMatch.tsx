@@ -25,7 +25,7 @@ export default function DeleteMatch() {
       },
       {
         query: FETCH_MATCHES_STATS,
-        variables: { teamId, seasonId: seasonId },
+        variables: { teamId, seasonId: seasonId, competitionId: 'all', includeForfeits: true },
       },
     ],
   });

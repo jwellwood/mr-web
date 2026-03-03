@@ -1,11 +1,11 @@
 import { useMutation } from '@apollo/client/react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { DeleteModal } from '../../../../components/modals';
-import { useCustomParams } from '../../../../hooks';
-import { showAlert } from '../../../../store';
-import { FETCH_ORG_SEASONS } from '../../org-seasons/graphql';
-import { DELETE_RESULT } from '../graphql';
+import { DeleteModal } from '../../../../../components/modals';
+import { useCustomParams } from '../../../../../hooks';
+import { showAlert } from '../../../../../store';
+import { FETCH_ORG_SEASONS } from '../../../org-seasons/graphql';
+import { DELETE_RESULT } from '../../graphql';
 
 export default function DeleteResult() {
   const { orgId, resultId } = useCustomParams();

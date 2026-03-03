@@ -35,6 +35,14 @@ export const FETCH_FIXTURES = gql`
         goals
       }
       resultStatus
+      submittedByTeam {
+        _id
+        teamName
+      }
+      confirmedByTeam {
+        _id
+        teamName
+      }
     }
   }
 `;

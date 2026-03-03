@@ -25,6 +25,7 @@ export default function CustomStack({
       sx={{
         justifyContent: justify,
         alignItems: align,
+        width: '100%',
       }}
       divider={
         divider ? (

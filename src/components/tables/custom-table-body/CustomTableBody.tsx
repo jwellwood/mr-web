@@ -64,7 +64,12 @@ export default function CustomTableBody<T extends Record<string, CellValue>>({
               );
 
               const cellType = column?.type;
-
+              const padding = () => {
+                if (styles.align === 'right' || styles.align === 'left') {
+                  return '0px 4px 0px 4px';
+                }
+                return '0px';
+              };
               return (
                 <TableCell
                   className="custom-table-cell"
@@ -77,7 +82,7 @@ export default function CustomTableBody<T extends Record<string, CellValue>>({
                     backgroundColor: styles.backgroundColor,
                     zIndex: styles.sticky ? 1 : 0,
                     left: 0,
-                    padding: styles.align === 'left' ? '0px 4px' : '0px',
+                    padding: padding(),
                     height: '32px',
                     borderRight: styles.border,
                     borderBottom: '0.5px solid rgba(244, 244, 244, 0.3)',

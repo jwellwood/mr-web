@@ -1,11 +1,20 @@
 import { IconType } from 'react-icons';
-import { BiHistory, BiGlobe, BiFootball, BiTrophy, BiArrowBack, BiTrashAlt } from 'react-icons/bi';
+import {
+  BiHistory,
+  BiGlobe,
+  BiFootball,
+  BiTrophy,
+  BiArrowBack,
+  BiTrashAlt,
+  BiCheck,
+  BiCheckDouble,
+} from 'react-icons/bi';
 import { BsShieldShaded, BsFilter } from 'react-icons/bs';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaQuestion } from 'react-icons/fa';
 import { FaRegFlag } from 'react-icons/fa6';
 import { IoShieldSharp } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
-import { MdLocationOn } from 'react-icons/md';
+import { MdLocationOn, MdOutlineErrorOutline } from 'react-icons/md';
 import { TbSoccerField, TbUsers } from 'react-icons/tb';
 import { TfiMenu } from 'react-icons/tfi';
 import { theme } from '../../../theme';
@@ -37,6 +46,10 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.USER]: FaUserCircle,
   [APP_ICONS.NATIONALITY]: BiGlobe,
   [APP_ICONS.LOCATION]: MdLocationOn,
+  [APP_ICONS.CONFIRMED]: BiCheckDouble,
+  [APP_ICONS.SUBMITTED]: BiCheck,
+  [APP_ICONS.PENDING]: FaQuestion,
+  [APP_ICONS.DISPUTED]: MdOutlineErrorOutline,
 };
 
 export default function AppIcon({

@@ -37,6 +37,14 @@ export const FETCH_RESULTS = gql`
         goals
       }
       resultStatus
+      submittedByTeam {
+        _id
+        teamName
+      }
+      confirmedByTeam {
+        _id
+        teamName
+      }
     }
   }
 `;
