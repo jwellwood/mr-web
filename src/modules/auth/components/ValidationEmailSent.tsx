@@ -1,4 +1,4 @@
-import { CustomTypography } from '../../../components/typography';
+import { InfoAlert } from '../../../components/alerts';
 
 interface Props {
   email: string;
@@ -6,8 +6,8 @@ interface Props {
 
 export default function ValidationEmailSent({ email }: Props) {
   return (
-    <CustomTypography color="data">
+    <InfoAlert>
       An email has been sent to {email}. Click the link to validate your account
-    </CustomTypography>
+    </InfoAlert>
   );
 }

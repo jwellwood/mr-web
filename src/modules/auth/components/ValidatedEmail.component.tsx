@@ -1,34 +1,37 @@
+import { CustomTypography, MutationError } from '../../../components';
 import { CustomButton } from '../../../components/buttons';
-import { StatIcon } from '../../../components/icons';
-import { CustomTypography } from '../../../components/typography';
+import { CustomStack } from '../../../components/grids';
+import { AppIcon } from '../../../components/icons';
+import { TApolloError } from '../../../types/apollo';
 import { AUTH_PATHS } from '../router';
+import { T_VERIFY_EMAIL } from '../types';
+import AuthLayout from './AuthLayout';
 
 interface Props {
-  success: boolean;
-  errorMessage: null | string;
+  data?: T_VERIFY_EMAIL | null;
+  error?: TApolloError;
 }
 
-export default function ValidatedEmail({ success, errorMessage }: Props) {
+export default function ValidatedEmail({ data, error }: Props) {
+  const success = data?.VERIFY_EMAIL?.email;
+
   return (
-    <div>
-      {success ? (
-        <StatIcon icon={success ? 'app' : undefined} size="6rem" />
-      ) : (
-        <>
-          <CustomTypography color="error" size="lg" bold>
-            Oops!
-          </CustomTypography>
-          <CustomTypography color="warning">
-            There was a problem with your verification.
-            {errorMessage}
-            Contact your team admin
-          </CustomTypography>
-          <div style={{ marginBottom: '10px' }}></div>
-        </>
-      )}
-      <CustomButton variant="contained" link={AUTH_PATHS.SIGN_IN}>
-        Go to sign in
-      </CustomButton>
-    </div>
+    <AuthLayout>
+      <CustomStack>
+        <CustomTypography color={success ? 'primary' : 'error'}>
+          {success ? 'Email verified successfully' : 'Email verification failed'}
+        </CustomTypography>
+        <AppIcon
+          icon={success ? 'check' : 'cross'}
+          size="6rem"
+          color={success ? 'primary' : 'error'}
+        />
+        <div style={{ marginBottom: '10px' }}></div>
+        <CustomButton variant="contained" link={AUTH_PATHS.SIGN_IN}>
+          Go to sign in
+        </CustomButton>
+        {error ? <MutationError error={error} /> : null}
+      </CustomStack>
+    </AuthLayout>
   );
 }

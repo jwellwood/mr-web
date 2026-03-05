@@ -30,6 +30,8 @@ steps:
         'VITE_ROOT_URL=${_VITE_ROOT_URL}',
         '--build-arg',
         'VITE_APP_VERSION=$COMMIT_SHA',
+        '--build-arg',
+        'VITE_TURNSTILE_SITE_KEY=${_VITE_TURNSTILE_SITE_KEY}',
         '-t',
         'madrid-reds-web:$COMMIT_SHA',
         '.',

@@ -11,10 +11,15 @@ import type { SignUpFormData } from './validation';
 export default function SignUpContainer() {
   const dispatch: AppDispatch = useDispatch();
   const [email, setEmail] = useState<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
 
-  const onSubmit = (formData: SignUpFormData) =>
-    registerUser({ variables: { ...formData } })
+  const onSubmit = (formData: SignUpFormData) => {
+    if (!turnstileToken) {
+      dispatch(showAlert({ text: 'Please complete the CAPTCHA', type: 'warning' }));
+      return;
+    }
+    return registerUser({ variables: { ...formData, turnstileToken } })
       .then(({ data }) => {
         if (data) {
           const { user } = data;
@@ -25,10 +30,17 @@ export default function SignUpContainer() {
       .catch(err => {
         dispatch(showAlert({ text: err.message, type: 'error' }));
       });
+  };
 
   return (
     <PageContainer title={PAGES.SIGN_UP_PAGE}>
-      <SignUpView loading={loading} onSubmit={onSubmit} email={email} error={error} />
+      <SignUpView
+        loading={loading}
+        onSubmit={onSubmit}
+        email={email}
+        error={error}
+        onToken={setTurnstileToken}
+      />
     </PageContainer>
   );
 }

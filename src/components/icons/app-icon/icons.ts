@@ -20,6 +20,8 @@ export const APP_ICONS = {
   SUBMITTED: 'submitted',
   PENDING: 'pending',
   DISPUTED: 'disputed',
+  CHECK: 'check',
+  CROSS: 'cross',
 } as const;
 
 export type AppIconType = (typeof APP_ICONS)[keyof typeof APP_ICONS];

@@ -16,8 +16,10 @@ COPY . .
 # Allow passing Vite env as build args and expose them as env vars during build
 ARG VITE_ROOT_URL
 ARG VITE_APP_VERSION
+ARG VITE_TURNSTILE_SITE_KEY
 ENV VITE_ROOT_URL=${VITE_ROOT_URL}
 ENV VITE_APP_VERSION=${VITE_APP_VERSION}
+ENV VITE_TURNSTILE_SITE_KEY=${VITE_TURNSTILE_SITE_KEY}
 
 # Build your app
 RUN npm run build

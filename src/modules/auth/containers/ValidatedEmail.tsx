@@ -1,40 +1,31 @@
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useMutation } from '@apollo/client/react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { PageContainer } from '../../../components';
+import { MutationError, PageContainer } from '../../../components';
 import { Spinner } from '../../../components/loaders';
-import { AppDispatch } from '../../../store';
 import ValidatedEmail from '../components/ValidatedEmail.component';
 import { PAGES } from '../constants';
-import { verifyEmail } from '../services/validation';
+import { VERIFY_EMAIL } from '../graphql';
 
 export default function ValidatedEmailContainer() {
   const { token } = useParams<{ token: string }>();
-  const dispatch: AppDispatch = useDispatch();
-  const [loading, setLoading] = useState<boolean>(true);
-  const [successfulValidation, setSuccessfulValidation] = useState(false);
-  const [error, setError] = useState(null);
+
+  const [verifyEmail, { loading, error, data }] = useMutation(VERIFY_EMAIL);
 
   useEffect(() => {
-    if (!token) return;
-    verifyEmail(token)
-      .then(res => {
-        setLoading(false);
-        if (res.email) {
-          setSuccessfulValidation(true);
-        }
-      })
-      .catch(err => {
-        setError(err?.response?.data?.message || 'Something went wrong');
-        setLoading(false);
-      });
-  }, [token, dispatch]);
+    if (token) {
+      verifyEmail({ variables: { token } });
+    }
+  }, [token, verifyEmail]);
 
   return loading ? (
     <Spinner />
   ) : (
     <PageContainer title={PAGES.VALIDATED_EMAIL_PAGE}>
-      <ValidatedEmail success={successfulValidation} errorMessage={error} />
+      <>
+        {error ? <MutationError error={error} /> : null}
+        {loading ? <Spinner /> : <ValidatedEmail data={data} error={error} />}
+      </>
     </PageContainer>
   );
 }

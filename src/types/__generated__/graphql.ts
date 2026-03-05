@@ -236,6 +236,7 @@ export type EditUserInput = {
 
 export type ForgotPasswordInput = {
   email: Scalars['String']['input'];
+  turnstileToken: Scalars['String']['input'];
 };
 
 /** A goalscorer entry within a result */
@@ -358,13 +359,15 @@ export type Mutation = {
   EDIT_TEAM_BADGE: Team;
   EDIT_TROPHY: Trophy;
   EDIT_USER: User;
-  FORGOT_PASSWORD: User;
+  FORGOT_PASSWORD: Scalars['Boolean']['output'];
   LOG_OUT_USER: User;
   REGISTER_USER: User;
+  RESEND_VERIFICATION_EMAIL: User;
   RESET_PASSWORD: User;
   SIGN_IN_USER: User;
   SUBMIT_RESULT: Result;
   UPDATE_COMPETITION_CONFIGS: OrgSeason;
+  VERIFY_EMAIL: User;
 };
 
 
@@ -608,6 +611,11 @@ export type MutationRegister_UserArgs = {
 };
 
 
+export type MutationResend_Verification_EmailArgs = {
+  data: ResendVerificationEmailInput;
+};
+
+
 export type MutationReset_PasswordArgs = {
   data: ResetPasswordInput;
 };
@@ -628,6 +636,11 @@ export type MutationUpdate_Competition_ConfigsArgs = {
   data: UpdateCompetitionConfigsInput;
   orgId: Scalars['String']['input'];
   seasonId: Scalars['String']['input'];
+};
+
+
+export type MutationVerify_EmailArgs = {
+  data: VerifyEmailInput;
 };
 
 /** The Org Season model */
@@ -1157,7 +1170,13 @@ export type QueryTop_Player_StreaksArgs = {
 export type RegisterUserInput = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
+  turnstileToken: Scalars['String']['input'];
   username?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ResendVerificationEmailInput = {
+  email: Scalars['String']['input'];
+  turnstileToken: Scalars['String']['input'];
 };
 
 export type ResetPasswordInput = {
@@ -1552,6 +1571,7 @@ export type User = {
   email: Scalars['String']['output'];
   image: UploadedImage;
   isVerified: Scalars['Boolean']['output'];
+  lastEmailSentAt?: Maybe<Scalars['DateTimeISO']['output']>;
   nationality?: Maybe<Scalars['String']['output']>;
   orgIds: Array<Scalars['ID']['output']>;
   password: Scalars['String']['output'];
@@ -1563,4 +1583,8 @@ export type User = {
   username: Scalars['String']['output'];
   verificationToken?: Maybe<Scalars['String']['output']>;
   yearJoined: Scalars['String']['output'];
+};
+
+export type VerifyEmailInput = {
+  token: Scalars['String']['input'];
 };

@@ -50,6 +50,8 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.SUBMITTED]: BiCheck,
   [APP_ICONS.PENDING]: FaQuestion,
   [APP_ICONS.DISPUTED]: MdOutlineErrorOutline,
+  [APP_ICONS.CHECK]: BiCheck,
+  [APP_ICONS.CROSS]: MdOutlineErrorOutline,
 };
 
 export default function AppIcon({

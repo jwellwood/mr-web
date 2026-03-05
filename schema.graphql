@@ -221,6 +221,7 @@ input EditUserInput {
 
 input ForgotPasswordInput {
   email: String!
+  turnstileToken: String!
 }
 
 """A goalscorer entry within a result"""
@@ -318,8 +319,10 @@ type Mutation {
   DELETE_USER: User!
   EDIT_PASSWORD(data: EditPasswordInput!): User!
   EDIT_PROFILE_IMAGE(data: EditImageInput!): User!
-  FORGOT_PASSWORD(data: ForgotPasswordInput!): User!
+  FORGOT_PASSWORD(data: ForgotPasswordInput!): Boolean!
   RESET_PASSWORD(data: ResetPasswordInput!): User!
+  VERIFY_EMAIL(data: VerifyEmailInput!): User!
+  RESEND_VERIFICATION_EMAIL(data: ResendVerificationEmailInput!): User!
   ADD_RESULT(data: AddResultInput!, orgId: String!): Result!
   EDIT_RESULT(data: AddResultInput!, resultId: String!, orgId: String!): Result!
   DELETE_RESULT(resultId: String!, orgId: String!): Result!
@@ -574,6 +577,12 @@ input RegisterUserInput {
   email: String!
   password: String!
   username: String
+  turnstileToken: String!
+}
+
+input ResendVerificationEmailInput {
+  email: String!
+  turnstileToken: String!
 }
 
 input ResetPasswordInput {
@@ -943,6 +952,7 @@ type User {
   updatedAt: DateTimeISO
   isVerified: Boolean!
   verificationToken: String
+  lastEmailSentAt: DateTimeISO
   image: UploadedImage!
   dateOfBirth: String
   nationality: String
@@ -951,5 +961,9 @@ type User {
   teamIds: [ID!]!
   orgIds: [ID!]!
   token: String
+}
+
+input VerifyEmailInput {
+  token: String!
 }
 
