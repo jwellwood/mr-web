@@ -1,7 +1,7 @@
 {
   "name": "web-mr",
   "private": true,
-  "version": "2.40.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,11 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "prepare": "husky install",
-    "codegen:schema": "npx get-graphql-schema http://localhost:3002/graphql > schema.graphql"
+    "codegen:schema": "npx get-graphql-schema http://localhost:3002/graphql > schema.graphql",
+    "release": "release-it",
+    "release:patch": "release-it patch --ci",
+    "release:minor": "release-it minor --ci",
+    "release:major": "release-it major --ci"
   },
   "dependencies": {
     "@apollo/client": "^4.1.4",
@@ -50,11 +54,14 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
+    "@commitlint/cli": "^20.4.3",
+    "@commitlint/config-conventional": "^20.4.3",
     "@eslint/js": "^9.39.2",
     "@graphql-codegen/cli": "^6.1.1",
     "@graphql-codegen/near-operation-file-preset": "^4.0.0",
     "@graphql-codegen/typescript": "^5.0.7",
     "@graphql-codegen/typescript-operations": "^5.0.7",
+    "@release-it/conventional-changelog": "^10.0.5",
     "@storybook/addon-a11y": "^10.2.7",
     "@storybook/addon-vitest": "^10.2.7",
     "@storybook/react-vite": "^10.2.7",
@@ -85,6 +92,7 @@
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
     "redux-mock-store": "^1.5.5",
+    "release-it": "^19.2.4",
     "rollup-plugin-visualizer": "^6.0.5",
     "storybook": "^10.2.7",
     "ts-node": "^10.9.2",

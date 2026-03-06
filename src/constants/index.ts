@@ -10,10 +10,9 @@ export * from './rounds';
 export const ROOT_URL: string =
   typeof __ROOT_URL__ !== 'undefined'
     ? __ROOT_URL__
-    : import.meta.env.VITE_ROOT_URL ||
-      'https://madrid-reds-1035582858411.northamerica-northeast2.run.app';
+    : import.meta.env.VITE_ROOT_URL || 'https://footy-stats.app';
 
 export const VERSION: string =
   typeof __APP_VERSION__ !== 'undefined'
     ? __APP_VERSION__
-    : import.meta.env.VITE_APP_VERSION || '0.0.0';
+    : import.meta.env.VITE_APP_VERSION || '0.1.0';
