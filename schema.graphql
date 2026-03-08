@@ -164,29 +164,9 @@ from a string in ISO 8601 format.
 """
 scalar DateTimeISO
 
-input EditBadgeInput {
-  public_id: String!
-  url: String!
-}
-
-input EditImageInput {
-  public_id: String!
-  url: String!
-}
-
-input EditOrgBadgeInput {
-  public_id: String!
-  url: String!
-}
-
 input EditPasswordInput {
   password: String!
   newPassword: String!
-}
-
-input EditPhotoInput {
-  public_id: String!
-  url: String!
 }
 
 input EditPlayerInput {
@@ -233,6 +213,11 @@ type Goalscorer {
 input GoalscorerInput {
   playerId: ID!
   goals: Int!
+}
+
+input ImageInput {
+  public_id: String!
+  url: String!
 }
 
 type LeagueTableByComp {
@@ -299,11 +284,11 @@ type MostInMatch {
 type Mutation {
   ADD_PLAYER(data: AddPlayerInput!, teamId: String!): Player!
   EDIT_PLAYER(data: EditPlayerInput!, playerId: String!, teamId: String!): Player!
-  EDIT_PLAYER_PHOTO(data: EditPhotoInput!, playerId: String!, teamId: String!): Player!
+  EDIT_PLAYER_PHOTO(data: ImageInput!, playerId: String!, teamId: String!): Player!
   DELETE_PLAYER(playerId: String!, teamId: String!): Player!
   ADD_TEAM(data: AddTeamInput!, orgId: String!): Team!
   EDIT_TEAM(data: UpdateTeamInput!, teamId: String!): Team!
-  EDIT_TEAM_BADGE(data: EditBadgeInput!, teamId: String!): Team!
+  EDIT_TEAM_BADGE(data: ImageInput!, teamId: String!): Team!
   DELETE_TEAM(teamId: String!): Team!
   ADD_SEASON(data: AddTeamSeasonInput!, teamId: String!): TeamSeason!
   EDIT_SEASON(data: AddTeamSeasonInput!, seasonId: String!, teamId: String!): TeamSeason!
@@ -318,7 +303,7 @@ type Mutation {
   EDIT_USER(data: EditUserInput!): User!
   DELETE_USER: User!
   EDIT_PASSWORD(data: EditPasswordInput!): User!
-  EDIT_PROFILE_IMAGE(data: EditImageInput!): User!
+  EDIT_PROFILE_IMAGE(data: ImageInput!): User!
   FORGOT_PASSWORD(data: ForgotPasswordInput!): Boolean!
   RESET_PASSWORD(data: ResetPasswordInput!): User!
   VERIFY_EMAIL(data: VerifyEmailInput!): User!
@@ -331,7 +316,7 @@ type Mutation {
   ADD_GOALSCORERS(data: AddGoalscorersInput!, resultId: String!): Result!
   ADD_ORGANIZATION(data: AddOrganizationInput!): Organization!
   EDIT_ORGANIZATION(data: UpdateOrganizationInput!, orgId: String!): Organization!
-  EDIT_ORG_BADGE(data: EditOrgBadgeInput!, orgId: String!): Organization!
+  EDIT_ORG_BADGE(data: ImageInput!, orgId: String!): Organization!
   DELETE_ORGANIZATION(orgId: String!): Organization!
   ADD_MATCH(data: TAddMatchInput!): Match!
   EDIT_MATCH(data: TAddMatchInput!, matchId: String!): Match!

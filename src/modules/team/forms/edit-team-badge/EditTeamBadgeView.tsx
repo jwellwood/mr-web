@@ -1,6 +1,7 @@
 import { DataError } from '../../../../components';
-import ImageForm from '../../../../components/forms/ImageForm';
+import ImageForm from '../../../../components/forms/image-form/ImageForm';
 import { Spinner } from '../../../../components/loaders';
+import { IMAGE_TYPE } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
 import { FETCH_TEAM_QUERY } from '../../types';
 
@@ -34,6 +35,8 @@ export default function EditTeamBadgeView({
       currentUrl={data.team?.teamBadge?.url as string}
       removeImage={removeImage}
       loading={loading}
+      error={error}
+      fallbackIcon={IMAGE_TYPE.BADGE}
     />
   ) : (
     <Spinner />

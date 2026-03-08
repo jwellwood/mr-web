@@ -1,8 +1,9 @@
 import { useMutation, useQuery } from '@apollo/client/react';
 import { useEffect } from 'react';
 import { PageHeader } from '../../../../components';
-import ImageForm from '../../../../components/forms/ImageForm';
+import ImageForm from '../../../../components/forms/image-form/ImageForm';
 import { Spinner } from '../../../../components/loaders';
+import { IMAGE_TYPE } from '../../../../constants';
 import { useCustomParams, useUpload } from '../../../../hooks';
 import { removeOrgBadge, uploadOrgBadge } from '../../../../services/images';
 import { PAGES } from '../../constants';
@@ -19,14 +20,12 @@ export default function UpdateOrgBadge() {
     variables: { orgId: orgId! },
   });
   const [editOrgBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_ORG_BADGE, {
-    variables: { orgId: orgId },
+    variables: { orgId: orgId! },
   });
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadOrgBadge,
     removeFunc: removeOrgBadge,
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    graphqlFunc: editOrgBadge as any,
+    graphQLMutation: editOrgBadge,
     refetchFunc: refetch,
     url: data?.org?.badge?.url as string,
     public_id: data?.org?.badge?.public_id,
@@ -50,6 +49,7 @@ export default function UpdateOrgBadge() {
         currentUrl={data?.org?.badge?.url as string}
         removeImage={removeImage}
         error={error || editError}
+        fallbackIcon={IMAGE_TYPE.BADGE}
       />
     ) : (
       <Spinner />

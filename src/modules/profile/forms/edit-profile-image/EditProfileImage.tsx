@@ -1,10 +1,9 @@
 import { useMutation, useQuery } from '@apollo/client/react';
-import { DataError, PageContainer } from '../../../../components';
-import ImageForm from '../../../../components/forms/ImageForm';
-import { Spinner } from '../../../../components/loaders';
+import { PageContainer } from '../../../../components';
+import ImageForm from '../../../../components/forms/image-form/ImageForm';
+import { IMAGE_TYPE } from '../../../../constants';
 import { useUpload } from '../../../../hooks';
 import { removeUserImage, uploadUserImage } from '../../../../services/images';
-import { TApolloError } from '../../../../types/apollo';
 import { PAGES } from '../../constants';
 import { EDIT_PROFILE_IMAGE, FETCH_USER } from '../../graphql';
 
@@ -15,8 +14,7 @@ export default function EditUserImage() {
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadUserImage,
     removeFunc: removeUserImage,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    graphqlFunc: editProfileImage as any,
+    graphQLMutation: editProfileImage,
     refetchFunc: refetch,
     url: data?.user?.image.url,
     public_id: data?.user?.image?.public_id,
@@ -24,27 +22,18 @@ export default function EditUserImage() {
 
   const loadingState = loading || loadingUser || editLoading;
 
-  const renderContent = () =>
-    imageUrl ? (
+  return (
+    <PageContainer title={PAGES.EDIT_USER_IMAGE_PAGE}>
       <ImageForm
-        imageUrl={imageUrl}
+        imageUrl={imageUrl || 'default'}
         setImageUrl={setImageUrl}
         onSubmit={onSubmit}
         currentUrl={data?.user?.image?.url}
         removeImage={removeImage}
+        error={error || editError}
         loading={loadingState}
+        fallbackIcon={IMAGE_TYPE.USER}
       />
-    ) : (
-      <Spinner />
-    );
-
-  return (
-    <PageContainer title={PAGES.EDIT_USER_IMAGE_PAGE}>
-      {error || editError ? (
-        <DataError error={(error || editError) as TApolloError} />
-      ) : (
-        renderContent()
-      )}
     </PageContainer>
   );
 }

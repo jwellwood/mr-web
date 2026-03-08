@@ -7,7 +7,8 @@ export { default as ControlledTextInput } from './controlled-text-input/Controll
 export { default as ControlledSwitchInput } from './controlled-switch-input/ControlledSwitchInput';
 export { default as CustomSwitch } from './controlled-switch-input/CustomSwitch';
 export { default as FormErrorMessage } from './form-error-message/FormErrorMessage';
-export { default as FileInput } from './file-input/FileInput';
+export { default as FileInput } from './controlled-file-input/FileInput';
+export { default as ControlledFileInput } from './controlled-file-input/ControlledFileInput';
 
 export * from './form-error-message/constants';
 export type { ISelectOptions, TypedFormError } from './types';

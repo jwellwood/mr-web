@@ -18,12 +18,12 @@ export default function EditTeamBadge() {
     variables: { teamId: teamId! },
   });
   const [editTeamBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_TEAM_BADGE, {
-    variables: { teamId: teamId!, public_id: '', url: '' }, // TODO
+    variables: { teamId: teamId! },
   });
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadTeamBadge,
     removeFunc: removeTeamBadge,
-    graphqlFunc: editTeamBadge,
+    graphQLMutation: editTeamBadge,
     refetchFunc: refetch,
     url: data?.team?.teamBadge?.url as string,
     public_id: data?.team?.teamBadge?.public_id as string,

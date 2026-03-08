@@ -179,29 +179,9 @@ export type CompetitionWinner = {
   year: Scalars['String']['output'];
 };
 
-export type EditBadgeInput = {
-  public_id: Scalars['String']['input'];
-  url: Scalars['String']['input'];
-};
-
-export type EditImageInput = {
-  public_id: Scalars['String']['input'];
-  url: Scalars['String']['input'];
-};
-
-export type EditOrgBadgeInput = {
-  public_id: Scalars['String']['input'];
-  url: Scalars['String']['input'];
-};
-
 export type EditPasswordInput = {
   newPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
-};
-
-export type EditPhotoInput = {
-  public_id: Scalars['String']['input'];
-  url: Scalars['String']['input'];
 };
 
 export type EditPlayerInput = {
@@ -249,6 +229,11 @@ export type Goalscorer = {
 export type GoalscorerInput = {
   goals: Scalars['Int']['input'];
   playerId: Scalars['ID']['input'];
+};
+
+export type ImageInput = {
+  public_id: Scalars['String']['input'];
+  url: Scalars['String']['input'];
 };
 
 export type LeagueTableByComp = {
@@ -527,7 +512,7 @@ export type MutationEdit_OrganizationArgs = {
 
 
 export type MutationEdit_Org_BadgeArgs = {
-  data: EditOrgBadgeInput;
+  data: ImageInput;
   orgId: Scalars['String']['input'];
 };
 
@@ -552,14 +537,14 @@ export type MutationEdit_PlayerArgs = {
 
 
 export type MutationEdit_Player_PhotoArgs = {
-  data: EditPhotoInput;
+  data: ImageInput;
   playerId: Scalars['String']['input'];
   teamId: Scalars['String']['input'];
 };
 
 
 export type MutationEdit_Profile_ImageArgs = {
-  data: EditImageInput;
+  data: ImageInput;
 };
 
 
@@ -584,7 +569,7 @@ export type MutationEdit_TeamArgs = {
 
 
 export type MutationEdit_Team_BadgeArgs = {
-  data: EditBadgeInput;
+  data: ImageInput;
   teamId: Scalars['String']['input'];
 };
 
