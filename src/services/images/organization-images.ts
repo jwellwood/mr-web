@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { API_PATH } from '../../constants';
+import { API_PATH, ROOT_URL } from '../../constants';
 import { authStorage } from '../../utils';
 
 const api = {
-  UPLOAD_ORG_BADGE_ROUTE: `${API_PATH.ADMIN}/upload_org_badge`,
-  REMOVE_ORG_BADGE_ROUTE: `${API_PATH.ADMIN}/remove_org_badge?public_id=`,
+  UPLOAD_ORG_BADGE_ROUTE: `${ROOT_URL}${API_PATH.ADMIN}/upload_org_badge`,
+  REMOVE_ORG_BADGE_ROUTE: `${ROOT_URL}${API_PATH.ADMIN}/remove_org_badge?public_id=`,
 };
 
 const getAuthHeaders = () => ({

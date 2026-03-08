@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { API_PATH } from '../../constants';
+import { API_PATH, ROOT_URL } from '../../constants';
 import { authStorage } from '../../utils';
 
 const api = {
-  UPLOAD_PLAYER_PHOTO_ROUTE: `${API_PATH.ADMIN}/upload_player_photo`,
-  REMOVE_PLAYER_PHOTO_ROUTE: `${API_PATH.ADMIN}/remove_player_photo?public_id=`,
+  UPLOAD_PLAYER_PHOTO_ROUTE: `${ROOT_URL}${API_PATH.ADMIN}/upload_player_photo`,
+  REMOVE_PLAYER_PHOTO_ROUTE: `${ROOT_URL}${API_PATH.ADMIN}/remove_player_photo?public_id=`,
 };
 
 const getAuthHeaders = () => ({
