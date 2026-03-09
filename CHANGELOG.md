@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.3.0](https://github.com/jwellwood/mr-web/compare/v0.2.1...v0.3.0) (2026-03-09)
+
+### Features
+
+* add terms ([0fcd6c9](https://github.com/jwellwood/mr-web/commit/0fcd6c92a8f331f3201a199786828ded41800f07))
+
 ## [0.2.1](https://github.com/jwellwood/mr-web/compare/v0.2.0...v0.2.1) (2026-03-08)
 
 ### Bug Fixes
