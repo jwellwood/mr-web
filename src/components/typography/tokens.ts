@@ -5,6 +5,7 @@ export const colorMap = {
   data: String(theme.palette.data.main),
   primary: String(theme.palette.primary.main),
   secondary: String(theme.palette.secondary.main),
+  info: String(theme.palette.info.main),
   tertiary: String(theme.palette.tertiary.main),
   success: String(theme.palette.success.main),
   warning: String(theme.palette.warning.main),

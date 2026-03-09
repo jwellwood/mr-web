@@ -10,6 +10,11 @@ export default function TurnstileWidget({ onVerify }: Props) {
     ? import.meta.env.VITE_TURNSTILE_SITE_KEY_LOCAL
     : import.meta.env.VITE_TURNSTILE_SITE_KEY;
 
+  if (!siteKey) {
+    console.error('[Turnstile] Missing sitekey — VITE_TURNSTILE_SITE_KEY is not set.');
+    return null;
+  }
+
   return (
     <CustomStack>
       <Turnstile

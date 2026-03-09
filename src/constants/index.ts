@@ -1,4 +1,3 @@
-export * from './dates';
 export * from './images';
 export * from './api';
 export * from './links';

@@ -112,6 +112,12 @@ export type AllPlayerStreaks = {
   playerId: Scalars['String']['output'];
 };
 
+export type AuthPayload = {
+  __typename?: 'AuthPayload';
+  token: Scalars['String']['output'];
+  user: User;
+};
+
 export type Award = {
   __typename?: 'Award';
   _id: Scalars['ID']['output'];
@@ -349,7 +355,7 @@ export type Mutation = {
   REGISTER_USER: User;
   RESEND_VERIFICATION_EMAIL: User;
   RESET_PASSWORD: User;
-  SIGN_IN_USER: User;
+  SIGN_IN_USER: AuthPayload;
   SUBMIT_RESULT: Result;
   UPDATE_COMPETITION_CONFIGS: OrgSeason;
   VERIFY_EMAIL: User;
@@ -1559,14 +1565,11 @@ export type User = {
   lastEmailSentAt?: Maybe<Scalars['DateTimeISO']['output']>;
   nationality?: Maybe<Scalars['String']['output']>;
   orgIds: Array<Scalars['ID']['output']>;
-  password: Scalars['String']['output'];
   playerId: Scalars['ID']['output'];
   roles: Array<Scalars['String']['output']>;
   teamIds: Array<Scalars['ID']['output']>;
-  token?: Maybe<Scalars['String']['output']>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   username: Scalars['String']['output'];
-  verificationToken?: Maybe<Scalars['String']['output']>;
   yearJoined: Scalars['String']['output'];
 };
 

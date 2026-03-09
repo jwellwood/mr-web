@@ -93,6 +93,11 @@ type AllPlayerStreaks {
   longestPlayedStreak: Float!
 }
 
+type AuthPayload {
+  user: User!
+  token: String!
+}
+
 type Award {
   _id: ID!
   seasonId: TeamSeason!
@@ -298,7 +303,7 @@ type Mutation {
   DELETE_ORG_SEASON(orgSeasonId: String!, orgId: String!): OrgSeason!
   UPDATE_COMPETITION_CONFIGS(data: UpdateCompetitionConfigsInput!, seasonId: String!, orgId: String!): OrgSeason!
   LOG_OUT_USER: User!
-  SIGN_IN_USER(data: SignInUserInput!): User!
+  SIGN_IN_USER(data: SignInUserInput!): AuthPayload!
   REGISTER_USER(data: RegisterUserInput!): User!
   EDIT_USER(data: EditUserInput!): User!
   DELETE_USER: User!
@@ -931,12 +936,10 @@ type User {
   _id: ID!
   roles: [String!]!
   username: String!
-  password: String!
   email: String!
   createdAt: DateTimeISO
   updatedAt: DateTimeISO
   isVerified: Boolean!
-  verificationToken: String
   lastEmailSentAt: DateTimeISO
   image: UploadedImage!
   dateOfBirth: String
@@ -945,7 +948,6 @@ type User {
   playerId: ID!
   teamIds: [ID!]!
   orgIds: [ID!]!
-  token: String
 }
 
 input VerifyEmailInput {

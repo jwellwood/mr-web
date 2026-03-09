@@ -26,10 +26,10 @@ export default function SignInContainer() {
     return signInUser({ variables: { ...formData } })
       .then(res => {
         if (res.data) {
-          const { user } = res.data;
+          const { token, user } = res.data.user;
           dispatch(showAlert({ text: `Welcome ${user.username}!`, type: 'success' }));
-          if (user?.token) {
-            authStorage.setToken(user.token);
+          if (token) {
+            authStorage.setToken(token);
           }
           dispatch(
             setAuth({

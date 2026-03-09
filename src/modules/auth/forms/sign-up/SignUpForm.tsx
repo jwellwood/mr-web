@@ -1,7 +1,15 @@
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Link } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { FormContainer, ControlledTextInput, ControlledSwitchInput } from '../../../../components';
+import {
+  FormContainer,
+  ControlledTextInput,
+  ControlledSwitchInput,
+  CustomTypography,
+} from '../../../../components';
+import { PresentationModal } from '../../../../components/modals';
 import { TApolloError } from '../../../../types/apollo';
+import TermsOfUseContent from '../../terms/TermsOfUseContent';
 import { SignUpSchema, type SignUpFormData } from './validation';
 
 interface Props {
@@ -26,7 +34,26 @@ export default function SignUpForm({ onSubmit, defaultValues, loading, error }: 
       <ControlledSwitchInput
         control={control}
         name="acceptTerms"
-        label="I accept the terms of use"
+        label={
+          <span>
+            <PresentationModal
+              title="Terms of Use"
+              buttonElement={
+                <Link
+                  component="span"
+                  underline="always"
+                  sx={{ cursor: 'pointer', textDecoration: 'none' }}
+                >
+                  <CustomTypography color="info" size="md" bold>
+                    Accept Terms of Use
+                  </CustomTypography>
+                </Link>
+              }
+            >
+              <TermsOfUseContent />
+            </PresentationModal>
+          </span>
+        }
       />
     </FormContainer>
   );
