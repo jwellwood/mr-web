@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.4.0](https://github.com/jwellwood/mr-web/compare/v0.3.0...v0.4.0) (2026-03-12)
+
+### Features
+
+* add help texts, alert texts ([16a75ac](https://github.com/jwellwood/mr-web/commit/16a75ac40338e5025fd130a60eb84532276204d8))
+
 ## [0.3.0](https://github.com/jwellwood/mr-web/compare/v0.2.1...v0.3.0) (2026-03-09)
 
 ### Features
