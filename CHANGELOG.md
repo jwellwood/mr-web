@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.4.1](https://github.com/jwellwood/mr-web/compare/v0.4.0...v0.4.1) (2026-03-12)
+
+### Bug Fixes
+
+* player queries inside modals ([8de89cb](https://github.com/jwellwood/mr-web/commit/8de89cb0824f0a924b3727e97975f3da84f1a61c))
+
 ## [0.4.0](https://github.com/jwellwood/mr-web/compare/v0.3.0...v0.4.0) (2026-03-12)
 
 ### Features
