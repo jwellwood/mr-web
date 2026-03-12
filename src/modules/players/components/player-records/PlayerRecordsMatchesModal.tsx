@@ -1,56 +1,23 @@
+import type { TypedDocumentNode } from '@graphql-typed-document-node/core';
 import { CustomButton } from '../../../../components/buttons';
-import { DataError } from '../../../../components/errors';
-import { LinksList, type IListItem } from '../../../../components/lists';
 import { PresentationModal } from '../../../../components/modals';
 import { CustomTypography } from '../../../../components/typography';
-import { TApolloError } from '../../../../types/apollo';
-import { parseDate } from '../../../../utils';
-import { T_PLAYER_MATCH_WITH_RECORD } from '../../types';
+import type { T_PLAYER_MATCH_WITH_RECORD } from '../../types';
+import PlayerRecordsMatchesContent from './PlayerRecordsMatchesContent';
+
+type PlayerMatchRecordVars = {
+  teamId: string;
+  playerId: string;
+  record: number;
+};
 
 interface Props {
-  data?: T_PLAYER_MATCH_WITH_RECORD;
-  loading: boolean;
-  orgId?: string;
-  teamId?: string;
-  title?: string;
-  error?: TApolloError;
+  record: number;
+  title: string;
+  query: TypedDocumentNode<T_PLAYER_MATCH_WITH_RECORD, PlayerMatchRecordVars>;
 }
 
-export default function PlayerRecordsMatchesModal({
-  data,
-  loading,
-  orgId,
-  teamId,
-  title,
-  error,
-}: Props) {
-  const { stats } = data || {};
-  const listData: IListItem[] =
-    stats?.map(item => {
-      const labelColor =
-        item.teamGoals > item.opponentGoals
-          ? 'primary'
-          : item.teamGoals === item.opponentGoals
-            ? 'warning'
-            : 'error';
-      return {
-        label: (
-          <CustomTypography bold color="data">
-            {item.opponent}
-          </CustomTypography>
-        ),
-        secondary: (
-          <CustomTypography color="label" size="xs">
-            <CustomTypography color={labelColor} size="xs" bold>
-              {item.teamGoals}-{item.opponentGoals}
-            </CustomTypography>{' '}
-            | {parseDate(item.date)}
-          </CustomTypography>
-        ),
-        link: `/org/${orgId}/team/${teamId}/match/${item._id}`,
-      };
-    }) || [];
-
+export default function xPlayerRecordsMatchesModal({ record, title, query }: Props) {
   return (
     <PresentationModal
       title={`Most ${title}`}
@@ -62,7 +29,7 @@ export default function PlayerRecordsMatchesModal({
         </CustomButton>
       }
     >
-      {!error ? <LinksList links={listData} loading={loading} /> : <DataError error={error} />}
+      <PlayerRecordsMatchesContent record={record} query={query} />
     </PresentationModal>
   );
 }
