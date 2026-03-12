@@ -1,8 +1,10 @@
 import { ImageAvatar } from '../../avatars';
 import { AppIconType, FlagIcon } from '../../icons';
 import { CustomSkeleton } from '../../loaders';
-import { CustomTypography, DifferenceText, NumberText, PositionText } from '../../typography';
+import { CustomTypography, PositionText } from '../../typography';
 import { CellStyle, CellValue } from '../types';
+import DifferenceText from './difference-text/DifferenceText';
+import NumberText from './number-text/NumberText';
 
 interface Props {
   cellKey: string;

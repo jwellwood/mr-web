@@ -3,6 +3,7 @@ import AuthLayout from '../../components/AuthLayout';
 import AuthorizationLinks from '../../components/AuthorizationLinks';
 import { SIGN_IN_LINKS } from '../../constants';
 import ResendVerification from '../../containers/ResendVerification';
+import { FORM_HELP } from '../../i18n';
 import SignInForm from './SignInForm';
 import { signInFormState } from './state';
 import type { SignInFormData } from './validation';
@@ -17,7 +18,7 @@ interface Props {
 
 export default function SignInView({ loading, onSubmit, showResendLink, email, error }: Props) {
   return (
-    <AuthLayout>
+    <AuthLayout helpText={FORM_HELP.LOGIN}>
       <>
         <SignInForm
           defaultValues={signInFormState}

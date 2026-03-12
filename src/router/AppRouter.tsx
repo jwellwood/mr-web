@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client/react';
 import { lazy, useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { CustomAlert } from '../components/alerts';
+import { CustomSnackbar } from '../components/alerts';
 import { BackgroundContainer } from '../components/containers';
 import { ErrorBoundary } from '../components/errors';
 import { LazyLoader } from '../components/loaders';
@@ -77,7 +77,7 @@ function AppRouter() {
       <ErrorBoundary>
         <BackgroundContainer>
           <AppContent />
-          <CustomAlert />
+          <CustomSnackbar />
         </BackgroundContainer>
       </ErrorBoundary>
     </BrowserRouter>

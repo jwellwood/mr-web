@@ -12,9 +12,9 @@ import {
 import { BsShieldShaded, BsFilter } from 'react-icons/bs';
 import { FaUserCircle, FaQuestion } from 'react-icons/fa';
 import { FaRegFlag } from 'react-icons/fa6';
-import { IoShieldSharp } from 'react-icons/io5';
+import { IoShieldSharp, IoHelpCircleOutline } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
-import { MdLocationOn, MdOutlineErrorOutline } from 'react-icons/md';
+import { MdLocationOn, MdOutlineErrorOutline, MdOutlineInfo } from 'react-icons/md';
 import { TbSoccerField, TbUsers } from 'react-icons/tb';
 import { TfiMenu } from 'react-icons/tfi';
 import { theme } from '../../../theme';
@@ -52,6 +52,8 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.DISPUTED]: MdOutlineErrorOutline,
   [APP_ICONS.CHECK]: BiCheck,
   [APP_ICONS.CROSS]: MdOutlineErrorOutline,
+  [APP_ICONS.HELP]: IoHelpCircleOutline,
+  [APP_ICONS.INFO]: MdOutlineInfo,
 };
 
 export default function AppIcon({

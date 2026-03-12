@@ -5,6 +5,7 @@ import TurnstileWidget from '../../components/Turnstile';
 import ValidationEmailSent from '../../components/ValidationEmailSent';
 import { SIGN_UP_LINKS } from '../../constants';
 import SignUpForm from '../../forms/sign-up/SignUpForm';
+import { FORM_HELP } from '../../i18n';
 import { signUpFormState } from './state';
 import type { SignUpFormData } from './validation';
 
@@ -18,7 +19,7 @@ interface Props {
 
 export default function SignUpView({ loading, onSubmit, email, error, onToken }: Props) {
   return (
-    <AuthLayout>
+    <AuthLayout helpText={!email ? FORM_HELP.SIGN_UP : ''}>
       <>
         {email ? (
           <ValidationEmailSent email={email} />

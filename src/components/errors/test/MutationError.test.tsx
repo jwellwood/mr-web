@@ -83,7 +83,7 @@ describe('MutationError', () => {
     const mockError = { message: 'Test' };
     const { container } = render(<MutationError error={mockError} />);
 
-    const alert = container.querySelector('[class*="MuiAlert-standardWarning"]');
+    const alert = container.querySelector('[class*="MuiAlert-outlinedError"]');
     expect(alert).toBeInTheDocument();
   });
 });

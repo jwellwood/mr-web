@@ -1,5 +1,6 @@
 import { TApolloError } from '../../../../types/apollo';
 import AuthLayout from '../../components/AuthLayout';
+import { FORM_HELP } from '../../i18n';
 import ForgotPasswordForm from './ForgotPasswordForm';
 import { forgotPasswordFormState } from './state';
 import type { ForgotPasswordFormData } from './validation';
@@ -12,7 +13,7 @@ interface Props {
 
 export default function ForgotPasswordView({ loading, error, onSubmit }: Props) {
   return (
-    <AuthLayout>
+    <AuthLayout helpText={FORM_HELP.FORGOT_PASSWORD}>
       <ForgotPasswordForm
         defaultValues={forgotPasswordFormState}
         onSubmit={onSubmit}

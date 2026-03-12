@@ -38,13 +38,23 @@ export default function SectionContainer({
     return border;
   };
 
+  const background = () => {
+    if (type === 'winner') {
+      return specialBackground;
+    }
+    if (type === 'form') {
+      return palette.dark.main;
+    }
+    return palette.secondary.dark;
+  };
+
   return (
     <Fade in={true} timeout={500}>
       <Paper
         elevation={10}
         sx={{
           margin: spacing(1),
-          background: type === 'winner' ? specialBackground : palette.secondary.dark,
+          background: background(),
           border: border(),
         }}
       >

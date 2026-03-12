@@ -53,7 +53,7 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
       ),
     },
     {
-      label: 'Previous',
+      label: 'Inactive',
       component: error ? (
         <DataError error={error} />
       ) : (

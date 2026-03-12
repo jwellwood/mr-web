@@ -55,4 +55,45 @@ describe('FileInput', () => {
 
     expect(screen.queryByText(/required/i)).not.toBeInTheDocument();
   });
+
+  it('renders a "Choose file" button', () => {
+    render(
+      <TestWrapper>
+        <FileInput inputName="photo" onChange={vi.fn()} />
+      </TestWrapper>
+    );
+
+    expect(screen.getByRole('button', { name: /choose file/i })).toBeInTheDocument();
+  });
+
+  it('displays the fileName when provided', () => {
+    render(
+      <TestWrapper>
+        <FileInput inputName="photo" onChange={vi.fn()} fileName="photo.png" />
+      </TestWrapper>
+    );
+
+    expect(screen.getByText('photo.png')).toBeInTheDocument();
+  });
+
+  it('does not display a fileName when not provided', () => {
+    render(
+      <TestWrapper>
+        <FileInput inputName="photo" onChange={vi.fn()} />
+      </TestWrapper>
+    );
+
+    expect(screen.queryByText('.png')).not.toBeInTheDocument();
+  });
+
+  it('passes the accept attribute to the hidden file input', () => {
+    const { container } = render(
+      <TestWrapper>
+        <FileInput inputName="photo" onChange={vi.fn()} accept="image/png,image/jpeg" />
+      </TestWrapper>
+    );
+
+    const input = container.querySelector('input[type="file"]');
+    expect(input).toHaveAttribute('accept', 'image/png,image/jpeg');
+  });
 });

@@ -59,7 +59,7 @@ export const terms = [
     content: [
       'The App uses the following third-party services to operate. Each may process personal data as described:',
       "Cloudinary (Cloudinary Ltd): User-uploaded images and media files are stored and served via Cloudinary. Uploaded content may include metadata. Cloudinary's privacy policy applies to data processed on their platform.",
-      'Mailtrap (Railsware Products, Inc.): Transactional emails (such as account verification and password reset) are sent via Mailtrap. Your email address is passed to Mailtrap solely for the purpose of delivering these emails.',
+      // 'Mailtrap (Railsware Products, Inc.): Transactional emails (such as account verification and password reset) are sent via Mailtrap. Your email address is passed to Mailtrap solely for the purpose of delivering these emails.',
       "Google Cloud (Google LLC): The App is hosted on Google Cloud Platform infrastructure. Operational data may reside on Google Cloud servers. Google's data processing terms apply.",
       'These providers are engaged as data processors and are only permitted to process your data as necessary to provide their services to us.',
     ],

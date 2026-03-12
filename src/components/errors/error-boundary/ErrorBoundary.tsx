@@ -1,9 +1,10 @@
 import { Stack } from '@mui/material';
 import React, { Component, ErrorInfo } from 'react';
-import { ErrorText } from '..';
 import { SectionContainer } from '../..';
 import { ROOT_URL } from '../../../constants';
+import { CustomAlert } from '../../alerts';
 import { CustomButton } from '../../buttons';
+import { CustomStack } from '../../grids';
 import { CustomTypography } from '../../typography';
 
 interface State {
@@ -42,16 +43,11 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, State> 
   render() {
     if (this.state.errorMessage) {
       return (
-        <SectionContainer title={<ErrorText>Something went wrong</ErrorText>}>
-          <Stack sx={{ textAlign: 'center' }}>
-            <CustomTypography color="label">There was a problem</CustomTypography>
-
-            <SectionContainer>
-              <CustomTypography color="warning">
-                {this.state.errorMessage || 'Unknown'}
-              </CustomTypography>
+        <SectionContainer title="There was a problem">
+          <CustomStack spacing={4} align="center">
+            <SectionContainer title="Error Details">
+              <CustomAlert type="warning" text={this.state.errorMessage} />
             </SectionContainer>
-
             <CustomTypography color="label">
               Try refreshing the page, or go to the home page
             </CustomTypography>
@@ -59,7 +55,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, State> 
               <CustomButton onClick={() => window.location.reload()}>Refresh</CustomButton>{' '}
               <CustomButton link={ROOT_URL}>Home</CustomButton>
             </Stack>
-          </Stack>
+          </CustomStack>
         </SectionContainer>
       );
     }

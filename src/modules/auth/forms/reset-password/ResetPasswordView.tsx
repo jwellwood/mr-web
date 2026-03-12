@@ -1,5 +1,6 @@
 import { TApolloError } from '../../../../types/apollo';
 import AuthLayout from '../../components/AuthLayout';
+import { FORM_HELP } from '../../i18n';
 import ResetPasswordForm from './ResetPasswordForm';
 import { resetPasswordFormState } from './state';
 import type { ResetPasswordFormData } from './validation';
@@ -12,7 +13,7 @@ interface Props {
 
 export default function ResetPasswordView({ loading, onSubmit, error }: Props) {
   return (
-    <AuthLayout>
+    <AuthLayout helpText={FORM_HELP.RESET_PASSWORD}>
       <ResetPasswordForm
         defaultValues={resetPasswordFormState}
         onSubmit={onSubmit}

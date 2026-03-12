@@ -49,7 +49,7 @@ export default function FormContainer({
           onSubmit(ev);
         }}
       >
-        <SectionContainer>
+        <SectionContainer type="form">
           {loading ? (
             <Spinner />
           ) : (

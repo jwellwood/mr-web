@@ -50,7 +50,7 @@ describe('ErrorBoundary', () => {
       </RouterWrapper>
     );
 
-    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(screen.getByText('There was a problem')).toBeInTheDocument();
   });
 
   test('displays error message in UI', () => {
@@ -155,7 +155,7 @@ describe('ErrorBoundary', () => {
       </RouterWrapper>
     );
 
-    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(screen.getByText('There was a problem')).toBeInTheDocument();
   });
 
   test('displays error in development mode', () => {
@@ -171,7 +171,7 @@ describe('ErrorBoundary', () => {
 
     // Error should be logged in development
     // Note: This depends on import.meta.env.DEV being true
-    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(screen.getByText('There was a problem')).toBeInTheDocument();
 
     consoleLogSpy.mockRestore();
   });

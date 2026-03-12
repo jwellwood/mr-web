@@ -1,8 +1,20 @@
 import { theme } from '../../../theme';
 
 export const getIconColor = (color?: string) => {
-  const { primary, secondary, success, error, warning, common, label, data, gold, silver, bronze } =
-    theme.palette;
+  const {
+    primary,
+    secondary,
+    success,
+    error,
+    warning,
+    info,
+    common,
+    label,
+    data,
+    gold,
+    silver,
+    bronze,
+  } = theme.palette;
   let iconColor = '';
 
   switch (color) {
@@ -38,6 +50,9 @@ export const getIconColor = (color?: string) => {
       break;
     case 'warning':
       iconColor = warning.main;
+      break;
+    case 'info':
+      iconColor = info.main;
       break;
     case 'white':
       iconColor = common.white;

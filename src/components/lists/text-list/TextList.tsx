@@ -36,7 +36,7 @@ export default function TextList({ data = [], labelSize, loading }: Props) {
             onClick={onClick}
             secondaryAction={valueDisplay}
             sx={{
-              borderBottom: border ? '0.2px solid white' : '',
+              borderBottom: border ? '0.2px solid rgba(255, 255, 255, 0.2)' : '',
             }}
           >
             {avatar && <ListItemAvatar>{avatar}</ListItemAvatar>}

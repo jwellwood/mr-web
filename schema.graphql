@@ -528,11 +528,11 @@ type Query {
   FETCH_SEASON(seasonId: String!): TeamSeason!
   FETCH_SEASONS_POSITION(teamId: String!): [PositionFinishes!]!
   FETCH_USER: User!
-  RESULTS(orgSeasonId: String!, orgId: String!): [Result!]!
-  FIXTURES(orgSeasonId: String!, orgId: String!): [Result!]!
+  RESULTS(orgSeasonId: String, orgId: String!): [Result!]!
+  FIXTURES(orgSeasonId: String, orgId: String!): [Result!]!
   RESULT(resultId: String!): Result!
-  LEAGUE_TABLE_DATA(orgSeasonId: String!, orgId: String!): [LeagueTableByComp!]!
-  SQUAD_LIST_BY_SEASON(seasonId: String!, teamId: String!): [SquadListBySeason!]!
+  LEAGUE_TABLE_DATA(orgSeasonId: String, orgId: String!): [LeagueTableByComp!]!
+  SQUAD_LIST_BY_SEASON(seasonId: String, teamId: String!): [SquadListBySeason!]!
   SQUAD_STATS(competitionId: String!, seasonId: String!, teamId: String!): [TSquadStats!]!
   PAST_PLAYERS(teamId: String!): [PastPlayer!]!
   HALL_OF_FAME_PLAYERS(teamId: String!): [Player!]!

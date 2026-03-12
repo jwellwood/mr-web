@@ -4,6 +4,7 @@ import { CustomTabs, ITab } from '../../components/tabs';
 import { TAB_TYPES } from '../../constants';
 import { useAuth, useCustomParams } from '../../hooks';
 import { PAGES, PLAYER_ADMIN_LINKS } from './constants';
+import { PLAYER_HELP } from './help';
 
 const Player = lazy(() => import('./containers/Player'));
 const PlayerTrophies = lazy(() => import('./containers/PlayerTrophies'));
@@ -50,7 +51,11 @@ export default function PlayerTabs() {
   ];
 
   return (
-    <PageContainer title={PAGES.PLAYER} links={isTeamAuth ? PLAYER_ADMIN_LINKS : undefined}>
+    <PageContainer
+      title={PAGES.PLAYER}
+      links={isTeamAuth ? PLAYER_ADMIN_LINKS : undefined}
+      help={PLAYER_HELP}
+    >
       <>
         <Player />
         <CustomTabs type={TAB_TYPES.PLAYER} tabs={tabs} level="primary" />

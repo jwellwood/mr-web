@@ -10,7 +10,6 @@ export default function Matches() {
 
   const { data, error, loading } = useQuery(FETCH_MATCHES, {
     variables: { teamId: teamId!, seasonId: seasonId! },
-
     skip: !seasonId,
   });
 

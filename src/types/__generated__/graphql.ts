@@ -932,7 +932,7 @@ export type QueryFetch_TrophyArgs = {
 
 export type QueryFixturesArgs = {
   orgId: Scalars['String']['input'];
-  orgSeasonId: Scalars['String']['input'];
+  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -943,7 +943,7 @@ export type QueryHall_Of_Fame_PlayersArgs = {
 
 export type QueryLeague_Table_DataArgs = {
   orgId: Scalars['String']['input'];
-  orgSeasonId: Scalars['String']['input'];
+  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -1090,7 +1090,7 @@ export type QueryResultArgs = {
 
 export type QueryResultsArgs = {
   orgId: Scalars['String']['input'];
-  orgSeasonId: Scalars['String']['input'];
+  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -1101,7 +1101,7 @@ export type QuerySquad_By_SeasonArgs = {
 
 
 export type QuerySquad_List_By_SeasonArgs = {
-  seasonId: Scalars['String']['input'];
+  seasonId?: InputMaybe<Scalars['String']['input']>;
   teamId: Scalars['String']['input'];
 };
 

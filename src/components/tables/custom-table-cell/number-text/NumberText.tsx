@@ -1,4 +1,4 @@
-import { CustomTypography } from '..';
+import { CustomTypography } from '../../../typography';
 
 interface Props {
   value: number;

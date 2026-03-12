@@ -8,7 +8,7 @@ describe('DataError', () => {
     const mockError = { message: 'Test error message' };
     render(<DataError error={mockError} />);
 
-    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
   });
 
   test('displays error message', () => {
@@ -48,7 +48,7 @@ describe('DataError', () => {
     const mockError = { message: '' };
     render(<DataError error={mockError} />);
 
-    expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toBeInTheDocument();
   });
 
   test('handles long error messages', () => {

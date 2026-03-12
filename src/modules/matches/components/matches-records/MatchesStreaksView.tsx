@@ -1,5 +1,4 @@
-import { DataError } from '../../../../components';
-import NoDataText from '../../../../components/errors/error-text/ErrorText';
+import { DataError, NoDataText } from '../../../../components';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_MATCHES_STREAK } from '../../types';

@@ -1,4 +1,4 @@
-import { InfoAlert } from '../../../components/alerts';
+import { CustomAlert } from '../../../components/alerts';
 
 interface Props {
   email: string;
@@ -6,8 +6,9 @@ interface Props {
 
 export default function ValidationEmailSent({ email }: Props) {
   return (
-    <InfoAlert>
-      An email has been sent to {email}. Click the link to validate your account
-    </InfoAlert>
+    <CustomAlert
+      type="info"
+      text={`An email has been sent to ${email}. Click the link to validate your account`}
+    />
   );
 }

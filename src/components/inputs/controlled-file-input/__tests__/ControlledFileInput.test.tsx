@@ -82,4 +82,58 @@ describe('ControlledFileInput', () => {
 
     expect(screen.getByText('File is required')).toBeInTheDocument();
   });
+
+  it('does not call onFileChange when the file exceeds 2 MB', async () => {
+    const handleFileChange = vi.fn();
+    const { container } = render(<Fixture onFileChange={handleFileChange} />);
+
+    // Create a file slightly over the 2 MB limit
+    const bigFile = new File([new Uint8Array(2 * 1024 * 1024 + 1)], 'big.png', {
+      type: 'image/png',
+    });
+    const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+    await userEvent.upload(input, bigFile);
+
+    expect(handleFileChange).not.toHaveBeenCalled();
+  });
+
+  it('does not call onFileChange when the file type is not in the accept list', async () => {
+    const handleFileChange = vi.fn();
+
+    function FixtureWithAccept() {
+      const { control } = useForm<TestForm>({ defaultValues: { photo: null } });
+      return (
+        <TestWrapper>
+          <ControlledFileInput
+            control={control}
+            name="photo"
+            onFileChange={handleFileChange}
+            accept="image/png,image/jpeg"
+          />
+        </TestWrapper>
+      );
+    }
+
+    const { container } = render(<FixtureWithAccept />);
+    const badFile = new File(['content'], 'doc.pdf', { type: 'application/pdf' });
+    const input = container.querySelector('input[type="file"]') as HTMLInputElement;
+    await userEvent.upload(input, badFile);
+
+    expect(handleFileChange).not.toHaveBeenCalled();
+  });
+
+  it('passes the accept attribute to the underlying file input', () => {
+    function FixtureWithAcceptProp() {
+      const { control } = useForm<TestForm>({ defaultValues: { photo: null } });
+      return (
+        <TestWrapper>
+          <ControlledFileInput control={control} name="photo" accept="image/webp,image/gif" />
+        </TestWrapper>
+      );
+    }
+
+    const { container } = render(<FixtureWithAcceptProp />);
+    const input = container.querySelector('input[type="file"]');
+    expect(input).toHaveAttribute('accept', 'image/webp,image/gif');
+  });
 });

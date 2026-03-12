@@ -7,6 +7,7 @@ import { TAB_TYPES } from '../../constants';
 import { useAuth, useCustomParams } from '../../hooks';
 import { getTabIndex } from '../../store';
 import { PAGES, TEAM_ADMIN_LINKS } from './constants';
+import { TEAM_HELP } from './help';
 
 export const TeamOverview = lazy(() => import('./containers/TeamOverview'));
 export const SquadTabs = lazy(() => import('../squad/main'));
@@ -46,7 +47,11 @@ export default function Team() {
   ];
 
   return (
-    <PageContainer title={PAGES.TEAM} links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}>
+    <PageContainer
+      title={PAGES.TEAM}
+      links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}
+      help={TEAM_HELP}
+    >
       <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
     </PageContainer>
   );
