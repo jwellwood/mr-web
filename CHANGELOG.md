@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.5.0](https://github.com/jwellwood/mr-web/compare/v0.4.1...v0.5.0) (2026-03-15)
+
+### Features
+
+* admin view for organisations ([32d8135](https://github.com/jwellwood/mr-web/commit/32d81355033db2585ba46ca759bafe6a25d375db))
+
 ## [0.4.1](https://github.com/jwellwood/mr-web/compare/v0.4.0...v0.4.1) (2026-03-12)
 
 ### Bug Fixes
