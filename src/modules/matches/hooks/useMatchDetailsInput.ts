@@ -4,7 +4,7 @@ import { ISelectOptions } from '../../../components';
 import { emptySelectOption } from '../../../constants';
 import { useCustomParams } from '../../../hooks/useCustomParams';
 import { useSeasons } from '../../../hooks/useSeasons';
-import { FETCH_ORG, FETCH_ORG_TEAMS } from '../../organization/org/graphql';
+import { FETCH_ORG, FETCH_ORG_TEAMS } from '../../organization/graphql';
 
 export const useMatchDetailsInput = () => {
   const { orgId, teamId } = useCustomParams();

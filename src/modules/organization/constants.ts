@@ -23,6 +23,8 @@ export const PAGES = {
   ADD_RESULT: 'Add Result',
   ADD_GAME_WEEK: 'Add Gameweek',
   EDIT_RESULT: 'Edit Result',
+  // Team
+  TEAM_ADMIN: 'Team Admin',
 } as const;
 
 export const competitionOptions: ISelectOptions[] = [
@@ -57,17 +59,17 @@ export const ADMIN_LINKS = (orgId?: string, orgSeasonId?: string) => [
   {
     label: 'Add Result',
     type: LINK_TYPE.ADD,
-    link: `/org/${orgId}/org_season/${orgSeasonId}/${ORG_PATHS.ADD_RESULT}`,
+    link: `/org/${orgId}/org_admin/org_season/${orgSeasonId}/${ORG_PATHS.ADD_RESULT}`,
   },
   // {
   //   label: 'Add Round of Fixtures',
   //   type: LINK_TYPE.ADD,
-  //   link: `/org/${orgId}/org_season/${orgSeasonId}/${ORG_PATHS.ADD_GAME_WEEK}`,
+  //   link: `/org/${orgId}/org_admin/org_season/${orgSeasonId}/${ORG_PATHS.ADD_GAME_WEEK}`,
   // },
   {
     label: 'Edit Season',
     type: LINK_TYPE.EDIT,
-    link: `/org/${orgId}/org_season/${orgSeasonId}/${ORG_PATHS.EDIT_ORG_SEASON}`,
+    link: `/org/${orgId}/org_admin/org_season/${orgSeasonId}/${ORG_PATHS.EDIT_ORG_SEASON}`,
   },
 ];
 

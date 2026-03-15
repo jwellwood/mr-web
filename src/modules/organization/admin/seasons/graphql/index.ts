@@ -1,0 +1,22 @@
+import { DeepOmitTypename } from '../../../../../utils';
+import { Add_Org_SeasonDocument, type Add_Org_SeasonMutation } from './ADD_ORG_SEASON.generated';
+import {
+  Delete_Org_SeasonDocument,
+  type Delete_Org_SeasonMutation,
+} from './DELETE_ORG_SEASON.generated';
+import { Edit_Org_SeasonDocument, type Edit_Org_SeasonMutation } from './EDIT_ORG_SEASON.generated';
+import {
+  Update_Competition_ConfigsDocument,
+  type Update_Competition_ConfigsMutation,
+} from './UPDATE_COMP_CONFIGS.generated';
+export {
+  Add_Org_SeasonDocument as ADD_ORG_SEASON,
+  Edit_Org_SeasonDocument as EDIT_ORG_SEASON,
+  Delete_Org_SeasonDocument as DELETE_ORG_SEASON,
+  Update_Competition_ConfigsDocument as UPDATE_COMPETITION_CONFIGS,
+};
+
+export type T_ADD_ORG_SEASON = DeepOmitTypename<Add_Org_SeasonMutation>;
+export type T_EDIT_ORG_SEASON = DeepOmitTypename<Edit_Org_SeasonMutation>;
+export type T_DELETE_ORG_SEASON = DeepOmitTypename<Delete_Org_SeasonMutation>;
+export type T_UPDATE_COMPETITION_CONFIGS = DeepOmitTypename<Update_Competition_ConfigsMutation>;

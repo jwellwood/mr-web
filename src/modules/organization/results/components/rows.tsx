@@ -1,4 +1,4 @@
-import { T_FETCH_RESULT } from '../graphql';
+import { T_FETCH_RESULT } from '../../graphql';
 import { ResultStatusType } from '../types';
 import ResultStatus from './ResultStatus';
 

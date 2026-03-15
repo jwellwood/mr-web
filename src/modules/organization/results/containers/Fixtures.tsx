@@ -2,8 +2,8 @@ import { useQuery } from '@apollo/client/react';
 import { DataError, NoDataText } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
+import { FETCH_FIXTURES } from '../../graphql';
 import ResultsAccordion from '../components/ResultsAccordion';
-import { FETCH_FIXTURES } from '../graphql';
 
 export default function Fixtures() {
   const { orgId, orgSeasonId } = useCustomParams();

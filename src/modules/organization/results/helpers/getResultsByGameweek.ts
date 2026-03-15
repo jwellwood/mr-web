@@ -1,4 +1,4 @@
-import { T_FETCH_FIXTURES, T_FETCH_RESULTS } from '../graphql';
+import { T_FETCH_FIXTURES, T_FETCH_RESULTS } from '../../graphql';
 
 export const getResultsByGameWeek = (
   results: T_FETCH_RESULTS['results'] | T_FETCH_FIXTURES['fixtures']

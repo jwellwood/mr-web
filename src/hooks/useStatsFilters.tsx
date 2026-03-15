@@ -1,7 +1,7 @@
 import { useLazyQuery } from '@apollo/client/react';
 import { useEffect, useMemo } from 'react';
 import type { ISelectOptions } from '../components';
-import { FETCH_ORG } from '../modules/organization/org/graphql';
+import { FETCH_ORG } from '../modules/organization/graphql';
 import { useCustomParams, useSeasons } from '.';
 
 export const useStatsFilters = () => {

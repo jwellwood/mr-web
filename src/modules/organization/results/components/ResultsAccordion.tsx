@@ -2,7 +2,7 @@ import { CustomTable, CustomTypography, SectionContainer } from '../../../../com
 import { CustomAccordion } from '../../../../components/accordion';
 import { CustomStack } from '../../../../components/grids';
 import { parseDate } from '../../../../utils';
-import { T_FETCH_FIXTURES, T_FETCH_RESULT, T_FETCH_RESULTS } from '../graphql';
+import { T_FETCH_FIXTURES, T_FETCH_RESULT, T_FETCH_RESULTS } from '../../graphql';
 import { getResultsByGameWeek } from '../helpers/getResultsByGameweek';
 import { columns } from './columns';
 import { rows } from './rows';

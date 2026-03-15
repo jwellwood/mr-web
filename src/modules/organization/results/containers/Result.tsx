@@ -6,8 +6,8 @@ import { LINK_TYPE } from '../../../../constants';
 import { useAuth } from '../../../../hooks';
 import { useCustomParams } from '../../../../hooks/useCustomParams';
 import { PAGES } from '../../constants';
+import { FETCH_RESULT } from '../../graphql';
 import ResultDetails from '../components/ResultDetails';
-import { FETCH_RESULT } from '../graphql';
 
 export default function Result() {
   const { orgId, resultId } = useCustomParams();

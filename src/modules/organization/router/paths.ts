@@ -16,4 +16,8 @@ export const ORG_PATHS = {
   ADD_COMPETITION: 'add_competition',
   EDIT_COMPETITION: 'edit_comp',
   COMPETITION: 'competition/:competitionId',
+  ORG_ADMIN: 'org_admin',
+  ADMIN_ORG_SEASON: 'org_season/:orgSeasonId',
+  ADMIN_TEAM: 'team/:teamId',
+  ADMIN_COMPETITION: 'competition/:competitionId',
 } as const;

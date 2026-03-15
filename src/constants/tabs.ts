@@ -5,6 +5,7 @@ export const TAB_TYPES = {
   ORG_SEASON: 'orgSeason',
   ORG_SEASON_MORE: 'orgSeasonMore',
   ORG_SEASON_ADMIN: 'orgSeasonAdmin',
+  ORG_ADMIN: 'orgAdmin',
   PROFILE_TEAMS: 'profileTeams',
   TEAM: 'team',
   OVERVIEW: 'overview',

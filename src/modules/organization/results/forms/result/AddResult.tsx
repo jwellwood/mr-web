@@ -6,13 +6,14 @@ import { PageHeader } from '../../../../../components';
 import Spinner from '../../../../../components/loaders/spinner/Spinner';
 import { useCustomParams } from '../../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../../store';
+import { mapFormToAddResult } from '../../../admin/fixtures/forms/mapResultForm';
+import ResultForm from '../../../admin/fixtures/forms/result/ResultForm';
+import { initialResultState } from '../../../admin/fixtures/forms/result/state';
+import type { ResultFormData } from '../../../admin/fixtures/forms/result/validation';
+import { ADD_RESULT } from '../../../admin/fixtures/graphql';
+import { useCompetitionOptions, useOrgSeasonOptions, useTeamOptions } from '../../../admin/hooks';
 import { PAGES } from '../../../constants';
-import { useCompetitionOptions, useOrgSeasonOptions, useTeamOptions } from '../../../hooks';
-import { ADD_RESULT, FETCH_RESULTS } from '../../graphql';
-import { mapFormToAddResult } from '../../helpers/mapResultForm';
-import ResultForm from './ResultForm';
-import { initialResultState } from './state';
-import type { ResultFormData } from './validation';
+import { FETCH_RESULTS } from '../../../graphql';
 
 export default function AddResult() {
   const { orgId, orgSeasonId } = useCustomParams();

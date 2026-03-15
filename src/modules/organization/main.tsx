@@ -1,15 +1,18 @@
 import { lazy } from 'react';
-import { PageHeader } from '../../components';
+import { CustomButton, PageHeader } from '../../components';
+import { CustomStack } from '../../components/grids';
 import { CustomTabs, ITab } from '../../components/tabs';
 import { TAB_TYPES } from '../../constants';
 import { useAuth, useCustomParams } from '../../hooks';
-import { PAGES, ORG_ADMIN_LINKS } from './constants';
+import { PAGES } from './constants';
 import { ORG_HELP } from './help';
+import { ORG_PATHS } from './router';
 
-const Org = lazy(() => import('./org/containers/Org'));
-const LeagueTables = lazy(() => import('./tables/containers/LeagueTables'));
+const Org = lazy(() => import('./containers/Org'));
+const LeagueTables = lazy(() => import('./containers/LeagueTables'));
 const Results = lazy(() => import('./results/main'));
-const MoreTabs = lazy(() => import('./more/main'));
+const OrgTeams = lazy(() => import('./containers/OrgTeams'));
+const OrgSeasons = lazy(() => import('./containers/OrgSeasons'));
 
 export default function Team() {
   const { orgId } = useCustomParams();
@@ -25,19 +28,26 @@ export default function Team() {
       label: 'Tables',
       component: <LeagueTables />,
     },
-    // {
-    //   label: 'Players',
-    //   component: <CustomTypography>Players</CustomTypography>,
-    // },
     {
-      label: 'More',
-      component: <MoreTabs />,
+      label: 'Teams',
+      component: <OrgTeams />,
+    },
+    {
+      label: 'History',
+      component: <OrgSeasons />,
     },
   ];
 
   return (
-    <PageHeader title={PAGES.ORG} links={isOrgAuth ? ORG_ADMIN_LINKS : undefined} help={ORG_HELP}>
+    <PageHeader title={PAGES.ORG} help={ORG_HELP}>
       <>
+        {isOrgAuth && (
+          <CustomStack>
+            <CustomButton link={ORG_PATHS.ORG_ADMIN} color="tertiary">
+              Admin
+            </CustomButton>
+          </CustomStack>
+        )}
         <Org />
         <CustomTabs type={TAB_TYPES.RESULTS} tabs={tabs} level="primary" />
       </>

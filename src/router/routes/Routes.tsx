@@ -110,38 +110,6 @@ export default function AppRoutes() {
             </RouteGuard>
           }
         />
-        <Route
-          path={ORG.ORG_PATHS.EDIT}
-          element={
-            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-              <ORG.EditOrg />
-            </RouteGuard>
-          }
-        />
-        <Route
-          path={ORG.ORG_PATHS.ADD_TEAM}
-          element={
-            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-              <TEAM.AddTeam />
-            </RouteGuard>
-          }
-        />
-        <Route
-          path={ORG.ORG_PATHS.ADD_COMPETITION}
-          element={
-            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-              <ORG.AddCompetition />
-            </RouteGuard>
-          }
-        />
-        <Route
-          path={ORG.ORG_PATHS.ADD_ORG_SEASON}
-          element={
-            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-              <ORG.AddOrgSeason />
-            </RouteGuard>
-          }
-        />
 
         <Route path={ORG.ORG_PATHS.ORG_SEASON}>
           <Route
@@ -152,39 +120,7 @@ export default function AppRoutes() {
               </RouteGuard>
             }
           />
-          <Route
-            path={ORG.ORG_PATHS.ADD_RESULT}
-            element={
-              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-                <ORG.AddResult />
-              </RouteGuard>
-            }
-          />
 
-          <Route
-            path={ORG.ORG_PATHS.ADD_GAME_WEEK}
-            element={
-              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-                <ORG.AddGameWeek />
-              </RouteGuard>
-            }
-          />
-          <Route
-            path={ORG.ORG_PATHS.EDIT_ORG_SEASON}
-            element={
-              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-                <ORG.EditOrgSeason />
-              </RouteGuard>
-            }
-          />
-          <Route
-            path={ORG.ORG_PATHS.ORG_SEASON_ADMIN}
-            element={
-              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-                <ORG.AdminOrgSeason />
-              </RouteGuard>
-            }
-          />
           <Route path={ORG.ORG_PATHS.RESULT}>
             <Route
               index={true}
@@ -204,32 +140,117 @@ export default function AppRoutes() {
             />
           </Route>
         </Route>
-        <Route path={ORG.ORG_PATHS.COMPETITION}>
+
+        <Route path={ORG.ORG_PATHS.ORG_ADMIN}>
           <Route
             index={true}
             element={
-              <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-                <ORG.Competition />
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.OrgAdmin />
               </RouteGuard>
             }
           />
           <Route
-            path={ORG.ORG_PATHS.EDIT_COMPETITION}
+            path={ORG.ORG_PATHS.EDIT}
             element={
               <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-                <ORG.EditCompetition />
+                <ORG.EditOrg />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path={ORG.ORG_PATHS.ADD_TEAM}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <TEAM.AddTeam />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path={ORG.ORG_PATHS.ADD_COMPETITION}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.AddCompetition />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path={ORG.ORG_PATHS.ADD_ORG_SEASON}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.AddOrgSeason />
+              </RouteGuard>
+            }
+          />
+          <Route path={ORG.ORG_PATHS.ADMIN_ORG_SEASON}>
+            <Route
+              index={true}
+              element={
+                <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                  <ORG.AdminOrgSeason />
+                </RouteGuard>
+              }
+            />
+            <Route
+              path={ORG.ORG_PATHS.ADD_RESULT}
+              element={
+                <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                  <ORG.AddResult />
+                </RouteGuard>
+              }
+            />
+            <Route
+              path={ORG.ORG_PATHS.ADD_GAME_WEEK}
+              element={
+                <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                  <ORG.AddGameWeek />
+                </RouteGuard>
+              }
+            />
+            <Route
+              path={ORG.ORG_PATHS.EDIT_ORG_SEASON}
+              element={
+                <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                  <ORG.EditOrgSeason />
+                </RouteGuard>
+              }
+            />
+          </Route>
+          <Route
+            path={ORG.ORG_PATHS.ADMIN_TEAM}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.AdminTeam />
+              </RouteGuard>
+            }
+          />
+          <Route
+            path={ORG.ORG_PATHS.ADMIN_COMPETITION}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.AdminCompetition />
+              </RouteGuard>
+            }
+          />
+          <Route path={ORG.ORG_PATHS.COMPETITION}>
+            <Route
+              path={ORG.ORG_PATHS.EDIT_COMPETITION}
+              element={
+                <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                  <ORG.EditCompetition />
+                </RouteGuard>
+              }
+            />
+          </Route>
+          <Route
+            path={ORG.ORG_PATHS.EDIT_BADGE}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                <ORG.EditOrgBadge />
               </RouteGuard>
             }
           />
         </Route>
-        <Route
-          path={ORG.ORG_PATHS.EDIT_BADGE}
-          element={
-            <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
-              <ORG.EditOrgBadge />
-            </RouteGuard>
-          }
-        />
 
         {/* Team Routes - TEAM_ADMIN only for forms */}
         <Route path={TEAM.TEAM_PATHS.TEAM}>

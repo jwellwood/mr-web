@@ -6,16 +6,14 @@ import { PageHeader } from '../../../../../components';
 import { Spinner } from '../../../../../components/loaders';
 import { useCustomParams } from '../../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../../store';
+import { mapFormToEditResult, mapResultToForm } from '../../../admin/fixtures/forms/mapResultForm';
+import DeleteResult from '../../../admin/fixtures/forms/result/DeleteResult';
+import ResultForm from '../../../admin/fixtures/forms/result/ResultForm';
+import { ResultFormData } from '../../../admin/fixtures/forms/result/validation';
+import { EDIT_RESULT } from '../../../admin/fixtures/graphql';
+import { useCompetitionOptions, useOrgSeasonOptions, useTeamOptions } from '../../../admin/hooks';
 import { PAGES } from '../../../constants';
-import { useCompetitionOptions } from '../../../hooks/useCompetitionOptions';
-import { useOrgSeasonOptions } from '../../../hooks/useOrgSeasonOptions';
-import { useTeamOptions } from '../../../hooks/useTeamOptions';
-import { FETCH_LEAGUE_TABLES } from '../../../tables/graphql';
-import { EDIT_RESULT, FETCH_RESULT, FETCH_RESULTS } from '../../graphql';
-import { mapResultToForm, mapFormToEditResult } from '../../helpers/mapResultForm';
-import DeleteResult from './DeleteResult';
-import ResultForm from './ResultForm';
-import type { ResultFormData } from './validation';
+import { FETCH_LEAGUE_TABLES, FETCH_RESULT, FETCH_RESULTS } from '../../../graphql';
 
 export default function EditResult() {
   const { orgId, orgSeasonId, resultId } = useCustomParams();
