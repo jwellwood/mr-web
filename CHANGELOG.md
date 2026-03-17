@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.6.0](https://github.com/jwellwood/mr-web/compare/v0.5.0...v0.6.0) (2026-03-17)
+
+### Features
+
+* team admin access codes ([cf81c4b](https://github.com/jwellwood/mr-web/commit/cf81c4b132005b45652be1862b5a0941c664390e))
+
 ## [0.5.0](https://github.com/jwellwood/mr-web/compare/v0.4.1...v0.5.0) (2026-03-15)
 
 ### Features
