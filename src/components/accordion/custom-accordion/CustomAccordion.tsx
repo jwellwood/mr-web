@@ -5,7 +5,7 @@ import { ReactElement } from 'react';
 import { theme } from '../../../theme';
 
 interface Props {
-  title: ReactElement;
+  title: ReactElement | string;
   isExpanded: boolean;
   children: ReactElement;
 }

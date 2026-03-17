@@ -1,21 +1,42 @@
-import { CustomTypography, SectionContainer } from '../../../../../components';
-import { FETCH_TEAM_QUERY } from '../../../../team/types';
+import { CustomButton, CustomTypography, SectionContainer } from '../../../../../components';
+import { CustomStack } from '../../../../../components/grids';
+import { IListItem, TextList } from '../../../../../components/lists';
+import { useCopy } from '../../hooks';
+import SetAdminAccessCode from '../form/SetAdminAccessCode';
+import { T_FETCH_TEAM_ADMIN_VIEW } from '../graphql';
 
 interface Props {
-  team?: FETCH_TEAM_QUERY['team'];
+  team?: T_FETCH_TEAM_ADMIN_VIEW['team'];
 }
 
 export default function TeamAdminView({ team }: Props) {
+  const { adminUsers, teamAdminAccessCode } = team || {};
+  const { onCopy, copied } = useCopy(teamAdminAccessCode || '');
+
+  const adminUserList: IListItem[] =
+    adminUsers?.map(user => ({
+      label: user.username,
+      value: user.email,
+    })) || [];
+
   return (
     <SectionContainer>
       <CustomTypography bold size="lg" color="data">
         {team?.teamName}
       </CustomTypography>
-      <SectionContainer subtitle="Admin Code">
-        <CustomTypography color="data">xxxxxx</CustomTypography>
+      <SectionContainer title="Admin Code">
+        <CustomStack>
+          <CustomTypography color="data">{teamAdminAccessCode || 'Not set'}</CustomTypography>
+          {teamAdminAccessCode && (
+            <CustomButton color={!copied ? 'tertiary' : 'success'} onClick={onCopy}>
+              {copied ? 'Copied' : 'Copy code'}
+            </CustomButton>
+          )}
+          {!teamAdminAccessCode && <SetAdminAccessCode />}
+        </CustomStack>
       </SectionContainer>
-      <SectionContainer subtitle="Admin Users">
-        <CustomTypography color="data">John Doe</CustomTypography>
+      <SectionContainer title="Admin Users">
+        <TextList data={adminUserList} />
       </SectionContainer>
     </SectionContainer>
   );

@@ -21,7 +21,7 @@ export default function FlagIcon({ nationality, countryName, size = '1.2rem', lo
         aria-label={countryName || 'country-name'}
       />
     ) : (
-      <AppIcon icon="flag" color="data" />
+      <AppIcon icon="nationality" color="data" />
     );
 
   return loading ? <StatSkeleton /> : renderIcon;

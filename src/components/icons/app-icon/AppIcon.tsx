@@ -8,14 +8,15 @@ import {
   BiTrashAlt,
   BiCheck,
   BiCheckDouble,
+  BiFlag,
 } from 'react-icons/bi';
 import { BsShieldShaded, BsFilter } from 'react-icons/bs';
 import { FaUserCircle, FaQuestion } from 'react-icons/fa';
-import { FaRegFlag } from 'react-icons/fa6';
 import { IoShieldSharp, IoHelpCircleOutline } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
 import { MdLocationOn, MdOutlineErrorOutline, MdOutlineInfo } from 'react-icons/md';
 import { TbSoccerField, TbUsers } from 'react-icons/tb';
+import { TbCopy, TbCopyCheck } from 'react-icons/tb';
 import { TfiMenu } from 'react-icons/tfi';
 import { theme } from '../../../theme';
 import { getIconColor } from '../utils/getIconColor';
@@ -41,7 +42,6 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.TROPHY]: BiTrophy,
   [APP_ICONS.MEDAL]: LiaMedalSolid,
   [APP_ICONS.AWARD]: LiaMedalSolid,
-  [APP_ICONS.FLAG]: FaRegFlag,
   [APP_ICONS.BADGE]: BsShieldShaded,
   [APP_ICONS.USER]: FaUserCircle,
   [APP_ICONS.NATIONALITY]: BiGlobe,
@@ -54,6 +54,9 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.CROSS]: MdOutlineErrorOutline,
   [APP_ICONS.HELP]: IoHelpCircleOutline,
   [APP_ICONS.INFO]: MdOutlineInfo,
+  [APP_ICONS.COPY]: TbCopy,
+  [APP_ICONS.COPIED]: TbCopyCheck,
+  [APP_ICONS.FLAG]: BiFlag,
 };
 
 export default function AppIcon({

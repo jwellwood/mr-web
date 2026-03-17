@@ -295,6 +295,8 @@ type Mutation {
   EDIT_TEAM(data: UpdateTeamInput!, teamId: String!): Team!
   EDIT_TEAM_BADGE(data: ImageInput!, teamId: String!): Team!
   DELETE_TEAM(teamId: String!): Team!
+  SET_TEAM_ADMIN_ACCESS_CODE(data: SetTeamAdminAccessCodeInput!, teamId: String!): Team!
+  REQUEST_TEAM_ADMIN_ACCESS(data: RequestTeamAdminAccessInput!, teamId: String!): AuthPayload!
   ADD_SEASON(data: AddTeamSeasonInput!, teamId: String!): TeamSeason!
   EDIT_SEASON(data: AddTeamSeasonInput!, seasonId: String!, teamId: String!): TeamSeason!
   DELETE_SEASON(seasonId: String!, teamId: String!): TeamSeason!
@@ -524,6 +526,7 @@ type Query {
   FETCH_TEAM(teamId: String!): Team!
   TEAM_BY_SEARCH(filter: String!): [Team!]!
   USER_TEAMS: [Team!]!
+  FETCH_TEAM_ADMIN_VIEW(teamId: String!): TeamAdminView!
   FETCH_SEASONS(teamId: String!): [TeamSeason!]!
   FETCH_SEASON(seasonId: String!): TeamSeason!
   FETCH_SEASONS_POSITION(teamId: String!): [PositionFinishes!]!
@@ -568,6 +571,10 @@ input RegisterUserInput {
   password: String!
   username: String
   turnstileToken: String!
+}
+
+input RequestTeamAdminAccessInput {
+  code: String!
 }
 
 input ResendVerificationEmailInput {
@@ -616,6 +623,10 @@ enum ResultStatus {
 type ResultTeam {
   _id: String!
   teamName: String!
+}
+
+input SetTeamAdminAccessCodeInput {
+  code: String!
 }
 
 input SignInUserInput {
@@ -721,8 +732,20 @@ type Team {
   awaySocks: String
   kitsBackground: String
   teamRoles: [TeamRole!]!
+  teamAdminAccessCodeUpdatedAt: DateTimeISO
   seasonIds: [ID!]!
   orgId: Organization!
+}
+
+type TeamAdminUser {
+  username: String!
+  email: String!
+}
+
+type TeamAdminView {
+  teamName: String!
+  teamAdminAccessCode: String
+  adminUsers: [TeamAdminUser!]!
 }
 
 type TeamRole {

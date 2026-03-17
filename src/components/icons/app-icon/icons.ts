@@ -3,7 +3,6 @@ export const APP_ICONS = {
   BACK: 'back',
   LOADING: 'loading',
   BADGE: 'badge',
-  FLAG: 'flag',
   USER: 'user',
   DELETE: 'delete',
   LOCATION: 'location',
@@ -24,6 +23,9 @@ export const APP_ICONS = {
   CROSS: 'cross',
   HELP: 'help',
   INFO: 'info',
+  COPY: 'copy',
+  COPIED: 'copied',
+  FLAG: 'flag',
 } as const;
 
 export type AppIconType = (typeof APP_ICONS)[keyof typeof APP_ICONS];

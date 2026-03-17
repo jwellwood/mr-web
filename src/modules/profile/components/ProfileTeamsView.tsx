@@ -1,4 +1,4 @@
-import { DataError, ImageAvatar, SectionContainer } from '../../../components';
+import { DataError, ImageAvatar, NoDataText, SectionContainer } from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
@@ -44,11 +44,15 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
         <DataError error={error} />
       ) : (
         <>
-          {activeGrouped.map(([orgName, links]) => (
-            <SectionContainer key={orgName} title={orgName}>
-              <LinksList links={links} loading={loading} rows={5} />
-            </SectionContainer>
-          ))}
+          {activeGrouped.length ? (
+            activeGrouped.map(([orgName, links]) => (
+              <SectionContainer key={orgName} title={orgName}>
+                <LinksList links={links} loading={loading} rows={5} />
+              </SectionContainer>
+            ))
+          ) : (
+            <NoDataText>No teams</NoDataText>
+          )}
         </>
       ),
     },
@@ -58,11 +62,15 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
         <DataError error={error} />
       ) : (
         <>
-          {inactiveGrouped.map(([orgName, links]) => (
-            <SectionContainer key={orgName} title={orgName}>
-              <LinksList links={links} loading={loading} rows={5} />
-            </SectionContainer>
-          ))}
+          {inactiveGrouped.length ? (
+            inactiveGrouped.map(([orgName, links]) => (
+              <SectionContainer key={orgName} title={orgName}>
+                <LinksList links={links} loading={loading} rows={5} />
+              </SectionContainer>
+            ))
+          ) : (
+            <NoDataText>No teams</NoDataText>
+          )}
         </>
       ),
     },

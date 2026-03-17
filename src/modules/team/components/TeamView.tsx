@@ -1,10 +1,12 @@
 import { DataError } from '../../../components';
 import { ModuleHeader } from '../../../components/composed';
 import { IMAGE_TYPE } from '../../../constants';
+import { useAuth, useCustomParams } from '../../../hooks';
 import { TApolloError } from '../../../types/apollo';
 import Kits from '../components/Kits';
 import Organization from '../components/Organization';
 import Stadium from '../components/Stadium';
+import RequestTeamAdmin from '../forms/request-admin-access/RequestTeamAdmin';
 import { FETCH_TEAM_QUERY } from '../types';
 
 interface Props {
@@ -15,6 +17,10 @@ interface Props {
 
 export default function TeamView({ data, loading, error }: Props) {
   const { teamName, teamBadge, location, country } = data?.team || {};
+  const { teamId } = useCustomParams();
+  const { isAuth, isTeamAuth } = useAuth(teamId);
+
+  const canRequestAdmin = isAuth && !isTeamAuth;
 
   return (
     <>
@@ -22,6 +28,7 @@ export default function TeamView({ data, loading, error }: Props) {
         <DataError error={error} />
       ) : (
         <>
+          {canRequestAdmin && <RequestTeamAdmin />}
           <ModuleHeader
             title={teamName}
             badge={teamBadge?.url}

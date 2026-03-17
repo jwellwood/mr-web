@@ -28,12 +28,16 @@ export default function SectionContainer({
     const border = `${palette.secondary.light} 0.5px solid`;
     const winnerBorder = 'rgba(234,162,33, 1) 1px solid';
     const deleteBorder = 'rgba(255, 0, 0, 0.8) 1px solid';
+    const infoBorder = `${palette.info.main} 1px solid`;
 
     if (type === 'winner') {
       return winnerBorder;
     }
     if (type === 'delete') {
       return deleteBorder;
+    }
+    if (type === 'info') {
+      return infoBorder;
     }
     return border;
   };

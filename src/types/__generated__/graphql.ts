@@ -353,8 +353,10 @@ export type Mutation = {
   FORGOT_PASSWORD: Scalars['Boolean']['output'];
   LOG_OUT_USER: User;
   REGISTER_USER: User;
+  REQUEST_TEAM_ADMIN_ACCESS: AuthPayload;
   RESEND_VERIFICATION_EMAIL: User;
   RESET_PASSWORD: User;
+  SET_TEAM_ADMIN_ACCESS_CODE: Team;
   SIGN_IN_USER: AuthPayload;
   SUBMIT_RESULT: Result;
   UPDATE_COMPETITION_CONFIGS: OrgSeason;
@@ -602,6 +604,12 @@ export type MutationRegister_UserArgs = {
 };
 
 
+export type MutationRequest_Team_Admin_AccessArgs = {
+  data: RequestTeamAdminAccessInput;
+  teamId: Scalars['String']['input'];
+};
+
+
 export type MutationResend_Verification_EmailArgs = {
   data: ResendVerificationEmailInput;
 };
@@ -609,6 +617,12 @@ export type MutationResend_Verification_EmailArgs = {
 
 export type MutationReset_PasswordArgs = {
   data: ResetPasswordInput;
+};
+
+
+export type MutationSet_Team_Admin_Access_CodeArgs = {
+  data: SetTeamAdminAccessCodeInput;
+  teamId: Scalars['String']['input'];
 };
 
 
@@ -827,6 +841,7 @@ export type Query = {
   FETCH_SEASONS: Array<TeamSeason>;
   FETCH_SEASONS_POSITION: Array<PositionFinishes>;
   FETCH_TEAM: Team;
+  FETCH_TEAM_ADMIN_VIEW: TeamAdminView;
   FETCH_TROPHIES: Array<TrophyResponse>;
   FETCH_TROPHY: TrophyResponse;
   FETCH_USER: User;
@@ -916,6 +931,11 @@ export type QueryFetch_Seasons_PositionArgs = {
 
 
 export type QueryFetch_TeamArgs = {
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryFetch_Team_Admin_ViewArgs = {
   teamId: Scalars['String']['input'];
 };
 
@@ -1165,6 +1185,10 @@ export type RegisterUserInput = {
   username?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type RequestTeamAdminAccessInput = {
+  code: Scalars['String']['input'];
+};
+
 export type ResendVerificationEmailInput = {
   email: Scalars['String']['input'];
   turnstileToken: Scalars['String']['input'];
@@ -1213,6 +1237,10 @@ export type ResultTeam = {
   __typename?: 'ResultTeam';
   _id: Scalars['String']['output'];
   teamName: Scalars['String']['output'];
+};
+
+export type SetTeamAdminAccessCodeInput = {
+  code: Scalars['String']['input'];
 };
 
 export type SignInUserInput = {
@@ -1437,11 +1465,25 @@ export type Team = {
   stadiumLocation?: Maybe<Scalars['String']['output']>;
   stadiumName?: Maybe<Scalars['String']['output']>;
   stadiumSurface?: Maybe<Scalars['String']['output']>;
+  teamAdminAccessCodeUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   teamBadge?: Maybe<UploadedImage>;
   teamName: Scalars['String']['output'];
   teamRoles: Array<TeamRole>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   yearFounded?: Maybe<Scalars['String']['output']>;
+};
+
+export type TeamAdminUser = {
+  __typename?: 'TeamAdminUser';
+  email: Scalars['String']['output'];
+  username: Scalars['String']['output'];
+};
+
+export type TeamAdminView = {
+  __typename?: 'TeamAdminView';
+  adminUsers: Array<TeamAdminUser>;
+  teamAdminAccessCode?: Maybe<Scalars['String']['output']>;
+  teamName: Scalars['String']['output'];
 };
 
 export type TeamRole = {

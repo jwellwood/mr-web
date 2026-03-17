@@ -5,6 +5,7 @@ import { useDateOfBirth } from '../../../hooks';
 import { TApolloError } from '../../../types/apollo';
 import { parseDate } from '../../../utils';
 import { FETCH_USER_QUERY } from '../types';
+import ProfileHelper from './ProfileHelper';
 
 interface Props {
   data?: FETCH_USER_QUERY;
@@ -43,6 +44,7 @@ export default function ProfileView({ data, loading, error }: Props) {
           <SectionContainer>
             <TextList data={details} loading={loading} />
           </SectionContainer>
+          <ProfileHelper profile={data?.user} />
         </>
       )}
       {}
