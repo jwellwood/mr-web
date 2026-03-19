@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.7.0](https://github.com/jwellwood/mr-web/compare/v0.6.0...v0.7.0) (2026-03-19)
+
+### Features
+
+* org admin and profile changes ([ff7e8db](https://github.com/jwellwood/mr-web/commit/ff7e8db1e999860199bfa4c486cbc803367a13c0))
+
 ## [0.6.0](https://github.com/jwellwood/mr-web/compare/v0.5.0...v0.6.0) (2026-03-17)
 
 ### Features
