@@ -11,6 +11,7 @@ interface Props {
   size?: SizeToken;
   bold?: boolean;
   link?: string;
+  align?: 'left' | 'center' | 'right';
 }
 
 export default function CustomTypography({
@@ -19,6 +20,7 @@ export default function CustomTypography({
   size = 'sm',
   bold = false,
   link,
+  align = 'left',
 }: Props) {
   const {
     typography: { fontFamily },
@@ -35,6 +37,7 @@ export default function CustomTypography({
     fontFamily,
     fontWeight: bold ? 'bold' : 'normal',
     textDecoration: 'none',
+    textAlign: align,
   };
 
   return (

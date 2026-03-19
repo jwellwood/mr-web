@@ -14,7 +14,7 @@ import { BsShieldShaded, BsFilter } from 'react-icons/bs';
 import { FaUserCircle, FaQuestion } from 'react-icons/fa';
 import { IoShieldSharp, IoHelpCircleOutline } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
-import { MdLocationOn, MdOutlineErrorOutline, MdOutlineInfo } from 'react-icons/md';
+import { MdLocationOn, MdOutlineErrorOutline, MdOutlineInfo, MdClear } from 'react-icons/md';
 import { TbSoccerField, TbUsers } from 'react-icons/tb';
 import { TbCopy, TbCopyCheck } from 'react-icons/tb';
 import { TfiMenu } from 'react-icons/tfi';
@@ -26,6 +26,7 @@ interface Props {
   icon: AppIconType;
   size?: string;
   color?: string;
+  onClick?: () => void;
 }
 
 // Icon mapping - cleaner and more maintainable
@@ -51,7 +52,7 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.PENDING]: FaQuestion,
   [APP_ICONS.DISPUTED]: MdOutlineErrorOutline,
   [APP_ICONS.CHECK]: BiCheck,
-  [APP_ICONS.CROSS]: MdOutlineErrorOutline,
+  [APP_ICONS.CROSS]: MdClear,
   [APP_ICONS.HELP]: IoHelpCircleOutline,
   [APP_ICONS.INFO]: MdOutlineInfo,
   [APP_ICONS.COPY]: TbCopy,
@@ -63,6 +64,7 @@ export default function AppIcon({
   icon,
   size = '1rem',
   color = theme.palette.primary.main,
+  onClick,
 }: Props) {
   const IconComponent = ICON_MAP[icon];
   const iconColor = getIconColor(color);
@@ -72,5 +74,5 @@ export default function AppIcon({
     return null;
   }
 
-  return <IconComponent size={size} color={iconColor} />;
+  return <IconComponent size={size} color={iconColor} onClick={onClick} />;
 }

@@ -25,7 +25,11 @@ export default function TeamSearchView({
   return (
     <PresentationModal
       title="Find your team"
-      buttonElement={<CustomButton>Find your team</CustomButton>}
+      buttonElement={
+        <CustomButton variant="contained" color="primary">
+          Find your team
+        </CustomButton>
+      }
     >
       <SearchForm
         defaultValues={{ teamName: searchTerm }}

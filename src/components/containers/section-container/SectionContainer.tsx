@@ -27,11 +27,15 @@ export default function SectionContainer({
   const border = () => {
     const border = `${palette.secondary.light} 0.5px solid`;
     const winnerBorder = 'rgba(234,162,33, 1) 1px solid';
+    const successBorder = `${palette.primary.dark} 2px solid`;
     const deleteBorder = 'rgba(255, 0, 0, 0.8) 1px solid';
     const infoBorder = `${palette.info.main} 1px solid`;
 
     if (type === 'winner') {
       return winnerBorder;
+    }
+    if (type === 'success') {
+      return successBorder;
     }
     if (type === 'delete') {
       return deleteBorder;
@@ -49,6 +53,7 @@ export default function SectionContainer({
     if (type === 'form') {
       return palette.dark.main;
     }
+
     return palette.secondary.dark;
   };
 
@@ -70,6 +75,8 @@ export default function SectionContainer({
               background: palette.secondary.main,
               display: 'flex',
               justifyContent: 'space-between',
+              alignContent: 'center',
+              alignItems: 'center',
             }}
           >
             <CustomTypography color="data" size="sm" bold>
@@ -85,7 +92,7 @@ export default function SectionContainer({
               padding: spacing(0.5),
             }}
           >
-            <CustomTypography color="label" bold size="xs">
+            <CustomTypography color={type === 'success' ? 'secondary' : 'label'} bold size="xs">
               {subtitle}
             </CustomTypography>
           </div>

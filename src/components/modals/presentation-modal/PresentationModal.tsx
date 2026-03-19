@@ -54,7 +54,7 @@ export default function PresentationModal({
         </DialogContent>
         <DialogActions>
           <CustomButton onClick={handleClose} variant="text" color="tertiary">
-            Back
+            Close
           </CustomButton>
         </DialogActions>
       </Dialog>

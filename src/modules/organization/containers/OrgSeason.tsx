@@ -4,17 +4,15 @@ import { DataError, PageHeader } from '../../../components';
 import { SectionContainer } from '../../../components/containers';
 import { Spinner } from '../../../components/loaders';
 import { CustomTabs } from '../../../components/tabs';
-import { useAuth } from '../../../hooks';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import { ORG_SEASON_ADMIN_LINKS, PAGES } from '../constants';
+import { PAGES } from '../constants';
 import { FETCH_ORG_SEASON } from '../graphql';
 
 const LeagueTables = lazy(() => import('../containers/LeagueTables'));
 const Results = lazy(() => import('../results/containers/Results'));
 
 export default function OrgSeason() {
-  const { orgId, orgSeasonId } = useCustomParams();
-  const { isOrgAuth } = useAuth('', orgId);
+  const { orgSeasonId } = useCustomParams();
 
   const { data, loading, error } = useQuery(FETCH_ORG_SEASON, {
     variables: { seasonId: orgSeasonId! },
@@ -42,7 +40,7 @@ export default function OrgSeason() {
     );
 
   return (
-    <PageHeader title={PAGES.ORG_SEASON} links={isOrgAuth ? ORG_SEASON_ADMIN_LINKS() : undefined}>
+    <PageHeader title={PAGES.ORG_SEASON}>
       {error ? <DataError error={error} /> : renderContent()}
     </PageHeader>
   );

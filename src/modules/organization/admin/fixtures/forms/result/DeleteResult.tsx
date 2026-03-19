@@ -4,16 +4,27 @@ import { useNavigate } from 'react-router-dom';
 import { DeleteModal } from '../../../../../../components/modals';
 import { useCustomParams } from '../../../../../../hooks';
 import { showAlert } from '../../../../../../store';
-import { FETCH_ORG_SEASONS } from '../../../../graphql';
+import {
+  FETCH_ORG_SEASONS,
+  FETCH_RESULTS,
+  FETCH_FIXTURES,
+  FETCH_LEAGUE_TABLES,
+} from '../../../../graphql';
 import { DELETE_RESULT } from '../../graphql';
 
 export default function DeleteResult() {
-  const { orgId, resultId } = useCustomParams();
+  const { orgId, orgSeasonId, resultId } = useCustomParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [deleteResult, { loading, error }] = useMutation(DELETE_RESULT, {
-    refetchQueries: [{ query: FETCH_ORG_SEASONS, variables: { orgId } }],
+    refetchQueries: [
+      { query: FETCH_ORG_SEASONS, variables: { orgId } },
+      { query: FETCH_RESULTS, variables: { orgId, orgSeasonId } },
+      { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId } },
+      { query: FETCH_LEAGUE_TABLES, variables: { orgId, orgSeasonId } },
+    ],
+    awaitRefetchQueries: true,
   });
 
   const onDelete = async () => {

@@ -353,12 +353,15 @@ export type Mutation = {
   FORGOT_PASSWORD: Scalars['Boolean']['output'];
   LOG_OUT_USER: User;
   REGISTER_USER: User;
+  REQUEST_ORG_ADMIN_ACCESS: AuthPayload;
   REQUEST_TEAM_ADMIN_ACCESS: AuthPayload;
   RESEND_VERIFICATION_EMAIL: User;
   RESET_PASSWORD: User;
+  SET_ORG_ADMIN_ACCESS_CODE: Organization;
   SET_TEAM_ADMIN_ACCESS_CODE: Team;
   SIGN_IN_USER: AuthPayload;
   SUBMIT_RESULT: Result;
+  TOGGLE_ORG_ADMIN_ACCESS: Organization;
   UPDATE_COMPETITION_CONFIGS: OrgSeason;
   VERIFY_EMAIL: User;
 };
@@ -483,6 +486,7 @@ export type MutationDelete_SeasonArgs = {
 
 
 export type MutationDelete_TeamArgs = {
+  orgId: Scalars['String']['input'];
   teamId: Scalars['String']['input'];
 };
 
@@ -604,6 +608,12 @@ export type MutationRegister_UserArgs = {
 };
 
 
+export type MutationRequest_Org_Admin_AccessArgs = {
+  data: RequestOrgAdminAccessInput;
+  orgId: Scalars['String']['input'];
+};
+
+
 export type MutationRequest_Team_Admin_AccessArgs = {
   data: RequestTeamAdminAccessInput;
   teamId: Scalars['String']['input'];
@@ -617,6 +627,11 @@ export type MutationResend_Verification_EmailArgs = {
 
 export type MutationReset_PasswordArgs = {
   data: ResetPasswordInput;
+};
+
+
+export type MutationSet_Org_Admin_Access_CodeArgs = {
+  orgId: Scalars['String']['input'];
 };
 
 
@@ -637,6 +652,12 @@ export type MutationSubmit_ResultArgs = {
 };
 
 
+export type MutationToggle_Org_Admin_AccessArgs = {
+  enabled: Scalars['Boolean']['input'];
+  orgId: Scalars['String']['input'];
+};
+
+
 export type MutationUpdate_Competition_ConfigsArgs = {
   data: UpdateCompetitionConfigsInput;
   orgId: Scalars['String']['input'];
@@ -646,6 +667,20 @@ export type MutationUpdate_Competition_ConfigsArgs = {
 
 export type MutationVerify_EmailArgs = {
   data: VerifyEmailInput;
+};
+
+export type OrgAdminUser = {
+  __typename?: 'OrgAdminUser';
+  email: Scalars['String']['output'];
+  username: Scalars['String']['output'];
+};
+
+export type OrgAdminView = {
+  __typename?: 'OrgAdminView';
+  adminUsers: Array<OrgAdminUser>;
+  orgAdminAccessCode?: Maybe<Scalars['String']['output']>;
+  orgAdminAccessEnabled?: Maybe<Scalars['Boolean']['output']>;
+  orgName: Scalars['String']['output'];
 };
 
 /** The Org Season model */
@@ -673,6 +708,8 @@ export type Organization = {
   createdAt?: Maybe<Scalars['DateTimeISO']['output']>;
   isVerified: Scalars['Boolean']['output'];
   name: Scalars['String']['output'];
+  orgAdminAccessCodeUpdatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  orgAdminAccessEnabled: Scalars['Boolean']['output'];
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   website?: Maybe<Scalars['String']['output']>;
   yearFounded?: Maybe<Scalars['String']['output']>;
@@ -837,6 +874,7 @@ export type Query = {
   AWARDS_BY_PLAYER: Array<AwardByPlayer>;
   COMPETITIONS_BY_ORG: Array<Competition>;
   COMPETITION_BY_ID: Competition;
+  FETCH_ORG_ADMIN_VIEW: OrgAdminView;
   FETCH_SEASON: TeamSeason;
   FETCH_SEASONS: Array<TeamSeason>;
   FETCH_SEASONS_POSITION: Array<PositionFinishes>;
@@ -912,6 +950,11 @@ export type QueryCompetitions_By_OrgArgs = {
 
 export type QueryCompetition_By_IdArgs = {
   compId: Scalars['String']['input'];
+};
+
+
+export type QueryFetch_Org_Admin_ViewArgs = {
+  orgId: Scalars['String']['input'];
 };
 
 
@@ -1183,6 +1226,10 @@ export type RegisterUserInput = {
   password: Scalars['String']['input'];
   turnstileToken: Scalars['String']['input'];
   username?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type RequestOrgAdminAccessInput = {
+  code: Scalars['String']['input'];
 };
 
 export type RequestTeamAdminAccessInput = {

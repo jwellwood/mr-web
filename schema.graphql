@@ -294,7 +294,7 @@ type Mutation {
   ADD_TEAM(data: AddTeamInput!, orgId: String!): Team!
   EDIT_TEAM(data: UpdateTeamInput!, teamId: String!): Team!
   EDIT_TEAM_BADGE(data: ImageInput!, teamId: String!): Team!
-  DELETE_TEAM(teamId: String!): Team!
+  DELETE_TEAM(orgId: String!, teamId: String!): Team!
   SET_TEAM_ADMIN_ACCESS_CODE(data: SetTeamAdminAccessCodeInput!, teamId: String!): Team!
   REQUEST_TEAM_ADMIN_ACCESS(data: RequestTeamAdminAccessInput!, teamId: String!): AuthPayload!
   ADD_SEASON(data: AddTeamSeasonInput!, teamId: String!): TeamSeason!
@@ -325,6 +325,9 @@ type Mutation {
   EDIT_ORGANIZATION(data: UpdateOrganizationInput!, orgId: String!): Organization!
   EDIT_ORG_BADGE(data: ImageInput!, orgId: String!): Organization!
   DELETE_ORGANIZATION(orgId: String!): Organization!
+  SET_ORG_ADMIN_ACCESS_CODE(orgId: String!): Organization!
+  TOGGLE_ORG_ADMIN_ACCESS(enabled: Boolean!, orgId: String!): Organization!
+  REQUEST_ORG_ADMIN_ACCESS(data: RequestOrgAdminAccessInput!, orgId: String!): AuthPayload!
   ADD_MATCH(data: TAddMatchInput!): Match!
   EDIT_MATCH(data: TAddMatchInput!, matchId: String!): Match!
   DELETE_MATCH(matchId: String!, teamId: String!): Match!
@@ -339,6 +342,18 @@ type Mutation {
   DELETE_AWARD(awardId: String!, teamId: String!): Award!
 }
 
+type OrgAdminUser {
+  username: String!
+  email: String!
+}
+
+type OrgAdminView {
+  orgName: String!
+  orgAdminAccessCode: String
+  orgAdminAccessEnabled: Boolean
+  adminUsers: [OrgAdminUser!]!
+}
+
 """The Organization model"""
 type Organization {
   _id: ID!
@@ -350,6 +365,8 @@ type Organization {
   country: String
   yearFounded: String
   competitions: [Competition!]!
+  orgAdminAccessCodeUpdatedAt: DateTimeISO
+  orgAdminAccessEnabled: Boolean!
   createdAt: DateTimeISO
   updatedAt: DateTimeISO
 }
@@ -550,6 +567,7 @@ type Query {
   ORGANIZATION(orgId: String!): Organization!
   USER_ORGANIZATIONS: [Organization!]!
   TEAMS_BY_ORG(orgId: String!): [Team!]!
+  FETCH_ORG_ADMIN_VIEW(orgId: String!): OrgAdminView!
   MATCHES(seasonId: String!, teamId: String!): [TMatch!]!
   MATCH(matchId: String!): Match!
   MATCHES_BY_OPPONENT(opponentId: String!, teamId: String!): [TMatch!]!
@@ -571,6 +589,10 @@ input RegisterUserInput {
   password: String!
   username: String
   turnstileToken: String!
+}
+
+input RequestOrgAdminAccessInput {
+  code: String!
 }
 
 input RequestTeamAdminAccessInput {

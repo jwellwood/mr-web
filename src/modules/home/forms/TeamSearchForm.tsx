@@ -24,6 +24,7 @@ export default function SearchForm({ defaultValues, onSubmit, loading, error }: 
       submitBtn={{ text: 'Search' }}
       loading={loading}
       error={error}
+      minWidth={200} // 300 is too wide for mobile, 200 makes it use 100%
     >
       <ControlledTextInput control={control} name="teamName" label="Team Name" />
     </FormContainer>

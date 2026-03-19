@@ -1,8 +1,9 @@
-import { DataError, ImageAvatar, NoDataText, SectionContainer } from '../../../components';
+import { DataError, ImageAvatar, SectionContainer } from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { IMAGE_TYPE } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
 import { FETCH_ORGS_BY_USER_QUERY } from '../types';
+import NoProfileItems from './NoProfileItems';
 
 interface Props {
   loading: boolean;
@@ -33,7 +34,7 @@ export default function ProfileOrgsView({ data, loading, error }: Props) {
           {links.length ? (
             <LinksList links={links} loading={loading} />
           ) : (
-            <NoDataText>You are not admin of any organizations</NoDataText>
+            <NoProfileItems type="organization" />
           )}
         </>
       </SectionContainer>

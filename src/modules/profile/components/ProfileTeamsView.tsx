@@ -1,9 +1,10 @@
-import { DataError, ImageAvatar, NoDataText, SectionContainer } from '../../../components';
+import { DataError, ImageAvatar, SectionContainer } from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
 import { FETCH_TEAMS_BY_USER_QUERY } from '../types';
+import NoProfileItems from './NoProfileItems';
 
 interface Props {
   loading: boolean;
@@ -37,48 +38,43 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
   const activeGrouped = groupByOrg(activeTeams);
   const inactiveGrouped = groupByOrg(inactiveTeams);
 
+  const compElement = (error: TApolloError | undefined, items: [string, IListItem[]][]) =>
+    error ? (
+      <DataError error={error} />
+    ) : (
+      <>
+        {items.length ? (
+          items.map(([orgName, links]) => (
+            <SectionContainer key={orgName} title={orgName}>
+              <LinksList links={links} loading={loading} rows={5} />
+            </SectionContainer>
+          ))
+        ) : (
+          <NoProfileItems type="team" />
+        )}
+      </>
+    );
+
   const tabs: ITab[] = [
     {
       label: 'Active',
-      component: error ? (
-        <DataError error={error} />
-      ) : (
-        <>
-          {activeGrouped.length ? (
-            activeGrouped.map(([orgName, links]) => (
-              <SectionContainer key={orgName} title={orgName}>
-                <LinksList links={links} loading={loading} rows={5} />
-              </SectionContainer>
-            ))
-          ) : (
-            <NoDataText>No teams</NoDataText>
-          )}
-        </>
-      ),
+      component: compElement(error, activeGrouped),
     },
     {
       label: 'Inactive',
-      component: error ? (
-        <DataError error={error} />
-      ) : (
-        <>
-          {inactiveGrouped.length ? (
-            inactiveGrouped.map(([orgName, links]) => (
-              <SectionContainer key={orgName} title={orgName}>
-                <LinksList links={links} loading={loading} rows={5} />
-              </SectionContainer>
-            ))
-          ) : (
-            <NoDataText>No teams</NoDataText>
-          )}
-        </>
-      ),
+      component: compElement(error, inactiveGrouped),
     },
   ];
 
   return (
     <SectionContainer title="Teams">
-      <CustomTabs type={TAB_TYPES.PROFILE_TEAMS} tabs={tabs} level="secondary" />
+      <>
+        {activeGrouped.length || inactiveGrouped.length ? (
+          <CustomTabs type={TAB_TYPES.PROFILE_TEAMS} tabs={tabs} level="secondary" />
+        ) : (
+          <NoProfileItems type="team" />
+        )}
+      </>
     </SectionContainer>
   );
 }

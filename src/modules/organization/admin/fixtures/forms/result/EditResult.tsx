@@ -7,7 +7,12 @@ import { Spinner } from '../../../../../../components/loaders';
 import { useCustomParams } from '../../../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../../../store';
 import { PAGES } from '../../../../constants';
-import { FETCH_LEAGUE_TABLES, FETCH_RESULT, FETCH_RESULTS } from '../../../../graphql';
+import {
+  FETCH_LEAGUE_TABLES,
+  FETCH_ORG_SEASONS,
+  FETCH_RESULT,
+  FETCH_RESULTS,
+} from '../../../../graphql';
 import { useCompetitionOptions } from '../../../hooks/useCompetitionOptions';
 import { useOrgSeasonOptions } from '../../../hooks/useOrgSeasonOptions';
 import { useTeamOptions } from '../../../hooks/useTeamOptions';
@@ -36,6 +41,7 @@ export default function EditResult() {
 
   const [editResult, { error: editError, loading: editLoading }] = useMutation(EDIT_RESULT, {
     refetchQueries: [
+      { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
       { query: FETCH_RESULT, variables: { resultId: resultId! } },
       { query: FETCH_RESULTS, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
       { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },

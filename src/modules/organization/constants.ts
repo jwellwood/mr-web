@@ -51,10 +51,6 @@ export const ORG_ADMIN_LINKS: IListItem[] = [
   { label: 'Edit Org Badge', type: LINK_TYPE.EDIT, link: ORG_PATHS.EDIT_BADGE },
 ];
 
-export const ORG_SEASON_ADMIN_LINKS = () => [
-  { label: 'Season Admin', type: LINK_TYPE.EDIT, link: 'admin' },
-];
-
 export const ADMIN_LINKS = (orgId?: string, orgSeasonId?: string) => [
   {
     label: 'Add Result',

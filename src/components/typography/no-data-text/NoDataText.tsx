@@ -14,9 +14,14 @@ export default function NoDataText({ children, link }: Props) {
       severity="info"
       variant="outlined"
       icon={false}
-      sx={{ background: theme.palette.dark.main }}
+      sx={{
+        background: theme.palette.dark.main,
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+      }}
     >
-      <CustomTypography color="data" bold link={link}>
+      <CustomTypography color="data" bold link={link} align="center">
         {children}
       </CustomTypography>
     </Alert>

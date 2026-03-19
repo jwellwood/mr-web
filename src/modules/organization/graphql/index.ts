@@ -13,6 +13,10 @@ import {
 import { Fetch_Org_TeamsDocument, type Fetch_Org_TeamsQuery } from './FETCH_ORG_TEAMS.generated';
 import { Fetch_ResultDocument, type Fetch_ResultQuery } from './FETCH_RESULT.generated';
 import { Fetch_ResultsDocument, type Fetch_ResultsQuery } from './FETCH_RESULTS.generated';
+import {
+  Request_Org_Admin_AccessDocument,
+  type Request_Org_Admin_AccessMutation,
+} from './REQUEST_ORG_ADMIN_ACCESS.generated';
 
 export {
   Fetch_Org_SeasonDocument as FETCH_ORG_SEASON,
@@ -23,6 +27,7 @@ export {
   Fetch_ResultDocument as FETCH_RESULT,
   Fetch_ResultsDocument as FETCH_RESULTS,
   Fetch_FixturesDocument as FETCH_FIXTURES,
+  Request_Org_Admin_AccessDocument as REQUEST_ORG_ADMIN_ACCESS,
 };
 
 export type T_FETCH_ORG_SEASON = DeepOmitTypename<Fetch_Org_SeasonQuery>;
@@ -33,3 +38,4 @@ export type T_FETCH_ORG_TEAMS = DeepOmitTypename<Fetch_Org_TeamsQuery>;
 export type T_FETCH_RESULT = DeepOmitTypename<Fetch_ResultQuery>;
 export type T_FETCH_RESULTS = DeepOmitTypename<Fetch_ResultsQuery>;
 export type T_FETCH_FIXTURES = DeepOmitTypename<Fetch_FixturesQuery>;
+export type T_REQUEST_ORG_ADMIN_ACCESS = DeepOmitTypename<Request_Org_Admin_AccessMutation>;

@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect } from 'vitest';
+import '@testing-library/jest-dom';
 import TestWrapper from '../../../utils/test-helpers/TestWrapper';
 import PresentationModal from '../presentation-modal/PresentationModal';
 
@@ -58,7 +59,7 @@ describe('PresentationModal', () => {
     expect(screen.queryByRole('heading')).not.toBeInTheDocument();
   });
 
-  it('closes dialog when Back is clicked', async () => {
+  it('closes dialog when Close is clicked', async () => {
     const user = userEvent.setup();
     render(
       <TestWrapper>
@@ -71,7 +72,7 @@ describe('PresentationModal', () => {
     await user.click(screen.getByRole('button'));
     expect(screen.getByText('Details')).toBeInTheDocument();
 
-    await user.click(screen.getByRole('button', { name: /back/i }));
+    await user.click(screen.getByRole('button', { name: /close/i }));
     expect(screen.queryByText('Details')).not.toBeVisible();
   });
 });

@@ -6,6 +6,7 @@ import { PageContainer } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { useCustomParams, useNationality } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
+import { FETCH_TEAMS_BY_USER } from '../../../profile/graphql';
 import { PAGES, TeamError, TeamSuccess } from '../../constants';
 import { FETCH_TEAM, EDIT_TEAM } from '../../graphql';
 import DeleteTeam from '../delete-team/DeleteTeam';
@@ -16,11 +17,16 @@ import type { EditTeamFormData } from './types';
 export default function EditTeam() {
   const { teamId } = useCustomParams();
   const navigate = useNavigate();
-  const { loading, error, data, refetch } = useQuery(FETCH_TEAM, {
+  const { loading, error, data } = useQuery(FETCH_TEAM, {
     variables: { teamId: teamId! },
   });
-  const [updateTeamDetails, { loading: updateLoading, error: updateError }] =
-    useMutation(EDIT_TEAM);
+  const [updateTeamDetails, { loading: updateLoading, error: updateError }] = useMutation(
+    EDIT_TEAM,
+    {
+      refetchQueries: [{ query: FETCH_TEAMS_BY_USER }],
+      awaitRefetchQueries: true,
+    }
+  );
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
 
@@ -34,7 +40,6 @@ export default function EditTeam() {
       updateTeamDetails({
         variables: { teamId: teamId!, ...mapFormDataToMutationInput(formData) },
       }).then(() => {
-        refetch({ teamId: teamId! });
         dispatch(
           showAlert({
             text: TeamSuccess.edit,

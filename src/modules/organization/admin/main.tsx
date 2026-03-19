@@ -7,6 +7,7 @@ import { ORG_ADMIN_LINKS } from '../constants';
 const OrgTeams = lazy(() => import('../containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('../containers/OrgSeasons'));
 const AdminCompetitions = lazy(() => import('./competitions/containers/AdminCompetitions'));
+const OrgAdminUsers = lazy(() => import('./org/containers/OrgAdmin'));
 
 const PAGES = {
   ORG_ADMIN: 'Admin',
@@ -17,6 +18,7 @@ export default function OrgAdmin() {
     { label: 'Teams', component: <OrgTeams /> },
     { label: 'Seasons', component: <OrgSeasons /> },
     { label: 'Competitions', component: <AdminCompetitions /> },
+    { label: 'Users', component: <OrgAdminUsers /> },
   ];
 
   return (
