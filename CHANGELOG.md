@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.8.0](https://github.com/jwellwood/mr-web/compare/v0.7.0...v0.8.0) (2026-03-20)
+
+### Features
+
+* org search, help text changes ([aae838f](https://github.com/jwellwood/mr-web/commit/aae838f028c18a8160b35b4960321b12ab474acd))
+
 ## [0.7.0](https://github.com/jwellwood/mr-web/compare/v0.6.0...v0.7.0) (2026-03-19)
 
 ### Features
