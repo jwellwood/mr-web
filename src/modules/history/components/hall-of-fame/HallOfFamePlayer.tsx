@@ -1,5 +1,5 @@
 import { CustomButton, ImageAvatar, SectionContainer } from '../../../../components';
-import { CustomGridContainer, CustomStack } from '../../../../components/grids';
+import { CustomStack } from '../../../../components/grids';
 import { FlagIcon } from '../../../../components/icons';
 import CustomSkeleton from '../../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography, PositionText } from '../../../../components/typography';
@@ -15,13 +15,14 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
 
   return (
     <SectionContainer type={!loading ? 'winner' : undefined}>
-      <CustomGridContainer direction="row">
+      <CustomStack direction="row">
         <ImageAvatar
           size="80px"
           imageUrl={image.url}
           fallbackIcon="user"
           iconSize="70px"
           loading={loading}
+          bordered
         />
 
         <CustomStack direction="column" spacing={1} justify="center" align="flex-start">
@@ -34,7 +35,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
               </CustomTypography>
             )}
           </CustomButton>
-          <CustomStack direction="row" spacing={1} divider>
+          <CustomStack direction="row" spacing={1} divider justify="flex-start">
             <SectionContainer>
               {loading ? (
                 <CustomSkeleton width="30px" height="30px" />
@@ -62,10 +63,10 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
           {loading ? (
             <CustomSkeleton width="180px" height="20px" />
           ) : (
-            <CustomTypography color="label">{description || 'No description yet'}</CustomTypography>
+            <CustomTypography color="label">{description || ''}</CustomTypography>
           )}
         </CustomStack>
-      </CustomGridContainer>
+      </CustomStack>
     </SectionContainer>
   );
 }

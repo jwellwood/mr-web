@@ -1,8 +1,9 @@
-import { DataError, ImageAvatar, SectionContainer } from '../../../components';
+import { ImageAvatar } from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { IMAGE_TYPE } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
 import { FETCH_ORGS_BY_USER_QUERY } from '../types';
+import EntityListWrapper from './EntityListWrapper';
 import NoProfileItems from './NoProfileItems';
 
 interface Props {
@@ -27,17 +28,12 @@ export default function ProfileOrgsView({ data, loading, error }: Props) {
     : [];
 
   return (
-    <>
-      <SectionContainer title="Organizations">
-        <>
-          {error && <DataError error={error} />}
-          {links.length ? (
-            <LinksList links={links} loading={loading} />
-          ) : (
-            <NoProfileItems type="organization" />
-          )}
-        </>
-      </SectionContainer>
-    </>
+    <EntityListWrapper type="organization" error={error}>
+      {links.length ? (
+        <LinksList links={links} loading={loading} />
+      ) : (
+        <NoProfileItems type="organization" />
+      )}
+    </EntityListWrapper>
   );
 }

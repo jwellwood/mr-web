@@ -4,6 +4,7 @@ import { CustomTabs, ITab } from '../../../components/tabs';
 import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
 import { FETCH_TEAMS_BY_USER_QUERY } from '../types';
+import EntityListWrapper from './EntityListWrapper';
 import NoProfileItems from './NoProfileItems';
 
 interface Props {
@@ -55,26 +56,36 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
       </>
     );
 
+  const ActiveTeams = compElement(error, activeGrouped);
+  const InactiveTeams = compElement(error, inactiveGrouped);
+
   const tabs: ITab[] = [
     {
       label: 'Active',
-      component: compElement(error, activeGrouped),
+      component: ActiveTeams,
     },
     {
       label: 'Inactive',
-      component: compElement(error, inactiveGrouped),
+      component: InactiveTeams,
     },
   ];
 
+  const renderContent = () => {
+    if (!activeGrouped.length && !inactiveGrouped.length) {
+      return <NoProfileItems type="team" />;
+    }
+    if (activeGrouped.length && !inactiveGrouped.length) {
+      return ActiveTeams;
+    }
+    if (!activeGrouped.length && inactiveGrouped.length) {
+      return InactiveTeams;
+    }
+    return <CustomTabs type={TAB_TYPES.PROFILE_TEAMS} tabs={tabs} level="secondary" />;
+  };
+
   return (
-    <SectionContainer title="Teams">
-      <>
-        {activeGrouped.length || inactiveGrouped.length ? (
-          <CustomTabs type={TAB_TYPES.PROFILE_TEAMS} tabs={tabs} level="secondary" />
-        ) : (
-          <NoProfileItems type="team" />
-        )}
-      </>
-    </SectionContainer>
+    <EntityListWrapper type="team" error={error}>
+      {renderContent()}
+    </EntityListWrapper>
   );
 }

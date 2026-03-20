@@ -1,28 +1,17 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 import { describe, it, expect } from 'vitest';
 import TestWrapper from '../../../utils/test-helpers/TestWrapper';
-import HelpModal, { type HelpContent } from '../help-modal/HelpModal';
-
-const sampleHelp: HelpContent = {
-  title: 'Team',
-  content: [
-    {
-      title: 'Overview',
-      description: ['General team information and stats.'],
-    },
-    {
-      title: 'Matches',
-      description: ['View fixtures and results.'],
-    },
-  ],
-};
+import HelpModal from '../help-modal/HelpModal';
 
 describe('HelpModal', () => {
   it('renders the help icon button', () => {
     render(
       <TestWrapper>
-        <HelpModal help={sampleHelp} />
+        <HelpModal title="Team">
+          <div>Sample Content</div>
+        </HelpModal>
       </TestWrapper>
     );
     expect(screen.getByRole('button')).toBeInTheDocument();
@@ -32,7 +21,9 @@ describe('HelpModal', () => {
     const user = userEvent.setup();
     render(
       <TestWrapper>
-        <HelpModal help={sampleHelp} />
+        <HelpModal title="Team">
+          <div>Sample Content</div>
+        </HelpModal>
       </TestWrapper>
     );
 
@@ -40,37 +31,27 @@ describe('HelpModal', () => {
     expect(screen.getByText('Team Help')).toBeInTheDocument();
   });
 
-  it('renders all section titles in the dialog', async () => {
+  it('renders children content in the dialog', async () => {
     const user = userEvent.setup();
     render(
       <TestWrapper>
-        <HelpModal help={sampleHelp} />
+        <HelpModal title="Team">
+          <div>Sample Content</div>
+        </HelpModal>
       </TestWrapper>
     );
 
     await user.click(screen.getByRole('button'));
-    expect(screen.getByText('Overview')).toBeInTheDocument();
-    expect(screen.getByText('Matches')).toBeInTheDocument();
-  });
-
-  it('renders section description items', async () => {
-    const user = userEvent.setup();
-    render(
-      <TestWrapper>
-        <HelpModal help={sampleHelp} />
-      </TestWrapper>
-    );
-
-    await user.click(screen.getByRole('button'));
-    expect(screen.getByText('General team information and stats.')).toBeInTheDocument();
-    expect(screen.getByText('View fixtures and results.')).toBeInTheDocument();
+    expect(screen.getByText('Sample Content')).toBeInTheDocument();
   });
 
   it('closes the dialog when Close is clicked', async () => {
     const user = userEvent.setup();
     render(
       <TestWrapper>
-        <HelpModal help={sampleHelp} />
+        <HelpModal title="Team">
+          <div>Sample Content</div>
+        </HelpModal>
       </TestWrapper>
     );
 
@@ -79,21 +60,5 @@ describe('HelpModal', () => {
 
     await user.click(screen.getByRole('button', { name: /close/i }));
     expect(screen.queryByText('Team Help')).not.toBeVisible();
-  });
-
-  it('renders sections without description gracefully', async () => {
-    const user = userEvent.setup();
-    const helpNoDesc: HelpContent = {
-      title: 'Minimal',
-      content: [{ title: 'Section A' }],
-    };
-    render(
-      <TestWrapper>
-        <HelpModal help={helpNoDesc} />
-      </TestWrapper>
-    );
-
-    await user.click(screen.getByRole('button'));
-    expect(screen.getByText('Section A')).toBeInTheDocument();
   });
 });

@@ -5,7 +5,7 @@ import { theme } from '../../../theme';
 import { BackButton } from '../../buttons';
 import { type IListItem } from '../../lists';
 import { LazyLoader } from '../../loaders';
-import { EditLinksModal, HelpModal, type HelpContent } from '../../modals';
+import { EditLinksModal, HelpModal } from '../../modals';
 import { NavMenu } from '../../navigation';
 import { CustomTypography } from '../../typography';
 
@@ -14,7 +14,7 @@ interface Props {
   backButton?: boolean;
   links?: IListItem[];
   children: React.ReactElement;
-  help?: HelpContent;
+  help?: React.ReactNode;
 }
 
 export default function PageHeader({ title, children, backButton = true, links, help }: Props) {
@@ -44,7 +44,7 @@ export default function PageHeader({ title, children, backButton = true, links, 
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
               {links?.length && <EditLinksModal data={links} />}
-              {help && <HelpModal help={help} />}
+              {help && <HelpModal title={title}>{help}</HelpModal>}
               <NavMenu username={username} />
             </div>
           </Toolbar>

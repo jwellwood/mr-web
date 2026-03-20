@@ -7,12 +7,12 @@ import { TAB_TYPES } from '../../constants';
 import { useAuth, useCustomParams } from '../../hooks';
 import { getTabIndex } from '../../store';
 import { PAGES, TEAM_ADMIN_LINKS } from './constants';
-import { TEAM_HELP } from './help';
 
-export const TeamOverview = lazy(() => import('./containers/TeamOverview'));
-export const SquadTabs = lazy(() => import('../squad/main'));
-export const MatchesTabs = lazy(() => import('../matches/main'));
-export const HistoryTabs = lazy(() => import('../history/main'));
+const TeamOverview = lazy(() => import('./containers/TeamOverview'));
+const SquadTabs = lazy(() => import('../squad/main'));
+const MatchesTabs = lazy(() => import('../matches/main'));
+const HistoryTabs = lazy(() => import('../history/main'));
+const TeamHelp = lazy(() => import('./TeamHelp'));
 
 export default function Team() {
   const { teamId } = useCustomParams();
@@ -50,7 +50,7 @@ export default function Team() {
     <PageContainer
       title={PAGES.TEAM}
       links={isTeamAuth ? TEAM_ADMIN_LINKS : undefined}
-      help={TEAM_HELP}
+      help={<TeamHelp />}
     >
       <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
     </PageContainer>

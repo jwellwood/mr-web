@@ -874,6 +874,7 @@ export type Query = {
   AWARDS_BY_PLAYER: Array<AwardByPlayer>;
   COMPETITIONS_BY_ORG: Array<Competition>;
   COMPETITION_BY_ID: Competition;
+  FETCH_ORGS_BY_SEARCH: Array<Organization>;
   FETCH_ORG_ADMIN_VIEW: OrgAdminView;
   FETCH_SEASON: TeamSeason;
   FETCH_SEASONS: Array<TeamSeason>;
@@ -950,6 +951,11 @@ export type QueryCompetitions_By_OrgArgs = {
 
 export type QueryCompetition_By_IdArgs = {
   compId: Scalars['String']['input'];
+};
+
+
+export type QueryFetch_Orgs_By_SearchArgs = {
+  filter: Scalars['String']['input'];
 };
 
 

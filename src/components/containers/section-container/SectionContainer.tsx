@@ -2,60 +2,25 @@ import { Box, Fade, Paper } from '@mui/material';
 import React, { ReactNode } from 'react';
 import { theme } from '../../../theme';
 import { CustomTypography } from '../../typography';
+import { getTypeStyles } from './styles';
 
 interface Props {
   title?: string | ReactNode;
   subtitle?: string | ReactNode;
   secondaryAction?: ReactNode;
   children: React.ReactNode;
-  type?: string;
+  type?: 'form' | 'winner' | 'success' | 'delete' | 'info' | 'admin' | 'default';
 }
-
-const specialBackground = `linear-gradient(315deg,
-${theme.palette.warning.light} 0%,
-${theme.palette.secondary.dark} 12%, ${theme.palette.dark.main} 100%)`;
 
 export default function SectionContainer({
   title,
   subtitle,
   secondaryAction,
   children,
-  type,
+  type = 'default', // Default type
 }: Props) {
-  const { palette, spacing } = theme;
-
-  const border = () => {
-    const border = `${palette.secondary.light} 0.5px solid`;
-    const winnerBorder = 'rgba(234,162,33, 1) 1px solid';
-    const successBorder = `${palette.primary.dark} 2px solid`;
-    const deleteBorder = 'rgba(255, 0, 0, 0.8) 1px solid';
-    const infoBorder = `${palette.info.main} 1px solid`;
-
-    if (type === 'winner') {
-      return winnerBorder;
-    }
-    if (type === 'success') {
-      return successBorder;
-    }
-    if (type === 'delete') {
-      return deleteBorder;
-    }
-    if (type === 'info') {
-      return infoBorder;
-    }
-    return border;
-  };
-
-  const background = () => {
-    if (type === 'winner') {
-      return specialBackground;
-    }
-    if (type === 'form') {
-      return palette.dark.main;
-    }
-
-    return palette.secondary.dark;
-  };
+  const { spacing } = theme;
+  const { background, border, titleBackground, titleTextColor } = getTypeStyles(theme, type);
 
   return (
     <Fade in={true} timeout={500}>
@@ -63,23 +28,23 @@ export default function SectionContainer({
         elevation={10}
         sx={{
           margin: spacing(1),
-          background: background(),
-          border: border(),
+          background,
+          border,
         }}
       >
         {title && (
           <div
             style={{
-              borderBottom: border(),
+              borderBottom: border,
               padding: spacing(0.5),
-              background: palette.secondary.main,
+              background: titleBackground,
               display: 'flex',
               justifyContent: 'space-between',
               alignContent: 'center',
               alignItems: 'center',
             }}
           >
-            <CustomTypography color="data" size="sm" bold>
+            <CustomTypography color={titleTextColor} size="sm" bold>
               {title}
             </CustomTypography>
             {secondaryAction && <span>{secondaryAction}</span>}

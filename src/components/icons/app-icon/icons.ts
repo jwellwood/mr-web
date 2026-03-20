@@ -26,6 +26,7 @@ export const APP_ICONS = {
   COPY: 'copy',
   COPIED: 'copied',
   FLAG: 'flag',
+  SEARCH: 'search',
 } as const;
 
 export type AppIconType = (typeof APP_ICONS)[keyof typeof APP_ICONS];

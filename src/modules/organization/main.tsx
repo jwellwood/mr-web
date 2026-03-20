@@ -5,7 +5,7 @@ import { CustomTabs, ITab } from '../../components/tabs';
 import { TAB_TYPES } from '../../constants';
 import { useAuth, useCustomParams } from '../../hooks';
 import { PAGES } from './constants';
-import { ORG_HELP } from './help';
+import OrgHelp from './OrgHelp';
 import { ORG_PATHS } from './router';
 
 const Org = lazy(() => import('./containers/Org'));
@@ -39,7 +39,7 @@ export default function Team() {
   ];
 
   return (
-    <PageHeader title={PAGES.ORG} help={ORG_HELP}>
+    <PageHeader title={PAGES.ORG} help={<OrgHelp />}>
       <>
         {isOrgAuth && (
           <CustomStack>

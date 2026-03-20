@@ -3,36 +3,45 @@ import { FlagIcon } from '../../../components/icons';
 import { LinksList } from '../../../components/lists';
 import { CustomTypography, NoDataText } from '../../../components/typography';
 import { IMAGE_TYPE } from '../../../constants';
-import { FETCH_TEAMS_BY_SEARCH_QUERY } from '../types';
 
-interface Props {
-  teams?: FETCH_TEAMS_BY_SEARCH_QUERY['teams'];
-  isSearchComplete: boolean;
-  loading: boolean;
+export interface Entity {
+  city: string;
+  country: string;
+  link: string;
+  name: string;
+  badge?: string;
 }
 
-export default function TeamList({ teams, isSearchComplete, loading }: Props) {
-  const links = teams?.length
-    ? teams?.map(team => {
+interface Props {
+  entity?: Entity[];
+  searchTerm: string;
+  loading: boolean;
+  type: 'org' | 'team';
+}
+
+export default function OrgList({ entity, searchTerm, loading, type }: Props) {
+  const isSearchComplete = Array.isArray(entity) && searchTerm.trim().length > 0;
+  const links = entity?.length
+    ? entity?.map(item => {
         return {
-          avatar: <ImageAvatar imageUrl={team?.teamBadge?.url} fallbackIcon={IMAGE_TYPE.BADGE} />,
+          avatar: <ImageAvatar imageUrl={item.badge} fallbackIcon={IMAGE_TYPE.BADGE} />,
           label: (
             <CustomTypography bold size="sm" color="data">
-              {team.teamName}
+              {item.name}
             </CustomTypography>
           ),
           secondary: (
             <CustomTypography bold size="sm" color="label">
-              {team.location} <FlagIcon nationality={team.country || ''} />
+              {item.city} <FlagIcon nationality={item.country || ''} />
             </CustomTypography>
           ),
-          link: `/org/${team.orgId._id}/team/${team._id}`,
+          link: item.link,
         };
       })
     : [{ avatar: <></>, label: <></>, secondary: <></> }]; //skeleton item
 
-  return isSearchComplete && !loading && !teams?.length ? (
-    <NoDataText>No teams found</NoDataText>
+  return isSearchComplete && !loading && !entity?.length ? (
+    <NoDataText>{`No ${type} found`}</NoDataText>
   ) : (
     <LinksList links={links} loading={loading} rows={2} />
   );

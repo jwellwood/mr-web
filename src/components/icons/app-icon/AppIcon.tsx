@@ -12,7 +12,7 @@ import {
 } from 'react-icons/bi';
 import { BsShieldShaded, BsFilter } from 'react-icons/bs';
 import { FaUserCircle, FaQuestion } from 'react-icons/fa';
-import { IoShieldSharp, IoHelpCircleOutline } from 'react-icons/io5';
+import { IoShieldSharp, IoHelpCircleOutline, IoSearchSharp } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
 import { MdLocationOn, MdOutlineErrorOutline, MdOutlineInfo, MdClear } from 'react-icons/md';
 import { TbSoccerField, TbUsers } from 'react-icons/tb';
@@ -36,6 +36,7 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.FILTER]: BsFilter,
   [APP_ICONS.DELETE]: BiTrashAlt,
   [APP_ICONS.LOADING]: BiFootball,
+  [APP_ICONS.SEARCH]: IoSearchSharp,
   [APP_ICONS.OVERVIEW]: IoShieldSharp,
   [APP_ICONS.SQUAD]: TbUsers,
   [APP_ICONS.MATCHES]: TbSoccerField,

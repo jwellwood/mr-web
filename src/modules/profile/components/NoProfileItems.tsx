@@ -15,7 +15,9 @@ export default function NoProfileItems({ type }: Props) {
           <CustomTypography color="data" bold>
             {`No ${type}s yet!`}
           </CustomTypography>
-          {type === 'team' && <TeamSearch />}
+          {type === 'team' && (
+            <TeamSearch buttonElement={<CustomButton>Search Teams</CustomButton>} />
+          )}
           {type === 'organization' && (
             <CustomButton link={ORG_PATHS.ADD} variant="contained" color="primary">
               Create Organization

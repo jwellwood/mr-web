@@ -11,6 +11,7 @@ interface Props {
   imageUrl?: string;
   alt?: string;
   loading?: boolean;
+  bordered?: boolean;
 }
 
 export default function ImageAvatar({
@@ -21,6 +22,7 @@ export default function ImageAvatar({
   imageUrl,
   alt,
   loading,
+  bordered,
 }: Props) {
   const hasUrl = imageUrl && imageUrl !== 'default';
 
@@ -35,6 +37,7 @@ export default function ImageAvatar({
         width: size,
         bgcolor: hasUrl ? 'transparent' : getThemeColorByType('secondary'),
         margin: centered ? 'auto' : 'inherit',
+        border: bordered ? `2px solid ${getThemeColorByType('gold')}` : 'none',
       }}
     >
       <AppIcon icon={fallbackIcon} color="white" size={iconSize} />

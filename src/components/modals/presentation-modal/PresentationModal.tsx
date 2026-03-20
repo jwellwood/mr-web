@@ -32,7 +32,15 @@ export default function PresentationModal({
 
   return (
     <div>
-      <span role="button" style={{ cursor: 'pointer' }} onClick={handleClickOpen}>
+      <span
+        role="button"
+        style={{
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+        onClick={handleClickOpen}
+      >
         {buttonElement}
       </span>
       <Dialog

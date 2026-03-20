@@ -568,6 +568,7 @@ type Query {
   USER_ORGANIZATIONS: [Organization!]!
   TEAMS_BY_ORG(orgId: String!): [Team!]!
   FETCH_ORG_ADMIN_VIEW(orgId: String!): OrgAdminView!
+  FETCH_ORGS_BY_SEARCH(filter: String!): [Organization!]!
   MATCHES(seasonId: String!, teamId: String!): [TMatch!]!
   MATCH(matchId: String!): Match!
   MATCHES_BY_OPPONENT(opponentId: String!, teamId: String!): [TMatch!]!

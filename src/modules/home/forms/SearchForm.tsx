@@ -9,9 +9,10 @@ interface Props {
   onSubmit: (data: SearchFormData) => void;
   loading: boolean;
   error?: TApolloError;
+  type?: 'team' | 'org';
 }
 
-export default function SearchForm({ defaultValues, onSubmit, loading, error }: Props) {
+export default function SearchForm({ defaultValues, onSubmit, loading, error, type }: Props) {
   const { handleSubmit, control } = useForm<SearchFormData>({
     defaultValues,
     resolver: zodResolver(SearchFormSchema),
@@ -26,7 +27,11 @@ export default function SearchForm({ defaultValues, onSubmit, loading, error }: 
       error={error}
       minWidth={200} // 300 is too wide for mobile, 200 makes it use 100%
     >
-      <ControlledTextInput control={control} name="teamName" label="Team Name" />
+      <ControlledTextInput
+        control={control}
+        name="teamName"
+        label={type === 'org' ? 'League Name' : 'Team Name'}
+      />
     </FormContainer>
   );
 }
