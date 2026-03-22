@@ -9,8 +9,8 @@ import OrgHelp from './OrgHelp';
 import { ORG_PATHS } from './router';
 
 const Org = lazy(() => import('./containers/Org'));
-const LeagueTables = lazy(() => import('./containers/LeagueTables'));
-const Results = lazy(() => import('./results/main'));
+const LeagueTables = lazy(() => import('../results/containers/LeagueTables'));
+const Results = lazy(() => import('../results/main'));
 const OrgTeams = lazy(() => import('./containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('./containers/OrgSeasons'));
 

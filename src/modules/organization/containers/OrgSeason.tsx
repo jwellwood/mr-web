@@ -8,8 +8,8 @@ import { useCustomParams } from '../../../hooks/useCustomParams';
 import { PAGES } from '../constants';
 import { FETCH_ORG_SEASON } from '../graphql';
 
-const LeagueTables = lazy(() => import('../containers/LeagueTables'));
-const Results = lazy(() => import('../results/containers/Results'));
+const LeagueTables = lazy(() => import('../../results/containers/LeagueTables'));
+const Results = lazy(() => import('../../results/containers/Results'));
 
 export default function OrgSeason() {
   const { orgSeasonId } = useCustomParams();

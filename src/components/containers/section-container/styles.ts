@@ -36,7 +36,7 @@ export const getTypeStyles = (theme: Theme, type: string) => {
       titleTextColor: 'dark',
     },
     form: {
-      background: theme.palette.dark.main,
+      background: theme.palette.secondary.dark,
       border: `${theme.palette.secondary.light} 0.5px solid`,
       titleBackground: theme.palette.secondary.main,
       titleTextColor: 'data',

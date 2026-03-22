@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { DeleteModal } from '../../../../../components/modals';
 import { useCustomParams } from '../../../../../hooks';
 import { showAlert } from '../../../../../store';
-import { FETCH_LEAGUE_TABLES, FETCH_ORG_SEASONS, FETCH_RESULTS } from '../../../graphql';
+import { FETCH_LEAGUE_TABLES, FETCH_RESULTS } from '../../../../results/graphql';
+import { FETCH_ORG_SEASONS } from '../../../graphql';
 import { DELETE_ORG_SEASON } from '../graphql';
 
 export default function DeleteOrgSeason() {

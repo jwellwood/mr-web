@@ -3,8 +3,8 @@ import { useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useCustomParams } from '../../../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../../../store';
+import { FETCH_LEAGUE_TABLES } from '../../../../../results/graphql';
 import { FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../../../../graphql';
-import { FETCH_LEAGUE_TABLES } from '../../../../graphql';
 import { UPDATE_COMPETITION_CONFIGS } from '../../graphql';
 import type { CompetitionConfig } from '../../helpers/mapOrgSeasonForm';
 import {

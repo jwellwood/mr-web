@@ -3,7 +3,7 @@ import { ISelectOptions } from '../types';
 import SelectInput from './SelectInput';
 
 type Props<T extends object> = {
-  name: Path<T>;
+  name: Path<T> | string;
   control: Control<T>;
   label: string;
   options: readonly ISelectOptions[];
@@ -18,7 +18,7 @@ export default function ControlledSelectInput<T extends object>({
   disabled = false,
 }: Props<T>) {
   const { field, fieldState } = useController({
-    name,
+    name: name as Path<T>,
     control,
   });
   const { value, onChange } = field;

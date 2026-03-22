@@ -14,10 +14,12 @@ export const AddOrgSeason = lazy(() => import('../admin/seasons/forms/AddOrgSeas
 export const EditOrgSeason = lazy(() => import('../admin/seasons/forms/EditOrgSeason'));
 export const AdminOrgSeason = lazy(() => import('../admin/seasons/containers/SeasonAdmin'));
 // Result
-export const Result = lazy(() => import('../results/containers/Result'));
-export const AddResult = lazy(() => import('../admin/fixtures/forms/result/AddResult'));
-export const EditResult = lazy(() => import('../admin/fixtures/forms/result/EditResult'));
-export const AddGameWeek = lazy(() => import('../admin/fixtures/forms/AddGameWeek'));
+export const Result = lazy(() => import('../../results/containers/Result'));
+export const AddResult = lazy(() => import('../../results/forms/result/AddResult'));
+export const EditResult = lazy(() => import('../../results/forms/result/EditResult'));
+export const AddGameWeek = lazy(
+  () => import('../../results/forms/batch-result/AddGameweekResults')
+);
 // Admin
 export const OrgAdmin = lazy(() => import('../admin/main'));
 export const AdminTeam = lazy(() => import('../admin/teams/containers/AdminTeam'));

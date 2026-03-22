@@ -57,6 +57,11 @@ export const ADMIN_LINKS = (orgId?: string, orgSeasonId?: string) => [
     type: LINK_TYPE.ADD,
     link: `/org/${orgId}/org_admin/org_season/${orgSeasonId}/${ORG_PATHS.ADD_RESULT}`,
   },
+  {
+    label: 'Add Gameweek',
+    type: LINK_TYPE.ADD,
+    link: `/org/${orgId}/org_admin/org_season/${orgSeasonId}/${ORG_PATHS.ADD_GAME_WEEK}`,
+  },
   // {
   //   label: 'Add Round of Fixtures',
   //   type: LINK_TYPE.ADD,

@@ -4,7 +4,6 @@ export const ORG_PATHS = {
   ADD_TEAM: 'add_team',
   EDIT: 'edit',
   EDIT_BADGE: 'edit_badge',
-  // Linked entities
   ADD_ORG_SEASON: 'add_org_season',
   ADD_GAME_WEEK: 'add_game_week',
   EDIT_ORG_SEASON: 'edit',
