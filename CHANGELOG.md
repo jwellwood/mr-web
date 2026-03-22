@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.9.0](https://github.com/jwellwood/mr-web/compare/v0.8.0...v0.9.0) (2026-03-22)
+
+### Features
+
+* add gameweek batch results ([1355780](https://github.com/jwellwood/mr-web/commit/13557807ca3082b899b9c77095757d10df74b03a))
+
 ## [0.8.0](https://github.com/jwellwood/mr-web/compare/v0.7.0...v0.8.0) (2026-03-20)
 
 ### Features
