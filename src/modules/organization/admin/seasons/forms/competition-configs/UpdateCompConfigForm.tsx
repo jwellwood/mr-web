@@ -78,7 +78,7 @@ export default function UpdateCompConfigForm({
             control={control}
             name="priority"
             label="Priority"
-            options={getNumberOptions(numberOfCompetitions - 1, 0)}
+            options={getNumberOptions(numberOfCompetitions, 1)}
           />
         </FormContainer>
       </FormModal>

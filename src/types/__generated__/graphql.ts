@@ -75,6 +75,7 @@ export type AddResultInput = {
   homeTeam: Scalars['ID']['input'];
   isComplete: Scalars['Boolean']['input'];
   isForfeit: Scalars['Boolean']['input'];
+  kickoffTime?: InputMaybe<Scalars['String']['input']>;
   orgSeasonId: Scalars['ID']['input'];
   resultStatus?: InputMaybe<ResultStatus>;
 };
@@ -1268,6 +1269,7 @@ export type Result = {
   homeTeam: Team;
   isComplete?: Maybe<Scalars['Boolean']['output']>;
   isForfeit?: Maybe<Scalars['Boolean']['output']>;
+  kickoffTime?: Maybe<Scalars['String']['output']>;
   orgSeasonId: OrgSeason;
   resultStatus?: Maybe<ResultStatus>;
   submittedByTeam?: Maybe<Team>;

@@ -10,6 +10,7 @@ import {
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
+import { getKickoffTimeOptions } from '../../helpers/getKickoffTimeOptions';
 import type { ResultFormData } from './validation';
 import { ResultSchema } from './validation';
 
@@ -47,6 +48,12 @@ export default function ResultForm({
       <ControlledDateInput control={control} name="date" label="Date" disableFuture={false} />
       <ControlledSelectInput
         control={control}
+        name="kickoffTime"
+        label="Kickoff Time"
+        options={getKickoffTimeOptions()}
+      />
+      <ControlledSelectInput
+        control={control}
         name="orgSeasonId"
         label="Season"
         options={orgSeasonOptions}
@@ -55,7 +62,7 @@ export default function ResultForm({
         control={control}
         name="gameWeek"
         label="Game Week"
-        options={getNumberOptions(52, 1)}
+        options={getNumberOptions(52, 0)}
       />
       <ControlledSelectInput
         control={control}

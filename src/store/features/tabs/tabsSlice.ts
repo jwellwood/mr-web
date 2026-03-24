@@ -17,6 +17,9 @@ interface ITabsState {
   history: 0 | 1 | 2;
   season: 0 | 1 | 2 | 3;
   results: 0 | 1;
+  resultsCompetitions: 0 | 1 | 2 | 3 | 4 | 5;
+  fixturesCompetitions: 0 | 1 | 2 | 3 | 4 | 5;
+  leagueTables: 0 | 1 | 2 | 3 | 4 | 5;
 }
 
 export type TabIndex = keyof ITabsState;
@@ -38,6 +41,9 @@ const initialState: ITabsState = {
   history: 0,
   season: 0,
   results: 0,
+  resultsCompetitions: 0,
+  fixturesCompetitions: 0,
+  leagueTables: 0,
 };
 
 const tabsSlice = createSlice({

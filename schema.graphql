@@ -47,6 +47,7 @@ input AddPlayerInput {
 
 input AddResultInput {
   date: String!
+  kickoffTime: String
   gameWeek: Float!
   competitionId: ID!
   orgSeasonId: ID!
@@ -614,6 +615,7 @@ input ResetPasswordInput {
 type Result {
   _id: ID!
   date: String!
+  kickoffTime: String
   gameWeek: Float!
   competitionId: Competition!
   homeTeam: Team!

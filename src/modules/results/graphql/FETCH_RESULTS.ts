@@ -5,6 +5,7 @@ export const FETCH_RESULTS = gql`
     results: RESULTS(orgId: $orgId, orgSeasonId: $orgSeasonId) {
       _id
       date
+      kickoffTime
       gameWeek
       competitionId {
         _id

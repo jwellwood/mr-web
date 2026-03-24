@@ -1,6 +1,7 @@
 import { CustomButton, SectionContainer } from '../../../components';
 import { IListItem, TextList } from '../../../components/lists';
 import { useAuth } from '../../../hooks';
+import ResultStatus from '../components/ResultStatus';
 import ConfirmResult from '../forms/confirm-result/ConfirmResult';
 import SubmitResult from '../forms/submit-result/SubmitResult';
 import { T_FETCH_RESULT } from '../graphql';
@@ -11,7 +12,16 @@ interface Props {
 }
 
 export default function ResultAdmin({ result }: Props) {
-  const { submittedByTeam, confirmedByTeam, isComplete, homeTeam, awayTeam } = result || {};
+  const {
+    submittedByTeam,
+    confirmedByTeam,
+    isComplete,
+    homeTeam,
+    awayTeam,
+    resultStatus,
+    homeGoals,
+    awayGoals,
+  } = result || {};
 
   const { isTeamAuth: isHomeTeamAdmin } = useAuth(homeTeam?._id);
   const { isTeamAuth: isAwayTeamAdmin } = useAuth(awayTeam?._id);
@@ -35,35 +45,42 @@ export default function ResultAdmin({ result }: Props) {
   const showAddGoalscorers =
     isAdminToEither && (status === RESULT_STATUS.SUBMITTED || status === RESULT_STATUS.CONFIRMED);
 
+  const getSecondTeamActionLabel = () => {
+    if (status === RESULT_STATUS.DISPUTED) {
+      return 'Disputed By';
+    } else {
+      return 'Confirmed By';
+    }
+  };
+
   const listItems: IListItem[] = [
     {
       label: 'Submitted By',
-      secondary: submittedByTeam ? submittedByTeam.teamName : 'N/A',
-      value: showSubmit ? (
-        <SubmitResult homeTeamName={homeTeam?.teamName} awayTeamName={awayTeam?.teamName} />
-      ) : (
-        ''
-      ),
+      value: submittedByTeam ? submittedByTeam.teamName : '-',
     },
     {
-      label: 'Confirmed By',
-      secondary: confirmedByTeam ? confirmedByTeam.teamName : 'N/A',
-      value: showConfirm ? <ConfirmResult /> : '',
+      label: getSecondTeamActionLabel(),
+      value: confirmedByTeam ? confirmedByTeam.teamName : '-',
     },
     {
-      label: 'Is Complete',
-      secondary: isComplete ? 'Yes' : 'No',
-      value: showAddGoalscorers ? (
-        <CustomButton variant="outlined">Add Goalscorers</CustomButton>
-      ) : (
-        ''
-      ),
+      label: 'Status',
+      value: <ResultStatus resultStatus={resultStatus} isComplete={!!isComplete} display="text" />,
     },
   ];
 
   return (
     <SectionContainer title="Admin">
       <TextList data={listItems} />
+      {showSubmit && (
+        <SubmitResult
+          homeTeamName={homeTeam?.teamName}
+          awayTeamName={awayTeam?.teamName}
+          homeGoals={homeGoals}
+          awayGoals={awayGoals}
+        />
+      )}
+      {showConfirm && <ConfirmResult />}
+      {showAddGoalscorers && <CustomButton>Add Goalscorers</CustomButton>}
     </SectionContainer>
   );
 }

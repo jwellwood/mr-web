@@ -3,6 +3,7 @@ import { zodDate } from '../../../../utils';
 
 export const ResultSchema = z.object({
   date: zodDate(),
+  kickoffTime: z.string().optional().nullable(),
   gameWeek: z.union([z.string(), z.number()]).optional(),
   competitionId: z.string().optional(),
   orgSeasonId: z.string().optional(),

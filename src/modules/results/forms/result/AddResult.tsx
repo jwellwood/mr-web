@@ -12,7 +12,7 @@ import {
   useTeamOptions,
 } from '../../../organization/admin/hooks';
 import { PAGES } from '../../../organization/constants';
-import { ADD_RESULT, FETCH_RESULTS } from '../../graphql';
+import { ADD_RESULT, FETCH_FIXTURES, FETCH_RESULTS } from '../../graphql';
 import { mapFormToAddResult } from '../../helpers/mapResultForm';
 import ResultForm from './ResultForm';
 import { initialResultState } from './state';
@@ -36,6 +36,7 @@ export default function AddResult() {
   const [addResult, { error, loading }] = useMutation(ADD_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
+      { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
     ],
   });
 

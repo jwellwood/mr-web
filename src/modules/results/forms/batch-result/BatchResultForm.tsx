@@ -18,6 +18,11 @@ import { BatchResultSchema, BatchResultFormData } from './validation';
 export type MatchRow = {
   homeTeam: string;
   awayTeam: string;
+  kickoffTime?: string | null;
+  homeGoals?: string | number;
+  awayGoals?: string | number;
+  isForfeit?: boolean;
+  isComplete?: boolean;
 };
 
 interface Props {
@@ -82,6 +87,7 @@ export default function BatchResultForm({
             append({
               homeTeam: '',
               awayTeam: '',
+              kickoffTime: '10:00',
             })
           }
         >

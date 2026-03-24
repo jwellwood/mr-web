@@ -6,12 +6,10 @@ import {
   BiTrophy,
   BiArrowBack,
   BiTrashAlt,
-  BiCheck,
-  BiCheckDouble,
   BiFlag,
 } from 'react-icons/bi';
-import { BsShieldShaded, BsFilter } from 'react-icons/bs';
-import { FaUserCircle, FaQuestion } from 'react-icons/fa';
+import { BsShieldShaded, BsFilter, BsQuestion, BsCheck, BsCheckAll } from 'react-icons/bs';
+import { FaUserCircle } from 'react-icons/fa';
 import { IoShieldSharp, IoHelpCircleOutline, IoSearchSharp } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
 import { MdLocationOn, MdOutlineErrorOutline, MdOutlineInfo, MdClear } from 'react-icons/md';
@@ -48,11 +46,11 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.USER]: FaUserCircle,
   [APP_ICONS.NATIONALITY]: BiGlobe,
   [APP_ICONS.LOCATION]: MdLocationOn,
-  [APP_ICONS.CONFIRMED]: BiCheckDouble,
-  [APP_ICONS.SUBMITTED]: BiCheck,
-  [APP_ICONS.PENDING]: FaQuestion,
+  [APP_ICONS.CONFIRMED]: BsCheckAll,
+  [APP_ICONS.SUBMITTED]: BsCheck,
+  [APP_ICONS.PENDING]: BsQuestion,
   [APP_ICONS.DISPUTED]: MdOutlineErrorOutline,
-  [APP_ICONS.CHECK]: BiCheck,
+  [APP_ICONS.CHECK]: BsCheck,
   [APP_ICONS.CROSS]: MdClear,
   [APP_ICONS.HELP]: IoHelpCircleOutline,
   [APP_ICONS.INFO]: MdOutlineInfo,
@@ -75,5 +73,18 @@ export default function AppIcon({
     return null;
   }
 
-  return <IconComponent size={size} color={iconColor} onClick={onClick} />;
+  return (
+    <span
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        verticalAlign: 'middle',
+        lineHeight: 0,
+      }}
+      onClick={onClick}
+    >
+      <IconComponent size={size} color={iconColor} />
+    </span>
+  );
 }

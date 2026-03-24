@@ -3,6 +3,7 @@ import { zodDate } from '../../../../utils';
 
 export const BatchResultSchema = z.object({
   date: zodDate(),
+  kickoffTime: z.string().optional().nullable(),
   gameWeek: z.preprocess(
     v => (v === '' || v === undefined ? undefined : Number(v)),
     z.number().int().min(1, 'Game Week is required')
@@ -14,6 +15,7 @@ export const BatchResultSchema = z.object({
       z.object({
         homeTeam: z.string().min(1, 'Home team is required'),
         awayTeam: z.string().min(1, 'Away team is required'),
+        kickoffTime: z.string().optional().nullable(),
         homeGoals: z.union([z.string(), z.number()]).optional(),
         awayGoals: z.union([z.string(), z.number()]).optional(),
         isForfeit: z.boolean().optional(),

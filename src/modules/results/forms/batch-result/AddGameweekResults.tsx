@@ -12,7 +12,7 @@ import {
   useTeamOptions,
 } from '../../../organization/admin/hooks';
 import { PAGES } from '../../../organization/constants';
-import { ADD_RESULT, FETCH_RESULTS } from '../../graphql';
+import { ADD_RESULT, FETCH_FIXTURES, FETCH_RESULTS } from '../../graphql';
 import { mapFormToAddResult } from '../../helpers/mapResultForm';
 import { ResultFormData } from '../result/validation';
 import BatchResultForm, { MatchRow } from './BatchResultForm';
@@ -35,6 +35,7 @@ export default function AddGameweekResults() {
   const [addResult, { error, loading }] = useMutation(ADD_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
+      { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
     ],
   });
 
@@ -44,11 +45,16 @@ export default function AddGameweekResults() {
       const promises = matchesToCreate.map((match: MatchRow) => {
         const single = {
           date: typeof formData.date === 'string' ? new Date(formData.date) : formData.date,
+          kickoffTime: match.kickoffTime || formData.kickoffTime,
           gameWeek: formData.gameWeek,
           competitionId: formData.competitionId,
           orgSeasonId: formData.orgSeasonId,
           homeTeam: match.homeTeam,
           awayTeam: match.awayTeam,
+          homeGoals: match.homeGoals,
+          awayGoals: match.awayGoals,
+          isForfeit: match.isForfeit,
+          isComplete: match.isComplete,
         };
         const variables = mapFormToAddResult(single as ResultFormData, orgId!, orgSeasonId);
         return addResult({ variables });

@@ -2,6 +2,7 @@ import type { ResultFormData } from './validation';
 
 export const initialResultState: ResultFormData = {
   date: new Date(),
+  kickoffTime: '10:00',
   gameWeek: 0,
   competitionId: '',
   orgSeasonId: '',

@@ -1,6 +1,15 @@
-import type { ColumnConfig } from '../../../components/tables/types';
+import { ColumnConfig } from '../../../../components';
 
 export const columns: readonly ColumnConfig[] = [
+  {
+    id: 'kickoffTime',
+    label: '',
+    styles: {
+      width: 40,
+      border: true,
+      color: 'label',
+    },
+  },
   {
     id: 'homeTeam',
     label: 'Home',
@@ -8,7 +17,7 @@ export const columns: readonly ColumnConfig[] = [
       width: 130,
       align: 'right',
       border: true,
-      color: 'label',
+      color: 'data',
     },
   },
   {
@@ -37,15 +46,15 @@ export const columns: readonly ColumnConfig[] = [
       width: 120,
       align: 'left',
       border: true,
-      color: 'label',
+      color: 'data',
     },
   },
   {
     id: 'status',
-    label: 'Status',
+    label: '',
     type: 'link',
     styles: {
-      width: 50,
+      width: 20,
       border: true,
       background: true,
     },

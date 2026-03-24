@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client/react';
 import { DataError, NoDataText } from '../../../components';
 import { Spinner } from '../../../components/loaders';
+import { TAB_TYPES } from '../../../constants';
 import { useCustomParams } from '../../../hooks';
-import ResultsAccordion from '../components/ResultsAccordion';
+import CompetitionTabs from '../components/CompetitionTabs';
 import { FETCH_RESULTS } from '../graphql';
 
 export default function Results() {
@@ -12,11 +13,7 @@ export default function Results() {
   });
 
   const renderData = data?.results.length ? (
-    <ResultsAccordion
-      results={data?.results}
-      orgId={orgId as string}
-      orgSeasonId={orgSeasonId || 'default'}
-    />
+    <CompetitionTabs matches={data.results} type={TAB_TYPES.RESULTS_COMPETITIONS} />
   ) : (
     <NoDataText>No results yet</NoDataText>
   );

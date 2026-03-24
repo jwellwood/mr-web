@@ -3,6 +3,7 @@ import { ControlledSelectInput, ISelectOptions, SectionContainer } from '../../.
 import { CustomGridContainer, CustomGridItem } from '../../../../components/grids';
 import { AppIcon } from '../../../../components/icons';
 import { getNumberOptions } from '../../../../utils';
+import { getKickoffTimeOptions } from '../../helpers/getKickoffTimeOptions';
 
 interface Props<T extends object> {
   index: number;
@@ -48,7 +49,7 @@ export default function GameweekTeamsInput<T extends object>({
       type="success"
     >
       <CustomGridContainer>
-        <CustomGridItem size={9}>
+        <CustomGridItem size={6}>
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.homeTeam`}
@@ -56,15 +57,7 @@ export default function GameweekTeamsInput<T extends object>({
             options={homeOptions}
           />
         </CustomGridItem>
-        <CustomGridItem size={3}>
-          <ControlledSelectInput
-            control={control}
-            name={`matches.${index}.homeGoals`}
-            label="Goals"
-            options={getNumberOptions(20, 0)}
-          />
-        </CustomGridItem>
-        <CustomGridItem size={9}>
+        <CustomGridItem size={6}>
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.awayTeam`}
@@ -72,11 +65,28 @@ export default function GameweekTeamsInput<T extends object>({
             options={awayOptions}
           />
         </CustomGridItem>
-        <CustomGridItem size={3}>
+        <CustomGridItem size={4}>
+          <ControlledSelectInput
+            control={control}
+            name={`matches.${index}.kickoffTime`}
+            label="Time"
+            options={getKickoffTimeOptions()}
+          />
+        </CustomGridItem>
+        <CustomGridItem size={4}>
+          <ControlledSelectInput
+            control={control}
+            name={`matches.${index}.homeGoals`}
+            label="Home Goals"
+            options={getNumberOptions(20, 0)}
+          />
+        </CustomGridItem>
+
+        <CustomGridItem size={4}>
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.awayGoals`}
-            label="Goals"
+            label="Away Goals"
             options={getNumberOptions(20, 0)}
           />
         </CustomGridItem>

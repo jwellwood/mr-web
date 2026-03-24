@@ -5,6 +5,7 @@ export const FETCH_FIXTURES = gql`
     fixtures: FIXTURES(orgId: $orgId, orgSeasonId: $orgSeasonId) {
       _id
       date
+      kickoffTime
       gameWeek
       competitionId {
         _id
@@ -18,6 +19,8 @@ export const FETCH_FIXTURES = gql`
         _id
         teamName
       }
+      homeGoals
+      awayGoals
       isForfeit
       isComplete
       homeGoalscorers {

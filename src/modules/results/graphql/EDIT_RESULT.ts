@@ -7,6 +7,7 @@ export const EDIT_RESULT = gql`
     $orgSeasonId: ID!
     $competitionId: ID!
     $date: String!
+    $kickoffTime: String
     $gameWeek: Float!
     $homeTeam: ID!
     $awayTeam: ID!
@@ -20,6 +21,7 @@ export const EDIT_RESULT = gql`
       resultId: $resultId
       data: {
         date: $date
+        kickoffTime: $kickoffTime
         gameWeek: $gameWeek
         homeTeam: $homeTeam
         awayTeam: $awayTeam

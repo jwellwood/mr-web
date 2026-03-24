@@ -18,6 +18,7 @@ export const mapFormToAddResult = (
     awayTeam: formData.awayTeam || '',
     homeGoals: Number(formData.homeGoals) || 0,
     awayGoals: Number(formData.awayGoals) || 0,
+    kickoffTime: formData.kickoffTime || undefined,
     isForfeit: formData.isForfeit || false,
     isComplete: formData.isComplete || false,
   };
@@ -26,6 +27,7 @@ export const mapFormToAddResult = (
 export const mapResultToForm = (result: T_FETCH_RESULT['result']): ResultFormData => {
   return {
     date: result.date ? new Date(result.date) : new Date(),
+    kickoffTime: result.kickoffTime || null,
     gameWeek: result.gameWeek ?? 0,
     competitionId: result.competitionId?._id ?? '',
     orgSeasonId: result.orgSeasonId?._id ?? '',
@@ -49,6 +51,7 @@ export const mapFormToEditResult = (
     orgSeasonId: formData.orgSeasonId || '',
     competitionId: formData.competitionId || '',
     date: formData.date ? formData.date.toISOString() : new Date().toISOString(),
+    kickoffTime: formData.kickoffTime || null,
     gameWeek: Number(formData.gameWeek) || 0,
     homeTeam: formData.homeTeam || '',
     awayTeam: formData.awayTeam || '',

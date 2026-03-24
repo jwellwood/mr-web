@@ -11,8 +11,17 @@ interface Props {
 }
 
 export default function ResultDetails({ result }: Props) {
-  const { date, gameWeek, competitionId, orgSeasonId, homeTeam, awayTeam, homeGoals, awayGoals } =
-    result;
+  const {
+    date,
+    gameWeek,
+    competitionId,
+    orgSeasonId,
+    homeTeam,
+    awayTeam,
+    homeGoals,
+    awayGoals,
+    kickoffTime,
+  } = result;
 
   const goalsAvatar = (goals: number | null | undefined) => (
     <CustomAvatar bgColor="white" size="40px" variant="square">
@@ -50,6 +59,9 @@ export default function ResultDetails({ result }: Props) {
           </CustomTypography>
           <CustomTypography size="xs" bold color="primary">
             {date ? parseDate(date) : ''}
+            <CustomTypography size="xs" bold color="label">
+              {kickoffTime ? ` ${kickoffTime}` : ''}
+            </CustomTypography>
           </CustomTypography>
         </CustomStack>
         <CustomTypography size="sm" bold color="label">

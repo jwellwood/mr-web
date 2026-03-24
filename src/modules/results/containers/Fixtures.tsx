@@ -1,8 +1,9 @@
 import { useQuery } from '@apollo/client/react';
 import { DataError, NoDataText } from '../../../components';
 import { Spinner } from '../../../components/loaders';
+import { TAB_TYPES } from '../../../constants';
 import { useCustomParams } from '../../../hooks';
-import ResultsAccordion from '../components/ResultsAccordion';
+import CompetitionTabs from '../components/CompetitionTabs';
 import { FETCH_FIXTURES } from '../graphql';
 
 export default function Fixtures() {
@@ -11,12 +12,8 @@ export default function Fixtures() {
     variables: { orgId: orgId!, orgSeasonId: orgSeasonId || 'default' },
   });
 
-  const renderData = data?.fixtures?.length ? (
-    <ResultsAccordion
-      results={data?.fixtures}
-      orgId={orgId as string}
-      orgSeasonId={orgSeasonId || 'default'}
-    />
+  const renderData = data?.fixtures.length ? (
+    <CompetitionTabs matches={data.fixtures} type={TAB_TYPES.FIXTURES_COMPETITIONS} />
   ) : (
     <NoDataText>No fixtures yet</NoDataText>
   );

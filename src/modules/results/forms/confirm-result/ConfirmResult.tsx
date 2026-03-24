@@ -1,9 +1,16 @@
 import { useMutation } from '@apollo/client/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { CustomButton, MutationError } from '../../../../components';
+import {
+  CustomButton,
+  CustomTypography,
+  MutationError,
+  SectionContainer,
+} from '../../../../components';
+import { CustomGridContainer, CustomGridItem } from '../../../../components/grids';
 import { Spinner } from '../../../../components/loaders';
 import { FormModal } from '../../../../components/modals';
+import ConfirmationModal from '../../../../components/modals/confirmation-modal/ConfirmationModal';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { FETCH_RESULT } from '../../graphql';
@@ -40,18 +47,32 @@ export default function ConfirmResult() {
         <Spinner />
       ) : (
         <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
-          <CustomButton>Con firm Result</CustomButton>
+          <CustomButton>Confirm Result</CustomButton>
         </span>
       )}
-      <FormModal open={open} onClose={() => setOpen(false)}>
-        <>
-          <CustomButton onClick={onConfirm} variant="contained" color="success">
-            Confirm Result
-          </CustomButton>
-          <CustomButton onClick={onDispute} variant="outlined" color="error">
-            Dispute Result
-          </CustomButton>
-        </>
+      <FormModal open={open} onClose={() => setOpen(false)} title={'Confirm Result'}>
+        <SectionContainer>
+          <CustomGridContainer direction="row" spacing={3}>
+            <CustomGridItem size={12}>
+              <CustomButton onClick={onConfirm} variant="contained" color="primary" fullWidth>
+                Confirm Result
+              </CustomButton>
+            </CustomGridItem>
+            <ConfirmationModal
+              title="Dispute Result"
+              loading={loading}
+              onConfirm={onDispute}
+              btn={
+                <CustomTypography color="error" bold>
+                  Dispute Result
+                </CustomTypography>
+              }
+            >
+              Are you sure you want to dispute this result? This will mark the result as disputed
+              and it will need to be reviewed by an admin.
+            </ConfirmationModal>
+          </CustomGridContainer>
+        </SectionContainer>
       </FormModal>
     </>
   );
