@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.10.0](https://github.com/jwellwood/mr-web/compare/v0.9.0...v0.10.0) (2026-03-24)
+
+### Features
+
+* refactor results ([f252f7e](https://github.com/jwellwood/mr-web/commit/f252f7e444e9fb6c2eefb654658a51cee8409cf5))
+
 ## [0.9.0](https://github.com/jwellwood/mr-web/compare/v0.8.0...v0.9.0) (2026-03-22)
 
 ### Features
