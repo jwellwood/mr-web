@@ -12,7 +12,9 @@ import { ResetPasswordFormData } from './validation';
 export default function ResetPasswordContainer() {
   const { token } = useParams<{ token: string }>();
 
-  const [resetPassword, { loading }] = useMutation(RESET_PASSWORD);
+  const [resetPassword, { loading }] = useMutation(RESET_PASSWORD, {
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
 
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();

@@ -24,8 +24,9 @@ export default function EditAward() {
     variables: { awardId: awardId! },
   });
 
-  const [editAward, { error: editError, loading: editLoading }] = useMutation(EDIT_AWARD, {
+  const [editAward, { loading: editLoading }] = useMutation(EDIT_AWARD, {
     refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId: seasonId! } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const {
@@ -79,7 +80,7 @@ export default function EditAward() {
             playersOptions={playerOptions}
             onSubmit={onSubmit}
             loading={isLoading}
-            error={error || editError || playersError}
+            error={error || playersError}
           />
           <DeleteAward />
         </>

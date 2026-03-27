@@ -60,7 +60,7 @@ describe('ConfirmationModal', () => {
     expect(onConfirm).toHaveBeenCalledTimes(1);
   });
 
-  it('disables CONFIRM button when disabled prop is true', async () => {
+  it('does not open modal when disabled is true', async () => {
     const user = userEvent.setup();
     render(
       <TestWrapper>
@@ -69,7 +69,9 @@ describe('ConfirmationModal', () => {
     );
 
     await user.click(screen.getByRole('button', { name: /open/i }));
-    expect(screen.getByRole('button', { name: /confirm/i })).toBeDisabled();
+    // Modal should not open
+    expect(screen.queryByText('Delete record')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /confirm/i })).not.toBeInTheDocument();
   });
 
   it('shows spinner instead of children when loading', async () => {

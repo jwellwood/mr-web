@@ -19,7 +19,7 @@ export default function ControlledColorInput<T extends object>({ control, name, 
     <ColorInput
       label={label}
       inputName={name}
-      defaultValue={value}
+      value={value}
       onChange={onChange}
       errors={error ? [error] : []}
     />

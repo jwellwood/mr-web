@@ -35,12 +35,13 @@ export default function EditResult() {
     return mapResultToForm(data.result);
   }, [data]);
 
-  const [editResult, { error: editError, loading: editLoading }] = useMutation(EDIT_RESULT, {
+  const [editResult, { loading: editLoading }] = useMutation(EDIT_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULT, variables: { resultId: resultId! } },
       { query: FETCH_RESULTS, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
       { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
     ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: ResultFormData) => {
@@ -70,7 +71,7 @@ export default function EditResult() {
           competitionOptions={competitionOptions}
           orgSeasonOptions={orgSeasonOptions}
           loading={isLoading}
-          error={error || editError}
+          error={error}
         />
         <DeleteResult />
       </>

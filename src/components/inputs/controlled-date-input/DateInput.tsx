@@ -7,7 +7,10 @@ import { TypedFormError } from '../types';
 
 interface Props {
   inputName: string;
-  defaultValue: Date | null;
+  /** preferred: controlled value */
+  value?: Date | null;
+  /** legacy: uncontrolled default value */
+  defaultValue?: Date | null;
   onChange: (date: PickerValue) => void;
   label: string;
   disableFuture: boolean;
@@ -19,6 +22,7 @@ interface Props {
 }
 
 export default function DateInput({
+  value,
   defaultValue,
   onChange,
   label,
@@ -39,7 +43,7 @@ export default function DateInput({
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <MobileDatePicker
           label={label}
-          value={defaultValue}
+          value={value !== undefined ? value : defaultValue}
           onChange={onChange}
           openTo={openTo || views[views.length - 1]}
           disableFuture={disableFuture}

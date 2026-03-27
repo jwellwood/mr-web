@@ -68,25 +68,22 @@ describe('FormContainer', () => {
     expect(screen.getByRole('button', { name: /submit/i })).toBeDisabled();
   });
 
-  it('renders reset button when provided', () => {
-    const resetButton = <button type="button">Reset</button>;
-
+  it('renders reset button when onReset is provided', () => {
+    const onReset = vi.fn();
     render(
       <TestWrapper>
-        <FormContainer {...defaultProps} resetBtn={resetButton} />
+        <FormContainer {...defaultProps} onReset={onReset} />
       </TestWrapper>
     );
-
     expect(screen.getByRole('button', { name: /reset/i })).toBeInTheDocument();
   });
 
-  it('does not render reset button when not provided', () => {
+  it('does not render reset button when onReset is not provided', () => {
     render(
       <TestWrapper>
         <FormContainer {...defaultProps} />
       </TestWrapper>
     );
-
     expect(screen.queryByRole('button', { name: /reset/i })).not.toBeInTheDocument();
   });
 
@@ -119,16 +116,17 @@ describe('FormContainer', () => {
   it('calls onSubmit when form is submitted', async () => {
     const user = userEvent.setup();
     const mockOnSubmit = vi.fn();
-
     render(
       <TestWrapper>
-        <FormContainer {...defaultProps} onSubmit={mockOnSubmit} />
+        <FormContainer
+          {...defaultProps}
+          onSubmit={mockOnSubmit}
+          submitBtn={{ confirm: { show: false } }}
+        />
       </TestWrapper>
     );
-
     const submitButton = screen.getByRole('button', { name: /submit/i });
     await user.click(submitButton);
-
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledTimes(1);
     });
@@ -137,16 +135,17 @@ describe('FormContainer', () => {
   it('prevents default form submission behavior', async () => {
     const user = userEvent.setup();
     const mockOnSubmit = vi.fn();
-
     render(
       <TestWrapper>
-        <FormContainer {...defaultProps} onSubmit={mockOnSubmit} />
+        <FormContainer
+          {...defaultProps}
+          onSubmit={mockOnSubmit}
+          submitBtn={{ confirm: { show: false } }}
+        />
       </TestWrapper>
     );
-
     const submitButton = screen.getByRole('button', { name: /submit/i });
     await user.click(submitButton);
-
     await waitFor(() => {
       expect(mockOnSubmit).toHaveBeenCalledTimes(1);
     });

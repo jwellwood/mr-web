@@ -23,14 +23,25 @@ export default function AwardForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control } = useForm<AwardFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<AwardFormData>({
     defaultValues,
     resolver: zodResolver(AwardSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => reset(defaultValues)}
+      loading={loading}
+      error={error}
+      submitBtn={{ disabled: !isDirty || !isValid }}
+    >
       <ControlledTextInput
         control={control}
         name="awardName"

@@ -14,8 +14,9 @@ export default function ChangePasswordContainer() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [editPassword, { loading, error }] = useMutation(EDIT_PASSWORD, {
+  const [editPassword, { loading }] = useMutation(EDIT_PASSWORD, {
     refetchQueries: [{ query: FETCH_USER }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (data: ChangePasswordFormData) => {
@@ -27,8 +28,7 @@ export default function ChangePasswordContainer() {
         navigate(PROFILE_PATHS.PROFILE);
       })
       .catch(err => {
-        console.error(err);
-        dispatch(showAlert({ text: 'Something went wrong, please try again', type: 'error' }));
+        dispatch(showAlert({ text: err.message, type: 'error' }));
       });
   };
 
@@ -38,7 +38,6 @@ export default function ChangePasswordContainer() {
         onSubmit={onSubmit}
         defaultValues={changePasswordFormState}
         loading={loading}
-        error={error}
       />
     </PageContainer>
   );

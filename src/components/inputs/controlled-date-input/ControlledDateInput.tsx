@@ -31,7 +31,7 @@ export default function ControlledDateInput<T extends object>({
     <DateInput
       inputName={name}
       label={label}
-      defaultValue={valueAsDate}
+      value={valueAsDate}
       onChange={onChange}
       errors={error ? [error] : []}
       isDirty={isDirty}

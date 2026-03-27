@@ -21,8 +21,12 @@ export default function AddOrg() {
 
   const defaultValues: OrganizationFormData = useMemo(() => ({ ...initialOrgDetailsState }), []);
 
-  const [addOrg, { error, loading }] = useMutation(ADD_ORG, {
+  const [addOrg, { loading }] = useMutation(ADD_ORG, {
     refetchQueries: [{ query: FETCH_USER }, { query: FETCH_ORGS_BY_USER }],
+    onError: err => {
+      console.error(err);
+      dispatch(showAlert({ text: err.message, type: 'error' }));
+    },
   });
 
   const onSubmit = async (data: OrganizationFormData) => {
@@ -44,7 +48,6 @@ export default function AddOrg() {
         onSubmit={onSubmit}
         countryOptions={nationalityOptions}
         loading={loading}
-        error={error}
       />
     ) : (
       <Spinner />

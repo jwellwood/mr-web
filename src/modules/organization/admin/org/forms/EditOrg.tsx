@@ -17,17 +17,19 @@ import type { OrganizationFormData } from './validation';
 export default function EditOrg() {
   const { orgId } = useCustomParams();
   const navigate = useNavigate();
+  const { nationalityOptions } = useNationality();
+  const dispatch: AppDispatch = useDispatch();
+
   const { loading, error, data, refetch } = useQuery(FETCH_ORG, {
     variables: { orgId: orgId! },
   });
-  const [updateOrganization, { loading: updateLoading, error: updateError }] = useMutation(
-    EDIT_ORG,
-    {
-      refetchQueries: [{ query: FETCH_ORG, variables: { orgId: orgId! } }],
-    }
-  );
-  const { nationalityOptions } = useNationality();
-  const dispatch: AppDispatch = useDispatch();
+  const [updateOrganization, { loading: updateLoading }] = useMutation(EDIT_ORG, {
+    refetchQueries: [{ query: FETCH_ORG, variables: { orgId: orgId! } }],
+    onError: err => {
+      console.error(err);
+      dispatch(showAlert({ text: err.message, type: 'error' }));
+    },
+  });
 
   const defaultValues: OrganizationFormData | null = useMemo(
     () => (data?.org ? mapOrgToForm(data.org) : null),
@@ -56,7 +58,7 @@ export default function EditOrg() {
           onSubmit={onSubmit}
           countryOptions={nationalityOptions}
           loading={loading || updateLoading}
-          error={error || updateError}
+          error={error}
         />
         <DeleteOrg />
       </>

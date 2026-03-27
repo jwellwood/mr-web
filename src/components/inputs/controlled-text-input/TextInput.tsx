@@ -6,7 +6,7 @@ import { TypedFormError } from '../types';
 
 interface Props {
   inputName?: string;
-  defaultValue?: string | number;
+  value?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   label?: string;
@@ -23,7 +23,7 @@ interface Props {
 
 export default function TextInput({
   inputName,
-  defaultValue,
+  value,
   onChange,
   label,
   errors,
@@ -46,7 +46,7 @@ export default function TextInput({
         multiline={multiline}
         rows={3}
         name={inputName}
-        defaultValue={defaultValue}
+        value={value ?? ''}
         onChange={onChange}
         onBlur={onBlur}
         label={label}

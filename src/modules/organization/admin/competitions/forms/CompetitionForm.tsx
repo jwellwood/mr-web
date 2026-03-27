@@ -20,14 +20,25 @@ interface Props {
 }
 
 export default function CompetitionForm({ onSubmit, defaultValues, loading, error }: Props) {
-  const { handleSubmit, control } = useForm<CompetitionFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<CompetitionFormData>({
     defaultValues,
     resolver: zodResolver(CompetitionSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{ disabled: !isDirty || !isValid }}
+      loading={loading}
+      error={error}
+    >
       <ControlledTextInput control={control} name="name" label="Competition Name" />
       <ControlledSelectInput
         control={control}

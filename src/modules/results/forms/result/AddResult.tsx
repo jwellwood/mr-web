@@ -33,11 +33,12 @@ export default function AddResult() {
     orgSeasonId: orgSeasonId || initialResultState.orgSeasonId,
   });
 
-  const [addResult, { error, loading }] = useMutation(ADD_RESULT, {
+  const [addResult, { loading }] = useMutation(ADD_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
       { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
     ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: ResultFormData) => {
@@ -69,7 +70,6 @@ export default function AddResult() {
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           loading={isLoading}
-          error={error}
         />
       )}
     </PageHeader>

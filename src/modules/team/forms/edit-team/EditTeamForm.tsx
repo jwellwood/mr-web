@@ -28,14 +28,25 @@ export default function EditTeamForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control } = useForm<EditTeamFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty },
+    reset,
+  } = useForm<EditTeamFormData>({
     defaultValues,
     resolver: zodResolver(EditTeamSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      submitBtn={{ disabled: !isDirty || !isValid }}
+      onReset={() => reset(defaultValues)}
+      loading={loading}
+      error={error}
+    >
       <ControlledSwitchInput name="isActive" label="Is currently active" control={control} />
       <ControlledTextInput control={control} name="teamName" label="Team Name" />
       <ControlledDateInput control={control} name="yearFounded" label="Year Founded" view="year" />

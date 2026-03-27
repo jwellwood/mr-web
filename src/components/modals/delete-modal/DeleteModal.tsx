@@ -3,9 +3,9 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import { TApolloError } from '../../../types/apollo';
+import { CustomAccordion } from '../../accordion';
 import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
 import { AppIcon } from '../../icons';
@@ -33,14 +33,13 @@ export default function DeleteModal({ title, loading, onDelete, disabled, error 
 
   return (
     <>
-      <div onClick={handleClickOpen}>
-        <IconButton color="secondary" aria-label="delete-modal-button">
-          <AppIcon icon="delete" color="error" />
-        </IconButton>
-        <CustomTypography size="xs" color="error">
-          Delete {title}
-        </CustomTypography>
-      </div>
+      <CustomAccordion title={<AppIcon icon="delete" color="error" />} isExpanded={false}>
+        <div onClick={handleClickOpen} data-testid="delete-modal-trigger">
+          <CustomTypography size="xs" color="error">
+            Delete {title}
+          </CustomTypography>
+        </div>
+      </CustomAccordion>
       <Dialog open={open} onClose={handleClose} sx={{ background: 'rgba(0,0,0,0.7)' }}>
         <SectionContainer type="delete">
           <DialogTitle id="form-dialog-title">

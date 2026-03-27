@@ -1,4 +1,3 @@
-import { TApolloError } from '../../../../types/apollo';
 import AuthLayout from '../../components/AuthLayout';
 import AuthorizationLinks from '../../components/AuthorizationLinks';
 import TurnstileWidget from '../../components/Turnstile';
@@ -13,23 +12,17 @@ interface Props {
   loading: boolean;
   onSubmit: (formData: SignUpFormData) => void;
   email: string | null;
-  error?: TApolloError;
   onToken?: (token: string) => void;
 }
 
-export default function SignUpView({ loading, onSubmit, email, error, onToken }: Props) {
+export default function SignUpView({ loading, onSubmit, email, onToken }: Props) {
   return (
     <AuthLayout helpText={!email ? FORM_HELP.SIGN_UP : ''}>
       <>
         {email ? (
           <ValidationEmailSent email={email} />
         ) : (
-          <SignUpForm
-            onSubmit={onSubmit}
-            defaultValues={signUpFormState}
-            loading={loading}
-            error={error}
-          />
+          <SignUpForm onSubmit={onSubmit} defaultValues={signUpFormState} loading={loading} />
         )}
         {!email && <TurnstileWidget onVerify={onToken} />}
         <AuthorizationLinks links={SIGN_UP_LINKS} />

@@ -12,14 +12,24 @@ interface Props {
 }
 
 export default function ForgotPasswordForm({ defaultValues, onSubmit, loading, error }: Props) {
-  const { control, handleSubmit } = useForm<ForgotPasswordFormData>({
+  const {
+    control,
+    handleSubmit,
+    formState: { isValid },
+  } = useForm<ForgotPasswordFormData>({
     defaultValues,
     resolver: zodResolver(ForgotPasswordSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} minWidth={100}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      loading={loading}
+      error={error}
+      submitBtn={{ confirm: { show: false }, disabled: !isValid }}
+      minWidth={100}
+    >
       <ControlledTextInput control={control} name="email" label="Email Address" />
     </FormContainer>
   );

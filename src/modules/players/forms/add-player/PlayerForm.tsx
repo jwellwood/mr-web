@@ -31,14 +31,25 @@ export default function PlayerForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control } = useForm<PlayerFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty },
+    reset,
+  } = useForm<PlayerFormData>({
     defaultValues: defaultValues as PlayerFormData,
     resolver: zodResolver(PlayerSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{ disabled: !isValid || !isDirty }}
+      loading={loading}
+      error={error}
+    >
       <ControlledTextInput control={control} name="name" label="Name" />
       <ControlledSelectInput
         control={control}

@@ -17,7 +17,9 @@ export default function SignInContainer() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
   const [email, setEmail] = useState<string | null>(null);
-  const [signInUser, { loading, error }] = useMutation(SIGN_IN_USER);
+  const [signInUser, { loading }] = useMutation(SIGN_IN_USER, {
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
   const [showResendLink, setShowResendLink] = useState(false);
   const { isAuth } = useAuth();
 
@@ -59,7 +61,6 @@ export default function SignInContainer() {
         email={email}
         onSubmit={onSubmit}
         showResendLink={showResendLink}
-        error={error}
       />
     </PageContainer>
   );

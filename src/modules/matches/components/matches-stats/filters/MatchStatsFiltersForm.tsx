@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FormContainer } from '../../../../../components/forms';
 import {
-  CustomButton,
-  FormContainer,
   ControlledSwitchInput,
-  ISelectOptions,
   ControlledSelectInput,
-} from '../../../../../components';
+  type ISelectOptions,
+} from '../../../../../components/inputs';
 import { FormModal } from '../../../../../components/modals';
 import { TMatchStatsFilters } from '../../../context';
 import MatchStatsFiltersDisplay from './MatchStatsFiltersDisplay';
@@ -45,12 +44,8 @@ export default function MatchStatsFiltersForm({
         <FormContainer
           loading={false}
           onSubmit={handleSubmit(submitHandler)}
-          submitBtn={{ text: 'Apply' }}
-          resetBtn={
-            <CustomButton onClick={resetForm} color="error">
-              Reset
-            </CustomButton>
-          }
+          submitBtn={{ text: 'Apply', confirm: { show: false } }}
+          onReset={resetForm}
         >
           <ControlledSelectInput
             name="competition"

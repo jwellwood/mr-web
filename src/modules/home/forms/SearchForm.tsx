@@ -13,7 +13,12 @@ interface Props {
 }
 
 export default function SearchForm({ defaultValues, onSubmit, loading, error, type }: Props) {
-  const { handleSubmit, control } = useForm<SearchFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+    reset,
+  } = useForm<SearchFormData>({
     defaultValues,
     resolver: zodResolver(SearchFormSchema),
     mode: 'onChange',
@@ -22,7 +27,8 @@ export default function SearchForm({ defaultValues, onSubmit, loading, error, ty
   return (
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
-      submitBtn={{ text: 'Search' }}
+      onReset={() => reset({ teamName: '' })}
+      submitBtn={{ text: 'Search', disabled: !isValid, confirm: { show: false } }}
       loading={loading}
       error={error}
       minWidth={200} // 300 is too wide for mobile, 200 makes it use 100%

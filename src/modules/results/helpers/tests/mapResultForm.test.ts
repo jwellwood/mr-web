@@ -8,6 +8,7 @@ describe('mapResultForm helpers', () => {
       date: new Date('2023-01-02T12:00:00Z'),
       gameWeek: '3',
       competitionId: 'comp1',
+      orgSeasonId: 'season1',
       homeTeam: 'home',
       awayTeam: 'away',
       homeGoals: '2',

@@ -12,6 +12,7 @@ import {
 import { CustomStack } from '../../../../components/grids';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
+import BatchResultConfirmation from './BatchResultConfirmation';
 import GameweekTeamsInput from './GameweekTeamsInput';
 import { BatchResultSchema, BatchResultFormData } from './validation';
 
@@ -47,7 +48,8 @@ export default function BatchResultForm({
   const {
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
+    reset,
   } = useForm({
     defaultValues,
     resolver: zodResolver(BatchResultSchema),
@@ -56,9 +58,28 @@ export default function BatchResultForm({
 
   const { fields, append, remove } = useFieldArray({ name: 'matches', control });
   const matches = useWatch({ control, name: 'matches' }) || [];
+  const currentValues = useWatch({ control });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      submitBtn={{
+        disabled: !isDirty || !isValid,
+        confirm: {
+          show: true,
+          title: 'Results / Fixtures to add:',
+          content: (
+            <BatchResultConfirmation
+              results={currentValues as BatchResultFormData}
+              teamOptions={teamOptions}
+            />
+          ),
+        },
+      }}
+      onReset={() => reset(defaultValues)}
+      loading={loading}
+      error={error}
+    >
       <ControlledDateInput control={control} name="date" label="Date" disableFuture={false} />
       <ControlledSelectInput
         control={control}

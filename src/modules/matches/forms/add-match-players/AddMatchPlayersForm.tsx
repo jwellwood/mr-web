@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMemo } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import {
   FormContainer,
   ControlledMultiSelectInput,
@@ -28,12 +28,17 @@ export default function AddMatchPlayersForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control, watch } = useForm<AddMatchPlayersFormValues>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty },
+    reset,
+  } = useForm<AddMatchPlayersFormValues>({
     defaultValues,
     resolver: zodResolver(AddMatchPlayersSchema),
   });
 
-  const matchPlayers = watch('matchPlayers');
+  const matchPlayers = useWatch({ control, name: 'matchPlayers' });
 
   const playerList = useMemo(() => {
     const list: { label: string }[] = [];
@@ -49,7 +54,8 @@ export default function AddMatchPlayersForm({
     <>
       <FormContainer
         onSubmit={handleSubmit(onSubmit)}
-        submitBtn={{ text: 'Next' }}
+        onReset={() => reset(defaultValues)}
+        submitBtn={{ text: 'Next', disabled: !isValid || !isDirty, confirm: { show: false } }}
         loading={loading}
         error={error}
       >

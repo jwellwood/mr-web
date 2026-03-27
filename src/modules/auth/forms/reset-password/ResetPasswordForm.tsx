@@ -1,25 +1,32 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import { TApolloError } from '../../../../types/apollo';
 import { ResetPasswordSchema, type ResetPasswordFormData } from './validation';
 
 interface Props {
   onSubmit: (data: ResetPasswordFormData) => void;
   defaultValues: ResetPasswordFormData;
   loading: boolean;
-  error?: TApolloError;
 }
 
-export default function ResetPasswordForm({ onSubmit, defaultValues, loading, error }: Props) {
-  const { handleSubmit, control } = useForm<ResetPasswordFormData>({
+export default function ResetPasswordForm({ onSubmit, defaultValues, loading }: Props) {
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm<ResetPasswordFormData>({
     defaultValues,
     resolver: zodResolver(ResetPasswordSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} minWidth={100}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      loading={loading}
+      submitBtn={{ confirm: { show: false }, disabled: !isValid }}
+      minWidth={100}
+    >
       <ControlledTextInput
         control={control}
         name="password"

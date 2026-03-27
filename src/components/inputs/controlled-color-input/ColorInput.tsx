@@ -6,6 +6,9 @@ import type { TypedFormError } from '../types';
 
 interface Props {
   inputName: string;
+  /** preferred: controlled value */
+  value?: string | number;
+  /** legacy: uncontrolled default value */
   defaultValue?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string;
@@ -18,6 +21,7 @@ interface Props {
 
 export default function ColorInput({
   inputName,
+  value,
   defaultValue,
   onChange,
   label,
@@ -41,7 +45,7 @@ export default function ColorInput({
           color="secondary"
           type="color"
           name={inputName}
-          defaultValue={defaultValue}
+          value={value !== undefined ? value : defaultValue}
           onChange={onChange}
           variant="filled"
           slotProps={{

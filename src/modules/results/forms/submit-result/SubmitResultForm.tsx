@@ -8,7 +8,6 @@ import {
   FormContainer,
 } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
-import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
 import { type SubmitResultFormData, SubmitResultSchema } from './validation';
 
@@ -16,7 +15,6 @@ interface Props {
   onSubmit: (formData: SubmitResultFormData) => void;
   defaultValues: SubmitResultFormData;
   loading: boolean;
-  error?: TApolloError;
   homeTeamName?: string;
   awayTeamName?: string;
 }
@@ -25,12 +23,16 @@ export default function SubmitResultForm({
   onSubmit,
   defaultValues,
   loading,
-  error,
   homeTeamName,
   awayTeamName,
 }: Props) {
   const [open, setOpen] = useState(false);
-  const { handleSubmit, control } = useForm<SubmitResultFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+    reset,
+  } = useForm<SubmitResultFormData>({
     defaultValues,
     resolver: zodResolver(SubmitResultSchema),
     mode: 'onChange',
@@ -47,7 +49,12 @@ export default function SubmitResultForm({
         <CustomButton>Submit Result</CustomButton>
       </span>
       <FormModal open={open} onClose={() => setOpen(false)} title="Submit Result">
-        <FormContainer onSubmit={handleSubmit(submitHandler)} loading={loading} error={error}>
+        <FormContainer
+          onSubmit={handleSubmit(submitHandler)}
+          onReset={() => reset(defaultValues)}
+          submitBtn={{ disabled: !isValid }}
+          loading={loading}
+        >
           <ControlledSelectInput
             control={control}
             name="homeGoals"

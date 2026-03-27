@@ -16,14 +16,15 @@ import type { EditProfileFormData } from './validation';
 export default function EditProfile() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { loading, error, data } = useQuery(FETCH_USER);
+  const { loading, data, error } = useQuery(FETCH_USER);
 
   const defaultValues: EditProfileFormData | null = useMemo(
     () => (data?.user ? backendToFrontend(data.user) : null),
     [data]
   );
-  const [editUser, { loading: editLoading, error: editError }] = useMutation(EDIT_PROFILE, {
+  const [editUser, { loading: editLoading }] = useMutation(EDIT_PROFILE, {
     refetchQueries: [{ query: FETCH_USER }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: EditProfileFormData) => {
@@ -36,8 +37,7 @@ export default function EditProfile() {
         navigate(PROFILE_PATHS.PROFILE);
       })
       .catch(err => {
-        console.error('Edit user failed', err);
-        dispatch(showAlert({ text: 'Something went wrong', type: 'error' }));
+        dispatch(showAlert({ text: err.message, type: 'error' }));
       });
   };
 
@@ -49,7 +49,7 @@ export default function EditProfile() {
             onSubmit={onSubmit}
             defaultValues={defaultValues}
             loading={loading || editLoading}
-            error={error || editError}
+            error={error}
           />
 
           <DeleteAccount />

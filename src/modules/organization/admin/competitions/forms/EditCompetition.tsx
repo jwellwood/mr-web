@@ -21,15 +21,15 @@ export default function EditCompetition() {
   const { loading, error, data } = useQuery(FETCH_COMPETITION, {
     variables: { compId: competitionId! },
   });
-  const [updateCompetition, { loading: updateLoading, error: updateError }] = useMutation(
-    EDIT_COMPETITION,
-    {
-      refetchQueries: [
-        { query: FETCH_COMPETITION, variables: { compId: competitionId! } },
-        { query: FETCH_COMPETITIONS, variables: { orgId: orgId! } },
-      ],
-    }
-  );
+
+  const [updateCompetition, { loading: updateLoading }] = useMutation(EDIT_COMPETITION, {
+    refetchQueries: [
+      { query: FETCH_COMPETITION, variables: { compId: competitionId! } },
+      { query: FETCH_COMPETITIONS, variables: { orgId: orgId! } },
+    ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
+
   const defaultValues: CompetitionFormData | null = useMemo(
     () => (data?.competition ? mapCompetitionToForm(data.competition) : null),
     [data]
@@ -55,7 +55,7 @@ export default function EditCompetition() {
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           loading={updateLoading || loading}
-          error={updateError || error}
+          error={error}
         />
         <DeleteCompetition />
       </>

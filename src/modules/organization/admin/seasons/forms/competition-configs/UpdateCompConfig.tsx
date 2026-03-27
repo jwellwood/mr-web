@@ -28,15 +28,15 @@ export default function UpdateCompConfig({
   numberOfCompetitions,
 }: Props) {
   const { orgId, orgSeasonId } = useCustomParams();
-
   const dispatch: AppDispatch = useDispatch();
 
-  const [updateCompConfigs, { error, loading }] = useMutation(UPDATE_COMPETITION_CONFIGS, {
+  const [updateCompConfigs, { loading }] = useMutation(UPDATE_COMPETITION_CONFIGS, {
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
       { query: FETCH_ORG_SEASON, variables: { seasonId: orgSeasonId! } },
       { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, seasonId: orgSeasonId! } },
     ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const defaultValues: UpdateCompConfigFormData | null = useMemo(() => {
@@ -63,7 +63,6 @@ export default function UpdateCompConfig({
       numberOfTeams={numberOfTeams}
       numberOfCompetitions={numberOfCompetitions}
       loading={loading}
-      error={error}
     />
   );
 }

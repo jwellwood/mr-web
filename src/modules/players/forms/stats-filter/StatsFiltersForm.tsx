@@ -1,11 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import {
-  CustomButton,
-  FormContainer,
-  ControlledSelectInput,
-  type ISelectOptions,
-} from '../../../../components';
+import { FormContainer, ControlledSelectInput, type ISelectOptions } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
 import { TFilters } from '../../context';
 import StatsFiltersDisplay from './StatsFiltersDisplay';
@@ -50,12 +45,8 @@ export default function StatsFiltersForm({
         <FormContainer
           loading={false}
           onSubmit={handleSubmit(submitHandler)}
-          submitBtn={{ text: 'Apply' }}
-          resetBtn={
-            <CustomButton onClick={resetForm} color="error">
-              Reset
-            </CustomButton>
-          }
+          submitBtn={{ text: 'Apply', confirm: { show: false } }}
+          onReset={resetForm}
         >
           <ControlledSelectInput
             name="seasons"

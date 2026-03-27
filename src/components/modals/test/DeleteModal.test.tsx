@@ -28,7 +28,7 @@ describe('DeleteModal', () => {
       </TestWrapper>
     );
 
-    await user.click(screen.getByLabelText('delete-modal-button'));
+    await user.click(screen.getByTestId('delete-modal-trigger'));
     expect(screen.getByText('Delete Player?')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /delete/i })).toBeInTheDocument();
   });
@@ -41,7 +41,7 @@ describe('DeleteModal', () => {
       </TestWrapper>
     );
 
-    await user.click(screen.getByLabelText('delete-modal-button'));
+    await user.click(screen.getByTestId('delete-modal-trigger'));
     expect(screen.getByText(/cannot be undone/i)).toBeInTheDocument();
   });
 
@@ -54,7 +54,7 @@ describe('DeleteModal', () => {
       </TestWrapper>
     );
 
-    await user.click(screen.getByLabelText('delete-modal-button'));
+    await user.click(screen.getByTestId('delete-modal-trigger'));
     await user.click(screen.getByRole('button', { name: /^delete$/i }));
     expect(onDelete).toHaveBeenCalledTimes(1);
   });
@@ -67,7 +67,7 @@ describe('DeleteModal', () => {
       </TestWrapper>
     );
 
-    await user.click(screen.getByLabelText('delete-modal-button'));
+    await user.click(screen.getByTestId('delete-modal-trigger'));
     expect(screen.getByRole('button', { name: /^delete$/i })).toBeDisabled();
   });
 
@@ -79,7 +79,7 @@ describe('DeleteModal', () => {
       </TestWrapper>
     );
 
-    await user.click(screen.getByLabelText('delete-modal-button'));
+    await user.click(screen.getByTestId('delete-modal-trigger'));
     expect(screen.queryByText(/cannot be undone/i)).not.toBeInTheDocument();
   });
 });

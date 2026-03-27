@@ -112,7 +112,7 @@ describe('ImageForm', () => {
   });
 
   it('submit button is disabled when currentUrl equals imageUrl', () => {
-    const { container } = render(
+    render(
       <TestWrapper>
         <ImageForm
           {...baseProps}
@@ -121,7 +121,7 @@ describe('ImageForm', () => {
         />
       </TestWrapper>
     );
-    const submitBtn = container.querySelector('button[type="submit"]');
+    const submitBtn = screen.getByRole('button', { name: /submit/i });
     expect(submitBtn).toBeDisabled();
   });
 

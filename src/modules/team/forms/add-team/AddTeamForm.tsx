@@ -8,7 +8,6 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
-import { TApolloError } from '../../../../types/apollo';
 import { TeamDetailsSchema, type TeamFormData } from './types';
 
 interface Props {
@@ -16,24 +15,27 @@ interface Props {
   defaultValues: TeamFormData;
   countryOptions: ISelectOptions[];
   loading: boolean;
-  error?: TApolloError;
 }
 
-export default function AddTeamForm({
-  onSubmit,
-  defaultValues,
-  countryOptions,
-  loading,
-  error,
-}: Props) {
-  const { handleSubmit, control } = useForm<TeamFormData>({
+export default function AddTeamForm({ onSubmit, defaultValues, countryOptions, loading }: Props) {
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty },
+    reset,
+  } = useForm<TeamFormData>({
     defaultValues,
     resolver: zodResolver(TeamDetailsSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      submitBtn={{ disabled: !isDirty || !isValid }}
+      onReset={() => reset(defaultValues)}
+      loading={loading}
+    >
       <ControlledTextInput control={control} name="teamName" label="Team Name" />
       <ControlledDateInput control={control} name="yearFounded" label="Year Founded" view="year" />
       <ControlledTextInput control={control} name="location" label="City" />

@@ -23,11 +23,12 @@ export default function AddTeamSeason() {
 
   const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
-  const [addTeamSeason, { error, loading }] = useMutation(ADD_SEASON, {
+  const [addTeamSeason, { loading }] = useMutation(ADD_SEASON, {
     refetchQueries: [
       { query: FETCH_SEASONS_POSITION, variables: { teamId } },
       { query: FETCH_SEASONS, variables: { teamId } },
     ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: SeasonFormData) => {
@@ -55,7 +56,7 @@ export default function AddTeamSeason() {
           onSubmit={onSubmit}
           competitionOptions={competitionOptions}
           loading={loading || orgLoading}
-          error={error || orgError}
+          error={orgError}
         />
       ) : (
         <Spinner />

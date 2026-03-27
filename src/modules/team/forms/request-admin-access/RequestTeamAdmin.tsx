@@ -19,7 +19,9 @@ export default function RequestTeamAdmin() {
   const dispatch: AppDispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  const [requestAdminAccess, { loading, error }] = useMutation(REQUEST_TEAM_ADMIN_ACCESS);
+  const [requestAdminAccess, { loading }] = useMutation(REQUEST_TEAM_ADMIN_ACCESS, {
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
 
   const onSubmit = async (data: RequestAccessData) => {
     try {
@@ -79,7 +81,6 @@ export default function RequestTeamAdmin() {
           defaultValues={{ accessCode: '' }}
           onSubmit={onSubmit}
           loading={loading}
-          error={error}
         />
       </FormModal>
     </CustomStack>

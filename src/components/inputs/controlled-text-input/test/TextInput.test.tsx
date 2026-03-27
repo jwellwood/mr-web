@@ -7,16 +7,16 @@ import TextInput from '../TextInput';
 describe('TextInput', () => {
   const defaultProps = {
     inputName: 'testInput',
-    defaultValue: '',
+    value: '',
     onChange: vi.fn(),
     label: 'Test Label',
     errors: [],
   };
 
-  it('renders with label and default value', () => {
+  it('renders with label and value', () => {
     render(
       <TestWrapper>
-        <TextInput {...defaultProps} defaultValue="Hello World" />
+        <TextInput {...defaultProps} value="Hello World" />
       </TestWrapper>
     );
 
@@ -166,10 +166,10 @@ describe('TextInput', () => {
     expect(screen.getByLabelText('Test Label')).toBeInTheDocument();
   });
 
-  it('handles empty string as default value', () => {
+  it('handles empty string as value', () => {
     render(
       <TestWrapper>
-        <TextInput {...defaultProps} defaultValue="" />
+        <TextInput {...defaultProps} value="" />
       </TestWrapper>
     );
 
@@ -177,10 +177,10 @@ describe('TextInput', () => {
     expect(input.value).toBe('');
   });
 
-  it('handles numeric default value', () => {
+  it('handles numeric value', () => {
     render(
       <TestWrapper>
-        <TextInput {...defaultProps} defaultValue={42} />
+        <TextInput {...defaultProps} value={42} />
       </TestWrapper>
     );
 

@@ -16,13 +16,13 @@ import type { CompetitionFormData } from './validation';
 export default function AddCompetition() {
   const { orgId } = useCustomParams();
   const navigate = useNavigate();
-
   const dispatch: AppDispatch = useDispatch();
 
   const defaultValues: CompetitionFormData = useMemo(() => ({ ...initialCompetitionState }), []);
 
-  const [addCompetition, { error, loading }] = useMutation(ADD_COMPETITION, {
+  const [addCompetition, { loading }] = useMutation(ADD_COMPETITION, {
     refetchQueries: [{ query: FETCH_COMPETITIONS, variables: { orgId } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: CompetitionFormData) => {
@@ -42,12 +42,7 @@ export default function AddCompetition() {
 
   const renderContent = () => {
     return defaultValues ? (
-      <CompetitionForm
-        defaultValues={defaultValues}
-        onSubmit={onSubmit}
-        loading={loading}
-        error={error}
-      />
+      <CompetitionForm defaultValues={defaultValues} onSubmit={onSubmit} loading={loading} />
     ) : (
       <Spinner />
     );

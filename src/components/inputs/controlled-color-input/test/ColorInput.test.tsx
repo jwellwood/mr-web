@@ -19,17 +19,12 @@ describe('ColorInput', () => {
     expect(colorInput).toBeInTheDocument();
   });
 
-  it('renders with default value', () => {
+  it('renders with value', () => {
     const onChange = vi.fn();
 
     render(
       <TestWrapper>
-        <ColorInput
-          inputName="color"
-          label="Primary Color"
-          defaultValue="#ff0000"
-          onChange={onChange}
-        />
+        <ColorInput inputName="color" label="Primary Color" value="#ff0000" onChange={onChange} />
       </TestWrapper>
     );
 
@@ -99,7 +94,7 @@ describe('ColorInput', () => {
 
     render(
       <TestWrapper>
-        <ColorInput inputName="color" label="Color" defaultValue="#336699" onChange={onChange} />
+        <ColorInput inputName="color" label="Color" value="#336699" onChange={onChange} />
       </TestWrapper>
     );
 
@@ -151,7 +146,7 @@ describe('ColorInput', () => {
 
     render(
       <TestWrapper>
-        <ColorInput inputName="color" label="Color" defaultValue="#FF00FF" onChange={onChange} />
+        <ColorInput inputName="color" label="Color" value="#FF00FF" onChange={onChange} />
       </TestWrapper>
     );
 
@@ -159,12 +154,12 @@ describe('ColorInput', () => {
     expect(colorInput).toHaveValue('#ff00ff'); // Browsers normalize to lowercase
   });
 
-  it('handles numeric default value', () => {
+  it('handles numeric value', () => {
     const onChange = vi.fn();
 
     render(
       <TestWrapper>
-        <ColorInput inputName="color" label="Color" defaultValue={0} onChange={onChange} />
+        <ColorInput inputName="color" label="Color" value={0} onChange={onChange} />
       </TestWrapper>
     );
 

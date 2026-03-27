@@ -33,7 +33,9 @@ export default function ConfirmationModal({
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
-    setOpen(true);
+    if (!disabled && !loading) {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
@@ -49,13 +51,13 @@ export default function ConfirmationModal({
             <Stack spacing={1} sx={{ justifyContent: 'center', alignItems: 'center' }}>
               <AppIcon icon="pending" size={'40px'} color="primary" />
               <CustomTypography size="sm" bold color="data">
-                {title}
+                {title || 'Confirm Action'}
               </CustomTypography>
             </Stack>
           </DialogTitle>
 
-          <DialogContent>
-            <SectionContainer>
+          <DialogContent sx={{ minWidth: '300px' }}>
+            <>
               {!loading ? (
                 <CustomTypography color="label">{children}</CustomTypography>
               ) : (
@@ -63,7 +65,7 @@ export default function ConfirmationModal({
                   <Spinner />
                 </Box>
               )}
-            </SectionContainer>
+            </>
             {error && <MutationError error={error} />}
           </DialogContent>
           <DialogActions>

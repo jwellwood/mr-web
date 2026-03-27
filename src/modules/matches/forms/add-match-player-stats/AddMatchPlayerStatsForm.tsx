@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import {
   FormContainer,
   ControlledSelectInput,
@@ -28,18 +28,24 @@ export default function AddMatchPlayerStatsForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control, watch } = useForm<AddMatchPlayerStatsFormValues>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty },
+    reset,
+  } = useForm<AddMatchPlayerStatsFormValues>({
     defaultValues,
     resolver: zodResolver(AddMatchPlayerStatsSchema),
   });
 
-  const goalsScored = watch('goals');
-  const goalsConceded = watch('conceded') as number;
+  const goalsScored = useWatch({ control, name: 'goals' });
+  const goalsConceded = useWatch({ control, name: 'conceded' });
 
   return (
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
-      submitBtn={{ text: 'Add' }}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{ text: 'Add', disabled: !isValid || !isDirty, confirm: { show: false } }}
       loading={loading}
       error={error}
     >

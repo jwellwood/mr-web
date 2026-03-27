@@ -13,7 +13,7 @@ describe('SelectInput', () => {
 
   const defaultProps = {
     inputName: 'testSelect',
-    defaultValue: '',
+    value: '',
     onChange: vi.fn(),
     label: 'Test Label',
     options,
@@ -30,10 +30,10 @@ describe('SelectInput', () => {
     expect(screen.getByLabelText('Test Label')).toBeInTheDocument();
   });
 
-  it('displays default value when provided', () => {
+  it('displays value when provided', () => {
     render(
       <TestWrapper>
-        <SelectInput {...defaultProps} defaultValue="2" />
+        <SelectInput {...defaultProps} value="2" />
       </TestWrapper>
     );
 
@@ -218,7 +218,7 @@ describe('SelectInput', () => {
 
     render(
       <TestWrapper>
-        <SelectInput {...defaultProps} options={numericOptions} defaultValue={2} />
+        <SelectInput {...defaultProps} options={numericOptions} value={2} />
       </TestWrapper>
     );
 
@@ -226,10 +226,10 @@ describe('SelectInput', () => {
     expect(select).toHaveTextContent('Two');
   });
 
-  it('displays empty string when no default value', () => {
+  it('displays empty string when no value', () => {
     render(
       <TestWrapper>
-        <SelectInput {...defaultProps} defaultValue="" />
+        <SelectInput {...defaultProps} value="" />
       </TestWrapper>
     );
 

@@ -4,6 +4,9 @@ import type { ISelectOptions, TypedFormError } from '../types';
 
 interface Props {
   inputName: string;
+  /** preferred: controlled value */
+  value?: string | number;
+  /** legacy: uncontrolled default value */
   defaultValue?: string | number;
   label: string;
   onChange: (event: SelectChangeEvent<string | number>) => void;
@@ -16,6 +19,7 @@ interface Props {
 
 export default function SelectInput({
   inputName,
+  value,
   defaultValue,
   onChange,
   label,
@@ -25,7 +29,8 @@ export default function SelectInput({
   isDirty,
   isValid,
 }: Props) {
-  const defaultValueString = defaultValue !== undefined ? String(defaultValue) : '';
+  const effective = value !== undefined ? value : defaultValue;
+  const defaultValueString = effective !== undefined ? String(effective) : '';
 
   return (
     <>

@@ -30,7 +30,12 @@ export default function AddMatchDetailsForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control } = useForm<AddMatchDetailsFormValues>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty },
+    reset,
+  } = useForm<AddMatchDetailsFormValues>({
     defaultValues,
     resolver: zodResolver(AddMatchDetailsSchema),
   });
@@ -38,7 +43,8 @@ export default function AddMatchDetailsForm({
   return (
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
-      submitBtn={{ text: 'Next' }}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{ text: 'Next', disabled: !isValid || !isDirty, confirm: { show: false } }}
       loading={loading}
       error={error}
     >

@@ -22,8 +22,9 @@ export default function AddPlayer() {
 
   const defaultValues: PlayerFormData = initialPlayerState;
 
-  const [addPlayer, { error, loading: addLoading }] = useMutation(ADD_PLAYER, {
+  const [addPlayer, { loading: addLoading }] = useMutation(ADD_PLAYER, {
     refetchQueries: [{ query: FETCH_SQUAD_LIST_BY_SEASON, variables: { teamId, seasonId } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: PlayerFormData) => {
@@ -54,7 +55,6 @@ export default function AddPlayer() {
           countryOptions={nationalityOptions}
           seasonOptions={seasonOptions}
           loading={isLoading}
-          error={error}
         />
       )}
     </PageHeader>

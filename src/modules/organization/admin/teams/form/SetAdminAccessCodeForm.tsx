@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form';
 import { ControlledTextInput, CustomButton, FormContainer } from '../../../../../components';
 import { CustomStack } from '../../../../../components/grids';
 import { FormModal } from '../../../../../components/modals';
-import { TApolloError } from '../../../../../types/apollo';
 import { SetAdminAccessCodeData, SetAdminAccessCodeSchema } from './validation';
 
 interface Props {
@@ -12,7 +11,6 @@ interface Props {
   onSubmit: (data: SetAdminAccessCodeData) => void;
   defaultValues: SetAdminAccessCodeData;
   loading: boolean;
-  error?: TApolloError;
 }
 
 export default function SetAdminAccessCodeForm({
@@ -21,9 +19,13 @@ export default function SetAdminAccessCodeForm({
   setOpen,
   defaultValues,
   loading,
-  error,
 }: Props) {
-  const { handleSubmit, control } = useForm<SetAdminAccessCodeData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<SetAdminAccessCodeData>({
     defaultValues,
     resolver: zodResolver(SetAdminAccessCodeSchema),
     mode: 'onChange',
@@ -37,7 +39,12 @@ export default function SetAdminAccessCodeForm({
         </CustomButton>
       }
       <FormModal open={open} onClose={() => setOpen(false)} title="Set Admin Access Code">
-        <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+        <FormContainer
+          onSubmit={handleSubmit(onSubmit)}
+          onReset={() => reset(defaultValues)}
+          submitBtn={{ disabled: !isDirty || !isValid }}
+          loading={loading}
+        >
           <ControlledTextInput control={control} name="accessCode" label="Access Code" />
         </FormContainer>
       </FormModal>

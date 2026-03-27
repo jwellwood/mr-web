@@ -16,11 +16,12 @@ export default function AddTrophy() {
   const { teamId } = useCustomParams();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const { seasonOptions, loading: loadingSeasons } = useSeasons();
+  const { seasonOptions, loading: loadingSeasons, error: seasonError } = useSeasons();
   const defaultValues: TrophyFormData = useMemo(() => ({ ...initialTrophyFormState }), []);
 
-  const [addTrophy, { error, loading }] = useMutation(ADD_TROPHY, {
+  const [addTrophy, { loading }] = useMutation(ADD_TROPHY, {
     refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId: teamId! } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: TrophyFormData) => {
@@ -46,7 +47,7 @@ export default function AddTrophy() {
           onSubmit={onSubmit}
           seasonOptions={seasonOptions}
           loading={isLoading}
-          error={error}
+          error={seasonError}
         />
       ) : (
         <Spinner />

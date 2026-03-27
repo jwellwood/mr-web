@@ -13,7 +13,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date of Birth"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
         />
@@ -23,16 +23,16 @@ describe('DateInput', () => {
     expect(screen.getByRole('button', { name: /choose date/i })).toBeInTheDocument();
   });
 
-  it('renders with default date value', () => {
+  it('renders with value date', () => {
     const onChange = vi.fn();
-    const defaultDate = new Date('2000-01-01');
+    const valueDate = new Date('2000-01-01');
 
     render(
       <TestWrapper>
         <DateInput
           inputName="dob"
           label="Date of Birth"
-          defaultValue={defaultDate}
+          value={valueDate}
           onChange={onChange}
           disableFuture={true}
         />
@@ -42,7 +42,7 @@ describe('DateInput', () => {
     expect(screen.getByRole('button', { name: /choose date/i })).toBeInTheDocument();
   });
 
-  it('renders with null default value', () => {
+  it('renders with null value', () => {
     const onChange = vi.fn();
 
     render(
@@ -50,7 +50,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Select Date"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
         />
@@ -69,7 +69,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
           errors={[error]}
@@ -88,7 +88,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
           errors={[]}
@@ -96,7 +96,7 @@ describe('DateInput', () => {
       </TestWrapper>
     );
 
-    expect(screen.queryByText('Date is required')).not.toBeInTheDocument();
+    expect(screen.queryByText(/required/i)).not.toBeInTheDocument();
   });
 
   it('opens date picker when calendar icon is clicked', async () => {
@@ -108,7 +108,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
         />
@@ -129,7 +129,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
         />
@@ -147,7 +147,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={false}
         />
@@ -165,7 +165,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="year"
           label="Year"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
           view="year"
@@ -184,7 +184,7 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={null}
+          value={null}
           onChange={onChange}
           disableFuture={true}
           openTo="year"
@@ -204,11 +204,11 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={validDate}
+          value={validDate}
           onChange={onChange}
           disableFuture={true}
-          isDirty={true}
-          isValid={true}
+          isDirty
+          isValid
         />
       </TestWrapper>
     );
@@ -225,10 +225,10 @@ describe('DateInput', () => {
         <DateInput
           inputName="dob"
           label="Date"
-          defaultValue={new Date('invalid')}
+          value={new Date('invalid')}
           onChange={onChange}
           disableFuture={true}
-          isDirty={true}
+          isDirty
           isValid={false}
           errors={[error]}
         />

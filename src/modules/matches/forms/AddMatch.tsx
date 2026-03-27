@@ -51,6 +51,10 @@ export default function AddMatch() {
         variables: { teamId, seasonId: currentTempMatch.seasonId },
       },
     ],
+    onError: err => {
+      dispatch(showAlert({ text: err.message, type: 'error' }));
+      console.error('Add match error', err);
+    },
   });
 
   useEffect(() => {

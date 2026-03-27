@@ -22,11 +22,12 @@ export default function EditSeason() {
     variables: { seasonId: seasonId! },
   });
 
-  const [editSeason, { error: editError, loading: editLoading }] = useMutation(EDIT_SEASON, {
+  const [editSeason, { loading: editLoading }] = useMutation(EDIT_SEASON, {
     refetchQueries: [
       { query: FETCH_SEASONS, variables: { teamId: teamId! } },
       { query: FETCH_SEASONS_POSITION, variables: { teamId: teamId! } },
     ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
@@ -62,7 +63,7 @@ export default function EditSeason() {
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           loading={isLoading}
-          error={error || editError || orgError}
+          error={error || orgError}
         />
         <DeleteSeason />
       </>

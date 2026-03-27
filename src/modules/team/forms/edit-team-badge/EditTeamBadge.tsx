@@ -1,13 +1,16 @@
 import { useMutation, useQuery } from '@apollo/client/react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { PageContainer } from '../../../../components';
 import { useUpload, useCustomParams } from '../../../../hooks';
 import { removeTeamBadge, uploadTeamBadge } from '../../../../services/images';
+import { AppDispatch, showAlert } from '../../../../store';
 import { PAGES } from '../../constants';
 import { FETCH_TEAM, EDIT_TEAM_BADGE } from '../../graphql';
 import EditTeamBadgeView from './EditTeamBadgeView';
 
 export default function EditTeamBadge() {
+  const dispatch: AppDispatch = useDispatch();
   const { teamId } = useCustomParams();
   const {
     data,
@@ -19,6 +22,7 @@ export default function EditTeamBadge() {
   });
   const [editTeamBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_TEAM_BADGE, {
     variables: { teamId: teamId! },
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadTeamBadge,

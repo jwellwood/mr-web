@@ -23,8 +23,9 @@ export default function AddOrgSeason() {
   const { competitionOptions, loading: competitionOptionsLoading } = useCompetitionOptions();
   const defaultValues: OrgSeasonFormData = useMemo(() => ({ ...initialOrgSeasonState }), []);
 
-  const [addOrgSeason, { error, loading }] = useMutation(ADD_ORG_SEASON, {
+  const [addOrgSeason, { loading }] = useMutation(ADD_ORG_SEASON, {
     refetchQueries: [{ query: FETCH_ORG_SEASONS, variables: { orgId } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: OrgSeasonFormData) => {
@@ -49,7 +50,6 @@ export default function AddOrgSeason() {
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           loading={loading || teamOptionsLoading || competitionOptionsLoading}
-          error={error}
           teamOptions={teamOptions}
           competitionOptions={competitionOptions}
         />

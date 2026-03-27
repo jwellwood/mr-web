@@ -25,13 +25,24 @@ export default function OrgForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control } = useForm<OrganizationFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<OrganizationFormData>({
     defaultValues,
     resolver: zodResolver(OrganizationSchema),
     mode: 'onChange',
   });
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{ disabled: !isValid || !isDirty }}
+      loading={loading}
+      error={error}
+    >
       <ControlledTextInput control={control} name="name" label="Organization Name" />
       <ControlledTextInput control={control} name="website" label="Website" />
       <ControlledDateInput control={control} name="yearFounded" label="Year Founded" view="year" />

@@ -26,12 +26,13 @@ export default function EditOrgSeason() {
     variables: { seasonId: orgSeasonId! },
   });
 
-  const [editOrgSeason, { error: editError, loading: editLoading }] = useMutation(EDIT_ORG_SEASON, {
+  const [editOrgSeason, { loading: editLoading }] = useMutation(EDIT_ORG_SEASON, {
     variables: { orgId, seasonId: orgSeasonId! },
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
       { query: FETCH_ORG_SEASON, variables: { seasonId: orgSeasonId! } },
     ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const defaultValues: OrgSeasonFormData | null = useMemo(() => {
@@ -61,7 +62,7 @@ export default function EditOrgSeason() {
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           loading={isLoading}
-          error={error || editError}
+          error={error}
           teamOptions={teamOptions}
           competitionOptions={competitionOptions}
         />

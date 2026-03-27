@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { isFuture } from 'date-fns';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import {
   ControlledDateInput,
   ControlledSelectInput,
@@ -11,6 +11,7 @@ import {
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
 import { getKickoffTimeOptions } from '../../helpers/getKickoffTimeOptions';
+import ResultConfirmation from './ResultConfirmation';
 import type { ResultFormData } from './validation';
 import { ResultSchema } from './validation';
 
@@ -33,18 +34,40 @@ export default function ResultForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control, watch } = useForm<ResultFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<ResultFormData>({
     defaultValues,
     resolver: zodResolver(ResultSchema),
     mode: 'onChange',
   });
 
-  const currentDate = watch('date');
-
+  const currentDate = useWatch({ control, name: 'date' });
+  const currentValues = useWatch({ control });
   const isFutureMatch = isFuture(new Date(currentDate));
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{
+        disabled: !isValid || !isDirty,
+        confirm: {
+          show: true,
+          content: (
+            <ResultConfirmation
+              result={currentValues as ResultFormData}
+              teamOptions={teamOptions}
+            />
+          ),
+        },
+      }}
+      loading={loading}
+      error={error}
+    >
       <ControlledDateInput control={control} name="date" label="Date" disableFuture={false} />
       <ControlledSelectInput
         control={control}

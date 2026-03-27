@@ -28,8 +28,9 @@ export default function EditTrophy() {
     return trophy && seasonOptions.length > 0 ? mapTrophyToForm(trophy, seasonOptions) : null;
   }, [data, seasonOptions]);
 
-  const [editTrophy, { error: editError, loading: editLoading }] = useMutation(EDIT_TROPHY, {
+  const [editTrophy, { loading: editLoading }] = useMutation(EDIT_TROPHY, {
     refetchQueries: [{ query: FETCH_TROPHIES, variables: { teamId: teamId! } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: TrophyFormData) => {
@@ -61,7 +62,7 @@ export default function EditTrophy() {
             seasonOptions={seasonOptions}
             onSubmit={onSubmit}
             loading={isLoading}
-            error={error || editError}
+            error={error}
           />
           <DeleteTrophy />
         </>

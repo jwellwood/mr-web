@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { CustomButton, FormContainer, ControlledSwitchInput } from '../../../../components';
+import { FormContainer, ControlledSwitchInput } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
 import { TPlayerOpponentFilters } from '../../context';
 import OpponentFiltersDisplay from './OpponentFiltersDisplay';
@@ -34,12 +34,8 @@ export default function OpponentsFiltersForm({ onSubmit, onReset, defaultValues 
         <FormContainer
           loading={false}
           onSubmit={handleSubmit(submitHandler)}
-          submitBtn={{ text: 'Apply' }}
-          resetBtn={
-            <CustomButton onClick={resetForm} color="error">
-              Reset
-            </CustomButton>
-          }
+          submitBtn={{ text: 'Apply', confirm: { show: false } }}
+          onReset={resetForm}
         >
           <ControlledSwitchInput
             name="showAllOpponents"

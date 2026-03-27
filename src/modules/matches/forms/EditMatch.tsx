@@ -55,12 +55,7 @@ export default function EditMatch() {
     refetchQueries: [
       {
         query: FETCH_MATCHES,
-        variables: {
-          limit: 5,
-          offset: 0,
-          teamId: teamId!,
-          seasonId: currentTempMatch.seasonId,
-        },
+        variables: { teamId: teamId!, seasonId: currentTempMatch.seasonId },
       },
       {
         query: FETCH_SQUAD_LIST_BY_SEASON,
@@ -75,6 +70,10 @@ export default function EditMatch() {
         variables: { matchId },
       },
     ],
+    onError: err => {
+      dispatch(showAlert({ text: err.message, type: 'error' }));
+      console.error('Edit match error', err);
+    },
   });
 
   useEffect(() => {

@@ -19,8 +19,9 @@ interface Props {
 export default function SubmitResult({ homeTeamName, awayTeamName, homeGoals, awayGoals }: Props) {
   const { resultId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
-  const [submitResult, { loading, error }] = useMutation(SUBMIT_RESULT, {
+  const [submitResult, { loading }] = useMutation(SUBMIT_RESULT, {
     refetchQueries: [{ query: FETCH_RESULT, variables: { resultId } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
   const [defaultValues] = useState<SubmitResultFormData>({
     ...submitResultInitialFormState,
@@ -31,9 +32,7 @@ export default function SubmitResult({ homeTeamName, awayTeamName, homeGoals, aw
     try {
       const variables = {
         resultId,
-        isForfeit: formData.isForfeit,
-        homeGoals: formData.homeGoals,
-        awayGoals: formData.awayGoals,
+        ...formData,
       };
       return submitResult({
         variables,
@@ -51,7 +50,6 @@ export default function SubmitResult({ homeTeamName, awayTeamName, homeGoals, aw
       onSubmit={onSubmit}
       defaultValues={defaultValues}
       loading={loading}
-      error={error}
       homeTeamName={homeTeamName}
       awayTeamName={awayTeamName}
     />

@@ -20,7 +20,9 @@ export default function EditPlayer() {
   const { loading, error, data, refetch } = useQuery(FETCH_PLAYER, {
     variables: { playerId: playerId! },
   });
-  const [updatePlayer, { loading: updateLoading, error: updateError }] = useMutation(EDIT_PLAYER);
+  const [updatePlayer, { loading: updateLoading }] = useMutation(EDIT_PLAYER, {
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
   const { nationalityOptions } = useNationality();
   const dispatch: AppDispatch = useDispatch();
 
@@ -70,7 +72,7 @@ export default function EditPlayer() {
             countryOptions={nationalityOptions}
             seasonOptions={seasonOptions}
             loading={isLoading}
-            error={error || updateError}
+            error={error}
           />
           <DeletePlayer />
         </>

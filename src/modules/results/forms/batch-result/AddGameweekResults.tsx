@@ -32,11 +32,12 @@ export default function AddGameweekResults() {
     orgSeasonId: orgSeasonId || initialBatchResultState().orgSeasonId,
   });
 
-  const [addResult, { error, loading }] = useMutation(ADD_RESULT, {
+  const [addResult, { loading }] = useMutation(ADD_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
       { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
     ],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: BatchResultFormData) => {
@@ -84,7 +85,6 @@ export default function AddGameweekResults() {
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           loading={isLoading}
-          error={error}
         />
       )}
     </PageHeader>

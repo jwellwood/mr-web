@@ -1,22 +1,29 @@
 import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
-import React, { ReactElement } from 'react';
+import React from 'react';
 import { TApolloError } from '../../../types/apollo';
-import { SubmitButton } from '../../buttons';
+import { CustomButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
 import { Spinner } from '../../loaders';
+import SubmitButton from '../submit-button/SubmitButton';
 
 interface ISubmitButton {
   text?: string;
   disabled?: boolean;
+  confirm?: {
+    show?: boolean;
+    title?: string;
+    content?: React.ReactNode;
+    confirmText?: string;
+  };
 }
 
 interface Props {
-  onSubmit: React.SubmitEventHandler<HTMLFormElement>;
+  onSubmit: (ev?: React.SubmitEvent<HTMLFormElement>) => void;
   children: React.ReactNode;
   submitBtn?: ISubmitButton;
-  resetBtn?: ReactElement;
+  onReset?: () => void;
   loading: boolean;
   error?: TApolloError;
   minWidth?: number;
@@ -25,7 +32,7 @@ interface Props {
 export default function FormContainer({
   children,
   onSubmit,
-  resetBtn,
+  onReset,
   submitBtn = {
     text: 'Submit',
     disabled: false,
@@ -34,20 +41,29 @@ export default function FormContainer({
   error,
   minWidth,
 }: Props) {
-  const submitButton = () => (
-    <SubmitButton disabled={submitBtn?.disabled} loading={loading}>
-      {submitBtn?.text}
-    </SubmitButton>
-  );
+  const handleSubmit = (ev?: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+    if (ev && 'preventDefault' in ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+    onSubmit();
+  };
+
+  const handleReset = (ev?: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
+    if (ev && 'preventDefault' in ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+    onReset?.();
+  };
 
   return (
     <Container maxWidth="sm" disableGutters style={{ marginBottom: '4px' }}>
       <form
         onSubmit={ev => {
-          ev.preventDefault();
-          ev.stopPropagation();
-          onSubmit(ev);
+          handleSubmit(ev);
         }}
+        onReset={handleReset}
       >
         <SectionContainer type="form">
           {loading ? (
@@ -67,8 +83,19 @@ export default function FormContainer({
               paddingTop: '16px',
             }}
           >
-            {resetBtn && <>{resetBtn}</>}
-            <>{submitButton()}</>
+            {onReset && (
+              <CustomButton onClick={handleReset} color="warning" variant="text">
+                Reset
+              </CustomButton>
+            )}
+            <SubmitButton
+              disabled={submitBtn?.disabled}
+              loading={loading}
+              onClick={handleSubmit}
+              confirm={submitBtn?.confirm}
+            >
+              {submitBtn?.text}
+            </SubmitButton>
           </Stack>
         </SectionContainer>
       </form>

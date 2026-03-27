@@ -12,7 +12,9 @@ export default function SetAdminAccessCode() {
   const dispatch: AppDispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  const [setAdminAccessCode, { loading, error }] = useMutation(SET_TEAM_ADMIN_ACCESS_CODE);
+  const [setAdminAccessCode, { loading }] = useMutation(SET_TEAM_ADMIN_ACCESS_CODE, {
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
 
   const onSubmit = async (data: SetAdminAccessCodeData) => {
     try {
@@ -43,7 +45,6 @@ export default function SetAdminAccessCode() {
       defaultValues={{ accessCode: '' }}
       onSubmit={onSubmit}
       loading={loading}
-      error={error}
     />
   );
 }

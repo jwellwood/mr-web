@@ -17,18 +17,23 @@ import type { EditTeamFormData } from './types';
 export default function EditTeam() {
   const { teamId } = useCustomParams();
   const navigate = useNavigate();
+  const { nationalityOptions } = useNationality();
+  const dispatch: AppDispatch = useDispatch();
+
   const { loading, error, data } = useQuery(FETCH_TEAM, {
     variables: { teamId: teamId! },
   });
-  const [updateTeamDetails, { loading: updateLoading, error: updateError }] = useMutation(
-    EDIT_TEAM,
-    {
-      refetchQueries: [{ query: FETCH_TEAMS_BY_USER }],
-      awaitRefetchQueries: true,
-    }
-  );
-  const { nationalityOptions } = useNationality();
-  const dispatch: AppDispatch = useDispatch();
+  const [updateTeamDetails, { loading: updateLoading }] = useMutation(EDIT_TEAM, {
+    refetchQueries: [
+      { query: FETCH_TEAMS_BY_USER },
+      { query: FETCH_TEAM, variables: { teamId: teamId! } },
+    ],
+    awaitRefetchQueries: true,
+    onError: err => {
+      console.error(err);
+      dispatch(showAlert({ text: err.message, type: 'error' }));
+    },
+  });
 
   const defaultValues: EditTeamFormData | null = useMemo(
     () => (data?.team ? mapTeamDataToFormData(data.team) : null),
@@ -63,7 +68,7 @@ export default function EditTeam() {
             onSubmit={onSubmit}
             countryOptions={nationalityOptions}
             loading={loading || updateLoading}
-            error={error || updateError}
+            error={error}
           />
           <DeleteTeam />
         </>

@@ -12,7 +12,9 @@ export default function SignUpContainer() {
   const dispatch: AppDispatch = useDispatch();
   const [email, setEmail] = useState<string | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const [registerUser, { loading, error }] = useMutation(REGISTER_USER);
+  const [registerUser, { loading }] = useMutation(REGISTER_USER, {
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
 
   const onSubmit = (formData: SignUpFormData) => {
     if (!turnstileToken) {
@@ -34,13 +36,7 @@ export default function SignUpContainer() {
 
   return (
     <PageContainer title={PAGES.SIGN_UP_PAGE}>
-      <SignUpView
-        loading={loading}
-        onSubmit={onSubmit}
-        email={email}
-        error={error}
-        onToken={setTurnstileToken}
-      />
+      <SignUpView loading={loading} onSubmit={onSubmit} email={email} onToken={setTurnstileToken} />
     </PageContainer>
   );
 }

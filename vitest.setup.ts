@@ -2,6 +2,7 @@
 // This makes jest-dom matchers available globally (toBeInTheDocument, etc.)
 import '@testing-library/jest-dom/vitest';
 import { vi } from 'vitest';
+import { invokeImpl } from './src/test/utils/mockUseMutation';
 
 // Mock IntersectionObserver which is not available in jsdom
 class MockIntersectionObserver {
@@ -18,3 +19,16 @@ Object.defineProperty(window, 'IntersectionObserver', {
 });
 
 // Add any other global mocks or setup needed for your tests
+
+// Centralized mock for Apollo useMutation so tests can control behavior via helpers
+vi.mock('@apollo/client/react', async () => {
+  const actual =
+    await vi.importActual<typeof import('@apollo/client/react')>('@apollo/client/react');
+  return {
+    ...actual,
+    useMutation: (
+      gql?: unknown,
+      options?: { onError?: (err: { message?: string }) => void } | undefined
+    ) => invokeImpl(gql, options),
+  };
+});

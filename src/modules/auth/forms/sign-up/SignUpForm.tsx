@@ -8,7 +8,6 @@ import {
   CustomTypography,
 } from '../../../../components';
 import { PresentationModal } from '../../../../components/modals';
-import { TApolloError } from '../../../../types/apollo';
 import TermsOfUseContent from '../../terms/TermsOfUseContent';
 import { SignUpSchema, type SignUpFormData } from './validation';
 
@@ -16,18 +15,26 @@ interface Props {
   onSubmit: (data: SignUpFormData) => void;
   defaultValues: SignUpFormData;
   loading: boolean;
-  error?: TApolloError;
 }
 
-export default function SignUpForm({ onSubmit, defaultValues, loading, error }: Props) {
-  const { handleSubmit, control } = useForm<SignUpFormData>({
+export default function SignUpForm({ onSubmit, defaultValues, loading }: Props) {
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm<SignUpFormData>({
     defaultValues,
     resolver: zodResolver(SignUpSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error} minWidth={100}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      loading={loading}
+      minWidth={100}
+      submitBtn={{ confirm: { show: false }, disabled: !isValid }}
+    >
       <ControlledTextInput control={control} name="username" label="Username" />
       <ControlledTextInput control={control} name="email" label="Email Address" />
       <ControlledTextInput control={control} name="password" isPassword={true} label="Password" />

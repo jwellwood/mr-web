@@ -1,4 +1,3 @@
-import { DataError } from '../../../../components';
 import ImageForm from '../../../../components/forms/image-form/ImageForm';
 import { Spinner } from '../../../../components/loaders';
 import { IMAGE_TYPE } from '../../../../constants';
@@ -24,9 +23,6 @@ export default function EditTeamBadgeView({
   setImageUrl,
   removeImage,
 }: Props) {
-  if (error) {
-    return <DataError error={error} />;
-  }
   return data?.team ? (
     <ImageForm
       imageUrl={imageUrl}

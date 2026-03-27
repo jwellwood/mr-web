@@ -8,8 +8,8 @@ import { FETCH_ORG_TEAMS } from '../../../organization/graphql';
 import { FETCH_TEAMS_BY_USER } from '../../../profile/graphql';
 import { PAGES, TeamError, TeamSuccess } from '../../constants';
 import { ADD_TEAM } from '../../graphql';
-import AddTeamView from './AddTeamView';
-import { mapFormDataToMutationInput } from './state';
+import AddTeamForm from './AddTeamForm';
+import { initialTeamDetailsState, mapFormDataToMutationInput } from './state';
 import type { TeamFormData } from './types';
 
 export default function AddTeam() {
@@ -18,7 +18,7 @@ export default function AddTeam() {
   const dispatch: AppDispatch = useDispatch();
   const { nationalityOptions } = useNationality();
 
-  const [addTeam, { error, loading }] = useMutation(ADD_TEAM, {
+  const [addTeam, { loading }] = useMutation(ADD_TEAM, {
     refetchQueries: [
       {
         query: FETCH_ORG_TEAMS,
@@ -26,6 +26,9 @@ export default function AddTeam() {
       },
       { query: FETCH_TEAMS_BY_USER },
     ],
+    onError: err => {
+      dispatch(showAlert({ text: err.message, type: 'error' }));
+    },
   });
 
   const onSubmit = async (data: TeamFormData) => {
@@ -51,10 +54,10 @@ export default function AddTeam() {
 
   return (
     <PageContainer title={PAGES.ADD_TEAM}>
-      <AddTeamView
-        error={error}
+      <AddTeamForm
         onSubmit={onSubmit}
         countryOptions={nationalityOptions}
+        defaultValues={initialTeamDetailsState}
         loading={loading}
       />
     </PageContainer>

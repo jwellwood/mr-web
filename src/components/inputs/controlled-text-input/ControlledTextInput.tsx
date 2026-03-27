@@ -29,7 +29,7 @@ export default function ControlledTextInput<T extends object>({
     <TextInput
       isPassword={isPassword}
       inputName={name}
-      defaultValue={value}
+      value={value}
       label={label}
       multiline={multiline}
       onChange={onChange}

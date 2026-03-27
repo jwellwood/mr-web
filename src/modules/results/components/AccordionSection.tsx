@@ -1,7 +1,7 @@
 import { CustomTypography, SectionContainer } from '../../../components';
 import { CustomAccordion } from '../../../components/accordion';
 import { CustomStack } from '../../../components/grids';
-import { AppIcon } from '../../../components/icons';
+import { APP_ICONS, AppIcon } from '../../../components/icons';
 import { parseDate } from '../../../utils';
 import { T_FETCH_RESULTS } from '../graphql';
 import { getResultStatusInGameweek } from '../helpers/getResultStatusInGameweek';
@@ -39,9 +39,7 @@ export default function AccordionSection({ competitionName, gameWeek, gwResults,
 
           <CustomStack direction="row" spacing={1} justify="flex-end">
             {counts.confirmed === gwResults.length ? (
-              <CustomTypography color="success" bold>
-                COMPLETE
-              </CustomTypography>
+              <AppIcon icon={APP_ICONS.CHECK} color="primary" />
             ) : (
               listData.map((item, index) => (
                 <SectionContainer key={index}>

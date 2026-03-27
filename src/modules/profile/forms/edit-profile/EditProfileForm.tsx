@@ -18,8 +18,13 @@ interface Props {
 }
 
 export default function EditProfileForm({ onSubmit, defaultValues, loading, error }: Props) {
-  const { handleSubmit, control } = useForm<EditProfileFormData>({
-    defaultValues,
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<EditProfileFormData>({
+    defaultValues: defaultValues,
     resolver: zodResolver(EditProfileSchema),
     mode: 'onChange',
   });
@@ -27,7 +32,13 @@ export default function EditProfileForm({ onSubmit, defaultValues, loading, erro
   const { nationalityOptions } = useNationality();
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      loading={loading}
+      error={error}
+      submitBtn={{ disabled: !isDirty || !isValid }}
+      onReset={() => reset(defaultValues)}
+    >
       <ControlledTextInput control={control} name="username" label="Username" />
       <ControlledTextInput control={control} name="email" label="Email Address" />
       <ControlledDateInput control={control} name="dateOfBirth" label="Date of Birth" />

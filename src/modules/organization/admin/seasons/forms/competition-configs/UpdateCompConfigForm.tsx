@@ -8,7 +8,6 @@ import {
   ControlledMultiSelectInput,
 } from '../../../../../../components/inputs';
 import { FormModal } from '../../../../../../components/modals';
-import { TApolloError } from '../../../../../../types/apollo';
 import { getNumberOptions } from '../../../../../../utils';
 import { UpdateCompConfigSchema, type UpdateCompConfigFormData } from './validation';
 
@@ -16,7 +15,6 @@ interface Props {
   onSubmit: (formData: UpdateCompConfigFormData) => void;
   defaultValues: UpdateCompConfigFormData;
   loading: boolean;
-  error?: TApolloError;
   numberOfTeams: number;
   numberOfCompetitions: number;
 }
@@ -27,11 +25,15 @@ export default function UpdateCompConfigForm({
   numberOfTeams,
   numberOfCompetitions,
   loading,
-  error,
 }: Props) {
   const [open, setOpen] = useState(false);
 
-  const { handleSubmit, control } = useForm<UpdateCompConfigFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isValid, isDirty },
+    reset,
+  } = useForm<UpdateCompConfigFormData>({
     defaultValues,
     resolver: zodResolver(UpdateCompConfigSchema),
     mode: 'onChange',
@@ -48,7 +50,16 @@ export default function UpdateCompConfigForm({
         Edit
       </CustomButton>
       <FormModal open={open} onClose={() => setOpen(false)}>
-        <FormContainer onSubmit={handleSubmit(submitHandler)} loading={loading} error={error}>
+        <FormContainer
+          onSubmit={handleSubmit(submitHandler)}
+          loading={loading}
+          submitBtn={{
+            disabled: !isValid || !isDirty,
+            text: 'Update Config',
+            confirm: { show: false },
+          }}
+          onReset={() => reset(defaultValues)}
+        >
           <ControlledSelectInput
             control={control}
             name="rounds"

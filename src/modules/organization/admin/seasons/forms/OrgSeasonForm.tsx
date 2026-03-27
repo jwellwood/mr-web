@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import {
   FormContainer,
   ControlledDateInput,
@@ -29,14 +29,19 @@ export default function OrgSeasonForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control, watch } = useForm<OrgSeasonFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<OrgSeasonFormData>({
     defaultValues,
     resolver: zodResolver(OrgSeasonSchema),
     mode: 'onChange',
   });
 
-  const teamsSelected = watch('teamIds');
-  const competitionSelected = watch('competitionIds');
+  const teamsSelected = useWatch({ control, name: 'teamIds' });
+  const competitionSelected = useWatch({ control, name: 'competitionIds' });
 
   const selectedTeams = teamOptions.filter(option =>
     teamsSelected?.includes(option?.value as string)
@@ -47,7 +52,13 @@ export default function OrgSeasonForm({
   );
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{ disabled: !isDirty || !isValid }}
+      loading={loading}
+      error={error}
+    >
       <ControlledDateInput control={control} name="yearStarted" label="Year Started" view="year" />
       <ControlledDateInput
         control={control}

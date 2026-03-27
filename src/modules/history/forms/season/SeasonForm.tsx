@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import {
   FormContainer,
   ControlledDateInput,
@@ -26,15 +26,26 @@ export default function SeasonForm({
   loading,
   error,
 }: Props) {
-  const { handleSubmit, control, watch } = useForm<SeasonFormData>({
+  const {
+    handleSubmit,
+    control,
+    formState: { isDirty, isValid },
+    reset,
+  } = useForm<SeasonFormData>({
     defaultValues,
     resolver: zodResolver(SeasonSchema),
     mode: 'onChange',
   });
 
-  const totalTeams = watch('totalFinalPositions');
+  const totalTeams = useWatch({ control, name: 'totalFinalPositions' });
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      onReset={() => reset(defaultValues)}
+      submitBtn={{ disabled: !isValid || !isDirty }}
+      loading={loading}
+      error={error}
+    >
       <ControlledDateInput control={control} name="yearStarted" label="Year Started" view="year" />
       <ControlledDateInput
         control={control}

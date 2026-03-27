@@ -19,7 +19,9 @@ export default function RequestOrgAdmin() {
   const dispatch: AppDispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
-  const [requestAdminAccess, { loading, error }] = useMutation(REQUEST_ORG_ADMIN_ACCESS);
+  const [requestAdminAccess, { loading }] = useMutation(REQUEST_ORG_ADMIN_ACCESS, {
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
+  });
 
   const onSubmit = async (data: RequestAccessData) => {
     try {
@@ -80,7 +82,6 @@ export default function RequestOrgAdmin() {
           defaultValues={{ accessCode: '' }}
           onSubmit={onSubmit}
           loading={loading}
-          error={error}
         />
       </FormModal>
     </CustomStack>

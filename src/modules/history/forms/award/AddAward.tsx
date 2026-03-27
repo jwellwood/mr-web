@@ -32,8 +32,9 @@ export default function AddAward() {
       })),
     [players]
   );
-  const [addAward, { error, loading }] = useMutation(ADD_AWARD, {
+  const [addAward, { loading }] = useMutation(ADD_AWARD, {
     refetchQueries: [{ query: FETCH_AWARDS, variables: { seasonId } }],
+    onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
 
   const onSubmit = async (formData: AwardFormData) => {
@@ -62,7 +63,7 @@ export default function AddAward() {
         defaultValues={defaultValues}
         playersOptions={playerOptions}
         loading={loading || playersLoading}
-        error={error || playersError}
+        error={playersError}
       />
     </PageHeader>
   );

@@ -1,4 +1,3 @@
-import { TApolloError } from '../../../../types/apollo';
 import AuthLayout from '../../components/AuthLayout';
 import AuthorizationLinks from '../../components/AuthorizationLinks';
 import { SIGN_IN_LINKS } from '../../constants';
@@ -12,19 +11,13 @@ interface Props {
   onSubmit: (formData: SignInFormData) => void;
   showResendLink: boolean;
   email: string | null;
-  error?: TApolloError;
 }
 
-export default function SignInView({ loading, onSubmit, showResendLink, email, error }: Props) {
+export default function SignInView({ loading, onSubmit, showResendLink, email }: Props) {
   return (
     <AuthLayout>
       <>
-        <SignInForm
-          defaultValues={signInFormState}
-          onSubmit={onSubmit}
-          loading={loading}
-          error={error}
-        />
+        <SignInForm defaultValues={signInFormState} onSubmit={onSubmit} loading={loading} />
 
         {showResendLink && <ResendVerification email={email} />}
         <AuthorizationLinks links={SIGN_IN_LINKS} />

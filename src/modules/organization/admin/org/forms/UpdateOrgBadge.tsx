@@ -1,17 +1,20 @@
 import { useMutation, useQuery } from '@apollo/client/react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { PageHeader } from '../../../../../components';
 import ImageForm from '../../../../../components/forms/image-form/ImageForm';
 import { Spinner } from '../../../../../components/loaders';
 import { IMAGE_TYPE } from '../../../../../constants';
 import { useCustomParams, useUpload } from '../../../../../hooks';
 import { removeOrgBadge, uploadOrgBadge } from '../../../../../services/images';
+import { AppDispatch, showAlert } from '../../../../../store';
 import { PAGES } from '../../../constants';
 import { FETCH_ORG } from '../../../graphql';
 import { EDIT_ORG_BADGE } from '../graphql';
 
 export default function UpdateOrgBadge() {
   const { orgId } = useCustomParams();
+  const dispatch: AppDispatch = useDispatch();
   const {
     data,
     error,
@@ -20,8 +23,12 @@ export default function UpdateOrgBadge() {
   } = useQuery(FETCH_ORG, {
     variables: { orgId: orgId! },
   });
-  const [editOrgBadge, { loading: editLoading, error: editError }] = useMutation(EDIT_ORG_BADGE, {
+  const [editOrgBadge, { loading: editLoading }] = useMutation(EDIT_ORG_BADGE, {
     variables: { orgId: orgId! },
+    onError: err => {
+      console.error(err);
+      dispatch(showAlert({ text: err.message, type: 'error' }));
+    },
   });
   const { loading, onSubmit, removeImage, imageUrl, setImageUrl } = useUpload({
     uploadFunc: uploadOrgBadge,
@@ -49,7 +56,7 @@ export default function UpdateOrgBadge() {
         onSubmit={onSubmit}
         currentUrl={data?.org?.badge?.url as string}
         removeImage={removeImage}
-        error={error || editError}
+        error={error}
         fallbackIcon={IMAGE_TYPE.BADGE}
       />
     ) : (

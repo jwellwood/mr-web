@@ -1,7 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import { TApolloError } from '../../../../types/apollo';
 import type { ChangePasswordFormData } from './validation';
 import { ChangePasswordSchema } from './validation';
 
@@ -9,17 +8,31 @@ interface Props {
   onSubmit: (data: ChangePasswordFormData) => void;
   defaultValues: ChangePasswordFormData;
   loading: boolean;
-  error?: TApolloError;
 }
-export default function EditPasswordForm({ onSubmit, defaultValues, loading, error }: Props) {
-  const { handleSubmit, control } = useForm<ChangePasswordFormData>({
+
+export default function EditPasswordForm({ onSubmit, defaultValues, loading }: Props) {
+  const {
+    handleSubmit,
+    reset,
+    control,
+    formState: { isDirty, isValid },
+    clearErrors,
+  } = useForm<ChangePasswordFormData>({
     defaultValues,
     resolver: zodResolver(ChangePasswordSchema),
     mode: 'onChange',
   });
 
   return (
-    <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
+    <FormContainer
+      onSubmit={handleSubmit(onSubmit)}
+      loading={loading}
+      submitBtn={{ disabled: !isDirty || !isValid, confirm: { show: false } }}
+      onReset={() => {
+        reset(defaultValues);
+        clearErrors();
+      }}
+    >
       <ControlledTextInput
         control={control}
         name="password"
