@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.12.0](https://github.com/jwellwood/mr-web/compare/v0.11.0...v0.12.0) (2026-04-05)
+
+### Features
+
+* start adding language features ([f9da159](https://github.com/jwellwood/mr-web/commit/f9da15987b1905e9253282dbaa01e26f6f9b3a66))
+
 ## [0.11.0](https://github.com/jwellwood/mr-web/compare/v0.10.0...v0.11.0) (2026-03-27)
 
 ### Features
