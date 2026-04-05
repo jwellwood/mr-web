@@ -1,5 +1,6 @@
 import Button from '@mui/material/Button';
 import { ChangeEvent, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CustomTypography } from '../../typography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import { TypedFormError } from '../types';
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function FileInput({ inputName, onChange, errors, accept, fileName }: Props) {
+  const { t } = useTranslation('components');
   const inputRef = useRef<HTMLInputElement>(null);
 
   return (
@@ -26,7 +28,7 @@ export default function FileInput({ inputName, onChange, errors, accept, fileNam
         style={{ display: 'none' }}
       />
       <Button variant="outlined" color="primary" onClick={() => inputRef.current?.click()}>
-        Choose file
+        {t('BUTTONS.CHOOSE_FILE')}
       </Button>
       {fileName && (
         <CustomTypography bold color="label">

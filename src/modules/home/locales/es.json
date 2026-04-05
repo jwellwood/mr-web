@@ -1,0 +1,22 @@
+{
+  "SUBTITLE": "Sigue tus resultados y estadísticas",
+  "SEARCH": {
+    "BUTTON": "Buscar",
+    "TEAM": "Equipo",
+    "ORG": "Liga",
+    "MODAL": {
+      "TITLE": {
+        "TEAM": "Busca tu equipo",
+        "ORG": "Busca tu liga"
+      }
+    }
+  },
+  "LABELS": {
+    "TEAM_NAME": "Nombre del equipo",
+    "ORG_NAME": "Nombre de la liga"
+  },
+  "NOT_FOUND": {
+    "TEAM": "No se encontró equipo",
+    "ORG": "No se encontró liga"
+  }
+}

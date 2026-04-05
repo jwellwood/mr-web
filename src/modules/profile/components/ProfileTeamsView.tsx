@@ -1,26 +1,28 @@
+import { useTranslation } from 'react-i18next';
 import { DataError, ImageAvatar, SectionContainer } from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
-import { FETCH_TEAMS_BY_USER_QUERY } from '../types';
+import { T_FETCH_TEAMS_BY_USER_QUERY } from '../graphql';
 import EntityListWrapper from './EntityListWrapper';
 import NoProfileItems from './NoProfileItems';
 
 interface Props {
   loading: boolean;
-  data?: FETCH_TEAMS_BY_USER_QUERY;
+  data?: T_FETCH_TEAMS_BY_USER_QUERY;
   error?: TApolloError;
 }
 
 export default function ProfileTeamsView({ data, loading, error }: Props) {
+  const { t } = useTranslation('profile');
   const { teams } = data || {};
   const activeTeams = teams?.filter(team => team.isActive);
   const inactiveTeams = teams?.filter(team => !team.isActive);
   const groupByOrg = (list?: typeof teams) => {
     const grouped = new Map<string, IListItem[]>();
     list?.forEach(team => {
-      const orgName = team.orgId?.name || 'Unknown';
+      const orgName = team.orgId?.name || t('LABELS.UNKNOWN');
       const orgId = team.orgId?._id;
       const item: IListItem = {
         label: team.teamName,
@@ -61,11 +63,11 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
 
   const tabs: ITab[] = [
     {
-      label: 'Active',
+      label: t('TABS.ACTIVE'),
       component: ActiveTeams,
     },
     {
-      label: 'Inactive',
+      label: t('TABS.INACTIVE'),
       component: InactiveTeams,
     },
   ];

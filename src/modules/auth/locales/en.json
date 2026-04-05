@@ -1,0 +1,52 @@
+{
+  "PAGES": {
+    "SIGN_IN_PAGE": "Sign In",
+    "SIGN_UP_PAGE": "Sign Up",
+    "FORGOT_PASSWORD_PAGE": "Forgot Password",
+    "RESET_PASSWORD_PAGE": "Reset Password",
+    "VALIDATED_EMAIL_PAGE": "Validation"
+  },
+  "LINKS": {
+    "SIGN_IN_LABEL": "Don't have an account yet?",
+    "SIGN_IN_VALUE": "Sign up here",
+    "SIGN_UP_LABEL": "Already have an account?",
+    "SIGN_UP_VALUE": "Sign in here",
+    "FORGOT_LABEL": "Forgotten your password?",
+    "FORGOT_VALUE": "Reset here"
+  },
+  "FORM": {
+    "LABELS": {
+      "USERNAME": "Username",
+      "EMAIL": "Email Address",
+      "PASSWORD": "Password",
+      "CONFIRM_NEW_PASSWORD": "Confirm New Password",
+      "NEW_PASSWORD": "New Password",
+      "TERMS": "Terms of Use",
+      "ACCEPT_TERMS": "Accept Terms of Use"
+    },
+    "HELP": {
+      "FORGOT_PASSWORD": "Enter the email address associated with your account. We will send you instructions to reset your password.",
+      "SIGN_UP": "Provide a valid email and create a password to register for an account. You will receive a verification email to confirm your email address.",
+      "RESET_PASSWORD": "You can now set a new password for your account. Please choose a strong password that you have not used before."
+    }
+  },
+  "ALERTS": {
+    "CAPTCHA": "Please complete the CAPTCHA",
+    "RESEND_SUCCESS": "Email sent to {{email}}",
+    "RESEND_FAIL": "Failed to resend verification email",
+    "PASSWORD_RESET_SUCCESS": "Password reset successfully. Use the new password to sign in.",
+    "PASSWORD_RESET_FAIL": "Failed to reset password"
+  },
+  "BUTTONS": {
+    "RESEND_VERIFICATION": "Resend Verification Link",
+    "GO_TO_SIGN_IN": "Go to Sign In"
+  },
+  "EMAIL_VALIDATION": {
+    "SENT": "A validation email has been sent to {{email}}. Please check your inbox and click the link to verify your account.",
+    "SUCCESS": "Email verified successfully",
+    "ERROR": "Email verification failed"
+  },
+  "MESSAGES": {
+    "WELCOME": "Welcome {{username}}!"
+  }
+}

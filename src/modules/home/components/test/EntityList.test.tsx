@@ -32,7 +32,7 @@ describe('EntityList', () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText('No org found')).toBeInTheDocument();
+    expect(screen.getByText('No league found')).toBeInTheDocument();
   });
 
   it('renders no data text with correct type label for team', () => {

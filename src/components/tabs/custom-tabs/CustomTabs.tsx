@@ -18,6 +18,7 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
   const dispatch: AppDispatch = useDispatch();
   const value = useSelector(getTabIndex);
   const isPrimary = level === 'primary';
+  const currentIndex = value[type] < tabs.length ? value[type] : 0;
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
     dispatch(setTabIndex({ type, newValue }));
   };
@@ -33,7 +34,7 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
             background: isPrimary ? theme.palette.dark.main : theme.palette.secondary.dark,
           }}
         >
-          <StyledTabs value={value[type]} onChange={handleChange}>
+          <StyledTabs value={currentIndex} onChange={handleChange}>
             {tabs.map((tab: ITab, i: number) => (
               <StyledTab key={i} label={tab.label} icon={tab.icon} />
             ))}
@@ -42,7 +43,7 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
       </>
 
       {tabs.map((tab: ITab, i: number) => (
-        <TabPanel key={i} value={value[type]} index={i}>
+        <TabPanel key={i} value={currentIndex} index={i}>
           {tab.component}
         </TabPanel>
       ))}

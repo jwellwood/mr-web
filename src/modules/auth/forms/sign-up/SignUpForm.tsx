@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link } from '@mui/material';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   FormContainer,
   ControlledTextInput,
@@ -8,8 +9,8 @@ import {
   CustomTypography,
 } from '../../../../components';
 import { PresentationModal } from '../../../../components/modals';
-import TermsOfUseContent from '../../terms/TermsOfUseContent';
-import { SignUpSchema, type SignUpFormData } from './validation';
+import TermsOfUseContent from '../../components/terms/TermsOfUseContent';
+import { SignUpSchema, type SignUpFormData } from './schema';
 
 interface Props {
   onSubmit: (data: SignUpFormData) => void;
@@ -18,13 +19,14 @@ interface Props {
 }
 
 export default function SignUpForm({ onSubmit, defaultValues, loading }: Props) {
+  const { t } = useTranslation('auth');
   const {
     handleSubmit,
     control,
     formState: { isValid },
   } = useForm<SignUpFormData>({
     defaultValues,
-    resolver: zodResolver(SignUpSchema),
+    resolver: zodResolver(SignUpSchema()),
     mode: 'onChange',
   });
 
@@ -35,16 +37,21 @@ export default function SignUpForm({ onSubmit, defaultValues, loading }: Props) 
       minWidth={100}
       submitBtn={{ confirm: { show: false }, disabled: !isValid }}
     >
-      <ControlledTextInput control={control} name="username" label="Username" />
-      <ControlledTextInput control={control} name="email" label="Email Address" />
-      <ControlledTextInput control={control} name="password" isPassword={true} label="Password" />
+      <ControlledTextInput control={control} name="username" label={t('FORM.LABELS.USERNAME')} />
+      <ControlledTextInput control={control} name="email" label={t('FORM.LABELS.EMAIL')} />
+      <ControlledTextInput
+        control={control}
+        name="password"
+        isPassword={true}
+        label={t('FORM.LABELS.PASSWORD')}
+      />
       <ControlledSwitchInput
         control={control}
         name="acceptTerms"
         label={
           <span>
             <PresentationModal
-              title="Terms of Use"
+              title={t('FORM.LABELS.TERMS')}
               buttonElement={
                 <Link
                   component="span"
@@ -52,7 +59,7 @@ export default function SignUpForm({ onSubmit, defaultValues, loading }: Props) 
                   sx={{ cursor: 'pointer', textDecoration: 'none' }}
                 >
                   <CustomTypography color="info" size="md" bold>
-                    Accept Terms of Use
+                    {t('FORM.LABELS.ACCEPT_TERMS')}
                   </CustomTypography>
                 </Link>
               }

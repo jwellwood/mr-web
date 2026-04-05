@@ -1,0 +1,79 @@
+{
+  "PAGES": {
+    "TEAM": "Equipo",
+    "ADD_TEAM": "Agregar Equipo",
+    "EDIT_TEAM": "Editar Equipo",
+    "EDIT_TEAM_BADGE": "Editar Insignia del Equipo"
+  },
+  "TABS": {
+    "OVERVIEW": "Resumen",
+    "PLAYERS": "Jugadores",
+    "MATCHES": "Partidos",
+    "HISTORY": "Historial"
+  },
+  "ALERTS": {
+    "ADD_TEAM": {
+      "SUCCESS": "¡Equipo agregado con éxito!",
+      "FAILURE:": "¡Error al agregar el equipo!"
+    },
+    "EDIT_TEAM": {
+      "SUCCESS": "¡Equipo actualizado con éxito!",
+      "FAILURE:": "¡Error al actualizar el equipo!"
+    },
+    "DELETE_TEAM": {
+      "SUCCESS": "¡Equipo eliminado con éxito!",
+      "FAILURE:": "¡Error al eliminar el equipo!"
+    },
+    "ADMIN_ACCESS": {
+      "SUCCESS": "¡Acceso de administrador solicitado con éxito!",
+      "FAILURE:": "¡Error al solicitar acceso de administrador!"
+    }
+  },
+  "FORM": {
+    "LABELS": {
+      "TEAM_NAME": "Nombre del equipo",
+      "YEAR_FOUNDED": "Año de fundación",
+      "COUNTRY": "País",
+      "CITY": "Ciudad",
+      "IS_ACTIVE": "¿Está activo?",
+      "ACCESS_CODE": "Código de acceso",
+      "STADIUM": {
+        "NAME": "Nombre del estadio",
+        "LOCATION": "Ubicación del estadio",
+        "SURFACE": "Superficie de juego",
+        "CAPACITY": "Capacidad del estadio"
+      },
+      "KIT": {
+        "BACKGROUND": "Fondo del uniforme",
+        "HOME": {
+          "SHIRT": "Camiseta local",
+          "SHORTS": "Pantalones cortos locales",
+          "SOCKS": "Calcetines locales"
+        },
+        "AWAY": {
+          "SHIRT": "Camiseta visitante",
+          "SHORTS": "Pantalones cortos visitantes",
+          "SOCKS": "Calcetines visitantes"
+        }
+      }
+    }
+  },
+  "SECTIONS": {
+    "ORGANIZATION": {
+      "HEADER": "Organización"
+    },
+    "KITS": {
+      "HEADER": "Uniformes",
+      "HOME": "Local",
+      "AWAY": "Visitante"
+    },
+    "STADIUM": {
+      "HEADER": "Estadio",
+      "NAME": "Nombre",
+      "LOCATION": "Ubicación",
+      "CAPACITY": "Capacidad",
+      "SURFACE": "Superficie",
+      "NO_MAP": "No hay mapa disponible aún"
+    }
+  }
+}

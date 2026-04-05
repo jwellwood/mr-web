@@ -3,6 +3,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import React, { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CustomButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
 import { CustomTypography } from '../../typography';
@@ -20,6 +21,7 @@ export default function PresentationModal({
   buttonElement,
   fullScreen = false,
 }: Props) {
+  const { t } = useTranslation('components');
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -62,7 +64,7 @@ export default function PresentationModal({
         </DialogContent>
         <DialogActions>
           <CustomButton onClick={handleClose} variant="text" color="tertiary">
-            Close
+            {t('BUTTONS.CLOSE')}
           </CustomButton>
         </DialogActions>
       </Dialog>

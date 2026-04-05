@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { ImageAvatar } from '../../../components/avatars';
 import { FlagIcon } from '../../../components/icons';
 import { LinksList } from '../../../components/lists';
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export default function OrgList({ entity, searchTerm, loading, type }: Props) {
+  const { t } = useTranslation('home');
   const isSearchComplete = Array.isArray(entity) && searchTerm.trim().length > 0;
   const links = entity?.length
     ? entity?.map(item => {
@@ -41,7 +43,7 @@ export default function OrgList({ entity, searchTerm, loading, type }: Props) {
     : [{ avatar: <></>, label: <></>, secondary: <></> }]; //skeleton item
 
   return isSearchComplete && !loading && !entity?.length ? (
-    <NoDataText>{`No ${type} found`}</NoDataText>
+    <NoDataText>{t(`NOT_FOUND.${type.toUpperCase()}`)}</NoDataText>
   ) : (
     <LinksList links={links} loading={loading} rows={2} />
   );

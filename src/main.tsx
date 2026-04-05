@@ -1,4 +1,5 @@
 import { ApolloProvider } from '@apollo/client/react';
+import './i18n/react-i18n';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { StrictMode } from 'react';

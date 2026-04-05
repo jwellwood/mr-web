@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-import { button_text } from '../../../i18n';
+import { useTranslation } from 'react-i18next';
 import { TApolloError } from '../../../types/apollo';
 import ImageAvatar from '../../avatars/image-avatar/ImageAvatar';
 import { CustomButton } from '../../buttons';
@@ -31,6 +31,7 @@ export default function ImageForm({
   error,
   fallbackIcon,
 }: Props) {
+  const { t } = useTranslation('components');
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       imageFile: null,
@@ -67,7 +68,7 @@ export default function ImageForm({
         <CustomStack direction="row" spacing={2} justify="center">
           {currentUrl && imageUrl !== 'default' && (
             <CustomButton onClick={resetImage} color="info">
-              {button_text.DEFAULT}
+              {t('BUTTONS.DEFAULT')}
             </CustomButton>
           )}
           {currentUrl !== imageUrl && (
@@ -80,19 +81,18 @@ export default function ImageForm({
                 }
               }}
             >
-              Cancel
+              {t('BUTTONS.CANCEL')}
             </CustomButton>
           )}
 
           {currentUrl && currentUrl !== 'default' && imageUrl !== 'default' && (
             <ConfirmationModal
-              title="Remove image"
+              title={t('FORMS.IMAGE.REMOVE.TITLE')}
               loading={loading}
               onConfirm={removeImage}
-              btn={<CustomButton color="error">Remove image</CustomButton>}
+              btn={<CustomButton color="error">{t('FORMS.IMAGE.REMOVE.BUTTON')}</CustomButton>}
             >
-              This will remove your current image and cannot be undone. Are you sure you want to
-              continue?
+              {t('FORMS.IMAGE.REMOVE.MESSAGE')}
             </ConfirmationModal>
           )}
         </CustomStack>

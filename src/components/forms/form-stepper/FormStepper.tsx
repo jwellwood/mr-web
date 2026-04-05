@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MobileStepper from '@mui/material/MobileStepper';
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../../../theme';
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function FormStepper({ steps, activeStep, handleBack, children }: Props) {
+  const { t } = useTranslation('components');
   const maxSteps = steps.length;
 
   return (
@@ -28,7 +30,7 @@ export default function FormStepper({ steps, activeStep, handleBack, children }:
         nextButton={false}
         backButton={
           <Button size="small" onClick={handleBack} disabled={activeStep === 0} color="warning">
-            Back
+            {t('BUTTONS.BACK')}
           </Button>
         }
       />

@@ -1,0 +1,20 @@
+{
+  "VALIDATION": {
+    "required": "This field is required",
+    "too_small": "The entry is too short (minimum {{min}})",
+    "too_long": "The entry is too long (maximum {{max}})",
+    "pattern": "The entry doesn't match the required pattern",
+    "high": "The number is too high (maximum {{max}})",
+    "low": "The number is too low (minimum {{min}})",
+    "validate": "This entry is invalid",
+    "password": {
+      "confirm": "Confirm your password",
+      "no_match": "The passwords do not match"
+    },
+    "email": {
+      "invalid": "Please enter a valid email address"
+    },
+    "terms": "You must accept the terms of use",
+    "default": "There is a problem with this entry"
+  }
+}

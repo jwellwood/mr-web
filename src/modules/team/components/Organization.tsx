@@ -1,17 +1,19 @@
+import { useTranslation } from 'react-i18next';
 import { ImageAvatar } from '../../../components/avatars';
 import { SectionContainer } from '../../../components/containers';
 import { LinksList, type IListItem } from '../../../components/lists';
 import CustomSkeleton from '../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
 import { IMAGE_TYPE } from '../../../constants';
-import { FETCH_TEAM_QUERY } from '../types';
+import { T_FETCH_TEAM_QUERY } from '../graphql';
 
 interface Props {
-  team?: FETCH_TEAM_QUERY['team'];
+  team?: T_FETCH_TEAM_QUERY['team'];
   loading: boolean;
 }
 
 export default function Organization({ team, loading }: Props) {
+  const { t } = useTranslation('team');
   const { orgId } = team || {};
   const links: IListItem[] = [
     {
@@ -28,7 +30,7 @@ export default function Organization({ team, loading }: Props) {
   ];
 
   return (
-    <SectionContainer title="Organization">
+    <SectionContainer title={t('SECTIONS.ORGANIZATION.HEADER')}>
       <LinksList links={links} loading={loading} />
     </SectionContainer>
   );

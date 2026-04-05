@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Menu from '@mui/material/Menu';
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAuth, useLogout } from '../../../hooks';
 import { HOME_PATHS } from '../../../modules/home/router';
 import { PROFILE_PATHS } from '../../../modules/profile/router';
@@ -13,6 +14,7 @@ import { SectionContainer } from '../../containers';
 import { AppIcon } from '../../icons';
 import { LinksList } from '../../lists';
 import { CustomTypography } from '../../typography';
+import LanguageSelector from '../language/LanguageSelector';
 import Footer from './Footer';
 
 interface Props {
@@ -22,6 +24,7 @@ interface Props {
 export default function NavMenu({ username }: Props) {
   const { onLogout } = useLogout();
   const { isAuth } = useAuth();
+  const { t } = useTranslation('components');
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -35,7 +38,7 @@ export default function NavMenu({ username }: Props) {
     {
       label: (
         <CustomTypography bold color="data">
-          Home
+          {t('MENU.HOME')}
         </CustomTypography>
       ),
       link: HOME_PATHS.HOME,
@@ -43,7 +46,7 @@ export default function NavMenu({ username }: Props) {
     {
       label: (
         <CustomTypography bold color="data">
-          Profile
+          {t('MENU.PROFILE')}
         </CustomTypography>
       ),
       link: PROFILE_PATHS.PROFILE,
@@ -90,11 +93,16 @@ export default function NavMenu({ username }: Props) {
               <Divider sx={{ m: '20px' }} />
               <Stack onClick={handleClose}>
                 <CustomButton variant="text" color="tertiary" onClick={onLogout}>
-                  Sign out
+                  {t('MENU.LOGOUT')}
                 </CustomButton>
               </Stack>
             </>
           )}
+        </SectionContainer>
+        <SectionContainer>
+          <Stack p="8px" alignItems="center">
+            <LanguageSelector />
+          </Stack>
         </SectionContainer>
         <Footer />
       </Menu>

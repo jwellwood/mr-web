@@ -1,0 +1,52 @@
+{
+  "PAGES": {
+    "SIGN_IN_PAGE": "Iniciar sesión",
+    "SIGN_UP_PAGE": "Registrarse",
+    "FORGOT_PASSWORD_PAGE": "Olvidó la contraseña",
+    "RESET_PASSWORD_PAGE": "Restablecer contraseña",
+    "VALIDATED_EMAIL_PAGE": "Validación"
+  },
+  "LINKS": {
+    "SIGN_IN_LABEL": "¿Aún no tienes una cuenta?",
+    "SIGN_IN_VALUE": "Regístrate aquí",
+    "SIGN_UP_LABEL": "¿Ya tienes una cuenta?",
+    "SIGN_UP_VALUE": "Inicia sesión aquí",
+    "FORGOT_LABEL": "¿Olvidaste tu contraseña?",
+    "FORGOT_VALUE": "Restablecer aquí"
+  },
+  "FORM": {
+    "LABELS": {
+      "USERNAME": "Usuario",
+      "EMAIL": "Dirección de correo",
+      "PASSWORD": "Contraseña",
+      "CONFIRM_NEW_PASSWORD": "Confirmar nueva contraseña",
+      "NEW_PASSWORD": "Nueva contraseña",
+      "TERMS": "Términos de uso",
+      "ACCEPT_TERMS": "Aceptar términos de uso"
+    },
+    "HELP": {
+      "FORGOT_PASSWORD": "Introduce la dirección de correo asociada a tu cuenta. Te enviaremos instrucciones para restablecer tu contraseña.",
+      "SIGN_UP": "Proporciona un correo válido y crea una contraseña para registrarte. Recibirás un correo de verificación para confirmar tu dirección.",
+      "RESET_PASSWORD": "Ahora puedes establecer una nueva contraseña para tu cuenta. Elige una contraseña fuerte que no hayas usado antes."
+    }
+  },
+  "ALERTS": {
+    "CAPTCHA": "Por favor completa el CAPTCHA",
+    "RESEND_SUCCESS": "Correo enviado a {{email}}",
+    "RESEND_FAIL": "Error al reenviar el correo de verificación",
+    "PASSWORD_RESET_SUCCESS": "Contraseña restablecida con éxito. Usa la nueva contraseña para iniciar sesión.",
+    "PASSWORD_RESET_FAIL": "Error al restablecer la contraseña"
+  },
+  "BUTTONS": {
+    "RESEND_VERIFICATION": "Reenviar enlace de verificación",
+    "GO_TO_SIGN_IN": "Ir a iniciar sesión"
+  },
+  "EMAIL_VALIDATION": {
+    "SENT": "Se ha enviado un correo a {{email}}. Haz clic en el enlace para validar tu cuenta",
+    "SUCCESS": "Correo verificado con éxito",
+    "ERROR": "Error en la verificación del correo"
+  },
+  "MESSAGES": {
+    "WELCOME": "¡Bienvenido {{username}}!"
+  }
+}

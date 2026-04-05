@@ -1,6 +1,7 @@
 import { Stack } from '@mui/material';
 import Container from '@mui/material/Container';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { TApolloError } from '../../../types/apollo';
 import { CustomButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
@@ -34,13 +35,14 @@ export default function FormContainer({
   onSubmit,
   onReset,
   submitBtn = {
-    text: 'Submit',
     disabled: false,
   },
   loading,
   error,
   minWidth,
 }: Props) {
+  const { t } = useTranslation('components');
+
   const handleSubmit = (ev?: React.FormEvent<HTMLFormElement | HTMLButtonElement>) => {
     if (ev && 'preventDefault' in ev) {
       ev.preventDefault();
@@ -85,7 +87,7 @@ export default function FormContainer({
           >
             {onReset && (
               <CustomButton onClick={handleReset} color="warning" variant="text">
-                Reset
+                {t('BUTTONS.RESET')}
               </CustomButton>
             )}
             <SubmitButton
@@ -94,7 +96,7 @@ export default function FormContainer({
               onClick={handleSubmit}
               confirm={submitBtn?.confirm}
             >
-              {submitBtn?.text}
+              {submitBtn?.text || t('BUTTONS.SUBMIT')}
             </SubmitButton>
           </Stack>
         </SectionContainer>

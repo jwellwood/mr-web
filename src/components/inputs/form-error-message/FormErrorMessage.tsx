@@ -1,4 +1,4 @@
-import { form_error_text } from '../../../i18n';
+import { useTranslation } from 'react-i18next';
 import { CustomTypography } from '../../typography';
 import { TypedFormError } from '../types';
 
@@ -7,7 +7,8 @@ interface Props {
 }
 
 export default function FormErrorMessage({ error }: Props) {
-  const message = error?.message || form_error_text.default;
+  const { t } = useTranslation('inputs');
+  const message = error?.message || t(`VALIDATION.${error?.type || 'default'}`, error?.meta || {});
 
   return (
     <CustomTypography size="xs" color="error">

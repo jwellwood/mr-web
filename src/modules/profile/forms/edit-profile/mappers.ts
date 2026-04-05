@@ -1,7 +1,7 @@
-import { FETCH_USER_QUERY } from '../../types';
-import type { EditProfileFormData } from './validation';
+import { T_FETCH_USER_QUERY } from '../../graphql';
+import type { EditProfileFormData } from './schema';
 
-export function backendToFrontend(user: FETCH_USER_QUERY['user']): EditProfileFormData {
+export function backendToFrontend(user: T_FETCH_USER_QUERY['user']): EditProfileFormData {
   return {
     username: user.username,
     email: user.email,

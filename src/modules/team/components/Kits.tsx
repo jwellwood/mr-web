@@ -1,11 +1,12 @@
 import { makeStyles } from '@mui/styles';
+import { useTranslation } from 'react-i18next';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
 import { SectionContainer } from '../../../components';
 import { CustomGridContainer, CustomGridItem } from '../../../components/grids';
 import CustomSkeleton from '../../../components/loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../../components/typography';
-import { type FETCH_TEAM_QUERY } from '../types';
+import { T_FETCH_TEAM_QUERY } from '../graphql';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -26,11 +27,12 @@ const useStyles = makeStyles(() => ({
 }));
 
 interface Props {
-  team?: FETCH_TEAM_QUERY['team'];
+  team?: T_FETCH_TEAM_QUERY['team'];
   loading: boolean;
 }
 
 export default function Kits({ team, loading }: Props) {
+  const { t } = useTranslation('team');
   const classes = useStyles();
 
   const { homeShirt, homeShorts, homeSocks, awayShirt, awayShorts, awaySocks, kitsBackground } =
@@ -38,17 +40,17 @@ export default function Kits({ team, loading }: Props) {
 
   const items = [
     {
-      title: 'Home',
+      title: t('SECTIONS.KITS.HOME'),
       kit: { shirt: homeShirt, shorts: homeShorts, socks: homeSocks },
     },
     {
-      title: 'Away',
+      title: t('SECTIONS.KITS.AWAY'),
       kit: { shirt: awayShirt, shorts: awayShorts, socks: awaySocks },
     },
   ];
 
   return (
-    <SectionContainer title="Kits">
+    <SectionContainer title={t('SECTIONS.KITS.HEADER')}>
       <CustomGridContainer>
         {items.map(item => (
           <CustomGridItem size={6} key={item.title}>

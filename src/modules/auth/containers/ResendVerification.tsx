@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client/react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { CustomButton, MutationError } from '../../../components';
@@ -14,6 +15,7 @@ interface Props {
 }
 
 export default function ResendVerification({ email }: Props) {
+  const { t } = useTranslation('auth');
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,18 +24,18 @@ export default function ResendVerification({ email }: Props) {
 
   const onSubmit = () => {
     if (!turnstileToken) {
-      dispatch(showAlert({ text: 'Please complete the CAPTCHA', type: 'warning' }));
+      dispatch(showAlert({ text: t('ALERTS.CAPTCHA'), type: 'warning' }));
       return;
     }
     if (!email) return;
     resendVerificationEmail({ variables: { email, turnstileToken } })
       .then(() => {
-        dispatch(showAlert({ text: `Email sent to ${email}`, type: 'success' }));
+        dispatch(showAlert({ text: t('ALERTS.RESEND_SUCCESS', { email }), type: 'success' }));
         navigate(PROFILE_PATHS.PROFILE);
       })
       .catch((err: Error) => {
         console.error(err);
-        dispatch(showAlert({ text: 'Failed to resend verification email', type: 'error' }));
+        dispatch(showAlert({ text: t('ALERTS.RESEND_FAIL'), type: 'error' }));
       });
   };
 
@@ -45,7 +47,7 @@ export default function ResendVerification({ email }: Props) {
       ) : (
         <>
           <CustomButton onClick={onSubmit} color="info">
-            Resend Verification Link
+            {t('BUTTONS.RESEND_VERIFICATION')}
           </CustomButton>
           <TurnstileWidget onVerify={setTurnstileToken} />
         </>

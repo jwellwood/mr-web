@@ -1,0 +1,72 @@
+{
+  "PAGES": {
+    "PROFILE": "Profile",
+    "SETTINGS": "Settings",
+    "CHANGE_PASSWORD": "Change Password",
+    "EDIT_PROFILE": "Edit Profile",
+    "EDIT_PROFILE_IMAGE": "Edit Profile Image"
+  },
+  "LINKS": {
+    "ADD_NEW_ORGANIZATION": "Add New Organization",
+    "EDIT_PROFILE": "Edit Profile",
+    "EDIT_IMAGE": "Edit Image",
+    "CHANGE_PASSWORD": "Change Password"
+  },
+  "LABELS": {
+    "CURRENT_PASSWORD": "Current Password",
+    "NEW_PASSWORD": "New Password",
+    "CONFIRM_NEW_PASSWORD": "Confirm New Password",
+    "USERNAME": "Username",
+    "EMAIL_ADDRESS": "Email Address",
+    "DATE_OF_BIRTH": "Date of Birth",
+    "NATIONALITY": "Nationality",
+    "UNKNOWN": "Unknown"
+  },
+  "LIST_ITEMS": {
+    "EMAIL": "Email",
+    "CREATED": "Created",
+    "UPDATED": "Updated",
+    "AGE": "Age"
+  },
+  "ALERTS": {
+    "PROFILE_UPDATED": {
+      "SUCCESS": "Profile updated!",
+      "ERROR": "There was an error updating your profile. Please try again."
+    },
+    "PASSWORD_CHANGED": {
+      "SUCCESS": "Password changed!",
+      "ERROR": "There was an error changing your password. Please try again."
+    },
+    "IMAGE_UPDATED": {
+      "SUCCESS": "Profile image updated!",
+      "ERROR": "There was an error updating your profile image. Please try again."
+    },
+    "DELETE_ACCOUNT": {
+      "TITLE": "Account",
+      "CONFIRM": "Are you sure you want to delete your account? This action cannot be undone.",
+      "SUCCESS": "Account deleted. We're sorry to see you go!",
+      "ERROR": "There was an error deleting your account. Please try again."
+    }
+  },
+  "TABS": {
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive"
+  },
+  "NO_RESULTS": {
+    "TEAM": {
+      "TITLE": "No teams found",
+      "FIND_TEAM": "Find a team",
+      "CREATE_ORG": "Create an organization"
+    },
+    "ORGANIZATION": {
+      "TITLE": "No organizations found",
+      "FIND_TEAM": "Find a team",
+      "CREATE_ORG": "Create an organization"
+    }
+  },
+  "GETTING_STARTED": {},
+  "HEADERS": {
+    "TEAMS": "Teams",
+    "ORGANIZATIONS": "Organizations"
+  }
+}

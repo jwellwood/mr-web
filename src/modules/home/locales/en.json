@@ -1,0 +1,22 @@
+{
+  "SUBTITLE": "Track your results and stats",
+  "SEARCH": {
+    "BUTTON": "Search",
+    "TEAM": "Team",
+    "ORG": "League",
+    "MODAL": {
+      "TITLE": {
+        "TEAM": "Find your team",
+        "ORG": "Find your league"
+      }
+    }
+  },
+  "LABELS": {
+    "TEAM_NAME": "Team name",
+    "ORG_NAME": "League name"
+  },
+  "NOT_FOUND": {
+    "TEAM": "No team found",
+    "ORG": "No league found"
+  }
+}

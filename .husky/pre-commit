@@ -10,6 +10,10 @@ npm run lint-fix
 # Stage any auto-fixed files
 git add -u
 
+# Run i18n parity check
+echo "🌐 Checking locale parity..."
+npm run i18n:check
+
 # Run tests with coverage
 echo "🧪 Running tests with coverage checks..."
 npm run test:coverage

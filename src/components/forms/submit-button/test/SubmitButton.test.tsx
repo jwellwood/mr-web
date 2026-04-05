@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
+import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import SubmitButton from '../SubmitButton';
 
 describe('SubmitButton with confirmation', () => {
@@ -22,18 +23,20 @@ describe('SubmitButton with confirmation', () => {
   it('calls onClick only after confirming in modal', () => {
     const handleClick = vi.fn();
     render(
-      <SubmitButton
-        confirm={{ show: true, title: 'Confirm', content: 'Confirm this?' }}
-        onClick={handleClick}
-      >
-        Confirm
-      </SubmitButton>
+      <TestWrapper>
+        <SubmitButton
+          confirm={{ show: true, title: 'Confirm', content: 'Confirm this?' }}
+          onClick={handleClick}
+        >
+          Confirm
+        </SubmitButton>
+      </TestWrapper>
     );
     // Click the trigger (parent div of the button)
     fireEvent.click(screen.getByText(/confirm/i).parentElement!);
     // onClick should not be called yet
     expect(handleClick).not.toHaveBeenCalled();
-    // Click CONFIRM in modal (should be the button with text 'CONFIRM')
+    // Click CONFIRM in modal
     fireEvent.click(screen.getByRole('button', { name: /^confirm$/i }));
     expect(handleClick).toHaveBeenCalledTimes(1);
   });
@@ -41,18 +44,20 @@ describe('SubmitButton with confirmation', () => {
   it('does not call onClick if modal is closed without confirming', () => {
     const handleClick = vi.fn();
     render(
-      <SubmitButton
-        confirm={{ show: true, title: 'Confirm', content: 'Confirm this?' }}
-        onClick={handleClick}
-      >
-        Confirm
-      </SubmitButton>
+      <TestWrapper>
+        <SubmitButton
+          confirm={{ show: true, title: 'Confirm', content: 'Confirm this?' }}
+          onClick={handleClick}
+        >
+          Confirm
+        </SubmitButton>
+      </TestWrapper>
     );
     // Open modal
     fireEvent.click(screen.getByText(/confirm/i).parentElement!);
-    // Click Back button in modal
-    const backBtn = screen.getByRole('button', { name: /back/i });
-    fireEvent.click(backBtn);
+    // Click Cancel button in modal
+    const cancelBtn = screen.getByRole('button', { name: /cancel/i });
+    fireEvent.click(cancelBtn);
     expect(handleClick).not.toHaveBeenCalled();
   });
 });

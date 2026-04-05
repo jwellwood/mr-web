@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { FETCH_ORGS_BY_SEARCH_QUERY, FETCH_TEAMS_BY_SEARCH_QUERY } from '../../types';
+import { T_FETCH_ORGS_BY_SEARCH, T_FETCH_TEAMS_BY_SEARCH } from '../../graphql';
 import { mapSearchResultToEntity } from '../mapResultToEntity';
 
 describe('mapSearchResultToEntity', () => {
@@ -13,7 +13,7 @@ describe('mapSearchResultToEntity', () => {
         location: 'New York',
         country: 'USA',
       },
-    ] as FETCH_TEAMS_BY_SEARCH_QUERY['teams'];
+    ] as T_FETCH_TEAMS_BY_SEARCH['teams'];
 
     const result = mapSearchResultToEntity('team', teams);
 
@@ -37,7 +37,7 @@ describe('mapSearchResultToEntity', () => {
         city: 'San Francisco',
         country: 'USA',
       },
-    ] as FETCH_ORGS_BY_SEARCH_QUERY['orgs'];
+    ] as T_FETCH_ORGS_BY_SEARCH['orgs'];
 
     const result = mapSearchResultToEntity('org', orgs);
 
@@ -67,7 +67,7 @@ describe('mapSearchResultToEntity', () => {
         location: null,
         country: null,
       },
-    ] as FETCH_TEAMS_BY_SEARCH_QUERY['teams'];
+    ] as T_FETCH_TEAMS_BY_SEARCH['teams'];
 
     const result = mapSearchResultToEntity('team', teams);
 

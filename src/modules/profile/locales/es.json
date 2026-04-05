@@ -1,0 +1,72 @@
+{
+  "PAGES": {
+    "PROFILE": "Perfil",
+    "SETTINGS": "Configuración",
+    "CHANGE_PASSWORD": "Cambiar contraseña",
+    "EDIT_PROFILE": "Editar perfil",
+    "EDIT_PROFILE_IMAGE": "Editar imagen de perfil"
+  },
+  "LINKS": {
+    "ADD_NEW_ORGANIZATION": "Agregar nueva organización",
+    "EDIT_PROFILE": "Editar perfil",
+    "EDIT_IMAGE": "Editar imagen",
+    "CHANGE_PASSWORD": "Cambiar contraseña"
+  },
+  "LABELS": {
+    "CURRENT_PASSWORD": "Contraseña actual",
+    "NEW_PASSWORD": "Nueva contraseña",
+    "CONFIRM_NEW_PASSWORD": "Confirmar nueva contraseña",
+    "USERNAME": "Nombre de usuario",
+    "EMAIL_ADDRESS": "Correo electrónico",
+    "DATE_OF_BIRTH": "Fecha de nacimiento",
+    "NATIONALITY": "Nacionalidad",
+    "UNKNOWN": "Desconocido"
+  },
+  "LIST_ITEMS": {
+    "EMAIL": "Correo electrónico",
+    "CREATED": "Creado",
+    "UPDATED": "Actualizado",
+    "AGE": "Edad"
+  },
+  "ALERTS": {
+    "PROFILE_UPDATED": {
+      "SUCCESS": "¡Perfil actualizado!",
+      "ERROR": "Hubo un error al actualizar tu perfil. Por favor, inténtalo de nuevo."
+    },
+    "PASSWORD_CHANGED": {
+      "SUCCESS": "¡Contraseña cambiada!",
+      "ERROR": "Hubo un error al cambiar tu contraseña. Por favor, inténtalo de nuevo."
+    },
+    "IMAGE_UPDATED": {
+      "SUCCESS": "¡Imagen de perfil actualizada!",
+      "ERROR": "Hubo un error al actualizar tu imagen de perfil. Por favor, inténtalo de nuevo."
+    },
+    "DELETE_ACCOUNT": {
+      "TITLE": "Cuenta",
+      "CONFIRM": "¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.",
+      "SUCCESS": "Cuenta eliminada. ¡Lamentamos verte ir!",
+      "ERROR": "Hubo un error al eliminar tu cuenta. Por favor, inténtalo de nuevo."
+    }
+  },
+  "TABS": {
+    "ACTIVE": "Activo",
+    "INACTIVE": "Inactivo"
+  },
+  "NO_RESULTS": {
+    "TEAM": {
+      "TITLE": "No se encontraron equipos",
+      "FIND_TEAM": "Buscar un equipo",
+      "CREATE_ORG": "Crear una organización"
+    },
+    "ORGANIZATION": {
+      "TITLE": "No se encontraron organizaciones",
+      "FIND_TEAM": "Buscar un equipo",
+      "CREATE_ORG": "Crear una organización"
+    }
+  },
+  "GETTING_STARTED": {},
+  "HEADERS": {
+    "TEAMS": "Equipos",
+    "ORGANIZATIONS": "Organizaciones"
+  }
+}

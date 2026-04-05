@@ -1,0 +1,43 @@
+{
+  "ERRORS": {},
+  "PAGES": {
+    "NOT_FOUND": "Página no encontrada"
+  },
+  "MENU": {
+    "HOME": "Inicio",
+    "PROFILE": "Perfil",
+    "ADMIN": "Admin",
+    "LOGOUT": "Cerrar sesión"
+  },
+  "FORMS": {
+    "DELETE": {
+      "TITLE": "Eliminar {{item}}",
+      "MESSAGE": "Esta acción no se puede deshacer. ¿Estás seguro de que deseas continuar?",
+      "CONFIRM": "¿Estás seguro de que deseas eliminar este elemento?"
+    },
+    "IMAGE": {
+      "REMOVE": {
+        "TITLE": "Eliminar imagen",
+        "MESSAGE": "Esto eliminará tu imagen actual y no se puede deshacer. ¿Estás seguro de que deseas continuar?",
+        "BUTTON": "Eliminar imagen"
+      },
+      "DEFAULT": "Predeterminado"
+    }
+  },
+  "BUTTONS": {
+    "SUBMIT": "Enviar",
+    "CANCEL": "Cancelar",
+    "CLOSE": "Cerrar",
+    "CHOOSE_FILE": "Elegir archivo",
+    "BACK": "Volver",
+    "CONFIRM": "Confirmar",
+    "DELETE": "Eliminar",
+    "HELP": "Ayuda",
+    "DEFAULT": "Predeterminado",
+    "SEARCH": "Buscar",
+    "RESET": "Restablecer"
+  },
+  "LOADERS": {
+    "AUTH": "Verificando autenticación"
+  }
+}

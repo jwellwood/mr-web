@@ -29,8 +29,8 @@ describe('DeleteModal', () => {
     );
 
     await user.click(screen.getByTestId('delete-modal-trigger'));
-    expect(screen.getByText('Delete Player?')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /delete/i })).toBeInTheDocument();
+    expect(screen.getAllByText('Delete Player').length).toBeGreaterThanOrEqual(2);
+    expect(screen.getByRole('button', { name: /^delete$/i })).toBeInTheDocument();
   });
 
   it('shows cannot-be-undone warning in dialog', async () => {

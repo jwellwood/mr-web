@@ -1,37 +1,32 @@
-import { CustomTypography, MutationError } from '../../../components';
+import { useTranslation } from 'react-i18next';
+import { CustomTypography } from '../../../components';
 import { CustomButton } from '../../../components/buttons';
 import { CustomStack } from '../../../components/grids';
 import { AppIcon } from '../../../components/icons';
-import { TApolloError } from '../../../types/apollo';
+import { T_VERIFY_EMAIL } from '../graphql';
 import { AUTH_PATHS } from '../router';
-import { T_VERIFY_EMAIL } from '../types';
-import AuthLayout from './AuthLayout';
 
 interface Props {
   data?: T_VERIFY_EMAIL | null;
-  error?: TApolloError;
 }
 
-export default function ValidatedEmail({ data, error }: Props) {
+export default function ValidatedEmail({ data }: Props) {
+  const { t } = useTranslation('auth');
   const success = data?.VERIFY_EMAIL?.email;
 
   return (
-    <AuthLayout>
-      <CustomStack>
-        <CustomTypography color={success ? 'primary' : 'error'}>
-          {success ? 'Email verified successfully' : 'Email verification failed'}
-        </CustomTypography>
-        <AppIcon
-          icon={success ? 'check' : 'cross'}
-          size="6rem"
-          color={success ? 'primary' : 'error'}
-        />
-        <div style={{ marginBottom: '10px' }}></div>
-        <CustomButton variant="contained" link={AUTH_PATHS.SIGN_IN}>
-          Go to sign in
-        </CustomButton>
-        {error ? <MutationError error={error} /> : null}
-      </CustomStack>
-    </AuthLayout>
+    <CustomStack spacing={3}>
+      <CustomTypography color={success ? 'primary' : 'error'}>
+        {success ? t('EMAIL_VALIDATION.SUCCESS') : t('EMAIL_VALIDATION.ERROR')}
+      </CustomTypography>
+      <AppIcon
+        icon={success ? 'check' : 'cross'}
+        size="6rem"
+        color={success ? 'primary' : 'error'}
+      />
+      <CustomButton variant="contained" link={AUTH_PATHS.SIGN_IN}>
+        {t('BUTTONS.GO_TO_SIGN_IN')}
+      </CustomButton>
+    </CustomStack>
   );
 }

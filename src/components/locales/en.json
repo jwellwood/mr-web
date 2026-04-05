@@ -1,0 +1,43 @@
+{
+  "ERRORS": {},
+  "PAGES": {
+    "NOT_FOUND": "Page not found"
+  },
+  "MENU": {
+    "HOME": "Home",
+    "PROFILE": "Profile",
+    "ADMIN": "Admin",
+    "LOGOUT": "Sign out"
+  },
+  "FORMS": {
+    "DELETE": {
+      "TITLE": "Delete {{item}}",
+      "MESSAGE": "This action cannot be undone. Are you sure you want to proceed?",
+      "CONFIRM": "Are you sure you want to delete this item?"
+    },
+    "IMAGE": {
+      "REMOVE": {
+        "TITLE": "Remove image",
+        "MESSAGE": "This will remove your current image and cannot be undone. Are you sure you want to continue?",
+        "BUTTON": "Remove image"
+      },
+      "DEFAULT": "Default"
+    }
+  },
+  "BUTTONS": {
+    "SUBMIT": "Submit",
+    "CANCEL": "Cancel",
+    "CLOSE": "Close",
+    "CHOOSE_FILE": "Choose file",
+    "BACK": "Back",
+    "CONFIRM": "Confirm",
+    "DELETE": "Delete",
+    "HELP": "Help",
+    "DEFAULT": "Default",
+    "SEARCH": "Search",
+    "RESET": "Reset"
+  },
+  "LOADERS": {
+    "AUTH": "Checking authentication"
+  }
+}

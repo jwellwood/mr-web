@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 
 export const Profile = lazy(() => import('../containers/Profile'));
-export const EditUserImage = lazy(() => import('../forms/edit-profile-image/EditProfileImage'));
-export const EditProfile = lazy(() => import('../forms/edit-profile/EditProfile'));
-export const EditPassword = lazy(() => import('../forms/edit-password/EditPassword'));
+export const EditUserImage = lazy(() => import('../containers/EditProfileImage'));
+export const EditProfile = lazy(() => import('../containers/EditProfile'));
+export const EditPassword = lazy(() => import('../containers/EditPassword'));

@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "build:check": "npm run lint && npm run build",
+    "i18n:check": "node scripts/check-locales.cjs",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "preview": "vite preview",
@@ -50,7 +51,9 @@
     "react-select-country-list": "^2.2.3",
     "react-turnstile": "^1.1.5",
     "rxjs": "^7.8.2",
-    "zod": "^4.3.6"
+    "zod": "^4.3.6",
+    "i18next": "^23.0.0",
+    "react-i18next": "^13.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",

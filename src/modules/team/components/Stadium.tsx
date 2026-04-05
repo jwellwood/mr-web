@@ -1,21 +1,23 @@
+import { useTranslation } from 'react-i18next';
 import { DataContainer, SectionContainer } from '../../../components';
 import { AppIcon } from '../../../components/icons';
 import { PresentationModal } from '../../../components/modals';
 import { CustomTypography } from '../../../components/typography';
-import { FETCH_TEAM_QUERY } from '../types';
+import { T_FETCH_TEAM_QUERY } from '../graphql';
 
 interface Props {
-  team?: FETCH_TEAM_QUERY['team'];
+  team?: T_FETCH_TEAM_QUERY['team'];
   loading: boolean;
 }
 
 export default function Stadium({ team, loading }: Props) {
+  const { t } = useTranslation('team');
   const data = [
     {
-      label: 'Location',
+      label: t('SECTIONS.STADIUM.LOCATION'),
       value: (
         <PresentationModal
-          title="Location"
+          title={t('SECTIONS.STADIUM.LOCATION')}
           buttonElement={<AppIcon icon="location" size="1.1rem" color="white" />}
         >
           {
@@ -29,19 +31,19 @@ export default function Stadium({ team, loading }: Props) {
                   aria-hidden="false"
                 ></iframe>
               ) : (
-                <CustomTypography color="warning">No map available yet!</CustomTypography>
+                <CustomTypography color="warning">{t('SECTIONS.STADIUM.NO_MAP')}</CustomTypography>
               )}
             </SectionContainer>
           }
         </PresentationModal>
       ),
     },
-    { label: 'Surface', value: team?.stadiumSurface || '-' },
-    { label: 'Capacity', value: team?.stadiumCapacity || '-' },
+    { label: t('SECTIONS.STADIUM.SURFACE'), value: team?.stadiumSurface || '-' },
+    { label: t('SECTIONS.STADIUM.CAPACITY'), value: team?.stadiumCapacity || '-' },
   ];
 
   return (
-    <SectionContainer title="Stadium">
+    <SectionContainer title={t('SECTIONS.STADIUM.HEADER')}>
       <div style={{ margin: '10px auto' }}>
         <CustomTypography bold color="data">
           {team?.stadiumName}

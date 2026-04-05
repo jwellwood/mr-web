@@ -1,8 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../components';
 import { TApolloError } from '../../../types/apollo';
-import { SearchFormData, SearchFormSchema } from './validation';
+import { SearchFormData, SearchFormSchema } from './schema';
 
 interface Props {
   defaultValues: { teamName: string };
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function SearchForm({ defaultValues, onSubmit, loading, error, type }: Props) {
+  const { t } = useTranslation('home');
   const {
     handleSubmit,
     control,
@@ -28,7 +30,7 @@ export default function SearchForm({ defaultValues, onSubmit, loading, error, ty
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       onReset={() => reset({ teamName: '' })}
-      submitBtn={{ text: 'Search', disabled: !isValid, confirm: { show: false } }}
+      submitBtn={{ text: t('SEARCH.BUTTON'), disabled: !isValid, confirm: { show: false } }}
       loading={loading}
       error={error}
       minWidth={200} // 300 is too wide for mobile, 200 makes it use 100%
@@ -36,7 +38,7 @@ export default function SearchForm({ defaultValues, onSubmit, loading, error, ty
       <ControlledTextInput
         control={control}
         name="teamName"
-        label={type === 'org' ? 'League Name' : 'Team Name'}
+        label={type === 'org' ? t('LABELS.ORG_NAME') : t('LABELS.TEAM_NAME')}
       />
     </FormContainer>
   );

@@ -3,6 +3,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import React, { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CustomButton } from '../../buttons';
 import { APP_ICONS, AppIcon } from '../../icons';
 import { CustomTypography } from '../../typography';
@@ -13,6 +14,7 @@ interface Props {
 }
 
 export default function HelpModal({ children, title }: Props) {
+  const { t } = useTranslation('components');
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -30,13 +32,13 @@ export default function HelpModal({ children, title }: Props) {
       >
         <DialogTitle id="help-dialog-title">
           <CustomTypography color="secondary" bold>
-            {title} Help
+            {title} {t('BUTTONS.HELP')}
           </CustomTypography>
         </DialogTitle>
         <DialogContent>{children}</DialogContent>
         <DialogActions>
           <CustomButton onClick={() => setOpen(false)} variant="text" color="tertiary">
-            Close
+            {t('BUTTONS.CLOSE')}
           </CustomButton>
         </DialogActions>
       </Dialog>

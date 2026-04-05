@@ -1,8 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import type { ChangePasswordFormData } from './validation';
-import { ChangePasswordSchema } from './validation';
+import type { ChangePasswordFormData } from './schema';
+import { ChangePasswordSchema } from './schema';
 
 interface Props {
   onSubmit: (data: ChangePasswordFormData) => void;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function EditPasswordForm({ onSubmit, defaultValues, loading }: Props) {
+  const { t } = useTranslation('profile');
   const {
     handleSubmit,
     reset,
@@ -36,20 +38,20 @@ export default function EditPasswordForm({ onSubmit, defaultValues, loading }: P
       <ControlledTextInput
         control={control}
         name="password"
-        label="Current Password"
+        label={t('LABELS.CURRENT_PASSWORD')}
         isPassword={true}
       />
       <ControlledTextInput
         control={control}
         name="newPassword"
-        label="New Password"
+        label={t('LABELS.NEW_PASSWORD')}
         isPassword={true}
       />
       <ControlledTextInput
         control={control}
         name="confirmPassword"
+        label={t('LABELS.CONFIRM_NEW_PASSWORD')}
         isPassword={true}
-        label="Confirm New Password"
       />
     </FormContainer>
   );

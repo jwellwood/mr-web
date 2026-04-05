@@ -11,7 +11,7 @@ import { AppDispatch, setAuth, showAlert } from '../../../../store';
 import { authStorage } from '../../../../utils';
 import { REQUEST_TEAM_ADMIN_ACCESS } from '../../graphql';
 import RequestAccessForm from './RequestAccessForm';
-import { RequestAccessData } from './validation';
+import { RequestAccessData } from './schema';
 
 export default function RequestTeamAdmin() {
   const client = useApolloClient();

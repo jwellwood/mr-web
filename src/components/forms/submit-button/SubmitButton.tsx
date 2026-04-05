@@ -1,6 +1,6 @@
 import Button from '@mui/material/Button';
 import React from 'react';
-import { button_text } from '../../../i18n';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../../../theme';
 import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 import ConfirmationModal from '../../modals/confirmation-modal/ConfirmationModal';
@@ -27,6 +27,7 @@ export default function SubmitButton({
   confirm,
   type = 'submit',
 }: Props) {
+  const { t } = useTranslation('components');
   const loadingComp = () => {
     return <CustomSkeleton variant="rectangular" height={'24px'} />;
   };
@@ -51,7 +52,7 @@ export default function SubmitButton({
         },
       }}
     >
-      {children || button_text.SUBMIT}
+      {children || t('BUTTONS.SUBMIT')}
     </Button>
   );
 

@@ -4,6 +4,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import React, { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../../../theme';
 import { CustomButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function EditLinksModal({ data, title }: Props) {
+  const { t } = useTranslation('components');
   const addLinks = data.filter(item => item.type === 'add');
   const editLinks = data.filter(item => item.type === 'edit');
   const {
@@ -39,7 +41,7 @@ export default function EditLinksModal({ data, title }: Props) {
   return (
     <>
       <CustomButton onClick={handleClickOpen} color="tertiary">
-        Admin
+        {t('MENU.ADMIN')}
       </CustomButton>
       <Dialog
         fullWidth
@@ -65,7 +67,7 @@ export default function EditLinksModal({ data, title }: Props) {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="tertiary" autoFocus>
-            Back
+            {t('BUTTONS.CANCEL')}
           </Button>
         </DialogActions>
       </Dialog>

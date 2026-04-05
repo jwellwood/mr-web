@@ -1,8 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { ForgotPasswordSchema, type ForgotPasswordFormData } from './validation';
+import { ForgotPasswordFormData, ForgotPasswordSchema } from './schema';
 
 interface Props {
   defaultValues: ForgotPasswordFormData;
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function ForgotPasswordForm({ defaultValues, onSubmit, loading, error }: Props) {
+  const { t } = useTranslation('auth');
   const {
     control,
     handleSubmit,
@@ -30,7 +32,7 @@ export default function ForgotPasswordForm({ defaultValues, onSubmit, loading, e
       submitBtn={{ confirm: { show: false }, disabled: !isValid }}
       minWidth={100}
     >
-      <ControlledTextInput control={control} name="email" label="Email Address" />
+      <ControlledTextInput control={control} name="email" label={t('FORM.LABELS.EMAIL')} />
     </FormContainer>
   );
 }

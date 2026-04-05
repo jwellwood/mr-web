@@ -1,0 +1,20 @@
+{
+  "VALIDATION": {
+    "required": "Este campo es obligatorio",
+    "too_small": "La entrada es demasiado corta (mínimo {{min}})",
+    "too_long": "La entrada es demasiado larga (máximo {{max}})",
+    "pattern": "La entrada no coincide con el patrón requerido",
+    "high": "El número es demasiado alto (máximo {{max}})",
+    "low": "El número es demasiado bajo (mínimo {{min}})",
+    "password": {
+      "confirm": "Confirma tu contraseña",
+      "no_match": "Las contraseñas no coinciden"
+    },
+    "email": {
+      "invalid": "Por favor usa un correo válido"
+    },
+    "validate": "Esta entrada no es válida",
+    "terms": "Debes aceptar los terminos de uso",
+    "default": "Hay un problema con esta entrada"
+  }
+}

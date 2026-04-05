@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { CustomButton, SectionContainer } from '../../../components';
 import { AppIcon } from '../../../components/icons';
 import { TextList } from '../../../components/lists';
+import { T_FETCH_USER_QUERY } from '../graphql';
 import { PROFILE_PATHS } from '../router';
-import { FETCH_USER_QUERY } from '../types';
 
 const DISMISSED_KEY = 'getting_started_dismissed';
 
 interface Props {
-  profile?: FETCH_USER_QUERY['user'];
+  profile?: T_FETCH_USER_QUERY['user'];
 }
 
 export default function GettingStarted({ profile }: Props) {

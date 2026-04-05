@@ -4,6 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import React, { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
 import { TApolloError } from '../../../types/apollo';
 import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
@@ -30,6 +31,7 @@ export default function ConfirmationModal({
   children,
   btn,
 }: Props) {
+  const { t } = useTranslation('components');
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -51,7 +53,7 @@ export default function ConfirmationModal({
             <Stack spacing={1} sx={{ justifyContent: 'center', alignItems: 'center' }}>
               <AppIcon icon="pending" size={'40px'} color="primary" />
               <CustomTypography size="sm" bold color="data">
-                {title || 'Confirm Action'}
+                {title || t('BUTTONS.CONFIRM')}
               </CustomTypography>
             </Stack>
           </DialogTitle>
@@ -70,7 +72,7 @@ export default function ConfirmationModal({
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="tertiary">
-              Back
+              {t('BUTTONS.CANCEL')}
             </Button>
             <Button
               type="submit"
@@ -78,7 +80,7 @@ export default function ConfirmationModal({
               onClick={onConfirm}
               disabled={disabled || loading}
             >
-              CONFIRM
+              {t('BUTTONS.CONFIRM')}
             </Button>
           </DialogActions>
         </SectionContainer>

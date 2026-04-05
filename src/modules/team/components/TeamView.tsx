@@ -7,10 +7,10 @@ import Kits from '../components/Kits';
 import Organization from '../components/Organization';
 import Stadium from '../components/Stadium';
 import RequestTeamAdmin from '../forms/request-admin-access/RequestTeamAdmin';
-import { FETCH_TEAM_QUERY } from '../types';
+import { T_FETCH_TEAM_QUERY } from '../graphql';
 
 interface Props {
-  data?: FETCH_TEAM_QUERY;
+  data?: T_FETCH_TEAM_QUERY;
   loading: boolean;
   error?: TApolloError;
 }

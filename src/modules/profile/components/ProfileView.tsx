@@ -1,27 +1,29 @@
+import { useTranslation } from 'react-i18next';
 import { DataError, SectionContainer, ModuleHeader } from '../../../components';
 import { TextList } from '../../../components/lists';
 import { IMAGE_TYPE } from '../../../constants';
 import { useDateOfBirth } from '../../../hooks';
 import { TApolloError } from '../../../types/apollo';
 import { parseDate } from '../../../utils';
-import { FETCH_USER_QUERY } from '../types';
+import { T_FETCH_USER_QUERY } from '../graphql';
 import GettingStarted from './GettingStarted';
 
 interface Props {
-  data?: FETCH_USER_QUERY;
+  data?: T_FETCH_USER_QUERY;
   loading: boolean;
   error?: TApolloError;
 }
 
 export default function ProfileView({ data, loading, error }: Props) {
+  const { t } = useTranslation('profile');
   const { image, username, dateOfBirth, nationality, email, createdAt, updatedAt } =
     data?.user || {};
   const { age } = useDateOfBirth(dateOfBirth as string);
 
   const details = [
-    { label: 'Email', value: email || '-' },
-    { label: 'Created', value: parseDate(createdAt as string) || '-' },
-    { label: 'Last updated', value: parseDate(updatedAt as string) || '-' },
+    { label: t('LIST_ITEMS.EMAIL'), value: email || '-' },
+    { label: t('LIST_ITEMS.CREATED'), value: parseDate(createdAt as string) || '-' },
+    { label: t('LIST_ITEMS.UPDATED'), value: parseDate(updatedAt as string) || '-' },
   ] as const;
 
   return (
@@ -36,7 +38,7 @@ export default function ProfileView({ data, loading, error }: Props) {
             badge={image?.url}
             data={[
               { label: '', value: dateOfBirth ? parseDate(dateOfBirth as string) : '-' },
-              { label: 'Age', value: dateOfBirth ? age : '-' },
+              { label: t('LIST_ITEMS.AGE'), value: dateOfBirth ? age : '-' },
             ]}
             country={nationality}
             type={IMAGE_TYPE.USER}
@@ -47,7 +49,6 @@ export default function ProfileView({ data, loading, error }: Props) {
           <GettingStarted profile={data?.user} />
         </>
       )}
-      {}
     </>
   );
 }

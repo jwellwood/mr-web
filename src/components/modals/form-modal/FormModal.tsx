@@ -1,5 +1,6 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CustomTypography } from '../../typography';
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export default function FormModal({ title, children, open, onClose }: Props) {
+  const { t } = useTranslation('components');
   return (
     <div>
       <Dialog open={open} onClose={onClose} aria-labelledby="responsive-dialog-title">
@@ -23,7 +25,7 @@ export default function FormModal({ title, children, open, onClose }: Props) {
         <DialogContent>{children}</DialogContent>
         <DialogActions>
           <Button onClick={onClose} color="tertiary">
-            Back
+            {t('BUTTONS.BACK')}
           </Button>
         </DialogActions>
       </Dialog>

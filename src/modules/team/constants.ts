@@ -26,25 +26,6 @@ export const TEAM_ADMIN_LINKS = [
   },
 ];
 
-export const PAGES = {
-  TEAM: 'Team',
-  ADD_TEAM: 'Add Team',
-  EDIT_TEAM: 'Edit Team',
-  EDIT_BADGE: 'Edit Team Badge',
-} as const;
-
-export const TeamSuccess = {
-  add: 'Team added',
-  edit: 'Team updated',
-  delete: 'Team deleted',
-} as const;
-
-export const TeamError = {
-  add: 'Something went wrong. Try again',
-  edit: 'Something went wrong. Try again',
-  delete: 'Something went wrong. Try again',
-} as const;
-
 export const surfaceOptions = [
   { value: '', label: '' },
   { value: 'Grass', label: 'Grass' },

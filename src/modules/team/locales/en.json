@@ -1,0 +1,79 @@
+{
+  "PAGES": {
+    "TEAM": "Team",
+    "ADD_TEAM": "Add Team",
+    "EDIT_TEAM": "Edit Team",
+    "EDIT_TEAM_BADGE": "Edit Team Badge"
+  },
+  "TABS": {
+    "OVERVIEW": "Overview",
+    "PLAYERS": "Players",
+    "MATCHES": "Matches",
+    "HISTORY": "History"
+  },
+  "ALERTS": {
+    "ADD_TEAM": {
+      "SUCCESS": "Team added successfully!",
+      "FAILURE:": "Failed to add team"
+    },
+    "EDIT_TEAM": {
+      "SUCCESS": "Team updated successfully!",
+      "FAILURE:": "Failed to update team"
+    },
+    "DELETE_TEAM": {
+      "SUCCESS": "Team deleted successfully!",
+      "FAILURE:": "Failed to delete team"
+    },
+    "ADMIN_ACCESS": {
+      "SUCCESS": "Admin access requested successfully!",
+      "FAILURE:": "Admin access failed"
+    }
+  },
+  "FORM": {
+    "LABELS": {
+      "TEAM_NAME": "Team Name",
+      "YEAR_FOUNDED": "Year Founded",
+      "COUNTRY": "Country",
+      "CITY": "City",
+      "IS_ACTIVE": "Is active?",
+      "ACCESS_CODE": "Access Code",
+      "STADIUM": {
+        "NAME": "Stadium Name",
+        "LOCATION": "Stadium Location",
+        "SURFACE": "Playing Surface",
+        "CAPACITY": "Stadium Capacity"
+      },
+      "KIT": {
+        "BACKGROUND": "Background",
+        "HOME": {
+          "SHIRT": "Home shirt",
+          "SHORTS": "Home shorts",
+          "SOCKS": "Home socks"
+        },
+        "AWAY": {
+          "SHIRT": "Away shirt",
+          "SHORTS": "Away shorts",
+          "SOCKS": "Away socks"
+        }
+      }
+    }
+  },
+  "SECTIONS": {
+    "ORGANIZATION": {
+      "HEADER": "Organization"
+    },
+    "KITS": {
+      "HEADER": "Kits",
+      "HOME": "Home",
+      "AWAY": "Away"
+    },
+    "STADIUM": {
+      "HEADER": "Stadium",
+      "NAME": "Name",
+      "LOCATION": "Location",
+      "CAPACITY": "Capacity",
+      "SURFACE": "Surface",
+      "NO_MAP": "No map available yet"
+    }
+  }
+}
