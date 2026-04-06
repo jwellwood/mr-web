@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledSelectInput, type ISelectOptions } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
 import { TFilters } from '../../context';
@@ -20,6 +21,7 @@ export default function StatsFiltersForm({
   competitionOptions,
   defaultValues,
 }: Props) {
+  const { t } = useTranslation('players');
   const [open, setOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm<TFilters>({ defaultValues });
 
@@ -41,23 +43,23 @@ export default function StatsFiltersForm({
           competitionOptions={competitionOptions}
         />
       </span>
-      <FormModal title="Filters" open={open} onClose={() => setOpen(false)}>
+      <FormModal title={t('FILTERS.TITLE')} open={open} onClose={() => setOpen(false)}>
         <FormContainer
           loading={false}
           onSubmit={handleSubmit(submitHandler)}
-          submitBtn={{ text: 'Apply', confirm: { show: false } }}
+          submitBtn={{ text: t('FILTERS.APPLY'), confirm: { show: false } }}
           onReset={resetForm}
         >
           <ControlledSelectInput
             name="seasons"
             options={seasonOptions}
-            label={'Season'}
+            label={t('FILTERS.LABELS.SEASON')}
             control={control}
           />
           <ControlledSelectInput
             name="competitions"
             options={competitionOptions}
-            label={'Competitions'}
+            label={t('FILTERS.LABELS.COMPETITION')}
             control={control}
           />
         </FormContainer>

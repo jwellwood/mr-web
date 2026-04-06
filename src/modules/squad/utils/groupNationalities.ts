@@ -1,6 +1,6 @@
-import { FETCH_SQUAD_STATS_QUERY } from '../types';
+import { T_FETCH_SQUAD_STATS_QUERY } from '../graphql';
 
-export const groupNationalities = (players?: FETCH_SQUAD_STATS_QUERY['stats']) => {
+export const groupNationalities = (players?: T_FETCH_SQUAD_STATS_QUERY['stats']) => {
   const playersMap = players?.reduce((acc: Record<string, typeof players>, cur) => {
     const nat = (cur.nationality ?? '') as string;
 

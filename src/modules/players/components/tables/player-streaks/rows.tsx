@@ -1,7 +1,8 @@
+import type { TFunction } from 'i18next';
 import { getShortDate } from '../../../../../utils';
-import { T_FETCH_PLAYER_STREAKS } from '../../../types';
+import { T_FETCH_PLAYER_STREAKS } from '../../../graphql';
 
-export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks']) => {
+export const rows = (t: TFunction, streaks?: T_FETCH_PLAYER_STREAKS['streaks']) => {
   const getRowData = (
     streakType: keyof T_FETCH_PLAYER_STREAKS['streaks'],
     currentStreak: keyof T_FETCH_PLAYER_STREAKS['streaks']
@@ -20,19 +21,19 @@ export const rows = (streaks?: T_FETCH_PLAYER_STREAKS['streaks']) => {
 
   return [
     {
-      label: 'Played',
+      label: t('TABLES.ROWS.PLAYED'),
       ...getRowData('playedStreak', 'currentPlayedStreak'),
     },
     {
-      label: 'Goals',
+      label: t('TABLES.ROWS.GOALS'),
       ...getRowData('goalStreak', 'currentGoalStreak'),
     },
     {
-      label: 'Assists',
+      label: t('TABLES.ROWS.ASSISTS'),
       ...getRowData('assistStreak', 'currentAssistStreak'),
     },
     {
-      label: 'Combined',
+      label: t('TABLES.ROWS.COMBINED'),
       ...getRowData('contributionStreak', 'currentContributionStreak'),
     },
   ];

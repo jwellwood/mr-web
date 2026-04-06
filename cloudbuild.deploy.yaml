@@ -65,7 +65,7 @@ steps:
         '--image',
         'europe-southwest1-docker.pkg.dev/madrid-reds-369822/madrid-reds-docker-images/madrid-reds-web:$COMMIT_SHA',
         '--region',
-        'northamerica-northeast2',
+        'europe-west1',
         '--memory',
         '512Mi',
         '--port',

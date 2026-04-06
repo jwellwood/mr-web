@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledSwitchInput } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
 import { TPlayerOpponentFilters } from '../../context';
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function OpponentsFiltersForm({ onSubmit, onReset, defaultValues }: Props) {
+  const { t } = useTranslation('players');
   const [open, setOpen] = useState(false);
   const { handleSubmit, control, reset } = useForm<TPlayerOpponentFilters>({ defaultValues });
 
@@ -30,19 +32,23 @@ export default function OpponentsFiltersForm({ onSubmit, onReset, defaultValues 
       <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
         <OpponentFiltersDisplay />
       </span>
-      <FormModal title="Filters" open={open} onClose={() => setOpen(false)}>
+      <FormModal title={t('FILTERS.TITLE')} open={open} onClose={() => setOpen(false)}>
         <FormContainer
           loading={false}
           onSubmit={handleSubmit(submitHandler)}
-          submitBtn={{ text: 'Apply', confirm: { show: false } }}
+          submitBtn={{ text: t('FILTERS.APPLY'), confirm: { show: false } }}
           onReset={resetForm}
         >
           <ControlledSwitchInput
             name="showAllOpponents"
-            label="Show all opponents"
+            label={t('FILTERS.SHOW_ALL_OPPONENTS')}
             control={control}
           />
-          <ControlledSwitchInput name="showAverages" label="Show averages" control={control} />
+          <ControlledSwitchInput
+            name="showAverages"
+            label={t('FILTERS.SHOW_AVERAGES')}
+            control={control}
+          />
         </FormContainer>
       </FormModal>
     </>

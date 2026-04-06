@@ -43,54 +43,78 @@ export default function EditTeamForm({ onSubmit, defaultValues, loading, error }
       loading={loading}
       error={error}
     >
-      <ControlledSwitchInput
-        name="isActive"
-        label={t('FORMS.LABELS.IS_ACTIVE')}
-        control={control}
-      />
-      <ControlledTextInput control={control} name="teamName" label={t('FORMS.LABELS.TEAM_NAME')} />
+      <ControlledSwitchInput name="isActive" label={t('FORM.LABELS.IS_ACTIVE')} control={control} />
+      <ControlledTextInput control={control} name="teamName" label={t('FORM.LABELS.TEAM_NAME')} />
       <ControlledDateInput
         control={control}
         name="yearFounded"
-        label={t('FORMS.LABELS.YEAR_FOUNDED')}
+        label={t('FORM.LABELS.YEAR_FOUNDED')}
         view="year"
       />
-      <ControlledTextInput control={control} name="location" label={t('FORMS.LABELS.CITY')} />
+      <ControlledTextInput control={control} name="location" label={t('FORM.LABELS.CITY')} />
       <ControlledSelectInput
         control={control}
         name="country"
-        label={t('FORMS.LABELS.COUNTRY')}
+        label={t('FORM.LABELS.COUNTRY')}
         options={nationalityOptions}
       />
       <ControlledTextInput
         control={control}
         name="stadiumName"
-        label={t('FORMS.LABELS.STADIUM.NAME')}
+        label={t('FORM.LABELS.STADIUM.NAME')}
       />
       <ControlledTextInput
         control={control}
         name="stadiumLocation"
-        label={t('FORMS.LABELS.STADIUM.LOCATION')}
+        label={t('FORM.LABELS.STADIUM.LOCATION')}
         multiline
       />
       <ControlledSelectInput
         control={control}
         options={surfaceOptions}
         name="stadiumSurface"
-        label={t('FORMS.LABELS.STADIUM.SURFACE')}
+        label={t('FORM.LABELS.STADIUM.SURFACE')}
       />
       <ControlledTextInput
         control={control}
         name="stadiumCapacity"
-        label={t('FORMS.LABELS.STADIUM.CAPACITY')}
+        label={t('FORM.LABELS.STADIUM.CAPACITY')}
       />
-      <ControlledColorInput control={control} name="homeShirt" label={t('KIT.HOME.SHIRT')} />
-      <ControlledColorInput control={control} name="homeShorts" label={t('KIT.HOME.SHORTS')} />
-      <ControlledColorInput control={control} name="homeSocks" label={t('KIT.HOME.SOCKS')} />
-      <ControlledColorInput control={control} name="awayShirt" label={t('KIT.AWAY.SHIRT')} />
-      <ControlledColorInput control={control} name="awayShorts" label={t('KIT.AWAY.SHORTS')} />
-      <ControlledColorInput control={control} name="awaySocks" label={t('KIT.AWAY.SOCKS')} />
-      <ControlledColorInput control={control} name="kitsBackground" label={t('KIT.BACKGROUND')} />
+      <ControlledColorInput
+        control={control}
+        name="homeShirt"
+        label={t('FORM.LABELS.KIT.HOME.SHIRT')}
+      />
+      <ControlledColorInput
+        control={control}
+        name="homeShorts"
+        label={t('FORM.LABELS.KIT.HOME.SHORTS')}
+      />
+      <ControlledColorInput
+        control={control}
+        name="homeSocks"
+        label={t('FORM.LABELS.KIT.HOME.SOCKS')}
+      />
+      <ControlledColorInput
+        control={control}
+        name="awayShirt"
+        label={t('FORM.LABELS.KIT.AWAY.SHIRT')}
+      />
+      <ControlledColorInput
+        control={control}
+        name="awayShorts"
+        label={t('FORM.LABELS.KIT.AWAY.SHORTS')}
+      />
+      <ControlledColorInput
+        control={control}
+        name="awaySocks"
+        label={t('FORM.LABELS.KIT.AWAY.SOCKS')}
+      />
+      <ControlledColorInput
+        control={control}
+        name="kitsBackground"
+        label={t('FORM.LABELS.KIT.BACKGROUND')}
+      />
     </FormContainer>
   );
 }

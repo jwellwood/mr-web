@@ -1,6 +1,6 @@
 import { APP_ICONS, AppIcon } from '../../../../components/icons';
 import { CustomTypography } from '../../../../components/typography';
-import { T_FETCH_PLAYER_TROPHIES } from '../../types';
+import { T_FETCH_PLAYER_TROPHIES } from '../../graphql';
 
 export const getTrophyListItem = (
   trophy: T_FETCH_PLAYER_TROPHIES['trophies'][number],

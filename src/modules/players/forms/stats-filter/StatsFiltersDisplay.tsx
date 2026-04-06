@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import type { ISelectOptions } from '../../../../components';
 import { FilterBox } from '../../../../components/filters';
 import { usePlayerStatsFilters } from '../../context';
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export default function StatsFiltersDisplay({ seasonOptions, competitionOptions }: Props) {
+  const { t } = useTranslation('players');
   const { filters } = usePlayerStatsFilters();
   const { seasons, competitions } = filters;
   const selectedComp = competitionOptions.find(comp => comp.value === competitions);
@@ -16,12 +18,16 @@ export default function StatsFiltersDisplay({ seasonOptions, competitionOptions 
   const filterData = [
     {
       label:
-        selectedSeason?.value === 'all' ? 'All seasons' : selectedSeason?.label?.toString() || '',
+        selectedSeason?.value === 'all'
+          ? t('FILTERS.ALL_SEASONS')
+          : selectedSeason?.label?.toString() || '',
       applied: selectedSeason?.value !== 'all',
     },
     {
       label:
-        selectedComp?.value === 'all' ? 'All competitions' : selectedComp?.label?.toString() || '',
+        selectedComp?.value === 'all'
+          ? t('FILTERS.ALL_COMPETITIONS')
+          : selectedComp?.label?.toString() || '',
       applied: selectedComp?.value !== 'all',
     },
   ];

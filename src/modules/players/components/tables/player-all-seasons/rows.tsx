@@ -1,4 +1,4 @@
-import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
+import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../graphql';
 
 export const rows = (baseUrl: string, data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons']) => {
   return data?.map(season => ({

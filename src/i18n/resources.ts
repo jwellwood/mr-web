@@ -2,11 +2,13 @@ import * as inputs from '../components/inputs/locales';
 import * as components from '../components/locales';
 import * as auth from '../modules/auth/locales';
 import * as home from '../modules/home/locales';
+import * as players from '../modules/players/locales';
 import * as profile from '../modules/profile/locales';
+import * as squad from '../modules/squad/locales';
 import * as team from '../modules/team/locales';
 
 // To add a new module: import its locales/index.ts and add one entry to `namespaces`.
-const namespaces = { components, inputs, auth, home, profile, team };
+const namespaces = { components, inputs, auth, home, players, profile, squad, team };
 
 type Langs = 'en' | 'es';
 

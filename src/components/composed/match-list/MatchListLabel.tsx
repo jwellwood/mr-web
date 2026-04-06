@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { parseDate } from '../../../utils';
 import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../typography';
@@ -10,11 +11,12 @@ interface Props {
 }
 
 export default function MatchListLabel({ match, loading, showComp = true }: Props) {
+  const { t } = useTranslation('components');
   const { date, isHome, opponentName, competition, isForfeit } = match || {};
 
   const homeOrAway = (
     <CustomTypography size="xs" bold color={isHome ? 'primary' : 'label'}>
-      {isHome ? '(H)' : '(A)'}
+      {isHome ? t('MATCH_TABLES.HOME') : t('MATCH_TABLES.AWAY')}
       {'  '}
     </CustomTypography>
   );
@@ -22,7 +24,7 @@ export default function MatchListLabel({ match, loading, showComp = true }: Prop
   const forfeit = (
     <CustomTypography size="xs" bold color="error">
       {' '}
-      {isForfeit ? 'F' : ''}
+      {isForfeit ? t('MATCH_TABLES.FORFEIT') : ''}
       {'  '}
     </CustomTypography>
   );

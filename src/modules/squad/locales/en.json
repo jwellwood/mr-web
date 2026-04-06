@@ -1,0 +1,63 @@
+{
+  "HEADERS": {
+    "GOALS": "Goals",
+    "ASSISTS": "Assists",
+    "COMBINED": "Combined",
+    "NATIONALITIES": "Nationalities"
+  },
+  "TABS": {
+    "SQUAD": "Squad",
+    "STATS": "Stats",
+    "PAST_PLAYERS": "Past Players",
+    "RECORDS": "Records"
+  },
+  "FILTERS": {
+    "TITLE": "Filters",
+    "APPLY": "Apply",
+    "ALL_SEASONS": "All seasons",
+    "ALL_COMPETITIONS": "All competitions",
+    "LABELS": {
+      "SEASON": "Season",
+      "COMPETITION": "Competition",
+      "SHOW_AVERAGES": "Show Averages"
+    }
+  },
+  "TABLES": {
+    "HEADERS": {
+      "TO": "To",
+      "FROM": "From",
+      "SEASONS": "Seas"
+    }
+  },
+  "NO_DATA": {
+    "PAST_PLAYERS": "No past players yet",
+    "SQUAD_PLAYERS": "No players yet",
+    "RECORDS": "No records yet",
+    "RECORDS_IN_MATCHES": "No records in matches yet"
+  },
+  "SECTION_TITLES": {
+    "OVERALL_RECORDS": "Overall Records",
+    "SINGLE_SEASON_RECORDS": "Single Season Records",
+    "STREAKS": "Streaks",
+    "MOST_IN_MATCH": "Most {{stat}} in Match"
+  },
+  "STATS": {
+    "PLAYERS": "Players",
+    "NATIONALITIES": "Nationalities",
+    "AVERAGE_AGE": "Average Age"
+  },
+  "RECORDS": {
+    "MOST_APPS": "Most Apps",
+    "MOST_GOALS": "Most Goals",
+    "MOST_ASSISTS": "Most Assists",
+    "MOST_MVP": "Most MVPs",
+    "COMBINED": "Combined"
+  },
+  "STREAKS": {
+    "PLAYED": "Played",
+    "GOALS": "Goals",
+    "ASSISTS": "Assists",
+    "COMBINED": "Combined",
+    "TOP_10_TITLE": "Top 10 - {{label}} Streaks"
+  }
+}

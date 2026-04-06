@@ -1,5 +1,5 @@
 import { IMatchesStatsTable } from '../../../components/composed';
-import { T_FETCH_PLAYER_STATS } from '../types';
+import { T_FETCH_PLAYER_STATS } from '../graphql';
 
 export const mapPlayerMatchStats = (
   player?: T_FETCH_PLAYER_STATS['player'] | null

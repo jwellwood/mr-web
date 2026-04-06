@@ -5,8 +5,8 @@ import { CustomTypography } from '../components/typography';
 export default function NotFound() {
   const { t } = useTranslation('components');
   return (
-    <PageHeader title={t('PAGES.NOT_FOUND')}>
-      <CustomTypography color="warning">Page not found</CustomTypography>
+    <PageHeader title={t('PAGES.NOT_FOUND.TITLE')}>
+      <CustomTypography color="warning">{t('PAGES.NOT_FOUND.MESSAGE')}</CustomTypography>
     </PageHeader>
   );
 }

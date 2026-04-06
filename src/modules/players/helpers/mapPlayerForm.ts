@@ -1,5 +1,5 @@
-import { PlayerFormData } from '../forms/add-player/validation';
-import { T_FETCH_PLAYER } from '../types';
+import { PlayerFormData } from '../forms/player-form/schema';
+import { T_FETCH_PLAYER } from '../graphql';
 
 export const mapFormToPlayer = (formData: PlayerFormData) => {
   return {

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { getPercentage } from '../../../utils';
 import { CustomPieChart } from '../../charts';
 import { DataContainer } from '../../containers';
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function MatchAverages({ stats, loading }: Props) {
+  const { t } = useTranslation('components');
   const { total, wins, draws, defeats, teamAvg, oppAvg } = stats || {
     total: 0,
     wins: 0,
@@ -25,23 +27,23 @@ export default function MatchAverages({ stats, loading }: Props) {
   const difference = teamAvg - oppAvg;
   const percentageData = [
     {
-      label: 'Win %',
+      label: t('MATCH_TABLES.WIN_PERCENTAGE'),
       value: loading ? <StatSkeleton /> : `${getPercentage(wins || 0, total || 0, 1)}%`,
     },
     {
-      label: 'Draw %',
+      label: t('MATCH_TABLES.DRAW_PERCENTAGE'),
       value: loading ? <StatSkeleton /> : `${getPercentage(draws || 0, total || 0, 1)}%`,
     },
     {
-      label: 'Defeat %',
+      label: t('MATCH_TABLES.DEFEAT_PERCENTAGE'),
       value: loading ? <StatSkeleton /> : `${getPercentage(defeats || 0, total || 0, 1)}%`,
     },
     {
-      label: 'Av. Goals',
+      label: t('MATCH_TABLES.GOALS_FOR_AVG'),
       value: loading ? <StatSkeleton /> : teamAvg?.toFixed(1),
     },
     {
-      label: '+/-',
+      label: t('MATCH_TABLES.GOALS_DIFFERENCE'),
       value: loading ? (
         <StatSkeleton />
       ) : (
@@ -51,15 +53,15 @@ export default function MatchAverages({ stats, loading }: Props) {
       ),
     },
     {
-      label: 'Av. Conc',
+      label: t('MATCH_TABLES.GOALS_AGAINST_AVG'),
       value: loading ? <StatSkeleton /> : oppAvg?.toFixed(1),
     },
   ];
 
   const pieData = [
-    { value: wins || 0, name: 'Wins' },
-    { value: draws || 0, name: 'Draws' },
-    { value: defeats || 0, name: 'Defeats' },
+    { value: wins || 0, name: t('MATCH_TABLES.WINS') },
+    { value: draws || 0, name: t('MATCH_TABLES.DRAWS') },
+    { value: defeats || 0, name: t('MATCH_TABLES.DEFEATS') },
   ];
 
   return (

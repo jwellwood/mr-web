@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   FormContainer,
   ControlledDateInput,
@@ -12,7 +13,7 @@ import {
 import { positionOptions } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
-import { type PlayerFormData, PlayerSchema } from './validation';
+import { type PlayerFormData, PlayerSchema } from './schema';
 
 interface Props {
   onSubmit: (data: PlayerFormData) => void;
@@ -31,6 +32,7 @@ export default function PlayerForm({
   loading,
   error,
 }: Props) {
+  const { t } = useTranslation('players');
   const {
     handleSubmit,
     control,
@@ -50,45 +52,62 @@ export default function PlayerForm({
       loading={loading}
       error={error}
     >
-      <ControlledTextInput control={control} name="name" label="Name" />
+      <ControlledTextInput control={control} name="name" label={t('FORMS.LABELS.NAME')} />
       <ControlledSelectInput
         control={control}
         name="nationality"
-        label="Nationality"
+        label={t('FORMS.LABELS.NATIONALITY')}
         options={countryOptions}
       />
-      <ControlledDateInput control={control} name="dateOfBirth" label="Date of Birth" />
-      <ControlledDateInput control={control} name="yearJoined" label="Year Joined" view="year" />
+      <ControlledDateInput
+        control={control}
+        name="dateOfBirth"
+        label={t('FORMS.LABELS.DATE_OF_BIRTH')}
+      />
+      <ControlledDateInput
+        control={control}
+        name="yearJoined"
+        label={t('FORMS.LABELS.YEAR_JOINED')}
+        view="year"
+      />
       <ControlledSelectInput
         control={control}
         name="position"
-        label="Position"
+        label={t('FORMS.LABELS.POSITION')}
         options={positionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="squadNumber"
-        label="Squad Number"
+        label={t('FORMS.LABELS.SQUAD_NUMBER')}
         options={getNumberOptions(99)}
       />
       <ControlledMultiSelectInput
         control={control}
         name="seasonIds"
         options={seasonOptions}
-        label="Seasons Played"
+        label={t('FORMS.LABELS.SEASONS')}
       />
-      <ControlledSwitchInput control={control} name="isCaptain" label="Is player team captain?" />
+      <ControlledSwitchInput
+        control={control}
+        name="isCaptain"
+        label={t('FORMS.LABELS.IS_CAPTAIN')}
+      />
       <ControlledSwitchInput
         control={control}
         name="isViceCaptain"
-        label="Is player vice captain?"
+        label={t('FORMS.LABELS.IS_VICE_CAPTAIN')}
       />
       <ControlledSwitchInput
         control={control}
         name="isHallOfFame"
-        label="Is player in the hall of fame?"
+        label={t('FORMS.LABELS.IS_HALL_OF_FAME')}
       />
-      <ControlledTextInput control={control} name="description" label="Description" />
+      <ControlledTextInput
+        control={control}
+        name="description"
+        label={t('FORMS.LABELS.DESCRIPTION')}
+      />
     </FormContainer>
   );
 }

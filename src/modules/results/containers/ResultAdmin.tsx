@@ -2,10 +2,10 @@ import { CustomButton, SectionContainer } from '../../../components';
 import { IListItem, TextList } from '../../../components/lists';
 import { useAuth } from '../../../hooks';
 import ResultStatus from '../components/ResultStatus';
+import { RESULT_STATUS } from '../constants';
 import ConfirmResult from '../forms/confirm-result/ConfirmResult';
 import SubmitResult from '../forms/submit-result/SubmitResult';
 import { T_FETCH_RESULT } from '../graphql';
-import { RESULT_STATUS } from '../types';
 
 interface Props {
   result?: T_FETCH_RESULT['result'];

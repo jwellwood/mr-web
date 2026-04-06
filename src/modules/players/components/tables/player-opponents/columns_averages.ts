@@ -1,70 +1,73 @@
+import type { TFunction } from 'i18next';
 import { ColumnConfig } from '../../../../../components/tables';
-import { columns as baseColumns } from './columns';
+import { columns } from './columns';
 
-const avgCols: Record<string, ColumnConfig> = {
+const avgCols = (t: TFunction): Record<string, ColumnConfig> => ({
   winsAvg: {
     id: 'winsAvg',
-    label: '%',
+    label: t('TABLES.HEADERS.PERCENT'),
     styles: { width: 35, color: 'label' },
   },
   drawsAvg: {
     id: 'drawsAvg',
-    label: '%',
+    label: t('TABLES.HEADERS.PERCENT'),
     styles: { width: 35, color: 'label' },
   },
   lossesAvg: {
     id: 'lossesAvg',
-    label: '%',
+    label: t('TABLES.HEADERS.PERCENT'),
     styles: { width: 35, color: 'label' },
   },
   goalsForAvg: {
     id: 'goalsForAvg',
-    label: 'Av',
+    label: t('TABLES.HEADERS.AVERAGE'),
     styles: { width: 35, color: 'label' },
   },
   goalsAgainstAvg: {
     id: 'goalsAgainstAvg',
-    label: 'Av',
+    label: t('TABLES.HEADERS.AVERAGE'),
     styles: { width: 35, color: 'label' },
   },
   differenceAvg: {
     id: 'differenceAvg',
     type: 'difference',
-    label: 'Av',
+    label: t('TABLES.HEADERS.AVERAGE'),
     styles: { width: 35, color: 'label' },
   },
   goalsAvg: {
     id: 'goalsAvg',
-    label: 'Av',
+    label: t('TABLES.HEADERS.AVERAGE'),
     styles: { width: 35, color: 'label' },
   },
   assistsAvg: {
     id: 'assistsAvg',
-    label: 'Av',
+    label: t('TABLES.HEADERS.AVERAGE'),
     styles: { width: 35, color: 'label' },
   },
   combinedAvg: {
     id: 'combinedAvg',
-    label: 'Av',
+    label: t('TABLES.HEADERS.AVERAGE'),
     styles: { width: 35, color: 'label' },
   },
   concededAvg: {
     id: 'concededAvg',
-    label: 'Av',
+    label: t('TABLES.HEADERS.AVERAGE'),
     styles: { width: 35, color: 'label' },
   },
-};
+});
 
-export const columns_averages: readonly ColumnConfig[] = baseColumns.flatMap(col => {
-  if (col.id === 'wins') return [col, avgCols.winsAvg];
-  if (col.id === 'draws') return [col, avgCols.drawsAvg];
-  if (col.id === 'losses') return [col, avgCols.lossesAvg];
-  if (col.id === 'goalsFor') return [col, avgCols.goalsForAvg];
-  if (col.id === 'goalsAgainst') return [col, avgCols.goalsAgainstAvg];
-  if (col.id === 'difference') return [col, avgCols.differenceAvg];
-  if (col.id === 'goals') return [col, avgCols.goalsAvg];
-  if (col.id === 'assists') return [col, avgCols.assistsAvg];
-  if (col.id === 'combined') return [col, avgCols.combinedAvg];
-  if (col.id === 'conceded') return [col, avgCols.concededAvg];
-  return [col];
-}) as readonly ColumnConfig[];
+export const columns_averages = (t: TFunction): readonly ColumnConfig[] =>
+  columns(t).flatMap(col => {
+    const avg = avgCols(t);
+    if (col.id === 'wins') return [col, avg.winsAvg];
+    if (col.id === 'draws') return [col, avg.drawsAvg];
+    if (col.id === 'losses') return [col, avg.lossesAvg];
+    if (col.id === 'goalsFor') return [col, avg.goalsForAvg];
+    if (col.id === 'goalsAgainst') return [col, avg.goalsAgainstAvg];
+    if (col.id === 'difference') return [col, avg.differenceAvg];
+    if (col.id === 'goals') return [col, avg.goalsAvg];
+    if (col.id === 'assists') return [col, avg.assistsAvg];
+    if (col.id === 'combined') return [col, avg.combinedAvg];
+    if (col.id === 'conceded') return [col, avg.concededAvg];
+    return [col];
+  }) as readonly ColumnConfig[];

@@ -1,7 +1,8 @@
+import type { TFunction } from 'i18next';
 import RecordPlayers from '../../../components/squad-records/RecordPlayers';
-import { FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../types';
+import { T_FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY } from '../../../graphql';
 
-export const rows = (data?: FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY) => {
+export const rows = (t: TFunction, data?: T_FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY) => {
   const { goals, assists, combined } = data?.stats.combined
     ? data.stats
     : {
@@ -12,19 +13,19 @@ export const rows = (data?: FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY) => {
 
   const tableData = [
     {
-      label: 'Most Goals',
+      label: t('RECORDS.MOST_GOALS'),
       players: goals ? goals.players : [],
       seasons: goals ? goals.seasons : [],
       value: goals,
     },
     {
-      label: 'Most Assists',
+      label: t('RECORDS.MOST_ASSISTS'),
       players: assists ? assists.players : [],
       seasons: assists ? assists.seasons : [],
       value: assists,
     },
     {
-      label: 'Combined',
+      label: t('RECORDS.COMBINED'),
       players: combined ? combined.players : [],
       seasons: combined ? combined.seasons : [],
       value: combined,

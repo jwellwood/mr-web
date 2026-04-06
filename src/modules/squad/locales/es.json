@@ -1,0 +1,63 @@
+{
+  "HEADERS": {
+    "GOALS": "Goles",
+    "ASSISTS": "Asistencias",
+    "COMBINED": "Combinado",
+    "NATIONALITIES": "Nacionalidades"
+  },
+  "TABS": {
+    "SQUAD": "Plantilla",
+    "STATS": "Estadísticas",
+    "PAST_PLAYERS": "Anteriores",
+    "RECORDS": "Récords"
+  },
+  "FILTERS": {
+    "TITLE": "Filtros",
+    "APPLY": "Aplicar",
+    "ALL_SEASONS": "Todas las temporadas",
+    "ALL_COMPETITIONS": "Todas las competiciones",
+    "LABELS": {
+      "SEASON": "Temporada",
+      "COMPETITION": "Competición",
+      "SHOW_AVERAGES": "Mostrar promedios"
+    }
+  },
+  "TABLES": {
+    "HEADERS": {
+      "TO": "Hasta",
+      "FROM": "Desde",
+      "SEASONS": "Tmps"
+    }
+  },
+  "NO_DATA": {
+    "PAST_PLAYERS": "No hay jugadores anteriores",
+    "SQUAD_PLAYERS": "No hay jugadores",
+    "RECORDS": "No hay registros",
+    "RECORDS_IN_MATCHES": "No hay registros en los partidos"
+  },
+  "SECTION_TITLES": {
+    "OVERALL_RECORDS": "Records Generales",
+    "SINGLE_SEASON_RECORDS": "Records de una sola temporada",
+    "STREAKS": "Rachas",
+    "MOST_IN_MATCH": "Más {{stat}} en un partido"
+  },
+  "STATS": {
+    "PLAYERS": "Jugadores",
+    "NATIONALITIES": "Nacionalidades",
+    "AVERAGE_AGE": "Edad promedio"
+  },
+  "RECORDS": {
+    "MOST_APPS": "Partidos jugados",
+    "MOST_GOALS": "Más goles",
+    "MOST_ASSISTS": "Más asistencias",
+    "MOST_MVP": "Más MVPs",
+    "COMBINED": "Combinado"
+  },
+  "STREAKS": {
+    "PLAYED": "Jugados",
+    "GOALS": "Goles",
+    "ASSISTS": "Asistencias",
+    "COMBINED": "Combinado",
+    "TOP_10_TITLE": "Top 10 - Rachas de {{label}}"
+  }
+}

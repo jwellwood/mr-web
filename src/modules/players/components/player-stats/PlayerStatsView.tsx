@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   DataError,
   NoDataText,
@@ -8,9 +9,9 @@ import {
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../types/apollo';
 import StatsFilters from '../../forms/stats-filter/StatsFilters';
+import { T_FETCH_PLAYER_STATS } from '../../graphql';
 import { mapPlayerAverages } from '../../helpers';
 import { mapPlayerMatchStats } from '../../helpers/mapPlayerMatchStats';
-import { T_FETCH_PLAYER_STATS } from '../../types';
 import * as GAMES_WITH_STAT_CONFIG from '../tables/games-with-stat';
 import * as OVERALL_STATS_CONFIG from '../tables/player-stats';
 
@@ -21,10 +22,11 @@ interface Props {
 }
 
 export default function PlayerStatsView({ data, loading, error }: Props) {
+  const { t } = useTranslation('players');
   const hasStats = data && data.player.apps && data?.player.apps > 0;
   const renderContent = () => {
     return data && data?.player.apps === 0 ? (
-      <NoDataText>No stats </NoDataText>
+      <NoDataText>{t('MESSAGES.NO_STATS')}</NoDataText>
     ) : error ? (
       <DataError error={error} />
     ) : (
@@ -39,19 +41,19 @@ export default function PlayerStatsView({ data, loading, error }: Props) {
       <SectionContainer title={<StatsFilters />}>{renderContent()}</SectionContainer>
       {!error && hasStats && (
         <>
-          <SectionContainer title="Stats">
+          <SectionContainer title={t('SECTIONS.STATS')}>
             <CustomTable
               columns={OVERALL_STATS_CONFIG.columns}
-              rows={OVERALL_STATS_CONFIG.rows(data?.player)}
+              rows={OVERALL_STATS_CONFIG.rows(t, data?.player)}
               isSortable={false}
               loading={loading}
               loadingRowCount={11}
             />
           </SectionContainer>
-          <SectionContainer title="Games with stats">
+          <SectionContainer title={t('SECTIONS.GAMES_WITH_STATS')}>
             <CustomTable
               columns={GAMES_WITH_STAT_CONFIG.columns}
-              rows={GAMES_WITH_STAT_CONFIG.rows(data?.player)}
+              rows={GAMES_WITH_STAT_CONFIG.rows(t, data?.player)}
               isSortable={false}
               loading={loading}
               loadingRowCount={4}

@@ -1,0 +1,139 @@
+{
+  "PAGES": {
+    "PLAYER": "Jugador",
+    "ADD_PLAYER": "Agregar Jugador",
+    "EDIT_PLAYER": "Editar Jugador",
+    "EDIT_PLAYER_PHOTO": "Editar Foto del Jugador"
+  },
+  "LINKS": {
+    "EDIT_PLAYER": "Editar Jugador",
+    "EDIT_PLAYER_PHOTO": "Editar Foto del Jugador"
+  },
+  "SECTIONS": {
+    "SQUAD": "Plantilla",
+    "TROPHIES": "Trofeos",
+    "AWARDS": "Premios",
+    "WINNER": "Ganador",
+    "RUNNER_UP": "Subcampeón",
+    "SEASONS": "Temporadas",
+    "SINGLE_SEASON_RECORDS": "Récords de una sola temporada",
+    "RECORDS": "Récords",
+    "STATS": "Estadísticas",
+    "GAMES_WITH_STATS": "Partidos con estadísticas",
+    "GOALS": "Goles",
+    "ASSISTS": "Asistencias",
+    "COMBINED": "Combinado",
+    "STREAKS": "Rachas"
+  },
+  "FILTERS": {
+    "TITLE": "Filtros",
+    "APPLY": "Aplicar",
+    "ALL_SEASONS": "Todas las temporadas",
+    "ALL_COMPETITIONS": "Todas las competiciones",
+    "SHOW_ALL_TEAMS": "Mostrar todos los equipos",
+    "SHOW_ALL_OPPONENTS": "Mostrar todos los oponentes",
+    "SHOW_ACTIVE_TEAMS": "Mostrar equipos activos",
+    "SHOW_AVERAGES": "Mostrar promedios",
+    "SHOW_BASIC_STATS": "Mostrar estadísticas básicas",
+    "LABELS": {
+      "SEASON": "Temporada",
+      "COMPETITION": "Competición"
+    }
+  },
+  "TABS": {
+    "STATS": "Estadísticas",
+    "RECORDS": "Récords",
+    "OPPONENTS": "Oponentes",
+    "HONORS": "Honores"
+  },
+  "FORMS": {
+    "LABELS": {
+      "NAME": "Nombre",
+      "NATIONALITY": "Nacionalidad",
+      "DATE_OF_BIRTH": "Fecha de nacimiento",
+      "YEAR_JOINED": "Año de incorporación",
+      "SQUAD_NUMBER": "Número de camiseta",
+      "SEASONS": "Temporadas",
+      "IS_CAPTAIN": "Es capitán",
+      "IS_VICE_CAPTAIN": "Es vicecapitán",
+      "IS_HALL_OF_FAME": "Es miembro del Salón de la Fama",
+      "DESCRIPTION": "Descripción",
+      "POSITION": "Posición"
+    }
+  },
+  "TABLES": {
+    "HEADERS": {
+      "PLAYED": "PJ",
+      "GOALS": "Gs",
+      "ASSISTS": "As",
+      "COMBINED": "G+A",
+      "WINS": "G",
+      "DRAWS": "E",
+      "LOSSES": "P",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GC",
+      "DIFFERENCE": "+/-",
+      "CONCEDED": "Cn",
+      "CURRENT": "Actual",
+      "LONGEST": "Largo",
+      "FROM": "Desde",
+      "TO": "Hasta",
+      "PERCENT": "%",
+      "AVERAGE": "Av"
+    },
+    "ROWS": {
+      "GOALS": "Goles",
+      "ASSISTS": "Asistencias",
+      "COMBINED": "Combinado",
+      "MVP": "MVP",
+      "PENS_SCORED": "Penales Convertidos",
+      "PENS_MISSED": "Penales Fallados",
+      "OWN_GOALS": "Goles en propia puerta",
+      "CONCEDED": "Goles en contra",
+      "PENS_SAVED": "Penales parados",
+      "CLEAN_SHEETS": "Portería a cero",
+      "YELLOW_CARDS": "Tarjetas amarillas",
+      "RED_CARDS": "Tarjetas rojas",
+      "PLAYED": "Jugados",
+      "GOAL_IN": "Gol en",
+      "ASSIST_IN": "Asistencia en",
+      "GOAL_AND_ASSIST_IN": "Gol y asistencia en",
+      "GOAL_OR_ASSIST_IN": "Gol o asistencia en"
+    },
+    "BUTTONS": {
+      "SEASONS": "Temporadas",
+      "MATCHES": "Partidos"
+    }
+  },
+  "ALERTS": {
+    "ADD_PLAYER": {
+      "SUCCESS": "Jugador agregado con éxito",
+      "ERROR": "Error al agregar el jugador. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_PLAYER": {
+      "SUCCESS": "Jugador actualizado con éxito",
+      "ERROR": "Error al actualizar el jugador. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_PLAYER_PHOTO": {
+      "SUCCESS": "Foto del jugador actualizada con éxito",
+      "ERROR": "Error al actualizar la foto del jugador. Por favor, inténtelo de nuevo."
+    },
+    "DELETE_PLAYER": {
+      "SUCCESS": "Jugador eliminado con éxito",
+      "ERROR": "Error al eliminar el jugador. Por favor, inténtelo de nuevo."
+    }
+  },
+  "MESSAGES": {
+    "ADD_SEASON_BEFORE_PLAYERS": "Por favor, agregue al menos una temporada antes de agregar jugadores.",
+    "NO_AWARDS": "Aún no hay premios",
+    "NO_TROPHIES": "Aún no hay trofeos",
+    "NO_MATCHES_VS_OPPONENT": "No se encontraron partidos contra este oponente.",
+    "NO_MATCHES": "No se han jugado partidos",
+    "NO_SEASON_RECORDS": "No hay récords de temporada",
+    "NO_MATCHES_WITH_GOALS": "Aún no hay partidos con goles",
+    "NO_STATS": "Aún no hay estadísticas",
+    "NO_MATCHES_PLAYED_YET": "Aún no se han jugado partidos"
+  },
+  "YEARS": "años",
+  "MOST": "Más"
+}

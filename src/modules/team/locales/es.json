@@ -5,6 +5,14 @@
     "EDIT_TEAM": "Editar Equipo",
     "EDIT_TEAM_BADGE": "Editar Insignia del Equipo"
   },
+  "LINKS": {
+    "ADD_MATCH": "Agregar Partido",
+    "ADD_SEASON": "Agregar Temporada",
+    "ADD_PLAYER": "Agregar Jugador",
+    "EDIT_TEAM": "Editar Equipo",
+    "EDIT_TEAM_BADGE": "Editar Insignia del Equipo",
+    "ADD_TROPHY": "Agregar Trofeo"
+  },
   "TABS": {
     "OVERVIEW": "Resumen",
     "PLAYERS": "Jugadores",

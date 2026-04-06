@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
 import { CustomTable } from '../../../../../components/tables';
 import { TApolloError } from '../../../../../types/apollo';
-import { T_FETCH_PLAYER_STREAKS } from '../../../types';
+import { T_FETCH_PLAYER_STREAKS } from '../../../graphql';
 import { columns, rows } from './';
 
 interface Props {
@@ -11,14 +12,15 @@ interface Props {
 }
 
 export default function PlayerGameStreaksView({ data, loading, error }: Props) {
+  const { t } = useTranslation('players');
   const renderContent = () => {
     if (data?.streaks && !data.streaks.playedStreak.length) {
-      return <NoDataText>No matches played yet</NoDataText>;
+      return <NoDataText>{t('MESSAGES.NO_MATCHES_PLAYED_YET')}</NoDataText>;
     }
     return (
       <CustomTable
-        columns={columns}
-        rows={rows(data?.streaks)}
+        columns={columns(t)}
+        rows={rows(t, data?.streaks)}
         isSortable={false}
         loading={loading}
         loadingRowCount={4}
@@ -26,7 +28,7 @@ export default function PlayerGameStreaksView({ data, loading, error }: Props) {
     );
   };
   return (
-    <SectionContainer title="Streaks">
+    <SectionContainer title={t('SECTIONS.STREAKS')}>
       {error ? <DataError error={error} /> : renderContent()}
     </SectionContainer>
   );

@@ -1,5 +1,5 @@
 import { IMatchesStatsTable } from '../../../../components';
-import { T_FETCH_PLAYER_MATCHES_BY_OPPONENT } from '../../types';
+import { T_FETCH_PLAYER_MATCHES_BY_OPPONENT } from '../../graphql';
 
 export const mapMatchesToMatchStats = (
   matches: T_FETCH_PLAYER_MATCHES_BY_OPPONENT['matches']

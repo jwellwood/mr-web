@@ -1,12 +1,14 @@
+import type { TFunction } from 'i18next';
 import type { ReactNode } from 'react';
 import { PresentationModal } from '../../../../../components/modals';
 import { CustomTypography } from '../../../../../components/typography';
-import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
+import { T_FETCH_SQUAD_RECORDS_QUERY } from '../../../graphql';
 import RecordPlayers from '../../squad-records/RecordPlayers';
 import TopSquadRecordsTable from '../../squad-records/top-squad-records/TopSquadRecordsTable';
 
 export const rows = (
-  data?: FETCH_SQUAD_RECORDS_QUERY
+  t: TFunction,
+  data?: T_FETCH_SQUAD_RECORDS_QUERY
 ): { label: string; value: ReactNode; names: ReactNode; more: ReactNode }[] => {
   const { apps, goals, assists, mvp } = data?.stats || {
     apps: [{ value: 0, names: [] }],
@@ -18,25 +20,25 @@ export const rows = (
   const tableData = [
     {
       type: 'apps',
-      label: 'Most Apps',
+      label: t('RECORDS.MOST_APPS'),
       names: apps ? apps[0]?.names : [],
       value: apps ? apps[0]?.value : 0,
     },
     {
       type: 'goals',
-      label: 'Most Goals',
+      label: t('RECORDS.MOST_GOALS'),
       names: goals ? goals[0]?.names : [],
       value: goals ? goals[0]?.value : 0,
     },
     {
       type: 'assists',
-      label: 'Most Assists',
+      label: t('RECORDS.MOST_ASSISTS'),
       names: assists ? assists[0]?.names : [],
       value: assists ? assists[0]?.value : 0,
     },
     {
       type: 'mvp',
-      label: 'Most MVPs',
+      label: t('RECORDS.MOST_MVP'),
       names: mvp ? mvp[0]?.names : [],
       value: mvp ? mvp[0]?.value : 0,
     },

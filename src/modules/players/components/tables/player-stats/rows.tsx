@@ -1,8 +1,9 @@
+import type { TFunction } from 'i18next';
 import { STAT_ICONS, StatIcon } from '../../../../../components/icons';
 import { getAvg, getPercentage } from '../../../../../utils';
-import { T_FETCH_PLAYER_STATS } from '../../../types';
+import { T_FETCH_PLAYER_STATS } from '../../../graphql';
 
-export const rows = (stats?: T_FETCH_PLAYER_STATS['player']) => {
+export const rows = (t: TFunction, stats?: T_FETCH_PLAYER_STATS['player']) => {
   const {
     apps,
     goals,
@@ -33,67 +34,67 @@ export const rows = (stats?: T_FETCH_PLAYER_STATS['player']) => {
   return [
     {
       icon: <StatIcon icon={STAT_ICONS.GOAL} />,
-      label: 'Goals',
+      label: t('TABLES.ROWS.GOALS'),
       value: goals,
       average: getAvg(goals || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.ASSIST} />,
-      label: 'Assists',
+      label: t('TABLES.ROWS.ASSISTS'),
       value: assists,
       average: getAvg(assists || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.MVP} />,
-      label: 'MVP',
+      label: t('TABLES.ROWS.MVP'),
       value: mvp,
       average: getAvg(mvp || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.PEN_SCORED} />,
-      label: 'Pens Scored',
+      label: t('TABLES.ROWS.PENS_SCORED'),
       value: pensScored,
       average: (getPercentage(pensScored || 0, (pensScored || 0) + (pensMissed || 0)) || 0) + '%',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.PEN_MISSED} />,
-      label: 'Pens Missed',
+      label: t('TABLES.ROWS.PENS_MISSED'),
       value: pensMissed,
       average: (getPercentage(pensMissed || 0, (pensScored || 0) + (pensMissed || 0)) || 0) + '%',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.OWN_GOAL} />,
-      label: 'Own Goals',
+      label: t('TABLES.ROWS.OWN_GOALS'),
       value: ownGoals,
       average: getAvg(ownGoals || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.CONCEDED} />,
-      label: 'Conceded',
+      label: t('TABLES.ROWS.CONCEDED'),
       value: conceded,
       average: getAvg(conceded || 0, apps || 0) || 0,
     },
     {
       icon: <StatIcon icon={STAT_ICONS.PEN_SAVED} />,
-      label: 'Penalties Saved',
+      label: t('TABLES.ROWS.PENS_SAVED'),
       value: pensSaved,
       average: '',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.CLEAN_SHEET} />,
-      label: 'Clean Sheets',
+      label: t('TABLES.ROWS.CLEAN_SHEETS'),
       value: cleanSheet,
       average: '',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.YELLOW_CARD} />,
-      label: 'Yellow Cards',
+      label: t('TABLES.ROWS.YELLOW_CARDS'),
       value: yellowCards,
       average: '',
     },
     {
       icon: <StatIcon icon={STAT_ICONS.RED_CARD} />,
-      label: 'Red Cards',
+      label: t('TABLES.ROWS.RED_CARDS'),
       value: redCard,
       average: '',
     },

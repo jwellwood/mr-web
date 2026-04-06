@@ -1,19 +1,21 @@
-import countryList from 'react-select-country-list';
+import { useTranslation } from 'react-i18next';
 import { CustomAccordion } from '../../../../components/accordion';
 import { FlagIcon } from '../../../../components/icons';
 import { TextList } from '../../../../components/lists';
 import { PresentationModal } from '../../../../components/modals';
 import { CustomTypography } from '../../../../components/typography';
-import { FETCH_SQUAD_STATS_QUERY } from '../../types';
+import { useNationality } from '../../../../hooks/useNationality';
+import { T_FETCH_SQUAD_STATS_QUERY } from '../../graphql';
 import { groupNationalities } from '../../utils';
 
 interface Props {
-  players?: FETCH_SQUAD_STATS_QUERY['stats'];
+  players?: T_FETCH_SQUAD_STATS_QUERY['stats'];
   title: string;
 }
 
 export default function ByNationality({ players, title }: Props) {
-  const countryName = (code: string) => (code ? countryList().getLabel(code) : null);
+  const { t } = useTranslation('squad');
+  const { getCountryName } = useNationality();
 
   const playersByNationality = (item: { key: string; players: typeof players }) => {
     const listData = item?.players?.map(player => ({ label: player.name }));
@@ -24,7 +26,7 @@ export default function ByNationality({ players, title }: Props) {
         isExpanded={false}
         title={
           <CustomTypography color="data" bold>
-            <FlagIcon nationality={item.key} /> {countryName(item.key)}
+            <FlagIcon nationality={item.key} /> {getCountryName(item.key)}
             <div style={{ display: 'inline-flex', marginLeft: '8px' }}>
               <CustomTypography color="label" bold size="xs">
                 ( {listData?.length} )
@@ -40,7 +42,7 @@ export default function ByNationality({ players, title }: Props) {
 
   return (
     <PresentationModal
-      title="Nationalities"
+      title={t('HEADERS.NATIONALITIES')}
       buttonElement={
         <CustomTypography color="primary" size="sm" bold>
           {title}

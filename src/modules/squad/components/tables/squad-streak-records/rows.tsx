@@ -1,10 +1,11 @@
+import type { TFunction } from 'i18next';
 import { PresentationModal } from '../../../../../components/modals';
 import { CustomTypography } from '../../../../../components/typography';
 import RecordPlayers from '../../../components/squad-records/RecordPlayers';
 import SquadTopStreaks from '../../../containers/SquadTopStreaks';
-import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../types';
+import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../graphql';
 
-export const rows = (data?: T_FETCH_SQUAD_STREAKS_QUERY['streaks']) => {
+export const rows = (t: TFunction, data?: T_FETCH_SQUAD_STREAKS_QUERY['streaks']) => {
   const { played, goals, assists, combined } = data || {
     goals: { value: 0, players: [] },
     assists: { value: 0, players: [] },
@@ -14,22 +15,26 @@ export const rows = (data?: T_FETCH_SQUAD_STREAKS_QUERY['streaks']) => {
   const tableData = data
     ? [
         {
-          label: 'Played',
+          type: 'played',
+          label: t('STREAKS.PLAYED'),
           value: played?.value,
           playerNames: played?.players.map(p => ({ name: p.playerName, id: p.playerId })),
         },
         {
-          label: 'Goals',
+          type: 'goals',
+          label: t('STREAKS.GOALS'),
           value: goals?.value,
           playerNames: goals?.players.map(p => ({ name: p.playerName, id: p.playerId })),
         },
         {
-          label: 'Assists',
+          type: 'assists',
+          label: t('STREAKS.ASSISTS'),
           value: assists?.value,
           playerNames: assists?.players.map(p => ({ name: p.playerName, id: p.playerId })),
         },
         {
-          label: 'Combined',
+          type: 'combined',
+          label: t('STREAKS.COMBINED'),
           value: combined?.value,
           playerNames: combined?.players.map(p => ({ name: p.playerName, id: p.playerId })),
         },
@@ -43,14 +48,14 @@ export const rows = (data?: T_FETCH_SQUAD_STREAKS_QUERY['streaks']) => {
       players: <RecordPlayers names={item.playerNames || []} />,
       more: (
         <PresentationModal
-          title={`Top 10 - ${item.label} Streaks`}
+          title={t('STREAKS.TOP_10_TITLE', { label: item.label })}
           buttonElement={
             <CustomTypography bold size="xs" color="primary">
               Top 10
             </CustomTypography>
           }
         >
-          <SquadTopStreaks streakType={item.label.toLowerCase()} />
+          <SquadTopStreaks streakType={item.type} />
         </PresentationModal>
       ),
     };

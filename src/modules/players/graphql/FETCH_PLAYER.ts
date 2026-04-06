@@ -20,6 +20,7 @@ export const FETCH_PLAYER = gql`
       }
       image {
         url
+        public_id
       }
     }
   }

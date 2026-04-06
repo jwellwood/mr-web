@@ -1,7 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import { DataError, NoDataText, SectionContainer } from '../../../../../components';
 import CustomTable from '../../../../../components/tables/custom-table/CustomTable';
 import { TApolloError } from '../../../../../types/apollo';
-import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../types';
+import { T_FETCH_SQUAD_STREAKS_QUERY } from '../../../graphql';
 import { columns, rows } from '../../tables/squad-streak-records';
 
 interface Props {
@@ -11,13 +12,15 @@ interface Props {
 }
 
 export default function SquadStreakRecordsView({ data, loading, error }: Props) {
+  const { t } = useTranslation('squad');
+
   const renderContent = () => {
     return data && !data.streaks.played.value ? (
-      <NoDataText>No records yet</NoDataText>
+      <NoDataText>{t('NO_DATA.RECORDS')}</NoDataText>
     ) : (
       <CustomTable
         columns={columns}
-        rows={rows(data?.streaks)}
+        rows={rows(t, data?.streaks)}
         isSortable
         sortByString="played"
         loading={loading}
@@ -27,7 +30,7 @@ export default function SquadStreakRecordsView({ data, loading, error }: Props) 
   };
 
   return (
-    <SectionContainer title="Streaks">
+    <SectionContainer title={t('SECTION_TITLES.STREAKS')}>
       {error ? <DataError error={error} /> : renderContent()}
     </SectionContainer>
   );

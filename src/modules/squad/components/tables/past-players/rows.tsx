@@ -1,7 +1,7 @@
 import { IMAGE_TYPE } from '../../../../../constants';
-import { FETCH_PAST_PLAYERS_QUERY } from '../../../types';
+import { T_FETCH_PAST_PLAYERS_QUERY } from '../../../graphql';
 
-export const rows = (data?: FETCH_PAST_PLAYERS_QUERY) => {
+export const rows = (data?: T_FETCH_PAST_PLAYERS_QUERY) => {
   const defaultData = { players: [] };
   return (data ?? defaultData).players.map(player => ({
     position: player.position,

@@ -4,7 +4,7 @@ import { PresentationModal } from '../../../../../components/modals';
 import { IMAGE_TYPE } from '../../../../../constants';
 import { getAvg, getPercentage } from '../../../../../utils';
 import PlayerMatchesByOpponent from '../../../containers/PlayerMatchesByOpponent';
-import { T_FETCH_PLAYER_OPPONENT_STATS } from '../../../types';
+import { T_FETCH_PLAYER_OPPONENT_STATS } from '../../../graphql';
 
 export const rows = (
   stats?: T_FETCH_PLAYER_OPPONENT_STATS['stats'],

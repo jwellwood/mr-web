@@ -1,6 +1,6 @@
 import { IMatchesAveragesStats } from '../../../components';
 import { getAvg } from '../../../utils';
-import { T_FETCH_PLAYER_STATS } from '../types';
+import { T_FETCH_PLAYER_STATS } from '../graphql';
 
 export const mapPlayerAverages = (
   player?: T_FETCH_PLAYER_STATS['player']

@@ -1,6 +1,6 @@
 import { CustomTypography } from '../../../components';
 import { APP_ICONS, AppIcon, AppIconType } from '../../../components/icons';
-import { RESULT_STATUS, ResultStatusType } from '../types';
+import { RESULT_STATUS, ResultStatusType } from '../constants';
 
 interface Props {
   resultStatus?: ResultStatusType | null;

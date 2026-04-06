@@ -1,6 +1,6 @@
 import { CustomTypography } from '../../../../components';
+import { ResultStatusType } from '../../constants';
 import { T_FETCH_RESULTS } from '../../graphql';
-import { ResultStatusType } from '../../types';
 import ResultStatus from '../ResultStatus';
 
 export const rows = (results: T_FETCH_RESULTS['results'], orgId: string, orgSeasonId: string) => {

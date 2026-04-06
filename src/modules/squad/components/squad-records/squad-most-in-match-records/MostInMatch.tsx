@@ -2,14 +2,14 @@ import { LinksList, type IListItem } from '../../../../../components/lists';
 import { CustomTypography } from '../../../../../components/typography';
 import { parseDate } from '../../../../../utils';
 import {
-  FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY,
-  FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY,
-} from '../../../types';
+  T_FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY,
+  T_FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY,
+} from '../../../graphql';
 
 interface Props {
   data?:
-    | FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY['stats']
-    | FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY['stats'];
+    | T_FETCH_SQUAD_RECORD_GOALS_IN_MATCH_QUERY['stats']
+    | T_FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH_QUERY['stats'];
   loading: boolean;
 }
 

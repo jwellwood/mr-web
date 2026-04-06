@@ -3,9 +3,9 @@ import Container from '@mui/material/Container';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TApolloError } from '../../../types/apollo';
-import { CustomButton } from '../../buttons';
 import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
+import { APP_ICONS, AppIcon } from '../../icons';
 import { Spinner } from '../../loaders';
 import SubmitButton from '../submit-button/SubmitButton';
 
@@ -86,10 +86,15 @@ export default function FormContainer({
             }}
           >
             {onReset && (
-              <CustomButton onClick={handleReset} color="warning" variant="text">
-                {t('BUTTONS.RESET')}
-              </CustomButton>
+              <AppIcon
+                icon={APP_ICONS.RESET}
+                color="warning"
+                onClick={handleReset}
+                size="24px"
+                data-testid="reset-icon"
+              />
             )}
+
             <SubmitButton
               disabled={submitBtn?.disabled}
               loading={loading}

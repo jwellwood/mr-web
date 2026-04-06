@@ -1,9 +1,10 @@
+import type { TFunction } from 'i18next';
 import PlayerMatchesWithMostAssists from '../../../containers/PlayerMatchesWithMostAssists';
 import PlayerMatchesWithMostCombined from '../../../containers/PlayerMatchesWithMostCombined';
 import PlayerMatchesWithMostGoals from '../../../containers/PlayerMatchesWithMostGoals';
-import { T_FETCH_PLAYER_MATCH_RECORDS } from '../../../types';
+import { T_FETCH_PLAYER_MATCH_RECORDS } from '../../../graphql';
 
-export const rows = (stats?: T_FETCH_PLAYER_MATCH_RECORDS['stats']) => {
+export const rows = (t: TFunction, stats?: T_FETCH_PLAYER_MATCH_RECORDS['stats']) => {
   const { maxGoals, maxAssists, maxCombined } = stats || {
     maxGoals: 0,
     maxAssists: 0,
@@ -12,17 +13,17 @@ export const rows = (stats?: T_FETCH_PLAYER_MATCH_RECORDS['stats']) => {
 
   const data = [
     {
-      label: 'Goals',
+      label: t('TABLES.ROWS.GOALS'),
       value: maxGoals,
       component: <PlayerMatchesWithMostGoals record={maxGoals} />,
     },
     {
-      label: 'Assists',
+      label: t('TABLES.ROWS.ASSISTS'),
       value: maxAssists,
       component: <PlayerMatchesWithMostAssists record={maxAssists} />,
     },
     {
-      label: 'Combined',
+      label: t('TABLES.ROWS.COMBINED'),
       value: maxCombined,
       component: <PlayerMatchesWithMostCombined record={maxCombined} />,
     },

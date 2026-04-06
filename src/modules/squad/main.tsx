@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CustomTabs, ITab } from '../../components/tabs';
 import { TAB_TYPES } from '../../constants';
 
@@ -12,12 +13,13 @@ const PastPlayers = lazy(() => import('./containers/PastPlayers'));
 const SquadStreaksRecords = lazy(() => import('./containers/SquadStreaks'));
 
 export default function SquadTabs() {
+  const { t } = useTranslation('squad');
   const tabs: ITab[] = [
-    { label: 'Squad', component: <Squad /> },
-    { label: 'Stats', component: <SquadStats /> },
-    { label: 'Past Players', component: <PastPlayers /> },
+    { label: t('TABS.SQUAD'), component: <Squad /> },
+    { label: t('TABS.STATS'), component: <SquadStats /> },
+    { label: t('TABS.PAST_PLAYERS'), component: <PastPlayers /> },
     {
-      label: 'Records',
+      label: t('TABS.RECORDS'),
       component: (
         <>
           <SquadRecords />

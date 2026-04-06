@@ -4,7 +4,7 @@ import { authStorage } from '../../utils/dev/storage';
 
 const gqlUrl = import.meta.env.PROD
   ? import.meta.env.VITE_GRAPHQL_URL ||
-    'https://madrid-reds-1035582858411.northamerica-northeast2.run.app/graphql'
+    'https://madrid-reds-1035582858411.northamerica-northeast2.run.app/graphql' // Backend URL for production
   : 'http://localhost:3002/graphql';
 
 const authLink = setContext((_, { headers }) => {

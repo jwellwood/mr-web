@@ -1,21 +1,22 @@
-import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../types';
+import type { TFunction } from 'i18next';
+import { T_FETCH_PLAYER_SEASONS_SUMMARY } from '../../../graphql';
 
-export const rows = (data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons']) => {
+export const rows = (t: TFunction, data?: T_FETCH_PLAYER_SEASONS_SUMMARY['seasons']) => {
   const maxGoals = Math.max(...(data?.map(season => season.goals) || [0]));
   const maxAssists = Math.max(...(data?.map(season => season.assists) || [0]));
   const maxCombined = Math.max(...(data?.map(season => season.goals + season.assists) || [0]));
 
   const rowData = [
     {
-      label: 'Goals',
+      label: t('TABLES.ROWS.GOALS'),
       value: maxGoals,
     },
     {
-      label: 'Assists',
+      label: t('TABLES.ROWS.ASSISTS'),
       value: maxAssists,
     },
     {
-      label: 'Combined',
+      label: t('TABLES.ROWS.COMBINED'),
       value: maxCombined,
     },
   ];

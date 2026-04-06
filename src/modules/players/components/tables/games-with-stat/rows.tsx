@@ -1,7 +1,8 @@
+import type { TFunction } from 'i18next';
 import { getPercentage } from '../../../../../utils';
-import { T_FETCH_PLAYER_STATS } from '../../../types';
+import { T_FETCH_PLAYER_STATS } from '../../../graphql';
 
-export const rows = (data?: T_FETCH_PLAYER_STATS['player']) => {
+export const rows = (t: TFunction, data?: T_FETCH_PLAYER_STATS['player']) => {
   const { apps, gamesWithGoal, gamesWithAssist, gamesWithGoalAndAssist, gamesWithGoalOrAssist } =
     data || {
       apps: 0,
@@ -12,22 +13,22 @@ export const rows = (data?: T_FETCH_PLAYER_STATS['player']) => {
     };
   return [
     {
-      label: 'Goal in',
+      label: t('TABLES.ROWS.GOAL_IN'),
       value: gamesWithGoal,
       average: getPercentage(gamesWithGoal || 0, apps || 0, 1),
     },
     {
-      label: 'Assist in',
+      label: t('TABLES.ROWS.ASSIST_IN'),
       value: gamesWithAssist,
       average: getPercentage(gamesWithAssist || 0, apps || 0, 1),
     },
     {
-      label: 'Goal and Assist in',
+      label: t('TABLES.ROWS.GOAL_AND_ASSIST_IN'),
       value: gamesWithGoalAndAssist,
       average: getPercentage(gamesWithGoalAndAssist || 0, apps || 0, 1),
     },
     {
-      label: 'Goal or Assist in',
+      label: t('TABLES.ROWS.GOAL_OR_ASSIST_IN'),
       value: gamesWithGoalOrAssist,
       average: getPercentage(gamesWithGoalOrAssist || 0, apps || 0, 1),
     },

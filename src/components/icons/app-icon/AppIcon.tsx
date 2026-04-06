@@ -7,6 +7,7 @@ import {
   BiArrowBack,
   BiTrashAlt,
   BiFlag,
+  BiReset,
 } from 'react-icons/bi';
 import { BsShieldShaded, BsFilter, BsQuestion, BsCheck, BsCheckAll } from 'react-icons/bs';
 import { FaUserCircle } from 'react-icons/fa';
@@ -25,6 +26,7 @@ interface Props {
   size?: string;
   color?: string;
   onClick?: () => void;
+  'data-testid'?: string;
 }
 
 // Icon mapping - cleaner and more maintainable
@@ -57,6 +59,7 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.COPY]: TbCopy,
   [APP_ICONS.COPIED]: TbCopyCheck,
   [APP_ICONS.FLAG]: BiFlag,
+  [APP_ICONS.RESET]: BiReset,
 };
 
 export default function AppIcon({
@@ -64,6 +67,7 @@ export default function AppIcon({
   size = '1rem',
   color = theme.palette.primary.main,
   onClick,
+  'data-testid': dataTestId,
 }: Props) {
   const IconComponent = ICON_MAP[icon];
   const iconColor = getIconColor(color);
@@ -75,6 +79,7 @@ export default function AppIcon({
 
   return (
     <span
+      data-testid={dataTestId}
       style={{
         display: 'inline-flex',
         alignItems: 'center',

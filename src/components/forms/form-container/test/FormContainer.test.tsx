@@ -75,7 +75,7 @@ describe('FormContainer', () => {
         <FormContainer {...defaultProps} onReset={onReset} />
       </TestWrapper>
     );
-    expect(screen.getByRole('button', { name: /reset/i })).toBeInTheDocument();
+    expect(screen.getByTestId('reset-icon')).toBeInTheDocument();
   });
 
   it('does not render reset button when onReset is not provided', () => {
@@ -84,7 +84,7 @@ describe('FormContainer', () => {
         <FormContainer {...defaultProps} />
       </TestWrapper>
     );
-    expect(screen.queryByRole('button', { name: /reset/i })).not.toBeInTheDocument();
+    expect(screen.queryByTestId('reset-icon')).not.toBeInTheDocument();
   });
 
   it('displays error message when error is provided', () => {

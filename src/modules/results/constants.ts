@@ -2,6 +2,15 @@ import type { ISelectOptions } from '../../components';
 import { LINK_TYPE } from '../../constants';
 import { ORG_PATHS } from '../organization/router';
 
+export const RESULT_STATUS = {
+  PENDING: 'PENDING',
+  SUBMITTED: 'SUBMITTED',
+  CONFIRMED: 'CONFIRMED',
+  DISPUTED: 'DISPUTED',
+} as const;
+
+export type ResultStatusType = (typeof RESULT_STATUS)[keyof typeof RESULT_STATUS];
+
 export const PAGES = {
   RESULT: 'Result',
   ADD_RESULT: 'Add Result',

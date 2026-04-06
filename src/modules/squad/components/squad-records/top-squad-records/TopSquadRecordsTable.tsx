@@ -1,8 +1,8 @@
 import { CustomTable } from '../../../../../components/tables';
-import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
+import { T_FETCH_SQUAD_RECORDS_QUERY } from '../../../graphql';
 import { columns, rows } from '../../tables/squad-top-records';
 
-type StatsObj = NonNullable<FETCH_SQUAD_RECORDS_QUERY['stats']>;
+type StatsObj = NonNullable<T_FETCH_SQUAD_RECORDS_QUERY['stats']>;
 type StatArray = NonNullable<StatsObj[keyof StatsObj]>;
 
 interface Props {

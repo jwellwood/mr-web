@@ -1,4 +1,4 @@
-import { T_FETCH_TOP_PLAYER_STREAKS_QUERY } from '../../../types';
+import { T_FETCH_TOP_PLAYER_STREAKS_QUERY } from '../../../graphql';
 
 export const rows = (streakType: string, data?: T_FETCH_TOP_PLAYER_STREAKS_QUERY['streaks']) => {
   const streakData = data || [];

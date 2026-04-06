@@ -5,7 +5,7 @@ import { LinksList, type IListItem } from '../../../../components/lists';
 import { CustomTypography } from '../../../../components/typography';
 import { useCustomParams } from '../../../../hooks';
 import { parseDate } from '../../../../utils';
-import type { T_PLAYER_MATCH_WITH_RECORD } from '../../types';
+import type { T_PLAYER_MATCH_WITH_RECORD } from '../../graphql';
 
 type PlayerMatchRecordVars = {
   teamId: string;

@@ -1,7 +1,7 @@
 import { IMAGE_TYPE } from '../../../../../constants';
-import { FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../../types';
+import { T_FETCH_SQUAD_LIST_BY_SEASON_QUERY } from '../../../graphql';
 
-export const rows = (data?: FETCH_SQUAD_LIST_BY_SEASON_QUERY['players'], loading?: boolean) => {
+export const rows = (data?: T_FETCH_SQUAD_LIST_BY_SEASON_QUERY['players'], loading?: boolean) => {
   const arr = new Array(15).fill({});
   const mappedPlayers = loading ? arr : data;
 

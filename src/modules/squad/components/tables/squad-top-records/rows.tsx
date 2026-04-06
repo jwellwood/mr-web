@@ -1,7 +1,7 @@
 import RecordPlayers from '../../../components/squad-records/RecordPlayers';
-import { FETCH_SQUAD_RECORDS_QUERY } from '../../../types';
+import { T_FETCH_SQUAD_RECORDS_QUERY } from '../../../graphql';
 
-type StatsObj = NonNullable<FETCH_SQUAD_RECORDS_QUERY['stats']>;
+type StatsObj = NonNullable<T_FETCH_SQUAD_RECORDS_QUERY['stats']>;
 type StatArray = NonNullable<StatsObj[keyof StatsObj]>;
 
 export const rows = (stats?: StatArray | null) => {

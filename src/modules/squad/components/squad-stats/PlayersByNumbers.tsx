@@ -1,17 +1,19 @@
+import { useTranslation } from 'react-i18next';
 import { SectionContainer } from '../../../../components/containers';
 import { TextList, type IListItem } from '../../../../components/lists';
 import { getAverageAge } from '../../../../utils';
-import { FETCH_SQUAD_STATS_QUERY } from '../../types';
+import { T_FETCH_SQUAD_STATS_QUERY } from '../../graphql';
 import ByNationality from './ByNationality';
 
 interface Props {
-  players?: FETCH_SQUAD_STATS_QUERY['stats'];
+  players?: T_FETCH_SQUAD_STATS_QUERY['stats'];
   loading: boolean;
   season?: string;
   showAge?: boolean;
 }
 
 export default function PlayersByNumbers({ players, loading, season, showAge }: Props) {
+  const { t } = useTranslation('squad');
   const numberOfPlayers = players?.length ?? 0;
   const nationalitySet = new Set(
     (players ?? [])
@@ -31,12 +33,12 @@ export default function PlayersByNumbers({ players, loading, season, showAge }: 
   const avgAgeDisplay = Number.isFinite(averageAge) ? averageAge.toFixed(1) : '—';
 
   const data: IListItem[] = [
-    { label: 'Players', value: numberOfPlayers },
+    { label: t('STATS.PLAYERS'), value: numberOfPlayers },
     {
-      label: 'Nationalities',
+      label: t('STATS.NATIONALITIES'),
       value: <ByNationality players={players} title={nationalitiesCount.toString()} />,
     },
-    { label: 'Average Age', value: avgAgeDisplay, hidden: !showAge },
+    { label: t('STATS.AVERAGE_AGE'), value: avgAgeDisplay, hidden: !showAge },
   ].filter(elem => !elem.hidden) as IListItem[];
   return (
     <SectionContainer>

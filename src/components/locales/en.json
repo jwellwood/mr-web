@@ -1,7 +1,10 @@
 {
   "ERRORS": {},
   "PAGES": {
-    "NOT_FOUND": "Page not found"
+    "NOT_FOUND": {
+      "TITLE": "Page not found",
+      "MESSAGE": "The page you are looking for does not exist or has been moved."
+    }
   },
   "MENU": {
     "HOME": "Home",
@@ -39,5 +42,28 @@
   },
   "LOADERS": {
     "AUTH": "Checking authentication"
+  },
+  "MATCH_TABLES": {
+    "WIN_PERCENTAGE": "Win %",
+    "DRAW_PERCENTAGE": "Draw %",
+    "DEFEAT_PERCENTAGE": "Defeat %",
+    "GOALS_FOR_AVG": "Av. Goals",
+    "GOALS_AGAINST_AVG": "Av. Conc",
+    "GOALS_DIFFERENCE": "+/-",
+    "WINS": "Wins",
+    "DRAWS": "Draws",
+    "DEFEATS": "Defeats",
+    "FORFEIT": "F",
+    "HOME": "(H)",
+    "AWAY": "(A)",
+    "HEADERS": {
+      "PLAYED": "Pl",
+      "WINS": "W",
+      "DRAWS": "D",
+      "DEFEATS": "L",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GA",
+      "DIFFERENCE": "+/-"
+    }
   }
 }

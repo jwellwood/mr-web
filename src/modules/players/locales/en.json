@@ -1,0 +1,138 @@
+{
+  "PAGES": {
+    "PLAYER": "Players",
+    "ADD_PLAYER": "Add Player",
+    "EDIT_PLAYER": "Edit Player",
+    "EDIT_PLAYER_PHOTO": "Edit Player Photo"
+  },
+  "LINKS": {
+    "EDIT_PLAYER": "Edit Player",
+    "EDIT_PLAYER_PHOTO": "Edit Player Photo"
+  },
+  "SECTIONS": {
+    "SQUAD": "Squad",
+    "TROPHIES": "Trophies",
+    "AWARDS": "Awards",
+    "WINNER": "Winner",
+    "RUNNER_UP": "Runner-up",
+    "SEASONS": "Seasons",
+    "SINGLE_SEASON_RECORDS": "Single Season Records",
+    "RECORDS": "Records",
+    "STATS": "Stats",
+    "GAMES_WITH_STATS": "Games with stats",
+    "GOALS": "Goals",
+    "ASSISTS": "Assists",
+    "COMBINED": "Combined",
+    "STREAKS": "Streaks"
+  },
+  "FILTERS": {
+    "TITLE": "Filters",
+    "APPLY": "Apply",
+    "ALL_SEASONS": "All seasons",
+    "ALL_COMPETITIONS": "All competitions",
+    "SHOW_ALL_TEAMS": "Show all teams",
+    "SHOW_ALL_OPPONENTS": "Show all opponents",
+    "SHOW_ACTIVE_TEAMS": "Show active teams",
+    "SHOW_AVERAGES": "Show averages",
+    "SHOW_BASIC_STATS": "Show basic stats",
+    "LABELS": {
+      "SEASON": "Season",
+      "COMPETITION": "Competition"
+    }
+  },
+  "TABS": {
+    "STATS": "Stats",
+    "RECORDS": "Records",
+    "OPPONENTS": "Opponents",
+    "HONORS": "Honors"
+  },
+  "FORMS": {
+    "LABELS": {
+      "NAME": "Name",
+      "NATIONALITY": "Nationality",
+      "DATE_OF_BIRTH": "Date of Birth",
+      "YEAR_JOINED": "Year Joined",
+      "SQUAD_NUMBER": "Squad Number",
+      "SEASONS": "Seasons",
+      "IS_CAPTAIN": "Is Captain",
+      "IS_VICE_CAPTAIN": "Is Vice Captain",
+      "IS_HALL_OF_FAME": "Is Hall of Fame",
+      "DESCRIPTION": "Description",
+      "POSITION": "Position"
+    }
+  },
+  "TABLES": {
+    "HEADERS": {
+      "PLAYED": "Pl",
+      "GOALS": "Gs",
+      "ASSISTS": "As",
+      "COMBINED": "G+A",
+      "WINS": "W",
+      "DRAWS": "D",
+      "LOSSES": "L",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GA",
+      "DIFFERENCE": "+/-",
+      "CONCEDED": "Cn",
+      "CURRENT": "Current",
+      "LONGEST": "Longest",
+      "FROM": "From",
+      "TO": "To",
+      "PERCENT": "%",
+      "AVERAGE": "Av"
+    },
+    "ROWS": {
+      "GOALS": "Goals",
+      "ASSISTS": "Assists",
+      "COMBINED": "Combined",
+      "MVP": "MVP",
+      "PENS_SCORED": "Pens Scored",
+      "PENS_MISSED": "Pens Missed",
+      "OWN_GOALS": "Own Goals",
+      "CONCEDED": "Conceded",
+      "PENS_SAVED": "Penalties Saved",
+      "CLEAN_SHEETS": "Clean Sheets",
+      "YELLOW_CARDS": "Yellow Cards",
+      "RED_CARDS": "Red Cards",
+      "PLAYED": "Played",
+      "GOAL_IN": "Goal in",
+      "ASSIST_IN": "Assist in",
+      "GOAL_AND_ASSIST_IN": "Goal and Assist in",
+      "GOAL_OR_ASSIST_IN": "Goal or Assist in"
+    },
+    "BUTTONS": {
+      "SEASONS": "Seasons",
+      "MATCHES": "Matches"
+    }
+  },
+  "ALERTS": {
+    "ADD_PLAYER": {
+      "SUCCESS": "Player added successfully",
+      "ERROR": "Failed to add player. Please try again."
+    },
+    "EDIT_PLAYER": {
+      "SUCCESS": "Player updated successfully",
+      "ERROR": "Failed to update player. Please try again."
+    },
+    "EDIT_PLAYER_PHOTO": {
+      "SUCCESS": "Player photo updated successfully",
+      "ERROR": "Failed to update player photo. Please try again."
+    },
+    "DELETE_PLAYER": {
+      "SUCCESS": "Player deleted successfully",
+      "ERROR": "Failed to delete player. Please try again."
+    }
+  },
+  "MESSAGES": {
+    "ADD_SEASON_BEFORE_PLAYERS": "Please add at least one season before adding players.",
+    "NO_AWARDS": "No awards yet",
+    "NO_TROPHIES": "No trophies yet",
+    "NO_MATCHES_VS_OPPONENT": "No matches found against this opponent.",
+    "NO_MATCHES": "No matches played",
+    "NO_SEASON_RECORDS": "No season records",
+    "NO_MATCHES_WITH_GOALS": "No matches with goals yet",
+    "NO_STATS": "No stats",
+    "NO_MATCHES_PLAYED_YET": "No matches played yet"
+  },
+  "YEARS": "years"
+}

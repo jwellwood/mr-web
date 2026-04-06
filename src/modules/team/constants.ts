@@ -1,30 +1,4 @@
 import type { ISelectOptions } from '../../components';
-import { LINK_TYPE } from '../../constants';
-
-export const TEAM_ADMIN_LINKS = [
-  {
-    label: 'Add Match',
-    type: LINK_TYPE.ADD,
-    link: 'add_match',
-  },
-  { label: 'Add New Season', type: LINK_TYPE.ADD, link: `add_season` },
-  {
-    label: 'Add Player',
-    type: LINK_TYPE.ADD,
-    link: `add_player`,
-  },
-  {
-    label: 'Add Trophy',
-    type: LINK_TYPE.ADD,
-    link: `add_trophy`,
-  },
-  { label: 'Edit Team', type: LINK_TYPE.EDIT, link: `edit` },
-  {
-    label: 'Edit Badge',
-    type: LINK_TYPE.EDIT,
-    link: `edit_badge`,
-  },
-];
 
 export const surfaceOptions = [
   { value: '', label: '' },

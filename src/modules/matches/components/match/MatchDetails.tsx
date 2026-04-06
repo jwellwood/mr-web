@@ -6,7 +6,7 @@ import { CustomTypography } from '../../../../components/typography';
 import { IMAGE_TYPE } from '../../../../constants';
 import { parseDate } from '../../../../utils';
 import { ICompetition } from '../../../organization/types';
-import { ITeam } from '../../../team/types';
+import { T_FETCH_TEAM_QUERY } from '../../../team/graphql';
 import { getPoints } from '../../helpers';
 import { T_FETCH_MATCH } from '../../types';
 import ScoreBox from './ScoreBox';
@@ -22,10 +22,10 @@ export default function MatchDetails({ match, loading }: Props) {
     opponentGoals: 0,
   };
   const matchDate = parseDate(date);
-  const team = (teamId as ITeam)?.teamName;
-  const teamBadge = (teamId as ITeam)?.teamBadge?.url || 'default';
-  const opponent = (opponentId as ITeam)?.teamName;
-  const oppBadge = (opponentId as ITeam)?.teamBadge?.url || 'default';
+  const team = (teamId as T_FETCH_TEAM_QUERY['team'])?.teamName;
+  const teamBadge = (teamId as T_FETCH_TEAM_QUERY['team'])?.teamBadge?.url || 'default';
+  const opponent = (opponentId as T_FETCH_TEAM_QUERY['team'])?.teamName;
+  const oppBadge = (opponentId as T_FETCH_TEAM_QUERY['team'])?.teamBadge?.url || 'default';
   const homeTeam = {
     name: isHome ? team : opponent,
     score: isHome ? teamGoals : opponentGoals,
