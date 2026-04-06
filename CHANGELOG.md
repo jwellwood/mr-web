@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.13.0](https://github.com/jwellwood/mr-web/compare/v0.12.0...v0.13.0) (2026-04-06)
+
+### Features
+
+* add translations for squad and player module ([3646820](https://github.com/jwellwood/mr-web/commit/364682038c8a9d7a1133f80938575a168956accb))
+
 ## [0.12.0](https://github.com/jwellwood/mr-web/compare/v0.11.0...v0.12.0) (2026-04-05)
 
 ### Features
