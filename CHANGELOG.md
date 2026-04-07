@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.14.0](https://github.com/jwellwood/mr-web/compare/v0.13.0...v0.14.0) (2026-04-07)
+
+### Features
+
+* refactor org and add translations ([37a4eb6](https://github.com/jwellwood/mr-web/commit/37a4eb6428884efadb18bf361eb0b757d5196056))
+
 ## [0.13.0](https://github.com/jwellwood/mr-web/compare/v0.12.0...v0.13.0) (2026-04-06)
 
 ### Features
