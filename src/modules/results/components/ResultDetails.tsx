@@ -3,8 +3,8 @@ import { SectionContainer } from '../../../components/containers';
 import { CustomStack } from '../../../components/grids';
 import { TextList } from '../../../components/lists';
 import { parseDate } from '../../../utils';
-import ResultAdmin from '../containers/ResultAdmin';
 import { T_FETCH_RESULT } from '../graphql';
+import ResultAdmin from './ResultAdmin';
 
 interface Props {
   result: T_FETCH_RESULT['result'];

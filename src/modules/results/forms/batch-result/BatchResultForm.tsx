@@ -12,9 +12,9 @@ import {
 import { CustomStack } from '../../../../components/grids';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
-import BatchResultConfirmation from './BatchResultConfirmation';
+import BatchResultConfirmation from '../../components/BatchResultConfirmation';
 import GameweekTeamsInput from './GameweekTeamsInput';
-import { BatchResultSchema, BatchResultFormData } from './validation';
+import { BatchResultSchema, BatchResultFormData } from './schema';
 
 export type MatchRow = {
   homeTeam: string;

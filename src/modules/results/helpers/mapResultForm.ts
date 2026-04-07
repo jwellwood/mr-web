@@ -1,4 +1,4 @@
-import { ResultFormData } from '../forms/result/validation';
+import { ResultFormData } from '../forms/result/schema';
 import { T_FETCH_RESULT } from '../graphql';
 import { Add_ResultMutationVariables } from '../graphql/ADD_RESULT.generated';
 import { Edit_ResultMutationVariables } from '../graphql/EDIT_RESULT.generated';

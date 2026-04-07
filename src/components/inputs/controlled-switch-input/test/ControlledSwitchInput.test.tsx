@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import ControlledSwitchInput from '../ControlledSwitchInput';
@@ -193,11 +193,11 @@ describe('ControlledSwitchInput', () => {
     const user = userEvent.setup();
 
     function ControlledForm() {
-      const { control, watch } = useForm<FormValues>({
+      const { control } = useForm<FormValues>({
         defaultValues: { enabled: false },
       });
 
-      const currentValue = watch('enabled');
+      const currentValue = useWatch({ control, name: 'enabled' });
 
       return (
         <div>

@@ -1,0 +1,76 @@
+{
+  "PAGES": {
+    "SEASON": "Season",
+    "ADD_SEASON": "Add Season",
+    "EDIT_SEASON": "Edit Season",
+    "SEASON_ADMIN": "Season Admin"
+  },
+  "TABS": {
+    "TABLES": "Tables",
+    "RESULTS": "Results",
+    "FIXTURES": "Fixtures",
+    "CONFIGURATION": "Configuration"
+  },
+  "LINKS": {
+    "ADD_RESULT": "Add Result",
+    "ADD_GAMEWEEK": "Add Gameweek",
+    "EDIT_SEASON": "Edit Season",
+    "SEASON_ADMIN": "Season Admin"
+  },
+  "FORM": {
+    "YEAR_STARTED": "Year Started",
+    "YEAR_ENDED": "Year Ended",
+    "IS_CURRENT": "Is current season?",
+    "TEAMS": "Teams in this season",
+    "COMPETITIONS": "Competitions in this season",
+    "COMMENT": "Comment"
+  },
+  "LIST": {
+    "NAME": "Name",
+    "START_DATE": "Start Date",
+    "END_DATE": "End Date",
+    "CURRENT_SEASON": "Current Season",
+    "NUM_TEAMS": "Number of Teams",
+    "NUM_COMPETITIONS": "Number of Competitions",
+    "YES": "Yes",
+    "NO": "No"
+  },
+  "CONFIG": {
+    "ROUNDS": "Rounds",
+    "RELEGATION": "Relegation Positions",
+    "RELEGATION_FORM": "Relegation Spots",
+    "PROMOTION": "Promotion Positions",
+    "PROMOTION_FORM": "Promotion Spots",
+    "SPLIT": "Split Table Positions",
+    "SPLIT_FORM": "Show split after position",
+    "PRIORITY": "Priority",
+    "EDIT": "Edit",
+    "SUBMIT": "Update Config"
+  },
+  "MESSAGES": {
+    "INCLUDED": "Included",
+    "NO_SEASONS": "No seasons yet."
+  },
+  "LABELS": {
+    "CURRENT": "Current",
+    "DETAILS": "Details"
+  },
+  "ALERTS": {
+    "ADD_SEASON": {
+      "SUCCESS": "Season added successfully.",
+      "ERROR": "There was an error adding the season. Please try again."
+    },
+    "EDIT_SEASON": {
+      "SUCCESS": "Season updated successfully.",
+      "ERROR": "There was an error updating the season. Please try again."
+    },
+    "DELETE_SEASON": {
+      "SUCCESS": "Season deleted successfully.",
+      "ERROR": "There was an error deleting the season. Please try again."
+    },
+    "UPDATE_COMP_CONFIG": {
+      "SUCCESS": "Configuration updated successfully.",
+      "ERROR": "There was an error updating the configuration. Please try again."
+    }
+  }
+}

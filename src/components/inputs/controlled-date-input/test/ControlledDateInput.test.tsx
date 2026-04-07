@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useForm } from 'react-hook-form';
+import '@testing-library/jest-dom';
+import { useForm, useWatch } from 'react-hook-form';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import ControlledDateInput from '../ControlledDateInput';
@@ -168,11 +169,11 @@ describe('ControlledDateInput', () => {
 
   it('updates correctly in controlled form scenario', async () => {
     function ControlledForm() {
-      const { control, watch } = useForm<FormValues>({
+      const { control } = useForm<FormValues>({
         defaultValues: { dateOfBirth: new Date('2000-01-01') },
       });
 
-      const currentDate = watch('dateOfBirth');
+      const currentDate = useWatch({ control, name: 'dateOfBirth' });
 
       return (
         <div>

@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks';
-import { FETCH_ORG_SEASON, type T_FETCH_ORG_SEASON } from '../../organization/graphql';
+import { FETCH_ORG_SEASON, T_FETCH_ORG_SEASON } from '../../seasons/graphql';
 
 export default function useCompetitionConfig() {
   const { orgSeasonId } = useCustomParams();

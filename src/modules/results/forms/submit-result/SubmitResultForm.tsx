@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   ControlledSelectInput,
   ControlledSwitchInput,
@@ -9,7 +10,7 @@ import {
 } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
-import { type SubmitResultFormData, SubmitResultSchema } from './validation';
+import { type SubmitResultFormData, SubmitResultSchema } from './schema';
 
 interface Props {
   onSubmit: (formData: SubmitResultFormData) => void;
@@ -27,6 +28,7 @@ export default function SubmitResultForm({
   awayTeamName,
 }: Props) {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation('results');
   const {
     handleSubmit,
     control,
@@ -46,9 +48,9 @@ export default function SubmitResultForm({
   return (
     <>
       <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
-        <CustomButton>Submit Result</CustomButton>
+        <CustomButton>{t('BUTTONS.SUBMIT_RESULT')}</CustomButton>
       </span>
-      <FormModal open={open} onClose={() => setOpen(false)} title="Submit Result">
+      <FormModal open={open} onClose={() => setOpen(false)} title={t('BUTTONS.SUBMIT_RESULT')}>
         <FormContainer
           onSubmit={handleSubmit(submitHandler)}
           onReset={() => reset(defaultValues)}
@@ -58,16 +60,16 @@ export default function SubmitResultForm({
           <ControlledSelectInput
             control={control}
             name="homeGoals"
-            label={`${homeTeamName} Goals`}
+            label={`${homeTeamName} ${t('FORMS.GOALS')}`}
             options={getNumberOptions(99, 0)}
           />
           <ControlledSelectInput
             control={control}
             name="awayGoals"
-            label={`${awayTeamName} Goals`}
+            label={`${awayTeamName} ${t('FORMS.GOALS')}`}
             options={getNumberOptions(99, 0)}
           />
-          <ControlledSwitchInput control={control} name="isForfeit" label="Forfeit" />
+          <ControlledSwitchInput control={control} name="isForfeit" label={t('FORMS.FORFEIT')} />
         </FormContainer>
       </FormModal>
     </>

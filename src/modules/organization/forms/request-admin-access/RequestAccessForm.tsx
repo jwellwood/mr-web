@@ -1,7 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import { RequestAccessData, RequestAccessSchema } from './validation';
+import { RequestAccessData, RequestAccessSchema } from './schema';
 
 interface Props {
   onSubmit: (data: RequestAccessData) => void;
@@ -10,6 +11,7 @@ interface Props {
 }
 
 export default function RequestAccessForm({ onSubmit, defaultValues, loading }: Props) {
+  const { t } = useTranslation('organization');
   const {
     handleSubmit,
     control,
@@ -28,7 +30,11 @@ export default function RequestAccessForm({ onSubmit, defaultValues, loading }: 
       onReset={() => reset(defaultValues)}
       loading={loading}
     >
-      <ControlledTextInput control={control} name="accessCode" label="Access Code" />
+      <ControlledTextInput
+        control={control}
+        name="accessCode"
+        label={t('FORMS.ADMIN_ACCESS_CODE')}
+      />
     </FormContainer>
   );
 }

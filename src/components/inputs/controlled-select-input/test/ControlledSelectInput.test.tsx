@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import ControlledSelectInput from '../ControlledSelectInput';
@@ -305,11 +305,11 @@ describe('ControlledSelectInput', () => {
     const user = userEvent.setup();
 
     function ControlledForm() {
-      const { control, watch } = useForm<FormValues>({
+      const { control } = useForm<FormValues>({
         defaultValues: { color: 'red' },
       });
 
-      const currentColor = watch('color');
+      const currentColor = useWatch({ control, name: 'color' });
 
       return (
         <div>

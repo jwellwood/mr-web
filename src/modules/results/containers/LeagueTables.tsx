@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client/react';
+import { useTranslation } from 'react-i18next';
 import { DataError } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import { CustomTabs } from '../../../components/tabs';
@@ -9,6 +10,7 @@ import { FETCH_LEAGUE_TABLES } from '../graphql';
 import useCompetitionConfig from '../hooks/useCompetitionConfig';
 
 export default function LeagueTables() {
+  const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { data, error, loading } = useQuery(FETCH_LEAGUE_TABLES, {
     variables: { orgId: orgId!, orgSeasonId: orgSeasonId || 'default' },
@@ -19,7 +21,7 @@ export default function LeagueTables() {
   const comps =
     data?.data?.map(comp => {
       const id = comp.competition?._id ?? comp.competition?.name ?? 'other';
-      const name = comp.competition?.name ?? 'Other';
+      const name = comp.competition?.name ?? t('OTHER_COMPETITION');
       const config = competitionConfig?.find(c => c.id === id || c.name === name);
       const priority = config?.priority ?? comp.priority ?? Number.MAX_SAFE_INTEGER;
       return { id, name, comp, priority };

@@ -2,8 +2,8 @@ import { useQuery } from '@apollo/client/react';
 import { DataError, ModuleHeader } from '../../../components';
 import { IMAGE_TYPE } from '../../../constants';
 import { useAuth, useCustomParams } from '../../../hooks';
-import RequestOrgAdmin from '../forms/request-admin-access/RequestOrgAdmin';
 import { FETCH_ORG } from '../graphql';
+import RequestOrgAdmin from './RequestOrgAdmin';
 
 export default function Org() {
   const { orgId } = useCustomParams();

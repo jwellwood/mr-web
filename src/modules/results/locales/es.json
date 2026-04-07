@@ -1,0 +1,91 @@
+{
+  "PAGES": {
+    "RESULT": "Resultado",
+    "ADD": "Agregar Resultado",
+    "EDIT": "Editar Resultado",
+    "ADD_GAMEWEEK": "Agregar Resultados de la Jornada"
+  },
+  "SECTIONS": {
+    "MATCH_NUMBER": "Partido"
+  },
+  "LINKS": {
+    "EDIT_RESULT": "Editar Resultado"
+  },
+  "TABS": {
+    "FIXTURES": "Partidos",
+    "RESULTS": "Resultados"
+  },
+  "ALERTS": {
+    "ADD": {
+      "SUCCESS": "Resultado agregado correctamente",
+      "ERROR": "Error al agregar el resultado. Por favor, inténtelo de nuevo."
+    },
+    "EDIT": {
+      "SUCCESS": "Resultado actualizado correctamente",
+      "ERROR": "Error al actualizar el resultado. Por favor, inténtelo de nuevo."
+    },
+    "ADD_GAMEWEEK": {
+      "SUCCESS": "Resultados de la jornada agregados correctamente",
+      "ADDED": "Se agregaron {{count}} resultados",
+      "ERROR": "Error al agregar los resultados de la jornada. Por favor, inténtelo de nuevo."
+    },
+    "DELETE": {
+      "SUCCESS": "Resultado eliminado correctamente",
+      "ERROR": "Error al eliminar el resultado. Por favor, inténtelo de nuevo."
+    },
+    "CONFIRM_RESULT": {
+      "SUCCESS": "Resultado confirmado correctamente",
+      "ERROR": "Error al confirmar el resultado. Por favor, inténtelo de nuevo."
+    },
+    "SUBMIT_RESULT": {
+      "SUCCESS": "Resultado enviado correctamente",
+      "ERROR": "Error al enviar el resultado. Por favor, inténtelo de nuevo."
+    },
+    "DISPUTE_RESULT": {
+      "SUCCESS": "Resultado disputado correctamente",
+      "ERROR": "Error al disputar el resultado. Por favor, inténtelo de nuevo."
+    }
+  },
+  "FORMS": {
+    "HOME_TEAM": "Local",
+    "AWAY_TEAM": "Visitante",
+    "HOME_SCORE": "Goles Local",
+    "AWAY_SCORE": "Goles Visitante",
+    "HOME_GOALS": "Goles Local",
+    "AWAY_GOALS": "Goles Visitante",
+    "KICKOFF_TIME": "Hora de Inicio",
+    "CONFIRM_RESULT": "Confirmar Resultado",
+    "DISPUTE_RESULT": "Disputar Resultado",
+    "DATE": "Fecha",
+    "SEASON": "Temporada",
+    "GAME_WEEK": "Jornada",
+    "COMPETITION": "Competición",
+    "FORFEIT": "Incomparecencia",
+    "COMPLETED": "Completado",
+    "GOALS": "Goles"
+  },
+  "BUTTONS": {
+    "CONFIRM": "Confirmar Resultado",
+    "DISPUTE": "Disputar Resultado",
+    "SUBMIT_RESULT": "Enviar Resultado",
+    "ADD_GOALSCORERS": "Agregar Goleadores"
+  },
+  "MESSAGES": {
+    "NO_RESULTS": "No se encontraron resultados.",
+    "NO_FIXTURES": "No se encontraron partidos.",
+    "NO_RESULT": "No se encontró el resultado.",
+    "DISPUTE_RESULT": "¿Está seguro de que desea disputar este resultado? Esto marcará el resultado como disputado y deberá ser revisado por un administrador."
+  },
+  "ADMIN": {
+    "TITLE": "Admin",
+    "SUBMITTED_BY": "Enviado por",
+    "CONFIRMED_BY": "Confirmado por",
+    "DISPUTED_BY": "Disputado por",
+    "STATUS": "Estado"
+  },
+  "LABELS": {
+    "ROUND": "Jornada",
+    "FORFEIT": "Incomparecencia"
+  },
+  "OTHER_COMPETITION": "Otro"
+}

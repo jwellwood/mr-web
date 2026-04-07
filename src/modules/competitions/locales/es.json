@@ -1,0 +1,54 @@
+{
+  "PAGES": {
+    "COMPETITION": "Competición",
+    "ADD_COMPETITION": "Agregar Competición",
+    "EDIT_COMPETITION": "Editar Competición"
+  },
+  "LINKS": {
+    "EDIT_COMPETITION": "Editar Competición"
+  },
+  "FORM": {
+    "NAME": "Nombre",
+    "TYPE": "Tipo",
+    "ACTIVE": "Activo",
+    "PLAYERS_PER_TEAM": "Jugadores por equipo",
+    "MATCH_LENGTH": "Duración del partido (minutos)"
+  },
+  "OPTIONS": {
+    "FRIENDLY": "Amistoso",
+    "LEAGUE": "Liga",
+    "CUP": "Copa",
+    "TOURNAMENT": "Torneo",
+    "OTHER": "Otro"
+  },
+  "SECTIONS": {
+    "SUMMARY": "Resumen"
+  },
+  "LIST": {
+    "NAME": "Nombre",
+    "TYPE": "Tipo",
+    "ACTIVE": "Activo",
+    "PLAYERS_PER_TEAM": "Jugadores / Equipo",
+    "MATCH_LENGTH": "Duración del partido (minutos)",
+    "YES": "Sí",
+    "NO": "No"
+  },
+  "ALERTS": {
+    "ADD_COMPETITION": {
+      "SUCCESS": "Competición agregada con éxito.",
+      "ERROR": "Hubo un error al agregar la competición. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_COMPETITION": {
+      "SUCCESS": "Competición actualizada con éxito.",
+      "ERROR": "Hubo un error al actualizar la competición. Por favor, inténtelo de nuevo."
+    },
+    "DELETE_COMPETITION": {
+      "SUCCESS": "Competición eliminada con éxito.",
+      "ERROR": "Hubo un error al eliminar la competición. Por favor, inténtelo de nuevo."
+    }
+  },
+  "MESSAGES": {
+    "NO_COMPETITIONS": "No hay competiciones aún",
+    "NO_COMPETITION_DATA": "No hay datos de la competición disponibles"
+  }
+}

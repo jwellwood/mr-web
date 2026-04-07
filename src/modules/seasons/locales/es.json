@@ -1,0 +1,76 @@
+{
+  "PAGES": {
+    "SEASON": "Temporada",
+    "ADD_SEASON": "Agregar Temporada",
+    "EDIT_SEASON": "Editar Temporada",
+    "SEASON_ADMIN": "Administración de Temporada"
+  },
+  "TABS": {
+    "TABLES": "Tablas",
+    "RESULTS": "Resultados",
+    "FIXTURES": "Partidos",
+    "CONFIGURATION": "Configuración"
+  },
+  "LINKS": {
+    "ADD_RESULT": "Agregar Resultado",
+    "ADD_GAMEWEEK": "Agregar Jornada",
+    "EDIT_SEASON": "Editar Temporada",
+    "SEASON_ADMIN": "Administración de Temporada"
+  },
+  "FORM": {
+    "YEAR_STARTED": "Año de Inicio",
+    "YEAR_ENDED": "Año de Fin",
+    "IS_CURRENT": "¿Es la temporada actual?",
+    "TEAMS": "Equipos en esta temporada",
+    "COMPETITIONS": "Competiciones en esta temporada",
+    "COMMENT": "Comentario"
+  },
+  "LIST": {
+    "NAME": "Nombre",
+    "START_DATE": "Fecha de Inicio",
+    "END_DATE": "Fecha de Fin",
+    "CURRENT_SEASON": "Temporada Actual",
+    "NUM_TEAMS": "Número de Equipos",
+    "NUM_COMPETITIONS": "Número de Competiciones",
+    "YES": "Sí",
+    "NO": "No"
+  },
+  "CONFIG": {
+    "ROUNDS": "Rondas",
+    "RELEGATION": "Posiciones de Descenso",
+    "RELEGATION_FORM": "Plazas de Descenso",
+    "PROMOTION": "Posiciones de Ascenso",
+    "PROMOTION_FORM": "Plazas de Ascenso",
+    "SPLIT": "Posiciones de Tabla Dividida",
+    "SPLIT_FORM": "Mostrar división después de la posición",
+    "PRIORITY": "Prioridad",
+    "EDIT": "Editar",
+    "SUBMIT": "Actualizar Configuración"
+  },
+  "MESSAGES": {
+    "INCLUDED": "Incluido",
+    "NO_SEASONS": "Aún no hay temporadas."
+  },
+  "LABELS": {
+    "CURRENT": "Actual",
+    "DETAILS": "Detalles"
+  },
+  "ALERTS": {
+    "ADD_SEASON": {
+      "SUCCESS": "Temporada agregada correctamente.",
+      "ERROR": "Hubo un error al agregar la temporada. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_SEASON": {
+      "SUCCESS": "Temporada actualizada correctamente.",
+      "ERROR": "Hubo un error al actualizar la temporada. Por favor, inténtelo de nuevo."
+    },
+    "DELETE_SEASON": {
+      "SUCCESS": "Temporada eliminada correctamente.",
+      "ERROR": "Hubo un error al eliminar la temporada. Por favor, inténtelo de nuevo."
+    },
+    "UPDATE_COMP_CONFIG": {
+      "SUCCESS": "Configuración actualizada correctamente.",
+      "ERROR": "Hubo un error al actualizar la configuración. Por favor, inténtelo de nuevo."
+    }
+  }
+}

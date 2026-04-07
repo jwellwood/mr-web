@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { isFuture } from 'date-fns';
 import { useForm, useWatch } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   ControlledDateInput,
   ControlledSelectInput,
@@ -10,10 +11,10 @@ import {
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
+import ResultConfirmation from '../../components/ResultConfirmation';
 import { getKickoffTimeOptions } from '../../helpers/getKickoffTimeOptions';
-import ResultConfirmation from './ResultConfirmation';
-import type { ResultFormData } from './validation';
-import { ResultSchema } from './validation';
+import type { ResultFormData } from './schema';
+import { ResultSchema } from './schema';
 
 interface Props {
   onSubmit: (formData: ResultFormData) => void;
@@ -34,6 +35,7 @@ export default function ResultForm({
   loading,
   error,
 }: Props) {
+  const { t } = useTranslation('results');
   const {
     handleSubmit,
     control,
@@ -68,61 +70,66 @@ export default function ResultForm({
       loading={loading}
       error={error}
     >
-      <ControlledDateInput control={control} name="date" label="Date" disableFuture={false} />
+      <ControlledDateInput
+        control={control}
+        name="date"
+        label={t('FORMS.DATE')}
+        disableFuture={false}
+      />
       <ControlledSelectInput
         control={control}
         name="kickoffTime"
-        label="Kickoff Time"
+        label={t('FORMS.KICKOFF_TIME')}
         options={getKickoffTimeOptions()}
       />
       <ControlledSelectInput
         control={control}
         name="orgSeasonId"
-        label="Season"
+        label={t('FORMS.SEASON')}
         options={orgSeasonOptions}
       />
       <ControlledSelectInput
         control={control}
         name="gameWeek"
-        label="Game Week"
+        label={t('FORMS.GAME_WEEK')}
         options={getNumberOptions(52, 0)}
       />
       <ControlledSelectInput
         control={control}
         name="competitionId"
-        label="Competition"
+        label={t('FORMS.COMPETITION')}
         options={competitionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="homeTeam"
-        label="Home Team"
+        label={t('FORMS.HOME_TEAM')}
         options={teamOptions}
       />
       {!isFutureMatch && (
         <ControlledSelectInput
           control={control}
           name="homeGoals"
-          label="Goals"
+          label={t('FORMS.HOME_SCORE')}
           options={getNumberOptions(50, 0)}
         />
       )}
       <ControlledSelectInput
         control={control}
         name="awayTeam"
-        label="Away Team"
+        label={t('FORMS.AWAY_TEAM')}
         options={teamOptions}
       />
       {!isFutureMatch && (
         <ControlledSelectInput
           control={control}
           name="awayGoals"
-          label="Goals"
+          label={t('FORMS.AWAY_SCORE')}
           options={getNumberOptions(50, 0)}
         />
       )}
-      <ControlledSwitchInput control={control} name="isForfeit" label="Forfeit" />
-      <ControlledSwitchInput control={control} name="isComplete" label="Completed" />
+      <ControlledSwitchInput control={control} name="isForfeit" label={t('FORMS.FORFEIT')} />
+      <ControlledSwitchInput control={control} name="isComplete" label={t('FORMS.COMPLETED')} />
     </FormContainer>
   );
 }

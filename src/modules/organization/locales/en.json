@@ -1,0 +1,79 @@
+{
+  "PAGES": {
+    "ORG": "Organization",
+    "ADMIN": "Admin",
+    "ADD": "Add New Organization",
+    "EDIT": "Edit Organization",
+    "EDIT_BADGE": "Edit Organization Badge",
+    "DELETE": "Delete Organization",
+    "TEAM_ADMIN": "Team Admin"
+  },
+  "TABS": {
+    "TEAMS": "Teams",
+    "MATCHES": "Matches",
+    "TABLES": "Tables",
+    "HISTORY": "History",
+    "SEASONS": "Seasons",
+    "COMPETITIONS": "Competitions",
+    "USERS": "Users"
+  },
+  "LINKS": {
+    "ADD_TEAM": "Add Team",
+    "ADD_COMPETITION": "Add Competition",
+    "ADD_SEASON": "Add Season",
+    "EDIT_ORGANIZATION": "Edit Organization",
+    "EDIT_ORG_BADGE": "Edit Org Badge"
+  },
+  "ALERTS": {
+    "ADD": {
+      "SUCCESS": "Organization added successfully!",
+      "ERROR": "Something went wrong"
+    },
+    "REQUEST_ADMIN": {
+      "SUCCESS": "Admin access request sent successfully!",
+      "ERROR": "Something went wrong"
+    },
+    "EDIT": {
+      "SUCCESS": "Organization updated successfully!",
+      "ERROR": "Something went wrong"
+    },
+    "EDIT_BADGE": {
+      "ERROR": "Something went wrong"
+    },
+    "DELETE": {
+      "SUCCESS": "Organization deleted successfully!",
+      "ERROR": "Something went wrong"
+    },
+    "GENERATE_ADMIN_CODE": {
+      "SUCCESS": "Admin access code generated successfully",
+      "ERROR": "Failed to generate admin access code"
+    },
+    "TOGGLE_ADMIN_ACCESS": {
+      "SUCCESS": "Admin access updated successfully!",
+      "ERROR": "Something went wrong"
+    },
+    "SET_ADMIN_ACCESS_CODE": {
+      "SUCCESS": "Admin access code set successfully",
+      "ERROR": "Failed to set admin access code"
+    }
+  },
+  "FORMS": {
+    "NAME": "Organization Name",
+    "WEBSITE": "Website",
+    "YEAR_FOUNDED": "Year Founded",
+    "CITY": "City",
+    "COUNTRY": "Country",
+    "ADMIN_ACCESS_CODE": "Admin Access Code"
+  },
+  "BUTTONS": {
+    "GENERATE_ADMIN_CODE": "Generate Admin Code",
+    "REQUEST_ADMIN_ACCESS": "Request Admin Access",
+    "SET_ADMIN_ACCESS_CODE": "Set Admin Access Code"
+  },
+  "MODALS": {
+    "REQUEST_ADMIN_ACCESS": "Request Admin Access"
+  },
+  "LABELS": {
+    "ADMIN_ACCESS_ENABLED": "Admin Access Enabled"
+  }
+}

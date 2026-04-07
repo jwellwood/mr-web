@@ -1,0 +1,54 @@
+{
+  "PAGES": {
+    "COMPETITION": "Competition",
+    "ADD_COMPETITION": "Add Competition",
+    "EDIT_COMPETITION": "Edit Competition"
+  },
+  "LINKS": {
+    "EDIT_COMPETITION": "Edit Competition"
+  },
+  "FORM": {
+    "NAME": "Name",
+    "TYPE": "Type",
+    "ACTIVE": "Active",
+    "PLAYERS_PER_TEAM": "Players per Team",
+    "MATCH_LENGTH": "Match Length (minutes)"
+  },
+  "OPTIONS": {
+    "FRIENDLY": "Friendly",
+    "LEAGUE": "League",
+    "CUP": "Cup",
+    "TOURNAMENT": "Tournament",
+    "OTHER": "Other"
+  },
+  "SECTIONS": {
+    "SUMMARY": "Summary"
+  },
+  "LIST": {
+    "NAME": "Name",
+    "TYPE": "Type",
+    "ACTIVE": "Active",
+    "PLAYERS_PER_TEAM": "Players / Team",
+    "MATCH_LENGTH": "Match Length (minutes)",
+    "YES": "Yes",
+    "NO": "No"
+  },
+  "ALERTS": {
+    "ADD_COMPETITION": {
+      "SUCCESS": "Competition added successfully.",
+      "ERROR": "There was an error adding the competition. Please try again."
+    },
+    "EDIT_COMPETITION": {
+      "SUCCESS": "Competition updated successfully.",
+      "ERROR": "There was an error updating the competition. Please try again."
+    },
+    "DELETE_COMPETITION": {
+      "SUCCESS": "Competition deleted successfully.",
+      "ERROR": "There was an error deleting the competition. Please try again."
+    }
+  },
+  "MESSAGES": {
+    "NO_COMPETITIONS": "No competitions yet",
+    "NO_COMPETITION_DATA": "No competition data available"
+  }
+}

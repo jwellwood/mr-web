@@ -121,7 +121,7 @@ function ControlledForm() {
     defaultValues: { color: '#ff0000' },
   });
 
-  const currentColor = watch('color');
+  const currentColor = useWatch('color');
 
   return (
     <>

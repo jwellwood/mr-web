@@ -1,9 +1,11 @@
 import { Control } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { ControlledSelectInput, ISelectOptions, SectionContainer } from '../../../../components';
 import { CustomGridContainer, CustomGridItem } from '../../../../components/grids';
 import { AppIcon } from '../../../../components/icons';
 import { getNumberOptions } from '../../../../utils';
 import { getKickoffTimeOptions } from '../../helpers/getKickoffTimeOptions';
+import { getHomeAwayOptions } from './getHomeAwayOptions';
 
 interface Props<T extends object> {
   index: number;
@@ -24,25 +26,16 @@ export default function GameweekTeamsInput<T extends object>({
   currentHome,
   currentAway,
 }: Props<T>) {
-  const excl = excludedTeams || [];
-  const homeOptions = teamOptions.filter(o => {
-    const v = String(o.value);
-    if (v === currentHome) return true; // keep currently selected value
-    if (v === currentAway) return false; // prevent selecting same as away in this row
-    if (excl.includes(v)) return false; // exclude teams used in other rows
-    return true;
-  });
-
-  const awayOptions = teamOptions.filter(o => {
-    const v = String(o.value);
-    if (v === currentAway) return true;
-    if (v === currentHome) return false;
-    if (excl.includes(v)) return false;
-    return true;
-  });
+  const { t } = useTranslation('results');
+  const { homeOptions, awayOptions } = getHomeAwayOptions(
+    currentHome || '',
+    currentAway || '',
+    teamOptions,
+    excludedTeams
+  );
   return (
     <SectionContainer
-      title={`Match ${index + 1}`}
+      title={`${t('SECTIONS.MATCH_NUMBER')} ${index + 1}`}
       secondaryAction={
         <AppIcon icon="cross" color="secondary" size="20px" onClick={() => remove(index)} />
       }
@@ -53,7 +46,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.homeTeam`}
-            label="Home"
+            label={t('FORMS.HOME_TEAM')}
             options={homeOptions}
           />
         </CustomGridItem>
@@ -61,7 +54,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.awayTeam`}
-            label="Away"
+            label={t('FORMS.AWAY_TEAM')}
             options={awayOptions}
           />
         </CustomGridItem>
@@ -69,7 +62,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.kickoffTime`}
-            label="Time"
+            label={t('FORMS.KICKOFF_TIME')}
             options={getKickoffTimeOptions()}
           />
         </CustomGridItem>
@@ -77,7 +70,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.homeGoals`}
-            label="Home Goals"
+            label={t('FORMS.HOME_GOALS')}
             options={getNumberOptions(20, 0)}
           />
         </CustomGridItem>
@@ -86,7 +79,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.awayGoals`}
-            label="Away Goals"
+            label={t('FORMS.AWAY_GOALS')}
             options={getNumberOptions(20, 0)}
           />
         </CustomGridItem>

@@ -1,0 +1,79 @@
+{
+  "PAGES": {
+    "ORG": "Organización",
+    "ADMIN": "Admin",
+    "ADD": "Agregar Nueva Organización",
+    "EDIT": "Editar Organización",
+    "EDIT_BADGE": "Editar Insignia de la Organización",
+    "DELETE": "Eliminar Organización",
+    "TEAM_ADMIN": "Administrador del Equipo"
+  },
+  "TABS": {
+    "TEAMS": "Equipos",
+    "MATCHES": "Partidos",
+    "TABLES": "Tablas",
+    "HISTORY": "Historial",
+    "SEASONS": "Temporadas",
+    "COMPETITIONS": "Competiciones",
+    "USERS": "Usuarios"
+  },
+  "LINKS": {
+    "ADD_TEAM": "Agregar Equipo",
+    "ADD_COMPETITION": "Agregar Competición",
+    "ADD_SEASON": "Agregar Temporada",
+    "EDIT_ORGANIZATION": "Editar Organización",
+    "EDIT_ORG_BADGE": "Editar Insignia"
+  },
+  "ALERTS": {
+    "ADD": {
+      "SUCCESS": "¡Organización agregada con éxito!",
+      "ERROR": "Algo salió mal"
+    },
+    "REQUEST_ADMIN": {
+      "SUCCESS": "¡Solicitud de acceso de administrador enviada con éxito!",
+      "ERROR": "Algo salió mal"
+    },
+    "EDIT": {
+      "SUCCESS": "¡Organización actualizada con éxito!",
+      "ERROR": "Algo salió mal"
+    },
+    "EDIT_BADGE": {
+      "ERROR": "Algo salió mal"
+    },
+    "DELETE": {
+      "SUCCESS": "¡Organización eliminada con éxito!",
+      "ERROR": "Algo salió mal"
+    },
+    "GENERATE_ADMIN_CODE": {
+      "SUCCESS": "¡Código de acceso de administrador generado con éxito!",
+      "ERROR": "Error al generar el código de acceso de administrador"
+    },
+    "TOGGLE_ADMIN_ACCESS": {
+      "SUCCESS": "¡Acceso de administrador actualizado con éxito!",
+      "ERROR": "Algo salió mal"
+    },
+    "SET_ADMIN_ACCESS_CODE": {
+      "SUCCESS": "¡Código de acceso de administrador establecido con éxito!",
+      "ERROR": "Error al establecer el código de acceso de administrador"
+    }
+  },
+  "FORMS": {
+    "NAME": "Nombre de la Organización",
+    "WEBSITE": "Sitio Web",
+    "YEAR_FOUNDED": "Año de Fundación",
+    "CITY": "Ciudad",
+    "COUNTRY": "País",
+    "ADMIN_ACCESS_CODE": "Código de Acceso de Administrador"
+  },
+  "BUTTONS": {
+    "GENERATE_ADMIN_CODE": "Generar Código de Administrador",
+    "REQUEST_ADMIN_ACCESS": "Solicitar Acceso de Administrador",
+    "SET_ADMIN_ACCESS_CODE": "Establecer Código de Acceso de Administrador"
+  },
+  "MODALS": {
+    "REQUEST_ADMIN_ACCESS": "Solicitar Acceso de Administrador"
+  },
+  "LABELS": {
+    "ADMIN_ACCESS_ENABLED": "Acceso de Administrador Habilitado"
+  }
+}

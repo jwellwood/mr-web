@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import ControlledMultiSelectInput from '../ControlledMultiSelectInput';
@@ -181,11 +181,11 @@ describe('ControlledMultiSelectInput', () => {
 
   it('updates correctly in controlled form scenario', async () => {
     function ControlledForm() {
-      const { control, watch } = useForm<FormValues>({
+      const { control } = useForm<FormValues>({
         defaultValues: { colors: ['red'] },
       });
 
-      const currentColors = watch('colors');
+      const currentColors = useWatch({ control, name: 'colors' });
 
       return (
         <div>

@@ -5,7 +5,6 @@ import CustomSkeleton from '../../../../components/loaders/custom-skeleton/Custo
 import { CustomTypography } from '../../../../components/typography';
 import { IMAGE_TYPE } from '../../../../constants';
 import { parseDate } from '../../../../utils';
-import { ICompetition } from '../../../organization/types';
 import { T_FETCH_TEAM_QUERY } from '../../../team/graphql';
 import { getPoints } from '../../helpers';
 import { T_FETCH_MATCH } from '../../types';
@@ -81,7 +80,7 @@ export default function MatchDetails({ match, loading }: Props) {
           {loading ? <CustomSkeleton width="40px" /> : matchDate}
         </CustomTypography>
         <CustomTypography color="label">
-          {loading ? <CustomSkeleton width="70px" /> : (competitionId as ICompetition)?.name}
+          {loading ? <CustomSkeleton width="70px" /> : competitionId?.name}
         </CustomTypography>
       </CustomStack>
       <div style={{ marginLeft: 16 }}>

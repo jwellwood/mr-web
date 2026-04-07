@@ -1,0 +1,91 @@
+{
+  "PAGES": {
+    "RESULT": "Result",
+    "ADD": "Add Result",
+    "EDIT": "Edit Result",
+    "ADD_GAMEWEEK": "Add Gameweek Results"
+  },
+  "SECTIONS": {
+    "MATCH_NUMBER": "Match"
+  },
+  "LINKS": {
+    "EDIT_RESULT": "Edit Result"
+  },
+  "TABS": {
+    "FIXTURES": "Fixtures",
+    "RESULTS": "Results"
+  },
+  "ALERTS": {
+    "ADD": {
+      "SUCCESS": "Result added successfully",
+      "ERROR": "Error adding result. Please try again."
+    },
+    "EDIT": {
+      "SUCCESS": "Result updated successfully",
+      "ERROR": "Error updating result. Please try again."
+    },
+    "ADD_GAMEWEEK": {
+      "SUCCESS": "Gameweek results added successfully",
+      "ADDED": "Added {{count}} results",
+      "ERROR": "Error adding gameweek results. Please try again."
+    },
+    "DELETE": {
+      "SUCCESS": "Result deleted successfully",
+      "ERROR": "Error deleting result. Please try again."
+    },
+    "CONFIRM_RESULT": {
+      "SUCCESS": "Result confirmed successfully",
+      "ERROR": "Error confirming result. Please try again."
+    },
+    "SUBMIT_RESULT": {
+      "SUCCESS": "Result submitted successfully",
+      "ERROR": "Error submitting result. Please try again."
+    },
+    "DISPUTE_RESULT": {
+      "SUCCESS": "Result disputed successfully",
+      "ERROR": "Error disputing result. Please try again."
+    }
+  },
+  "FORMS": {
+    "HOME_TEAM": "Home",
+    "AWAY_TEAM": "Away",
+    "HOME_SCORE": "Home Score",
+    "AWAY_SCORE": "Away Score",
+    "HOME_GOALS": "Home Goals",
+    "AWAY_GOALS": "Away Goals",
+    "KICKOFF_TIME": "Kickoff Time",
+    "CONFIRM_RESULT": "Confirm Result",
+    "DISPUTE_RESULT": "Dispute Result",
+    "DATE": "Date",
+    "SEASON": "Season",
+    "GAME_WEEK": "Game Week",
+    "COMPETITION": "Competition",
+    "FORFEIT": "Forfeit",
+    "COMPLETED": "Completed",
+    "GOALS": "Goals"
+  },
+  "BUTTONS": {
+    "CONFIRM": "Confirm Result",
+    "DISPUTE": "Dispute Result",
+    "SUBMIT_RESULT": "Submit Result",
+    "ADD_GOALSCORERS": "Add Goalscorers"
+  },
+  "MESSAGES": {
+    "NO_RESULTS": "No results found.",
+    "NO_FIXTURES": "No fixtures found.",
+    "NO_RESULT": "No result found.",
+    "DISPUTE_RESULT": "Are you sure you want to dispute this result? This will mark the result as disputed and it will need to be reviewed by an admin."
+  },
+  "ADMIN": {
+    "TITLE": "Admin",
+    "SUBMITTED_BY": "Submitted By",
+    "CONFIRMED_BY": "Confirmed By",
+    "DISPUTED_BY": "Disputed By",
+    "STATUS": "Status"
+  },
+  "LABELS": {
+    "ROUND": "Round",
+    "FORFEIT": "Forfeit"
+  },
+  "OTHER_COMPETITION": "Other"
+}

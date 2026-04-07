@@ -2,8 +2,8 @@ import { useQuery } from '@apollo/client/react';
 import { DataError } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks';
+import OrgTeamsList from '../components/OrgTeamsList';
 import { FETCH_ORG_TEAMS } from '../graphql';
-import OrgTeamsList from './OrgTeamsList';
 
 export default function OrgTeams() {
   const { orgId } = useCustomParams();

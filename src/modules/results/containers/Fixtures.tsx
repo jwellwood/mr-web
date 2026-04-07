@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client/react';
+import { useTranslation } from 'react-i18next';
 import { DataError, NoDataText } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import { TAB_TYPES } from '../../../constants';
@@ -7,6 +8,7 @@ import CompetitionTabs from '../components/CompetitionTabs';
 import { FETCH_FIXTURES } from '../graphql';
 
 export default function Fixtures() {
+  const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { data, error, loading } = useQuery(FETCH_FIXTURES, {
     variables: { orgId: orgId!, orgSeasonId: orgSeasonId || 'default' },
@@ -15,7 +17,7 @@ export default function Fixtures() {
   const renderData = data?.fixtures.length ? (
     <CompetitionTabs matches={data.fixtures} type={TAB_TYPES.FIXTURES_COMPETITIONS} />
   ) : (
-    <NoDataText>No fixtures yet</NoDataText>
+    <NoDataText>{t('MESSAGES.NO_FIXTURES')}</NoDataText>
   );
 
   const renderContent = () => {

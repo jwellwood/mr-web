@@ -1,0 +1,22 @@
+import { z } from 'zod';
+import zodDate from '../../../utils/dev/zodDate';
+
+export const OrgSeasonSchema = z.object({
+  yearStarted: zodDate(),
+  yearEnded: zodDate(),
+  isCurrent: z.boolean().optional(),
+  comment: z.string().optional(),
+  teamIds: z.array(z.string()).optional(),
+  competitionIds: z.array(z.string()).optional(),
+});
+
+export type OrgSeasonFormData = z.infer<typeof OrgSeasonSchema>;
+
+export const initialOrgSeasonState: OrgSeasonFormData = {
+  yearStarted: new Date(),
+  yearEnded: new Date(),
+  isCurrent: false,
+  comment: '',
+  teamIds: [],
+  competitionIds: [],
+};
