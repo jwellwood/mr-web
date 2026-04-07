@@ -6,8 +6,8 @@ import { CustomTypography } from '../../../../components/typography';
 import { IMAGE_TYPE } from '../../../../constants';
 import { parseDate } from '../../../../utils';
 import { T_FETCH_TEAM_QUERY } from '../../../team/graphql';
+import { T_FETCH_MATCH } from '../../graphql';
 import { getPoints } from '../../helpers';
-import { T_FETCH_MATCH } from '../../types';
 import ScoreBox from './ScoreBox';
 
 interface Props {

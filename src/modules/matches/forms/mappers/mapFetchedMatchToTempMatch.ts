@@ -1,4 +1,5 @@
-import { ITempMatch, T_FETCH_MATCH } from '../../types';
+import { T_FETCH_MATCH } from '../../graphql';
+import { ITempMatch } from '../../types';
 
 export const mapFetchedMatchToTempMatch = (match: T_FETCH_MATCH['match']): ITempMatch => {
   return {

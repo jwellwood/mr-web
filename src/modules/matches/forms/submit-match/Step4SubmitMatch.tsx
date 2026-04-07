@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { FormContainer, SectionContainer } from '../../../../components';
 import { TextList, type IListItem } from '../../../../components/lists';
@@ -13,21 +14,22 @@ interface Props {
 }
 
 export default function Step4SubmitMatch({ onSubmit, loading, error }: Props) {
+  const { t } = useTranslation('matches');
   const { handleSubmit } = useForm();
   const currentMatch = useSelector(getTempMatch);
   const currentPlayers = useSelector(getTempPlayers);
 
   const data: IListItem[] = [
     {
-      label: 'Forfeited Match',
-      value: currentMatch.isForfeit ? 'Yes' : 'No',
+      label: t('FORM.FORFEITED_MATCH'),
+      value: currentMatch.isForfeit ? t('MESSAGES.YES') : t('MESSAGES.NO'),
     },
-    { label: 'Players', value: String(currentPlayers.length) },
+    { label: t('FORM.PLAYERS'), value: String(currentPlayers.length) },
   ];
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)} loading={loading} error={error}>
-      <SectionContainer title="Summary">
+      <SectionContainer title={t('SECTIONS.SUMMARY')}>
         <TextList data={data} />
         <MatchPlayersTable currentPlayers={currentPlayers} />
       </SectionContainer>

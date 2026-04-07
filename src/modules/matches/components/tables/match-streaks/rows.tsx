@@ -1,7 +1,8 @@
+import { TFunction } from 'i18next';
 import { getShortDate } from '../../../../../utils';
-import { T_FETCH_MATCHES_STREAK } from '../../../types';
+import { T_FETCH_MATCHES_STREAK } from '../../../graphql';
 
-export const rows = (streaks?: T_FETCH_MATCHES_STREAK['streaks']) => {
+export const rows = (t: TFunction, streaks?: T_FETCH_MATCHES_STREAK['streaks']) => {
   const getRowData = (streakType: keyof T_FETCH_MATCHES_STREAK['streaks']) => {
     const longest = streaks ? streaks[streakType]?.length || 0 : 0;
     const start = streaks ? getShortDate(streaks[streakType]?.startDate) : '';
@@ -15,19 +16,19 @@ export const rows = (streaks?: T_FETCH_MATCHES_STREAK['streaks']) => {
 
   return [
     {
-      label: 'Wins',
+      label: t('TABLES.RECORDS.STREAKS.WINS'),
       ...getRowData('longestWinStreak'),
     },
     {
-      label: 'Unbeaten',
+      label: t('TABLES.RECORDS.STREAKS.UNBEATEN'),
       ...getRowData('longestUnbeatenStreak'),
     },
     {
-      label: 'Loss',
+      label: t('TABLES.RECORDS.STREAKS.LOSS'),
       ...getRowData('longestLossStreak'),
     },
     {
-      label: 'Winless',
+      label: t('TABLES.RECORDS.STREAKS.WINLESS'),
       ...getRowData('longestWinlessStreak'),
     },
   ];

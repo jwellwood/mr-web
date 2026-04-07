@@ -1,4 +1,4 @@
-import { T_FETCH_MATCHES_RECORDS } from '../../../types';
+import { T_FETCH_MATCHES_RECORDS } from '../../../graphql';
 
 export const mapMatchRecordsMatchesToMatchesList = (
   matches?: T_FETCH_MATCHES_RECORDS['stats'][keyof T_FETCH_MATCHES_RECORDS['stats']]

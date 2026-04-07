@@ -26,7 +26,7 @@ export default function StatsView({ error, loading, data, filters }: Props) {
         <PlayersByNumbers players={data?.stats} loading={loading} />
         <CustomTable
           rows={rows(data, filters.showAverages) as Record<string, CellValue | ReactNode>[]}
-          columns={filters.showAverages ? columns_averages : columns}
+          columns={filters.showAverages ? columns_averages(t) : columns(t)}
           isSortable
           sortByString="apps"
           loading={loading}

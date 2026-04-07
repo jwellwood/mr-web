@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMemo } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   FormContainer,
   ControlledMultiSelectInput,
@@ -9,8 +10,8 @@ import {
 import { TextList } from '../../../../components/lists';
 import { CustomTypography } from '../../../../components/typography';
 import { TApolloError } from '../../../../types/apollo';
-import { T_FETCH_PLAYERS_FOR_MATCH_INPUT } from '../../types';
-import AddMatchPlayersSchema, { AddMatchPlayersFormValues } from './validation';
+import { T_FETCH_PLAYERS_FOR_MATCH_INPUT } from '../../graphql';
+import AddMatchPlayersSchema, { AddMatchPlayersFormValues } from './schema';
 
 interface Props {
   onSubmit: (data: AddMatchPlayersFormValues) => void;
@@ -28,6 +29,7 @@ export default function AddMatchPlayersForm({
   loading,
   error,
 }: Props) {
+  const { t } = useTranslation('matches');
   const {
     handleSubmit,
     control,
@@ -55,14 +57,18 @@ export default function AddMatchPlayersForm({
       <FormContainer
         onSubmit={handleSubmit(onSubmit)}
         onReset={() => reset(defaultValues)}
-        submitBtn={{ text: 'Next', disabled: !isValid || !isDirty, confirm: { show: false } }}
+        submitBtn={{
+          text: t('FORM.NEXT'),
+          disabled: !isValid || !isDirty,
+          confirm: { show: false },
+        }}
         loading={loading}
         error={error}
       >
         <ControlledMultiSelectInput
           control={control}
           name="matchPlayers"
-          label="Players"
+          label={t('FORM.PLAYERS')}
           options={playersOptions}
         />
       </FormContainer>
@@ -70,7 +76,7 @@ export default function AddMatchPlayersForm({
       {playerList.length ? (
         <TextList data={playerList} />
       ) : (
-        <CustomTypography color="label">Add some players</CustomTypography>
+        <CustomTypography color="label">{t('MESSAGES.ADD_PLAYERS')}</CustomTypography>
       )}
     </>
   );

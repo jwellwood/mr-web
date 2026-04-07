@@ -1,17 +1,11 @@
 export { Add_AwardDocument as ADD_AWARD } from './ADD_AWARD.generated';
-export { Add_SeasonDocument as ADD_SEASON } from './ADD_SEASON.generated';
 export { Add_TrophyDocument as ADD_TROPHY } from './ADD_TROPHY.generated';
 export { Delete_AwardDocument as DELETE_AWARD } from './DELETE_AWARD.generated';
-export { Delete_SeasonDocument as DELETE_SEASON } from './DELETE_SEASON.generated';
 export { Delete_TrophyDocument as DELETE_TROPHY } from './DELETE_TROPHY.generated';
 export { Edit_AwardDocument as EDIT_AWARD } from './EDIT_AWARD.generated';
-export { Edit_SeasonDocument as EDIT_SEASON } from './EDIT_SEASON.generated';
 export { Edit_TrophyDocument as EDIT_TROPHY } from './EDIT_TROPHY.generated';
 export { Fetch_AwardDocument as FETCH_AWARD } from './FETCH_AWARD.generated';
 export { Fetch_AwardsDocument as FETCH_AWARDS } from './FETCH_AWARDS.generated';
 export { Fetch_Hall_Of_FameDocument as FETCH_HALL_OF_FAME } from './FETCH_HALL_OF_FAME.generated';
-export { Fetch_SeasonDocument as FETCH_SEASON } from './FETCH_SEASON.generated';
-export { Fetch_Seasons_PositionDocument as FETCH_SEASONS_POSITION } from './FETCH_SEASONS_POSITION.generated';
-export { Fetch_SeasonsDocument as FETCH_SEASONS } from './FETCH_SEASONS.generated';
 export { Fetch_TrophiesDocument as FETCH_TROPHIES } from './FETCH_TROPHIES.generated';
 export { Fetch_TrophyDocument as FETCH_TROPHY } from './FETCH_TROPHY.generated';

@@ -1,0 +1,120 @@
+{
+  "TABLES": {
+    "HEADERS": {
+      "GOALS": "Gs",
+      "ASSISTS": "As",
+      "CONCEDED": "Cn",
+      "PLAYED": "Pl",
+      "WINS": "G",
+      "DRAWS": "E",
+      "DEFEATS": "P",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GC",
+      "DIFFERENCE": "+/-",
+      "POINTS": "Pts",
+      "WIN_PERCENT": "% V",
+      "AVERAGE": "Prm",
+      "FROM": "Desde",
+      "TO": "Hasta"
+    },
+    "RECORDS": {
+      "STREAKS": {
+        "WINS": "Victorias",
+        "UNBEATEN": "Invicto",
+        "LOSS": "Derrotas",
+        "WINLESS": "Sin Victorias"
+      }
+    }
+  },
+  "PAGES": {
+    "MATCH": "Partido",
+    "ADD_MATCH": "Agregar Partido",
+    "EDIT_MATCH": "Editar Partido"
+  },
+  "LINKS": {
+    "EDIT_MATCH": "Editar Partido"
+  },
+  "TABS": {
+    "FIXTURES": "Partidos",
+    "STATS": "Estadísticas",
+    "OPPONENTS": "Rivales",
+    "RECORDS": "Récords",
+    "PLAYERS": "Jugadores",
+    "HEAD_TO_HEAD": "Head to Head"
+  },
+  "FORM": {
+    "DATE": "Fecha",
+    "IS_HOME": "¿Local?",
+    "IS_FORFEIT": "Incomparecencia?",
+    "OPPONENT": "Rival",
+    "COMPETITION": "Competición",
+    "SEASON": "Temporada",
+    "GOALS_SCORED": "Goles a Favor",
+    "GOALS_CONCEDED": "Goles en Contra",
+    "LEAGUE_POSITION": "Posición en Liga",
+    "PLAYERS": "Jugadores",
+    "IS_STARTER": "¿Es titular?",
+    "POSITION": "Posición",
+    "GOALS": "Goles",
+    "PENS_SCORED": "Penaltis Marcados",
+    "ASSISTS": "Asistencias",
+    "OWN_GOALS": "Goles en Propia",
+    "PENS_MISSED": "Penaltis Fallados",
+    "PENS_SAVED": "Penaltis Parados",
+    "CONCEDED": "Goles Recibidos",
+    "YELLOW_CARDS": "Tarjetas Amarillas",
+    "IS_MVP": "¿Es MVP?",
+    "RED_CARD": "¿Tarjeta Roja?",
+    "CLEAN_SHEET": "¿Portería a Cero?",
+    "FORFEITED_MATCH": "Incomparecencia",
+    "APPLY": "Aplicar",
+    "NEXT": "Siguiente",
+    "ADD": "Agregar"
+  },
+  "SECTIONS": {
+    "ALL_TIME": "Histórico",
+    "CURRENT_SEASON": "Temporada Actual",
+    "STREAKS": "Rachas",
+    "SUMMARY": "Resumen"
+  },
+  "RECORDS": {
+    "MOST_GOALS_SCORED": "Más Goles a Favor",
+    "BEST_GOAL_DIFFERENCE": "Mejor Diferencia de Goles",
+    "MOST_GOALS_CONCEDED": "Más Goles en Contra",
+    "WORST_GOAL_DIFFERENCE": "Peor Diferencia de Goles"
+  },
+  "FILTERS": {
+    "TITLE": "Filtros",
+    "ALL_TEAMS": "Todos los Equipos",
+    "ACTIVE_TEAMS": "Equipos Activos",
+    "ALL_COMPETITIONS": "Todas las Competiciones",
+    "COMPETITIONS": "Competiciones",
+    "INCLUDE_FORFEITS": "Incluir Incomparecencias",
+    "EXCLUDE_FORFEITS": "Excluir Incomparecencias",
+    "SHOW_ALL_TEAMS": "Mostrar todos los equipos"
+  },
+  "ALERTS": {
+    "ADD_MATCH": {
+      "SUCCESS": "¡Partido agregado con éxito!",
+      "ERROR": "Hubo un error al agregar el partido. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_MATCH": {
+      "SUCCESS": "¡Partido actualizado con éxito!",
+      "ERROR": "Hubo un error al actualizar el partido. Por favor, inténtelo de nuevo."
+    },
+    "DELETE_MATCH": {
+      "SUCCESS": "Partido eliminado",
+      "ERROR": "Hubo un error al eliminar el partido. Por favor, inténtelo de nuevo."
+    }
+  },
+  "MESSAGES": {
+    "NO_MATCHES": "No hay partidos aún",
+    "NO_MATCH_DATA": "No hay datos del partido disponibles",
+    "ADD_SEASON_FIRST": "Por favor, agrega una temporada antes de agregar un partido.",
+    "ADD_COMPETITION_FIRST": "Por favor, agrega una competición antes de agregar un partido.",
+    "ADD_PLAYERS": "Agrega algunos jugadores",
+    "MATCH_FORFEITED": "Este partido fue por incomparecencia",
+    "YES": "Sí",
+    "NO": "No"
+  }
+}

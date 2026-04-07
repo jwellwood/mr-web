@@ -1,5 +1,5 @@
 import { IMatchesListMatch } from '../../../../../components';
-import { T_FETCH_MATCHES } from '../../../types';
+import { T_FETCH_MATCHES } from '../../../graphql';
 
 export const mapMatchesToMatchesList = (
   matches?: T_FETCH_MATCHES['matches']

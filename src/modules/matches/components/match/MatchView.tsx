@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { useTranslation } from 'react-i18next';
 import { DataError, SectionContainer } from '../../../../components';
 import { CustomTable } from '../../../../components/tables';
 import { CustomTabs, ITab } from '../../../../components/tabs';
@@ -6,7 +7,7 @@ import { NoDataText } from '../../../../components/typography';
 import { POSITIONS, TAB_TYPES } from '../../../../constants';
 import { useCustomParams } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
-import { T_FETCH_MATCH } from '../../types';
+import { T_FETCH_MATCH } from '../../graphql';
 import { MATCH_PLAYER_TABLE } from '../tables/match-players';
 
 const MatchDetails = lazy(() => import('./MatchDetails'));
@@ -19,6 +20,7 @@ interface Props {
 }
 
 export default function MatchView({ data, loading, error }: Props) {
+  const { t } = useTranslation('matches');
   const { teamId, orgId } = useCustomParams();
   const baseUrl = `/org/${orgId}/team/${teamId}`;
   const opponentId = data?.match?.opponentId;
@@ -36,13 +38,13 @@ export default function MatchView({ data, loading, error }: Props) {
 
   const tabs: ITab[] = [
     {
-      label: 'Players',
+      label: t('TABS.PLAYERS'),
       component: data?.match?.isForfeit ? (
-        <NoDataText>This match was forfeited</NoDataText>
+        <NoDataText>{t('MESSAGES.MATCH_FORFEITED')}</NoDataText>
       ) : (
         <SectionContainer>
           <CustomTable
-            columns={MATCH_PLAYER_TABLE.columns}
+            columns={MATCH_PLAYER_TABLE.columns(t)}
             rows={MATCH_PLAYER_TABLE.rows(mappedPlayers, baseUrl)}
             isSortable
             sortByString="position"
@@ -53,7 +55,7 @@ export default function MatchView({ data, loading, error }: Props) {
       ),
     },
     {
-      label: 'Head to Head',
+      label: t('TABS.HEAD_TO_HEAD'),
       component: <HeadToHead opponentId={opponentId?._id} />,
     },
   ];

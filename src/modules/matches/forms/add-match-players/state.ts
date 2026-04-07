@@ -1,5 +1,5 @@
 import { POSITIONS } from '../../../../constants';
-import { AddMatchPlayerStatsFormValues } from '../add-match-player-stats/validation';
+import { AddMatchPlayerStatsFormValues } from '../add-match-player-stats/schema';
 
 export const initPlayerInMatch = {
   isStarter: true,

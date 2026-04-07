@@ -1,5 +1,5 @@
 import { ITempMatch } from '../../types';
-import { AddMatchDetailsFormValues } from '../add-match-details/validation';
+import { AddMatchDetailsFormValues } from '../add-match-details/schema';
 
 export const mapTempMatchToFormData = (tempMatch: ITempMatch): AddMatchDetailsFormValues => {
   return {

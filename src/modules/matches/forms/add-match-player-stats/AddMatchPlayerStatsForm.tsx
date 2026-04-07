@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, useWatch } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   FormContainer,
   ControlledSelectInput,
@@ -9,7 +10,7 @@ import type { ISelectOptions } from '../../../../components';
 import { positionOptions } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
-import AddMatchPlayerStatsSchema, { AddMatchPlayerStatsFormValues } from './validation';
+import AddMatchPlayerStatsSchema, { AddMatchPlayerStatsFormValues } from './schema';
 
 interface Props {
   onSubmit: (data: AddMatchPlayerStatsFormValues) => void;
@@ -28,6 +29,7 @@ export default function AddMatchPlayerStatsForm({
   loading,
   error,
 }: Props) {
+  const { t } = useTranslation('matches');
   const {
     handleSubmit,
     control,
@@ -45,67 +47,72 @@ export default function AddMatchPlayerStatsForm({
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       onReset={() => reset(defaultValues)}
-      submitBtn={{ text: 'Add', disabled: !isValid || !isDirty, confirm: { show: false } }}
+      submitBtn={{ text: t('FORM.ADD'), disabled: !isValid || !isDirty, confirm: { show: false } }}
       loading={loading}
       error={error}
     >
-      <ControlledSwitchInput control={control} name="isStarter" label="Is starter?" />
+      <ControlledSwitchInput control={control} name="isStarter" label={t('FORM.IS_STARTER')} />
       <ControlledSelectInput
         control={control}
         name="matchPosition"
-        label="Position"
+        label={t('FORM.POSITION')}
         options={positionOptions}
       />
-      <ControlledSelectInput control={control} name="goals" label="Goals" options={goalOptions} />
+      <ControlledSelectInput
+        control={control}
+        name="goals"
+        label={t('FORM.GOALS')}
+        options={goalOptions}
+      />
       <ControlledSelectInput
         control={control}
         name="pensScored"
-        label="Pens Scored"
+        label={t('FORM.PENS_SCORED')}
         options={goalOptions}
         disabled={+goalsScored === 0}
       />
       <ControlledSelectInput
         control={control}
         name="assists"
-        label="Assists"
+        label={t('FORM.ASSISTS')}
         options={goalOptions}
       />
       <ControlledSelectInput
         control={control}
         name="ownGoals"
-        label="Own Goals"
+        label={t('FORM.OWN_GOALS')}
         options={concededOptions}
       />
       <ControlledSelectInput
         control={control}
         name="pensMissed"
-        label="Pens Missed"
+        label={t('FORM.PENS_MISSED')}
         options={getNumberOptions(10)}
       />
       <ControlledSelectInput
         control={control}
         name="pensSaved"
-        label="Pens Saved"
+        label={t('FORM.PENS_SAVED')}
         options={getNumberOptions(10)}
       />
       <ControlledSelectInput
         control={control}
         name="conceded"
-        label="Conceded"
+        label={t('FORM.CONCEDED')}
         options={concededOptions}
       />
       <ControlledSelectInput
         control={control}
         name="yellowCards"
-        label="Yellow Cards"
+        label={t('FORM.YELLOW_CARDS')}
         options={getNumberOptions(2, 0)}
       />
-      <ControlledSwitchInput control={control} name="mvp" label="Is MVP?" />
-      <ControlledSwitchInput control={control} name="redCard" label="Red Card?" />
+      <ControlledSwitchInput control={control} name="mvp" label={t('FORM.IS_MVP')} />
+      <ControlledSwitchInput control={control} name="redCard" label={t('FORM.RED_CARD')} />
       <ControlledSwitchInput
         control={control}
         name="cleanSheet"
-        label="Clean Sheet?"
+        label={t('FORM.CLEAN_SHEET')}
         disabled={+goalsConceded !== 0}
       />
     </FormContainer>

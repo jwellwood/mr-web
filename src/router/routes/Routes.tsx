@@ -8,6 +8,7 @@ import * as ORG from '../../modules/organization/router';
 import * as PLAYER from '../../modules/players/router';
 import * as PROFILE from '../../modules/profile/router';
 import * as TEAM from '../../modules/team/router';
+import * as TEAMSEASONS from '../../modules/teamseasons/router';
 import NotFound from '../NotFound';
 import RouteGuard from '../RouteGuard';
 import { PLAYER_ROUTES, MATCH_ROUTES } from './';
@@ -275,7 +276,7 @@ export default function AppRoutes() {
               index={true}
               element={
                 <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-                  <HISTORY.Season />
+                  <TEAMSEASONS.Season />
                 </RouteGuard>
               }
             />
@@ -310,7 +311,7 @@ export default function AppRoutes() {
             path={TEAM.TEAM_PATHS.ADD_SEASON}
             element={
               <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-                <HISTORY.AddTeamSeason />
+                <TEAMSEASONS.AddTeamSeason />
               </RouteGuard>
             }
           />
@@ -318,7 +319,7 @@ export default function AppRoutes() {
             path={TEAM.TEAM_PATHS.EDIT_SEASON}
             element={
               <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-                <HISTORY.EditTeamSeason />
+                <TEAMSEASONS.EditTeamSeason />
               </RouteGuard>
             }
           />

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { SubmitButton } from '../../../../components';
 import { getTempMatch, getTempPlayers } from '../../../../store';
@@ -12,6 +13,7 @@ interface Props {
 }
 
 export default function Step3MatchStats({ onNextClick, error }: Props) {
+  const { t } = useTranslation('matches');
   const currentMatch = useSelector(getTempMatch);
   const currentPlayers = useSelector(getTempPlayers);
   const { isValid } = validateStats(currentMatch, currentPlayers);
@@ -22,7 +24,7 @@ export default function Step3MatchStats({ onNextClick, error }: Props) {
       <>
         <MatchPlayersTable currentPlayers={currentPlayers} error={error} />
         <SubmitButton onClick={onNextClick} disabled={!isValid}>
-          Next
+          {t('FORM.NEXT')}
         </SubmitButton>
       </>
     </>

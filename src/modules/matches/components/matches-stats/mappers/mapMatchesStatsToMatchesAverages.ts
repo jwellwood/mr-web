@@ -1,5 +1,5 @@
 import { IMatchesAveragesStats } from '../../../../../components';
-import { T_FETCH_MATCHES_ALL_TIME_STATS, T_FETCH_MATCHES_STATS } from '../../../types';
+import { T_FETCH_MATCHES_ALL_TIME_STATS, T_FETCH_MATCHES_STATS } from '../../../graphql';
 
 export const mapMatchesStatsToMatchesAverages = (
   stats?: T_FETCH_MATCHES_ALL_TIME_STATS['stats'] | T_FETCH_MATCHES_STATS['stats']

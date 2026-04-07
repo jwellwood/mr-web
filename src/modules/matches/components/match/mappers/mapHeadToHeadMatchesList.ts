@@ -1,5 +1,5 @@
 import { IMatchesListMatch } from '../../../../../components';
-import { T_FETCH_MATCHES_BY_OPPONENT } from '../../../types';
+import { T_FETCH_MATCHES_BY_OPPONENT } from '../../../graphql';
 
 export const mapHeadToHeadMatchesList = (
   matches?: T_FETCH_MATCHES_BY_OPPONENT['matches']

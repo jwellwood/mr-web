@@ -1,4 +1,5 @@
-import { ITempMatchPlayers, T_FETCH_MATCH } from '../../types';
+import { T_FETCH_MATCH } from '../../graphql';
+import { ITempMatchPlayers } from '../../types';
 
 export const mapFetchedPlayersToTempPlayers = (
   players: T_FETCH_MATCH['match']['matchPlayers']

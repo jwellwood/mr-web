@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { FormStepper } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
+import DeleteMatch from '../../containers/DeleteMatch';
 import Step1MatchDetails from '../add-match-details/Step1MatchDetails';
 import Step3MatchStats from '../add-match-player-stats/Step3MatchStats';
 import Step2AddPlayers from '../add-match-players/Step2MatchPlayers';
-import DeleteMatch from '../DeleteMatch';
 import Step4SubmitMatch from '../submit-match/Step4SubmitMatch';
 import MatchOverview from './MatchOverview';
 

@@ -1,6 +1,7 @@
+import { useTranslation } from 'react-i18next';
 import { DataError, MatchList, NoDataText, SectionContainer } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { T_FETCH_MATCHES } from '../../types';
+import { T_FETCH_MATCHES } from '../../graphql';
 import { mapMatchesToMatchesList } from './mappers';
 
 interface Props {
@@ -11,13 +12,14 @@ interface Props {
 }
 
 export default function MatchesView({ data, loading, error, seasonReady }: Props) {
+  const { t } = useTranslation('matches');
   const renderContent = () => {
     const hasNoMatches =
       (seasonReady && data?.matches && data.matches.length === 0) ||
       (seasonReady && !data?.matches && !loading);
 
     if (hasNoMatches) {
-      return <NoDataText>No matches yet</NoDataText>;
+      return <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>;
     }
 
     return <MatchList matches={mapMatchesToMatchesList(data?.matches)} loading={loading} />;

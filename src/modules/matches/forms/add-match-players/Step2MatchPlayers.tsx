@@ -8,8 +8,8 @@ import { TApolloError } from '../../../../types/apollo';
 import { useMatchPlayersInput } from '../../hooks/useMatchPlayersInput';
 import { ITempMatchPlayers } from '../../types';
 import AddMatchPlayersForm from './AddMatchPlayersForm';
+import { AddMatchPlayersFormValues } from './schema';
 import { initPlayerInMatch } from './state';
-import { AddMatchPlayersFormValues } from './validation';
 
 interface Props {
   onNextClick: () => void;

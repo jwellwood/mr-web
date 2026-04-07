@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   DataError,
   MatchList,
@@ -6,7 +7,7 @@ import {
   SectionContainer,
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { T_FETCH_MATCHES_BY_OPPONENT } from '../../types';
+import { T_FETCH_MATCHES_BY_OPPONENT } from '../../graphql';
 import { mapHeadToHeadMatchesList, mapHeadToHeadMatchesTable } from './mappers';
 
 interface Props {
@@ -16,9 +17,10 @@ interface Props {
 }
 
 export default function HeadToHeadView({ data, loading, error }: Props) {
+  const { t } = useTranslation('matches');
   const renderContent = () => {
     return data?.matches && data.matches.length === 0 ? (
-      <NoDataText>No matches yet</NoDataText>
+      <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
     ) : (
       <>
         <MatchStatsTable stats={mapHeadToHeadMatchesTable(data?.matches)} loading={loading} />

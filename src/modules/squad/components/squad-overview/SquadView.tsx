@@ -18,7 +18,7 @@ export default function SquadView({ error, data, loading }: Props) {
       <NoDataText>{t('NO_DATA.SQUAD_PLAYERS')}</NoDataText>
     ) : (
       <CustomTable
-        columns={columns}
+        columns={columns(t)}
         rows={rows(data?.players, loading) ?? []}
         isSortable
         sortByString="position"

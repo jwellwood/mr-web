@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client/react';
 import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import type { ISelectOptions } from '../components';
-import { FETCH_SEASONS } from '../modules/history/graphql';
+import { FETCH_SEASONS } from '../modules/teamseasons/graphql';
 import { useCustomParams } from './useCustomParams';
 
 export const useSeasons = () => {

@@ -1,5 +1,5 @@
 import { StatIcon } from '../../../../../components/icons';
-import { T_FETCH_MATCH } from '../../../types';
+import { T_FETCH_MATCH } from '../../../graphql';
 
 export const rows = (currentPlayers?: T_FETCH_MATCH['match']['matchPlayers'], baseUrl?: string) => {
   const players = currentPlayers?.filter(cp => cp !== undefined) || [];

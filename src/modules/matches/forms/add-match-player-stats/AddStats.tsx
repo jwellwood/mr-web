@@ -7,7 +7,7 @@ import { TApolloError } from '../../../../types/apollo';
 import { getGoalsOptions } from '../../helpers';
 import { initPlayerInMatch } from '../add-match-players/state';
 import AddMatchPlayerStatsForm from './AddMatchPlayerStatsForm';
-import type { AddMatchPlayerStatsFormValues } from './validation';
+import type { AddMatchPlayerStatsFormValues } from './schema';
 
 interface Props {
   playerId: string;

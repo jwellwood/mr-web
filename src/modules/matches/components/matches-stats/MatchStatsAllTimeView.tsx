@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   DataError,
   MatchAverages,
@@ -6,7 +7,7 @@ import {
   SectionContainer,
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { T_FETCH_MATCHES_ALL_TIME_STATS } from '../../types';
+import { T_FETCH_MATCHES_ALL_TIME_STATS } from '../../graphql';
 import { mapMatchesStatsToMatchesAverages, mapMatchesStatsToMatchesTable } from './mappers';
 
 interface Props {
@@ -16,9 +17,10 @@ interface Props {
 }
 
 export default function MatchStatsAllTimeView({ data, loading, error }: Props) {
+  const { t } = useTranslation('matches');
   const renderContent = () => {
     return data?.stats && !data?.stats?.total ? (
-      <NoDataText>No matches yet</NoDataText>
+      <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
     ) : (
       <>
         <MatchStatsTable stats={mapMatchesStatsToMatchesTable(data?.stats)} loading={loading} />
@@ -28,7 +30,7 @@ export default function MatchStatsAllTimeView({ data, loading, error }: Props) {
   };
 
   return (
-    <SectionContainer title="All Time">
+    <SectionContainer title={t('SECTIONS.ALL_TIME')}>
       {error ? <DataError error={error} /> : renderContent()}
     </SectionContainer>
   );

@@ -5,9 +5,6 @@ export const PAGES = {
   TROPHY: 'Trophy',
   ADD_TROPHY: 'Add New Trophy',
   EDIT_TROPHY: 'Edit Trophy',
-  SEASON: 'Season',
-  EDIT_SEASON: 'Edit Season',
-  ADD_SEASON: 'Add New Season',
   AWARD: 'Award',
   ADD_AWARD: 'Add Season Award',
   EDIT_AWARD: 'Edit Season Award',
@@ -15,19 +12,6 @@ export const PAGES = {
 
 // Add this type to get the same type safety as an enum
 export type PAGES_TYPE = (typeof PAGES)[keyof typeof PAGES];
-
-export const SEASON_ADMIN_LINKS: IListItem[] = [
-  {
-    label: 'Add Award',
-    type: LINK_TYPE.ADD,
-    link: 'add_award',
-  },
-  {
-    label: 'Edit Season',
-    type: LINK_TYPE.EDIT,
-    link: 'edit',
-  },
-];
 
 export const AWARD_ADMIN_LINKS: IListItem[] = [
   {

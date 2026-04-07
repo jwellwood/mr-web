@@ -24,6 +24,14 @@
   },
   "TABLES": {
     "HEADERS": {
+      "NUMBER": "#",
+      "PLAYED": "Pl",
+      "GOALS": "Gs",
+      "ASSISTS": "As",
+      "MVP": "Mvp",
+      "CONCEDED": "Cn",
+      "CLEAN_SHEETS": "C/S",
+      "AVERAGE": "Av",
       "TO": "To",
       "FROM": "From",
       "SEASONS": "Seas"

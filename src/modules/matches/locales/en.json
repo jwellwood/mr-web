@@ -1,0 +1,120 @@
+{
+  "TABLES": {
+    "HEADERS": {
+      "GOALS": "Gs",
+      "ASSISTS": "As",
+      "CONCEDED": "Cn",
+      "PLAYED": "Pl",
+      "WINS": "W",
+      "DRAWS": "D",
+      "DEFEATS": "L",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GA",
+      "DIFFERENCE": "+/-",
+      "POINTS": "Pts",
+      "WIN_PERCENT": "Win %",
+      "AVERAGE": "Avg",
+      "FROM": "From",
+      "TO": "To"
+    },
+    "RECORDS": {
+      "STREAKS": {
+        "WINS": "Wins",
+        "UNBEATEN": "Unbeaten",
+        "LOSS": "Loss",
+        "WINLESS": "Winless"
+      }
+    }
+  },
+  "PAGES": {
+    "MATCH": "Match",
+    "ADD_MATCH": "Add Match",
+    "EDIT_MATCH": "Edit Match"
+  },
+  "LINKS": {
+    "EDIT_MATCH": "Edit Match"
+  },
+  "TABS": {
+    "FIXTURES": "Fixtures",
+    "STATS": "Stats",
+    "OPPONENTS": "Opponents",
+    "RECORDS": "Records",
+    "PLAYERS": "Players",
+    "HEAD_TO_HEAD": "Head to Head"
+  },
+  "FORM": {
+    "DATE": "Date",
+    "IS_HOME": "Home?",
+    "IS_FORFEIT": "Forfeit?",
+    "OPPONENT": "Opponent",
+    "COMPETITION": "Competition",
+    "SEASON": "Season",
+    "GOALS_SCORED": "Goals Scored",
+    "GOALS_CONCEDED": "Goals Conceded",
+    "LEAGUE_POSITION": "League Position",
+    "PLAYERS": "Players",
+    "IS_STARTER": "Is starter?",
+    "POSITION": "Position",
+    "GOALS": "Goals",
+    "PENS_SCORED": "Pens Scored",
+    "ASSISTS": "Assists",
+    "OWN_GOALS": "Own Goals",
+    "PENS_MISSED": "Pens Missed",
+    "PENS_SAVED": "Pens Saved",
+    "CONCEDED": "Conceded",
+    "YELLOW_CARDS": "Yellow Cards",
+    "IS_MVP": "Is MVP?",
+    "RED_CARD": "Red Card?",
+    "CLEAN_SHEET": "Clean Sheet?",
+    "FORFEITED_MATCH": "Forfeited Match",
+    "APPLY": "Apply",
+    "NEXT": "Next",
+    "ADD": "Add"
+  },
+  "SECTIONS": {
+    "ALL_TIME": "All Time",
+    "CURRENT_SEASON": "Current Season",
+    "STREAKS": "Streaks",
+    "SUMMARY": "Summary"
+  },
+  "RECORDS": {
+    "MOST_GOALS_SCORED": "Most Goals Scored",
+    "BEST_GOAL_DIFFERENCE": "Best Goal Difference",
+    "MOST_GOALS_CONCEDED": "Most Goals Conceded",
+    "WORST_GOAL_DIFFERENCE": "Worst Goal Difference"
+  },
+  "FILTERS": {
+    "TITLE": "Filters",
+    "ALL_TEAMS": "All Teams",
+    "ACTIVE_TEAMS": "Active Teams",
+    "ALL_COMPETITIONS": "All Competitions",
+    "COMPETITIONS": "Competitions",
+    "INCLUDE_FORFEITS": "Include Forfeits",
+    "EXCLUDE_FORFEITS": "Exclude Forfeits",
+    "SHOW_ALL_TEAMS": "Show all teams"
+  },
+  "ALERTS": {
+    "ADD_MATCH": {
+      "SUCCESS": "Match added successfully!",
+      "ERROR": "There was an error adding the match. Please try again."
+    },
+    "EDIT_MATCH": {
+      "SUCCESS": "Match updated successfully!",
+      "ERROR": "There was an error updating the match. Please try again."
+    },
+    "DELETE_MATCH": {
+      "SUCCESS": "Match deleted",
+      "ERROR": "There was an error deleting the match. Please try again."
+    }
+  },
+  "MESSAGES": {
+    "NO_MATCHES": "No matches yet",
+    "NO_MATCH_DATA": "No match data available",
+    "ADD_SEASON_FIRST": "Please add a season before adding a match.",
+    "ADD_COMPETITION_FIRST": "Please add a competition before adding a match.",
+    "ADD_PLAYERS": "Add some players",
+    "MATCH_FORFEITED": "This match was forfeited",
+    "YES": "Yes",
+    "NO": "No"
+  }
+}

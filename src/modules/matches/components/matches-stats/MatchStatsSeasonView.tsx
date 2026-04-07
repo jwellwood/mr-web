@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   DataError,
   MatchAverages,
@@ -6,7 +7,7 @@ import {
   SectionContainer,
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { T_FETCH_MATCHES_STATS } from '../../types';
+import { T_FETCH_MATCHES_STATS } from '../../graphql';
 import { mapMatchesStatsToMatchesAverages, mapMatchesStatsToMatchesTable } from './mappers';
 
 interface Props {
@@ -17,10 +18,11 @@ interface Props {
 }
 
 export default function MatchStatsSeasonView({ data, loading, error, seasonReady }: Props) {
+  const { t } = useTranslation('matches');
   const renderContent = () => {
     return (seasonReady && !loading && !data) ||
       (seasonReady && data?.stats && !data?.stats?.total) ? (
-      <NoDataText>No matches yet</NoDataText>
+      <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
     ) : (
       <>
         <MatchStatsTable stats={mapMatchesStatsToMatchesTable(data?.stats)} loading={loading} />
@@ -30,7 +32,7 @@ export default function MatchStatsSeasonView({ data, loading, error, seasonReady
   };
 
   return (
-    <SectionContainer title="Current Season">
+    <SectionContainer title={t('SECTIONS.CURRENT_SEASON')}>
       {error ? <DataError error={error} /> : renderContent()}
     </SectionContainer>
   );

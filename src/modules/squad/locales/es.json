@@ -24,6 +24,14 @@
   },
   "TABLES": {
     "HEADERS": {
+      "NUMBER": "#",
+      "PLAYED": "PJ",
+      "GOALS": "Gs",
+      "ASSISTS": "As",
+      "MVP": "Mvp",
+      "CONCEDED": "GC",
+      "CLEAN_SHEETS": "P/C",
+      "AVERAGE": "Prom",
       "TO": "Hasta",
       "FROM": "Desde",
       "SEASONS": "Tmps"

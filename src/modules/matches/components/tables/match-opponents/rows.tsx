@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { OpponentModal } from '../../../../../components';
 import { getAvg, getPercentage } from '../../../../../utils';
-import { T_FETCH_MATCH_OPPONENTS } from '../../../types';
+import { T_FETCH_MATCH_OPPONENTS } from '../../../graphql';
 
 export const rows = (data?: T_FETCH_MATCH_OPPONENTS['stats']) => {
   const HeadToHead = lazy(() => import('../../../containers/HeadToHead'));

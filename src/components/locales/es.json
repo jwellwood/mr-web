@@ -53,7 +53,7 @@
     "WINS": "Ganados",
     "DRAWS": "Empates",
     "DEFEATS": "Perdidos",
-    "FORFEIT": "F",
+    "FORFEIT": "INC",
     "HOME": "(L)",
     "AWAY": "(V)",
     "HEADERS": {

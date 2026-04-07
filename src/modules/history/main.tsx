@@ -3,7 +3,7 @@ import { CustomTabs, ITab } from '../../components/tabs';
 import { TAB_TYPES } from '../../constants';
 
 const HallOfFame = lazy(() => import('./containers/HallOfFame'));
-const Seasons = lazy(() => import('./containers/Seasons'));
+const Seasons = lazy(() => import('../teamseasons/containers/Seasons'));
 const Trophies = lazy(() => import('./containers/Trophies'));
 
 export default function History() {

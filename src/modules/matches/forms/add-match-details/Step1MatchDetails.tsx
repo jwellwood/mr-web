@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { ISelectOptions, NoDataText } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
@@ -6,7 +7,7 @@ import { TApolloError } from '../../../../types/apollo';
 import { useMatchDetailsInput } from '../../hooks/useMatchDetailsInput';
 import { mapTempMatchToFormData } from '../mappers';
 import AddMatchDetailsForm from './AddMatchDetailsForm';
-import { AddMatchDetailsFormValues } from './validation';
+import { AddMatchDetailsFormValues } from './schema';
 
 interface Props {
   onNextClick: () => void;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function Step1MatchDetails({ onNextClick, loading, error }: Props) {
+  const { t } = useTranslation('matches');
   const { teamId } = useCustomParams();
   const {
     seasonOptions,
@@ -58,10 +60,10 @@ export default function Step1MatchDetails({ onNextClick, loading, error }: Props
   // Options arrays always have at least the empty option, so length <= 1 means no real data
   if (dataFetched && !isLoading) {
     if (seasonOptions.length <= 1) {
-      return <NoDataText>Please add a season before adding a match.</NoDataText>;
+      return <NoDataText>{t('MESSAGES.ADD_SEASON_FIRST')}</NoDataText>;
     }
     if (competitionOptions.length <= 1) {
-      return <NoDataText>Please add a competition before adding a match.</NoDataText>;
+      return <NoDataText>{t('MESSAGES.ADD_COMPETITION_FIRST')}</NoDataText>;
     }
   }
 

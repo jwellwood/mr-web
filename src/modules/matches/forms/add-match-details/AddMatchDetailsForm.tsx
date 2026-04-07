@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   FormContainer,
   ControlledDateInput,
@@ -9,7 +10,7 @@ import {
 } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
-import AddMatchDetailsSchema, { AddMatchDetailsFormValues } from './validation';
+import AddMatchDetailsSchema, { AddMatchDetailsFormValues } from './schema';
 
 interface Props {
   onSubmit: (data: AddMatchDetailsFormValues) => void;
@@ -30,6 +31,7 @@ export default function AddMatchDetailsForm({
   loading,
   error,
 }: Props) {
+  const { t } = useTranslation('matches');
   const {
     handleSubmit,
     control,
@@ -44,41 +46,46 @@ export default function AddMatchDetailsForm({
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       onReset={() => reset(defaultValues)}
-      submitBtn={{ text: 'Next', disabled: !isValid || !isDirty, confirm: { show: false } }}
+      submitBtn={{ text: t('FORM.NEXT'), disabled: !isValid || !isDirty, confirm: { show: false } }}
       loading={loading}
       error={error}
     >
-      <ControlledDateInput control={control} name="date" label="Date" disableFuture={false} />
-      <ControlledSwitchInput control={control} name="isHome" label="Home?" />
-      <ControlledSwitchInput control={control} name="isForfeit" label="Forfeit?" />
+      <ControlledDateInput
+        control={control}
+        name="date"
+        label={t('FORM.DATE')}
+        disableFuture={false}
+      />
+      <ControlledSwitchInput control={control} name="isHome" label={t('FORM.IS_HOME')} />
+      <ControlledSwitchInput control={control} name="isForfeit" label={t('FORM.IS_FORFEIT')} />
       <ControlledSelectInput
         control={control}
         name="opponentId"
-        label="Opponent"
+        label={t('FORM.OPPONENT')}
         options={opponentOptions}
       />
       <ControlledSelectInput
         control={control}
         name="competitionId"
-        label="Competition"
+        label={t('FORM.COMPETITION')}
         options={competitionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="seasonId"
-        label="Season"
+        label={t('FORM.SEASON')}
         options={seasonOptions}
       />
       <ControlledSelectInput
         control={control}
         name="teamGoals"
-        label="Goals Scored"
+        label={t('FORM.GOALS_SCORED')}
         options={getNumberOptions(99)}
       />
       <ControlledSelectInput
         control={control}
         name="opponentGoals"
-        label="Goals Conceded"
+        label={t('FORM.GOALS_CONCEDED')}
         options={getNumberOptions(99)}
       />
     </FormContainer>

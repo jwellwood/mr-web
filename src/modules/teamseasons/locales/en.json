@@ -1,0 +1,49 @@
+{
+  "PAGES": {
+    "SEASON": "Season",
+    "ADD_SEASON": "Add New Season",
+    "EDIT_SEASON": "Edit Season"
+  },
+  "LINKS": {
+    "ADD_AWARD": "Add Award",
+    "EDIT_SEASON": "Edit Season"
+  },
+  "FORM": {
+    "YEAR_STARTED": "Year Started",
+    "YEAR_ENDED": "Year Ended",
+    "DIVISION": "Division",
+    "NUMBER_OF_TEAMS": "Number of Teams",
+    "FINAL_POSITION": "Final Position",
+    "COMMENT": "Comment"
+  },
+  "TABLES": {
+    "DIVISION": "Division",
+    "POSITION": "Position"
+  },
+  "TABS": {
+    "STATS": "Stats",
+    "MATCHES": "Matches",
+    "SQUAD": "Squad",
+    "AWARDS": "Awards"
+  },
+  "MESSAGES": {
+    "NO_SEASONS": "No seasons yet"
+  },
+  "MODALS": {
+    "AWARDS_TITLE": "{{name}} Awards"
+  },
+  "ALERTS": {
+    "ADD_SEASON": {
+      "SUCCESS": "Season added successfully.",
+      "ERROR": "There was an error adding the season. Please try again."
+    },
+    "EDIT_SEASON": {
+      "SUCCESS": "Season updated successfully.",
+      "ERROR": "There was an error updating the season. Please try again."
+    },
+    "DELETE_SEASON": {
+      "SUCCESS": "Season deleted successfully.",
+      "ERROR": "There was a problem."
+    }
+  }
+}
