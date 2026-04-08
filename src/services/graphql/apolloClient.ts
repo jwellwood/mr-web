@@ -3,8 +3,7 @@ import { setContext } from '@apollo/client/link/context';
 import { authStorage } from '../../utils/dev/storage';
 
 const gqlUrl = import.meta.env.PROD
-  ? import.meta.env.VITE_GRAPHQL_URL ||
-    'https://madrid-reds-1035582858411.northamerica-northeast2.run.app/graphql' // Backend URL for production
+  ? import.meta.env.VITE_GRAPHQL_URL
   : 'http://localhost:3002/graphql';
 
 const authLink = setContext((_, { headers }) => {
@@ -25,6 +24,11 @@ const httpLink = new HttpLink({
 export const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   link: authLink.concat(httpLink),
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+    },
+  },
   clientAwareness: {
     name: 'football-stats',
     version: import.meta.env.VERSION,

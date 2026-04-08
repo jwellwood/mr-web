@@ -1,4 +1,3 @@
-import { makeStyles } from '@mui/styles';
 import { useTranslation } from 'react-i18next';
 import { FaTshirt } from 'react-icons/fa';
 import { GiUnderwearShorts } from 'react-icons/gi';
@@ -8,24 +7,6 @@ import CustomSkeleton from '../../../components/loaders/custom-skeleton/CustomSk
 import { CustomTypography } from '../../../components/typography';
 import { T_FETCH_TEAM_QUERY } from '../graphql';
 
-const useStyles = makeStyles(() => ({
-  container: {
-    borderRadius: '4px',
-    marginTop: '8px',
-  },
-  shirt: {
-    paddingBottom: '0px',
-    marginBottom: '-20px',
-  },
-  shorts: {
-    paddingTop: '0px',
-  },
-  socks: {
-    paddingBottom: '8px',
-    marginRight: '5px',
-  },
-}));
-
 interface Props {
   team?: T_FETCH_TEAM_QUERY['team'];
   loading: boolean;
@@ -33,7 +14,6 @@ interface Props {
 
 export default function Kits({ team, loading }: Props) {
   const { t } = useTranslation('team');
-  const classes = useStyles();
 
   const { homeShirt, homeShorts, homeSocks, awayShirt, awayShorts, awaySocks, kitsBackground } =
     team || {};
@@ -58,8 +38,11 @@ export default function Kits({ team, loading }: Props) {
               {item.title}
             </CustomTypography>
             <div
-              style={{ background: kitsBackground || 'transparent' }}
-              className={classes.container}
+              style={{
+                background: kitsBackground || 'transparent',
+                borderRadius: '4px',
+                marginTop: '8px',
+              }}
             >
               {loading ? (
                 <CustomSkeleton height="75px" />
@@ -68,13 +51,13 @@ export default function Kits({ team, loading }: Props) {
                   <FaTshirt
                     size="3.5rem"
                     color={item.kit.shirt || 'white'}
-                    className={classes.shirt}
+                    style={{ paddingBottom: '0px', marginBottom: '-20px' }}
                   />
 
                   <GiUnderwearShorts
                     size="2.4rem"
                     color={item.kit.shorts || 'white'}
-                    className={classes.shorts}
+                    style={{ paddingTop: '0px' }}
                   />
                 </CustomGridContainer>
               )}

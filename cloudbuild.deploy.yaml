@@ -32,6 +32,8 @@ steps:
         'VITE_APP_VERSION=$COMMIT_SHA',
         '--build-arg',
         'VITE_TURNSTILE_SITE_KEY=${_VITE_TURNSTILE_SITE_KEY}',
+        '--build-arg',
+        'VITE_GRAPHQL_URL=${_VITE_GRAPHQL_URL}',
         '-t',
         'madrid-reds-web:$COMMIT_SHA',
         '.',
