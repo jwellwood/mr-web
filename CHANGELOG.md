@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.15.2](https://github.com/jwellwood/mr-web/compare/v0.15.1...v0.15.2) (2026-04-08)
+
+### Bug Fixes
+
+* remove deps, hardcoded url ([71617e7](https://github.com/jwellwood/mr-web/commit/71617e7045b130ab0f924a832e1e51cb6784a282))
+
 ## [0.15.1](https://github.com/jwellwood/mr-web/compare/v0.15.0...v0.15.1) (2026-04-08)
 
 ### Bug Fixes
