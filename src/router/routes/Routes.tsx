@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { AUTH_ROLES } from '../../constants';
 import * as AUTH from '../../modules/auth/router';
-import * as HISTORY from '../../modules/history/router';
+import * as HISTORY from '../../modules/awards/router';
 import * as HOME from '../../modules/home/router';
 import * as MATCH from '../../modules/matches/router';
 import * as ORG from '../../modules/organization/router';
@@ -9,6 +9,7 @@ import * as PLAYER from '../../modules/players/router';
 import * as PROFILE from '../../modules/profile/router';
 import * as TEAM from '../../modules/team/router';
 import * as TEAMSEASONS from '../../modules/teamseasons/router';
+import * as TROPHIES from '../../modules/trophies/router';
 import NotFound from '../NotFound';
 import RouteGuard from '../RouteGuard';
 import { PLAYER_ROUTES, MATCH_ROUTES } from './';
@@ -327,7 +328,7 @@ export default function AppRoutes() {
             path={TEAM.TEAM_PATHS.TROPHY}
             element={
               <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
-                <HISTORY.Trophy />
+                <TROPHIES.Trophy />
               </RouteGuard>
             }
           />
@@ -335,7 +336,7 @@ export default function AppRoutes() {
             path={TEAM.TEAM_PATHS.ADD_TROPHY}
             element={
               <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-                <HISTORY.AddTrophy />
+                <TROPHIES.AddTrophy />
               </RouteGuard>
             }
           />
@@ -343,7 +344,7 @@ export default function AppRoutes() {
             path={TEAM.TEAM_PATHS.EDIT_TROPHY}
             element={
               <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-                <HISTORY.EditTrophy />
+                <TROPHIES.EditTrophy />
               </RouteGuard>
             }
           />

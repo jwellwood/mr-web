@@ -1,0 +1,56 @@
+{
+  "PAGES": {
+    "TROPHY": "Trophy",
+    "ADD_TROPHY": "Add New Trophy",
+    "EDIT_TROPHY": "Edit Trophy"
+  },
+  "LINKS": {
+    "EDIT_TROPHY": "Edit Trophy"
+  },
+  "FORM": {
+    "NAME": "Name",
+    "SEASON": "Season",
+    "YEAR": "Year",
+    "IS_WINNER": "Is Winner?",
+    "IS_FINAL": "Is a final?",
+    "OPPONENT": "Opponent",
+    "COMMENT": "Comment"
+  },
+  "ALERTS": {
+    "ADD_TROPHY": {
+      "SUCCESS": "Trophy added successfully.",
+      "ERROR": "There was an error adding the trophy. Please try again."
+    },
+    "EDIT_TROPHY": {
+      "SUCCESS": "Trophy updated successfully.",
+      "ERROR": "There was an error updating the trophy. Please try again."
+    },
+    "DELETE_TROPHY": {
+      "SUCCESS": "Trophy deleted successfully.",
+      "ERROR": "There was a problem."
+    }
+  },
+  "VALIDATION": {
+    "NAME_REQUIRED": "Name is required",
+    "SEASON_REQUIRED": "Season is required"
+  },
+  "MESSAGES": {
+    "NO_TROPHIES": "No trophies yet"
+  },
+  "ORDER": {
+    "LABEL": "Order by",
+    "DATE": "Date",
+    "COMPETITION": "Competition",
+    "TYPE": "Type"
+  },
+  "TYPE": {
+    "WINNER": "Winner",
+    "RUNNER_UP": "Runner up"
+  },
+  "TOTALS": {
+    "TITLE": "Totals",
+    "TOTAL": "Total",
+    "WINS": "Wins",
+    "FINALS": "Finals"
+  }
+}

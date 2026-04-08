@@ -1,0 +1,37 @@
+import { useTranslation } from 'react-i18next';
+import { DataError, NoDataText } from '../../../components';
+import { TApolloError } from '../../../types/apollo';
+import { T_FETCH_TROPHIES } from '../graphql';
+import TrophiesOrderBy from './TrophiesOrderBy';
+import TrophiesTotals from './TrophiesTotals';
+
+interface Props {
+  data?: T_FETCH_TROPHIES;
+  loading: boolean;
+  error?: TApolloError;
+}
+
+export default function TrophiesView({ data, loading, error }: Props) {
+  const { t } = useTranslation('trophies');
+  const totalsData = {
+    total: data?.trophies.length || 0,
+    winner: data?.trophies.filter(trophy => trophy.isWinner).length || 0,
+    final: data?.trophies.filter(trophy => trophy.isFinal).length || 0,
+  };
+
+  const totals = <TrophiesTotals data={totalsData} loading={loading} />;
+  const list = <TrophiesOrderBy trophies={data?.trophies} loading={loading} />;
+
+  const renderContent = () => {
+    return data?.trophies && data.trophies.length === 0 ? (
+      <NoDataText>{t('MESSAGES.NO_TROPHIES')}</NoDataText>
+    ) : (
+      <>
+        {totals}
+        {list}
+      </>
+    );
+  };
+
+  return error ? <DataError error={error} /> : renderContent();
+}

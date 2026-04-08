@@ -1,0 +1,38 @@
+{
+  "PAGES": {
+    "AWARD": "Award",
+    "ADD_AWARD": "Add Season Award",
+    "EDIT_AWARD": "Edit Season Award"
+  },
+  "LINKS": {
+    "EDIT_AWARD": "Edit Award"
+  },
+  "FORM": {
+    "AWARD_NAME": "Award Name",
+    "AWARD_NAME_PLACEHOLDER": "e.g. Player of the Season",
+    "WINNERS": "Winners",
+    "VALUE": "Value",
+    "COMMENT": "Comment"
+  },
+  "ALERTS": {
+    "ADD_AWARD": {
+      "SUCCESS": "Award added successfully.",
+      "ERROR": "There was an error adding the award. Please try again."
+    },
+    "EDIT_AWARD": {
+      "SUCCESS": "Award updated successfully.",
+      "ERROR": "There was an error updating the award. Please try again."
+    },
+    "DELETE_AWARD": {
+      "SUCCESS": "Award deleted successfully.",
+      "ERROR": "There was a problem."
+    }
+  },
+  "VALIDATION": {
+    "NAME_REQUIRED": "Award name is required",
+    "NAME_MAX": "Award name must be at most 50 characters"
+  },
+  "MESSAGES": {
+    "NO_AWARDS": "No awards yet"
+  }
+}

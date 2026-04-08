@@ -12,15 +12,15 @@ import { getTeamAdminLinks } from '../helpers/getTeamAdminLinks';
 const TeamOverview = lazy(() => import('../containers/Team'));
 const SquadTabs = lazy(() => import('../../squad/main'));
 const MatchesTabs = lazy(() => import('../../matches/main'));
-const HistoryTabs = lazy(() => import('../../history/main'));
+const HistoryTabs = lazy(() => import('../components/HistoryTabs'));
 const TeamHelp = lazy(() => import('../TeamHelp'));
 
 export default function TeamPage() {
   const { t } = useTranslation('team');
   const { teamId } = useCustomParams();
-
   const { isTeamAuth } = useAuth(teamId);
   const { team } = useSelector(getTabIndex);
+
   const getIcon = (name: AppIconType, index: number) => (
     <AppIcon icon={name} size="20px" color={index === team ? 'primary' : 'label'} />
   );

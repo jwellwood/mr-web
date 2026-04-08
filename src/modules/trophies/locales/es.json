@@ -1,0 +1,56 @@
+{
+  "PAGES": {
+    "TROPHY": "Trofeo",
+    "ADD_TROPHY": "Agregar Trofeo",
+    "EDIT_TROPHY": "Editar Trofeo"
+  },
+  "LINKS": {
+    "EDIT_TROPHY": "Editar Trofeo"
+  },
+  "FORM": {
+    "NAME": "Nombre",
+    "SEASON": "Temporada",
+    "YEAR": "Año",
+    "IS_WINNER": "¿Es Ganador?",
+    "IS_FINAL": "¿Es una final?",
+    "OPPONENT": "Oponente",
+    "COMMENT": "Comentario"
+  },
+  "ALERTS": {
+    "ADD_TROPHY": {
+      "SUCCESS": "Trofeo agregado con éxito.",
+      "ERROR": "Hubo un error al agregar el trofeo. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_TROPHY": {
+      "SUCCESS": "Trofeo actualizado con éxito.",
+      "ERROR": "Hubo un error al actualizar el trofeo. Por favor, inténtelo de nuevo."
+    },
+    "DELETE_TROPHY": {
+      "SUCCESS": "Trofeo eliminado con éxito.",
+      "ERROR": "Hubo un problema."
+    }
+  },
+  "VALIDATION": {
+    "NAME_REQUIRED": "El nombre es obligatorio",
+    "SEASON_REQUIRED": "La temporada es obligatoria"
+  },
+  "MESSAGES": {
+    "NO_TROPHIES": "Aún no hay trofeos"
+  },
+  "ORDER": {
+    "LABEL": "Ordenar por",
+    "DATE": "Fecha",
+    "COMPETITION": "Competición",
+    "TYPE": "Tipo"
+  },
+  "TYPE": {
+    "WINNER": "Ganador",
+    "RUNNER_UP": "Subcampeón"
+  },
+  "TOTALS": {
+    "TITLE": "Totales",
+    "TOTAL": "Total",
+    "WINS": "Victorias",
+    "FINALS": "Finales"
+  }
+}

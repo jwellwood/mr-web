@@ -8,7 +8,7 @@ import SeasonHeader from './SeasonHeader';
 const Matches = lazy(() => import('../../matches/containers/Matches'));
 const Squad = lazy(() => import('../../squad/containers/Squad'));
 const MatchStatsSeason = lazy(() => import('../../matches/containers/MatchStatsSeason'));
-const Awards = lazy(() => import('../../history/containers/Awards'));
+const Awards = lazy(() => import('../../awards/containers/Awards'));
 
 interface Props {
   season?: T_FETCH_SEASON['season'];

@@ -1,5 +1,9 @@
 import { DeepOmitTypename } from '../../../utils';
 import {
+  Fetch_Hall_Of_FameDocument,
+  type Fetch_Hall_Of_FameQuery,
+} from '../../squad/graphql/FETCH_HALL_OF_FAME.generated';
+import {
   Fetch_Past_PlayersDocument,
   type Fetch_Past_PlayersQuery,
 } from './FETCH_PAST_PLAYERS.generated';
@@ -46,6 +50,7 @@ export {
   Fetch_Squad_StatsDocument as FETCH_SQUAD_STATS,
   Fetch_Squad_StreaksDocument as FETCH_SQUAD_STREAKS,
   Fetch_Top_Player_StreaksDocument as FETCH_TOP_PLAYER_STREAKS,
+  Fetch_Hall_Of_FameDocument as FETCH_HALL_OF_FAME,
 };
 // export types
 export type T_FETCH_PAST_PLAYERS_QUERY = DeepOmitTypename<Fetch_Past_PlayersQuery>;
@@ -60,3 +65,4 @@ export type T_FETCH_SQUAD_SINGLE_SEASON_RECORDS_QUERY =
 export type T_FETCH_SQUAD_STATS_QUERY = DeepOmitTypename<Fetch_Squad_StatsQuery>;
 export type T_FETCH_SQUAD_STREAKS_QUERY = DeepOmitTypename<Fetch_Squad_StreaksQuery>;
 export type T_FETCH_TOP_PLAYER_STREAKS_QUERY = DeepOmitTypename<Fetch_Top_Player_StreaksQuery>;
+export type T_FETCH_HALL_OF_FAME = DeepOmitTypename<Fetch_Hall_Of_FameQuery>;

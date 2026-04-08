@@ -4,7 +4,7 @@ import { AppIcon } from '../../../components/icons';
 import { StatSkeleton } from '../../../components/loaders';
 import { PresentationModal } from '../../../components/modals';
 
-const Awards = lazy(() => import('../../history/containers/Awards'));
+const Awards = lazy(() => import('../../awards/containers/Awards'));
 
 interface Props {
   seasonId?: string;

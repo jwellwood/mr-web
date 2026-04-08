@@ -1,0 +1,38 @@
+{
+  "PAGES": {
+    "AWARD": "Premio",
+    "ADD_AWARD": "Agregar Premio de Temporada",
+    "EDIT_AWARD": "Editar Premio de Temporada"
+  },
+  "LINKS": {
+    "EDIT_AWARD": "Editar Premio"
+  },
+  "FORM": {
+    "AWARD_NAME": "Nombre del Premio",
+    "AWARD_NAME_PLACEHOLDER": "ej. Jugador de la Temporada",
+    "WINNERS": "Ganadores",
+    "VALUE": "Valor",
+    "COMMENT": "Comentario"
+  },
+  "ALERTS": {
+    "ADD_AWARD": {
+      "SUCCESS": "Premio agregado con éxito.",
+      "ERROR": "Hubo un error al agregar el premio. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_AWARD": {
+      "SUCCESS": "Premio actualizado con éxito.",
+      "ERROR": "Hubo un error al actualizar el premio. Por favor, inténtelo de nuevo."
+    },
+    "DELETE_AWARD": {
+      "SUCCESS": "Premio eliminado con éxito.",
+      "ERROR": "Hubo un problema."
+    }
+  },
+  "VALIDATION": {
+    "NAME_REQUIRED": "El nombre del premio es obligatorio",
+    "NAME_MAX": "El nombre del premio no puede superar los 50 caracteres"
+  },
+  "MESSAGES": {
+    "NO_AWARDS": "Aún no hay premios"
+  }
+}

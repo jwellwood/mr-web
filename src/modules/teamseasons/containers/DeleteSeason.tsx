@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { DeleteModal } from '../../../components/modals';
 import { useCustomParams } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { FETCH_TROPHIES } from '../../history/graphql';
+import { FETCH_TROPHIES } from '../../trophies/graphql';
 import { DELETE_SEASON, FETCH_SEASONS, FETCH_SEASONS_POSITION } from '../graphql';
 
 export default function DeleteSeason() {
