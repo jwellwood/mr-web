@@ -17,7 +17,10 @@
     "OVERVIEW": "Overview",
     "PLAYERS": "Players",
     "MATCHES": "Matches",
-    "HISTORY": "History"
+    "HISTORY": "History",
+    "SEASONS": "Seasons",
+    "TROPHIES": "Trophies",
+    "HALL_OF_FAME": "Hall of Fame"
   },
   "ALERTS": {
     "ADD_TEAM": {

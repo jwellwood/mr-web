@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { useTranslation } from 'react-i18next';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { TAB_TYPES } from '../../../constants';
 
@@ -7,17 +8,19 @@ const Seasons = lazy(() => import('../../teamseasons/containers/Seasons'));
 const Trophies = lazy(() => import('../../trophies/containers/Trophies'));
 
 export default function History() {
+  const { t } = useTranslation('team');
+
   const tabs: ITab[] = [
     {
-      label: 'Seasons',
+      label: t('TABS.SEASONS'),
       component: <Seasons />,
     },
     {
-      label: 'Trophies',
+      label: t('TABS.TROPHIES'),
       component: <Trophies />,
     },
     {
-      label: 'Hall of Fame',
+      label: t('TABS.HALL_OF_FAME'),
       component: <HallOfFame />,
     },
   ];
