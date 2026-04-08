@@ -3,6 +3,13 @@
 All notable changes to this project will be documented here.
 
 
+## [0.15.0](https://github.com/jwellwood/mr-web/compare/v0.14.0...v0.15.0) (2026-04-08)
+
+### Features
+
+* refactor and translations for matches and season ([08da7ce](https://github.com/jwellwood/mr-web/commit/08da7ce62f27f4ee6138b0be86ac09eee4305386))
+* refactor history module into separate modules ([fa595af](https://github.com/jwellwood/mr-web/commit/fa595af717efee376de65a45e1ffac4da56efd15))
+
 ## [0.14.0](https://github.com/jwellwood/mr-web/compare/v0.13.0...v0.14.0) (2026-04-07)
 
 ### Features
