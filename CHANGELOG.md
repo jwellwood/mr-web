@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.15.1](https://github.com/jwellwood/mr-web/compare/v0.15.0...v0.15.1) (2026-04-08)
+
+### Bug Fixes
+
+* missing translations, opponent modal ([530c267](https://github.com/jwellwood/mr-web/commit/530c2671bb7c88159093d924abe5960230dde5a8))
+
 ## [0.15.0](https://github.com/jwellwood/mr-web/compare/v0.14.0...v0.15.0) (2026-04-08)
 
 ### Features
