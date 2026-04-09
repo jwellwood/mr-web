@@ -11,13 +11,12 @@ import { AUTH_PATHS } from '../router';
 export default function ResetPasswordContainer() {
   const { t } = useTranslation('auth');
   const { token } = useParams<{ token: string }>();
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [resetPassword, { loading }] = useMutation(RESET_PASSWORD, {
     onError: () => dispatch(showAlert({ text: t('ALERTS.PASSWORD_RESET_FAIL'), type: 'error' })),
   });
-
-  const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate();
 
   const onSubmit = (formData: ResetPasswordFormData) => {
     resetPassword({ variables: { password: formData.password, token: token! } })

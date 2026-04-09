@@ -12,7 +12,9 @@ export default function DeleteAccount() {
   const { t } = useTranslation('profile');
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [deleteUser, { loading, error }] = useMutation(DELETE_USER);
+  const [deleteUser, { loading, error }] = useMutation(DELETE_USER, {
+    onError: () => dispatch(showAlert({ text: t('ALERTS.DELETE_ACCOUNT.ERROR'), type: 'error' })),
+  });
 
   const onDelete = async () => {
     return deleteUser()

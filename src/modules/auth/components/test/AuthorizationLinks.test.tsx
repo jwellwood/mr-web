@@ -6,8 +6,8 @@ import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import AuthorizationLinks from '../AuthorizationLinks';
 
 const links = [
-  { label: 'LINKS.SIGN_IN_LABEL', value: 'LINKS.SIGN_IN_VALUE', link: '/sign_in' },
-  { label: 'LINKS.FORGOT_LABEL', value: 'LINKS.FORGOT_VALUE', link: '/forgot_password' },
+  { label: "Don't have an account yet?", value: 'Sign up here', link: '/sign_in' },
+  { label: 'Forgotten your password?', value: 'Reset here', link: '/forgot_password' },
 ];
 
 describe('AuthorizationLinks', () => {

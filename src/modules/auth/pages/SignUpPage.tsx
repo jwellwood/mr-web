@@ -4,9 +4,9 @@ import { CustomAlert } from '../../../components/alerts';
 import AuthLayout from '../components/AuthLayout';
 import AuthorizationLinks from '../components/AuthorizationLinks';
 import TurnstileWidget from '../components/Turnstile';
-import { SIGN_UP_LINKS } from '../constants';
 import { SignUpFormData, signUpFormState } from '../forms/sign-up/schema';
 import SignUpForm from '../forms/sign-up/SignUpForm';
+import { getSignUpLinks } from '../helpers/getSignUpLinks';
 
 interface Props {
   loading: boolean;
@@ -32,7 +32,7 @@ export default function SignUpPage({ loading, onSubmit, email, onToken }: Props)
             />
           )}
           {!email && <TurnstileWidget onVerify={onToken} />}
-          <AuthorizationLinks links={SIGN_UP_LINKS} />
+          <AuthorizationLinks links={getSignUpLinks(t)} />
         </>
       </AuthLayout>
     </PageContainer>
