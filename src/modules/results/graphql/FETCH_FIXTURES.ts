@@ -7,6 +7,9 @@ export const FETCH_FIXTURES = gql`
       date
       kickoffTime
       gameWeek
+      orgSeasonId {
+        _id
+      }
       competitionId {
         _id
         name

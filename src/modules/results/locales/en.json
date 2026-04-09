@@ -37,6 +37,10 @@
       "SUCCESS": "Result confirmed successfully",
       "ERROR": "Error confirming result. Please try again."
     },
+    "CONFIRM_RESULTS": {
+      "SUCCESS": "Results confirmed successfully",
+      "ERROR": "Error confirming results. Please try again."
+    },
     "SUBMIT_RESULT": {
       "SUCCESS": "Result submitted successfully",
       "ERROR": "Error submitting result. Please try again."
@@ -66,6 +70,7 @@
   },
   "BUTTONS": {
     "CONFIRM": "Confirm Result",
+    "CONFIRM_RESULTS": "Confirm All",
     "DISPUTE": "Dispute Result",
     "SUBMIT_RESULT": "Submit Result",
     "ADD_GOALSCORERS": "Add Goalscorers"
@@ -74,7 +79,8 @@
     "NO_RESULTS": "No results found.",
     "NO_FIXTURES": "No fixtures found.",
     "NO_RESULT": "No result found.",
-    "DISPUTE_RESULT": "Are you sure you want to dispute this result? This will mark the result as disputed and it will need to be reviewed by an admin."
+    "DISPUTE_RESULT": "Are you sure you want to dispute this result? This will mark the result as disputed and it will need to be reviewed by an admin.",
+    "CONFIRM_RESULTS": "Are you sure you want to confirm {{count}} results? They will be marked as confirmed and cannot be disputed by users, but can still be edited by admins."
   },
   "ADMIN": {
     "TITLE": "Admin",

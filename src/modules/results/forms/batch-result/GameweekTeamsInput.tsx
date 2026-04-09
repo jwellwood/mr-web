@@ -1,6 +1,11 @@
-import { Control } from 'react-hook-form';
+import { Control, Path } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { ControlledSelectInput, ISelectOptions, SectionContainer } from '../../../../components';
+import {
+  ControlledSelectInput,
+  ControlledSwitchInput,
+  ISelectOptions,
+  SectionContainer,
+} from '../../../../components';
 import { CustomGridContainer, CustomGridItem } from '../../../../components/grids';
 import { AppIcon } from '../../../../components/icons';
 import { getNumberOptions } from '../../../../utils';
@@ -71,7 +76,7 @@ export default function GameweekTeamsInput<T extends object>({
             control={control}
             name={`matches.${index}.homeGoals`}
             label={t('FORMS.HOME_GOALS')}
-            options={getNumberOptions(20, 0)}
+            options={getNumberOptions(99, 0)}
           />
         </CustomGridItem>
 
@@ -80,7 +85,14 @@ export default function GameweekTeamsInput<T extends object>({
             control={control}
             name={`matches.${index}.awayGoals`}
             label={t('FORMS.AWAY_GOALS')}
-            options={getNumberOptions(20, 0)}
+            options={getNumberOptions(99, 0)}
+          />
+        </CustomGridItem>
+        <CustomGridItem size={12}>
+          <ControlledSwitchInput
+            control={control}
+            name={`matches.${index}.isComplete` as Path<T>}
+            label={t('FORMS.COMPLETED')}
           />
         </CustomGridItem>
       </CustomGridContainer>

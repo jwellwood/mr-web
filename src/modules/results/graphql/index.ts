@@ -1,6 +1,15 @@
 import { DeepOmitTypename } from '../../../utils';
+import { Add_GoalscorersDocument, type Add_GoalscorersMutation } from './ADD_GOALSCORERS.generated';
 import { Add_ResultDocument, type Add_ResultMutation } from './ADD_RESULT.generated';
+import {
+  Batch_Confirm_ResultsDocument,
+  type Batch_Confirm_ResultsMutation,
+} from './BATCH_CONFIRM_RESULTS.generated';
 import { Delete_ResultDocument, type Delete_ResultMutation } from './DELETE_RESULT.generated';
+import {
+  Edit_GoalscorersDocument,
+  type Edit_GoalscorersMutation,
+} from './EDIT_GOALSCORERS.generated';
 import { Edit_ResultDocument, type Edit_ResultMutation } from './EDIT_RESULT.generated';
 import { Fetch_FixturesDocument, type Fetch_FixturesQuery } from './FETCH_FIXTURES.generated';
 import {
@@ -18,6 +27,9 @@ export {
   Add_ResultDocument as ADD_RESULT,
   Edit_ResultDocument as EDIT_RESULT,
   Delete_ResultDocument as DELETE_RESULT,
+  Add_GoalscorersDocument as ADD_GOALSCORERS,
+  Edit_GoalscorersDocument as EDIT_GOALSCORERS,
+  Batch_Confirm_ResultsDocument as BATCH_CONFIRM_RESULTS,
 };
 
 export type T_FETCH_LEAGUE_TABLES = DeepOmitTypename<Fetch_League_TablesQuery>;
@@ -27,3 +39,6 @@ export type T_FETCH_FIXTURES = DeepOmitTypename<Fetch_FixturesQuery>;
 export type T_ADD_RESULT = DeepOmitTypename<Add_ResultMutation>;
 export type T_EDIT_RESULT = DeepOmitTypename<Edit_ResultMutation>;
 export type T_DELETE_RESULT = DeepOmitTypename<Delete_ResultMutation>;
+export type T_ADD_GOALSCORERS = DeepOmitTypename<Add_GoalscorersMutation>;
+export type T_EDIT_GOALSCORERS = DeepOmitTypename<Edit_GoalscorersMutation>;
+export type T_BATCH_CONFIRM_RESULTS = DeepOmitTypename<Batch_Confirm_ResultsMutation>;

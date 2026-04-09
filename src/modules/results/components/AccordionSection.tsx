@@ -2,7 +2,9 @@ import { CustomTypography, SectionContainer } from '../../../components';
 import { CustomAccordion } from '../../../components/accordion';
 import { CustomStack } from '../../../components/grids';
 import { APP_ICONS, AppIcon } from '../../../components/icons';
+import { useAuth, useCustomParams } from '../../../hooks';
 import { parseDate } from '../../../utils';
+import BatchConfirmResults from '../containers/BatchConfirmResults';
 import { T_FETCH_RESULTS } from '../graphql';
 import { getResultStatusInGameweek } from '../helpers/getResultStatusInGameweek';
 import ResultTable from './result-table/ResultTable';
@@ -15,7 +17,10 @@ interface Props {
 }
 
 export default function AccordionSection({ competitionName, gameWeek, gwResults, gwIndex }: Props) {
+  const { orgId, orgSeasonId } = useCustomParams();
+  const { isOrgAuth } = useAuth('', orgId);
   const counts = getResultStatusInGameweek(gwResults);
+  const allComplete = counts.confirmed === gwResults.length;
 
   const listData = [
     { label: <AppIcon icon="check" color="primary" />, value: counts.confirmed },
@@ -48,6 +53,9 @@ export default function AccordionSection({ competitionName, gameWeek, gwResults,
                   </CustomTypography>
                 </SectionContainer>
               ))
+            )}
+            {isOrgAuth && !allComplete && orgSeasonId && (
+              <BatchConfirmResults resultIds={gwResults.map(r => r._id)} />
             )}
           </CustomStack>
         </CustomStack>

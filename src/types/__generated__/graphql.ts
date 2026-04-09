@@ -186,6 +186,11 @@ export type CompetitionWinner = {
   year: Scalars['String']['output'];
 };
 
+export type EditGoalscorersInput = {
+  goalscorers: Array<GoalscorerInput>;
+  side: ResultSide;
+};
+
 export type EditPasswordInput = {
   newPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -323,6 +328,7 @@ export type Mutation = {
   ADD_SEASON: TeamSeason;
   ADD_TEAM: Team;
   ADD_TROPHY: Trophy;
+  BATCH_CONFIRM_RESULTS: Array<Result>;
   CONFIRM_RESULT: Result;
   DELETE_AWARD: Award;
   DELETE_COMPETITION: Competition;
@@ -337,6 +343,7 @@ export type Mutation = {
   DELETE_USER: User;
   EDIT_AWARD: Award;
   EDIT_COMPETITION: Competition;
+  EDIT_GOALSCORERS: Result;
   EDIT_MATCH: Match;
   EDIT_ORGANIZATION: Organization;
   EDIT_ORG_BADGE: Organization;
@@ -433,6 +440,12 @@ export type MutationAdd_TrophyArgs = {
 };
 
 
+export type MutationBatch_Confirm_ResultsArgs = {
+  orgId: Scalars['String']['input'];
+  resultIds: Array<Scalars['String']['input']>;
+};
+
+
 export type MutationConfirm_ResultArgs = {
   isConfirmed: Scalars['Boolean']['input'];
   resultId: Scalars['String']['input'];
@@ -509,6 +522,12 @@ export type MutationEdit_CompetitionArgs = {
   compId: Scalars['String']['input'];
   data: CompetitionInput;
   orgId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_GoalscorersArgs = {
+  data: EditGoalscorersInput;
+  resultId: Scalars['String']['input'];
 };
 
 
@@ -1280,6 +1299,11 @@ export type ResultCompetiton = {
   _id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
+
+/** Which side (home or away) of a result */
+export type ResultSide =
+  | 'AWAY'
+  | 'HOME';
 
 /** The status of a result submission */
 export type ResultStatus =

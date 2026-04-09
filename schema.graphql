@@ -170,6 +170,11 @@ from a string in ISO 8601 format.
 """
 scalar DateTimeISO
 
+input EditGoalscorersInput {
+  side: ResultSide!
+  goalscorers: [GoalscorerInput!]!
+}
+
 input EditPasswordInput {
   password: String!
   newPassword: String!
@@ -322,6 +327,8 @@ type Mutation {
   SUBMIT_RESULT(data: SubmitResultInput!, resultId: String!): Result!
   CONFIRM_RESULT(isConfirmed: Boolean!, resultId: String!): Result!
   ADD_GOALSCORERS(data: AddGoalscorersInput!, resultId: String!): Result!
+  BATCH_CONFIRM_RESULTS(resultIds: [String!]!, orgId: String!): [Result!]!
+  EDIT_GOALSCORERS(data: EditGoalscorersInput!, resultId: String!): Result!
   ADD_ORGANIZATION(data: AddOrganizationInput!): Organization!
   EDIT_ORGANIZATION(data: UpdateOrganizationInput!, orgId: String!): Organization!
   EDIT_ORG_BADGE(data: ImageInput!, orgId: String!): Organization!
@@ -635,6 +642,12 @@ type Result {
 type ResultCompetiton {
   _id: String!
   name: String!
+}
+
+"""Which side (home or away) of a result"""
+enum ResultSide {
+  HOME
+  AWAY
 }
 
 """The status of a result submission"""

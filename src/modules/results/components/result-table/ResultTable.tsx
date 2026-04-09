@@ -9,11 +9,11 @@ interface Props {
 }
 
 export default function ResultTable({ results }: Props) {
-  const { orgId, orgSeasonId } = useCustomParams();
+  const { orgId } = useCustomParams();
   return (
     <CustomTable
       columns={columns}
-      rows={rows(results, orgId!, orgSeasonId!)}
+      rows={rows(results, orgId!)}
       loadingRowCount={10}
       isSortable={false}
     />

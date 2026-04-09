@@ -100,21 +100,6 @@ export default function BatchResultForm({
         options={competitionOptions}
       />
 
-      <CustomStack direction="row" justify="space-between">
-        <CustomTypography>Matches</CustomTypography>
-        <Button
-          color="primary"
-          onClick={() =>
-            append({
-              homeTeam: '',
-              awayTeam: '',
-              kickoffTime: '10:00',
-            })
-          }
-        >
-          Add Match
-        </Button>
-      </CustomStack>
       {errors.matches ? <FormErrorMessage error={errors.matches} /> : null}
 
       {fields.map((f, idx) => {
@@ -138,6 +123,22 @@ export default function BatchResultForm({
           />
         );
       })}
+      <CustomStack direction="row" justify="space-between">
+        <CustomTypography>Matches</CustomTypography>
+        <Button
+          color="primary"
+          onClick={() =>
+            append({
+              homeTeam: '',
+              awayTeam: '',
+              kickoffTime: '10:00',
+              isComplete: false,
+            })
+          }
+        >
+          Add Match
+        </Button>
+      </CustomStack>
     </FormContainer>
   );
 }

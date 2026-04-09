@@ -46,6 +46,9 @@ export const FETCH_RESULTS = gql`
         _id
         teamName
       }
+      orgSeasonId {
+        _id
+      }
     }
   }
 `;

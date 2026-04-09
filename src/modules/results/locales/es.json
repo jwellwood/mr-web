@@ -37,6 +37,10 @@
       "SUCCESS": "Resultado confirmado correctamente",
       "ERROR": "Error al confirmar el resultado. Por favor, inténtelo de nuevo."
     },
+    "CONFIRM_RESULTS": {
+      "SUCCESS": "Resultados confirmados correctamente",
+      "ERROR": "Error al confirmar los resultados. Por favor, inténtelo de nuevo."
+    },
     "SUBMIT_RESULT": {
       "SUCCESS": "Resultado enviado correctamente",
       "ERROR": "Error al enviar el resultado. Por favor, inténtelo de nuevo."
@@ -66,6 +70,7 @@
   },
   "BUTTONS": {
     "CONFIRM": "Confirmar Resultado",
+    "CONFIRM_RESULTS": "Confirmar Todos",
     "DISPUTE": "Disputar Resultado",
     "SUBMIT_RESULT": "Enviar Resultado",
     "ADD_GOALSCORERS": "Agregar Goleadores"
@@ -74,7 +79,8 @@
     "NO_RESULTS": "No se encontraron resultados.",
     "NO_FIXTURES": "No se encontraron partidos.",
     "NO_RESULT": "No se encontró el resultado.",
-    "DISPUTE_RESULT": "¿Está seguro de que desea disputar este resultado? Esto marcará el resultado como disputado y deberá ser revisado por un administrador."
+    "DISPUTE_RESULT": "¿Está seguro de que desea disputar este resultado? Esto marcará el resultado como disputado y deberá ser revisado por un administrador.",
+    "CONFIRM_RESULTS": "¿Está seguro de que desea confirmar {{count}} resultados? Serán marcados como confirmados y no podrán ser disputados por los usuarios, pero aún podrán ser editados por los administradores."
   },
   "ADMIN": {
     "TITLE": "Admin",

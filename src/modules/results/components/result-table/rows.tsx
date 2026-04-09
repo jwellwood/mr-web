@@ -3,7 +3,7 @@ import { ResultStatusType } from '../../constants';
 import { T_FETCH_RESULTS } from '../../graphql';
 import ResultStatus from '../ResultStatus';
 
-export const rows = (results: T_FETCH_RESULTS['results'], orgId: string, orgSeasonId: string) => {
+export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
   const getScoreColor = (homeGoals?: number, awayGoals?: number) => {
     if (typeof homeGoals === 'number' && typeof awayGoals === 'number') {
       if (homeGoals > awayGoals) return 'primary';
@@ -21,17 +21,18 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string, orgSeas
       '-'
     );
   };
-  const link = (resultId: string) => `/org/${orgId}/org_season/${orgSeasonId}/result/${resultId}`;
+  const link = (resultId: string, orgSeasonId: string) =>
+    `/org/${orgId}/org_season/${orgSeasonId}/result/${resultId}`;
   return results.map(result => ({
     kickoffTime: result.kickoffTime || '10:00',
     homeTeam: result.homeTeam.teamName,
     homeScore: {
       value: renderGoals(result.homeGoals, result.awayGoals),
-      link: link(result._id),
+      link: link(result._id, result.orgSeasonId._id),
     },
     awayScore: {
       value: renderGoals(result.awayGoals, result.homeGoals),
-      link: link(result._id),
+      link: link(result._id, result.orgSeasonId._id),
     },
     awayTeam: result.awayTeam.teamName,
     status: {
@@ -42,7 +43,7 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string, orgSeas
           isComplete={!!result.isComplete}
         />
       ),
-      link: link(result._id),
+      link: link(result._id, result.orgSeasonId._id),
     },
   }));
 };
