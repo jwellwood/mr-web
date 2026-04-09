@@ -3,6 +3,8 @@
 All notable changes to this project will be documented here.
 
 
+## [0.15.3](https://github.com/jwellwood/mr-web/compare/v0.15.2...v0.15.3) (2026-04-09)
+
 ## [0.15.2](https://github.com/jwellwood/mr-web/compare/v0.15.1...v0.15.2) (2026-04-08)
 
 ### Bug Fixes
