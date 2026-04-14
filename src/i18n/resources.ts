@@ -37,10 +37,16 @@ const namespaces = {
 
 type Langs = 'en' | 'es';
 
-const byLang = (lng: Langs) => ({
-  ...Object.fromEntries(Object.entries(namespaces).map(([key, ns]) => [key, ns[lng]])),
-});
+// Preserves namespace key types so AppResources is fully typed for autocompletion
+function byLang<T extends Record<string, { en: object; es: object }>>(
+  ns: T,
+  lng: Langs
+): { [K in keyof T]: T[K]['en'] } {
+  return Object.fromEntries(Object.entries(ns).map(([key, val]) => [key, val[lng]])) as {
+    [K in keyof T]: T[K]['en'];
+  };
+}
 
-export const resources = { en: byLang('en'), es: byLang('es') };
+export const resources = { en: byLang(namespaces, 'en'), es: byLang(namespaces, 'es') };
 
 export type AppResources = (typeof resources)['en'];

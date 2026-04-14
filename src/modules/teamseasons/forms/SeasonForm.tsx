@@ -51,37 +51,42 @@ export default function SeasonForm({
       <ControlledDateInput
         control={control}
         name="yearStarted"
-        label={t('FORM.YEAR_STARTED')}
+        label={t('FORM.LABELS.YEAR_STARTED')}
         view="year"
       />
       <ControlledDateInput
         control={control}
         name="yearEnded"
-        label={t('FORM.YEAR_ENDED')}
+        label={t('FORM.LABELS.YEAR_ENDED')}
         view="year"
         disableFuture={false}
       />
       <ControlledSelectInput
         control={control}
         name="division"
-        label={t('FORM.DIVISION')}
+        label={t('FORM.LABELS.DIVISION')}
         options={competitionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="totalFinalPositions"
-        label={t('FORM.NUMBER_OF_TEAMS')}
+        label={t('FORM.LABELS.NUMBER_OF_TEAMS')}
         options={getNumberOptions(50, 0)}
       />
       {totalTeams ? (
         <ControlledSelectInput
           control={control}
           name="leaguePosition"
-          label={t('FORM.FINAL_POSITION')}
+          label={t('FORM.LABELS.FINAL_POSITION')}
           options={getNumberOptions(totalTeams, 0)}
         />
       ) : null}
-      <ControlledTextInput multiline control={control} name="comment" label={t('FORM.COMMENT')} />
+      <ControlledTextInput
+        multiline
+        control={control}
+        name="comment"
+        label={t('FORM.LABELS.COMMENT')}
+      />
     </FormContainer>
   );
 }

@@ -51,7 +51,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.homeTeam`}
-            label={t('FORMS.HOME_TEAM')}
+            label={t('FORM.LABELS.HOME_TEAM')}
             options={homeOptions}
           />
         </CustomGridItem>
@@ -59,7 +59,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.awayTeam`}
-            label={t('FORMS.AWAY_TEAM')}
+            label={t('FORM.LABELS.AWAY_TEAM')}
             options={awayOptions}
           />
         </CustomGridItem>
@@ -67,7 +67,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.kickoffTime`}
-            label={t('FORMS.KICKOFF_TIME')}
+            label={t('FORM.LABELS.KICKOFF_TIME')}
             options={getKickoffTimeOptions()}
           />
         </CustomGridItem>
@@ -75,7 +75,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.homeGoals`}
-            label={t('FORMS.HOME_GOALS')}
+            label={t('FORM.LABELS.HOME_GOALS')}
             options={getNumberOptions(99, 0)}
           />
         </CustomGridItem>
@@ -84,7 +84,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.awayGoals`}
-            label={t('FORMS.AWAY_GOALS')}
+            label={t('FORM.LABELS.AWAY_GOALS')}
             options={getNumberOptions(99, 0)}
           />
         </CustomGridItem>
@@ -92,7 +92,7 @@ export default function GameweekTeamsInput<T extends object>({
           <ControlledSwitchInput
             control={control}
             name={`matches.${index}.isComplete` as Path<T>}
-            label={t('FORMS.COMPLETED')}
+            label={t('FORM.LABELS.COMPLETED')}
           />
         </CustomGridItem>
       </CustomGridContainer>

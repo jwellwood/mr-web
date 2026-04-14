@@ -8,11 +8,13 @@
     "EDIT_COMPETITION": "Edit Competition"
   },
   "FORM": {
-    "NAME": "Name",
-    "TYPE": "Type",
-    "ACTIVE": "Active",
-    "PLAYERS_PER_TEAM": "Players per Team",
-    "MATCH_LENGTH": "Match Length (minutes)"
+    "LABELS": {
+      "NAME": "Name",
+      "TYPE": "Type",
+      "ACTIVE": "Active",
+      "PLAYERS_PER_TEAM": "Players per Team",
+      "MATCH_LENGTH": "Match Length (minutes)"
+    }
   },
   "OPTIONS": {
     "FRIENDLY": "Friendly",
@@ -47,8 +49,8 @@
       "ERROR": "There was an error deleting the competition. Please try again."
     }
   },
-  "MESSAGES": {
-    "NO_COMPETITIONS": "No competitions yet",
-    "NO_COMPETITION_DATA": "No competition data available"
+  "NO_DATA": {
+    "COMPETITIONS": "No competitions yet",
+    "COMPETITION_DATA": "No competition data available"
   }
 }

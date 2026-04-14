@@ -41,26 +41,26 @@ export default function CompetitionForm({ onSubmit, defaultValues, loading, erro
       loading={loading}
       error={error}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORM.NAME')} />
+      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
       <ControlledSelectInput
         control={control}
         name="competitionType"
-        label={t('FORM.TYPE')}
+        label={t('FORM.LABELS.TYPE')}
         options={getCompetitionTypeOptions(t)}
       />
       <ControlledSelectInput
         control={control}
         name="playersPerTeam"
-        label={t('FORM.PLAYERS_PER_TEAM')}
+        label={t('FORM.LABELS.PLAYERS_PER_TEAM')}
         options={getNumberOptions(15, 0)}
       />
       <ControlledSelectInput
         control={control}
         name="matchMinutes"
-        label={t('FORM.MATCH_LENGTH')}
+        label={t('FORM.LABELS.MATCH_LENGTH')}
         options={getNumberOptions(120, 0, 5)}
       />
-      <ControlledSwitchInput control={control} name="isActive" label={t('FORM.ACTIVE')} />
+      <ControlledSwitchInput control={control} name="isActive" label={t('FORM.LABELS.ACTIVE')} />
     </FormContainer>
   );
 }

@@ -64,32 +64,41 @@ export default function OrgSeasonForm({
       <ControlledDateInput
         control={control}
         name="yearStarted"
-        label={t('FORM.YEAR_STARTED')}
+        label={t('FORM.LABELS.YEAR_STARTED')}
         view="year"
       />
       <ControlledDateInput
         control={control}
         name="yearEnded"
-        label={t('FORM.YEAR_ENDED')}
+        label={t('FORM.LABELS.YEAR_ENDED')}
         view="year"
         disableFuture={false}
       />
-      <ControlledSwitchInput control={control} name="isCurrent" label={t('FORM.IS_CURRENT')} />
+      <ControlledSwitchInput
+        control={control}
+        name="isCurrent"
+        label={t('FORM.LABELS.IS_CURRENT')}
+      />
       <ControlledMultiSelectInput
         control={control}
         name="teamIds"
-        label={t('FORM.TEAMS')}
+        label={t('FORM.LABELS.TEAMS')}
         options={teamOptions}
       />
       <IncludedTeams options={selectedTeams} />
       <ControlledMultiSelectInput
         control={control}
         name="competitionIds"
-        label={t('FORM.COMPETITIONS')}
+        label={t('FORM.LABELS.COMPETITIONS')}
         options={competitionOptions}
       />
       <IncludedTeams options={selectedCompetitions} />
-      <ControlledTextInput multiline control={control} name="comment" label={t('FORM.COMMENT')} />
+      <ControlledTextInput
+        multiline
+        control={control}
+        name="comment"
+        label={t('FORM.LABELS.COMMENT')}
+      />
     </FormContainer>
   );
 }

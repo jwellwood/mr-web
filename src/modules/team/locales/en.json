@@ -25,19 +25,19 @@
   "ALERTS": {
     "ADD_TEAM": {
       "SUCCESS": "Team added successfully!",
-      "FAILURE:": "Failed to add team"
+      "ERROR": "Failed to add team"
     },
     "EDIT_TEAM": {
       "SUCCESS": "Team updated successfully!",
-      "FAILURE:": "Failed to update team"
+      "ERROR": "Failed to update team"
     },
     "DELETE_TEAM": {
       "SUCCESS": "Team deleted successfully!",
-      "FAILURE:": "Failed to delete team"
+      "ERROR": "Failed to delete team"
     },
     "ADMIN_ACCESS": {
       "SUCCESS": "Admin access requested successfully!",
-      "FAILURE:": "Admin access failed"
+      "ERROR": "Admin access failed"
     }
   },
   "FORM": {

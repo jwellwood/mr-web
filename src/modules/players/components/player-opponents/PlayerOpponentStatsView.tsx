@@ -22,7 +22,7 @@ export default function PlayerOpponentStatsView({ data, loading, error }: Props)
       {error ? (
         <DataError error={error} />
       ) : !loading && !data?.stats[0]?.matches ? (
-        <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
+        <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>
       ) : (
         <CustomTable
           rows={rows(data?.stats, loading, filters.showAverages)}

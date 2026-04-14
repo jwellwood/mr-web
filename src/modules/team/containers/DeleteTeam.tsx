@@ -16,7 +16,7 @@ export default function DeleteTeam() {
   const navigate = useNavigate();
   const [deleteTeam, { loading, error }] = useMutation(DELETE_TEAM, {
     refetchQueries: [{ query: FETCH_TEAMS_BY_USER }],
-    onError: () => dispatch(showAlert({ text: t('ALERTS.DELETE_TEAM.FAILURE'), type: 'error' })),
+    onError: () => dispatch(showAlert({ text: t('ALERTS.DELETE_TEAM.ERROR'), type: 'error' })),
   });
 
   const onDelete = async () => {
@@ -26,7 +26,7 @@ export default function DeleteTeam() {
         navigate(PROFILE_PATHS.PROFILE);
       })
       .catch(() => {
-        dispatch(showAlert({ text: t('ALERTS.DELETE_TEAM.FAILURE'), type: 'error' }));
+        dispatch(showAlert({ text: t('ALERTS.DELETE_TEAM.ERROR'), type: 'error' }));
       });
   };
 

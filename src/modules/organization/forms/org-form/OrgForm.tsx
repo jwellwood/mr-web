@@ -45,19 +45,19 @@ export default function OrgForm({
       loading={loading}
       error={error}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORMS.NAME')} />
-      <ControlledTextInput control={control} name="website" label={t('FORMS.WEBSITE')} />
+      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
+      <ControlledTextInput control={control} name="website" label={t('FORM.LABELS.WEBSITE')} />
       <ControlledDateInput
         control={control}
         name="yearFounded"
-        label={t('FORMS.YEAR_FOUNDED')}
+        label={t('FORM.LABELS.YEAR_FOUNDED')}
         view="year"
       />
-      <ControlledTextInput control={control} name="city" label={t('FORMS.CITY')} />
+      <ControlledTextInput control={control} name="city" label={t('FORM.LABELS.CITY')} />
       <ControlledSelectInput
         control={control}
         name="country"
-        label={t('FORMS.COUNTRY')}
+        label={t('FORM.LABELS.COUNTRY')}
         options={countryOptions}
       />
     </FormContainer>

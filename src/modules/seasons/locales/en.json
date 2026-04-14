@@ -18,12 +18,14 @@
     "SEASON_ADMIN": "Season Admin"
   },
   "FORM": {
-    "YEAR_STARTED": "Year Started",
-    "YEAR_ENDED": "Year Ended",
-    "IS_CURRENT": "Is current season?",
-    "TEAMS": "Teams in this season",
-    "COMPETITIONS": "Competitions in this season",
-    "COMMENT": "Comment"
+    "LABELS": {
+      "YEAR_STARTED": "Year Started",
+      "YEAR_ENDED": "Year Ended",
+      "IS_CURRENT": "Is current season?",
+      "TEAMS": "Teams in this season",
+      "COMPETITIONS": "Competitions in this season",
+      "COMMENT": "Comment"
+    }
   },
   "LIST": {
     "NAME": "Name",
@@ -48,8 +50,10 @@
     "SUBMIT": "Update Config"
   },
   "MESSAGES": {
-    "INCLUDED": "Included",
-    "NO_SEASONS": "No seasons yet."
+    "INCLUDED": "Included"
+  },
+  "NO_DATA": {
+    "SEASONS": "No seasons yet."
   },
   "LABELS": {
     "CURRENT": "Current",

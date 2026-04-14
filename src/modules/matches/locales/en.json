@@ -43,33 +43,37 @@
     "HEAD_TO_HEAD": "Head to Head"
   },
   "FORM": {
-    "DATE": "Date",
-    "IS_HOME": "Home?",
-    "IS_FORFEIT": "Forfeit?",
-    "OPPONENT": "Opponent",
-    "COMPETITION": "Competition",
-    "SEASON": "Season",
-    "GOALS_SCORED": "Goals Scored",
-    "GOALS_CONCEDED": "Goals Conceded",
-    "LEAGUE_POSITION": "League Position",
-    "PLAYERS": "Players",
-    "IS_STARTER": "Is starter?",
-    "POSITION": "Position",
-    "GOALS": "Goals",
-    "PENS_SCORED": "Pens Scored",
-    "ASSISTS": "Assists",
-    "OWN_GOALS": "Own Goals",
-    "PENS_MISSED": "Pens Missed",
-    "PENS_SAVED": "Pens Saved",
-    "CONCEDED": "Conceded",
-    "YELLOW_CARDS": "Yellow Cards",
-    "IS_MVP": "Is MVP?",
-    "RED_CARD": "Red Card?",
-    "CLEAN_SHEET": "Clean Sheet?",
-    "FORFEITED_MATCH": "Forfeited Match",
-    "APPLY": "Apply",
-    "NEXT": "Next",
-    "ADD": "Add"
+    "LABELS": {
+      "DATE": "Date",
+      "IS_HOME": "Home?",
+      "IS_FORFEIT": "Forfeit?",
+      "OPPONENT": "Opponent",
+      "COMPETITION": "Competition",
+      "SEASON": "Season",
+      "GOALS_SCORED": "Goals Scored",
+      "GOALS_CONCEDED": "Goals Conceded",
+      "LEAGUE_POSITION": "League Position",
+      "PLAYERS": "Players",
+      "IS_STARTER": "Is starter?",
+      "POSITION": "Position",
+      "GOALS": "Goals",
+      "PENS_SCORED": "Pens Scored",
+      "ASSISTS": "Assists",
+      "OWN_GOALS": "Own Goals",
+      "PENS_MISSED": "Pens Missed",
+      "PENS_SAVED": "Pens Saved",
+      "CONCEDED": "Conceded",
+      "YELLOW_CARDS": "Yellow Cards",
+      "IS_MVP": "Is MVP?",
+      "RED_CARD": "Red Card?",
+      "CLEAN_SHEET": "Clean Sheet?",
+      "FORFEITED_MATCH": "Forfeited Match"
+    },
+    "BUTTONS": {
+      "APPLY": "Apply",
+      "NEXT": "Next",
+      "ADD": "Add"
+    }
   },
   "SECTIONS": {
     "ALL_TIME": "All Time",
@@ -108,13 +112,15 @@
     }
   },
   "MESSAGES": {
-    "NO_MATCHES": "No matches yet",
-    "NO_MATCH_DATA": "No match data available",
     "ADD_SEASON_FIRST": "Please add a season before adding a match.",
     "ADD_COMPETITION_FIRST": "Please add a competition before adding a match.",
     "ADD_PLAYERS": "Add some players",
     "MATCH_FORFEITED": "This match was forfeited",
     "YES": "Yes",
     "NO": "No"
+  },
+  "NO_DATA": {
+    "MATCHES": "No matches yet",
+    "MATCH_DATA": "No match data available"
   }
 }

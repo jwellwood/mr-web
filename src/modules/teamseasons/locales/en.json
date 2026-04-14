@@ -9,12 +9,14 @@
     "EDIT_SEASON": "Edit Season"
   },
   "FORM": {
-    "YEAR_STARTED": "Year Started",
-    "YEAR_ENDED": "Year Ended",
-    "DIVISION": "Division",
-    "NUMBER_OF_TEAMS": "Number of Teams",
-    "FINAL_POSITION": "Final Position",
-    "COMMENT": "Comment"
+    "LABELS": {
+      "YEAR_STARTED": "Year Started",
+      "YEAR_ENDED": "Year Ended",
+      "DIVISION": "Division",
+      "NUMBER_OF_TEAMS": "Number of Teams",
+      "FINAL_POSITION": "Final Position",
+      "COMMENT": "Comment"
+    }
   },
   "TABLES": {
     "DIVISION": "Division",
@@ -26,8 +28,8 @@
     "SQUAD": "Squad",
     "AWARDS": "Awards"
   },
-  "MESSAGES": {
-    "NO_SEASONS": "No seasons yet"
+  "NO_DATA": {
+    "SEASONS": "No seasons yet"
   },
   "MODALS": {
     "AWARDS_TITLE": "{{name}} Awards"

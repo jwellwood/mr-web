@@ -68,7 +68,7 @@ export default function AddGoalscorersForm({
               <ControlledSelectInput
                 control={control}
                 name={`goalscorers.${index}.playerId`}
-                label={t('FORMS.PLAYER')}
+                label={t('FORM.LABELS.PLAYER')}
                 options={playerOptions}
               />
             </CustomGridItem>
@@ -76,7 +76,7 @@ export default function AddGoalscorersForm({
               <ControlledSelectInput
                 control={control}
                 name={`goalscorers.${index}.goals`}
-                label={t('FORMS.GOALS')}
+                label={t('FORM.LABELS.GOALS')}
                 options={getNumberOptions(maxGoals, 1)}
               />
             </CustomGridItem>

@@ -1,12 +1,11 @@
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
 import { PageContainer } from '../../../components';
 import { APP_ICONS, AppIcon, AppIconType } from '../../../components/icons';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { TAB_TYPES } from '../../../constants';
 import { useAuth, useCustomParams } from '../../../hooks';
-import { getTabIndex } from '../../../store';
 import { getTeamAdminLinks } from '../helpers/getTeamAdminLinks';
 
 const TeamOverview = lazy(() => import('../containers/Team'));
@@ -19,10 +18,11 @@ export default function TeamPage() {
   const { t } = useTranslation('team');
   const { teamId } = useCustomParams();
   const { isTeamAuth } = useAuth(teamId);
-  const { team } = useSelector(getTabIndex);
+  const [searchParams] = useSearchParams();
+  const teamTab = Number(searchParams.get(TAB_TYPES.TEAM) ?? 0);
 
   const getIcon = (name: AppIconType, index: number) => (
-    <AppIcon icon={name} size="20px" color={index === team ? 'primary' : 'label'} />
+    <AppIcon icon={name} size="20px" color={index === teamTab ? 'primary' : 'label'} />
   );
 
   const tabs: ITab[] = [

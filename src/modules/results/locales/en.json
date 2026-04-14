@@ -54,24 +54,26 @@
       "ERROR": "Error disputing result. Please try again."
     }
   },
-  "FORMS": {
-    "HOME_TEAM": "Home",
-    "AWAY_TEAM": "Away",
-    "HOME_SCORE": "Home Score",
-    "AWAY_SCORE": "Away Score",
-    "HOME_GOALS": "Home Goals",
-    "AWAY_GOALS": "Away Goals",
-    "KICKOFF_TIME": "Kickoff Time",
-    "CONFIRM_RESULT": "Confirm Result",
-    "DISPUTE_RESULT": "Dispute Result",
-    "DATE": "Date",
-    "SEASON": "Season",
-    "GAME_WEEK": "Game Week",
-    "COMPETITION": "Competition",
-    "FORFEIT": "Forfeit",
-    "COMPLETED": "Completed",
-    "GOALS": "Goals",
-    "PLAYER": "Player"
+  "FORM": {
+    "LABELS": {
+      "HOME_TEAM": "Home",
+      "AWAY_TEAM": "Away",
+      "HOME_SCORE": "Home Score",
+      "AWAY_SCORE": "Away Score",
+      "HOME_GOALS": "Home Goals",
+      "AWAY_GOALS": "Away Goals",
+      "KICKOFF_TIME": "Kickoff Time",
+      "CONFIRM_RESULT": "Confirm Result",
+      "DISPUTE_RESULT": "Dispute Result",
+      "DATE": "Date",
+      "SEASON": "Season",
+      "GAME_WEEK": "Game Week",
+      "COMPETITION": "Competition",
+      "FORFEIT": "Forfeit",
+      "COMPLETED": "Completed",
+      "GOALS": "Goals",
+      "PLAYER": "Player"
+    }
   },
   "BUTTONS": {
     "CONFIRM": "Confirm Result",
@@ -83,14 +85,17 @@
     "ADD_MATCH": "Add Match"
   },
   "MESSAGES": {
-    "NO_RESULTS": "No results found.",
-    "NO_FIXTURES": "No fixtures found.",
-    "NO_RESULT": "No result found.",
     "DISPUTE_RESULT": "Are you sure you want to dispute this result? This will mark the result as disputed and it will need to be reviewed by an admin.",
     "CONFIRM_RESULTS": "Are you sure you want to confirm {{count}} results? They will be marked as confirmed and cannot be disputed by users, but can still be edited by admins.",
-    "NO_GOALSCORERS": "No goalscorers yet",
     "MATCHES_ADDED": "Matches Added",
     "RESULTS_TO_ADD": "Results / Fixtures to add:"
+  },
+  "NO_DATA": {
+    "RESULTS": "No results found.",
+    "FIXTURES": "No fixtures found.",
+    "RESULT": "No result found.",
+    "GOALSCORERS": "No goalscorers yet",
+    "TABLE": "No table data found."
   },
   "ADMIN": {
     "TITLE": "Admin",

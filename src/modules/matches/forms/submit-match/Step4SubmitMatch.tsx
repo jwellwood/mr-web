@@ -21,10 +21,10 @@ export default function Step4SubmitMatch({ onSubmit, loading, error }: Props) {
 
   const data: IListItem[] = [
     {
-      label: t('FORM.FORFEITED_MATCH'),
+      label: t('FORM.LABELS.FORFEITED_MATCH'),
       value: currentMatch.isForfeit ? t('MESSAGES.YES') : t('MESSAGES.NO'),
     },
-    { label: t('FORM.PLAYERS'), value: String(currentPlayers.length) },
+    { label: t('FORM.LABELS.PLAYERS'), value: String(currentPlayers.length) },
   ];
 
   return (

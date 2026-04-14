@@ -85,25 +85,25 @@ export default function BatchResultForm({
       <ControlledDateInput
         control={control}
         name="date"
-        label={t('FORMS.DATE')}
+        label={t('FORM.LABELS.DATE')}
         disableFuture={false}
       />
       <ControlledSelectInput
         control={control}
         name="orgSeasonId"
-        label={t('FORMS.SEASON')}
+        label={t('FORM.LABELS.SEASON')}
         options={orgSeasonOptions}
       />
       <ControlledSelectInput
         control={control}
         name="gameWeek"
-        label={t('FORMS.GAME_WEEK')}
+        label={t('FORM.LABELS.GAME_WEEK')}
         options={getNumberOptions(52, 0)}
       />
       <ControlledSelectInput
         control={control}
         name="competitionId"
-        label={t('FORMS.COMPETITION')}
+        label={t('FORM.LABELS.COMPETITION')}
         options={competitionOptions}
       />
 

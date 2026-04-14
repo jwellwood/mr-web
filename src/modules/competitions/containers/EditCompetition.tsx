@@ -25,8 +25,7 @@ export default function EditCompetition() {
       { query: FETCH_COMPETITION, variables: { compId: competitionId! } },
       { query: FETCH_COMPETITIONS, variables: { orgId: orgId! } },
     ],
-    onError: () =>
-      dispatch(showAlert({ text: t('ALERTS.ERRORS.EDIT_COMPETITION'), type: 'error' })),
+    onError: () => dispatch(showAlert({ text: t('ALERTS.EDIT_COMPETITION.ERROR'), type: 'error' })),
   });
 
   const defaultValues: CompetitionFormData | null = useMemo(

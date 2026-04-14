@@ -54,24 +54,26 @@
       "ERROR": "Error al agregar goleadores. Por favor, inténtelo de nuevo."
     }
   },
-  "FORMS": {
-    "HOME_TEAM": "Local",
-    "AWAY_TEAM": "Visitante",
-    "HOME_SCORE": "Goles Local",
-    "AWAY_SCORE": "Goles Visitante",
-    "HOME_GOALS": "Goles Local",
-    "AWAY_GOALS": "Goles Visitante",
-    "KICKOFF_TIME": "Hora de Inicio",
-    "CONFIRM_RESULT": "Confirmar Resultado",
-    "DISPUTE_RESULT": "Disputar Resultado",
-    "DATE": "Fecha",
-    "SEASON": "Temporada",
-    "GAME_WEEK": "Jornada",
-    "COMPETITION": "Competición",
-    "FORFEIT": "Incomparecencia",
-    "COMPLETED": "Completado",
-    "GOALS": "Goles",
-    "PLAYER": "Jugador"
+  "FORM": {
+    "LABELS": {
+      "HOME_TEAM": "Local",
+      "AWAY_TEAM": "Visitante",
+      "HOME_SCORE": "Goles Local",
+      "AWAY_SCORE": "Goles Visitante",
+      "HOME_GOALS": "Goles Local",
+      "AWAY_GOALS": "Goles Visitante",
+      "KICKOFF_TIME": "Hora de Inicio",
+      "CONFIRM_RESULT": "Confirmar Resultado",
+      "DISPUTE_RESULT": "Disputar Resultado",
+      "DATE": "Fecha",
+      "SEASON": "Temporada",
+      "GAME_WEEK": "Jornada",
+      "COMPETITION": "Competición",
+      "FORFEIT": "Incomparecencia",
+      "COMPLETED": "Completado",
+      "GOALS": "Goles",
+      "PLAYER": "Jugador"
+    }
   },
   "BUTTONS": {
     "CONFIRM": "Confirmar Resultado",
@@ -83,14 +85,17 @@
     "ADD_MATCH": "Agregar Partido"
   },
   "MESSAGES": {
-    "NO_RESULTS": "No se encontraron resultados.",
-    "NO_FIXTURES": "No se encontraron partidos.",
-    "NO_RESULT": "No se encontró el resultado.",
     "DISPUTE_RESULT": "¿Está seguro de que desea disputar este resultado? Esto marcará el resultado como disputado y deberá ser revisado por un administrador.",
     "CONFIRM_RESULTS": "¿Está seguro de que desea confirmar {{count}} resultados? Serán marcados como confirmados y no podrán ser disputados por los usuarios, pero aún podrán ser editados por los administradores.",
     "MATCHES_ADDED": "Partidos Agregados",
-    "NO_GOALSCORERS": "No hay goleadores aún",
     "RESULTS_TO_ADD": "Resultados / Partidos a agregar:"
+  },
+  "NO_DATA": {
+    "RESULTS": "No se encontraron resultados.",
+    "FIXTURES": "No se encontraron partidos.",
+    "RESULT": "No se encontró el resultado.",
+    "GOALSCORERS": "No hay goleadores aún",
+    "TABLE": "No se encontraron datos de la tabla."
   },
   "ADMIN": {
     "TITLE": "Admin",

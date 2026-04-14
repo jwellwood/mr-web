@@ -24,7 +24,7 @@ export default function Step3MatchStats({ onNextClick, error }: Props) {
       <>
         <MatchPlayersTable currentPlayers={currentPlayers} error={error} />
         <SubmitButton onClick={onNextClick} disabled={!isValid}>
-          {t('FORM.NEXT')}
+          {t('FORM.BUTTONS.NEXT')}
         </SubmitButton>
       </>
     </>

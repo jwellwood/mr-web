@@ -33,7 +33,7 @@ export default function RequestAccessForm({ onSubmit, defaultValues, loading }: 
       <ControlledTextInput
         control={control}
         name="accessCode"
-        label={t('FORMS.ADMIN_ACCESS_CODE')}
+        label={t('FORM.LABELS.ADMIN_ACCESS_CODE')}
       />
     </FormContainer>
   );

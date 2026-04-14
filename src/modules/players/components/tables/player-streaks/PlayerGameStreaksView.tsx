@@ -15,7 +15,7 @@ export default function PlayerGameStreaksView({ data, loading, error }: Props) {
   const { t } = useTranslation('players');
   const renderContent = () => {
     if (data?.streaks && !data.streaks.playedStreak.length) {
-      return <NoDataText>{t('MESSAGES.NO_MATCHES_PLAYED_YET')}</NoDataText>;
+      return <NoDataText>{t('NO_DATA.MATCHES_PLAYED')}</NoDataText>;
     }
     return (
       <CustomTable

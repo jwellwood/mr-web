@@ -17,7 +17,7 @@ export default function MatchOpponentsView({ data, loading, error, seasonReady }
   const { t } = useTranslation('matches');
   const renderContent = () => {
     return seasonReady && data && data.stats.length === 0 ? (
-      <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
+      <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>
     ) : (
       <CustomTable
         rows={rows(data?.stats)}

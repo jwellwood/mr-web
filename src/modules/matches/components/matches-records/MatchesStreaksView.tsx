@@ -14,7 +14,7 @@ interface Props {
 export default function MatchesStreaksView({ data, loading, error }: Props) {
   const { t } = useTranslation('matches');
   if (data && data.streaks.longestLossStreak.length === 0) {
-    return <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>;
+    return <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>;
   }
 
   return error ? (

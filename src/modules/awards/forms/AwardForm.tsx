@@ -47,18 +47,18 @@ export default function AwardForm({
       <ControlledTextInput
         control={control}
         name="awardName"
-        label={t('FORM.AWARD_NAME')}
-        placeholder={t('FORM.AWARD_NAME_PLACEHOLDER')}
+        label={t('FORM.LABELS.AWARD_NAME')}
+        placeholder={t('FORM.LABELS.AWARD_NAME_PLACEHOLDER')}
       />
       <ControlledMultiSelectInput
         control={control}
         name="winners"
-        label={t('FORM.WINNERS')}
+        label={t('FORM.LABELS.WINNERS')}
         options={playersOptions}
         showLabels
       />
-      <ControlledTextInput control={control} name="awardValue" label={t('FORM.VALUE')} />
-      <ControlledTextInput control={control} name="comment" label={t('FORM.COMMENT')} />
+      <ControlledTextInput control={control} name="awardValue" label={t('FORM.LABELS.VALUE')} />
+      <ControlledTextInput control={control} name="comment" label={t('FORM.LABELS.COMMENT')} />
     </FormContainer>
   );
 }

@@ -24,7 +24,7 @@ export default function MatchRecordsView({ data, loading, error }: Props) {
 
   const renderContent = () => {
     return (data?.stats && !data?.stats.maxDiff) || (data?.stats && !data?.stats?.minDiff) ? (
-      <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
+      <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>
     ) : (
       <>
         {listData.map(item => {

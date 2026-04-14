@@ -20,7 +20,7 @@ export default function PlayerBestSeasonView({ data, loading, error }: Props) {
   const baseUrl = `/org/${orgId}/team/${teamId}`;
   const renderContent = () => {
     if (data && data.seasons.length === 0) {
-      return <NoDataText>{t('MESSAGES.NO_SEASON_RECORDS')}</NoDataText>;
+      return <NoDataText>{t('NO_DATA.SEASON_RECORDS')}</NoDataText>;
     }
     return (
       <CustomTable

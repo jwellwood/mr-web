@@ -30,7 +30,7 @@ export default function ResultPage({ data, loading, error }: Props) {
   const renderData = data?.result ? (
     <ResultDetails result={data.result} />
   ) : (
-    <NoDataText>{t('MESSAGES.NO_RESULT')}</NoDataText>
+    <NoDataText>{t('NO_DATA.RESULT')}</NoDataText>
   );
 
   const renderContent = () => (loading ? <Spinner /> : renderData);

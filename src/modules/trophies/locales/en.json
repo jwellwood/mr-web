@@ -8,13 +8,15 @@
     "EDIT_TROPHY": "Edit Trophy"
   },
   "FORM": {
-    "NAME": "Name",
-    "SEASON": "Season",
-    "YEAR": "Year",
-    "IS_WINNER": "Is Winner?",
-    "IS_FINAL": "Is a final?",
-    "OPPONENT": "Opponent",
-    "COMMENT": "Comment"
+    "LABELS": {
+      "NAME": "Name",
+      "SEASON": "Season",
+      "YEAR": "Year",
+      "IS_WINNER": "Is Winner?",
+      "IS_FINAL": "Is a final?",
+      "OPPONENT": "Opponent",
+      "COMMENT": "Comment"
+    }
   },
   "ALERTS": {
     "ADD_TROPHY": {
@@ -34,8 +36,8 @@
     "NAME_REQUIRED": "Name is required",
     "SEASON_REQUIRED": "Season is required"
   },
-  "MESSAGES": {
-    "NO_TROPHIES": "No trophies yet"
+  "NO_DATA": {
+    "TROPHIES": "No trophies yet"
   },
   "ORDER": {
     "LABEL": "Order by",

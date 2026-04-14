@@ -16,7 +16,7 @@ export default function AwardsView({ data, loading, error, seasonId }: Props) {
 
   const renderContent = () => {
     return data?.awards && data.awards.length === 0 ? (
-      <NoDataText>{t('MESSAGES.NO_AWARDS')}</NoDataText>
+      <NoDataText>{t('NO_DATA.AWARDS')}</NoDataText>
     ) : (
       <AwardList awards={data?.awards} loading={loading} seasonId={seasonId} />
     );

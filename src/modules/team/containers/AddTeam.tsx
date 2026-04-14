@@ -29,7 +29,7 @@ export default function AddTeam() {
       { query: FETCH_TEAMS_BY_USER },
     ],
     onError: () => {
-      dispatch(showAlert({ text: t('ALERTS.ADD_TEAM.FAILURE'), type: 'error' }));
+      dispatch(showAlert({ text: t('ALERTS.ADD_TEAM.ERROR'), type: 'error' }));
     },
   });
 
@@ -47,7 +47,7 @@ export default function AddTeam() {
       console.error(error);
       dispatch(
         showAlert({
-          text: t('ALERTS.ADD_TEAM.FAILURE'),
+          text: t('ALERTS.ADD_TEAM.ERROR'),
           type: 'error',
         })
       );

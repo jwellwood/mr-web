@@ -43,33 +43,37 @@
     "HEAD_TO_HEAD": "Head to Head"
   },
   "FORM": {
-    "DATE": "Fecha",
-    "IS_HOME": "¿Local?",
-    "IS_FORFEIT": "Incomparecencia?",
-    "OPPONENT": "Rival",
-    "COMPETITION": "Competición",
-    "SEASON": "Temporada",
-    "GOALS_SCORED": "Goles a Favor",
-    "GOALS_CONCEDED": "Goles en Contra",
-    "LEAGUE_POSITION": "Posición en Liga",
-    "PLAYERS": "Jugadores",
-    "IS_STARTER": "¿Es titular?",
-    "POSITION": "Posición",
-    "GOALS": "Goles",
-    "PENS_SCORED": "Penaltis Marcados",
-    "ASSISTS": "Asistencias",
-    "OWN_GOALS": "Goles en Propia",
-    "PENS_MISSED": "Penaltis Fallados",
-    "PENS_SAVED": "Penaltis Parados",
-    "CONCEDED": "Goles Recibidos",
-    "YELLOW_CARDS": "Tarjetas Amarillas",
-    "IS_MVP": "¿Es MVP?",
-    "RED_CARD": "¿Tarjeta Roja?",
-    "CLEAN_SHEET": "¿Portería a Cero?",
-    "FORFEITED_MATCH": "Incomparecencia",
-    "APPLY": "Aplicar",
-    "NEXT": "Siguiente",
-    "ADD": "Agregar"
+    "LABELS": {
+      "DATE": "Fecha",
+      "IS_HOME": "¿Local?",
+      "IS_FORFEIT": "Incomparecencia?",
+      "OPPONENT": "Rival",
+      "COMPETITION": "Competición",
+      "SEASON": "Temporada",
+      "GOALS_SCORED": "Goles a Favor",
+      "GOALS_CONCEDED": "Goles en Contra",
+      "LEAGUE_POSITION": "Posición en Liga",
+      "PLAYERS": "Jugadores",
+      "IS_STARTER": "¿Es titular?",
+      "POSITION": "Posición",
+      "GOALS": "Goles",
+      "PENS_SCORED": "Penaltis Marcados",
+      "ASSISTS": "Asistencias",
+      "OWN_GOALS": "Goles en Propia",
+      "PENS_MISSED": "Penaltis Fallados",
+      "PENS_SAVED": "Penaltis Parados",
+      "CONCEDED": "Goles Recibidos",
+      "YELLOW_CARDS": "Tarjetas Amarillas",
+      "IS_MVP": "¿Es MVP?",
+      "RED_CARD": "¿Tarjeta Roja?",
+      "CLEAN_SHEET": "¿Portería a Cero?",
+      "FORFEITED_MATCH": "Incomparecencia"
+    },
+    "BUTTONS": {
+      "APPLY": "Aplicar",
+      "NEXT": "Siguiente",
+      "ADD": "Agregar"
+    }
   },
   "SECTIONS": {
     "ALL_TIME": "Histórico",
@@ -108,13 +112,15 @@
     }
   },
   "MESSAGES": {
-    "NO_MATCHES": "No hay partidos aún",
-    "NO_MATCH_DATA": "No hay datos del partido disponibles",
     "ADD_SEASON_FIRST": "Por favor, agrega una temporada antes de agregar un partido.",
     "ADD_COMPETITION_FIRST": "Por favor, agrega una competición antes de agregar un partido.",
     "ADD_PLAYERS": "Agrega algunos jugadores",
     "MATCH_FORFEITED": "Este partido fue por incomparecencia",
     "YES": "Sí",
     "NO": "No"
+  },
+  "NO_DATA": {
+    "MATCHES": "No hay partidos aún",
+    "MATCH_DATA": "No hay datos del partido disponibles"
   }
 }

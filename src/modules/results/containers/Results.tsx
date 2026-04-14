@@ -17,7 +17,7 @@ export default function Results() {
   const renderData = data?.results.length ? (
     <CompetitionTabs matches={data.results} type={TAB_TYPES.RESULTS_COMPETITIONS} />
   ) : (
-    <NoDataText>{t('MESSAGES.NO_RESULTS')}</NoDataText>
+    <NoDataText>{t('NO_DATA.RESULTS')}</NoDataText>
   );
 
   const renderContent = () => {

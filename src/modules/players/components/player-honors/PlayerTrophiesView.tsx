@@ -27,7 +27,7 @@ export default function PlayerTrophiesView({ data, loading, error }: Props) {
 
   const renderContent = () => {
     if (data && data?.trophies.length === 0) {
-      return <NoDataText>{t('MESSAGES.NO_TROPHIES')}</NoDataText>;
+      return <NoDataText>{t('NO_DATA.TROPHIES')}</NoDataText>;
     }
     return (
       <>

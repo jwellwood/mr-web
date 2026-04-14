@@ -57,13 +57,15 @@
       "ERROR": "Error al establecer el código de acceso de administrador"
     }
   },
-  "FORMS": {
-    "NAME": "Nombre de la Organización",
-    "WEBSITE": "Sitio Web",
-    "YEAR_FOUNDED": "Año de Fundación",
-    "CITY": "Ciudad",
-    "COUNTRY": "País",
-    "ADMIN_ACCESS_CODE": "Código de Acceso de Administrador"
+  "FORM": {
+    "LABELS": {
+      "NAME": "Nombre de la Organización",
+      "WEBSITE": "Sitio Web",
+      "YEAR_FOUNDED": "Año de Fundación",
+      "CITY": "Ciudad",
+      "COUNTRY": "País",
+      "ADMIN_ACCESS_CODE": "Código de Acceso de Administrador"
+    }
   },
   "BUTTONS": {
     "GENERATE_ADMIN_CODE": "Generar Código de Administrador",

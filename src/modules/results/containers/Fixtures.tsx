@@ -17,7 +17,7 @@ export default function Fixtures() {
   const renderData = data?.fixtures.length ? (
     <CompetitionTabs matches={data.fixtures} type={TAB_TYPES.FIXTURES_COMPETITIONS} />
   ) : (
-    <NoDataText>{t('MESSAGES.NO_FIXTURES')}</NoDataText>
+    <NoDataText>{t('NO_DATA.FIXTURES')}</NoDataText>
   );
 
   const renderContent = () => {

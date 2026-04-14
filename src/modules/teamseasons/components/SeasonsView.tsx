@@ -16,7 +16,7 @@ export default function SeasonsView({ data, loading, error }: Props) {
 
   const renderContent = () => {
     return data?.position && data?.position.length === 0 ? (
-      <NoDataText>{t('MESSAGES.NO_SEASONS')}</NoDataText>
+      <NoDataText>{t('NO_DATA.SEASONS')}</NoDataText>
     ) : (
       <CustomTable
         columns={columns(t)}

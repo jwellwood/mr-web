@@ -57,13 +57,15 @@
       "ERROR": "Failed to set admin access code"
     }
   },
-  "FORMS": {
-    "NAME": "Organization Name",
-    "WEBSITE": "Website",
-    "YEAR_FOUNDED": "Year Founded",
-    "CITY": "City",
-    "COUNTRY": "Country",
-    "ADMIN_ACCESS_CODE": "Admin Access Code"
+  "FORM": {
+    "LABELS": {
+      "NAME": "Organization Name",
+      "WEBSITE": "Website",
+      "YEAR_FOUNDED": "Year Founded",
+      "CITY": "City",
+      "COUNTRY": "Country",
+      "ADMIN_ACCESS_CODE": "Admin Access Code"
+    }
   },
   "BUTTONS": {
     "GENERATE_ADMIN_CODE": "Generate Admin Code",

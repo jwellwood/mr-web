@@ -40,13 +40,17 @@ export default function EditProfileForm({ onSubmit, defaultValues, loading, erro
       submitBtn={{ disabled: !isDirty || !isValid }}
       onReset={() => reset(defaultValues)}
     >
-      <ControlledTextInput control={control} name="username" label={t('LABELS.USERNAME')} />
-      <ControlledTextInput control={control} name="email" label={t('LABELS.EMAIL_ADDRESS')} />
-      <ControlledDateInput control={control} name="dateOfBirth" label={t('LABELS.DATE_OF_BIRTH')} />
+      <ControlledTextInput control={control} name="username" label={t('FORM.LABELS.USERNAME')} />
+      <ControlledTextInput control={control} name="email" label={t('FORM.LABELS.EMAIL_ADDRESS')} />
+      <ControlledDateInput
+        control={control}
+        name="dateOfBirth"
+        label={t('FORM.LABELS.DATE_OF_BIRTH')}
+      />
       <ControlledSelectInput
         control={control}
         name="nationality"
-        label={t('LABELS.NATIONALITY')}
+        label={t('FORM.LABELS.NATIONALITY')}
         options={nationalityOptions}
       />
     </FormContainer>

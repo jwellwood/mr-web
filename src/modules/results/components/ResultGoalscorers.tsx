@@ -25,7 +25,7 @@ export default function ResultGoalscorers({ result }: Props) {
     })) || [];
 
   if (homeTeamGoalscorers.length === 0 && awayTeamGoalscorers.length === 0 && !isGoalless) {
-    return <NoDataText>{t('MESSAGES.NO_GOALSCORERS')}</NoDataText>;
+    return <NoDataText>{t('NO_DATA.GOALSCORERS')}</NoDataText>;
   }
 
   return !isGoalless ? (

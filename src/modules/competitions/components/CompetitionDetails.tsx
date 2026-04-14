@@ -13,7 +13,7 @@ export default function CompetitionDetails({ competition }: Props) {
   if (!competition) {
     return (
       <CustomTypography size="md" color="label">
-        {t('MESSAGES.NO_COMPETITION_DATA')}
+        {t('NO_DATA.COMPETITION_DATA')}
       </CustomTypography>
     );
   }

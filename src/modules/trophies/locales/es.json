@@ -8,13 +8,15 @@
     "EDIT_TROPHY": "Editar Trofeo"
   },
   "FORM": {
-    "NAME": "Nombre",
-    "SEASON": "Temporada",
-    "YEAR": "Año",
-    "IS_WINNER": "¿Es Ganador?",
-    "IS_FINAL": "¿Es una final?",
-    "OPPONENT": "Oponente",
-    "COMMENT": "Comentario"
+    "LABELS": {
+      "NAME": "Nombre",
+      "SEASON": "Temporada",
+      "YEAR": "Año",
+      "IS_WINNER": "¿Es Ganador?",
+      "IS_FINAL": "¿Es una final?",
+      "OPPONENT": "Oponente",
+      "COMMENT": "Comentario"
+    }
   },
   "ALERTS": {
     "ADD_TROPHY": {
@@ -34,8 +36,8 @@
     "NAME_REQUIRED": "El nombre es obligatorio",
     "SEASON_REQUIRED": "La temporada es obligatoria"
   },
-  "MESSAGES": {
-    "NO_TROPHIES": "Aún no hay trofeos"
+  "NO_DATA": {
+    "TROPHIES": "Aún no hay trofeos"
   },
   "ORDER": {
     "LABEL": "Ordenar por",

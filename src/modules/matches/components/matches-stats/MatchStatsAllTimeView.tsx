@@ -20,7 +20,7 @@ export default function MatchStatsAllTimeView({ data, loading, error }: Props) {
   const { t } = useTranslation('matches');
   const renderContent = () => {
     return data?.stats && !data?.stats?.total ? (
-      <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
+      <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>
     ) : (
       <>
         <MatchStatsTable stats={mapMatchesStatsToMatchesTable(data?.stats)} loading={loading} />

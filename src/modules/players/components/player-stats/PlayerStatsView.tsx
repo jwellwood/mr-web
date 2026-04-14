@@ -26,7 +26,7 @@ export default function PlayerStatsView({ data, loading, error }: Props) {
   const hasStats = data && data.player.apps && data?.player.apps > 0;
   const renderContent = () => {
     return data && data?.player.apps === 0 ? (
-      <NoDataText>{t('MESSAGES.NO_STATS')}</NoDataText>
+      <NoDataText>{t('NO_DATA.STATS')}</NoDataText>
     ) : error ? (
       <DataError error={error} />
     ) : (

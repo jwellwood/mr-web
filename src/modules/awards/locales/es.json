@@ -8,11 +8,13 @@
     "EDIT_AWARD": "Editar Premio"
   },
   "FORM": {
-    "AWARD_NAME": "Nombre del Premio",
-    "AWARD_NAME_PLACEHOLDER": "ej. Jugador de la Temporada",
-    "WINNERS": "Ganadores",
-    "VALUE": "Valor",
-    "COMMENT": "Comentario"
+    "LABELS": {
+      "AWARD_NAME": "Nombre del Premio",
+      "AWARD_NAME_PLACEHOLDER": "ej. Jugador de la Temporada",
+      "WINNERS": "Ganadores",
+      "VALUE": "Valor",
+      "COMMENT": "Comentario"
+    }
   },
   "ALERTS": {
     "ADD_AWARD": {
@@ -32,7 +34,7 @@
     "NAME_REQUIRED": "El nombre del premio es obligatorio",
     "NAME_MAX": "El nombre del premio no puede superar los 50 caracteres"
   },
-  "MESSAGES": {
-    "NO_AWARDS": "Aún no hay premios"
+  "NO_DATA": {
+    "AWARDS": "Aún no hay premios"
   }
 }

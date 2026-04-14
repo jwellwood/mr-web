@@ -22,7 +22,7 @@ export default function CompetitionsList({ competitions }: Props) {
   const renderContent = competitions?.length ? (
     <LinksList links={data} />
   ) : (
-    <NoDataText>{t('MESSAGES.NO_COMPETITIONS')}</NoDataText>
+    <NoDataText>{t('NO_DATA.COMPETITIONS')}</NoDataText>
   );
 
   return <SectionContainer>{renderContent}</SectionContainer>;

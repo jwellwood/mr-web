@@ -19,7 +19,7 @@ export default function MatchesView({ data, loading, error, seasonReady }: Props
       (seasonReady && !data?.matches && !loading);
 
     if (hasNoMatches) {
-      return <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>;
+      return <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>;
     }
 
     return <MatchList matches={mapMatchesToMatchesList(data?.matches)} loading={loading} />;

@@ -1,7 +1,7 @@
 import AppBar from '@mui/material/AppBar';
 import { SyntheticEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, getTabIndex, setTabIndex, type TabIndex } from '../../../store';
+import { useSearchParams } from 'react-router-dom';
+import { TTabType } from '../../../constants';
 import { theme } from '../../../theme';
 import { ITab } from '../types';
 import StyledTab from './StyledTab';
@@ -9,18 +9,24 @@ import StyledTabs from './StyledTabs';
 import TabPanel from './TabPanel';
 
 interface TabProps {
-  type: TabIndex;
+  type: TTabType;
   tabs: ITab[];
   level: 'primary' | 'secondary';
 }
 
 export default function CustomTabs({ type, tabs, level }: TabProps) {
-  const dispatch: AppDispatch = useDispatch();
-  const value = useSelector(getTabIndex);
+  const [searchParams, setSearchParams] = useSearchParams();
   const isPrimary = level === 'primary';
-  const currentIndex = value[type] < tabs.length ? value[type] : 0;
+  const rawIndex = Number(searchParams.get(type) ?? 0);
+  const currentIndex = rawIndex < tabs.length ? rawIndex : 0;
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
-    dispatch(setTabIndex({ type, newValue }));
+    setSearchParams(
+      prev => {
+        prev.set(type, String(newValue));
+        return prev;
+      },
+      { replace: true }
+    );
   };
 
   return (

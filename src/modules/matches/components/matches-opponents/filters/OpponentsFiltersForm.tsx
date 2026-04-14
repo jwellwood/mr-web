@@ -35,7 +35,7 @@ export default function OpponentsFiltersForm({ onSubmit, onReset, defaultValues 
         <FormContainer
           loading={false}
           onSubmit={handleSubmit(submitHandler)}
-          submitBtn={{ text: t('FORM.APPLY'), confirm: { show: false } }}
+          submitBtn={{ text: t('FORM.BUTTONS.APPLY'), confirm: { show: false } }}
           onReset={resetForm}
         >
           <ControlledSwitchInput

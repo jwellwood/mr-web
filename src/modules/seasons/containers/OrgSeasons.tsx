@@ -29,7 +29,7 @@ export default function OrgSeasons() {
       <LinksList links={links} />
     </SectionContainer>
   ) : (
-    <NoDataText>{t('MESSAGES.NO_SEASONS')}</NoDataText>
+    <NoDataText>{t('NO_DATA.SEASONS')}</NoDataText>
   );
 
   const renderContent = () => {

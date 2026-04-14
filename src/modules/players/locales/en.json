@@ -46,7 +46,7 @@
     "OPPONENTS": "Opponents",
     "HONORS": "Honors"
   },
-  "FORMS": {
+  "FORM": {
     "LABELS": {
       "NAME": "Name",
       "NATIONALITY": "Nationality",
@@ -124,15 +124,17 @@
     }
   },
   "MESSAGES": {
-    "ADD_SEASON_BEFORE_PLAYERS": "Please add at least one season before adding players.",
-    "NO_AWARDS": "No awards yet",
-    "NO_TROPHIES": "No trophies yet",
-    "NO_MATCHES_VS_OPPONENT": "No matches found against this opponent.",
-    "NO_MATCHES": "No matches played",
-    "NO_SEASON_RECORDS": "No season records",
-    "NO_MATCHES_WITH_GOALS": "No matches with goals yet",
-    "NO_STATS": "No stats",
-    "NO_MATCHES_PLAYED_YET": "No matches played yet"
+    "ADD_SEASON_BEFORE_PLAYERS": "Please add at least one season before adding players."
+  },
+  "NO_DATA": {
+    "AWARDS": "No awards yet",
+    "TROPHIES": "No trophies yet",
+    "MATCHES_VS_OPPONENT": "No matches found against this opponent.",
+    "MATCHES": "No matches played",
+    "SEASON_RECORDS": "No season records",
+    "MATCHES_WITH_GOALS": "No matches with goals yet",
+    "STATS": "No stats",
+    "MATCHES_PLAYED": "No matches played yet"
   },
   "YEARS": "years"
 }

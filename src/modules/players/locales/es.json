@@ -46,7 +46,7 @@
     "OPPONENTS": "Oponentes",
     "HONORS": "Honores"
   },
-  "FORMS": {
+  "FORM": {
     "LABELS": {
       "NAME": "Nombre",
       "NATIONALITY": "Nacionalidad",
@@ -124,15 +124,17 @@
     }
   },
   "MESSAGES": {
-    "ADD_SEASON_BEFORE_PLAYERS": "Por favor, agregue al menos una temporada antes de agregar jugadores.",
-    "NO_AWARDS": "Aún no hay premios",
-    "NO_TROPHIES": "Aún no hay trofeos",
-    "NO_MATCHES_VS_OPPONENT": "No se encontraron partidos contra este oponente.",
-    "NO_MATCHES": "No se han jugado partidos",
-    "NO_SEASON_RECORDS": "No hay récords de temporada",
-    "NO_MATCHES_WITH_GOALS": "Aún no hay partidos con goles",
-    "NO_STATS": "Aún no hay estadísticas",
-    "NO_MATCHES_PLAYED_YET": "Aún no se han jugado partidos"
+    "ADD_SEASON_BEFORE_PLAYERS": "Por favor, agregue al menos una temporada antes de agregar jugadores."
+  },
+  "NO_DATA": {
+    "AWARDS": "Aún no hay premios",
+    "TROPHIES": "Aún no hay trofeos",
+    "MATCHES_VS_OPPONENT": "No se encontraron partidos contra este oponente.",
+    "MATCHES": "No se han jugado partidos",
+    "SEASON_RECORDS": "No hay récords de temporada",
+    "MATCHES_WITH_GOALS": "Aún no hay partidos con goles",
+    "STATS": "Aún no hay estadísticas",
+    "MATCHES_PLAYED": "Aún no se han jugado partidos"
   },
   "YEARS": "años",
   "MOST": "Más"

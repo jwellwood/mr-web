@@ -49,20 +49,30 @@ export default function TrophyForm({
       loading={loading}
       error={error}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORM.NAME')} />
+      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
       <ControlledSelectInput
         control={control}
         name="seasonId"
-        label={t('FORM.SEASON')}
+        label={t('FORM.LABELS.SEASON')}
         options={seasonOptions}
       />
-      <ControlledDateInput control={control} name="year" label={t('FORM.YEAR')} view="year" />
-      <ControlledSwitchInput control={control} label={t('FORM.IS_WINNER')} name="isWinner" />
-      <ControlledSwitchInput control={control} label={t('FORM.IS_FINAL')} name="isFinal" />
+      <ControlledDateInput
+        control={control}
+        name="year"
+        label={t('FORM.LABELS.YEAR')}
+        view="year"
+      />
+      <ControlledSwitchInput control={control} label={t('FORM.LABELS.IS_WINNER')} name="isWinner" />
+      <ControlledSwitchInput control={control} label={t('FORM.LABELS.IS_FINAL')} name="isFinal" />
       {isFinal && (
-        <ControlledTextInput control={control} name="opponent" label={t('FORM.OPPONENT')} />
+        <ControlledTextInput control={control} name="opponent" label={t('FORM.LABELS.OPPONENT')} />
       )}
-      <ControlledTextInput control={control} name="comment" label={t('FORM.COMMENT')} multiline />
+      <ControlledTextInput
+        control={control}
+        name="comment"
+        label={t('FORM.LABELS.COMMENT')}
+        multiline
+      />
     </FormContainer>
   );
 }

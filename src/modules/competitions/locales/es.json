@@ -8,11 +8,13 @@
     "EDIT_COMPETITION": "Editar Competición"
   },
   "FORM": {
-    "NAME": "Nombre",
-    "TYPE": "Tipo",
-    "ACTIVE": "Activo",
-    "PLAYERS_PER_TEAM": "Jugadores por equipo",
-    "MATCH_LENGTH": "Duración del partido (minutos)"
+    "LABELS": {
+      "NAME": "Nombre",
+      "TYPE": "Tipo",
+      "ACTIVE": "Activo",
+      "PLAYERS_PER_TEAM": "Jugadores por equipo",
+      "MATCH_LENGTH": "Duración del partido (minutos)"
+    }
   },
   "OPTIONS": {
     "FRIENDLY": "Amistoso",
@@ -47,8 +49,8 @@
       "ERROR": "Hubo un error al eliminar la competición. Por favor, inténtelo de nuevo."
     }
   },
-  "MESSAGES": {
-    "NO_COMPETITIONS": "No hay competiciones aún",
-    "NO_COMPETITION_DATA": "No hay datos de la competición disponibles"
+  "NO_DATA": {
+    "COMPETITIONS": "No hay competiciones aún",
+    "COMPETITION_DATA": "No hay datos de la competición disponibles"
   }
 }

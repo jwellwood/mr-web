@@ -7,7 +7,6 @@ import { alertsReducer } from '../../store/features/alerts/alertsSlice';
 import { authReducer } from '../../store/features/auth/authSlice';
 import { matchesReducer } from '../../store/features/matches/matchesSlice';
 import { playersReducer } from '../../store/features/players/playersSlice';
-import { tabsReducer } from '../../store/features/tabs/tabsSlice';
 import { useAuth } from '../useAuth';
 
 interface PartialAuthState {
@@ -22,7 +21,7 @@ interface PartialAuthState {
 
 const makeStore = (partial: PartialAuthState = {}) =>
   configureStore({
-    reducer: { alertsReducer, authReducer, matchesReducer, playersReducer, tabsReducer },
+    reducer: { alertsReducer, authReducer, matchesReducer, playersReducer },
     preloadedState: {
       authReducer: {
         isAuth: false,

@@ -60,16 +60,20 @@ export default function SubmitResultForm({
           <ControlledSelectInput
             control={control}
             name="homeGoals"
-            label={`${homeTeamName} ${t('FORMS.GOALS')}`}
+            label={`${homeTeamName} ${t('FORM.LABELS.GOALS')}`}
             options={getNumberOptions(99, 0)}
           />
           <ControlledSelectInput
             control={control}
             name="awayGoals"
-            label={`${awayTeamName} ${t('FORMS.GOALS')}`}
+            label={`${awayTeamName} ${t('FORM.LABELS.GOALS')}`}
             options={getNumberOptions(99, 0)}
           />
-          <ControlledSwitchInput control={control} name="isForfeit" label={t('FORMS.FORFEIT')} />
+          <ControlledSwitchInput
+            control={control}
+            name="isForfeit"
+            label={t('FORM.LABELS.FORFEIT')}
+          />
         </FormContainer>
       </FormModal>
     </>

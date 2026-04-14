@@ -24,7 +24,7 @@ export default function TrophiesView({ data, loading, error }: Props) {
 
   const renderContent = () => {
     return data?.trophies && data.trophies.length === 0 ? (
-      <NoDataText>{t('MESSAGES.NO_TROPHIES')}</NoDataText>
+      <NoDataText>{t('NO_DATA.TROPHIES')}</NoDataText>
     ) : (
       <>
         {totals}

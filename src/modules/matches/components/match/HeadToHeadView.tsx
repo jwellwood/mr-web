@@ -20,7 +20,7 @@ export default function HeadToHeadView({ data, loading, error }: Props) {
   const { t } = useTranslation('matches');
   const renderContent = () => {
     return data?.matches && data.matches.length === 0 ? (
-      <NoDataText>{t('MESSAGES.NO_MATCHES')}</NoDataText>
+      <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>
     ) : (
       <>
         <MatchStatsTable stats={mapHeadToHeadMatchesTable(data?.matches)} loading={loading} />

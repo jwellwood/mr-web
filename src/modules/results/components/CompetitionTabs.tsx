@@ -1,14 +1,14 @@
 import { DataError } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import CustomTabs from '../../../components/tabs/custom-tabs/CustomTabs';
-import { TabIndex } from '../../../store';
+import { TTabType } from '../../../constants';
 import { T_FETCH_FIXTURES, T_FETCH_RESULTS } from '../graphql';
 import useCompetitionConfig from '../hooks/useCompetitionConfig';
 import ResultsAccordion from './ResultsAccordion';
 
 interface Props {
   matches: T_FETCH_RESULTS['results'] | T_FETCH_FIXTURES['fixtures'];
-  type: TabIndex;
+  type: TTabType;
 }
 
 export default function CompetitionTabs({ matches, type }: Props) {

@@ -12,14 +12,18 @@
     "EDIT_IMAGE": "Edit Image",
     "CHANGE_PASSWORD": "Change Password"
   },
+  "FORM": {
+    "LABELS": {
+      "CURRENT_PASSWORD": "Current Password",
+      "NEW_PASSWORD": "New Password",
+      "CONFIRM_NEW_PASSWORD": "Confirm New Password",
+      "USERNAME": "Username",
+      "EMAIL_ADDRESS": "Email Address",
+      "DATE_OF_BIRTH": "Date of Birth",
+      "NATIONALITY": "Nationality"
+    }
+  },
   "LABELS": {
-    "CURRENT_PASSWORD": "Current Password",
-    "NEW_PASSWORD": "New Password",
-    "CONFIRM_NEW_PASSWORD": "Confirm New Password",
-    "USERNAME": "Username",
-    "EMAIL_ADDRESS": "Email Address",
-    "DATE_OF_BIRTH": "Date of Birth",
-    "NATIONALITY": "Nationality",
     "UNKNOWN": "Unknown"
   },
   "LIST_ITEMS": {

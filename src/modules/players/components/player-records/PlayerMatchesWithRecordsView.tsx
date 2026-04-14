@@ -15,7 +15,7 @@ export default function PlayerMatchesWithRecordsView({ data, loading, error }: P
   const { t } = useTranslation('players');
   const renderContent = () => {
     if (data && !data?.stats) {
-      return <NoDataText>{t('MESSAGES.NO_MATCHES_WITH_GOALS')}</NoDataText>;
+      return <NoDataText>{t('NO_DATA.MATCHES_WITH_GOALS')}</NoDataText>;
     }
     return (
       <CustomTable

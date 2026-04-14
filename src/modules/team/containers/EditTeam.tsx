@@ -28,7 +28,7 @@ export default function EditTeam() {
     awaitRefetchQueries: true,
     onError: err => {
       console.error(err);
-      dispatch(showAlert({ text: t('ALERTS.EDIT_TEAM.FAILURE'), type: 'error' }));
+      dispatch(showAlert({ text: t('ALERTS.EDIT_TEAM.ERROR'), type: 'error' }));
     },
   });
 
@@ -52,7 +52,7 @@ export default function EditTeam() {
       });
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({ text: t('ALERTS.EDIT_TEAM.FAILURE'), type: 'error' }));
+      dispatch(showAlert({ text: t('ALERTS.EDIT_TEAM.ERROR'), type: 'error' }));
     }
   };
 

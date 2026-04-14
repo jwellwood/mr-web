@@ -46,46 +46,54 @@ export default function AddMatchDetailsForm({
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       onReset={() => reset(defaultValues)}
-      submitBtn={{ text: t('FORM.NEXT'), disabled: !isValid || !isDirty, confirm: { show: false } }}
+      submitBtn={{
+        text: t('FORM.BUTTONS.NEXT'),
+        disabled: !isValid || !isDirty,
+        confirm: { show: false },
+      }}
       loading={loading}
       error={error}
     >
       <ControlledDateInput
         control={control}
         name="date"
-        label={t('FORM.DATE')}
+        label={t('FORM.LABELS.DATE')}
         disableFuture={false}
       />
-      <ControlledSwitchInput control={control} name="isHome" label={t('FORM.IS_HOME')} />
-      <ControlledSwitchInput control={control} name="isForfeit" label={t('FORM.IS_FORFEIT')} />
+      <ControlledSwitchInput control={control} name="isHome" label={t('FORM.LABELS.IS_HOME')} />
+      <ControlledSwitchInput
+        control={control}
+        name="isForfeit"
+        label={t('FORM.LABELS.IS_FORFEIT')}
+      />
       <ControlledSelectInput
         control={control}
         name="opponentId"
-        label={t('FORM.OPPONENT')}
+        label={t('FORM.LABELS.OPPONENT')}
         options={opponentOptions}
       />
       <ControlledSelectInput
         control={control}
         name="competitionId"
-        label={t('FORM.COMPETITION')}
+        label={t('FORM.LABELS.COMPETITION')}
         options={competitionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="seasonId"
-        label={t('FORM.SEASON')}
+        label={t('FORM.LABELS.SEASON')}
         options={seasonOptions}
       />
       <ControlledSelectInput
         control={control}
         name="teamGoals"
-        label={t('FORM.GOALS_SCORED')}
+        label={t('FORM.LABELS.GOALS_SCORED')}
         options={getNumberOptions(99)}
       />
       <ControlledSelectInput
         control={control}
         name="opponentGoals"
-        label={t('FORM.GOALS_CONCEDED')}
+        label={t('FORM.LABELS.GOALS_CONCEDED')}
         options={getNumberOptions(99)}
       />
     </FormContainer>

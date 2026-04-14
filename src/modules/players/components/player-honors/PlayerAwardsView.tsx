@@ -35,7 +35,7 @@ export default function PlayerAwardsView({ data, loading, error }: Props) {
 
   const renderContent = () =>
     data && data?.awards.length === 0 ? (
-      <NoDataText>{t('MESSAGES.NO_AWARDS')}</NoDataText>
+      <NoDataText>{t('NO_DATA.AWARDS')}</NoDataText>
     ) : (
       <SectionContainer type={!loading && !!data?.awards.length ? 'winner' : undefined}>
         <LinksList links={awardsData} loading={loading} />

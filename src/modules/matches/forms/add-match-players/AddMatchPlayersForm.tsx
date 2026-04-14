@@ -58,7 +58,7 @@ export default function AddMatchPlayersForm({
         onSubmit={handleSubmit(onSubmit)}
         onReset={() => reset(defaultValues)}
         submitBtn={{
-          text: t('FORM.NEXT'),
+          text: t('FORM.BUTTONS.NEXT'),
           disabled: !isValid || !isDirty,
           confirm: { show: false },
         }}
@@ -68,7 +68,7 @@ export default function AddMatchPlayersForm({
         <ControlledMultiSelectInput
           control={control}
           name="matchPlayers"
-          label={t('FORM.PLAYERS')}
+          label={t('FORM.LABELS.PLAYERS')}
           options={playersOptions}
         />
       </FormContainer>

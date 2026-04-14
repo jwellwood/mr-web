@@ -47,72 +47,80 @@ export default function AddMatchPlayerStatsForm({
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       onReset={() => reset(defaultValues)}
-      submitBtn={{ text: t('FORM.ADD'), disabled: !isValid || !isDirty, confirm: { show: false } }}
+      submitBtn={{
+        text: t('FORM.BUTTONS.ADD'),
+        disabled: !isValid || !isDirty,
+        confirm: { show: false },
+      }}
       loading={loading}
       error={error}
     >
-      <ControlledSwitchInput control={control} name="isStarter" label={t('FORM.IS_STARTER')} />
+      <ControlledSwitchInput
+        control={control}
+        name="isStarter"
+        label={t('FORM.LABELS.IS_STARTER')}
+      />
       <ControlledSelectInput
         control={control}
         name="matchPosition"
-        label={t('FORM.POSITION')}
+        label={t('FORM.LABELS.POSITION')}
         options={positionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="goals"
-        label={t('FORM.GOALS')}
+        label={t('FORM.LABELS.GOALS')}
         options={goalOptions}
       />
       <ControlledSelectInput
         control={control}
         name="pensScored"
-        label={t('FORM.PENS_SCORED')}
+        label={t('FORM.LABELS.PENS_SCORED')}
         options={goalOptions}
         disabled={+goalsScored === 0}
       />
       <ControlledSelectInput
         control={control}
         name="assists"
-        label={t('FORM.ASSISTS')}
+        label={t('FORM.LABELS.ASSISTS')}
         options={goalOptions}
       />
       <ControlledSelectInput
         control={control}
         name="ownGoals"
-        label={t('FORM.OWN_GOALS')}
+        label={t('FORM.LABELS.OWN_GOALS')}
         options={concededOptions}
       />
       <ControlledSelectInput
         control={control}
         name="pensMissed"
-        label={t('FORM.PENS_MISSED')}
+        label={t('FORM.LABELS.PENS_MISSED')}
         options={getNumberOptions(10)}
       />
       <ControlledSelectInput
         control={control}
         name="pensSaved"
-        label={t('FORM.PENS_SAVED')}
+        label={t('FORM.LABELS.PENS_SAVED')}
         options={getNumberOptions(10)}
       />
       <ControlledSelectInput
         control={control}
         name="conceded"
-        label={t('FORM.CONCEDED')}
+        label={t('FORM.LABELS.CONCEDED')}
         options={concededOptions}
       />
       <ControlledSelectInput
         control={control}
         name="yellowCards"
-        label={t('FORM.YELLOW_CARDS')}
+        label={t('FORM.LABELS.YELLOW_CARDS')}
         options={getNumberOptions(2, 0)}
       />
-      <ControlledSwitchInput control={control} name="mvp" label={t('FORM.IS_MVP')} />
-      <ControlledSwitchInput control={control} name="redCard" label={t('FORM.RED_CARD')} />
+      <ControlledSwitchInput control={control} name="mvp" label={t('FORM.LABELS.IS_MVP')} />
+      <ControlledSwitchInput control={control} name="redCard" label={t('FORM.LABELS.RED_CARD')} />
       <ControlledSwitchInput
         control={control}
         name="cleanSheet"
-        label={t('FORM.CLEAN_SHEET')}
+        label={t('FORM.LABELS.CLEAN_SHEET')}
         disabled={+goalsConceded !== 0}
       />
     </FormContainer>

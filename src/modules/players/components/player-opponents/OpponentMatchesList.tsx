@@ -15,7 +15,7 @@ export default function OpponentMatchesList({ data, loading, error }: Props) {
   const { t } = useTranslation('players');
   const renderContent = () => {
     if (data?.matches && data.matches.length === 0) {
-      return <NoDataText>{t('MESSAGES.NO_MATCHES_VS_OPPONENT')}</NoDataText>;
+      return <NoDataText>{t('NO_DATA.MATCHES_VS_OPPONENT')}</NoDataText>;
     }
 
     return (

@@ -52,61 +52,61 @@ export default function PlayerForm({
       loading={loading}
       error={error}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORMS.LABELS.NAME')} />
+      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
       <ControlledSelectInput
         control={control}
         name="nationality"
-        label={t('FORMS.LABELS.NATIONALITY')}
+        label={t('FORM.LABELS.NATIONALITY')}
         options={countryOptions}
       />
       <ControlledDateInput
         control={control}
         name="dateOfBirth"
-        label={t('FORMS.LABELS.DATE_OF_BIRTH')}
+        label={t('FORM.LABELS.DATE_OF_BIRTH')}
       />
       <ControlledDateInput
         control={control}
         name="yearJoined"
-        label={t('FORMS.LABELS.YEAR_JOINED')}
+        label={t('FORM.LABELS.YEAR_JOINED')}
         view="year"
       />
       <ControlledSelectInput
         control={control}
         name="position"
-        label={t('FORMS.LABELS.POSITION')}
+        label={t('FORM.LABELS.POSITION')}
         options={positionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="squadNumber"
-        label={t('FORMS.LABELS.SQUAD_NUMBER')}
+        label={t('FORM.LABELS.SQUAD_NUMBER')}
         options={getNumberOptions(99)}
       />
       <ControlledMultiSelectInput
         control={control}
         name="seasonIds"
         options={seasonOptions}
-        label={t('FORMS.LABELS.SEASONS')}
+        label={t('FORM.LABELS.SEASONS')}
       />
       <ControlledSwitchInput
         control={control}
         name="isCaptain"
-        label={t('FORMS.LABELS.IS_CAPTAIN')}
+        label={t('FORM.LABELS.IS_CAPTAIN')}
       />
       <ControlledSwitchInput
         control={control}
         name="isViceCaptain"
-        label={t('FORMS.LABELS.IS_VICE_CAPTAIN')}
+        label={t('FORM.LABELS.IS_VICE_CAPTAIN')}
       />
       <ControlledSwitchInput
         control={control}
         name="isHallOfFame"
-        label={t('FORMS.LABELS.IS_HALL_OF_FAME')}
+        label={t('FORM.LABELS.IS_HALL_OF_FAME')}
       />
       <ControlledTextInput
         control={control}
         name="description"
-        label={t('FORMS.LABELS.DESCRIPTION')}
+        label={t('FORM.LABELS.DESCRIPTION')}
       />
     </FormContainer>
   );

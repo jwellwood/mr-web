@@ -38,19 +38,19 @@ export default function EditPasswordForm({ onSubmit, defaultValues, loading }: P
       <ControlledTextInput
         control={control}
         name="password"
-        label={t('LABELS.CURRENT_PASSWORD')}
+        label={t('FORM.LABELS.CURRENT_PASSWORD')}
         isPassword={true}
       />
       <ControlledTextInput
         control={control}
         name="newPassword"
-        label={t('LABELS.NEW_PASSWORD')}
+        label={t('FORM.LABELS.NEW_PASSWORD')}
         isPassword={true}
       />
       <ControlledTextInput
         control={control}
         name="confirmPassword"
-        label={t('LABELS.CONFIRM_NEW_PASSWORD')}
+        label={t('FORM.LABELS.CONFIRM_NEW_PASSWORD')}
         isPassword={true}
       />
     </FormContainer>
