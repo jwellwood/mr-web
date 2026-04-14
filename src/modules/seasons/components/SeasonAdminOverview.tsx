@@ -1,7 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { DataError, SectionContainer } from '../../../components';
+import { CustomTypography, DataError, SectionContainer } from '../../../components';
+import { CustomStack } from '../../../components/grids';
 import { TextList } from '../../../components/lists';
-import { Spinner } from '../../../components/loaders';
+import { CustomSkeleton } from '../../../components/loaders';
 import { TApolloError } from '../../../types/apollo';
 import { T_FETCH_ORG_SEASON } from '../graphql';
 
@@ -13,38 +14,47 @@ interface Props {
 
 export default function SeasonAdminOverview({ season, loading, error }: Props) {
   const { t } = useTranslation('seasons');
+
   const listItems = [
     {
-      label: t('LIST.NAME'),
-      value: season?.name || '-',
-    },
-    {
-      label: t('LIST.START_DATE'),
-      value: season?.yearStarted || '-',
-    },
-    {
-      label: t('LIST.END_DATE'),
-      value: season?.yearEnded || '-',
-    },
-    {
-      label: t('LIST.CURRENT_SEASON'),
-      value: season?.isCurrent ? t('LIST.YES') : t('LIST.NO'),
-    },
-    {
       label: t('LIST.NUM_TEAMS'),
-      value: season?.teamIds.length ?? '-',
+      value: loading ? <CustomSkeleton width="70px" /> : (season?.teamIds.length ?? '-'),
     },
     {
       label: t('LIST.NUM_COMPETITIONS'),
-      value: season?.competitionConfigs?.length ?? '-',
+      value: loading ? (
+        <CustomSkeleton width="70px" />
+      ) : (
+        (season?.competitionConfigs?.length ?? '-')
+      ),
     },
   ];
 
-  return loading ? (
-    <Spinner />
-  ) : (
+  return (
     <SectionContainer>
-      {error ? <DataError error={error} /> : <TextList data={listItems} />}
+      {error ? (
+        <DataError error={error} />
+      ) : (
+        <>
+          <CustomStack direction="row" justify="space-between">
+            {loading ? (
+              <CustomSkeleton width="90px" />
+            ) : (
+              <CustomTypography bold color="data">
+                {season?.name}
+              </CustomTypography>
+            )}
+            {loading ? (
+              <CustomSkeleton width="70px" />
+            ) : (
+              season?.isCurrent && (
+                <CustomTypography color="primary">{t('LIST.CURRENT_SEASON')}</CustomTypography>
+              )
+            )}
+          </CustomStack>
+          <TextList data={listItems} />
+        </>
+      )}
     </SectionContainer>
   );
 }

@@ -11,6 +11,7 @@ export const FETCH_SEASON = gql`
       totalFinalPositions
       division
       comment
+      orgSeasonId
     }
   }
 `;

@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@mui/material';
 import { useFieldArray, useForm, useWatch } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import {
   ControlledDateInput,
   ControlledSelectInput,
@@ -45,6 +46,7 @@ export default function BatchResultForm({
   loading,
   error,
 }: Props) {
+  const { t } = useTranslation('results');
   const {
     handleSubmit,
     control,
@@ -67,7 +69,7 @@ export default function BatchResultForm({
         disabled: !isDirty || !isValid,
         confirm: {
           show: true,
-          title: 'Results / Fixtures to add:',
+          title: t('MESSAGES.RESULTS_TO_ADD'),
           content: (
             <BatchResultConfirmation
               results={currentValues as BatchResultFormData}
@@ -80,28 +82,55 @@ export default function BatchResultForm({
       loading={loading}
       error={error}
     >
-      <ControlledDateInput control={control} name="date" label="Date" disableFuture={false} />
+      <ControlledDateInput
+        control={control}
+        name="date"
+        label={t('FORMS.DATE')}
+        disableFuture={false}
+      />
       <ControlledSelectInput
         control={control}
         name="orgSeasonId"
-        label="Season"
+        label={t('FORMS.SEASON')}
         options={orgSeasonOptions}
       />
       <ControlledSelectInput
         control={control}
         name="gameWeek"
-        label="Game Week"
+        label={t('FORMS.GAME_WEEK')}
         options={getNumberOptions(52, 0)}
       />
       <ControlledSelectInput
         control={control}
         name="competitionId"
-        label="Competition"
+        label={t('FORMS.COMPETITION')}
         options={competitionOptions}
       />
 
       {errors.matches ? <FormErrorMessage error={errors.matches} /> : null}
-
+      <CustomStack direction="row" justify="space-between">
+        <CustomTypography>
+          {t('MESSAGES.MATCHES_ADDED')}{' '}
+          <CustomTypography bold color="data">
+            {matches.length}
+          </CustomTypography>
+        </CustomTypography>
+        <Button
+          color="primary"
+          onClick={() =>
+            append({
+              homeTeam: '',
+              awayTeam: '',
+              homeGoals: 0,
+              awayGoals: 0,
+              kickoffTime: '09:00',
+              isComplete: false,
+            })
+          }
+        >
+          {t('BUTTONS.ADD_MATCH')}
+        </Button>
+      </CustomStack>
       {fields.map((f, idx) => {
         const excludedTeams = matches
           .flatMap((m, i) => (i === idx ? [] : [m?.homeTeam, m?.awayTeam]))
@@ -123,22 +152,6 @@ export default function BatchResultForm({
           />
         );
       })}
-      <CustomStack direction="row" justify="space-between">
-        <CustomTypography>Matches</CustomTypography>
-        <Button
-          color="primary"
-          onClick={() =>
-            append({
-              homeTeam: '',
-              awayTeam: '',
-              kickoffTime: '10:00',
-              isComplete: false,
-            })
-          }
-        >
-          Add Match
-        </Button>
-      </CustomStack>
     </FormContainer>
   );
 }

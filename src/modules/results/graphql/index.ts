@@ -16,6 +16,10 @@ import {
   Fetch_League_TablesDocument,
   type Fetch_League_TablesQuery,
 } from './FETCH_LEAGUE_TABLES.generated';
+import {
+  Fetch_Players_By_TeamDocument,
+  type Fetch_Players_By_TeamQuery,
+} from './FETCH_PLAYERS_FOR_RESULT_INPUT.generated';
 import { Fetch_ResultDocument, type Fetch_ResultQuery } from './FETCH_RESULT.generated';
 import { Fetch_ResultsDocument, type Fetch_ResultsQuery } from './FETCH_RESULTS.generated';
 
@@ -30,6 +34,7 @@ export {
   Add_GoalscorersDocument as ADD_GOALSCORERS,
   Edit_GoalscorersDocument as EDIT_GOALSCORERS,
   Batch_Confirm_ResultsDocument as BATCH_CONFIRM_RESULTS,
+  Fetch_Players_By_TeamDocument as FETCH_PLAYERS_BY_TEAM,
 };
 
 export type T_FETCH_LEAGUE_TABLES = DeepOmitTypename<Fetch_League_TablesQuery>;
@@ -42,3 +47,4 @@ export type T_DELETE_RESULT = DeepOmitTypename<Delete_ResultMutation>;
 export type T_ADD_GOALSCORERS = DeepOmitTypename<Add_GoalscorersMutation>;
 export type T_EDIT_GOALSCORERS = DeepOmitTypename<Edit_GoalscorersMutation>;
 export type T_BATCH_CONFIRM_RESULTS = DeepOmitTypename<Batch_Confirm_ResultsMutation>;
+export type T_FETCH_PLAYERS_BY_TEAM = DeepOmitTypename<Fetch_Players_By_TeamQuery>;

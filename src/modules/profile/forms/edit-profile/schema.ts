@@ -10,7 +10,7 @@ export const EditProfileSchema = z.object({
     .string()
     .min(2, { message: t('VALIDATION.too_small', { min: 2 }) })
     .max(20, { message: t('VALIDATION.too_long', { max: 20 }) }),
-  email: z.email(t('VALIDATION.email_invalid')).min(1, { message: t('VALIDATION.email_required') }),
+  email: z.email(t('VALIDATION.email.invalid')).min(1, { message: t('VALIDATION.email.required') }),
   dateOfBirth: zodDate(true),
   nationality: z.string().optional(),
 });

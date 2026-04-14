@@ -11,8 +11,8 @@ export const SignUpSchema = () =>
       .min(2, { message: t('VALIDATION.too_small', { min: 2 }) })
       .max(20, { message: t('VALIDATION.too_long', { max: 20 }) }),
     email: z
-      .email(t('VALIDATION.email_invalid'))
-      .min(1, { message: t('VALIDATION.email_required') }),
+      .email(t('VALIDATION.email.invalid'))
+      .min(1, { message: t('VALIDATION.email.required') }),
     password: z.string().min(6, { message: t('VALIDATION.too_small', { min: 6 }) }),
     acceptTerms: z.boolean().refine(val => val === true, { message: t('VALIDATION.terms') }),
   });

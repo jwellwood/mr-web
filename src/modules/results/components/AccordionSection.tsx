@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CustomTypography, SectionContainer } from '../../../components';
 import { CustomAccordion } from '../../../components/accordion';
 import { CustomStack } from '../../../components/grids';
@@ -17,6 +18,7 @@ interface Props {
 }
 
 export default function AccordionSection({ competitionName, gameWeek, gwResults, gwIndex }: Props) {
+  const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { isOrgAuth } = useAuth('', orgId);
   const counts = getResultStatusInGameweek(gwResults);
@@ -35,12 +37,18 @@ export default function AccordionSection({ competitionName, gameWeek, gwResults,
       isExpanded={gwIndex === 0}
       title={
         <CustomStack direction="row" justify="space-between">
-          <CustomTypography color="data" bold>
-            {`Round ${gameWeek}`} -{' '}
-            <CustomTypography color="label">
-              {`${gwResults.length} game${gwResults.length !== 1 ? 's' : ''}`}
-            </CustomTypography>
-          </CustomTypography>
+          <div style={{ width: '100%' }}>
+            <div>
+              <CustomTypography color="data" bold>
+                {`${t('ROUND')} ${gameWeek} `}
+              </CustomTypography>
+            </div>
+            <div>
+              <CustomTypography color="label">
+                {`${gwResults.length} ${t('GAME')}${gwResults.length !== 1 ? 's' : ''}`}
+              </CustomTypography>
+            </div>
+          </div>
 
           <CustomStack direction="row" spacing={1} justify="flex-end">
             {counts.confirmed === gwResults.length ? (

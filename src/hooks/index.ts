@@ -1,5 +1,6 @@
 export * from './useAuth';
 export * from './useCustomParams';
+export * from './useUpdateAuth';
 export * from './useDateOfBirth';
 export * from './useNationality';
 export * from './useSeasons';

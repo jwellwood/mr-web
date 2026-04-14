@@ -2,8 +2,8 @@ import { useMutation } from '@apollo/client/react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useUpdateAuth } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { FETCH_ORGS_BY_USER, FETCH_USER } from '../../profile/graphql';
 import { initialOrgDetailsState, type OrganizationFormData } from '../forms/org-form/schema';
 import { ADD_ORG } from '../graphql';
 import { mapFormToOrg } from '../helpers/mapOrgForm';
@@ -13,9 +13,9 @@ export default function AddOrg() {
   const { t } = useTranslation('organization');
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
+  const { updateAuth } = useUpdateAuth();
 
   const [addOrg, { loading }] = useMutation(ADD_ORG, {
-    refetchQueries: [{ query: FETCH_USER }, { query: FETCH_ORGS_BY_USER }],
     onError: err => {
       console.error(err);
       dispatch(showAlert({ text: t('ALERTS.ADD.ERROR'), type: 'error' }));
@@ -24,10 +24,16 @@ export default function AddOrg() {
 
   const onSubmit = async (data: OrganizationFormData) => {
     try {
-      return addOrg({ variables: mapFormToOrg(data) }).then(res => {
-        dispatch(showAlert({ text: t('ALERTS.ADD.SUCCESS'), type: 'success' }));
-        navigate(`/org/${res?.data?.org._id}`);
-      });
+      const res = await addOrg({ variables: mapFormToOrg(data) });
+      const token = res.data?.org?.token;
+      const org = res.data?.org?.org;
+
+      if (token) {
+        await updateAuth(token);
+      }
+
+      dispatch(showAlert({ text: t('ALERTS.ADD.SUCCESS'), type: 'success' }));
+      navigate(`/org/${org?._id}`);
     } catch (error) {
       console.error(error);
       dispatch(showAlert({ text: t('ALERTS.ADD.ERROR'), type: 'error' }));

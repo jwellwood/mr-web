@@ -17,12 +17,15 @@ export const ADD_ORG = gql`
         country: $country
       }
     ) {
-      _id
-      name
-      website
-      yearFounded
-      city
-      country
+      org {
+        _id
+        name
+        website
+        yearFounded
+        city
+        country
+      }
+      token
     }
   }
 `;

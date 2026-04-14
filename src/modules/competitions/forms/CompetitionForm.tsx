@@ -52,13 +52,13 @@ export default function CompetitionForm({ onSubmit, defaultValues, loading, erro
         control={control}
         name="playersPerTeam"
         label={t('FORM.PLAYERS_PER_TEAM')}
-        options={getNumberOptions(15)}
+        options={getNumberOptions(15, 0)}
       />
       <ControlledSelectInput
         control={control}
         name="matchMinutes"
         label={t('FORM.MATCH_LENGTH')}
-        options={getNumberOptions(120, 5, 5)}
+        options={getNumberOptions(120, 0, 5)}
       />
       <ControlledSwitchInput control={control} name="isActive" label={t('FORM.ACTIVE')} />
     </FormContainer>

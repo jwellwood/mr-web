@@ -45,6 +45,10 @@
       "SUCCESS": "Result submitted successfully",
       "ERROR": "Error submitting result. Please try again."
     },
+    "ADD_GOALSCORERS": {
+      "SUCCESS": "Goalscorers added successfully",
+      "ERROR": "Error adding goalscorers. Please try again."
+    },
     "DISPUTE_RESULT": {
       "SUCCESS": "Result disputed successfully",
       "ERROR": "Error disputing result. Please try again."
@@ -66,21 +70,27 @@
     "COMPETITION": "Competition",
     "FORFEIT": "Forfeit",
     "COMPLETED": "Completed",
-    "GOALS": "Goals"
+    "GOALS": "Goals",
+    "PLAYER": "Player"
   },
   "BUTTONS": {
     "CONFIRM": "Confirm Result",
     "CONFIRM_RESULTS": "Confirm All",
     "DISPUTE": "Dispute Result",
     "SUBMIT_RESULT": "Submit Result",
-    "ADD_GOALSCORERS": "Add Goalscorers"
+    "ADD_GOALSCORERS": "Add Goalscorers",
+    "ADD_GOALSCORER": "Add Goalscorer",
+    "ADD_MATCH": "Add Match"
   },
   "MESSAGES": {
     "NO_RESULTS": "No results found.",
     "NO_FIXTURES": "No fixtures found.",
     "NO_RESULT": "No result found.",
     "DISPUTE_RESULT": "Are you sure you want to dispute this result? This will mark the result as disputed and it will need to be reviewed by an admin.",
-    "CONFIRM_RESULTS": "Are you sure you want to confirm {{count}} results? They will be marked as confirmed and cannot be disputed by users, but can still be edited by admins."
+    "CONFIRM_RESULTS": "Are you sure you want to confirm {{count}} results? They will be marked as confirmed and cannot be disputed by users, but can still be edited by admins.",
+    "NO_GOALSCORERS": "No goalscorers yet",
+    "MATCHES_ADDED": "Matches Added",
+    "RESULTS_TO_ADD": "Results / Fixtures to add:"
   },
   "ADMIN": {
     "TITLE": "Admin",
@@ -93,5 +103,7 @@
     "ROUND": "Round",
     "FORFEIT": "Forfeit"
   },
-  "OTHER_COMPETITION": "Other"
+  "OTHER_COMPETITION": "Other",
+  "ROUND": "Round",
+  "GAME": "game"
 }

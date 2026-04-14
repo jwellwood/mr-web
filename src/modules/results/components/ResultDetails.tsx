@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CustomAvatar, CustomTypography } from '../../../components';
 import { SectionContainer } from '../../../components/containers';
 import { CustomStack } from '../../../components/grids';
@@ -5,12 +6,14 @@ import { TextList } from '../../../components/lists';
 import { parseDate } from '../../../utils';
 import { T_FETCH_RESULT } from '../graphql';
 import ResultAdmin from './ResultAdmin';
+import ResultGoalscorers from './ResultGoalscorers';
 
 interface Props {
   result: T_FETCH_RESULT['result'];
 }
 
 export default function ResultDetails({ result }: Props) {
+  const { t } = useTranslation('results');
   const {
     date,
     gameWeek,
@@ -65,9 +68,10 @@ export default function ResultDetails({ result }: Props) {
           </CustomTypography>
         </CustomStack>
         <CustomTypography size="sm" bold color="label">
-          {competitionId.name} - {gameWeek ? `Round ${gameWeek}` : ''}
+          {competitionId.name} - {gameWeek ? `${t('ROUND')} ${gameWeek}` : ''}
         </CustomTypography>
         <TextList data={scoreData} />
+        <ResultGoalscorers result={result} />
       </SectionContainer>
       <ResultAdmin result={result} />
     </>

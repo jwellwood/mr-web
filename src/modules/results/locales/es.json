@@ -48,6 +48,10 @@
     "DISPUTE_RESULT": {
       "SUCCESS": "Resultado disputado correctamente",
       "ERROR": "Error al disputar el resultado. Por favor, inténtelo de nuevo."
+    },
+    "ADD_GOALSCORERS": {
+      "SUCCESS": "Goleadores agregados con éxito",
+      "ERROR": "Error al agregar goleadores. Por favor, inténtelo de nuevo."
     }
   },
   "FORMS": {
@@ -66,21 +70,27 @@
     "COMPETITION": "Competición",
     "FORFEIT": "Incomparecencia",
     "COMPLETED": "Completado",
-    "GOALS": "Goles"
+    "GOALS": "Goles",
+    "PLAYER": "Jugador"
   },
   "BUTTONS": {
     "CONFIRM": "Confirmar Resultado",
     "CONFIRM_RESULTS": "Confirmar Todos",
     "DISPUTE": "Disputar Resultado",
     "SUBMIT_RESULT": "Enviar Resultado",
-    "ADD_GOALSCORERS": "Agregar Goleadores"
+    "ADD_GOALSCORERS": "Agregar Goleadores",
+    "ADD_GOALSCORER": "Agregar Goleador",
+    "ADD_MATCH": "Agregar Partido"
   },
   "MESSAGES": {
     "NO_RESULTS": "No se encontraron resultados.",
     "NO_FIXTURES": "No se encontraron partidos.",
     "NO_RESULT": "No se encontró el resultado.",
     "DISPUTE_RESULT": "¿Está seguro de que desea disputar este resultado? Esto marcará el resultado como disputado y deberá ser revisado por un administrador.",
-    "CONFIRM_RESULTS": "¿Está seguro de que desea confirmar {{count}} resultados? Serán marcados como confirmados y no podrán ser disputados por los usuarios, pero aún podrán ser editados por los administradores."
+    "CONFIRM_RESULTS": "¿Está seguro de que desea confirmar {{count}} resultados? Serán marcados como confirmados y no podrán ser disputados por los usuarios, pero aún podrán ser editados por los administradores.",
+    "MATCHES_ADDED": "Partidos Agregados",
+    "NO_GOALSCORERS": "No hay goleadores aún",
+    "RESULTS_TO_ADD": "Resultados / Partidos a agregar:"
   },
   "ADMIN": {
     "TITLE": "Admin",
@@ -93,5 +103,7 @@
     "ROUND": "Jornada",
     "FORFEIT": "Incomparecencia"
   },
-  "OTHER_COMPETITION": "Otro"
+  "OTHER_COMPETITION": "Otro",
+  "ROUND": "Jornada",
+  "GAME": "Partido"
 }

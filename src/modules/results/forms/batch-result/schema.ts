@@ -71,6 +71,8 @@ export const initialBatchResultState = (orgSeasonId?: string): BatchResultFormDa
       {
         homeTeam: '',
         awayTeam: '',
+        homeGoals: 0,
+        awayGoals: 0,
         kickoffTime: initialResultState.kickoffTime,
         isComplete: false,
       },

@@ -3,6 +3,7 @@ import { SectionContainer } from '../../../components';
 import { IListItem, TextList } from '../../../components/lists';
 import { useAuth, useCustomParams } from '../../../hooks';
 import { RESULT_STATUS } from '../constants';
+import AddGoalscorers from '../containers/AddGoalscorers';
 import ConfirmResult from '../containers/ConfirmResult';
 import SubmitResult from '../containers/SubmitResult';
 import { T_FETCH_RESULT } from '../graphql';
@@ -45,8 +46,8 @@ export default function ResultAdmin({ result }: Props) {
   };
   const showSubmit = isAdminToEither && (status === RESULT_STATUS.PENDING || !status);
   const showConfirm = isConfirmingTeamAdmin() && status === RESULT_STATUS.SUBMITTED;
-  // const showAddGoalscorers =
-  //   isAdminToEither && (status === RESULT_STATUS.SUBMITTED || status === RESULT_STATUS.CONFIRMED);
+  const showAddGoalscorers =
+    isAdminToEither && (status === RESULT_STATUS.SUBMITTED || status === RESULT_STATUS.CONFIRMED);
 
   const getSecondTeamActionLabel = () => {
     if (status === RESULT_STATUS.DISPUTED) {
@@ -92,7 +93,38 @@ export default function ResultAdmin({ result }: Props) {
         />
       )}
       {showConfirm && <ConfirmResult />}
-      {/* {showAddGoalscorers && <CustomButton>{t('BUTTONS.ADD_GOALSCORERS')}</CustomButton>} */}
+      {showAddGoalscorers && isHomeTeamAdmin && (
+        <AddGoalscorers
+          side="HOME"
+          teamId={homeTeam?._id}
+          teamName={homeTeam?.teamName}
+          teamGoals={homeGoals}
+        />
+      )}
+      {showAddGoalscorers && isAwayTeamAdmin && (
+        <AddGoalscorers
+          side="AWAY"
+          teamId={awayTeam?._id}
+          teamName={awayTeam?.teamName}
+          teamGoals={awayGoals}
+        />
+      )}
+      {showAddGoalscorers && isOrgAuth && !isHomeTeamAdmin && !isAwayTeamAdmin && (
+        <>
+          <AddGoalscorers
+            side="HOME"
+            teamId={homeTeam?._id}
+            teamName={homeTeam?.teamName}
+            teamGoals={homeGoals}
+          />
+          <AddGoalscorers
+            side="AWAY"
+            teamId={awayTeam?._id}
+            teamName={awayTeam?.teamName}
+            teamGoals={awayGoals}
+          />
+        </>
+      )}
     </SectionContainer>
   );
 }

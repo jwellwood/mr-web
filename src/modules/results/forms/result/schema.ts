@@ -19,7 +19,7 @@ export type ResultFormData = z.infer<typeof ResultSchema>;
 
 export const initialResultState: ResultFormData = {
   date: new Date(),
-  kickoffTime: '10:00',
+  kickoffTime: '09:00',
   gameWeek: 0,
   competitionId: '',
   orgSeasonId: '',

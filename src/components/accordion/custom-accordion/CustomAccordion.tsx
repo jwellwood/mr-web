@@ -15,7 +15,10 @@ export default function CustomAccordion({ title, children, isExpanded }: Props) 
   return (
     <>
       <Accordion defaultExpanded={isExpanded} elevation={0}>
-        <AccordionSummary sx={{ bgcolor: theme.palette.secondary.dark, border: 'none' }}>
+        <AccordionSummary
+          component="div"
+          sx={{ bgcolor: theme.palette.secondary.dark, border: 'none', cursor: 'pointer' }}
+        >
           {typeof title === 'string' ? (
             <CustomTypography color="error" bold size="xs">
               {title}

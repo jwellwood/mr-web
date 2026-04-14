@@ -24,7 +24,7 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
   const link = (resultId: string, orgSeasonId: string) =>
     `/org/${orgId}/org_season/${orgSeasonId}/result/${resultId}`;
   return results.map(result => ({
-    kickoffTime: result.kickoffTime || '10:00',
+    kickoffTime: result.kickoffTime || '09:00',
     homeTeam: result.homeTeam.teamName,
     homeScore: {
       value: renderGoals(result.homeGoals, result.awayGoals),

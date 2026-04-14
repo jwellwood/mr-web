@@ -31,6 +31,7 @@ export type AddAwardInput = {
 
 export type AddGoalscorersInput = {
   goalscorers: Array<GoalscorerInput>;
+  side: ResultSide;
 };
 
 export type AddOrgSeasonInput = {
@@ -235,7 +236,7 @@ export type ForgotPasswordInput = {
 export type Goalscorer = {
   __typename?: 'Goalscorer';
   goals: Scalars['Float']['output'];
-  playerId: Player;
+  playerId?: Maybe<Player>;
 };
 
 export type GoalscorerInput = {
@@ -321,7 +322,7 @@ export type Mutation = {
   ADD_COMPETITION: Competition;
   ADD_GOALSCORERS: Result;
   ADD_MATCH: Match;
-  ADD_ORGANIZATION: Organization;
+  ADD_ORGANIZATION: OrgAuthPayload;
   ADD_ORG_SEASON: OrgSeason;
   ADD_PLAYER: Player;
   ADD_RESULT: Result;
@@ -703,6 +704,12 @@ export type OrgAdminView = {
   orgName: Scalars['String']['output'];
 };
 
+export type OrgAuthPayload = {
+  __typename?: 'OrgAuthPayload';
+  org: Organization;
+  token: Scalars['String']['output'];
+};
+
 /** The Org Season model */
 export type OrgSeason = {
   __typename?: 'OrgSeason';
@@ -766,6 +773,12 @@ export type Player = {
   teamIds: Array<Team>;
   updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
   yearJoined: Scalars['String']['output'];
+};
+
+export type PlayerBasic = {
+  __typename?: 'PlayerBasic';
+  _id: Scalars['ID']['output'];
+  name: Scalars['String']['output'];
 };
 
 export type PlayerInMatch = {
@@ -919,6 +932,7 @@ export type Query = {
   ORG_SEASON: OrgSeason;
   ORG_SEASONS: Array<OrgSeason>;
   PAST_PLAYERS: Array<PastPlayer>;
+  PLAYERS_BY_TEAM: Array<PlayerBasic>;
   PLAYER_BY_ID: Player;
   PLAYER_MATCHES_BY_OPPONENT: Array<PlayerMatchesByOpponent>;
   PLAYER_MATCHES_WITH_RECORD_ASSISTS: Array<PlayerMatchesWithRecords>;
@@ -1101,6 +1115,12 @@ export type QueryOrg_SeasonsArgs = {
 
 
 export type QueryPast_PlayersArgs = {
+  teamId: Scalars['String']['input'];
+};
+
+
+export type QueryPlayers_By_TeamArgs = {
+  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
   teamId: Scalars['String']['input'];
 };
 
@@ -1582,6 +1602,7 @@ export type TeamSeason = {
   division?: Maybe<Scalars['String']['output']>;
   leaguePosition?: Maybe<Scalars['Float']['output']>;
   name: Scalars['String']['output'];
+  orgSeasonId?: Maybe<Scalars['ID']['output']>;
   teamId: Scalars['ID']['output'];
   totalFinalPositions?: Maybe<Scalars['Float']['output']>;
   yearEnded: Scalars['String']['output'];

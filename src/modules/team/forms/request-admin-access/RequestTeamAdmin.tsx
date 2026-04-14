@@ -1,23 +1,20 @@
-import { useApolloClient, useMutation } from '@apollo/client/react';
+import { useMutation } from '@apollo/client/react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { CustomButton } from '../../../../components';
 import { CustomStack } from '../../../../components/grids';
 import { FormModal } from '../../../../components/modals';
-import { TAuthRoles } from '../../../../constants';
-import { useCustomParams } from '../../../../hooks';
-import { FETCH_USER } from '../../../../modules/profile/graphql';
-import { AppDispatch, setAuth, showAlert } from '../../../../store';
-import { authStorage } from '../../../../utils';
+import { useCustomParams, useUpdateAuth } from '../../../../hooks';
+import { AppDispatch, showAlert } from '../../../../store';
 import { REQUEST_TEAM_ADMIN_ACCESS } from '../../graphql';
 import RequestAccessForm from './RequestAccessForm';
 import { RequestAccessData } from './schema';
 
 export default function RequestTeamAdmin() {
-  const client = useApolloClient();
   const { teamId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
   const [open, setOpen] = useState(false);
+  const { updateAuth } = useUpdateAuth();
 
   const [requestAdminAccess, { loading }] = useMutation(REQUEST_TEAM_ADMIN_ACCESS, {
     onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
@@ -31,23 +28,7 @@ export default function RequestTeamAdmin() {
       const token = res.data?.REQUEST_TEAM_ADMIN_ACCESS?.token;
 
       if (token) {
-        authStorage.setToken(token);
-        const userRes = await client.query({
-          query: FETCH_USER,
-          fetchPolicy: 'network-only',
-        });
-        const user = userRes.data?.user;
-
-        if (user) {
-          dispatch(
-            setAuth({
-              roles: user.roles as TAuthRoles[],
-              teamIds: user.teamIds,
-              orgIds: user.orgIds,
-              username: user.username,
-            })
-          );
-        }
+        await updateAuth(token);
       }
 
       dispatch(
