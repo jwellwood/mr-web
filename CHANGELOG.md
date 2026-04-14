@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.17.0](https://github.com/jwellwood/mr-web/compare/v0.16.0...v0.17.0) (2026-04-14)
+
+### Features
+
+* goalscorers and result details ([055fca1](https://github.com/jwellwood/mr-web/commit/055fca1c7a9ae7d1025961f4a3b6c51b6c1f60de))
+
 ## [0.16.0](https://github.com/jwellwood/mr-web/compare/v0.15.3...v0.16.0) (2026-04-09)
 
 ### Features
