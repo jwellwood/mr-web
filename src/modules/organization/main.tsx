@@ -9,7 +9,7 @@ import OrgHelp from './components/OrgHelp';
 import { ORG_PATHS } from './router';
 
 const Org = lazy(() => import('./containers/Org'));
-const LeagueTables = lazy(() => import('../results/containers/LeagueTables'));
+const TablesTabs = lazy(() => import('../results/components/tables-tabs/TablesTabs'));
 const Results = lazy(() => import('../results/main'));
 const OrgTeams = lazy(() => import('./containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('../seasons/containers/OrgSeasons'));
@@ -27,7 +27,7 @@ export default function Team() {
     },
     {
       label: t('TABS.TABLES'),
-      component: <LeagueTables />,
+      component: <TablesTabs />,
     },
     {
       label: t('TABS.TEAMS'),

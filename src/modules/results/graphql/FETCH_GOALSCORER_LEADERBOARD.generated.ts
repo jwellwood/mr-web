@@ -1,0 +1,14 @@
+import * as Types from '../../../types/__generated__/graphql';
+
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type Fetch_Goalscorer_LeaderboardQueryVariables = Types.Exact<{
+  orgId: Types.Scalars['String']['input'];
+  orgSeasonId: Types.Scalars['String']['input'];
+  competitionId: Types.Scalars['String']['input'];
+}>;
+
+
+export type Fetch_Goalscorer_LeaderboardQuery = { data: Array<{ __typename: 'GoalscorerLeaderboardEntry', goals: number, player: { __typename: 'GoalscorerLeaderboardPlayer', _id: string, name: string }, team: { __typename: 'GoalscorerLeaderboardTeam', _id: string, teamName: string, badgeUrl: string | null } }> };
+
+
+export const Fetch_Goalscorer_LeaderboardDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"FETCH_GOALSCORER_LEADERBOARD"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orgId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orgSeasonId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"competitionId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"data"},"name":{"kind":"Name","value":"GOALSCORER_LEADERBOARD"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orgId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orgId"}}},{"kind":"Argument","name":{"kind":"Name","value":"orgSeasonId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orgSeasonId"}}},{"kind":"Argument","name":{"kind":"Name","value":"competitionId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"competitionId"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"goals"}},{"kind":"Field","name":{"kind":"Name","value":"player"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"team"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}},{"kind":"Field","name":{"kind":"Name","value":"teamName"}},{"kind":"Field","name":{"kind":"Name","value":"badgeUrl"}}]}}]}}]}}]} as unknown as DocumentNode<Fetch_Goalscorer_LeaderboardQuery, Fetch_Goalscorer_LeaderboardQueryVariables>;

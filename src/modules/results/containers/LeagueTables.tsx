@@ -31,7 +31,7 @@ export default function LeagueTables() {
 
   const tabs = comps.map(c => ({
     label: c.name,
-    component: <LeagueTable key={c.id} name={c.name} data={c.comp} loading={loading} />,
+    component: <LeagueTable key={c.id} data={c.comp} loading={loading} />,
   }));
   const hasError = error || configError;
   return (

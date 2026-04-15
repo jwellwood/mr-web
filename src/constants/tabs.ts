@@ -19,6 +19,7 @@ export const TAB_TYPES = {
   RESULTS_COMPETITIONS: 'resultsCompetitions',
   FIXTURES_COMPETITIONS: 'fixturesCompetitions',
   LEAGUE_TABLES: 'leagueTables',
+  TABLES: 'tables',
 } as const;
 
 export type TTabType = (typeof TAB_TYPES)[keyof typeof TAB_TYPES];

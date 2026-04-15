@@ -244,6 +244,26 @@ export type GoalscorerInput = {
   playerId: Scalars['ID']['input'];
 };
 
+export type GoalscorerLeaderboardEntry = {
+  __typename?: 'GoalscorerLeaderboardEntry';
+  goals: Scalars['Int']['output'];
+  player: GoalscorerLeaderboardPlayer;
+  team: GoalscorerLeaderboardTeam;
+};
+
+export type GoalscorerLeaderboardPlayer = {
+  __typename?: 'GoalscorerLeaderboardPlayer';
+  _id: Scalars['String']['output'];
+  name: Scalars['String']['output'];
+};
+
+export type GoalscorerLeaderboardTeam = {
+  __typename?: 'GoalscorerLeaderboardTeam';
+  _id: Scalars['String']['output'];
+  badgeUrl?: Maybe<Scalars['String']['output']>;
+  teamName: Scalars['String']['output'];
+};
+
 export type ImageInput = {
   public_id: Scalars['String']['input'];
   url: Scalars['String']['input'];
@@ -918,6 +938,7 @@ export type Query = {
   FETCH_TROPHY: TrophyResponse;
   FETCH_USER: User;
   FIXTURES: Array<Result>;
+  GOALSCORER_LEADERBOARD: Array<GoalscorerLeaderboardEntry>;
   HALL_OF_FAME_PLAYERS: Array<Player>;
   LEAGUE_TABLE_DATA: Array<LeagueTableByComp>;
   MATCH: Match;
@@ -1034,6 +1055,13 @@ export type QueryFetch_TrophyArgs = {
 
 
 export type QueryFixturesArgs = {
+  orgId: Scalars['String']['input'];
+  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryGoalscorer_LeaderboardArgs = {
+  competitionId: Scalars['String']['input'];
   orgId: Scalars['String']['input'];
   orgSeasonId?: InputMaybe<Scalars['String']['input']>;
 };

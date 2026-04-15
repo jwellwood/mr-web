@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CustomTable, SectionContainer } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { theme } from '../../../../theme';
@@ -5,12 +6,12 @@ import { T_FETCH_LEAGUE_TABLES } from '../../graphql';
 import { league_table } from './columns';
 
 interface Props {
-  name: string;
   data: T_FETCH_LEAGUE_TABLES['data'][0];
   loading?: boolean;
 }
 
-export default function LeagueTable({ name, data, loading }: Props) {
+export default function LeagueTable({ data, loading }: Props) {
+  const { t } = useTranslation('results');
   const { orgId } = useCustomParams();
   const { data: teamData, promotionPositions, relegationPositions, splitIndexes } = data;
 
@@ -40,10 +41,10 @@ export default function LeagueTable({ name, data, loading }: Props) {
   };
 
   return (
-    <SectionContainer title={name}>
+    <SectionContainer>
       <CustomTable
         rows={rows}
-        columns={league_table}
+        columns={league_table(t)}
         isSortable={false}
         rowStyles={{
           [getHighestPromotionPosition()]: promotionPositions

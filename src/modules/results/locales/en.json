@@ -13,7 +13,25 @@
   },
   "TABS": {
     "FIXTURES": "Fixtures",
-    "RESULTS": "Results"
+    "RESULTS": "Results",
+    "GOALSCORERS": "Goalscorers",
+    "COMPETITIONS": "Competitions"
+  },
+  "TABLES": {
+    "HEADERS": {
+      "TEAM": "Team",
+      "NAME": "Name",
+      "PLAYED": "Pl",
+      "WINS": "W",
+      "DRAWS": "D",
+      "LOSSES": "L",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GA",
+      "GOAL_DIFFERENCE": "GD",
+      "POINTS": "Pts",
+      "HOME": "Home",
+      "AWAY": "Away"
+    }
   },
   "ALERTS": {
     "ADD": {
@@ -54,7 +72,15 @@
       "ERROR": "Error disputing result. Please try again."
     }
   },
+  "FILTERS": {
+    "TITLE": "Filters",
+    "ALL_COMPETITIONS": "All Competitions",
+    "COMPETITIONS": "Competitions"
+  },
   "FORM": {
+    "BUTTONS": {
+      "APPLY": "Apply"
+    },
     "LABELS": {
       "HOME_TEAM": "Home",
       "AWAY_TEAM": "Away",

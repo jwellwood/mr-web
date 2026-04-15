@@ -227,6 +227,23 @@ input GoalscorerInput {
   goals: Int!
 }
 
+type GoalscorerLeaderboardEntry {
+  player: GoalscorerLeaderboardPlayer!
+  team: GoalscorerLeaderboardTeam!
+  goals: Int!
+}
+
+type GoalscorerLeaderboardPlayer {
+  _id: String!
+  name: String!
+}
+
+type GoalscorerLeaderboardTeam {
+  _id: String!
+  teamName: String!
+  badgeUrl: String
+}
+
 input ImageInput {
   public_id: String!
   url: String!
@@ -572,6 +589,7 @@ type Query {
   FIXTURES(orgSeasonId: String, orgId: String!): [Result!]!
   RESULT(resultId: String!): Result!
   LEAGUE_TABLE_DATA(orgSeasonId: String, orgId: String!): [LeagueTableByComp!]!
+  GOALSCORER_LEADERBOARD(orgSeasonId: String, competitionId: String!, orgId: String!): [GoalscorerLeaderboardEntry!]!
   SQUAD_LIST_BY_SEASON(seasonId: String, teamId: String!): [SquadListBySeason!]!
   SQUAD_STATS(competitionId: String!, seasonId: String!, teamId: String!): [TSquadStats!]!
   PAST_PLAYERS(teamId: String!): [PastPlayer!]!

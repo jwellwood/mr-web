@@ -13,7 +13,25 @@
   },
   "TABS": {
     "FIXTURES": "Partidos",
-    "RESULTS": "Resultados"
+    "RESULTS": "Resultados",
+    "GOALSCORERS": "Goleadores",
+    "COMPETITIONS": "Competiciones"
+  },
+  "TABLES": {
+    "HEADERS": {
+      "TEAM": "Equipo",
+      "NAME": "Nombre",
+      "PLAYED": "PJ",
+      "WINS": "G",
+      "DRAWS": "E",
+      "LOSSES": "P",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GC",
+      "GOAL_DIFFERENCE": "DG",
+      "POINTS": "Pts",
+      "HOME": "Local",
+      "AWAY": "Visitante"
+    }
   },
   "ALERTS": {
     "ADD": {
@@ -54,7 +72,15 @@
       "ERROR": "Error al agregar goleadores. Por favor, inténtelo de nuevo."
     }
   },
+  "FILTERS": {
+    "TITLE": "Filtros",
+    "ALL_COMPETITIONS": "Todas las Competiciones",
+    "COMPETITIONS": "Competiciones"
+  },
   "FORM": {
+    "BUTTONS": {
+      "APPLY": "Aplicar"
+    },
     "LABELS": {
       "HOME_TEAM": "Local",
       "AWAY_TEAM": "Visitante",
