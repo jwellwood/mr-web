@@ -3,6 +3,16 @@
 All notable changes to this project will be documented here.
 
 
+## [0.18.0](https://github.com/jwellwood/mr-web/compare/v0.17.0...v0.18.0) (2026-04-15)
+
+### Features
+
+* goalscorers table ([adeda44](https://github.com/jwellwood/mr-web/commit/adeda445d28073967d43da2c5c4ec3f4d271269a))
+
+### Code Refactoring
+
+* refactor locales, tabs ([4121d4a](https://github.com/jwellwood/mr-web/commit/4121d4a616ed9651234089200fced70dcf410358))
+
 ## [0.17.0](https://github.com/jwellwood/mr-web/compare/v0.16.0...v0.17.0) (2026-04-14)
 
 ### Features
