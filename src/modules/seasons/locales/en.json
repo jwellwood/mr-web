@@ -47,7 +47,10 @@
     "SPLIT_FORM": "Show split after position",
     "PRIORITY": "Priority",
     "EDIT": "Edit",
-    "SUBMIT": "Update Config"
+    "SUBMIT": "Update Config",
+    "TIEBREAKER": "Tiebreaker",
+    "HEAD_TO_HEAD": "Head-to-Head",
+    "GOAL_DIFFERENCE": "Goal Difference"
   },
   "MESSAGES": {
     "INCLUDED": "Included"

@@ -136,6 +136,7 @@ type CompetitionConfig {
   relegationPositions: [Float!]
   promotionPositions: [Float!]
   priority: Float
+  tiebreaker: Tiebreaker
 }
 
 input CompetitionConfigInput {
@@ -145,6 +146,7 @@ input CompetitionConfigInput {
   promotionPositions: [Float!]
   relegationPositions: [Float!]
   priority: Float
+  tiebreaker: Tiebreaker
 }
 
 input CompetitionInput {
@@ -256,6 +258,7 @@ type LeagueTableByComp {
   promotionPositions: [Float!]
   relegationPositions: [Float!]
   priority: Float
+  tiebreaker: Tiebreaker
 }
 
 type LeagueTableTeamData {
@@ -836,6 +839,12 @@ type TeamSeason {
   teamId: ID!
   comment: String
   orgSeasonId: ID
+}
+
+"""The method used to separate teams level on points"""
+enum Tiebreaker {
+  GOAL_DIFFERENCE
+  HEAD_TO_HEAD
 }
 
 type TMatch {

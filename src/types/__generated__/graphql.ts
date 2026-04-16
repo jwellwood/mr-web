@@ -160,6 +160,7 @@ export type CompetitionConfig = {
   relegationPositions?: Maybe<Array<Scalars['Float']['output']>>;
   rounds?: Maybe<Scalars['Float']['output']>;
   splitIndexes?: Maybe<Array<Scalars['Float']['output']>>;
+  tiebreaker?: Maybe<Tiebreaker>;
 };
 
 export type CompetitionConfigInput = {
@@ -169,6 +170,7 @@ export type CompetitionConfigInput = {
   relegationPositions?: InputMaybe<Array<Scalars['Float']['input']>>;
   rounds?: InputMaybe<Scalars['Float']['input']>;
   splitIndexes?: InputMaybe<Array<Scalars['Float']['input']>>;
+  tiebreaker?: InputMaybe<Tiebreaker>;
 };
 
 export type CompetitionInput = {
@@ -277,6 +279,7 @@ export type LeagueTableByComp = {
   promotionPositions?: Maybe<Array<Scalars['Float']['output']>>;
   relegationPositions?: Maybe<Array<Scalars['Float']['output']>>;
   splitIndexes?: Maybe<Array<Scalars['Float']['output']>>;
+  tiebreaker?: Maybe<Tiebreaker>;
 };
 
 export type LeagueTableTeamData = {
@@ -1636,6 +1639,11 @@ export type TeamSeason = {
   yearEnded: Scalars['String']['output'];
   yearStarted: Scalars['String']['output'];
 };
+
+/** The method used to separate teams level on points */
+export type Tiebreaker =
+  | 'GOAL_DIFFERENCE'
+  | 'HEAD_TO_HEAD';
 
 export type TopPlayerStreaks = {
   __typename?: 'TopPlayerStreaks';

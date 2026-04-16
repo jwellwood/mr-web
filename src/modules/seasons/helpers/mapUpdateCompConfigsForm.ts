@@ -1,3 +1,4 @@
+import { TTiebreaker } from '../constants';
 import { UpdateCompConfigFormData } from '../forms/competition-configs/schema';
 import { Update_Competition_ConfigsMutationVariables } from '../graphql/UPDATE_COMP_CONFIGS.generated';
 import { CompetitionConfig } from './mapOrgSeasonForm';
@@ -9,6 +10,7 @@ export const mapCompConfigToForm = (config: CompetitionConfig): UpdateCompConfig
     relegationPositions: config.relegationPositions ?? undefined,
     promotionPositions: config.promotionPositions ?? undefined,
     priority: config.priority ?? undefined,
+    tiebreaker: config.tiebreaker ?? TTiebreaker.GOAL_DIFFERENCE,
   };
 };
 
@@ -27,5 +29,6 @@ export const mapFormToUpdateCompConfig = (
     relegationPositions: formData.relegationPositions,
     promotionPositions: formData.promotionPositions,
     priority: formData.priority,
+    tiebreaker: formData.tiebreaker || TTiebreaker.GOAL_DIFFERENCE,
   };
 };

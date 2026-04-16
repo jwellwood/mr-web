@@ -3,6 +3,7 @@ import { DataError, SectionContainer } from '../../../components';
 import { TextList } from '../../../components/lists';
 import { Spinner } from '../../../components/loaders';
 import { TApolloError } from '../../../types/apollo';
+import { TTiebreaker } from '../constants';
 import UpdateCompConfig from '../forms/competition-configs/UpdateCompConfig';
 import { T_FETCH_ORG_SEASON } from '../graphql';
 
@@ -17,11 +18,22 @@ export default function SeasonConfig({ season, loading, error }: Props) {
   const renderContent = () => {
     if (loading) return <Spinner />;
     if (error) return <DataError error={error} />;
+    const getTiebreakerString = (tiebreaker?: string | null) => {
+      if (tiebreaker === TTiebreaker.HEAD_TO_HEAD) {
+        return t('CONFIG.HEAD_TO_HEAD');
+      }
+      return t('CONFIG.GOAL_DIFFERENCE'); // default to goal difference if not specified
+    };
+
     return season?.competitionConfigs?.map(config => {
       const compLinks = [
         {
           label: t('CONFIG.ROUNDS'),
           value: config.rounds || '-',
+        },
+        {
+          label: t('CONFIG.TIEBREAKER'),
+          value: getTiebreakerString(config.tiebreaker),
         },
         {
           label: t('CONFIG.RELEGATION'),

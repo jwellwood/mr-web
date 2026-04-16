@@ -23,6 +23,7 @@ export const FETCH_ORG_SEASON = gql`
         promotionPositions
         splitIndexes
         priority
+        tiebreaker
       }
     }
   }

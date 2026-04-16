@@ -7,6 +7,7 @@ import { FormContainer } from '../../../../components/forms';
 import { ControlledSelectInput, ControlledMultiSelectInput } from '../../../../components/inputs';
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
+import { TTiebreaker } from '../../constants';
 import { UpdateCompConfigSchema, type UpdateCompConfigFormData } from './schema';
 
 interface Props {
@@ -64,6 +65,15 @@ export default function UpdateCompConfigForm({
             name="rounds"
             label={t('CONFIG.ROUNDS')}
             options={getNumberOptions(50, 0)}
+          />
+          <ControlledSelectInput
+            control={control}
+            name="tiebreaker"
+            label={t('CONFIG.TIEBREAKER')}
+            options={[
+              { label: t('CONFIG.HEAD_TO_HEAD'), value: TTiebreaker.HEAD_TO_HEAD },
+              { label: t('CONFIG.GOAL_DIFFERENCE'), value: TTiebreaker.GOAL_DIFFERENCE },
+            ]}
           />
           <ControlledMultiSelectInput
             control={control}

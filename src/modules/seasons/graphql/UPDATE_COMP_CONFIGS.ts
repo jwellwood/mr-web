@@ -10,6 +10,7 @@ export const UPDATE_COMPETITION_CONFIGS = gql`
     $relegationPositions: [Float!]
     $promotionPositions: [Float!]
     $priority: Float
+    $tiebreaker: Tiebreaker!
   ) {
     UPDATE_COMPETITION_CONFIGS(
       orgId: $orgId
@@ -22,6 +23,7 @@ export const UPDATE_COMPETITION_CONFIGS = gql`
           relegationPositions: $relegationPositions
           promotionPositions: $promotionPositions
           priority: $priority
+          tiebreaker: $tiebreaker
         }
       }
     ) {

@@ -36,7 +36,7 @@ export default function UpdateCompConfig({
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
       { query: FETCH_ORG_SEASON, variables: { seasonId: orgSeasonId! } },
-      { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, seasonId: orgSeasonId! } },
+      { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
     ],
     onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });

@@ -47,7 +47,10 @@
     "SPLIT_FORM": "Mostrar división después de la posición",
     "PRIORITY": "Prioridad",
     "EDIT": "Editar",
-    "SUBMIT": "Actualizar Configuración"
+    "SUBMIT": "Actualizar Configuración",
+    "TIEBREAKER": "Desempate",
+    "HEAD_TO_HEAD": "Enfrentamientos Directos",
+    "GOAL_DIFFERENCE": "Diferencia de Goles"
   },
   "MESSAGES": {
     "INCLUDED": "Incluido"
