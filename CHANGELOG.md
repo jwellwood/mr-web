@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.19.0](https://github.com/jwellwood/mr-web/compare/v0.18.0...v0.19.0) (2026-04-16)
+
+### Features
+
+* tiebreaker in leagues ([d82199a](https://github.com/jwellwood/mr-web/commit/d82199ae9d9183c5fca912572001824de12a33f1))
+
 ## [0.18.0](https://github.com/jwellwood/mr-web/compare/v0.17.0...v0.18.0) (2026-04-15)
 
 ### Features
