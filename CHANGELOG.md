@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.19.1](https://github.com/jwellwood/mr-web/compare/v0.19.0...v0.19.1) (2026-04-20)
+
+### Bug Fixes
+
+* disabled submit buttons on match stepper ([8250eac](https://github.com/jwellwood/mr-web/commit/8250eac8c73d68b4294ae238fc9670f134c5328c))
+
 ## [0.19.0](https://github.com/jwellwood/mr-web/compare/v0.18.0...v0.19.0) (2026-04-16)
 
 ### Features
