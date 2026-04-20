@@ -38,16 +38,12 @@ export default function AccordionSection({ competitionName, gameWeek, gwResults,
       title={
         <CustomStack direction="row" justify="space-between">
           <div style={{ width: '100%' }}>
-            <div>
-              <CustomTypography color="data" bold>
-                {`${t('ROUND')} ${gameWeek} `}
-              </CustomTypography>
-            </div>
-            <div>
+            <CustomTypography color="data" bold>
+              {`${t('ROUND')} ${gameWeek} `} -{' '}
               <CustomTypography color="label">
                 {`${gwResults.length} ${t('GAME')}${gwResults.length !== 1 ? 's' : ''}`}
               </CustomTypography>
-            </div>
+            </CustomTypography>
           </div>
 
           <CustomStack direction="row" spacing={1} justify="flex-end">

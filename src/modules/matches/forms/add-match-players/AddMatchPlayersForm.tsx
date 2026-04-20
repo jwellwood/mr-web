@@ -6,9 +6,10 @@ import {
   FormContainer,
   ControlledMultiSelectInput,
   type ISelectOptions,
+  SectionContainer,
 } from '../../../../components';
-import { TextList } from '../../../../components/lists';
-import { CustomTypography } from '../../../../components/typography';
+import { IListItem, TextList } from '../../../../components/lists';
+import { CustomTypography, PositionText } from '../../../../components/typography';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PLAYERS_FOR_MATCH_INPUT } from '../../graphql';
 import AddMatchPlayersSchema, { AddMatchPlayersFormValues } from './schema';
@@ -33,7 +34,7 @@ export default function AddMatchPlayersForm({
   const {
     handleSubmit,
     control,
-    formState: { isValid, isDirty },
+    formState: { isValid },
     reset,
   } = useForm<AddMatchPlayersFormValues>({
     defaultValues,
@@ -43,11 +44,19 @@ export default function AddMatchPlayersForm({
   const matchPlayers = useWatch({ control, name: 'matchPlayers' });
 
   const playerList = useMemo(() => {
-    const list: { label: string }[] = [];
+    const list: IListItem[] = [];
 
-    (matchPlayers || []).forEach(player => {
-      const selectedPlayer = players.find(p => p._id === (player as unknown as string));
-      list.push({ label: selectedPlayer?.name || '' });
+    (matchPlayers || []).forEach(playerId => {
+      const selectedPlayer = players.find(p => p._id === playerId);
+
+      list.push({
+        avatar: <PositionText>{selectedPlayer?.position || ''}</PositionText>,
+        label: (
+          <CustomTypography bold color="data">
+            {selectedPlayer?.name || ''}
+          </CustomTypography>
+        ),
+      });
     });
     return list;
   }, [matchPlayers, players]);
@@ -59,7 +68,7 @@ export default function AddMatchPlayersForm({
         onReset={() => reset(defaultValues)}
         submitBtn={{
           text: t('FORM.BUTTONS.NEXT'),
-          disabled: !isValid || !isDirty,
+          disabled: !isValid,
           confirm: { show: false },
         }}
         loading={loading}
@@ -72,12 +81,13 @@ export default function AddMatchPlayersForm({
           options={playersOptions}
         />
       </FormContainer>
-
-      {playerList.length ? (
-        <TextList data={playerList} />
-      ) : (
-        <CustomTypography color="label">{t('MESSAGES.ADD_PLAYERS')}</CustomTypography>
-      )}
+      <SectionContainer>
+        {playerList.length ? (
+          <TextList data={playerList} />
+        ) : (
+          <CustomTypography color="label">{t('MESSAGES.ADD_PLAYERS')}</CustomTypography>
+        )}
+      </SectionContainer>
     </>
   );
 }

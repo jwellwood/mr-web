@@ -23,7 +23,7 @@ export default function MatchOverview() {
         <CustomTypography color="label">{competitionName}</CustomTypography>
         <div>
           <CustomTypography color="label">{homeTeam}</CustomTypography>{' '}
-          <CustomTypography color="data" bold>{`${homeScore}-${awayScore} `}</CustomTypography>
+          <CustomTypography color="data" bold>{`${homeScore} - ${awayScore} `}</CustomTypography>
           <CustomTypography color="label">{awayTeam}</CustomTypography>
         </div>
       </CustomStack>

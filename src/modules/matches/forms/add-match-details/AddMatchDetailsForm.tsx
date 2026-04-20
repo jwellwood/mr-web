@@ -35,7 +35,7 @@ export default function AddMatchDetailsForm({
   const {
     handleSubmit,
     control,
-    formState: { isValid, isDirty },
+    formState: { isValid },
     reset,
   } = useForm<AddMatchDetailsFormValues>({
     defaultValues,
@@ -48,7 +48,7 @@ export default function AddMatchDetailsForm({
       onReset={() => reset(defaultValues)}
       submitBtn={{
         text: t('FORM.BUTTONS.NEXT'),
-        disabled: !isValid || !isDirty,
+        disabled: !isValid,
         confirm: { show: false },
       }}
       loading={loading}

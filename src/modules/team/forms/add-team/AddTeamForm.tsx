@@ -9,15 +9,17 @@ import {
   ControlledSwitchInput,
 } from '../../../../components';
 import { useNationality } from '../../../../hooks';
+import { TApolloError } from '../../../../types/apollo';
 import { TeamDetailsSchema, type TeamFormData } from './schema';
 
 interface Props {
   onSubmit: (data: TeamFormData) => void;
   defaultValues: TeamFormData;
   loading: boolean;
+  error?: TApolloError;
 }
 
-export default function AddTeamForm({ onSubmit, defaultValues, loading }: Props) {
+export default function AddTeamForm({ onSubmit, defaultValues, loading, error }: Props) {
   const { t } = useTranslation('team');
   const { nationalityOptions } = useNationality();
   const {
@@ -37,6 +39,7 @@ export default function AddTeamForm({ onSubmit, defaultValues, loading }: Props)
       submitBtn={{ disabled: !isDirty || !isValid }}
       onReset={() => reset(defaultValues)}
       loading={loading}
+      error={error}
     >
       <ControlledTextInput control={control} name="teamName" label={t('FORM.LABELS.TEAM_NAME')} />
       <ControlledDateInput

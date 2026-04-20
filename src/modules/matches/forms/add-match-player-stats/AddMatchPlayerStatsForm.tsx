@@ -33,7 +33,7 @@ export default function AddMatchPlayerStatsForm({
   const {
     handleSubmit,
     control,
-    formState: { isValid, isDirty },
+    formState: { isValid },
     reset,
   } = useForm<AddMatchPlayerStatsFormValues>({
     defaultValues,
@@ -49,7 +49,7 @@ export default function AddMatchPlayerStatsForm({
       onReset={() => reset(defaultValues)}
       submitBtn={{
         text: t('FORM.BUTTONS.ADD'),
-        disabled: !isValid || !isDirty,
+        disabled: !isValid,
         confirm: { show: false },
       }}
       loading={loading}
