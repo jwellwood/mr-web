@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.20.1](https://github.com/jwellwood/mr-web/compare/v0.20.0...v0.20.1) (2026-04-24)
+
+### Bug Fixes
+
+* add missing confirm all conditions ([1abb483](https://github.com/jwellwood/mr-web/commit/1abb48327c0e3fc4b03c257bd907e0e9caf0f80d))
+
 ## [0.20.0](https://github.com/jwellwood/mr-web/compare/v0.19.1...v0.20.0) (2026-04-24)
 
 ### Features
