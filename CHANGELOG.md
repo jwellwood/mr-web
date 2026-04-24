@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.20.0](https://github.com/jwellwood/mr-web/compare/v0.19.1...v0.20.0) (2026-04-24)
+
+### Features
+
+* top 5 seasons, results changes ([9d0fe04](https://github.com/jwellwood/mr-web/commit/9d0fe0478cd48ba7a02929c691c2704697915c04))
+
 ## [0.19.1](https://github.com/jwellwood/mr-web/compare/v0.19.0...v0.19.1) (2026-04-20)
 
 ### Bug Fixes
