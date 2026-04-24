@@ -5,33 +5,33 @@ export const FETCH_SQUAD_SINGLE_SEASON_RECORDS = gql`
     stats: SQUAD_SINGLE_SEASON_RECORDS(teamId: $teamId) {
       goals {
         value
-        players {
+        player {
           id
           name
         }
-        seasons {
+        season {
           id
           name
         }
       }
       assists {
         value
-        players {
+        player {
           id
           name
         }
-        seasons {
+        season {
           id
           name
         }
       }
       combined {
         value
-        players {
+        player {
           id
           name
         }
-        seasons {
+        season {
           id
           name
         }

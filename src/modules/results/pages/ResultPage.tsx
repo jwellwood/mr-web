@@ -5,7 +5,7 @@ import { Spinner } from '../../../components/loaders';
 import { LINK_TYPE } from '../../../constants';
 import { useAuth, useCustomParams } from '../../../hooks';
 import { TApolloError } from '../../../types/apollo';
-import ResultDetails from '../components/ResultDetails';
+import ResultDetails from '../components/result-view/ResultDetails';
 import { T_FETCH_RESULT } from '../graphql';
 
 interface Props {

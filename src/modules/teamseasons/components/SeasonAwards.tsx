@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AppIcon } from '../../../components/icons';
 import { StatSkeleton } from '../../../components/loaders';
@@ -21,7 +21,9 @@ export default function SeasonAwards({ seasonId, name, position, loading }: Prop
       title={t('MODALS.AWARDS_TITLE', { name })}
       buttonElement={<AppIcon icon="medal" color="label" />}
     >
-      <Awards season_id={seasonId} />
+      <Suspense fallback={<StatSkeleton />}>
+        <Awards season_id={seasonId} />
+      </Suspense>
     </PresentationModal>
   ) : null;
   return loading ? <StatSkeleton /> : renderDisplay;

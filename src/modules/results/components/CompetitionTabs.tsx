@@ -1,10 +1,10 @@
 import { DataError } from '../../../components';
-import { Spinner } from '../../../components/loaders';
+import { CustomSkeleton } from '../../../components/loaders';
 import CustomTabs from '../../../components/tabs/custom-tabs/CustomTabs';
-import { TTabType } from '../../../constants';
+import { TAB_TYPES, TTabType } from '../../../constants';
 import { T_FETCH_FIXTURES, T_FETCH_RESULTS } from '../graphql';
 import useCompetitionConfig from '../hooks/useCompetitionConfig';
-import ResultsAccordion from './ResultsAccordion';
+import ResultsAccordion from './results-list/ResultsAccordion';
 
 interface Props {
   matches: T_FETCH_RESULTS['results'] | T_FETCH_FIXTURES['fixtures'];
@@ -56,13 +56,22 @@ export default function CompetitionTabs({ matches, type }: Props) {
 
   const tabs = comps.map(comp => ({
     label: comp.name,
-    component: <ResultsAccordion results={comp.results} />,
+    component: (
+      <ResultsAccordion
+        results={comp.results}
+        isFixture={type === TAB_TYPES.FIXTURES_COMPETITIONS}
+      />
+    ),
   }));
 
   return (
     <>
       {error && <DataError error={error} />}
-      {loading ? <Spinner /> : <CustomTabs type={type} tabs={tabs} level="secondary" />}
+      {loading ? (
+        <CustomSkeleton width="100%" height="48px" />
+      ) : (
+        <CustomTabs type={type} tabs={tabs} level="secondary" />
+      )}
     </>
   );
 }

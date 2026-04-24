@@ -1,8 +1,8 @@
 import { CustomTable } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { T_FETCH_RESULTS } from '../../graphql';
-import { columns } from './columns';
-import { rows } from './rows';
+import { columns } from './result-table/columns';
+import { rows } from './result-table/rows';
 
 interface Props {
   results: T_FETCH_RESULTS['results'];

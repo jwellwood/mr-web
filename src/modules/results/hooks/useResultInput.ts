@@ -15,10 +15,12 @@ export const useTeamOptions = () => {
 
   const teamOptions = useMemo<ISelectOptions[]>(() => {
     if (!data?.orgSeason.teamIds?.length) return [];
-    return data.orgSeason.teamIds.map(team => ({
-      value: team._id,
-      label: team.teamName,
-    })) as ISelectOptions[];
+    return data.orgSeason.teamIds
+      .map(team => ({
+        value: team._id,
+        label: team.teamName,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label)) as ISelectOptions[];
   }, [data]);
 
   const roundOptions = useMemo<ISelectOptions[]>(() => {

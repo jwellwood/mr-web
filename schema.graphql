@@ -705,10 +705,10 @@ input SignInUserInput {
   password: String!
 }
 
-type SingleSeasonRecord {
+type SingleSeasonRecordEntry {
   value: Float!
-  players: [SingleSeasonRecordPlayer!]!
-  seasons: [SingleSeasonRecordSeason!]!
+  player: SingleSeasonRecordPlayer!
+  season: SingleSeasonRecordSeason!
 }
 
 type SingleSeasonRecordPlayer {
@@ -974,9 +974,9 @@ type TrophyResponse {
 }
 
 type TSquadSingleSeasonRecords {
-  goals: SingleSeasonRecord
-  assists: SingleSeasonRecord
-  combined: SingleSeasonRecord
+  goals: [SingleSeasonRecordEntry!]!
+  assists: [SingleSeasonRecordEntry!]!
+  combined: [SingleSeasonRecordEntry!]!
 }
 
 type TSquadStats {

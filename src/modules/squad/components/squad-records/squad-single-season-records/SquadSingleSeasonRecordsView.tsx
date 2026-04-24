@@ -16,7 +16,7 @@ export default function SquadSingleSeasonRecordsView({ data, loading, error }: P
 
   const renderContent = () => (
     <SectionContainer title={t('SECTION_TITLES.SINGLE_SEASON_RECORDS')}>
-      {data && !data.stats?.combined?.value ? (
+      {data && !data.stats?.combined?.length ? (
         <NoDataText>{t('NO_DATA.RECORDS')}</NoDataText>
       ) : (
         <CustomTable

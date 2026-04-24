@@ -1378,10 +1378,10 @@ export type SignInUserInput = {
   password: Scalars['String']['input'];
 };
 
-export type SingleSeasonRecord = {
-  __typename?: 'SingleSeasonRecord';
-  players: Array<SingleSeasonRecordPlayer>;
-  seasons: Array<SingleSeasonRecordSeason>;
+export type SingleSeasonRecordEntry = {
+  __typename?: 'SingleSeasonRecordEntry';
+  player: SingleSeasonRecordPlayer;
+  season: SingleSeasonRecordSeason;
   value: Scalars['Float']['output'];
 };
 
@@ -1550,9 +1550,9 @@ export type TRecordMatch = {
 
 export type TSquadSingleSeasonRecords = {
   __typename?: 'TSquadSingleSeasonRecords';
-  assists?: Maybe<SingleSeasonRecord>;
-  combined?: Maybe<SingleSeasonRecord>;
-  goals?: Maybe<SingleSeasonRecord>;
+  assists: Array<SingleSeasonRecordEntry>;
+  combined: Array<SingleSeasonRecordEntry>;
+  goals: Array<SingleSeasonRecordEntry>;
 };
 
 export type TSquadStats = {

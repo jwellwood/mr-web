@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next';
-import { SectionContainer } from '../../../components';
-import { IListItem, TextList } from '../../../components/lists';
-import { useAuth, useCustomParams } from '../../../hooks';
-import { RESULT_STATUS } from '../constants';
-import AddGoalscorers from '../containers/AddGoalscorers';
-import ConfirmResult from '../containers/ConfirmResult';
-import SubmitResult from '../containers/SubmitResult';
-import { T_FETCH_RESULT } from '../graphql';
-import ResultStatus from './ResultStatus';
+import { SectionContainer } from '../../../../components';
+import { IListItem, TextList } from '../../../../components/lists';
+import { useAuth, useCustomParams } from '../../../../hooks';
+import { RESULT_STATUS } from '../../constants';
+import AddGoalscorers from '../../containers/AddGoalscorers';
+import ConfirmResult from '../../containers/ConfirmResult';
+import SubmitResult from '../../containers/SubmitResult';
+import { T_FETCH_RESULT } from '../../graphql';
+import ResultStatus from '../ResultStatus';
 
 interface Props {
   result?: T_FETCH_RESULT['result'];

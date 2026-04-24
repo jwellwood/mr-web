@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { NoDataText } from '../../../components';
-import { CustomStack } from '../../../components/grids';
-import { IListItem, TextList } from '../../../components/lists';
-import { T_FETCH_RESULT } from '../graphql';
+import { NoDataText } from '../../../../components';
+import { CustomStack } from '../../../../components/grids';
+import { IListItem, TextList } from '../../../../components/lists';
+import { T_FETCH_RESULT } from '../../graphql';
 
 interface Props {
   result: T_FETCH_RESULT['result'];

@@ -2,23 +2,13 @@ import { ColumnConfig } from '../../../../../components/tables';
 
 export const columns: readonly ColumnConfig[] = [
   {
-    id: 'label',
+    id: 'rank',
     label: <></>,
     isStatic: true,
     styles: {
-      width: 90,
+      width: 30,
+      border: true,
       color: 'label',
-      align: 'left',
-      border: true,
-    },
-  },
-  {
-    id: 'value',
-    label: <></>,
-    styles: {
-      width: 50,
-      background: true,
-      border: true,
     },
   },
   {
@@ -31,10 +21,20 @@ export const columns: readonly ColumnConfig[] = [
     },
   },
   {
-    id: 'more',
-    label: <></>,
+    id: 'season',
+    label: '',
     styles: {
-      width: 60,
+      width: 80,
+      background: true,
+      color: 'label',
+    },
+  },
+  {
+    id: 'value',
+    label: '',
+    styles: {
+      width: 40,
+      background: true,
     },
   },
 ] as const;

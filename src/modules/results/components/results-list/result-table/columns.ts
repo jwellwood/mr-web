@@ -1,11 +1,11 @@
-import { ColumnConfig } from '../../../../components';
+import { ColumnConfig } from '../../../../../components';
 
 export const columns: readonly ColumnConfig[] = [
   {
     id: 'kickoffTime',
     label: '',
     styles: {
-      width: 40,
+      width: 20,
       border: true,
       color: 'label',
     },
@@ -14,7 +14,7 @@ export const columns: readonly ColumnConfig[] = [
     id: 'homeTeam',
     label: 'Home',
     styles: {
-      width: 130,
+      width: 120,
       align: 'right',
       border: true,
       color: 'data',
@@ -25,18 +25,28 @@ export const columns: readonly ColumnConfig[] = [
     label: '',
     type: 'link',
     styles: {
-      width: 30,
+      width: 20,
+      background: true,
+    },
+  },
+  {
+    id: 'divider',
+    label: '',
+    styles: {
+      width: 5,
+      align: 'center',
+      color: 'label',
       background: true,
     },
   },
   {
     id: 'awayScore',
-    type: 'link',
     label: '',
+    type: 'link',
     styles: {
-      width: 30,
-      border: true,
+      width: 20,
       background: true,
+      border: true,
     },
   },
   {
@@ -45,18 +55,7 @@ export const columns: readonly ColumnConfig[] = [
     styles: {
       width: 120,
       align: 'left',
-      border: true,
       color: 'data',
-    },
-  },
-  {
-    id: 'status',
-    label: '',
-    type: 'link',
-    styles: {
-      width: 20,
-      border: true,
-      background: true,
     },
   },
 ] as const;

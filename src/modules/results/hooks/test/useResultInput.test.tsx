@@ -72,8 +72,8 @@ describe('useTeamOptions', () => {
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.teamOptions).toEqual([
-      { value: 'team1', label: 'Home FC' },
       { value: 'team2', label: 'Away United' },
+      { value: 'team1', label: 'Home FC' },
     ]);
   });
 

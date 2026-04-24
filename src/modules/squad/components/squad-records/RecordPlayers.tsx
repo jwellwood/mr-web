@@ -18,7 +18,7 @@ export default function RecordPlayers({ names, loading }: Props) {
     <LinksList
       links={names?.map(item => ({
         label: (
-          <CustomTypography color="label" bold>
+          <CustomTypography color="data" bold>
             {item.name}
           </CustomTypography>
         ),
