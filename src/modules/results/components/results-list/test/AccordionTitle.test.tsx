@@ -103,15 +103,33 @@ describe('AccordionTitle', () => {
     expect(screen.getByTestId('batch-confirm')).toBeInTheDocument();
   });
 
+  it('shows BatchConfirmResults when isOrgAuth and there are disputed results', () => {
+    mockUseAuth.mockReturnValue({ isOrgAuth: true });
+    renderTitle({ gwResults: [makeResult({ resultStatus: 'DISPUTED' as never })] });
+    expect(screen.getByTestId('batch-confirm')).toBeInTheDocument();
+  });
+
+  it('shows BatchConfirmResults when isOrgAuth and there are past pending results', () => {
+    mockUseAuth.mockReturnValue({ isOrgAuth: true });
+    renderTitle({ gwResults: [makeResult({ date: PAST, resultStatus: null })] });
+    expect(screen.getByTestId('batch-confirm')).toBeInTheDocument();
+  });
+
   it('does not show BatchConfirmResults when not org auth', () => {
     mockUseAuth.mockReturnValue({ isOrgAuth: false });
     renderTitle({ gwResults: [makeResult({ resultStatus: 'SUBMITTED' as never })] });
     expect(screen.queryByTestId('batch-confirm')).not.toBeInTheDocument();
   });
 
-  it('does not show BatchConfirmResults when there are no submitted results', () => {
+  it('does not show BatchConfirmResults when all results are confirmed', () => {
     mockUseAuth.mockReturnValue({ isOrgAuth: true });
     renderTitle({ gwResults: [makeResult({ resultStatus: 'CONFIRMED' as never })] });
+    expect(screen.queryByTestId('batch-confirm')).not.toBeInTheDocument();
+  });
+
+  it('does not show BatchConfirmResults when pending results are all future', () => {
+    mockUseAuth.mockReturnValue({ isOrgAuth: true });
+    renderTitle({ gwResults: [makeResult({ date: FUTURE, resultStatus: null })] });
     expect(screen.queryByTestId('batch-confirm')).not.toBeInTheDocument();
   });
 

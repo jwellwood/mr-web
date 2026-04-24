@@ -59,9 +59,9 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isFixt
             </CustomTypography>
           </SectionContainer>
         ))}
-        {isOrgAuth && counts.submitted > 0 && orgSeasonId && (
-          <BatchConfirmResults resultIds={gwResults.map(r => r._id)} />
-        )}
+        {isOrgAuth &&
+          (counts.submitted > 0 || counts.disputed > 0 || pastPendingCount > 0) &&
+          orgSeasonId && <BatchConfirmResults resultIds={gwResults.map(r => r._id)} />}
       </CustomStack>
     </CustomStack>
   );
