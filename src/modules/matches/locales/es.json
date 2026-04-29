@@ -77,7 +77,7 @@
   },
   "SECTIONS": {
     "ALL_TIME": "Histórico",
-    "CURRENT_SEASON": "Temporada Actual",
+    "CURRENT_SEASON": "Temporada",
     "STREAKS": "Rachas",
     "SUMMARY": "Resumen"
   },

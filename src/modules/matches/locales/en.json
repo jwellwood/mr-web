@@ -77,7 +77,7 @@
   },
   "SECTIONS": {
     "ALL_TIME": "All Time",
-    "CURRENT_SEASON": "Current Season",
+    "CURRENT_SEASON": "Season",
     "STREAKS": "Streaks",
     "SUMMARY": "Summary"
   },

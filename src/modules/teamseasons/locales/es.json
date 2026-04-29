@@ -15,7 +15,11 @@
       "DIVISION": "División",
       "NUMBER_OF_TEAMS": "Número de Equipos",
       "FINAL_POSITION": "Posición Final",
-      "COMMENT": "Comentario"
+      "COMMENT": "Comentario",
+      "ORG_SEASON": "Temporada de la Organización"
+    },
+    "INFO": {
+      "ORG_SEASON": "Las temporadas generalmente se crean a nivel de organización y se vinculan automáticamente a los equipos. Solo debe agregar su propia temporada si es una temporada histórica que no está en el sistema. Aún puede editar la temporada como desee, pero debe estar vinculada a una temporada de la organización si es posible."
     }
   },
   "TABLES": {

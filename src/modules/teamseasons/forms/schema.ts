@@ -8,6 +8,7 @@ export const SeasonSchema = z.object({
   totalFinalPositions: z.number().int().optional(),
   division: z.string().optional(),
   comment: z.string().optional(),
+  orgSeasonId: z.string().optional(),
 });
 
 export type SeasonFormData = z.infer<typeof SeasonSchema>;
@@ -21,4 +22,5 @@ export const initialTeamSeasonState: SeasonFormData = {
   totalFinalPositions: 0,
   division: '',
   comment: '',
+  orgSeasonId: '',
 };

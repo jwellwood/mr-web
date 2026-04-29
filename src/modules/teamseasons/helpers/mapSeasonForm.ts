@@ -13,6 +13,7 @@ export function mapSeasonToForm(
       totalFinalPositions: 10,
       division: undefined,
       comment: undefined,
+      orgSeasonId: undefined,
     };
   }
 
@@ -23,6 +24,7 @@ export function mapSeasonToForm(
     totalFinalPositions: season.totalFinalPositions ?? 10,
     division: season.division ?? undefined,
     comment: season.comment ?? undefined,
+    orgSeasonId: season.orgSeasonId ?? undefined,
   };
 }
 
@@ -59,6 +61,7 @@ export function mapFormToEditSeasonVariables(
     totalFinalPositions,
     division: form.division ?? undefined,
     comment: form.comment ?? undefined,
+    orgSeasonId: form.orgSeasonId || undefined,
   };
 }
 

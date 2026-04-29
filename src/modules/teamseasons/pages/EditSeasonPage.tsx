@@ -11,6 +11,7 @@ interface Props {
   onSubmit: (data: SeasonFormData) => void;
   defaultValues?: SeasonFormData | null;
   competitionOptions: ISelectOptions[];
+  orgSeasonOptions: ISelectOptions[];
   loading: boolean;
   error?: TApolloError;
 }
@@ -19,6 +20,7 @@ export default function EditSeasonPage({
   onSubmit,
   defaultValues,
   competitionOptions,
+  orgSeasonOptions,
   loading,
   error,
 }: Props) {
@@ -29,6 +31,7 @@ export default function EditSeasonPage({
       <>
         <SeasonForm
           competitionOptions={competitionOptions}
+          orgSeasonOptions={orgSeasonOptions}
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           loading={loading}

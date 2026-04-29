@@ -10,6 +10,7 @@ export const EDIT_SEASON = gql`
     $totalFinalPositions: Float
     $division: String
     $comment: String
+    $orgSeasonId: String
   ) {
     season: EDIT_SEASON(
       teamId: $teamId
@@ -21,6 +22,7 @@ export const EDIT_SEASON = gql`
         totalFinalPositions: $totalFinalPositions
         division: $division
         comment: $comment
+        orgSeasonId: $orgSeasonId
       }
     ) {
       _id

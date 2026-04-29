@@ -19,7 +19,7 @@ export default function AddTeamSeason() {
 
   const defaultValues: SeasonFormData = useMemo(() => ({ ...initialTeamSeasonState }), []);
 
-  const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
+  const { competitionOptions, orgSeasonOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
   const [addTeamSeason, { loading }] = useMutation(ADD_SEASON, {
     refetchQueries: [
@@ -51,6 +51,7 @@ export default function AddTeamSeason() {
       onSubmit={onSubmit}
       defaultValues={defaultValues}
       competitionOptions={competitionOptions}
+      orgSeasonOptions={orgSeasonOptions}
       loading={loading || orgLoading}
       error={orgError}
     />

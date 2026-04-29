@@ -78,6 +78,7 @@ input AddTeamSeasonInput {
   totalFinalPositions: Float
   division: String
   comment: String
+  orgSeasonId: String
 }
 
 input AddTrophyInput {

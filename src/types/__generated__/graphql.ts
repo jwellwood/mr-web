@@ -93,6 +93,7 @@ export type AddTeamSeasonInput = {
   comment?: InputMaybe<Scalars['String']['input']>;
   division?: InputMaybe<Scalars['String']['input']>;
   leaguePosition?: InputMaybe<Scalars['Float']['input']>;
+  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
   totalFinalPositions?: InputMaybe<Scalars['Float']['input']>;
   yearEnded: Scalars['String']['input'];
   yearStarted: Scalars['String']['input'];

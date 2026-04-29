@@ -15,7 +15,11 @@
       "DIVISION": "Division",
       "NUMBER_OF_TEAMS": "Number of Teams",
       "FINAL_POSITION": "Final Position",
-      "COMMENT": "Comment"
+      "COMMENT": "Comment",
+      "ORG_SEASON": "Organisation Season"
+    },
+    "INFO": {
+      "ORG_SEASON": "Seasons are usually created at the organization level and automatically linked to teams. You should only add your own season if it is a historical season that is not in the system. You can still edit the season as you wish, but it should be linked to an organization season if possible."
     }
   },
   "TABLES": {

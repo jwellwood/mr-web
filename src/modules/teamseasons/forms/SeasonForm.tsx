@@ -6,6 +6,8 @@ import {
   ControlledDateInput,
   ControlledSelectInput,
   ControlledTextInput,
+  SectionContainer,
+  CustomTypography,
 } from '../../../components';
 import type { ISelectOptions } from '../../../components';
 import { TApolloError } from '../../../types/apollo';
@@ -16,6 +18,7 @@ interface Props {
   onSubmit: (formData: SeasonFormData) => void;
   defaultValues: SeasonFormData;
   competitionOptions: ISelectOptions[];
+  orgSeasonOptions: ISelectOptions[];
   loading: boolean;
   error?: TApolloError;
 }
@@ -24,6 +27,7 @@ export default function SeasonForm({
   onSubmit,
   defaultValues,
   competitionOptions,
+  orgSeasonOptions,
   loading,
   error,
 }: Props) {
@@ -48,6 +52,16 @@ export default function SeasonForm({
       loading={loading}
       error={error}
     >
+      <SectionContainer type="info">
+        <CustomTypography color="data">{t('FORM.INFO.ORG_SEASON')}</CustomTypography>
+      </SectionContainer>
+      <ControlledSelectInput
+        control={control}
+        name="orgSeasonId"
+        label={t('FORM.LABELS.ORG_SEASON')}
+        options={orgSeasonOptions}
+      />
+
       <ControlledDateInput
         control={control}
         name="yearStarted"

@@ -29,7 +29,7 @@ export default function EditSeason() {
     onError: () => dispatch(showAlert({ text: t('ALERTS.EDIT_SEASON.ERROR'), type: 'error' })),
   });
 
-  const { competitionOptions, orgError, orgLoading } = useSeasonInput(orgId);
+  const { competitionOptions, orgSeasonOptions, orgError, orgLoading } = useSeasonInput(orgId);
 
   const defaultValues: SeasonFormData | null = useMemo(
     () => (data?.season ? mapSeasonForm.toForm(data.season) : null),
@@ -57,6 +57,7 @@ export default function EditSeason() {
       onSubmit={onSubmit}
       defaultValues={defaultValues}
       competitionOptions={competitionOptions}
+      orgSeasonOptions={orgSeasonOptions}
       loading={loading || orgLoading || editLoading}
       error={error || orgError}
     />
