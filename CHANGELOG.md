@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.21.0](https://github.com/jwellwood/mr-web/compare/v0.20.1...v0.21.0) (2026-04-29)
+
+### Features
+
+* combine results and fixtures ([a67cd27](https://github.com/jwellwood/mr-web/commit/a67cd27da106871571ea6884ace0c818cd999b35))
+
 ## [0.20.1](https://github.com/jwellwood/mr-web/compare/v0.20.0...v0.20.1) (2026-04-24)
 
 ### Bug Fixes
