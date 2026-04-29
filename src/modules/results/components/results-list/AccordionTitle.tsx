@@ -13,10 +13,9 @@ interface Props {
   gameWeek: string;
   gwResults: T_FETCH_RESULTS['results'];
   isExpanded: boolean;
-  isFixture?: boolean;
 }
 
-export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isFixture }: Props) {
+export default function AccordionTitle({ gameWeek, gwResults, isExpanded }: Props) {
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { isOrgAuth } = useAuth('', orgId);
@@ -29,10 +28,10 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isFixt
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isExpanded && isFixture && scrollRef.current) {
+    if (isExpanded && scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [isExpanded, isFixture]);
+  }, [isExpanded]);
 
   const listData = [
     { label: <AppIcon icon="pending" color="warning" />, value: pastPendingCount },

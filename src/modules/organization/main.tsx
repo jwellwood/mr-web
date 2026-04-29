@@ -10,7 +10,7 @@ import { ORG_PATHS } from './router';
 
 const Org = lazy(() => import('./containers/Org'));
 const TablesTabs = lazy(() => import('../results/components/tables-tabs/TablesTabs'));
-const Results = lazy(() => import('../results/main'));
+const Results = lazy(() => import('../results/containers/Results'));
 const OrgTeams = lazy(() => import('./containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('../seasons/containers/OrgSeasons'));
 

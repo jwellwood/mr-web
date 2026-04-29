@@ -6,7 +6,7 @@ import { DeleteModal } from '../../../components/modals';
 import { useCustomParams } from '../../../hooks';
 import { showAlert } from '../../../store';
 import { FETCH_ORG_SEASONS } from '../../seasons/graphql';
-import { DELETE_RESULT, FETCH_FIXTURES, FETCH_LEAGUE_TABLES, FETCH_RESULTS } from '../graphql';
+import { DELETE_RESULT, FETCH_LEAGUE_TABLES, FETCH_RESULTS } from '../graphql';
 
 export default function DeleteResult() {
   const { t } = useTranslation('results');
@@ -18,7 +18,6 @@ export default function DeleteResult() {
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId } },
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId } },
-      { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId } },
       { query: FETCH_LEAGUE_TABLES, variables: { orgId, orgSeasonId } },
     ],
     awaitRefetchQueries: true,

@@ -7,7 +7,6 @@ import TestWrapper from '../../../../../utils/test-helpers/TestWrapper';
 import ResultScoreBox from '../ResultScoreBox';
 
 const PAST = '2020-01-01T10:00:00.000Z';
-const FUTURE = '2099-01-01T10:00:00.000Z';
 
 const renderBox = (props: React.ComponentProps<typeof ResultScoreBox>) =>
   render(
@@ -21,16 +20,6 @@ const renderBox = (props: React.ComponentProps<typeof ResultScoreBox>) =>
 describe('ResultScoreBox', () => {
   it('renders "-" when no date is provided', () => {
     renderBox({ goals: 2, resultStatus: 'SUBMITTED' });
-    expect(screen.getByText('-')).toBeInTheDocument();
-  });
-
-  it('renders "-" for a future date regardless of goals', () => {
-    renderBox({ goals: 3, resultStatus: 'SUBMITTED', date: FUTURE });
-    expect(screen.getByText('-')).toBeInTheDocument();
-  });
-
-  it('renders "-" for a future date when goals is 0', () => {
-    renderBox({ goals: 0, date: FUTURE });
     expect(screen.getByText('-')).toBeInTheDocument();
   });
 

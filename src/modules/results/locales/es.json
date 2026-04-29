@@ -75,7 +75,9 @@
   "FILTERS": {
     "TITLE": "Filtros",
     "ALL_COMPETITIONS": "Todas las Competiciones",
-    "COMPETITIONS": "Competiciones"
+    "COMPETITIONS": "Competiciones",
+    "ALL_TEAMS": "Todos los Equipos",
+    "TEAMS": "Equipos"
   },
   "FORM": {
     "BUTTONS": {

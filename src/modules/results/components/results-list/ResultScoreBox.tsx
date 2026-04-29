@@ -19,7 +19,7 @@ export default function ResultScoreBox({ resultStatus, goals, date }: Props) {
   };
 
   const renderGoals = (goals: number | undefined, borderColor: string | null) => {
-    const display = typeof goals === 'number' ? String(goals) : '-';
+    const display = resultStatus === RESULT_STATUS.PENDING || !date ? '-' : String(goals);
     if (!borderColor) {
       return (
         <CustomTypography bold color="data">

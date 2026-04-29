@@ -588,8 +588,7 @@ type Query {
   FETCH_SEASON(seasonId: String!): TeamSeason!
   FETCH_SEASONS_POSITION(teamId: String!): [PositionFinishes!]!
   FETCH_USER: User!
-  RESULTS(orgSeasonId: String, orgId: String!): [Result!]!
-  FIXTURES(orgSeasonId: String, orgId: String!): [Result!]!
+  RESULTS(teamId: String, orgSeasonId: String, orgId: String!): [Result!]!
   RESULT(resultId: String!): Result!
   LEAGUE_TABLE_DATA(orgSeasonId: String, orgId: String!): [LeagueTableByComp!]!
   GOALSCORER_LEADERBOARD(orgSeasonId: String, competitionId: String!, orgId: String!): [GoalscorerLeaderboardEntry!]!

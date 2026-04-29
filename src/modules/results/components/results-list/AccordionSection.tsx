@@ -11,7 +11,6 @@ interface Props {
   gameWeek: string;
   gwResults: T_FETCH_RESULTS['results'];
   isExpanded: boolean;
-  isFixture?: boolean;
 }
 
 export default function AccordionSection({
@@ -19,29 +18,21 @@ export default function AccordionSection({
   gameWeek,
   gwResults,
   isExpanded,
-  isFixture,
 }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isExpanded && isFixture && scrollRef.current) {
+    if (isExpanded && scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  }, [isExpanded, isFixture]);
+  }, [isExpanded]);
 
   return (
     <div ref={scrollRef}>
       <CustomAccordion
         key={`${competitionName}-${gameWeek}`}
         isExpanded={isExpanded}
-        title={
-          <AccordionTitle
-            gameWeek={gameWeek}
-            gwResults={gwResults}
-            isExpanded={isExpanded}
-            isFixture={isFixture}
-          />
-        }
+        title={<AccordionTitle gameWeek={gameWeek} gwResults={gwResults} isExpanded={isExpanded} />}
       >
         <>
           {Object.entries(

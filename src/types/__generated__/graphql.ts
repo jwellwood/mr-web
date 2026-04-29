@@ -940,7 +940,6 @@ export type Query = {
   FETCH_TROPHIES: Array<TrophyResponse>;
   FETCH_TROPHY: TrophyResponse;
   FETCH_USER: User;
-  FIXTURES: Array<Result>;
   GOALSCORER_LEADERBOARD: Array<GoalscorerLeaderboardEntry>;
   HALL_OF_FAME_PLAYERS: Array<Player>;
   LEAGUE_TABLE_DATA: Array<LeagueTableByComp>;
@@ -1054,12 +1053,6 @@ export type QueryFetch_TrophiesArgs = {
 
 export type QueryFetch_TrophyArgs = {
   trophyId: Scalars['String']['input'];
-};
-
-
-export type QueryFixturesArgs = {
-  orgId: Scalars['String']['input'];
-  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -1231,6 +1224,7 @@ export type QueryResultArgs = {
 export type QueryResultsArgs = {
   orgId: Scalars['String']['input'];
   orgSeasonId?: InputMaybe<Scalars['String']['input']>;
+  teamId?: InputMaybe<Scalars['String']['input']>;
 };
 
 

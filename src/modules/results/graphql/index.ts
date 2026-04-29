@@ -11,7 +11,6 @@ import {
   type Edit_GoalscorersMutation,
 } from './EDIT_GOALSCORERS.generated';
 import { Edit_ResultDocument, type Edit_ResultMutation } from './EDIT_RESULT.generated';
-import { Fetch_FixturesDocument, type Fetch_FixturesQuery } from './FETCH_FIXTURES.generated';
 import {
   Fetch_Goalscorer_LeaderboardDocument,
   type Fetch_Goalscorer_LeaderboardQuery,
@@ -31,7 +30,6 @@ export {
   Fetch_League_TablesDocument as FETCH_LEAGUE_TABLES,
   Fetch_ResultDocument as FETCH_RESULT,
   Fetch_ResultsDocument as FETCH_RESULTS,
-  Fetch_FixturesDocument as FETCH_FIXTURES,
   Add_ResultDocument as ADD_RESULT,
   Edit_ResultDocument as EDIT_RESULT,
   Delete_ResultDocument as DELETE_RESULT,
@@ -45,7 +43,6 @@ export {
 export type T_FETCH_LEAGUE_TABLES = DeepOmitTypename<Fetch_League_TablesQuery>;
 export type T_FETCH_RESULT = DeepOmitTypename<Fetch_ResultQuery>;
 export type T_FETCH_RESULTS = DeepOmitTypename<Fetch_ResultsQuery>;
-export type T_FETCH_FIXTURES = DeepOmitTypename<Fetch_FixturesQuery>;
 export type T_ADD_RESULT = DeepOmitTypename<Add_ResultMutation>;
 export type T_EDIT_RESULT = DeepOmitTypename<Edit_ResultMutation>;
 export type T_DELETE_RESULT = DeepOmitTypename<Delete_ResultMutation>;

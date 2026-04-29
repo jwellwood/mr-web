@@ -8,7 +8,7 @@ import { AppDispatch, showAlert } from '../../../store';
 import { useCompetitionOptions } from '../../competitions/hooks/useCompetitionOptions';
 import { useOrgSeasonOptions } from '../../seasons/hooks/useOrgSeasonOptions';
 import { initialResultState, ResultFormData } from '../forms/result/schema';
-import { ADD_RESULT, FETCH_FIXTURES, FETCH_RESULTS } from '../graphql';
+import { ADD_RESULT, FETCH_RESULTS } from '../graphql';
 import { mapFormToAddResult } from '../helpers/mapResultForm';
 import { useTeamOptions } from '../hooks/useResultInput';
 import AddResultPage from '../pages/AddResultPage';
@@ -31,7 +31,6 @@ export default function AddResult() {
   const [addResult, { loading }] = useMutation(ADD_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
-      { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
     ],
     onError: () => dispatch(showAlert({ text: t('ALERTS.ADD.ERROR'), type: 'error' })),
   });

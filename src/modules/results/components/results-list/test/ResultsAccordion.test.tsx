@@ -11,19 +11,16 @@ vi.mock('../AccordionSection', () => ({
     competitionName,
     gameWeek,
     isExpanded,
-    isFixture,
   }: {
     competitionName: string;
     gameWeek: string;
     isExpanded: boolean;
-    isFixture?: boolean;
   }) => (
     <div
       data-testid="accordion-section"
       data-competition={competitionName}
       data-gameweek={gameWeek}
       data-expanded={String(isExpanded)}
-      data-fixture={String(isFixture)}
     />
   ),
 }));
@@ -86,7 +83,7 @@ describe('ResultsAccordion', () => {
       makeResult({ _id: 'r-1', gameWeek: 1, date: '2020-06-01T10:00:00.000Z' }),
       makeResult({ _id: 'r-2', gameWeek: 2, date: '2020-06-08T10:00:00.000Z' }),
     ];
-    renderAccordion({ results, isFixture: false });
+    renderAccordion({ results });
     // In results mode (non-fixture) the first gameweek entry (index 0, after reverse) is expanded
     const sections = screen.getAllByTestId('accordion-section');
     const expandedSections = sections.filter(s => s.getAttribute('data-expanded') === 'true');
@@ -101,7 +98,7 @@ describe('ResultsAccordion', () => {
       makeResult({ _id: 'r-1', gameWeek: 1, date: pastDate }),
       makeResult({ _id: 'r-2', gameWeek: 2, date: futureDate }),
     ];
-    renderAccordion({ results, isFixture: true });
+    renderAccordion({ results });
     const sections = screen.getAllByTestId('accordion-section');
     const expandedSection = sections.find(s => s.getAttribute('data-expanded') === 'true');
     expect(expandedSection).toBeDefined();

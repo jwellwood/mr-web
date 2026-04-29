@@ -21,7 +21,8 @@ export default function Results() {
   );
 
   const renderContent = () => {
-    return !loading && data?.results ? renderData : <Spinner />;
+    if (loading) return <Spinner />;
+    return data?.results !== undefined ? renderData : <Spinner />;
   };
 
   return error ? <DataError error={error} /> : renderContent();

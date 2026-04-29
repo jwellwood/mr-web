@@ -10,7 +10,7 @@ import { useOrgSeasonOptions } from '../../seasons/hooks/useOrgSeasonOptions';
 import { MatchRow } from '../forms/batch-result/BatchResultForm';
 import { initialBatchResultState, type BatchResultFormData } from '../forms/batch-result/schema';
 import { ResultFormData } from '../forms/result/schema';
-import { ADD_RESULT, FETCH_FIXTURES, FETCH_RESULTS } from '../graphql';
+import { ADD_RESULT, FETCH_RESULTS } from '../graphql';
 import { mapFormToAddResult } from '../helpers/mapResultForm';
 import { useTeamOptions } from '../hooks/useResultInput';
 import AddGameweekPage from '../pages/AddGameweekPage';
@@ -32,7 +32,6 @@ export default function AddGameweekResults() {
   const [addResult, { loading }] = useMutation(ADD_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULTS, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
-      { query: FETCH_FIXTURES, variables: { orgId, orgSeasonId: orgSeasonId || 'default' } },
     ],
     onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });

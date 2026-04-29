@@ -4,14 +4,6 @@ import { TextList } from '../../../components/lists';
 export default function OrgHelp() {
   const listItems = [
     {
-      label: 'Fixtures',
-      secondary: 'Games that are scheduled to be played',
-    },
-    {
-      label: 'Results',
-      secondary: 'Games that have already been played',
-    },
-    {
       label: 'Tables',
       secondary: 'Standings and rankings of teams for each competition',
     },
