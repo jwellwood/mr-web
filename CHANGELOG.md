@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.22.0](https://github.com/jwellwood/mr-web/compare/v0.21.0...v0.22.0) (2026-04-29)
+
+### Features
+
+* link seasons ([14ffddd](https://github.com/jwellwood/mr-web/commit/14ffddd112acacdb39bf1c206d04f9b47fdb2796))
+
 ## [0.21.0](https://github.com/jwellwood/mr-web/compare/v0.20.1...v0.21.0) (2026-04-29)
 
 ### Features
