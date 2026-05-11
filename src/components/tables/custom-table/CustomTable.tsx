@@ -14,6 +14,7 @@ type Props<T extends Record<string, CellValue>> = {
   sortByString?: string;
   loading?: boolean;
   loadingRowCount: number;
+  onSortChange?: (sortBy: string) => void;
   rowStyles?:
     | ((index: number, row: T) => React.CSSProperties | undefined)
     | Record<number, React.CSSProperties>;
@@ -26,17 +27,20 @@ export default function CustomTable<T extends Record<string, CellValue>>({
   sortByString = '',
   loading,
   loadingRowCount = 10,
+  onSortChange,
   rowStyles,
 }: Props<T>) {
   const [sortBy, setSortBy] = useState(sortByString);
 
   const handleRequestSort = (_: MouseEvent, property: keyof T) => {
-    setSortBy(String(property));
+    const key = String(property);
+    setSortBy(key);
+    onSortChange?.(key);
   };
 
   const visibleRows = useMemo(
-    () => stableSort(rows, getComparator('desc', sortBy)),
-    [sortBy, rows]
+    () => (onSortChange ? rows : stableSort(rows, getComparator('desc', sortBy))),
+    [sortBy, rows, onSortChange]
   );
 
   const hasLabel = columns.some(col => col.label);

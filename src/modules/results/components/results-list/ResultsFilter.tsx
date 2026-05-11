@@ -31,7 +31,7 @@ export default function ResultsFilter({ results, control }: Props) {
   ];
 
   return (
-    <SectionContainer>
+    <SectionContainer type="success">
       <ControlledSelectInput
         name="selectedTeam"
         label={t('FILTERS.TEAMS')}

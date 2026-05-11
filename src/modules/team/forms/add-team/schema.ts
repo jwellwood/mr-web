@@ -34,6 +34,7 @@ export const mapFormDataToMutationInput = (
   data: TeamFormData
 ): T_ADD_TEAM_MUTATION_INPUT['team'] => {
   return {
+    ...data,
     teamName: data.teamName,
     yearFounded: data.yearFounded ? data.yearFounded.toISOString() : null,
     location: data.location ?? null,

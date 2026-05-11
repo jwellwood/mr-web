@@ -8,6 +8,10 @@ import {
   type Fetch_Past_PlayersQuery,
 } from './FETCH_PAST_PLAYERS.generated';
 import {
+  Fetch_Player_ProfilesDocument,
+  type Fetch_Player_ProfilesQuery,
+} from './FETCH_PLAYER_PROFILES.generated';
+import {
   Fetch_Squad_List_By_SeasonDocument,
   type Fetch_Squad_List_By_SeasonQuery,
 } from './FETCH_SQUAD_LIST_BY_SEASON.generated';
@@ -41,6 +45,7 @@ import {
 } from './FETCH_TOP_PLAYER_STREAKS.generated';
 
 export {
+  Fetch_Player_ProfilesDocument as FETCH_PLAYER_PROFILES,
   Fetch_Past_PlayersDocument as FETCH_PAST_PLAYERS,
   Fetch_Squad_List_By_SeasonDocument as FETCH_SQUAD_LIST_BY_SEASON,
   Fetch_Squad_Record_Assists_In_MatchDocument as FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH,
@@ -66,3 +71,4 @@ export type T_FETCH_SQUAD_STATS_QUERY = DeepOmitTypename<Fetch_Squad_StatsQuery>
 export type T_FETCH_SQUAD_STREAKS_QUERY = DeepOmitTypename<Fetch_Squad_StreaksQuery>;
 export type T_FETCH_TOP_PLAYER_STREAKS_QUERY = DeepOmitTypename<Fetch_Top_Player_StreaksQuery>;
 export type T_FETCH_HALL_OF_FAME = DeepOmitTypename<Fetch_Hall_Of_FameQuery>;
+export type T_FETCH_PLAYER_PROFILES_QUERY = DeepOmitTypename<Fetch_Player_ProfilesQuery>;

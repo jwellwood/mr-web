@@ -2,30 +2,35 @@ import { ColumnConfig } from '../../../../../components';
 
 export const columns: readonly ColumnConfig[] = [
   {
-    id: 'rank',
-    label: <></>,
-    isStatic: true,
+    id: 'nationality',
+    type: 'nationality',
+    label: '',
     styles: {
       width: 30,
-      border: true,
-      color: 'label',
     },
   },
   {
-    id: 'players',
+    id: 'position',
     label: '',
     styles: {
-      border: true,
+      width: 24,
+    },
+  },
+  {
+    id: 'name',
+    type: 'link',
+    label: '',
+    styles: {
       align: 'left',
-      background: true,
     },
   },
   {
-    id: 'value',
+    id: 'dob',
     label: '',
     styles: {
-      width: 50,
-      background: true,
+      width: 60,
+      align: 'right',
+      color: 'label',
     },
   },
 ] as const;

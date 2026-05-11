@@ -3,7 +3,7 @@ import { T_FETCH_SQUAD_STATS_QUERY } from '../../../graphql';
 const formatStat = (stat?: number) => (stat ? +stat.toFixed(2) : 0);
 
 export const rows = (data?: T_FETCH_SQUAD_STATS_QUERY, averages?: boolean) => {
-  return data?.stats?.map(stats => {
+  return data?.stats?.players?.map(stats => {
     const id = stats?._id ?? '';
     const base = {
       name: { value: stats?.name, link: `player/${id}` },

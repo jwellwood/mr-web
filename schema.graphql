@@ -430,6 +430,13 @@ type PastPlayer {
   seasons: Float!
 }
 
+type PastPlayersPage {
+  players: [PastPlayer!]!
+  total: Int!
+  page: Int!
+  totalPages: Int!
+}
+
 """The Player model"""
 type Player {
   _id: ID!
@@ -519,6 +526,14 @@ type PlayerOpponentStats {
   conceded: Float!
 }
 
+type PlayerProfile {
+  _id: ID!
+  name: String!
+  nationality: String
+  dateOfBirth: String
+  position: String
+}
+
 type PlayerStats {
   _id: String
   apps: Float
@@ -594,8 +609,9 @@ type Query {
   LEAGUE_TABLE_DATA(orgSeasonId: String, orgId: String!): [LeagueTableByComp!]!
   GOALSCORER_LEADERBOARD(orgSeasonId: String, competitionId: String!, orgId: String!): [GoalscorerLeaderboardEntry!]!
   SQUAD_LIST_BY_SEASON(seasonId: String, teamId: String!): [SquadListBySeason!]!
-  SQUAD_STATS(competitionId: String!, seasonId: String!, teamId: String!): [TSquadStats!]!
-  PAST_PLAYERS(teamId: String!): [PastPlayer!]!
+  SQUAD_PLAYER_PROFILES(teamId: String!): [PlayerProfile!]!
+  SQUAD_STATS(sortBy: String! = "apps", limit: Int! = 20, page: Int! = 1, competitionId: String!, seasonId: String!, teamId: String!): SquadStatsPage!
+  PAST_PLAYERS(sortBy: String! = "left", limit: Int! = 20, page: Int! = 1, teamId: String!): PastPlayersPage!
   HALL_OF_FAME_PLAYERS(teamId: String!): [Player!]!
   SQUAD_RECORDS(teamId: String!): SquadRecordStats!
   SQUAD_RECORD_GOALS_IN_MATCH(teamId: String!): [MostInMatch!]!
@@ -738,6 +754,13 @@ type SquadRecordStats {
   goals: [TopStatNames!]
   assists: [TopStatNames!]
   mvp: [TopStatNames!]
+}
+
+type SquadStatsPage {
+  players: [TSquadStats!]!
+  total: Int!
+  page: Int!
+  totalPages: Int!
 }
 
 type SquadStreakRecords {
@@ -982,7 +1005,6 @@ type TSquadSingleSeasonRecords {
 type TSquadStats {
   _id: String!
   name: String!
-  nationality: String
   dateOfBirth: String
   apps: Float!
   goals: Float!

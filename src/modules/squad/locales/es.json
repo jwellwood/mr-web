@@ -3,7 +3,19 @@
     "GOALS": "Goles",
     "ASSISTS": "Asistencias",
     "COMBINED": "Combinado",
-    "NATIONALITIES": "Nacionalidades"
+    "NATIONALITIES": "Nacionalidades",
+    "PLAYER_PROFILES": "Perfiles de jugadores"
+  },
+  "BUTTONS": {
+    "PROFILES": "Perfiles"
+  },
+  "GROUP_BY": {
+    "LABEL": "Agrupar por",
+    "NATIONALITY": "Nacionalidad",
+    "POSITION": "Posición",
+    "BIRTHDAY": "Cumpleaños",
+    "UNKNOWN": "Desconocido",
+    "PLAYERS": "Jugadores"
   },
   "TABS": {
     "SQUAD": "Plantilla",
