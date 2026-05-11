@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.23.0](https://github.com/jwellwood/mr-web/compare/v0.22.0...v0.23.0) (2026-05-11)
+
+### Features
+
+* stadium link & player groups ([e0382bd](https://github.com/jwellwood/mr-web/commit/e0382bd653f7986cb2ba3ff2d9dca4c94e5f4d33))
+
 ## [0.22.0](https://github.com/jwellwood/mr-web/compare/v0.21.0...v0.22.0) (2026-04-29)
 
 ### Features
