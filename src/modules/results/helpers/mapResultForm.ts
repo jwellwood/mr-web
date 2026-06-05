@@ -21,6 +21,7 @@ export const mapFormToAddResult = (
     kickoffTime: formData.kickoffTime || undefined,
     isForfeit: formData.isForfeit || false,
     isComplete: formData.isComplete || false,
+    isBye: formData.isBye || false,
   };
 };
 
@@ -37,6 +38,7 @@ export const mapResultToForm = (result: T_FETCH_RESULT['result']): ResultFormDat
     awayGoals: result.awayGoals ?? 0,
     isForfeit: result.isForfeit ?? false,
     isComplete: result.isComplete ?? false,
+    isBye: result.isBye ?? false,
   } as ResultFormData;
 };
 
@@ -59,5 +61,6 @@ export const mapFormToEditResult = (
     awayGoals: Number(formData.awayGoals) || 0,
     isForfeit: formData.isForfeit || false,
     isComplete: formData.isComplete || false,
+    isBye: formData.isBye || false,
   };
 };

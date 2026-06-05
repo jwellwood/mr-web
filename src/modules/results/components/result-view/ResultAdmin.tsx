@@ -88,12 +88,12 @@ export default function ResultAdmin({ result }: Props) {
         <SubmitResult
           homeTeamName={homeTeam?.teamName}
           awayTeamName={awayTeam?.teamName}
-          homeGoals={homeGoals}
-          awayGoals={awayGoals}
+          homeGoals={homeGoals!}
+          awayGoals={awayGoals!}
         />
       )}
       {showConfirm && <ConfirmResult />}
-      {showAddGoalscorers && isHomeTeamAdmin && (
+      {showAddGoalscorers && isHomeTeamAdmin && homeGoals && (
         <AddGoalscorers
           side="HOME"
           teamId={homeTeam?._id}
@@ -101,7 +101,7 @@ export default function ResultAdmin({ result }: Props) {
           teamGoals={homeGoals}
         />
       )}
-      {showAddGoalscorers && isAwayTeamAdmin && (
+      {showAddGoalscorers && isAwayTeamAdmin && awayGoals && (
         <AddGoalscorers
           side="AWAY"
           teamId={awayTeam?._id}
@@ -111,18 +111,22 @@ export default function ResultAdmin({ result }: Props) {
       )}
       {showAddGoalscorers && isOrgAuth && !isHomeTeamAdmin && !isAwayTeamAdmin && (
         <>
-          <AddGoalscorers
-            side="HOME"
-            teamId={homeTeam?._id}
-            teamName={homeTeam?.teamName}
-            teamGoals={homeGoals}
-          />
-          <AddGoalscorers
-            side="AWAY"
-            teamId={awayTeam?._id}
-            teamName={awayTeam?.teamName}
-            teamGoals={awayGoals}
-          />
+          {homeGoals && (
+            <AddGoalscorers
+              side="HOME"
+              teamId={homeTeam?._id}
+              teamName={homeTeam?.teamName}
+              teamGoals={homeGoals}
+            />
+          )}
+          {awayGoals && (
+            <AddGoalscorers
+              side="AWAY"
+              teamId={awayTeam?._id}
+              teamName={awayTeam?.teamName}
+              teamGoals={awayGoals}
+            />
+          )}
         </>
       )}
     </SectionContainer>

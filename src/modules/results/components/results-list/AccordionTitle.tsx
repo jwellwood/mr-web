@@ -4,10 +4,14 @@ import { CustomTypography, SectionContainer } from '../../../../components';
 import { CustomStack } from '../../../../components/grids';
 import { AppIcon } from '../../../../components/icons';
 import { useAuth, useCustomParams } from '../../../../hooks';
+import { useCompetitionOptions } from '../../../competitions/hooks/useCompetitionOptions';
 import BatchConfirmResults from '../../containers/BatchConfirmResults';
 import { T_FETCH_RESULTS } from '../../graphql';
+import { getCupRoundLabel } from '../../helpers/getCupRoundLabel';
 import { getResultStatusInGameweek } from '../../helpers/getResultStatusInGameweek';
+import { isCupMatch } from '../../helpers/isCupMatch';
 import { isDateInPast } from '../../helpers/isDateInPast';
+import useCompetitionConfig from '../../hooks/useCompetitionConfig';
 
 interface Props {
   gameWeek: string;
@@ -19,10 +23,18 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded }: Prop
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { isOrgAuth } = useAuth('', orgId);
+  const { competitionOptions } = useCompetitionOptions();
+  const isCup = isCupMatch(competitionOptions, gwResults[0].competitionId._id);
+  const { competitionConfig } = useCompetitionConfig(gwResults[0].orgSeasonId._id);
+
+  const currentCompConfig = competitionConfig?.find(c => c.id === gwResults[0].competitionId._id);
+  const totalRounds = currentCompConfig?.rounds;
   const counts = getResultStatusInGameweek(gwResults);
-  const pastPendingCount = gwResults.filter(
+  const nonByeGames = gwResults.filter(r => !r.isBye);
+  const pastPendingCount = nonByeGames.filter(
     r =>
       (r.resultStatus == null || String(r.resultStatus).toLowerCase().includes('pending')) &&
+      r.date &&
       isDateInPast(r.date)
   ).length;
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -43,9 +55,12 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded }: Prop
     <CustomStack direction="row" justify="space-between">
       <div style={{ width: '100%' }}>
         <CustomTypography color="data" bold>
-          {`${t('ROUND')} ${gameWeek} `} -{' '}
+          {isCup
+            ? `${getCupRoundLabel(Number(gameWeek), totalRounds ?? 0, t)} `
+            : `${t('ROUND')} ${gameWeek} `}{' '}
+          {' - '}
           <CustomTypography color="label">
-            {`${gwResults.length} ${t('GAME')}${gwResults.length !== 1 ? 's' : ''}`}
+            {`${nonByeGames.length} ${t('GAME')}${nonByeGames.length !== 1 ? 's' : ''}`}
           </CustomTypography>
         </CustomTypography>
       </div>

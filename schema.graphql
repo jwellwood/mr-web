@@ -53,11 +53,12 @@ input AddResultInput {
   competitionId: ID!
   orgSeasonId: ID!
   homeTeam: ID!
-  awayTeam: ID!
-  homeGoals: Float!
-  awayGoals: Float!
+  awayTeam: ID
+  homeGoals: Float
+  awayGoals: Float
   isForfeit: Boolean!
   isComplete: Boolean!
+  isBye: Boolean
   homeGoalscorers: [GoalscorerInput!]
   awayGoalscorers: [GoalscorerInput!]
   resultStatus: ResultStatus
@@ -670,18 +671,19 @@ input ResetPasswordInput {
 """The Result model"""
 type Result {
   _id: ID!
-  date: String!
+  date: String
   kickoffTime: String
-  gameWeek: Float!
+  gameWeek: Float
   competitionId: Competition!
-  homeTeam: Team!
-  awayTeam: Team!
-  homeGoals: Float!
-  awayGoals: Float!
+  homeTeam: Team
+  awayTeam: Team
+  homeGoals: Float
+  awayGoals: Float
   homeGoalscorers: [Goalscorer!]
   awayGoalscorers: [Goalscorer!]
   orgSeasonId: OrgSeason!
   isForfeit: Boolean
+  isBye: Boolean
   isComplete: Boolean
   resultStatus: ResultStatus
   submittedByTeam: Team
@@ -708,8 +710,8 @@ enum ResultStatus {
 }
 
 type ResultTeam {
-  _id: String!
-  teamName: String!
+  _id: String
+  teamName: String
 }
 
 input SetTeamAdminAccessCodeInput {
@@ -868,6 +870,7 @@ type TeamSeason {
 enum Tiebreaker {
   GOAL_DIFFERENCE
   HEAD_TO_HEAD
+  PENALTIES
 }
 
 type TMatch {

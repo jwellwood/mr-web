@@ -14,6 +14,7 @@ export const ADD_RESULT = gql`
     $awayGoals: Float!
     $isForfeit: Boolean!
     $isComplete: Boolean!
+    $isBye: Boolean!
   ) {
     result: ADD_RESULT(
       orgId: $orgId
@@ -29,6 +30,7 @@ export const ADD_RESULT = gql`
         orgSeasonId: $orgSeasonId
         isForfeit: $isForfeit
         isComplete: $isComplete
+        isBye: $isBye
       }
     ) {
       _id

@@ -74,8 +74,8 @@ describe('useCompetitionConfig', () => {
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.competitionConfig).toEqual([
-      { id: 'comp1', name: 'League', priority: 1 },
-      { id: 'comp2', name: 'Cup', priority: 2 },
+      { id: 'comp1', name: 'League', priority: 1, rounds: 26 },
+      { id: 'comp2', name: 'Cup', priority: 2, rounds: 4 },
     ]);
   });
 

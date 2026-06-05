@@ -7,7 +7,11 @@ export const UpdateCompConfigSchema = z.object({
   relegationPositions: z.array(z.number()).optional(),
   promotionPositions: z.array(z.number()).optional(),
   priority: z.number().optional(),
-  tiebreaker: z.enum([TTiebreaker.HEAD_TO_HEAD, TTiebreaker.GOAL_DIFFERENCE]),
+  tiebreaker: z.enum([
+    TTiebreaker.HEAD_TO_HEAD,
+    TTiebreaker.GOAL_DIFFERENCE,
+    TTiebreaker.PENALTIES,
+  ]),
 });
 
 export type UpdateCompConfigFormData = z.infer<typeof UpdateCompConfigSchema>;

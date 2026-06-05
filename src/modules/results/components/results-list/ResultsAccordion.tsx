@@ -17,7 +17,7 @@ export default function ResultsAccordion({ results }: Props) {
   const filteredResults =
     selectedTeam === 'all'
       ? results
-      : results.filter(r => r.homeTeam._id === selectedTeam || r.awayTeam._id === selectedTeam);
+      : results.filter(r => r.homeTeam?._id === selectedTeam || r.awayTeam?._id === selectedTeam);
 
   const competitions = filteredResults.reduce<Record<string, T_FETCH_RESULTS['results'][number][]>>(
     (acc, r) => {

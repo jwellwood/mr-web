@@ -27,6 +27,7 @@ export const FETCH_RESULT = gql`
       awayGoals
       isForfeit
       isComplete
+      isBye
       homeGoalscorers {
         playerId {
           _id

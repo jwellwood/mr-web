@@ -37,7 +37,7 @@ export default function ResultDetails({ result }: Props) {
     {
       label: (
         <CustomTypography size="lg" bold color="data">
-          {homeTeam.teamName}
+          {homeTeam?.teamName}
         </CustomTypography>
       ),
       value: goalsAvatar(homeGoals),
@@ -45,7 +45,7 @@ export default function ResultDetails({ result }: Props) {
     {
       label: (
         <CustomTypography size="lg" bold color="data">
-          {awayTeam.teamName}
+          {awayTeam?.teamName}
         </CustomTypography>
       ),
       value: goalsAvatar(awayGoals),

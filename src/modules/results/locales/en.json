@@ -98,6 +98,7 @@
       "GAME_WEEK": "Game Week",
       "COMPETITION": "Competition",
       "FORFEIT": "Forfeit",
+      "IS_BYE": "Bye",
       "COMPLETED": "Completed",
       "GOALS": "Goals",
       "PLAYER": "Player"
@@ -136,7 +137,14 @@
     "ROUND": "Round",
     "FORFEIT": "Forfeit"
   },
+  "CUP_ROUNDS": {
+    "FINAL": "Final",
+    "SEMI_FINAL": "Semi Final",
+    "QUARTER_FINAL": "Quarter Final",
+    "ROUND": "Round {{number}}"
+  },
   "OTHER_COMPETITION": "Other",
   "ROUND": "Round",
-  "GAME": "game"
+  "GAME": "game",
+  "BYE_GAMES": "Bye"
 }

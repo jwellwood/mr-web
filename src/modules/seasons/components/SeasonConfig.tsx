@@ -1,9 +1,12 @@
+import { useQuery } from '@apollo/client/react';
 import { useTranslation } from 'react-i18next';
 import { DataError, SectionContainer } from '../../../components';
 import { TextList } from '../../../components/lists';
 import { Spinner } from '../../../components/loaders';
+import { useCustomParams } from '../../../hooks';
 import { TApolloError } from '../../../types/apollo';
-import { TTiebreaker } from '../constants';
+import { FETCH_COMPETITIONS } from '../../competitions/graphql';
+import { isCupCompetitionType, TTiebreaker } from '../constants';
 import UpdateCompConfig from '../forms/competition-configs/UpdateCompConfig';
 import { T_FETCH_ORG_SEASON } from '../graphql';
 
@@ -15,6 +18,15 @@ interface Props {
 
 export default function SeasonConfig({ season, loading, error }: Props) {
   const { t } = useTranslation('seasons');
+  const { orgId } = useCustomParams();
+  const { data: competitionsData } = useQuery(FETCH_COMPETITIONS, {
+    variables: { orgId: orgId! },
+  });
+
+  const competitionTypeById = new Map(
+    competitionsData?.org?.competitions?.map(comp => [comp._id, comp.competitionType]) ?? []
+  );
+
   const renderContent = () => {
     if (loading) return <Spinner />;
     if (error) return <DataError error={error} />;
@@ -22,10 +34,14 @@ export default function SeasonConfig({ season, loading, error }: Props) {
       if (tiebreaker === TTiebreaker.HEAD_TO_HEAD) {
         return t('CONFIG.HEAD_TO_HEAD');
       }
+      if (tiebreaker === TTiebreaker.PENALTIES) {
+        return t('CONFIG.PENALTIES');
+      }
       return t('CONFIG.GOAL_DIFFERENCE'); // default to goal difference if not specified
     };
 
     return season?.competitionConfigs?.map(config => {
+      const isCup = isCupCompetitionType(competitionTypeById.get(config.competitionId._id));
       const compLinks = [
         {
           label: t('CONFIG.ROUNDS'),
@@ -35,18 +51,22 @@ export default function SeasonConfig({ season, loading, error }: Props) {
           label: t('CONFIG.TIEBREAKER'),
           value: getTiebreakerString(config.tiebreaker),
         },
-        {
-          label: t('CONFIG.RELEGATION'),
-          value: config.relegationPositions?.join(', ') ?? '-',
-        },
-        {
-          label: t('CONFIG.PROMOTION'),
-          value: config.promotionPositions?.join(', ') ?? '-',
-        },
-        {
-          label: t('CONFIG.SPLIT'),
-          value: config.splitIndexes?.join(', ') || '-',
-        },
+        ...(!isCup
+          ? [
+              {
+                label: t('CONFIG.RELEGATION'),
+                value: config.relegationPositions?.join(', ') ?? '-',
+              },
+              {
+                label: t('CONFIG.PROMOTION'),
+                value: config.promotionPositions?.join(', ') ?? '-',
+              },
+              {
+                label: t('CONFIG.SPLIT'),
+                value: config.splitIndexes?.join(', ') || '-',
+              },
+            ]
+          : []),
         {
           label: t('CONFIG.PRIORITY'),
           value: config.priority ?? '-',

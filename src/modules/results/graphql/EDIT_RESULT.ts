@@ -15,6 +15,7 @@ export const EDIT_RESULT = gql`
     $awayGoals: Float!
     $isForfeit: Boolean!
     $isComplete: Boolean!
+    $isBye: Boolean!
   ) {
     result: EDIT_RESULT(
       orgId: $orgId
@@ -31,6 +32,7 @@ export const EDIT_RESULT = gql`
         orgSeasonId: $orgSeasonId
         isForfeit: $isForfeit
         isComplete: $isComplete
+        isBye: $isBye
       }
     ) {
       _id

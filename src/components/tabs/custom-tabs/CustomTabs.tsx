@@ -11,12 +11,13 @@ import TabPanel from './TabPanel';
 interface TabProps {
   type: TTabType;
   tabs: ITab[];
-  level: 'primary' | 'secondary';
+  level: 'primary' | 'secondary' | 'buttons';
 }
 
 export default function CustomTabs({ type, tabs, level }: TabProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const isPrimary = level === 'primary';
+  const isButtons = level === 'buttons';
   const rawIndex = Number(searchParams.get(type) ?? 0);
   const currentIndex = rawIndex < tabs.length ? rawIndex : 0;
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
@@ -34,15 +35,20 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
       <>
         <AppBar
           position="sticky"
-          elevation={10}
+          elevation={isButtons ? 0 : 10}
           sx={{
             marginBottom: '4px',
-            background: isPrimary ? theme.palette.dark.main : theme.palette.secondary.dark,
+            background: isButtons
+              ? theme.palette.dark.main
+              : isPrimary
+                ? theme.palette.dark.main
+                : theme.palette.secondary.dark,
+            boxShadow: isButtons ? 'none' : undefined,
           }}
         >
-          <StyledTabs value={currentIndex} onChange={handleChange}>
+          <StyledTabs value={currentIndex} onChange={handleChange} level={level}>
             {tabs.map((tab: ITab, i: number) => (
-              <StyledTab key={i} label={tab.label} icon={tab.icon} />
+              <StyledTab key={i} label={tab.label} icon={tab.icon} level={level} disableRipple />
             ))}
           </StyledTabs>
         </AppBar>

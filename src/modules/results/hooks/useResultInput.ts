@@ -5,6 +5,7 @@ import { ISelectOptions } from '../../../components';
 import { useCustomParams } from '../../../hooks';
 import { getNumberOptions } from '../../../utils';
 import { FETCH_ORG_SEASON } from '../../seasons/graphql';
+import { getCupRoundLabel } from '../helpers/getCupRoundLabel';
 
 export const useTeamOptions = () => {
   const { t } = useTranslation('results');
@@ -32,4 +33,34 @@ export const useTeamOptions = () => {
   }, [data, t]);
 
   return { teamOptions, roundOptions, loading, error };
+};
+
+export const useCompetitionRoundOptions = (
+  seasonId?: string,
+  competitionId?: string,
+  competitionType?: string
+) => {
+  const { t } = useTranslation('results');
+  const { data, error, loading } = useQuery(FETCH_ORG_SEASON, {
+    variables: { seasonId: seasonId || '' },
+    skip: !seasonId,
+  });
+
+  const roundOptions = useMemo<ISelectOptions[]>(() => {
+    if (!competitionId) return [];
+    const config = data?.orgSeason?.competitionConfigs?.find(
+      c => c.competitionId._id === competitionId
+    );
+    const rounds = config?.rounds ?? 52;
+    const isCup = competitionType?.toLowerCase() === 'cup';
+
+    return getNumberOptions(rounds, 1).map(option => ({
+      value: option.value,
+      label: isCup
+        ? getCupRoundLabel(Number(option.value), rounds, t)
+        : `${t('LABELS.ROUND')} ${option.label}`,
+    }));
+  }, [competitionId, competitionType, data, t]);
+
+  return { roundOptions, loading, error };
 };

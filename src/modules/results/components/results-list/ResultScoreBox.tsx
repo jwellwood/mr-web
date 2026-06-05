@@ -31,7 +31,7 @@ export default function ResultScoreBox({ resultStatus, goals, date }: Props) {
       <span
         style={{
           border: `2px solid ${borderColor}`,
-          borderRadius: 4,
+          borderRadius: 1,
           padding: '0 6px',
           display: 'inline-block',
         }}

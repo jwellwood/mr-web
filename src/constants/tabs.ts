@@ -17,6 +17,7 @@ export const TAB_TYPES = {
   SEASON: 'season',
   RESULTS: 'results',
   RESULTS_COMPETITIONS: 'resultsCompetitions',
+  COMPETITION_VIEW: 'competitionView',
   LEAGUE_TABLES: 'leagueTables',
   TABLES: 'tables',
 } as const;

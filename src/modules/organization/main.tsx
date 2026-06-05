@@ -9,8 +9,7 @@ import OrgHelp from './components/OrgHelp';
 import { ORG_PATHS } from './router';
 
 const Org = lazy(() => import('./containers/Org'));
-const TablesTabs = lazy(() => import('../results/components/tables-tabs/TablesTabs'));
-const Results = lazy(() => import('../results/containers/Results'));
+const Competitions = lazy(() => import('../results/containers/Competitions'));
 const OrgTeams = lazy(() => import('./containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('../seasons/containers/OrgSeasons'));
 
@@ -22,12 +21,8 @@ export default function Team() {
 
   const tabs: ITab[] = [
     {
-      label: t('TABS.MATCHES'),
-      component: <Results />,
-    },
-    {
-      label: t('TABS.TABLES'),
-      component: <TablesTabs />,
+      label: t('TABS.COMPETITIONS'),
+      component: <Competitions />,
     },
     {
       label: t('TABS.TEAMS'),

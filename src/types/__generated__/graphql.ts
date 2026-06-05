@@ -65,15 +65,16 @@ export type AddPlayerInput = {
 };
 
 export type AddResultInput = {
-  awayGoals: Scalars['Float']['input'];
+  awayGoals?: InputMaybe<Scalars['Float']['input']>;
   awayGoalscorers?: InputMaybe<Array<GoalscorerInput>>;
-  awayTeam: Scalars['ID']['input'];
+  awayTeam?: InputMaybe<Scalars['ID']['input']>;
   competitionId: Scalars['ID']['input'];
   date: Scalars['String']['input'];
   gameWeek: Scalars['Float']['input'];
-  homeGoals: Scalars['Float']['input'];
+  homeGoals?: InputMaybe<Scalars['Float']['input']>;
   homeGoalscorers?: InputMaybe<Array<GoalscorerInput>>;
   homeTeam: Scalars['ID']['input'];
+  isBye?: InputMaybe<Scalars['Boolean']['input']>;
   isComplete: Scalars['Boolean']['input'];
   isForfeit: Scalars['Boolean']['input'];
   kickoffTime?: InputMaybe<Scalars['String']['input']>;
@@ -1351,16 +1352,17 @@ export type ResetPasswordInput = {
 export type Result = {
   __typename?: 'Result';
   _id: Scalars['ID']['output'];
-  awayGoals: Scalars['Float']['output'];
+  awayGoals?: Maybe<Scalars['Float']['output']>;
   awayGoalscorers?: Maybe<Array<Goalscorer>>;
-  awayTeam: Team;
+  awayTeam?: Maybe<Team>;
   competitionId: Competition;
   confirmedByTeam?: Maybe<Team>;
-  date: Scalars['String']['output'];
-  gameWeek: Scalars['Float']['output'];
-  homeGoals: Scalars['Float']['output'];
+  date?: Maybe<Scalars['String']['output']>;
+  gameWeek?: Maybe<Scalars['Float']['output']>;
+  homeGoals?: Maybe<Scalars['Float']['output']>;
   homeGoalscorers?: Maybe<Array<Goalscorer>>;
-  homeTeam: Team;
+  homeTeam?: Maybe<Team>;
+  isBye?: Maybe<Scalars['Boolean']['output']>;
   isComplete?: Maybe<Scalars['Boolean']['output']>;
   isForfeit?: Maybe<Scalars['Boolean']['output']>;
   kickoffTime?: Maybe<Scalars['String']['output']>;
@@ -1389,8 +1391,8 @@ export type ResultStatus =
 
 export type ResultTeam = {
   __typename?: 'ResultTeam';
-  _id: Scalars['String']['output'];
-  teamName: Scalars['String']['output'];
+  _id?: Maybe<Scalars['String']['output']>;
+  teamName?: Maybe<Scalars['String']['output']>;
 };
 
 export type SetTeamAdminAccessCodeInput = {
@@ -1674,7 +1676,8 @@ export type TeamSeason = {
 /** The method used to separate teams level on points */
 export type Tiebreaker =
   | 'GOAL_DIFFERENCE'
-  | 'HEAD_TO_HEAD';
+  | 'HEAD_TO_HEAD'
+  | 'PENALTIES';
 
 export type TopPlayerStreaks = {
   __typename?: 'TopPlayerStreaks';

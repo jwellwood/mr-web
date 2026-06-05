@@ -13,6 +13,9 @@ import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
 import ResultConfirmation from '../../components/ResultConfirmation';
 import { getKickoffTimeOptions } from '../../helpers/getKickoffTimeOptions';
+import { isCupMatch } from '../../helpers/isCupMatch';
+import { useCompetitionRoundOptions } from '../../hooks/useResultInput';
+import { useResultEffects } from '../useResultEffects';
 import type { ResultFormData } from './schema';
 import { ResultSchema } from './schema';
 
@@ -39,6 +42,8 @@ export default function ResultForm({
   const {
     handleSubmit,
     control,
+    clearErrors,
+    setValue,
     formState: { isDirty, isValid },
     reset,
   } = useForm<ResultFormData>({
@@ -48,8 +53,32 @@ export default function ResultForm({
   });
 
   const currentDate = useWatch({ control, name: 'date' });
+  const currentSeasonId = useWatch({ control, name: 'orgSeasonId' });
+  const currentCompetitionId = useWatch({ control, name: 'competitionId' });
+  const currentGameWeek = useWatch({ control, name: 'gameWeek' });
+  const isBye = useWatch({ control, name: 'isBye' });
   const currentValues = useWatch({ control });
   const isFutureMatch = isFuture(new Date(currentDate));
+  const isCup = isCupMatch(competitionOptions, currentCompetitionId);
+
+  const { roundOptions } = useCompetitionRoundOptions(
+    currentSeasonId,
+    currentCompetitionId,
+    isCup ? 'cup' : undefined
+  );
+  const showGameWeek = Boolean(currentCompetitionId);
+  const gameWeekLabel = isCup ? t('LABELS.ROUND') : t('FORM.LABELS.GAME_WEEK');
+
+  useResultEffects({
+    currentCompetitionId,
+    currentSeasonId,
+    currentGameWeek,
+    isBye,
+    roundOptions,
+    showGameWeek,
+    setValue,
+    clearErrors,
+  });
 
   return (
     <FormContainer
@@ -90,16 +119,21 @@ export default function ResultForm({
       />
       <ControlledSelectInput
         control={control}
-        name="gameWeek"
-        label={t('FORM.LABELS.GAME_WEEK')}
-        options={getNumberOptions(52, 0)}
-      />
-      <ControlledSelectInput
-        control={control}
         name="competitionId"
         label={t('FORM.LABELS.COMPETITION')}
         options={competitionOptions}
       />
+      {isCup && (
+        <ControlledSwitchInput control={control} name="isBye" label={t('FORM.LABELS.IS_BYE')} />
+      )}
+      {showGameWeek ? (
+        <ControlledSelectInput
+          control={control}
+          name="gameWeek"
+          label={gameWeekLabel}
+          options={roundOptions}
+        />
+      ) : null}
       <ControlledSelectInput
         control={control}
         name="homeTeam"
@@ -109,26 +143,36 @@ export default function ResultForm({
       {!isFutureMatch && (
         <ControlledSelectInput
           control={control}
+          disabled={isBye}
           name="homeGoals"
           label={t('FORM.LABELS.HOME_SCORE')}
           options={getNumberOptions(50, 0)}
         />
       )}
-      <ControlledSelectInput
-        control={control}
-        name="awayTeam"
-        label={t('FORM.LABELS.AWAY_TEAM')}
-        options={teamOptions}
-      />
+      {
+        <ControlledSelectInput
+          control={control}
+          disabled={isBye}
+          name="awayTeam"
+          label={t('FORM.LABELS.AWAY_TEAM')}
+          options={teamOptions}
+        />
+      }
       {!isFutureMatch && (
         <ControlledSelectInput
           control={control}
+          disabled={isBye}
           name="awayGoals"
           label={t('FORM.LABELS.AWAY_SCORE')}
           options={getNumberOptions(50, 0)}
         />
       )}
-      <ControlledSwitchInput control={control} name="isForfeit" label={t('FORM.LABELS.FORFEIT')} />
+      <ControlledSwitchInput
+        control={control}
+        name="isForfeit"
+        disabled={isBye}
+        label={t('FORM.LABELS.FORFEIT')}
+      />
       <ControlledSwitchInput
         control={control}
         name="isComplete"

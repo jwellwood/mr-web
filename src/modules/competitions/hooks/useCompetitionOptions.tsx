@@ -16,6 +16,7 @@ export const useCompetitionOptions = () => {
     return data.org.competitions.map(comp => ({
       value: comp._id,
       label: comp.name,
+      meta: { competitionType: comp.competitionType },
     })) as ISelectOptions[];
   }, [data]);
 

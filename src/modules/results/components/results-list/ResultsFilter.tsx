@@ -15,9 +15,13 @@ interface Props {
 export default function ResultsFilter({ results, control }: Props) {
   const { t } = useTranslation('results');
 
-  const teamsInResults = results.flatMap(result =>
-    [result.homeTeam, result.awayTeam].map(team => ({ id: team._id, name: team.teamName }))
-  );
+  const teamsInResults = results.flatMap(result => {
+    const teams = [result.homeTeam];
+    if (!result.isBye) teams.push(result.awayTeam);
+    return teams
+      .filter((team): team is NonNullable<typeof team> => Boolean(team?._id))
+      .map(team => ({ id: team._id, name: team.teamName }));
+  });
 
   const teamsSet = new Set<string>();
   teamsInResults.forEach(team => teamsSet.add(team.id));
@@ -27,7 +31,7 @@ export default function ResultsFilter({ results, control }: Props) {
     { value: 'all', label: t('FILTERS.ALL_TEAMS') },
     ...uniqueTeams
       .map(team => ({ value: team.id, label: team.name }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
+      .sort((a, b) => (a.label ?? '').localeCompare(b.label ?? '')),
   ];
 
   return (

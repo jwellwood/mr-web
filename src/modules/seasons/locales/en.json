@@ -50,7 +50,8 @@
     "SUBMIT": "Update Config",
     "TIEBREAKER": "Tiebreaker",
     "HEAD_TO_HEAD": "Head-to-Head",
-    "GOAL_DIFFERENCE": "Goal Difference"
+    "GOAL_DIFFERENCE": "Goal Difference",
+    "PENALTIES": "Penalties"
   },
   "MESSAGES": {
     "INCLUDED": "Included"

@@ -1,24 +1,35 @@
 import { styled } from '@mui/material/styles';
 import Tabs from '@mui/material/Tabs';
 import React from 'react';
-import { theme } from '../../../theme';
 
 interface StyledTabsProps {
   children?: React.ReactNode;
   value: number;
   onChange: (event: React.SyntheticEvent, newValue: number) => void;
+  level: 'primary' | 'secondary' | 'buttons';
 }
 
-const StyledTabs = styled((props: StyledTabsProps) => (
+const StyledTabs = styled(({ level, ...props }: StyledTabsProps) => (
   <Tabs
+    variant="scrollable"
+    scrollButtons="auto"
+    allowScrollButtonsMobile
     {...props}
-    TabIndicatorProps={{
-      children: <span className="MuiTabs-indicatorSpan" />,
-    }}
+    TabIndicatorProps={
+      level === 'buttons'
+        ? undefined
+        : {
+            children: <span className="MuiTabs-indicatorSpan" />,
+          }
+    }
   />
-))({
+))<StyledTabsProps>(({ theme, level }) => ({
+  '& .MuiTabs-scrollButtons': {
+    backgroundColor: 'transparent',
+    color: theme.palette.common.white,
+  },
   '& .MuiTabs-indicator': {
-    display: 'flex',
+    display: level === 'buttons' ? 'none' : 'flex',
     justifyContent: 'center',
     backgroundColor: 'transparent',
   },
@@ -28,11 +39,12 @@ const StyledTabs = styled((props: StyledTabsProps) => (
     backgroundColor: theme.palette.primary.dark,
   },
   '& .MuiTabs-flexContainer': {
-    height: '48px',
+    minHeight: '48px',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: level === 'buttons' ? 'flex-start' : 'center',
+    gap: level === 'buttons' ? theme.spacing(1) : 0,
   },
-});
+}));
 
 export default StyledTabs;

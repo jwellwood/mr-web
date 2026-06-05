@@ -38,7 +38,9 @@ export default function AddGameweekResults() {
 
   const onSubmit = async (formData: BatchResultFormData) => {
     try {
-      const matchesToCreate = formData.matches.filter((m: MatchRow) => m.homeTeam && m.awayTeam);
+      const matchesToCreate = formData.matches.filter(
+        (m: MatchRow) => m.homeTeam && (m.awayTeam || m.isBye)
+      );
       const promises = matchesToCreate.map((match: MatchRow) => {
         const single = {
           date: typeof formData.date === 'string' ? new Date(formData.date) : formData.date,
@@ -52,6 +54,7 @@ export default function AddGameweekResults() {
           awayGoals: match.awayGoals,
           isForfeit: match.isForfeit,
           isComplete: match.isComplete,
+          isBye: match.isBye,
         };
         const variables = mapFormToAddResult(single as ResultFormData, orgId!, orgSeasonId);
         return addResult({ variables });

@@ -20,6 +20,8 @@ interface Props<T extends object> {
   excludedTeams?: string[];
   currentHome?: string;
   currentAway?: string;
+  isCup: boolean;
+  isBye?: boolean;
 }
 
 export default function GameweekTeamsInput<T extends object>({
@@ -30,6 +32,8 @@ export default function GameweekTeamsInput<T extends object>({
   excludedTeams = [],
   currentHome,
   currentAway,
+  isCup,
+  isBye = false,
 }: Props<T>) {
   const { t } = useTranslation('results');
   const { homeOptions, awayOptions } = getHomeAwayOptions(
@@ -47,7 +51,16 @@ export default function GameweekTeamsInput<T extends object>({
       type="success"
     >
       <CustomGridContainer>
-        <CustomGridItem size={6}>
+        {isCup && (
+          <CustomGridItem size={12}>
+            <ControlledSwitchInput
+              control={control}
+              name={`matches.${index}.isBye` as Path<T>}
+              label={t('FORM.LABELS.IS_BYE')}
+            />
+          </CustomGridItem>
+        )}
+        <CustomGridItem size={isBye ? 12 : 6}>
           <ControlledSelectInput
             control={control}
             name={`matches.${index}.homeTeam`}
@@ -55,39 +68,47 @@ export default function GameweekTeamsInput<T extends object>({
             options={homeOptions}
           />
         </CustomGridItem>
-        <CustomGridItem size={6}>
-          <ControlledSelectInput
-            control={control}
-            name={`matches.${index}.awayTeam`}
-            label={t('FORM.LABELS.AWAY_TEAM')}
-            options={awayOptions}
-          />
-        </CustomGridItem>
-        <CustomGridItem size={4}>
-          <ControlledSelectInput
-            control={control}
-            name={`matches.${index}.kickoffTime`}
-            label={t('FORM.LABELS.KICKOFF_TIME')}
-            options={getKickoffTimeOptions()}
-          />
-        </CustomGridItem>
-        <CustomGridItem size={4}>
-          <ControlledSelectInput
-            control={control}
-            name={`matches.${index}.homeGoals`}
-            label={t('FORM.LABELS.HOME_GOALS')}
-            options={getNumberOptions(99, 0)}
-          />
-        </CustomGridItem>
+        {!isBye && (
+          <CustomGridItem size={6}>
+            <ControlledSelectInput
+              control={control}
+              name={`matches.${index}.awayTeam`}
+              label={t('FORM.LABELS.AWAY_TEAM')}
+              options={awayOptions}
+            />
+          </CustomGridItem>
+        )}
+        {!isBye && (
+          <CustomGridItem size={4}>
+            <ControlledSelectInput
+              control={control}
+              name={`matches.${index}.kickoffTime`}
+              label={t('FORM.LABELS.KICKOFF_TIME')}
+              options={getKickoffTimeOptions()}
+            />
+          </CustomGridItem>
+        )}
+        {!isBye && (
+          <CustomGridItem size={4}>
+            <ControlledSelectInput
+              control={control}
+              name={`matches.${index}.homeGoals`}
+              label={t('FORM.LABELS.HOME_GOALS')}
+              options={getNumberOptions(99, 0)}
+            />
+          </CustomGridItem>
+        )}
+        {!isBye && (
+          <CustomGridItem size={4}>
+            <ControlledSelectInput
+              control={control}
+              name={`matches.${index}.awayGoals`}
+              label={t('FORM.LABELS.AWAY_GOALS')}
+              options={getNumberOptions(99, 0)}
+            />
+          </CustomGridItem>
+        )}
 
-        <CustomGridItem size={4}>
-          <ControlledSelectInput
-            control={control}
-            name={`matches.${index}.awayGoals`}
-            label={t('FORM.LABELS.AWAY_GOALS')}
-            options={getNumberOptions(99, 0)}
-          />
-        </CustomGridItem>
         <CustomGridItem size={12}>
           <ControlledSwitchInput
             control={control}

@@ -23,6 +23,19 @@ vi.mock('../../../containers/BatchConfirmResults', () => ({
   ),
 }));
 
+vi.mock('../../../hooks/useCompetitionConfig', () => ({
+  default: () => ({ competitionConfig: [{ id: 'c-1', name: 'Cup', priority: 1, rounds: 4 }] }),
+}));
+
+vi.mock('../../../../competitions/hooks/useCompetitionOptions', () => ({
+  useCompetitionOptions: () => ({
+    competitionOptions: [
+      { value: 'c-1', label: 'Cup', meta: { competitionType: 'Cup' } },
+      { value: 'c-league', label: 'League', meta: { competitionType: 'League' } },
+    ],
+  }),
+}));
+
 vi.mock('../../../../../components/icons', () => ({
   AppIcon: ({ icon }: { icon: string }) => <span data-testid={`icon-${icon}`} />,
 }));
@@ -67,7 +80,13 @@ describe('AccordionTitle', () => {
   });
 
   it('renders the round number and game count', () => {
-    renderTitle({ gameWeek: '3', gwResults: [makeResult(), makeResult({ _id: 'r-2' })] });
+    renderTitle({
+      gameWeek: '3',
+      gwResults: [
+        makeResult({ competitionId: { _id: 'c-league', name: 'League' } }),
+        makeResult({ _id: 'r-2', competitionId: { _id: 'c-league', name: 'League' } }),
+      ],
+    });
     expect(screen.getByText(/ROUND 3/)).toBeInTheDocument();
     expect(screen.getByText(/2 GAMEs/)).toBeInTheDocument();
   });

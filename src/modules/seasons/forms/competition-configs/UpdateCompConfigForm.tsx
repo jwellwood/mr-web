@@ -7,7 +7,7 @@ import { FormContainer } from '../../../../components/forms';
 import { ControlledSelectInput, ControlledMultiSelectInput } from '../../../../components/inputs';
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
-import { TTiebreaker } from '../../constants';
+import { isCupCompetitionType, TTiebreaker } from '../../constants';
 import { UpdateCompConfigSchema, type UpdateCompConfigFormData } from './schema';
 
 interface Props {
@@ -16,6 +16,7 @@ interface Props {
   loading: boolean;
   numberOfTeams: number;
   numberOfCompetitions: number;
+  competitionType?: string | null;
 }
 
 export default function UpdateCompConfigForm({
@@ -23,10 +24,12 @@ export default function UpdateCompConfigForm({
   defaultValues,
   numberOfTeams,
   numberOfCompetitions,
+  competitionType,
   loading,
 }: Props) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation('seasons');
+  const isCup = isCupCompetitionType(competitionType);
 
   const {
     handleSubmit,
@@ -73,27 +76,32 @@ export default function UpdateCompConfigForm({
             options={[
               { label: t('CONFIG.HEAD_TO_HEAD'), value: TTiebreaker.HEAD_TO_HEAD },
               { label: t('CONFIG.GOAL_DIFFERENCE'), value: TTiebreaker.GOAL_DIFFERENCE },
+              { label: t('CONFIG.PENALTIES'), value: TTiebreaker.PENALTIES },
             ]}
           />
-          <ControlledMultiSelectInput
-            control={control}
-            name="splitIndexes"
-            label={t('CONFIG.SPLIT_FORM')}
-            options={getNumberOptions(numberOfTeams, 0)}
-            showLabels
-          />
-          <ControlledMultiSelectInput
-            control={control}
-            name="promotionPositions"
-            label={t('CONFIG.PROMOTION_FORM')}
-            options={getNumberOptions(numberOfTeams, 1)}
-          />
-          <ControlledMultiSelectInput
-            control={control}
-            name="relegationPositions"
-            label={t('CONFIG.RELEGATION_FORM')}
-            options={getNumberOptions(numberOfTeams, 1)}
-          />
+          {!isCup ? (
+            <>
+              <ControlledMultiSelectInput
+                control={control}
+                name="splitIndexes"
+                label={t('CONFIG.SPLIT_FORM')}
+                options={getNumberOptions(numberOfTeams, 0)}
+                showLabels
+              />
+              <ControlledMultiSelectInput
+                control={control}
+                name="promotionPositions"
+                label={t('CONFIG.PROMOTION_FORM')}
+                options={getNumberOptions(numberOfTeams, 1)}
+              />
+              <ControlledMultiSelectInput
+                control={control}
+                name="relegationPositions"
+                label={t('CONFIG.RELEGATION_FORM')}
+                options={getNumberOptions(numberOfTeams, 1)}
+              />
+            </>
+          ) : null}
           <ControlledSelectInput
             control={control}
             name="priority"

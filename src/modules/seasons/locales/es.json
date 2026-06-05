@@ -50,7 +50,8 @@
     "SUBMIT": "Actualizar Configuración",
     "TIEBREAKER": "Desempate",
     "HEAD_TO_HEAD": "Enfrentamientos Directos",
-    "GOAL_DIFFERENCE": "Diferencia de Goles"
+    "GOAL_DIFFERENCE": "Diferencia de Goles",
+    "PENALTIES": "Penales"
   },
   "MESSAGES": {
     "INCLUDED": "Incluido"

@@ -7,15 +7,21 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
     `/org/${orgId}/org_season/${orgSeasonId}/result/${resultId}`;
 
   return results.map(result => {
+    const homeWin = result.homeGoals! > result.awayGoals!;
+    const awayWin = result.awayGoals! > result.homeGoals!;
     return {
       kickoffTime: result.kickoffTime || '09:00',
-      homeTeam: result.homeTeam.teamName,
+      homeTeam: (
+        <CustomTypography color={homeWin ? 'data' : 'label'} bold={homeWin}>
+          {result?.homeTeam?.teamName}
+        </CustomTypography>
+      ),
       homeScore: {
         value: (
           <ResultScoreBox
             resultStatus={result.resultStatus}
-            goals={result.homeGoals}
-            date={result.date}
+            goals={result.homeGoals!}
+            date={result.date!}
           />
         ),
         link: link(result._id, result.orgSeasonId._id),
@@ -25,13 +31,17 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
         value: (
           <ResultScoreBox
             resultStatus={result.resultStatus}
-            goals={result.awayGoals}
-            date={result.date}
+            goals={result.awayGoals!}
+            date={result.date!}
           />
         ),
         link: link(result._id, result.orgSeasonId._id),
       },
-      awayTeam: result.awayTeam.teamName,
+      awayTeam: (
+        <CustomTypography color={awayWin ? 'data' : 'label'} bold={awayWin}>
+          {result?.awayTeam?.teamName}
+        </CustomTypography>
+      ),
     };
   });
 };

@@ -1,9 +1,10 @@
-import { useMutation } from '@apollo/client/react';
+import { useMutation, useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
+import { FETCH_COMPETITIONS } from '../../../competitions/graphql';
 import { FETCH_LEAGUE_TABLES } from '../../../results/graphql';
 import { FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../../graphql';
 import { UPDATE_COMPETITION_CONFIGS } from '../../graphql';
@@ -32,6 +33,14 @@ export default function UpdateCompConfig({
   const dispatch: AppDispatch = useDispatch();
   const { t } = useTranslation('seasons');
 
+  const { data: competitionsData } = useQuery(FETCH_COMPETITIONS, {
+    variables: { orgId: orgId! },
+  });
+
+  const competitionType = competitionsData?.org?.competitions?.find(
+    c => c._id === competitionId
+  )?.competitionType;
+
   const [updateCompConfigs, { loading }] = useMutation(UPDATE_COMPETITION_CONFIGS, {
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
@@ -43,12 +52,18 @@ export default function UpdateCompConfig({
 
   const defaultValues: UpdateCompConfigFormData | null = useMemo(() => {
     if (!existingConfig) return null;
-    return mapCompConfigToForm(existingConfig);
-  }, [existingConfig]);
+    return mapCompConfigToForm(existingConfig, competitionType);
+  }, [existingConfig, competitionType]);
 
   const onSubmit = async (formData: UpdateCompConfigFormData) => {
     try {
-      const variables = mapFormToUpdateCompConfig(formData, orgId!, orgSeasonId!, competitionId);
+      const variables = mapFormToUpdateCompConfig(
+        formData,
+        orgId!,
+        orgSeasonId!,
+        competitionId,
+        competitionType
+      );
       return updateCompConfigs({ variables }).then(() => {
         dispatch(showAlert({ text: t('ALERTS.UPDATE_COMP_CONFIG.SUCCESS'), type: 'success' }));
       });
@@ -65,6 +80,7 @@ export default function UpdateCompConfig({
       numberOfTeams={numberOfTeams}
       numberOfCompetitions={numberOfCompetitions}
       loading={loading}
+      competitionType={competitionType}
     />
   );
 }
