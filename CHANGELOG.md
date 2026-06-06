@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.24.0](https://github.com/jwellwood/mr-web/compare/v0.23.0...v0.24.0) (2026-06-06)
+
+### Features
+
+* add distinctions for cup matches ([b1fc462](https://github.com/jwellwood/mr-web/commit/b1fc46242607001d389f25fcf047352187bf4309))
+
 ## [0.23.0](https://github.com/jwellwood/mr-web/compare/v0.22.0...v0.23.0) (2026-05-11)
 
 ### Features
