@@ -12,16 +12,33 @@ export const AddMatchDetailsSchema = z.object({
   opponentId: z.string().min(1, t('VALIDATION.required')),
   competitionId: z.string().min(1, t('VALIDATION.required')),
   seasonId: z.string().min(1, t('VALIDATION.required')),
-  teamGoals: z
+  decision: z
+    .union([
+      z.literal('EXTRA_TIME'),
+      z.literal('NORMAL_TIME'),
+      z.literal('PENALTIES'),
+      z.literal(''),
+      z.null(),
+    ])
+    .optional()
+    .transform(value => (value === '' ? undefined : value)),
+  winnerSide: z
+    .union([z.literal('AWAY'), z.literal('HOME'), z.literal(''), z.null()])
+    .optional()
+    .transform(value => (value === '' ? undefined : value)),
+  teamGoals: z.coerce
+    .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 }))
     .max(99, t('VALIDATION.high', { max: 99 })),
-  opponentGoals: z
+  opponentGoals: z.coerce
+    .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 }))
     .max(99, t('VALIDATION.high', { max: 99 })),
 });
 
-export type AddMatchDetailsFormValues = z.infer<typeof AddMatchDetailsSchema>;
+export type AddMatchDetailsFormInput = z.input<typeof AddMatchDetailsSchema>;
+export type AddMatchDetailsFormValues = z.output<typeof AddMatchDetailsSchema>;
 
 export default AddMatchDetailsSchema;

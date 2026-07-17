@@ -70,6 +70,7 @@ export type AddResultInput = {
   awayTeam?: InputMaybe<Scalars['ID']['input']>;
   competitionId: Scalars['ID']['input'];
   date: Scalars['String']['input'];
+  decision?: InputMaybe<ResultDecision>;
   gameWeek: Scalars['Float']['input'];
   homeGoals?: InputMaybe<Scalars['Float']['input']>;
   homeGoalscorers?: InputMaybe<Array<GoalscorerInput>>;
@@ -80,6 +81,7 @@ export type AddResultInput = {
   kickoffTime?: InputMaybe<Scalars['String']['input']>;
   orgSeasonId: Scalars['ID']['input'];
   resultStatus?: InputMaybe<ResultStatus>;
+  winnerSide?: InputMaybe<ResultSide>;
 };
 
 export type AddTeamInput = {
@@ -304,6 +306,7 @@ export type Match = {
   _id: Scalars['ID']['output'];
   competitionId: Competition;
   date: Scalars['String']['output'];
+  decision?: Maybe<ResultDecision>;
   isForfeit: Scalars['Boolean']['output'];
   isHome: Scalars['Boolean']['output'];
   leaguePosition?: Maybe<Scalars['Float']['output']>;
@@ -313,6 +316,7 @@ export type Match = {
   seasonId: TeamSeason;
   teamGoals: Scalars['Float']['output'];
   teamId: Team;
+  winnerSide?: Maybe<ResultSide>;
 };
 
 export type MatchStreak = {
@@ -1358,6 +1362,7 @@ export type Result = {
   competitionId: Competition;
   confirmedByTeam?: Maybe<Team>;
   date?: Maybe<Scalars['String']['output']>;
+  decision?: Maybe<ResultDecision>;
   gameWeek?: Maybe<Scalars['Float']['output']>;
   homeGoals?: Maybe<Scalars['Float']['output']>;
   homeGoalscorers?: Maybe<Array<Goalscorer>>;
@@ -1369,6 +1374,7 @@ export type Result = {
   orgSeasonId: OrgSeason;
   resultStatus?: Maybe<ResultStatus>;
   submittedByTeam?: Maybe<Team>;
+  winnerSide?: Maybe<ResultSide>;
 };
 
 export type ResultCompetiton = {
@@ -1376,6 +1382,12 @@ export type ResultCompetiton = {
   _id: Scalars['String']['output'];
   name: Scalars['String']['output'];
 };
+
+/** How the match result was decided (normal time, after extra time, or on penalties) */
+export type ResultDecision =
+  | 'EXTRA_TIME'
+  | 'NORMAL_TIME'
+  | 'PENALTIES';
 
 /** Which side (home or away) of a result */
 export type ResultSide =
@@ -1475,14 +1487,17 @@ export type StreakRecord = {
 
 export type SubmitResultInput = {
   awayGoals: Scalars['Int']['input'];
+  decision?: InputMaybe<ResultDecision>;
   goalscorers?: InputMaybe<Array<GoalscorerInput>>;
   homeGoals: Scalars['Int']['input'];
   isForfeit?: InputMaybe<Scalars['Boolean']['input']>;
+  winnerSide?: InputMaybe<ResultSide>;
 };
 
 export type TAddMatchInput = {
   competitionId: Scalars['ID']['input'];
   date: Scalars['String']['input'];
+  decision?: InputMaybe<ResultDecision>;
   isForfeit: Scalars['Boolean']['input'];
   isHome: Scalars['Boolean']['input'];
   leaguePosition?: InputMaybe<Scalars['Float']['input']>;
@@ -1492,6 +1507,7 @@ export type TAddMatchInput = {
   seasonId: Scalars['ID']['input'];
   teamGoals: Scalars['Float']['input'];
   teamId: Scalars['ID']['input'];
+  winnerSide?: InputMaybe<ResultSide>;
 };
 
 export type TMatch = {
@@ -1499,6 +1515,7 @@ export type TMatch = {
   _id: Scalars['String']['output'];
   competition: Scalars['String']['output'];
   date: Scalars['String']['output'];
+  decision?: Maybe<Scalars['String']['output']>;
   isForfeit: Scalars['Boolean']['output'];
   isHome: Scalars['Boolean']['output'];
   opponentBadge?: Maybe<Scalars['String']['output']>;
@@ -1506,6 +1523,7 @@ export type TMatch = {
   opponentName: Scalars['String']['output'];
   teamGoals: Scalars['Float']['output'];
   teamName: Scalars['String']['output'];
+  winnerSide?: Maybe<Scalars['String']['output']>;
 };
 
 export type TMatchOpponent = {

@@ -93,22 +93,22 @@ export default function ResultAdmin({ result }: Props) {
         />
       )}
       {showConfirm && <ConfirmResult />}
-      {showAddGoalscorers && isHomeTeamAdmin && homeGoals && (
+      {showAddGoalscorers && isHomeTeamAdmin && homeGoals ? (
         <AddGoalscorers
           side="HOME"
           teamId={homeTeam?._id}
           teamName={homeTeam?.teamName}
           teamGoals={homeGoals}
         />
-      )}
-      {showAddGoalscorers && isAwayTeamAdmin && awayGoals && (
+      ) : null}
+      {showAddGoalscorers && isAwayTeamAdmin && awayGoals ? (
         <AddGoalscorers
           side="AWAY"
           teamId={awayTeam?._id}
           teamName={awayTeam?.teamName}
           teamGoals={awayGoals}
         />
-      )}
+      ) : null}
       {showAddGoalscorers && isOrgAuth && !isHomeTeamAdmin && !isAwayTeamAdmin && (
         <>
           {homeGoals && (

@@ -12,9 +12,11 @@ export const ResultSchema = z
     awayTeam: z.string(),
     homeGoals: z.union([z.string(), z.number()]).optional(),
     awayGoals: z.union([z.string(), z.number()]).optional(),
+    decision: z.string().optional().nullable(),
+    winnerSide: z.string().optional().nullable(),
     isForfeit: z.boolean(),
     isComplete: z.boolean(),
-    isBye: z.boolean(),
+    isBye: z.boolean().optional(),
   })
   .superRefine((data, ctx) => {
     if (!data.isBye && !data.awayTeam) {
@@ -38,6 +40,8 @@ export const initialResultState: ResultFormData = {
   awayTeam: '',
   homeGoals: 0,
   awayGoals: 0,
+  // decision: 'NORMAL_TIME',
+  // winnerSide: null,
   isForfeit: false,
   isComplete: false,
   isBye: false,

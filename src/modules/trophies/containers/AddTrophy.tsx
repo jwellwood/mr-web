@@ -23,7 +23,7 @@ export default function AddTrophy() {
   });
 
   const onSubmit = async (formData: TrophyFormData) => {
-    const mappedFormData = { ...formData, year: String(formData.year) };
+    const mappedFormData = { ...formData, year: String(formData.year.getFullYear()) };
     try {
       return addTrophy({ variables: { teamId: teamId!, ...mappedFormData } }).then(() => {
         dispatch(showAlert({ text: t('ALERTS.ADD_TROPHY.SUCCESS'), type: 'success' }));

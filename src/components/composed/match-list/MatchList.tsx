@@ -15,7 +15,11 @@ interface Props {
 }
 export default function MatchList({ matches, loading, showBadge = true, showComp = true }: Props) {
   const { orgId, teamId, matchId } = useCustomParams();
-
+  const isWinnerSide = (match: IMatchesListMatch) => {
+    if (match.isHome && match.winnerSide?.toUpperCase() === 'HOME') return true;
+    if (!match.isHome && match.winnerSide?.toUpperCase() === 'AWAY') return true;
+    return false;
+  };
   const data = matches?.map(match => {
     return {
       avatar: showBadge ? (
@@ -31,6 +35,8 @@ export default function MatchList({ matches, loading, showBadge = true, showComp
         <MatchListScoreBox
           teamGoals={match?.teamGoals}
           opponentGoals={match?.opponentGoals}
+          decidedBy={match.decision}
+          isWinnerSide={isWinnerSide(match)}
           loading={loading}
         />
       ),

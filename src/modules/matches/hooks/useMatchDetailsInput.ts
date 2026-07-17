@@ -49,6 +49,7 @@ export const useMatchDetailsInput = () => {
       ...competitions.map(competition => ({
         label: competition.name,
         value: competition._id as string,
+        meta: { competitionType: competition.competitionType },
       })),
     ],
     [competitions]

@@ -53,6 +53,8 @@
       "GOALS_SCORED": "Goals Scored",
       "GOALS_CONCEDED": "Goals Conceded",
       "LEAGUE_POSITION": "League Position",
+      "DECISION": "Decided By",
+      "WINNER_SIDE": "Winner Side",
       "PLAYERS": "Players",
       "IS_STARTER": "Is starter?",
       "POSITION": "Position",
@@ -73,6 +75,17 @@
       "APPLY": "Apply",
       "NEXT": "Next",
       "ADD": "Add"
+    },
+    "OPTIONS": {
+      "DECISION": {
+        "NORMAL_TIME": "Normal Time",
+        "EXTRA_TIME": "Extra Time",
+        "PENALTIES": "Penalties"
+      },
+      "WINNER_SIDE": {
+        "HOME": "Home",
+        "AWAY": "Away"
+      }
     }
   },
   "SECTIONS": {
@@ -117,7 +130,11 @@
     "ADD_PLAYERS": "Add some players",
     "MATCH_FORFEITED": "This match was forfeited",
     "YES": "Yes",
-    "NO": "No"
+    "NO": "No",
+    "CUP_DRAW_WINNER": {
+      "EXTRA_TIME": "{{team}} wins after extra time",
+      "PENALTIES": "{{team}} wins on penalties"
+    }
   },
   "NO_DATA": {
     "MATCHES": "No matches yet",

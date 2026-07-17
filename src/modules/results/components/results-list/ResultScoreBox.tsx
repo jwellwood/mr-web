@@ -27,6 +27,7 @@ export default function ResultScoreBox({ resultStatus, goals, date }: Props) {
         </CustomTypography>
       );
     }
+
     return (
       <span
         style={{

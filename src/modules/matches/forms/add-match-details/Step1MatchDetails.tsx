@@ -5,6 +5,7 @@ import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, getTempMatch, setTmpMatch } from '../../../../store';
 import { TApolloError } from '../../../../types/apollo';
 import { useMatchDetailsInput } from '../../hooks/useMatchDetailsInput';
+import { ITempMatch } from '../../types';
 import { mapTempMatchToFormData } from '../mappers';
 import AddMatchDetailsForm from './AddMatchDetailsForm';
 import { AddMatchDetailsFormValues } from './schema';
@@ -38,7 +39,7 @@ export default function Step1MatchDetails({ onNextClick, loading, error }: Props
       (competitionOptions.find((comp: ISelectOptions) => comp.value === formData.competitionId)
         ?.label as string) || '';
 
-    const payload = {
+    const payload: ITempMatch = {
       ...currentTempMatch,
       ...formData,
       teamId: teamId!,
@@ -48,6 +49,8 @@ export default function Step1MatchDetails({ onNextClick, loading, error }: Props
       opponentName,
       competitionName,
       date: formData.date instanceof Date ? formData.date.toISOString() : formData.date,
+      decision: formData.decision ?? undefined,
+      winnerSide: formData.winnerSide ?? undefined,
     };
 
     dispatch(setTmpMatch(payload));

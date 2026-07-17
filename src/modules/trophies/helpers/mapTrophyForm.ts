@@ -41,7 +41,7 @@ export function mapFormToEditTrophyVariables(
   const yearRaw = form.year as unknown;
   let year: string = '';
   if (yearRaw instanceof Date && !isNaN(yearRaw.getTime())) {
-    year = yearRaw.toISOString();
+    year = String(yearRaw.getFullYear());
   } else if (typeof yearRaw === 'string') {
     year = yearRaw;
   }

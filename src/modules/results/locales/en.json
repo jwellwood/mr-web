@@ -83,6 +83,11 @@
     "BUTTONS": {
       "APPLY": "Apply"
     },
+    "HEADERS": {
+      "MATCH": "Match Details",
+      "COMPETITION": "Competition Details",
+      "RESULT": "Result Details"
+    },
     "LABELS": {
       "HOME_TEAM": "Home",
       "AWAY_TEAM": "Away",
@@ -99,9 +104,22 @@
       "COMPETITION": "Competition",
       "FORFEIT": "Forfeit",
       "IS_BYE": "Bye",
+      "DECISION": "Tiebreak",
+      "WINNER_SIDE": "Winner",
       "COMPLETED": "Completed",
       "GOALS": "Goals",
       "PLAYER": "Player"
+    },
+    "OPTIONS": {
+      "DECISION": {
+        "NORMAL_TIME": "Normal Time",
+        "EXTRA_TIME": "Extra Time",
+        "PENALTIES": "Penalties"
+      },
+      "WINNER_SIDE": {
+        "HOME": "Home",
+        "AWAY": "Away"
+      }
     }
   },
   "BUTTONS": {

@@ -24,7 +24,8 @@ export const FETCH_MATCH = gql`
       }
       teamGoals
       opponentGoals
-      leaguePosition
+      decision
+      winnerSide
       isForfeit
       opponentId {
         _id

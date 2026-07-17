@@ -1,7 +1,24 @@
 import { ResultFormData } from '../forms/result/schema';
 import { T_FETCH_RESULT } from '../graphql';
-import { Add_ResultMutationVariables } from '../graphql/ADD_RESULT.generated';
-import { Edit_ResultMutationVariables } from '../graphql/EDIT_RESULT.generated';
+import type { Add_ResultMutationVariables } from '../graphql/ADD_RESULT.generated';
+import type { Edit_ResultMutationVariables } from '../graphql/EDIT_RESULT.generated';
+
+type TResultDecision = 'NORMAL_TIME' | 'EXTRA_TIME' | 'PENALTIES';
+type TWinnerSide = 'HOME' | 'AWAY';
+
+const toResultDecision = (value: ResultFormData['decision']): TResultDecision | undefined => {
+  if (value === 'NORMAL_TIME' || value === 'EXTRA_TIME' || value === 'PENALTIES') {
+    return value;
+  }
+  return undefined;
+};
+
+const toWinnerSide = (value: ResultFormData['winnerSide']): TWinnerSide | undefined => {
+  if (value === 'HOME' || value === 'AWAY') {
+    return value;
+  }
+  return undefined;
+};
 
 export const mapFormToAddResult = (
   formData: ResultFormData,
@@ -19,6 +36,8 @@ export const mapFormToAddResult = (
     homeGoals: Number(formData.homeGoals) || 0,
     awayGoals: Number(formData.awayGoals) || 0,
     kickoffTime: formData.kickoffTime || undefined,
+    decision: toResultDecision(formData.decision),
+    winnerSide: toWinnerSide(formData.winnerSide),
     isForfeit: formData.isForfeit || false,
     isComplete: formData.isComplete || false,
     isBye: formData.isBye || false,
@@ -36,10 +55,12 @@ export const mapResultToForm = (result: T_FETCH_RESULT['result']): ResultFormDat
     awayTeam: result.awayTeam?._id ?? '',
     homeGoals: result.homeGoals ?? 0,
     awayGoals: result.awayGoals ?? 0,
+    decision: result.decision ?? null,
+    winnerSide: result.winnerSide ?? null,
     isForfeit: result.isForfeit ?? false,
     isComplete: result.isComplete ?? false,
     isBye: result.isBye ?? false,
-  } as ResultFormData;
+  };
 };
 
 export const mapFormToEditResult = (
@@ -62,5 +83,7 @@ export const mapFormToEditResult = (
     isForfeit: formData.isForfeit || false,
     isComplete: formData.isComplete || false,
     isBye: formData.isBye || false,
+    decision: toResultDecision(formData.decision),
+    winnerSide: toWinnerSide(formData.winnerSide),
   };
 };

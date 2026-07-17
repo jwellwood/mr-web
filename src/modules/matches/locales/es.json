@@ -53,6 +53,8 @@
       "GOALS_SCORED": "Goles a Favor",
       "GOALS_CONCEDED": "Goles en Contra",
       "LEAGUE_POSITION": "Posición en Liga",
+      "DECISION": "Decisión",
+      "WINNER_SIDE": "Lado ganador",
       "PLAYERS": "Jugadores",
       "IS_STARTER": "¿Es titular?",
       "POSITION": "Posición",
@@ -73,6 +75,17 @@
       "APPLY": "Aplicar",
       "NEXT": "Siguiente",
       "ADD": "Agregar"
+    },
+    "OPTIONS": {
+      "DECISION": {
+        "NORMAL_TIME": "Tiempo reglamentario",
+        "EXTRA_TIME": "Tiempo extra",
+        "PENALTIES": "Penaltis"
+      },
+      "WINNER_SIDE": {
+        "HOME": "Local",
+        "AWAY": "Visitante"
+      }
     }
   },
   "SECTIONS": {
@@ -117,7 +130,11 @@
     "ADD_PLAYERS": "Agrega algunos jugadores",
     "MATCH_FORFEITED": "Este partido fue por incomparecencia",
     "YES": "Sí",
-    "NO": "No"
+    "NO": "No",
+    "CUP_DRAW_WINNER": {
+      "EXTRA_TIME": "{{team}} gana en prórroga",
+      "PENALTIES": "{{team}} gana en penaltis"
+    }
   },
   "NO_DATA": {
     "MATCHES": "No hay partidos aún",

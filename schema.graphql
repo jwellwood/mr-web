@@ -62,6 +62,8 @@ input AddResultInput {
   homeGoalscorers: [GoalscorerInput!]
   awayGoalscorers: [GoalscorerInput!]
   resultStatus: ResultStatus
+  decision: ResultDecision
+  winnerSide: ResultSide
 }
 
 input AddTeamInput {
@@ -290,6 +292,8 @@ type Match {
   isForfeit: Boolean!
   leaguePosition: Float
   matchPlayers: [PlayerInMatch!]!
+  decision: ResultDecision
+  winnerSide: ResultSide
 }
 
 type MatchStreak {
@@ -688,11 +692,22 @@ type Result {
   resultStatus: ResultStatus
   submittedByTeam: Team
   confirmedByTeam: Team
+  decision: ResultDecision
+  winnerSide: ResultSide
 }
 
 type ResultCompetiton {
   _id: String!
   name: String!
+}
+
+"""
+How the match result was decided (normal time, after extra time, or on penalties)
+"""
+enum ResultDecision {
+  NORMAL_TIME
+  EXTRA_TIME
+  PENALTIES
 }
 
 """Which side (home or away) of a result"""
@@ -788,6 +803,8 @@ input SubmitResultInput {
   awayGoals: Int!
   isForfeit: Boolean
   goalscorers: [GoalscorerInput!]
+  decision: ResultDecision
+  winnerSide: ResultSide
 }
 
 input TAddMatchInput {
@@ -801,6 +818,8 @@ input TAddMatchInput {
   isHome: Boolean!
   isForfeit: Boolean!
   leaguePosition: Float
+  decision: ResultDecision
+  winnerSide: ResultSide
   matchPlayers: [TPlayerInMatchInput!]!
 }
 
@@ -884,6 +903,8 @@ type TMatch {
   opponentGoals: Float!
   competition: String!
   isForfeit: Boolean!
+  decision: String
+  winnerSide: String
 }
 
 type TMatchOpponent {

@@ -14,6 +14,8 @@ describe('mapResultForm helpers', () => {
       homeGoals: '2',
       awayGoals: '1',
       kickoffTime: '15:30',
+      decision: 'NORMAL_TIME',
+      winnerSide: 'HOME',
       isForfeit: true,
       isComplete: false,
     };
@@ -25,6 +27,8 @@ describe('mapResultForm helpers', () => {
     expect(variables.homeGoals).toBe(2);
     expect(variables.awayGoals).toBe(1);
     expect(variables.kickoffTime).toBe('15:30');
+    expect(variables.decision).toBe('NORMAL_TIME');
+    expect(variables.winnerSide).toBe('HOME');
     expect(variables.isForfeit).toBe(true);
   });
 
@@ -39,6 +43,8 @@ describe('mapResultForm helpers', () => {
       awayTeam: { _id: 'a1' },
       homeGoals: 3,
       awayGoals: 0,
+      decision: 'PENALTIES',
+      winnerSide: 'AWAY',
       isForfeit: false,
       isComplete: true,
     };
@@ -48,6 +54,8 @@ describe('mapResultForm helpers', () => {
     expect(form.gameWeek).toBe(5);
     expect(form.homeGoals).toBe(3);
     expect(form.awayGoals).toBe(0);
+    expect(form.decision).toBe('PENALTIES');
+    expect(form.winnerSide).toBe('AWAY');
     expect(form.isComplete).toBe(true);
   });
 
@@ -62,6 +70,8 @@ describe('mapResultForm helpers', () => {
       homeGoals: '0',
       awayGoals: '0',
       kickoffTime: null,
+      decision: 'EXTRA_TIME',
+      winnerSide: 'HOME',
       isForfeit: false,
       isComplete: false,
     };
@@ -70,5 +80,7 @@ describe('mapResultForm helpers', () => {
     expect(variables.resultId).toBe('resultX');
     expect(variables.kickoffTime).toBeNull();
     expect(variables.gameWeek).toBe(7);
+    expect(variables.decision).toBe('EXTRA_TIME');
+    expect(variables.winnerSide).toBe('HOME');
   });
 });

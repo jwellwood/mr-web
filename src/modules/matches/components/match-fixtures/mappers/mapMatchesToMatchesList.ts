@@ -14,5 +14,8 @@ export const mapMatchesToMatchesList = (
     opponentName: match.opponentName,
     opponentBadge: match.opponentBadge || undefined,
     isHome: match.isHome,
+    decision: match.decision || undefined,
+    winnerSide: match.winnerSide || undefined,
+    isForfeit: match.isForfeit || undefined,
   }));
 };

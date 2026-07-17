@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 import '@testing-library/jest-dom';
 import { describe, it, expect } from 'vitest';
@@ -34,8 +35,11 @@ describe('rows()', () => {
 
   it('maps homeTeam and awayTeam names', () => {
     const [row] = rows([makeResult()], 'org-1');
-    expect(row.homeTeam.props.children).toBe('Home FC');
-    expect(row.awayTeam.props.children).toBe('Away FC');
+    const { container: homeContainer } = render(row.homeTeam);
+    const { container: awayContainer } = render(row.awayTeam);
+
+    expect(homeContainer).toHaveTextContent('Home FC');
+    expect(awayContainer).toHaveTextContent('Away FC');
   });
 
   it('uses the result kickoffTime when present', () => {

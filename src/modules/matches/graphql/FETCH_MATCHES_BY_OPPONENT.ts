@@ -11,6 +11,8 @@ export const FETCH_MATCHES_BY_OPPONENT = gql`
       opponentGoals
       teamGoals
       opponentName
+      decision
+      winnerSide
     }
   }
 `;

@@ -12,7 +12,8 @@ export const EDIT_MATCH = gql`
     $date: String!
     $isHome: Boolean!
     $isForfeit: Boolean!
-    $leaguePosition: Float
+    $decision: ResultDecision
+    $winnerSide: ResultSide
     $matchPlayers: [TPlayerInMatchInput!]!
   ) {
     EDIT_MATCH(
@@ -27,7 +28,8 @@ export const EDIT_MATCH = gql`
         opponentGoals: $opponentGoals
         isHome: $isHome
         isForfeit: $isForfeit
-        leaguePosition: $leaguePosition
+        decision: $decision
+        winnerSide: $winnerSide
         matchPlayers: $matchPlayers
       }
     ) {

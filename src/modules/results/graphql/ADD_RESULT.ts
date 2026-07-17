@@ -12,6 +12,8 @@ export const ADD_RESULT = gql`
     $awayTeam: ID!
     $homeGoals: Float!
     $awayGoals: Float!
+    $decision: ResultDecision
+    $winnerSide: ResultSide
     $isForfeit: Boolean!
     $isComplete: Boolean!
     $isBye: Boolean!
@@ -28,6 +30,8 @@ export const ADD_RESULT = gql`
         awayGoals: $awayGoals
         competitionId: $competitionId
         orgSeasonId: $orgSeasonId
+        decision: $decision
+        winnerSide: $winnerSide
         isForfeit: $isForfeit
         isComplete: $isComplete
         isBye: $isBye

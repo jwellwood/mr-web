@@ -13,6 +13,8 @@ export const FETCH_MATCHES = gql`
       opponentBadge
       opponentName
       isForfeit
+      decision
+      winnerSide
     }
   }
 `;

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { ImageAvatar, ModuleHeaderContainer } from '../../../../components';
 import { CustomStack } from '../../../../components/grids';
 import { TextList, type IListItem } from '../../../../components/lists';
@@ -16,10 +17,21 @@ interface Props {
 }
 
 export default function MatchDetails({ match, loading }: Props) {
-  const { date, teamId, teamGoals, opponentId, opponentGoals, isHome, competitionId } = match || {
+  const {
+    date,
+    teamId,
+    teamGoals,
+    opponentId,
+    opponentGoals,
+    isHome,
+    competitionId,
+    decision,
+    winnerSide,
+  } = match || {
     teamGoals: 0,
     opponentGoals: 0,
   };
+  const { t } = useTranslation('matches');
   const matchDate = parseDate(date);
   const team = (teamId as T_FETCH_TEAM_QUERY['team'])?.teamName;
   const teamBadge = (teamId as T_FETCH_TEAM_QUERY['team'])?.teamBadge?.url || 'default';
@@ -35,6 +47,20 @@ export default function MatchDetails({ match, loading }: Props) {
     score: isHome ? opponentGoals : teamGoals,
     badge: isHome ? oppBadge : teamBadge,
   };
+
+  const winningSide = () => {
+    if (
+      (isHome && winnerSide?.toUpperCase() === 'HOME') ||
+      (!isHome && winnerSide?.toUpperCase() === 'AWAY')
+    )
+      return team;
+    if (winnerSide) return opponent;
+    return;
+  };
+
+  const decisionText = t(`MESSAGES.CUP_DRAW_WINNER.${decision?.toUpperCase()}`, {
+    team: winningSide(),
+  });
 
   const scoreData: IListItem[] = [
     {
@@ -86,6 +112,11 @@ export default function MatchDetails({ match, loading }: Props) {
       <div style={{ marginLeft: 16 }}>
         <TextList data={scoreData} loading={loading} />
       </div>
+      {decision ? (
+        <CustomStack justify="center" align="center" spacing={2}>
+          <CustomTypography color="primary">{decisionText}</CustomTypography>
+        </CustomStack>
+      ) : null}
     </ModuleHeaderContainer>
   );
 }

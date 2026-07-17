@@ -16,6 +16,8 @@ export interface IMatchesListMatch {
   opponentGoals: number;
   opponentName?: string;
   isHome: boolean;
+  decision?: string | null;
+  winnerSide?: string | null;
   isForfeit?: boolean;
   opponentBadge?: string;
 }

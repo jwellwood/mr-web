@@ -83,6 +83,11 @@
     "BUTTONS": {
       "APPLY": "Aplicar"
     },
+    "HEADERS": {
+      "MATCH": "Detalles del Partido",
+      "COMPETITION": "Detalles de la Competición",
+      "RESULT": "Detalles del Resultado"
+    },
     "LABELS": {
       "HOME_TEAM": "Local",
       "AWAY_TEAM": "Visitante",
@@ -99,9 +104,22 @@
       "COMPETITION": "Competición",
       "FORFEIT": "Incomparecencia",
       "IS_BYE": "Paso Directo",
+      "DECISION": "Desempate",
+      "WINNER_SIDE": "Ganador",
       "COMPLETED": "Completado",
       "GOALS": "Goles",
       "PLAYER": "Jugador"
+    },
+    "OPTIONS": {
+      "DECISION": {
+        "NORMAL_TIME": "Tiempo reglamentario",
+        "EXTRA_TIME": "Prórroga",
+        "PENALTIES": "Penaltis"
+      },
+      "WINNER_SIDE": {
+        "HOME": "Local",
+        "AWAY": "Visitante"
+      }
     }
   },
   "BUTTONS": {

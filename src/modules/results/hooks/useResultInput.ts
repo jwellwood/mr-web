@@ -48,10 +48,13 @@ export const useCompetitionRoundOptions = (
 
   const roundOptions = useMemo<ISelectOptions[]>(() => {
     if (!competitionId) return [];
+    if (!data?.orgSeason?.competitionConfigs?.length) return [];
+
     const config = data?.orgSeason?.competitionConfigs?.find(
-      c => c.competitionId._id === competitionId
+      c => String(c.competitionId._id) === String(competitionId)
     );
-    const rounds = config?.rounds ?? 52;
+    const rounds = config?.rounds;
+    if (!rounds) return [];
     const isCup = competitionType?.toLowerCase() === 'cup';
 
     return getNumberOptions(rounds, 1).map(option => ({

@@ -7,7 +7,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { describe, expect, it } from 'vitest';
 import i18n from '../../../../i18n/react-i18n';
 import { FETCH_ORG_SEASON } from '../../../seasons/graphql';
-import { useTeamOptions } from '../useResultInput';
+import { useCompetitionRoundOptions, useTeamOptions } from '../useResultInput';
 
 const orgSeasonData = {
   orgSeason: {
@@ -31,6 +31,15 @@ const orgSeasonData = {
         promotionPositions: [],
         splitIndexes: [],
         competitionId: { __typename: 'Competition' as const, _id: 'comp1', name: 'League' },
+      },
+      {
+        __typename: 'CompetitionConfig' as const,
+        priority: 2,
+        rounds: 4,
+        relegationPositions: [],
+        promotionPositions: [],
+        splitIndexes: [],
+        competitionId: { __typename: 'Competition' as const, _id: 'cup1', name: 'Cup' },
       },
     ],
   },
@@ -148,5 +157,44 @@ describe('useTeamOptions', () => {
 
     await waitFor(() => expect(result.current.loading).toBe(false));
     expect(result.current.roundOptions).toEqual([]);
+  });
+});
+
+describe('useCompetitionRoundOptions', () => {
+  it('returns matched round options for the selected competition', async () => {
+    const { result } = renderHook(() => useCompetitionRoundOptions('os1', 'comp1', undefined), {
+      wrapper: makeWrapper('/org/org1/org_season/os1'),
+    });
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.roundOptions).toHaveLength(5);
+    expect(result.current.roundOptions[0].value).toBe(1);
+    expect(result.current.roundOptions[4].value).toBe(5);
+  });
+
+  it('returns empty options when selected competition has no config for that season', async () => {
+    const { result } = renderHook(
+      () => useCompetitionRoundOptions('os1', 'comp-does-not-exist', undefined),
+      {
+        wrapper: makeWrapper('/org/org1/org_season/os1'),
+      }
+    );
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.roundOptions).toEqual([]);
+  });
+
+  it('maps cup rounds from competition config values with cup stage labels', async () => {
+    const { result } = renderHook(() => useCompetitionRoundOptions('os1', 'cup1', 'cup'), {
+      wrapper: makeWrapper('/org/org1/org_season/os1'),
+    });
+
+    await waitFor(() => expect(result.current.loading).toBe(false));
+    expect(result.current.roundOptions).toEqual([
+      { value: 1, label: 'Round 1' },
+      { value: 2, label: 'Quarter Final' },
+      { value: 3, label: 'Semi Final' },
+      { value: 4, label: 'Final' },
+    ]);
   });
 });

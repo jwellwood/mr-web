@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { CustomAvatar, CustomTypography, SectionContainer } from '../../../../components';
+import TiebreakerText from '../../../../components/composed/TiebreakerText';
 import { CustomStack } from '../../../../components/grids';
 import { TextList } from '../../../../components/lists';
 import { parseDate } from '../../../../utils';
@@ -23,6 +24,8 @@ export default function ResultDetails({ result }: Props) {
     homeGoals,
     awayGoals,
     kickoffTime,
+    winnerSide,
+    decision,
   } = result;
 
   const goalsAvatar = (goals: number | null | undefined) => (
@@ -37,7 +40,10 @@ export default function ResultDetails({ result }: Props) {
     {
       label: (
         <CustomTypography size="lg" bold color="data">
-          {homeTeam?.teamName}
+          {homeTeam?.teamName}{' '}
+          {decision && winnerSide === 'HOME' && (
+            <TiebreakerText tiebreakType={decision} size="md" />
+          )}
         </CustomTypography>
       ),
       value: goalsAvatar(homeGoals),
@@ -45,7 +51,10 @@ export default function ResultDetails({ result }: Props) {
     {
       label: (
         <CustomTypography size="lg" bold color="data">
-          {awayTeam?.teamName}
+          {awayTeam?.teamName}{' '}
+          {decision && winnerSide === 'AWAY' && (
+            <TiebreakerText tiebreakType={decision} size="md" />
+          )}
         </CustomTypography>
       ),
       value: goalsAvatar(awayGoals),

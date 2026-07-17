@@ -13,6 +13,10 @@ export default function ResultConfirmation({ result, teamOptions }: Props) {
   const { t } = useTranslation('results');
   const homeTeam = teamOptions.find(option => option.value === result?.homeTeam)?.label || '';
   const awayTeam = teamOptions.find(option => option.value === result?.awayTeam)?.label || '';
+  const decisionLabel = result?.decision ? t(`FORM.OPTIONS.DECISION.${result.decision}`) : '';
+  const winnerSideLabel = result?.winnerSide
+    ? t(`FORM.OPTIONS.WINNER_SIDE.${result.winnerSide}`)
+    : '';
 
   const listItems = [
     {
@@ -32,6 +36,28 @@ export default function ResultConfirmation({ result, teamOptions }: Props) {
       value: result?.awayGoals ?? '-',
     },
   ];
+
+  if (decisionLabel) {
+    listItems.push({
+      label: (
+        <CustomTypography color="data" bold>
+          {t('FORM.LABELS.DECISION')}
+        </CustomTypography>
+      ),
+      value: decisionLabel,
+    });
+  }
+
+  if (winnerSideLabel) {
+    listItems.push({
+      label: (
+        <CustomTypography color="data" bold>
+          {t('FORM.LABELS.WINNER_SIDE')}
+        </CustomTypography>
+      ),
+      value: winnerSideLabel,
+    });
+  }
 
   return (
     <SectionContainer

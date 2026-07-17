@@ -4,7 +4,8 @@ export interface ITempMatch {
   isHome: boolean;
   teamGoals: number;
   opponentGoals: number;
-  leaguePosition: number | null;
+  decision?: string;
+  winnerSide?: string;
   isForfeit: boolean;
   seasonId: string;
   competitionId: string;

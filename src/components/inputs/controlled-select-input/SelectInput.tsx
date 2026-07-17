@@ -56,7 +56,11 @@ export default function SelectInput({
           error={!!errors[0]}
         >
           {options.map(opt => (
-            <MenuItem disabled={opt.disabled} value={opt.value}>
+            <MenuItem
+              key={`${inputName}-${String(opt.value)}`}
+              disabled={opt.disabled}
+              value={String(opt.value)}
+            >
               {opt.label}
             </MenuItem>
           ))}

@@ -1,31 +1,41 @@
 import { getPoints } from '../../../modules/matches/helpers';
 import { theme } from '../../../theme';
+import { ResultDecision } from '../../../types/__generated__/graphql';
 import { getOpaqueValue } from '../../../utils';
 import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../typography';
+import TiebreakerText from '../TiebreakerText';
 
 interface Props {
   teamGoals: number;
   opponentGoals: number;
+  decidedBy?: string | null;
+  isWinnerSide?: boolean;
   loading?: boolean;
 }
 
-export default function MatchListScoreBox({ teamGoals, opponentGoals, loading }: Props) {
+export default function MatchListScoreBox({
+  teamGoals,
+  opponentGoals,
+  isWinnerSide,
+  decidedBy,
+  loading,
+}: Props) {
   const { palette } = theme;
 
   const points = getPoints(teamGoals, opponentGoals);
   let color = '';
   let background = '';
-  switch (points) {
-    case 3:
+  switch (true) {
+    case points === 3 || isWinnerSide:
       color = palette.success.dark;
       background = getOpaqueValue(palette.success.dark);
       break;
-    case 1:
+    case points === 1 && !decidedBy:
       color = palette.warning.main;
       background = getOpaqueValue(palette.warning.main);
       break;
-    case 0:
+    case points === 0 || !isWinnerSide:
       color = palette.error.main;
       background = getOpaqueValue(palette.error.main);
       break;
@@ -49,7 +59,8 @@ export default function MatchListScoreBox({ teamGoals, opponentGoals, loading }:
       }}
     >
       <CustomTypography color="data" bold size="xs">
-        {teamGoals} - {opponentGoals}
+        {teamGoals} - {opponentGoals}{' '}
+        {decidedBy ? <TiebreakerText tiebreakType={decidedBy as ResultDecision} size="xs" /> : null}
       </CustomTypography>
     </div>
   );

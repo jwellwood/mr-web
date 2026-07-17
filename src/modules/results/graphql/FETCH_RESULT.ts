@@ -25,6 +25,8 @@ export const FETCH_RESULT = gql`
       }
       homeGoals
       awayGoals
+      decision
+      winnerSide
       isForfeit
       isComplete
       isBye
