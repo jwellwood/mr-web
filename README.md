@@ -29,7 +29,7 @@ npm run test:ui
 
 ### Writing Tests
 
-Tests should be placed in `__tests__` directories or named with `.test.ts` or `.spec.ts` extensions. For React components, use `.test.tsx` or `.spec.tsx`.
+Tests should be placed in `test` directories or named with `.test.ts` or `.spec.ts` extensions. For React components, use `.test.tsx` or `.spec.tsx`.
 
 Example test for a React component:
 

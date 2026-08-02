@@ -24,6 +24,35 @@
     "EDIT_ORGANIZATION": "Edit Organization",
     "EDIT_ORG_BADGE": "Edit Org Badge"
   },
+  "CHECKLIST": {
+    "TITLE": "Setup checklist",
+    "STEPS": {
+      "COMPETITION": {
+        "LABEL": "Create a competition",
+        "SECONDARY": "{{value}} added"
+      },
+      "ACTIVE_TEAMS": {
+        "LABEL": "Create active teams",
+        "SECONDARY": "{{value}} added"
+      },
+      "CURRENT_SEASON": {
+        "LABEL": "Create a current season and add your teams and competitions",
+        "SECONDARY": "{{value}} added"
+      },
+      "COMP_CONFIG": {
+        "LABEL": "Personalize each competition with teams and rounds",
+        "SECONDARY": "{{value}} added"
+      },
+      "RESULTS": {
+        "LABEL": "Add results/gameweeks",
+        "SECONDARY": "{{value}} added"
+      }
+    },
+    "STATUS": {
+      "COMPLETED": "Completed",
+      "PENDING": "Pending"
+    }
+  },
   "ALERTS": {
     "ADD": {
       "SUCCESS": "Organization added successfully!",

@@ -9,6 +9,7 @@ const OrgTeams = lazy(() => import('../containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('../../seasons/containers/OrgSeasons'));
 const AdminCompetitions = lazy(() => import('../../competitions/containers/AdminCompetitions'));
 const OrgAdminUsers = lazy(() => import('../containers/OrgAdmin'));
+const OrgSetupCheckList = lazy(() => import('../components/OrgSetupCheckList'));
 
 export default function OrgAdmin() {
   const { t } = useTranslation('organization');
@@ -22,7 +23,10 @@ export default function OrgAdmin() {
 
   return (
     <PageHeader title={t('PAGES.ADMIN')} links={getOrgAdminLinks(t)}>
-      <CustomTabs type={TAB_TYPES.ORG_ADMIN} tabs={tabs} level="secondary" />
+      <>
+        <OrgSetupCheckList />
+        <CustomTabs type={TAB_TYPES.ORG_ADMIN} tabs={tabs} level="secondary" />
+      </>
     </PageHeader>
   );
 }

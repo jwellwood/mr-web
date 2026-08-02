@@ -69,6 +69,23 @@
       }
     }
   },
+  "CHECKLIST": {
+    "TITLE": "Lista de configuración",
+    "STEPS": {
+      "SEASON": {
+        "LABEL": "Agregar una temporada",
+        "SECONDARY": "{{value}} agregados"
+      },
+      "PLAYERS": {
+        "LABEL": "Agregar jugadores",
+        "SECONDARY": "{{value}} agregados"
+      },
+      "MATCHES": {
+        "LABEL": "Agregar partidos",
+        "SECONDARY": "{{value}} agregados"
+      }
+    }
+  },
   "SECTIONS": {
     "ORGANIZATION": {
       "HEADER": "Organización"

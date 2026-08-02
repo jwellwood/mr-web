@@ -4,12 +4,12 @@ import { LINK_TYPE } from '../../../constants';
 import { ORG_PATHS } from '../router';
 
 export const getOrgAdminLinks = (t: TFunction): IListItem[] => [
-  { label: t('LINKS.ADD_TEAM'), type: LINK_TYPE.ADD, link: ORG_PATHS.ADD_TEAM },
   {
     label: t('LINKS.ADD_COMPETITION'),
     type: LINK_TYPE.ADD,
     link: ORG_PATHS.ADD_COMPETITION,
   },
+  { label: t('LINKS.ADD_TEAM'), type: LINK_TYPE.ADD, link: ORG_PATHS.ADD_TEAM },
   {
     label: t('LINKS.ADD_SEASON'),
     type: LINK_TYPE.ADD,

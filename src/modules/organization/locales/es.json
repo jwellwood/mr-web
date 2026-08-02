@@ -24,6 +24,35 @@
     "EDIT_ORGANIZATION": "Editar Organización",
     "EDIT_ORG_BADGE": "Editar Insignia"
   },
+  "CHECKLIST": {
+    "TITLE": "Lista de Setup",
+    "STEPS": {
+      "COMPETITION": {
+        "LABEL": "Crear una competencia",
+        "SECONDARY": "{{value}} agregada"
+      },
+      "ACTIVE_TEAMS": {
+        "LABEL": "Crear al menos 2 equipos activos",
+        "SECONDARY": "{{value}} agregados"
+      },
+      "CURRENT_SEASON": {
+        "LABEL": "Crear una temporada actual y agregar tus equipos y competiciones",
+        "SECONDARY": "{{value}} agregada"
+      },
+      "COMP_CONFIG": {
+        "LABEL": "Personalizar cada competencia con equipos y rondas",
+        "SECONDARY": "{{value}} configuradas"
+      },
+      "RESULTS": {
+        "LABEL": "Agregar resultados/jornadas",
+        "SECONDARY": "{{value}} agregados"
+      }
+    },
+    "STATUS": {
+      "COMPLETED": "Completado",
+      "PENDING": "Pendiente"
+    }
+  },
   "ALERTS": {
     "ADD": {
       "SUCCESS": "¡Organización agregada con éxito!",

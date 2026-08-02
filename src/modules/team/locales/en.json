@@ -69,6 +69,23 @@
       }
     }
   },
+  "CHECKLIST": {
+    "TITLE": "Setup checklist",
+    "STEPS": {
+      "SEASON": {
+        "LABEL": "Add a season",
+        "SECONDARY": "{{value}} added"
+      },
+      "PLAYERS": {
+        "LABEL": "Add players",
+        "SECONDARY": "{{value}} added"
+      },
+      "MATCHES": {
+        "LABEL": "Add matches",
+        "SECONDARY": "{{value}} added"
+      }
+    }
+  },
   "SECTIONS": {
     "ORGANIZATION": {
       "HEADER": "Organization"

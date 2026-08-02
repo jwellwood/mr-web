@@ -8,6 +8,7 @@ import Organization from '../components/Organization';
 import Stadium from '../components/Stadium';
 import RequestTeamAdmin from '../forms/request-admin-access/RequestTeamAdmin';
 import { T_FETCH_TEAM_QUERY } from '../graphql';
+import TeamSetupChecklist from './TeamSetupChecklist';
 
 interface Props {
   data?: T_FETCH_TEAM_QUERY;
@@ -29,6 +30,7 @@ export default function TeamView({ data, loading, error }: Props) {
       ) : (
         <>
           {canRequestAdmin && <RequestTeamAdmin />}
+          {isTeamAuth && <TeamSetupChecklist />}
           <ModuleHeader
             title={teamName}
             badge={teamBadge?.url}
