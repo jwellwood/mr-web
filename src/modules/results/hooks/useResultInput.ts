@@ -24,6 +24,21 @@ export const useTeamOptions = () => {
       .sort((a, b) => a.label.localeCompare(b.label)) as ISelectOptions[];
   }, [data]);
 
+  const competitionTeamMap = useMemo<Map<string, ISelectOptions[]>>(() => {
+    const map = new Map<string, ISelectOptions[]>();
+    data?.orgSeason?.competitionConfigs?.forEach(config => {
+      if (config.teams && config.teams.length > 0) {
+        map.set(
+          config.competitionId._id,
+          config.teams
+            .map(t => ({ value: t.teamId._id, label: t.teamId.teamName }))
+            .sort((a, b) => a.label.localeCompare(b.label))
+        );
+      }
+    });
+    return map;
+  }, [data]);
+
   const roundOptions = useMemo<ISelectOptions[]>(() => {
     if (!data?.orgSeason?.competitionConfigs?.[0]?.rounds) return [];
     return getNumberOptions(data?.orgSeason?.competitionConfigs[0]?.rounds || 0).map(option => ({
@@ -32,7 +47,7 @@ export const useTeamOptions = () => {
     }));
   }, [data, t]);
 
-  return { teamOptions, roundOptions, loading, error };
+  return { teamOptions, competitionTeamMap, roundOptions, loading, error };
 };
 
 export const useCompetitionRoundOptions = (

@@ -19,7 +19,7 @@ export default function EditResult() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const { teamOptions, loading: teamsLoading } = useTeamOptions();
+  const { teamOptions, competitionTeamMap, loading: teamsLoading } = useTeamOptions();
   const { competitionOptions, loading: competitionsLoading } = useCompetitionOptions();
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
   const { loading, error, data } = useQuery(FETCH_RESULT, {
@@ -64,6 +64,7 @@ export default function EditResult() {
       loading={isLoading}
       error={error}
       teamOptions={teamOptions}
+      competitionTeamMap={competitionTeamMap}
       competitionOptions={competitionOptions}
       orgSeasonOptions={orgSeasonOptions}
     />

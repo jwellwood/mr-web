@@ -9,6 +9,7 @@ interface Props {
   defaultValues: BatchResultFormData;
   loading: boolean;
   teamOptions: ISelectOptions[];
+  competitionTeamMap: Map<string, ISelectOptions[]>;
   competitionOptions: ISelectOptions[];
   orgSeasonOptions: ISelectOptions[];
 }
@@ -18,6 +19,7 @@ export default function AddGameweekPage({
   defaultValues,
   loading,
   teamOptions,
+  competitionTeamMap,
   competitionOptions,
   orgSeasonOptions,
 }: Props) {
@@ -31,6 +33,7 @@ export default function AddGameweekPage({
         <BatchResultForm
           competitionOptions={competitionOptions}
           teamOptions={teamOptions}
+          competitionTeamMap={competitionTeamMap}
           orgSeasonOptions={orgSeasonOptions}
           defaultValues={defaultValues}
           onSubmit={onSubmit}

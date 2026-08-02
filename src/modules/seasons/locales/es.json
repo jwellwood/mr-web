@@ -51,7 +51,11 @@
     "TIEBREAKER": "Desempate",
     "HEAD_TO_HEAD": "Enfrentamientos Directos",
     "GOAL_DIFFERENCE": "Diferencia de Goles",
-    "PENALTIES": "Penales"
+    "PENALTIES": "Penales",
+    "TEAMS": "Equipos",
+    "TEAM": "Equipo",
+    "STARTING_POINTS": "Puntos Iniciales",
+    "ADD_TEAM": "Agregar Equipo"
   },
   "MESSAGES": {
     "INCLUDED": "Incluido"

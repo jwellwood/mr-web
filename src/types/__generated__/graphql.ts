@@ -164,6 +164,7 @@ export type CompetitionConfig = {
   relegationPositions?: Maybe<Array<Scalars['Float']['output']>>;
   rounds?: Maybe<Scalars['Float']['output']>;
   splitIndexes?: Maybe<Array<Scalars['Float']['output']>>;
+  teams?: Maybe<Array<CompetitionConfigTeam>>;
   tiebreaker?: Maybe<Tiebreaker>;
 };
 
@@ -174,7 +175,19 @@ export type CompetitionConfigInput = {
   relegationPositions?: InputMaybe<Array<Scalars['Float']['input']>>;
   rounds?: InputMaybe<Scalars['Float']['input']>;
   splitIndexes?: InputMaybe<Array<Scalars['Float']['input']>>;
+  teams?: InputMaybe<Array<CompetitionConfigTeamInput>>;
   tiebreaker?: InputMaybe<Tiebreaker>;
+};
+
+export type CompetitionConfigTeam = {
+  __typename?: 'CompetitionConfigTeam';
+  startingPoints?: Maybe<Scalars['Float']['output']>;
+  teamId: Team;
+};
+
+export type CompetitionConfigTeamInput = {
+  startingPoints?: InputMaybe<Scalars['Float']['input']>;
+  teamId: Scalars['String']['input'];
 };
 
 export type CompetitionInput = {

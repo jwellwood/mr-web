@@ -51,7 +51,11 @@
     "TIEBREAKER": "Tiebreaker",
     "HEAD_TO_HEAD": "Head-to-Head",
     "GOAL_DIFFERENCE": "Goal Difference",
-    "PENALTIES": "Penalties"
+    "PENALTIES": "Penalties",
+    "TEAMS": "Teams",
+    "TEAM": "Team",
+    "STARTING_POINTS": "Starting Points",
+    "ADD_TEAM": "Add Team"
   },
   "MESSAGES": {
     "INCLUDED": "Included"

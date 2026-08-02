@@ -25,6 +25,7 @@ interface Props {
   onSubmit: (formData: ResultFormData) => void;
   competitionOptions: ISelectOptions[];
   teamOptions: ISelectOptions[];
+  competitionTeamMap: Map<string, ISelectOptions[]>;
   orgSeasonOptions: ISelectOptions[];
   defaultValues: ResultFormData;
   loading: boolean;
@@ -36,6 +37,7 @@ export default function ResultForm({
   defaultValues,
   competitionOptions,
   teamOptions,
+  competitionTeamMap,
   orgSeasonOptions,
   loading,
   error,
@@ -72,6 +74,8 @@ export default function ResultForm({
   const currentValues = useWatch({ control });
   const isFutureMatch = isFuture(new Date(currentDate));
   const isCup = isCupMatch(competitionOptions, currentCompetitionId);
+  const activeTeamOptions =
+    (currentCompetitionId && competitionTeamMap.get(currentCompetitionId)) || teamOptions;
 
   const { roundOptions } = useCompetitionRoundOptions(
     currentSeasonId,
@@ -160,7 +164,7 @@ export default function ResultForm({
               control={control}
               name="homeTeam"
               label={t('FORM.LABELS.HOME_TEAM')}
-              options={teamOptions}
+              options={activeTeamOptions}
             />
           </CustomGridItem>
           <CustomGridItem size={isBye ? 12 : 3}>
@@ -182,7 +186,7 @@ export default function ResultForm({
                   disabled={isBye}
                   name="awayTeam"
                   label={t('FORM.LABELS.AWAY_TEAM')}
-                  options={teamOptions}
+                  options={activeTeamOptions}
                 />
               }
             </CustomGridItem>

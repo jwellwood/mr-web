@@ -34,6 +34,7 @@ interface Props {
   onSubmit: (formData: BatchResultFormData) => void;
   competitionOptions: ISelectOptions[];
   teamOptions: ISelectOptions[];
+  competitionTeamMap: Map<string, ISelectOptions[]>;
   orgSeasonOptions: ISelectOptions[];
   defaultValues: BatchResultFormData;
   loading: boolean;
@@ -45,6 +46,7 @@ export default function BatchResultForm({
   defaultValues,
   competitionOptions,
   teamOptions,
+  competitionTeamMap,
   orgSeasonOptions,
   loading,
   error,
@@ -72,6 +74,8 @@ export default function BatchResultForm({
   const matches = useMemo(() => matchesRaw || [], [matchesRaw]);
   const currentValues = useWatch({ control });
   const isCup = isCupMatch(competitionOptions, currentCompetitionId);
+  const activeTeamOptions =
+    (currentCompetitionId && competitionTeamMap.get(currentCompetitionId)) || teamOptions;
   const { roundOptions } = useCompetitionRoundOptions(
     currentSeasonId,
     currentCompetitionId,
@@ -238,7 +242,7 @@ export default function BatchResultForm({
             key={f.id}
             index={idx}
             control={control}
-            teamOptions={teamOptions}
+            teamOptions={activeTeamOptions}
             remove={remove}
             excludedTeams={excludedTeams}
             currentHome={currentHome}

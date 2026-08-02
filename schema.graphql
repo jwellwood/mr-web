@@ -135,6 +135,7 @@ type Competition {
 
 type CompetitionConfig {
   competitionId: Competition!
+  teams: [CompetitionConfigTeam!]
   rounds: Float
   splitIndexes: [Float!]
   relegationPositions: [Float!]
@@ -145,12 +146,23 @@ type CompetitionConfig {
 
 input CompetitionConfigInput {
   competitionId: String!
+  teams: [CompetitionConfigTeamInput!]
   rounds: Float
   splitIndexes: [Float!]
   promotionPositions: [Float!]
   relegationPositions: [Float!]
   priority: Float
   tiebreaker: Tiebreaker
+}
+
+type CompetitionConfigTeam {
+  teamId: Team!
+  startingPoints: Float
+}
+
+input CompetitionConfigTeamInput {
+  teamId: String!
+  startingPoints: Float
 }
 
 input CompetitionInput {

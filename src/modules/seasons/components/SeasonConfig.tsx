@@ -19,6 +19,7 @@ interface Props {
 export default function SeasonConfig({ season, loading, error }: Props) {
   const { t } = useTranslation('seasons');
   const { orgId } = useCustomParams();
+
   const { data: competitionsData } = useQuery(FETCH_COMPETITIONS, {
     variables: { orgId: orgId! },
   });
@@ -72,6 +73,7 @@ export default function SeasonConfig({ season, loading, error }: Props) {
           value: config.priority ?? '-',
         },
       ];
+
       return (
         <SectionContainer
           key={config.competitionId._id}
@@ -82,10 +84,27 @@ export default function SeasonConfig({ season, loading, error }: Props) {
               existingConfig={config}
               numberOfTeams={season.teamIds.length}
               numberOfCompetitions={season.competitionConfigs?.length || 0}
+              seasonTeamIds={season.teamIds}
+              seasonCompetitionConfigs={season.competitionConfigs || []}
             />
           }
         >
           <TextList data={compLinks} />
+          {config.teams && config.teams.length > 0 ? (
+            <SectionContainer
+              title={
+                isCup ? t('CONFIG.TEAMS') : `${t('CONFIG.TEAMS')} / ${t('CONFIG.STARTING_POINTS')}`
+              }
+              type="info"
+            >
+              {config.teams.map(team => (
+                <TextList
+                  key={team.teamId._id}
+                  data={[{ label: team.teamId.teamName, value: team.startingPoints ?? 0 }]}
+                />
+              ))}
+            </SectionContainer>
+          ) : null}
         </SectionContainer>
       );
     });

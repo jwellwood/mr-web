@@ -18,7 +18,7 @@ import AddGameweekPage from '../pages/AddGameweekPage';
 export default function AddGameweekResults() {
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
-  const { teamOptions, loading: teamsLoading } = useTeamOptions();
+  const { teamOptions, competitionTeamMap, loading: teamsLoading } = useTeamOptions();
   const { competitionOptions, loading: competitionsLoading } = useCompetitionOptions();
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
   const navigate = useNavigate();
@@ -83,6 +83,7 @@ export default function AddGameweekResults() {
       defaultValues={defaultValues}
       loading={isLoading}
       teamOptions={teamOptions}
+      competitionTeamMap={competitionTeamMap}
       competitionOptions={competitionOptions}
       orgSeasonOptions={orgSeasonOptions}
     />

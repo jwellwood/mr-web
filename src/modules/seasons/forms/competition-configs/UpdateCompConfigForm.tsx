@@ -1,9 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useFieldArray, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { CustomButton } from '../../../../components';
+import { CustomButton, ISelectOptions, SectionContainer } from '../../../../components';
 import { FormContainer } from '../../../../components/forms';
+import { CustomGridContainer, CustomGridItem } from '../../../../components/grids';
+import { AppIcon } from '../../../../components/icons';
 import { ControlledSelectInput, ControlledMultiSelectInput } from '../../../../components/inputs';
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
@@ -17,6 +19,7 @@ interface Props {
   numberOfTeams: number;
   numberOfCompetitions: number;
   competitionType?: string | null;
+  teamOptions: ISelectOptions[];
 }
 
 export default function UpdateCompConfigForm({
@@ -26,6 +29,7 @@ export default function UpdateCompConfigForm({
   numberOfCompetitions,
   competitionType,
   loading,
+  teamOptions,
 }: Props) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation('seasons');
@@ -41,6 +45,8 @@ export default function UpdateCompConfigForm({
     resolver: zodResolver(UpdateCompConfigSchema),
     mode: 'onChange',
   });
+
+  const { fields, append, remove } = useFieldArray({ control, name: 'teams' });
 
   const submitHandler = (data: UpdateCompConfigFormData) => {
     onSubmit(data);
@@ -108,6 +114,39 @@ export default function UpdateCompConfigForm({
             label={t('CONFIG.PRIORITY')}
             options={getNumberOptions(numberOfCompetitions, 1)}
           />
+          <SectionContainer
+            title={`${t('CONFIG.TEAMS')} / ${t('CONFIG.STARTING_POINTS')}`}
+            type="info"
+          >
+            {fields.map((field, index) => (
+              <CustomGridContainer key={field.id}>
+                <CustomGridItem size={isCup ? 11 : 8}>
+                  <ControlledSelectInput
+                    control={control}
+                    name={`teams.${index}.teamId`}
+                    label={t('CONFIG.TEAM')}
+                    options={teamOptions}
+                  />
+                </CustomGridItem>
+                {!isCup ? (
+                  <CustomGridItem size={3}>
+                    <ControlledSelectInput
+                      control={control}
+                      name={`teams.${index}.startingPoints`}
+                      label={t('CONFIG.STARTING_POINTS')}
+                      options={getNumberOptions(20, 0)}
+                    />
+                  </CustomGridItem>
+                ) : null}
+                <CustomGridItem size={1}>
+                  <AppIcon icon="cross" color="error" size="20px" onClick={() => remove(index)} />
+                </CustomGridItem>
+              </CustomGridContainer>
+            ))}
+            <CustomButton variant="text" onClick={() => append({ teamId: '', startingPoints: 0 })}>
+              {t('CONFIG.ADD_TEAM')}
+            </CustomButton>
+          </SectionContainer>
         </FormContainer>
       </FormModal>
     </>

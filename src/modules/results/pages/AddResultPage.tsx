@@ -11,6 +11,7 @@ interface Props {
   loading: boolean;
   error?: TApolloError;
   teamOptions: ISelectOptions[];
+  competitionTeamMap: Map<string, ISelectOptions[]>;
   competitionOptions: ISelectOptions[];
   orgSeasonOptions: ISelectOptions[];
 }
@@ -21,6 +22,7 @@ export default function AddResultPage({
   loading,
   error,
   teamOptions,
+  competitionTeamMap,
   competitionOptions,
   orgSeasonOptions,
 }: Props) {
@@ -35,6 +37,7 @@ export default function AddResultPage({
           defaultValues={defaultValues}
           onSubmit={onSubmit}
           teamOptions={teamOptions}
+          competitionTeamMap={competitionTeamMap}
           competitionOptions={competitionOptions}
           orgSeasonOptions={orgSeasonOptions}
           loading={loading}

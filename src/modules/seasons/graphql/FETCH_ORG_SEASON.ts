@@ -24,6 +24,13 @@ export const FETCH_ORG_SEASON = gql`
         splitIndexes
         priority
         tiebreaker
+        teams {
+          teamId {
+            _id
+            teamName
+          }
+          startingPoints
+        }
       }
     }
   }

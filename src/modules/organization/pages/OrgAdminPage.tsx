@@ -14,8 +14,8 @@ export default function OrgAdmin() {
   const { t } = useTranslation('organization');
 
   const tabs: ITab[] = [
-    { label: t('TABS.TEAMS'), component: <OrgTeams /> },
     { label: t('TABS.SEASONS'), component: <OrgSeasons /> },
+    { label: t('TABS.TEAMS'), component: <OrgTeams /> },
     { label: t('TABS.COMPETITIONS'), component: <AdminCompetitions /> },
     { label: t('TABS.USERS'), component: <OrgAdminUsers /> },
   ];
