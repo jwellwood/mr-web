@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.26.0](https://github.com/jwellwood/mr-web/compare/v0.25.0...v0.26.0) (2026-08-02)
+
+### Features
+
+* setup checklists for team/org ([6ea7bce](https://github.com/jwellwood/mr-web/commit/6ea7bce0f5f9a89332a2fc1e58cf4b4600725650))
+
 ## [0.25.0](https://github.com/jwellwood/mr-web/compare/v0.24.0...v0.25.0) (2026-08-02)
 
 ### Features
