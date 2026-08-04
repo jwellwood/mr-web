@@ -10,7 +10,10 @@ import type { ISelectOptions } from '../../../../components';
 import { positionOptions } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
-import AddMatchPlayerStatsSchema, { AddMatchPlayerStatsFormValues } from './schema';
+import AddMatchPlayerStatsSchema, {
+  AddMatchPlayerStatsFormValues,
+  AddMatchPlayerStatsFormInput,
+} from './schema';
 
 interface Props {
   onSubmit: (data: AddMatchPlayerStatsFormValues) => void;
@@ -35,13 +38,13 @@ export default function AddMatchPlayerStatsForm({
     control,
     formState: { isValid },
     reset,
-  } = useForm<AddMatchPlayerStatsFormValues>({
+  } = useForm<AddMatchPlayerStatsFormInput, unknown, AddMatchPlayerStatsFormValues>({
     defaultValues,
     resolver: zodResolver(AddMatchPlayerStatsSchema),
   });
 
-  const goalsScored = useWatch({ control, name: 'goals' });
-  const goalsConceded = useWatch({ control, name: 'conceded' });
+  const goalsScored = useWatch({ control, name: 'goals' }) as number;
+  const goalsConceded = useWatch({ control, name: 'conceded' }) as number;
 
   return (
     <FormContainer

@@ -2,14 +2,15 @@ import { z } from 'zod';
 
 const GoalscorerSchema = z.object({
   playerId: z.string().min(1),
-  goals: z.number().min(1),
+  goals: z.coerce.number().min(1),
 });
 
 export const AddGoalscorersSchema = z.object({
   goalscorers: z.array(GoalscorerSchema).min(1),
 });
 
-export type AddGoalscorersFormData = z.infer<typeof AddGoalscorersSchema>;
+export type AddGoalscorersFormInput = z.input<typeof AddGoalscorersSchema>;
+export type AddGoalscorersFormData = z.output<typeof AddGoalscorersSchema>;
 
 export const createAddGoalscorersSchema = (teamGoals: number) =>
   AddGoalscorersSchema.superRefine((data, ctx) => {

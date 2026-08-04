@@ -27,7 +27,7 @@ export default function OrgSetupChecklist({ title, steps, allDone, loading }: Pr
           </CustomTypography>
         )
       }
-      isExpanded={!allDone && !loading}
+      isExpanded={!allDone}
     >
       <SectionContainer type={allDone ? 'success' : 'info'}>
         <TextList

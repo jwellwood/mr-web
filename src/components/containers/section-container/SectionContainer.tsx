@@ -9,7 +9,7 @@ interface Props {
   subtitle?: string | ReactNode;
   secondaryAction?: ReactNode;
   children: React.ReactNode;
-  type?: 'form' | 'winner' | 'success' | 'delete' | 'info' | 'admin' | 'default';
+  type?: 'form' | 'winner' | 'success' | 'delete' | 'info' | 'warning' | 'admin' | 'default';
 }
 
 export default function SectionContainer({

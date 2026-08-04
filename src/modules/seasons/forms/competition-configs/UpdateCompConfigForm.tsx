@@ -10,7 +10,11 @@ import { ControlledSelectInput, ControlledMultiSelectInput } from '../../../../c
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
 import { isCupCompetitionType, TTiebreaker } from '../../constants';
-import { UpdateCompConfigSchema, type UpdateCompConfigFormData } from './schema';
+import {
+  UpdateCompConfigSchema,
+  type UpdateCompConfigFormData,
+  type UpdateCompConfigFormInput,
+} from './schema';
 
 interface Props {
   onSubmit: (formData: UpdateCompConfigFormData) => void;
@@ -40,7 +44,7 @@ export default function UpdateCompConfigForm({
     control,
     formState: { isValid, isDirty },
     reset,
-  } = useForm<UpdateCompConfigFormData>({
+  } = useForm<UpdateCompConfigFormInput, unknown, UpdateCompConfigFormData>({
     defaultValues,
     resolver: zodResolver(UpdateCompConfigSchema),
     mode: 'onChange',

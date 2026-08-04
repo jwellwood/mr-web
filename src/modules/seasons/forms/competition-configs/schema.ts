@@ -7,11 +7,11 @@ const CompConfigTeamSchema = z.object({
 });
 
 export const UpdateCompConfigSchema = z.object({
-  rounds: z.union([z.string(), z.number()]).optional(),
+  rounds: z.coerce.number().optional(),
   splitIndexes: z.array(z.number()).optional(),
   relegationPositions: z.array(z.number()).optional(),
   promotionPositions: z.array(z.number()).optional(),
-  priority: z.number().optional(),
+  priority: z.coerce.number().optional(),
   tiebreaker: z.enum([
     TTiebreaker.HEAD_TO_HEAD,
     TTiebreaker.GOAL_DIFFERENCE,
@@ -20,4 +20,5 @@ export const UpdateCompConfigSchema = z.object({
   teams: z.array(CompConfigTeamSchema).optional(),
 });
 
-export type UpdateCompConfigFormData = z.infer<typeof UpdateCompConfigSchema>;
+export type UpdateCompConfigFormInput = z.input<typeof UpdateCompConfigSchema>;
+export type UpdateCompConfigFormData = z.output<typeof UpdateCompConfigSchema>;

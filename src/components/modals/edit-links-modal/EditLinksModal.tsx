@@ -5,10 +5,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import React, { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { theme } from '../../../theme';
 import { CustomButton } from '../../buttons';
+import { TColor } from '../../buttons/types';
 import { SectionContainer } from '../../containers';
-import { LinksList, type IListItem } from '../../lists';
+import { type IListItem } from '../../lists';
 
 interface Props {
   data: IListItem[];
@@ -19,13 +19,10 @@ export default function EditLinksModal({ data, title }: Props) {
   const { t } = useTranslation('components');
   const addLinks = data.filter(item => item.type === 'add');
   const editLinks = data.filter(item => item.type === 'edit');
-  const {
-    palette: { success, warning },
-  } = theme;
 
   const sections = [
-    { links: addLinks, color: success.light },
-    { links: editLinks, color: warning.main },
+    { type: 'add', links: addLinks, color: 'primary' },
+    { type: 'edit', links: editLinks, color: 'warning' },
   ];
 
   const [open, setOpen] = React.useState(false);
@@ -59,8 +56,17 @@ export default function EditLinksModal({ data, title }: Props) {
           {sections.map(
             section =>
               section.links.length > 0 && (
-                <SectionContainer key={section.color}>
-                  <LinksList links={section.links} />
+                <SectionContainer
+                  key={section.color}
+                  type={section.type === 'add' ? 'success' : 'warning'}
+                >
+                  {section.links.map(link => (
+                    <div key={link.link}>
+                      <CustomButton link={link.link} variant="text" color={section.color as TColor}>
+                        {link.label}
+                      </CustomButton>
+                    </div>
+                  ))}
                 </SectionContainer>
               )
           )}

@@ -10,7 +10,11 @@ import {
 } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
-import { type SubmitResultFormData, SubmitResultSchema } from './schema';
+import {
+  type SubmitResultFormData,
+  type SubmitResultFormInput,
+  SubmitResultSchema,
+} from './schema';
 
 interface Props {
   onSubmit: (formData: SubmitResultFormData) => void;
@@ -34,7 +38,7 @@ export default function SubmitResultForm({
     control,
     formState: { isValid },
     reset,
-  } = useForm<SubmitResultFormData>({
+  } = useForm<SubmitResultFormInput, unknown, SubmitResultFormData>({
     defaultValues,
     resolver: zodResolver(SubmitResultSchema),
     mode: 'onChange',

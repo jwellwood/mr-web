@@ -7,35 +7,35 @@ const t = (key: string, options?: Record<string, unknown>) =>
 export const AddMatchPlayerStatsSchema = z.object({
   isStarter: z.boolean(),
   matchPosition: z.string(),
-  goals: z
+  goals: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
-  pensScored: z
+  pensScored: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
-  assists: z
+  assists: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
-  ownGoals: z
+  ownGoals: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
-  pensMissed: z
+  pensMissed: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
-  pensSaved: z
+  pensSaved: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
-  conceded: z
+  conceded: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
-  yellowCards: z
+  yellowCards: z.coerce
     .number()
     .int()
     .min(0, t('VALIDATION.low', { min: 0 })),
@@ -44,6 +44,7 @@ export const AddMatchPlayerStatsSchema = z.object({
   cleanSheet: z.boolean(),
 });
 
-export type AddMatchPlayerStatsFormValues = z.infer<typeof AddMatchPlayerStatsSchema>;
+export type AddMatchPlayerStatsFormInput = z.input<typeof AddMatchPlayerStatsSchema>;
+export type AddMatchPlayerStatsFormValues = z.output<typeof AddMatchPlayerStatsSchema>;
 
 export default AddMatchPlayerStatsSchema;

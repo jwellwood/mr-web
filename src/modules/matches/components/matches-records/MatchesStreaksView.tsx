@@ -13,8 +13,16 @@ interface Props {
 
 export default function MatchesStreaksView({ data, loading, error }: Props) {
   const { t } = useTranslation('matches');
-  if (data && data.streaks.longestLossStreak.length === 0) {
-    return <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>;
+  if (data) {
+    const { longestWinStreak, longestUnbeatenStreak, longestLossStreak, longestWinlessStreak } =
+      data.streaks;
+    const allEmpty = [
+      longestWinStreak,
+      longestUnbeatenStreak,
+      longestLossStreak,
+      longestWinlessStreak,
+    ].every(s => !s.length);
+    if (allEmpty) return <NoDataText>{t('NO_DATA.MATCHES')}</NoDataText>;
   }
 
   return error ? (

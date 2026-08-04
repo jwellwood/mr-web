@@ -8,7 +8,11 @@ import { CustomGridContainer, CustomGridItem } from '../../../../components/grid
 import { APP_ICONS, AppIcon } from '../../../../components/icons';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
-import { createAddGoalscorersSchema, type AddGoalscorersFormData } from './schema';
+import {
+  createAddGoalscorersSchema,
+  type AddGoalscorersFormData,
+  type AddGoalscorersFormInput,
+} from './schema';
 
 interface Props {
   onSubmit: (formData: AddGoalscorersFormData) => void;
@@ -34,7 +38,7 @@ export default function AddGoalscorersForm({
     control,
     formState: { isValid, isDirty },
     reset,
-  } = useForm<AddGoalscorersFormData>({
+  } = useForm<AddGoalscorersFormInput, unknown, AddGoalscorersFormData>({
     defaultValues,
     resolver: zodResolver(schema),
     mode: 'onChange',

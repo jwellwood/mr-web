@@ -16,6 +16,15 @@ export const components = {
   MuiTab,
   MuiListItem,
   MuiDialogContent,
+  MuiBackdrop: {
+    styleOverrides: {
+      root: {
+        '&.MuiDialog-backdrop': {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        },
+      },
+    },
+  },
   MuiCssBaseline: {
     styleOverrides: {
       'input:-webkit-autofill': {

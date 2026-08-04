@@ -29,6 +29,12 @@ export const getTypeStyles = (theme: Theme, type: string) => {
       titleBackground: theme.palette.secondary.main,
       titleTextColor: 'data',
     },
+    warning: {
+      background: theme.palette.secondary.dark,
+      border: `${theme.palette.warning.main} 1px solid`,
+      titleBackground: theme.palette.secondary.main,
+      titleTextColor: 'data',
+    },
     admin: {
       background: theme.palette.secondary.dark,
       border: `${theme.palette.tertiary.main} 1px solid`,
