@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.28.0](https://github.com/jwellwood/mr-web/compare/v0.27.0...v0.28.0) (2026-08-10)
+
+### Features
+
+* improve forms with required and helpers ([d3205cf](https://github.com/jwellwood/mr-web/commit/d3205cf7adf5926f98512c06b63d295e81260086))
+
 ## [0.27.0](https://github.com/jwellwood/mr-web/compare/v0.26.0...v0.27.0) (2026-08-04)
 
 ### Features
