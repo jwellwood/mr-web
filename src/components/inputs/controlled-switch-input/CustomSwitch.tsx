@@ -3,6 +3,7 @@ import Switch from '@mui/material/Switch';
 import React, { ReactElement } from 'react';
 import CustomTypography from '../../typography/custom-typography/CustomTypography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
+import FormHelperText from '../form-helper-text/FormHelperText';
 import { TypedFormError } from '../types';
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
   isList?: boolean;
   color?: 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning';
   errors: TypedFormError[];
+  helperText?: string;
 }
 
 export default function CustomSwitch({
@@ -27,30 +29,34 @@ export default function CustomSwitch({
   disabled,
   color = 'primary',
   errors,
+  helperText,
 }: Props) {
   return (
-    <Box sx={{ background: 'rgba(0, 0, 0, 0.06)' }}>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        paddingLeft={'12px'}
-        height="56px"
-        borderBottom="2px solid rgba(0, 0, 0, 0.12)"
-      >
-        <CustomTypography bold color="label" size="md">
-          {label}
-        </CustomTypography>
-        <Switch
-          color={color}
-          name={name}
-          checked={checked}
-          defaultChecked={defaultChecked}
-          onChange={onCheck}
-          disabled={disabled}
-        />
-      </Stack>
-      {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
-    </Box>
+    <>
+      {helperText ? <FormHelperText helperText={helperText} /> : null}
+      <Box sx={{ background: 'rgba(0, 0, 0, 0.06)' }}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          paddingLeft={'12px'}
+          height="56px"
+          borderBottom="2px solid rgba(0, 0, 0, 0.12)"
+        >
+          <CustomTypography bold color="label" size="md">
+            {label}
+          </CustomTypography>
+          <Switch
+            color={color}
+            name={name}
+            checked={checked}
+            defaultChecked={defaultChecked}
+            onChange={onCheck}
+            disabled={disabled}
+          />
+        </Stack>
+        {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
+      </Box>
+    </>
   );
 }

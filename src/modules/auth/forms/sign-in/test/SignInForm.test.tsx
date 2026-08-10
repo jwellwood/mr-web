@@ -19,8 +19,8 @@ describe('SignInForm', () => {
       </TestWrapper>
     );
 
-    expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
-    expect(screen.getByLabelText('Password')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
   });
 
   it('has the submit button disabled when fields are empty', () => {
@@ -42,8 +42,8 @@ describe('SignInForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('Email Address'), 'user@example.com');
-    await user.type(screen.getByLabelText('Password'), 'secret');
+    await user.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
+    await user.type(screen.getByLabelText(/Password/i), 'secret');
 
     expect(screen.getByRole('button', { name: /submit/i })).not.toBeDisabled();
   });
@@ -58,8 +58,8 @@ describe('SignInForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('Email Address'), 'user@example.com');
-    await user.type(screen.getByLabelText('Password'), 'secret');
+    await user.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
+    await user.type(screen.getByLabelText(/Password/i), 'secret');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {

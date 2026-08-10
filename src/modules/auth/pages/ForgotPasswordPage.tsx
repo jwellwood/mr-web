@@ -17,7 +17,7 @@ export default function ForgotPasswordPage({ loading, error, onSubmit, setTurnst
   const { t, i18n } = useTranslation('auth');
   return (
     <PageContainer title={t('PAGES.FORGOT_PASSWORD_PAGE')}>
-      <AuthLayout helpText={t('FORM.HELP.FORGOT_PASSWORD')}>
+      <AuthLayout>
         <>
           <ForgotPasswordForm
             key={i18n.language}

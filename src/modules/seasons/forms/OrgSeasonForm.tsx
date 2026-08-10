@@ -11,7 +11,7 @@ import {
 } from '../../../components';
 import { TApolloError } from '../../../types/apollo';
 import IncludedTeams from '../components/IncludedOptions';
-import { OrgSeasonSchema, type OrgSeasonFormData } from './schema';
+import { OrgSeasonSchema, type OrgSeasonFormData, requiredFields } from './schema';
 
 interface Props {
   onSubmit: (formData: OrgSeasonFormData) => void;
@@ -60,12 +60,14 @@ export default function OrgSeasonForm({
       submitBtn={{ disabled: !isDirty || !isValid }}
       loading={loading}
       error={error}
+      formSummary={t('FORM.SUMMARY')}
     >
       <ControlledDateInput
         control={control}
         name="yearStarted"
         label={t('FORM.LABELS.YEAR_STARTED')}
         view="year"
+        required={requiredFields.yearStarted}
       />
       <ControlledDateInput
         control={control}
@@ -73,6 +75,7 @@ export default function OrgSeasonForm({
         label={t('FORM.LABELS.YEAR_ENDED')}
         view="year"
         disableFuture={false}
+        required={requiredFields.yearEnded}
       />
       <ControlledSwitchInput
         control={control}
@@ -84,6 +87,7 @@ export default function OrgSeasonForm({
         name="teamIds"
         label={t('FORM.LABELS.TEAMS')}
         options={teamOptions}
+        required={requiredFields.teamIds}
       />
       <IncludedTeams options={selectedTeams} />
       <ControlledMultiSelectInput
@@ -91,6 +95,7 @@ export default function OrgSeasonForm({
         name="competitionIds"
         label={t('FORM.LABELS.COMPETITIONS')}
         options={competitionOptions}
+        required={requiredFields.competitionIds}
       />
       <IncludedTeams options={selectedCompetitions} />
       <ControlledTextInput
@@ -98,6 +103,7 @@ export default function OrgSeasonForm({
         control={control}
         name="comment"
         label={t('FORM.LABELS.COMMENT')}
+        required={requiredFields.comment}
       />
     </FormContainer>
   );

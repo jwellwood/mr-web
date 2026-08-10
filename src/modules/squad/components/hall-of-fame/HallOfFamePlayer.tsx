@@ -16,14 +16,16 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
   return (
     <SectionContainer type={!loading ? 'winner' : undefined}>
       <CustomStack direction="row">
-        <ImageAvatar
-          size="80px"
-          imageUrl={image.url}
-          fallbackIcon="user"
-          iconSize="70px"
-          loading={loading}
-          bordered
-        />
+        <div>
+          <ImageAvatar
+            size="80px"
+            imageUrl={image.url}
+            fallbackIcon="user"
+            iconSize="70px"
+            loading={loading}
+            bordered
+          />
+        </div>
 
         <CustomStack direction="column" spacing={1} justify="center" align="flex-start">
           <CustomButton variant="text" link={`player/${player._id}`}>

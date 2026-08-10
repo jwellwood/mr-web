@@ -18,7 +18,7 @@ describe('EditPasswordPage', () => {
         </TestWrapper>
       </MemoryRouter>
     );
-    expect(screen.getByText('Change Password')).toBeInTheDocument();
+    expect(screen.getByText(/Change Password/i)).toBeInTheDocument();
   });
 
   it('renders the password form fields', () => {
@@ -34,8 +34,8 @@ describe('EditPasswordPage', () => {
       </MemoryRouter>
     );
     expect(screen.getByLabelText(/current password/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/^New Password$/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/^Confirm New Password$/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^New Password/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Confirm New Password/i)).toBeInTheDocument();
   });
 
   it('shows spinner when loading', () => {

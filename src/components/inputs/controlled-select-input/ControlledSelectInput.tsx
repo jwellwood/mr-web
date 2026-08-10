@@ -6,16 +6,20 @@ type Props<T extends object> = {
   name: Path<T> | string;
   control: Control<T>;
   label: string;
+  required?: boolean;
   options: readonly ISelectOptions[];
   disabled?: boolean;
+  helperText?: string;
 };
 
 export default function ControlledSelectInput<T extends object>({
   name,
   control,
   label,
+  required = false,
   options,
   disabled = false,
+  helperText,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name: name as Path<T>,
@@ -28,11 +32,13 @@ export default function ControlledSelectInput<T extends object>({
     <SelectInput
       inputName={name}
       label={label}
+      required={required}
       onChange={onChange}
       value={value}
       options={options}
       errors={error ? [error] : []}
       disabled={disabled}
+      helperText={helperText}
       isDirty={isDirty}
       isValid={!invalid}
     />

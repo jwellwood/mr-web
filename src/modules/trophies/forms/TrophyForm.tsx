@@ -10,7 +10,7 @@ import {
   ControlledDateInput,
 } from '../../../components';
 import { TApolloError } from '../../../types/apollo';
-import { TrophySchema, type TrophyFormData } from './schema';
+import { requiredFields, TrophySchema, type TrophyFormData } from './schema';
 
 interface Props {
   onSubmit: (data: TrophyFormData) => void;
@@ -48,29 +48,54 @@ export default function TrophyForm({
       submitBtn={{ disabled: !isValid || !isDirty }}
       loading={loading}
       error={error}
+      formSummary={t('FORM.SUMMARY')}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
+      <ControlledTextInput
+        control={control}
+        name="name"
+        label={t('FORM.LABELS.NAME')}
+        required={requiredFields.name}
+      />
       <ControlledSelectInput
         control={control}
         name="seasonId"
         label={t('FORM.LABELS.SEASON')}
         options={seasonOptions}
+        required={requiredFields.seasonId}
       />
       <ControlledDateInput
         control={control}
         name="year"
         label={t('FORM.LABELS.YEAR')}
         view="year"
+        required={requiredFields.year}
       />
-      <ControlledSwitchInput control={control} label={t('FORM.LABELS.IS_WINNER')} name="isWinner" />
-      <ControlledSwitchInput control={control} label={t('FORM.LABELS.IS_FINAL')} name="isFinal" />
+      <ControlledSwitchInput
+        control={control}
+        label={t('FORM.LABELS.IS_WINNER')}
+        name="isWinner"
+        helperText={t('FORM.HELPERS.IS_WINNER')}
+      />
+      <ControlledSwitchInput
+        control={control}
+        label={t('FORM.LABELS.IS_FINAL')}
+        name="isFinal"
+        helperText={t('FORM.HELPERS.IS_FINAL')}
+      />
       {isFinal && (
-        <ControlledTextInput control={control} name="opponent" label={t('FORM.LABELS.OPPONENT')} />
+        <ControlledTextInput
+          control={control}
+          name="opponent"
+          label={t('FORM.LABELS.OPPONENT')}
+          required={requiredFields.opponent}
+          helperText={t('FORM.HELPERS.OPPONENT')}
+        />
       )}
       <ControlledTextInput
         control={control}
         name="comment"
         label={t('FORM.LABELS.COMMENT')}
+        required={requiredFields.comment}
         multiline
       />
     </FormContainer>

@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client/react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { CustomButton } from '../../../../components';
 import { CustomStack } from '../../../../components/grids';
@@ -11,6 +12,7 @@ import RequestAccessForm from './RequestAccessForm';
 import { RequestAccessData } from './schema';
 
 export default function RequestTeamAdmin() {
+  const { t } = useTranslation('team');
   const { teamId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
   const [open, setOpen] = useState(false);
@@ -33,7 +35,7 @@ export default function RequestTeamAdmin() {
 
       dispatch(
         showAlert({
-          text: 'Admin access requested successfully',
+          text: t('ALERTS.ADMIN_ACCESS.SUCCESS'),
           type: 'success',
         })
       );
@@ -43,7 +45,7 @@ export default function RequestTeamAdmin() {
       console.error(error);
       dispatch(
         showAlert({
-          text: 'Failed to request admin access',
+          text: t('ALERTS.ADMIN_ACCESS.ERROR', { error: (error as Error).message }),
           type: 'error',
         })
       );
@@ -54,10 +56,10 @@ export default function RequestTeamAdmin() {
     <CustomStack>
       {
         <CustomButton color="tertiary" onClick={() => setOpen(true)}>
-          Request Admin Access
+          {t('FORM.REQUEST_ACCESS.TITLE')}
         </CustomButton>
       }
-      <FormModal open={open} onClose={() => setOpen(false)} title="Request Admin Access">
+      <FormModal open={open} onClose={() => setOpen(false)} title={t('FORM.REQUEST_ACCESS.TITLE')}>
         <RequestAccessForm
           defaultValues={{ accessCode: '' }}
           onSubmit={onSubmit}

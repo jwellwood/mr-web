@@ -24,8 +24,8 @@ describe('EditPasswordForm', () => {
     expect(submit).toBeDisabled();
 
     const password = screen.getByLabelText(/current password/i);
-    const newPassword = screen.getByLabelText(/^New Password$/i);
-    const confirm = screen.getByLabelText(/^Confirm New Password$/i);
+    const newPassword = screen.getByLabelText(/^New Password/i);
+    const confirm = screen.getByLabelText(/^Confirm New Password/i);
 
     await userEvent.type(password, 'oldpass');
     await userEvent.type(newPassword, 'abcdef');
@@ -55,8 +55,8 @@ describe('EditPasswordForm', () => {
     );
 
     const submit = screen.getByRole('button', { name: /submit/i });
-    const newPassword = screen.getByLabelText(/^New Password$/i);
-    const confirm = screen.getByLabelText(/^Confirm New Password$/i);
+    const newPassword = screen.getByLabelText(/^New Password/i);
+    const confirm = screen.getByLabelText(/Confirm New Password/i);
 
     await userEvent.type(newPassword, 'abcdef');
     await userEvent.type(confirm, 'abcdeg');

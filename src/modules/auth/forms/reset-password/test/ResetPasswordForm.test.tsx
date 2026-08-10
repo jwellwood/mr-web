@@ -19,8 +19,8 @@ describe('ResetPasswordForm', () => {
       </TestWrapper>
     );
 
-    expect(screen.getByLabelText('New Password')).toBeInTheDocument();
-    expect(screen.getByLabelText('Confirm New Password')).toBeInTheDocument();
+    expect(screen.getByLabelText(/^New Password/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Confirm New Password/i)).toBeInTheDocument();
   });
 
   it('has the submit button disabled when fields are empty', () => {
@@ -42,8 +42,8 @@ describe('ResetPasswordForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('New Password'), 'secret123');
-    await user.type(screen.getByLabelText('Confirm New Password'), 'secret123');
+    await user.type(screen.getByLabelText(/^New Password/i), 'secret123');
+    await user.type(screen.getByLabelText(/^Confirm New Password/i), 'secret123');
 
     expect(screen.getByRole('button', { name: /submit/i })).not.toBeDisabled();
   });
@@ -57,8 +57,8 @@ describe('ResetPasswordForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('New Password'), 'secret123');
-    await user.type(screen.getByLabelText('Confirm New Password'), 'different1');
+    await user.type(screen.getByLabelText(/^New Password/i), 'secret123');
+    await user.type(screen.getByLabelText(/^Confirm New Password/i), 'different1');
 
     expect(screen.getByRole('button', { name: /submit/i })).toBeDisabled();
   });
@@ -73,8 +73,8 @@ describe('ResetPasswordForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('New Password'), 'secret123');
-    await user.type(screen.getByLabelText('Confirm New Password'), 'secret123');
+    await user.type(screen.getByLabelText(/^New Password/i), 'secret123');
+    await user.type(screen.getByLabelText(/^Confirm New Password/i), 'secret123');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {

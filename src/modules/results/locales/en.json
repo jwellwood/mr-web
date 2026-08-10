@@ -131,6 +131,12 @@
     "ADD_GOALSCORER": "Add Goalscorer",
     "ADD_MATCH": "Add Match"
   },
+  "STATUS": {
+    "SUBMITTED": "Submitted",
+    "PENDING": "Pending",
+    "CONFIRMED": "Confirmed",
+    "DISPUTED": "Disputed"
+  },
   "MESSAGES": {
     "DISPUTE_RESULT": "Are you sure you want to dispute this result? This will mark the result as disputed and it will need to be reviewed by an admin.",
     "CONFIRM_RESULTS": "Are you sure you want to confirm {{count}} results? They will be marked as confirmed and cannot be disputed by users, but can still be edited by admins.",

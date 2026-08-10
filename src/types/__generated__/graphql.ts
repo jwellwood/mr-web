@@ -89,7 +89,6 @@ export type AddTeamInput = {
   isActive: Scalars['Boolean']['input'];
   location?: InputMaybe<Scalars['String']['input']>;
   teamName: Scalars['String']['input'];
-  yearFounded?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type AddTeamSeasonInput = {

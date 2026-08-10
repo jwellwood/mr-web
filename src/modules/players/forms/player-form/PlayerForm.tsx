@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import {
   FormContainer,
@@ -13,7 +13,7 @@ import {
 import { positionOptions } from '../../../../constants';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
-import { type PlayerFormData, PlayerSchema } from './schema';
+import { type PlayerFormData, PlayerSchema, requiredFields } from './schema';
 
 interface Props {
   onSubmit: (data: PlayerFormData) => void;
@@ -44,6 +44,8 @@ export default function PlayerForm({
     mode: 'onChange',
   });
 
+  const isHallOfFame = useWatch({ control, name: 'isHallOfFame' });
+
   return (
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
@@ -52,34 +54,44 @@ export default function PlayerForm({
       loading={loading}
       error={error}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
+      <ControlledTextInput
+        control={control}
+        name="name"
+        label={t('FORM.LABELS.NAME')}
+        required={requiredFields.name}
+      />
       <ControlledSelectInput
         control={control}
         name="nationality"
         label={t('FORM.LABELS.NATIONALITY')}
         options={countryOptions}
+        required={requiredFields.nationality}
       />
       <ControlledDateInput
         control={control}
         name="dateOfBirth"
         label={t('FORM.LABELS.DATE_OF_BIRTH')}
+        required={requiredFields.dateOfBirth}
       />
       <ControlledDateInput
         control={control}
         name="yearJoined"
         label={t('FORM.LABELS.YEAR_JOINED')}
+        required={requiredFields.yearJoined}
         view="year"
       />
       <ControlledSelectInput
         control={control}
         name="position"
         label={t('FORM.LABELS.POSITION')}
+        required={requiredFields.position}
         options={positionOptions}
       />
       <ControlledSelectInput
         control={control}
         name="squadNumber"
         label={t('FORM.LABELS.SQUAD_NUMBER')}
+        required={requiredFields.squadNumber}
         options={getNumberOptions(99)}
       />
       <ControlledMultiSelectInput
@@ -87,6 +99,7 @@ export default function PlayerForm({
         name="seasonIds"
         options={seasonOptions}
         label={t('FORM.LABELS.SEASONS')}
+        required={requiredFields.seasonIds}
       />
       <ControlledSwitchInput
         control={control}
@@ -103,11 +116,15 @@ export default function PlayerForm({
         name="isHallOfFame"
         label={t('FORM.LABELS.IS_HALL_OF_FAME')}
       />
-      <ControlledTextInput
-        control={control}
-        name="description"
-        label={t('FORM.LABELS.DESCRIPTION')}
-      />
+      {isHallOfFame && (
+        <ControlledTextInput
+          control={control}
+          name="description"
+          label={t('FORM.LABELS.DESCRIPTION')}
+          helperText={t('FORM.HELPERS.DESCRIPTION')}
+          required={requiredFields.description}
+        />
+      )}
     </FormContainer>
   );
 }

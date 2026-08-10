@@ -34,7 +34,7 @@ export const mapTeamDataToFormData = (team: T_FETCH_TEAM_QUERY['team']): EditTea
     teamName: team.teamName,
     yearFounded: team.yearFounded ? new Date(team.yearFounded) : new Date(),
     location: team.location ?? null,
-    country: team.country ?? undefined,
+    country: team.country ?? '',
     stadiumName: team.stadiumName ?? undefined,
     stadiumLocation: team.stadiumLocation ?? undefined,
     stadiumCapacity: team.stadiumCapacity ?? undefined,

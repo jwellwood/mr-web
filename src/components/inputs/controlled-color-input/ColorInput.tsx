@@ -2,6 +2,7 @@ import { Box, Stack, TextField } from '@mui/material';
 import React from 'react';
 import { CustomTypography } from '../../typography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
+import FormHelperText from '../form-helper-text/FormHelperText';
 import type { TypedFormError } from '../types';
 
 interface Props {
@@ -17,6 +18,8 @@ interface Props {
   isEmail?: boolean;
   multiline?: boolean;
   disabled?: boolean;
+  helperText?: string;
+  required?: boolean;
 }
 
 export default function ColorInput({
@@ -26,10 +29,13 @@ export default function ColorInput({
   onChange,
   label,
   errors,
+  required = false,
   disabled = false,
+  helperText,
 }: Props) {
   return (
     <Box sx={{ background: 'rgba(0, 0, 0, 0.06)' }}>
+      {helperText ? <FormHelperText helperText={helperText} /> : null}
       <Stack
         direction="row"
         justifyContent="space-between"
@@ -54,6 +60,7 @@ export default function ColorInput({
             },
           }}
           disabled={disabled}
+          required={required}
         />
         {errors && errors.length ? <FormErrorMessage error={errors[0]} /> : null}
       </Stack>

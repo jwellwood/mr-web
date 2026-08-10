@@ -47,15 +47,15 @@ describe('ResetPasswordContainer', () => {
 
   it('renders the New Password and Confirm New Password inputs', () => {
     renderComponent();
-    expect(screen.getByLabelText('New Password')).toBeInTheDocument();
-    expect(screen.getByLabelText('Confirm New Password')).toBeInTheDocument();
+    expect(screen.getByLabelText(/^New Password/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/^Confirm New Password/i)).toBeInTheDocument();
   });
 
   it('shows a spinner and hides inputs when the mutation is loading', () => {
     setUseMutationImpl(() => [async () => undefined, { loading: true }]);
     renderComponent();
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
-    expect(screen.queryByLabelText('New Password')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/^New Password/i)).not.toBeInTheDocument();
   });
 
   it('calls the mutation with the correct password and URL token on form submit', async () => {
@@ -64,8 +64,8 @@ describe('ResetPasswordContainer', () => {
     const user = userEvent.setup();
     renderComponent();
 
-    await user.type(screen.getByLabelText('New Password'), 'NewSecure1');
-    await user.type(screen.getByLabelText('Confirm New Password'), 'NewSecure1');
+    await user.type(screen.getByLabelText(/^New Password/i), 'NewSecure1');
+    await user.type(screen.getByLabelText(/^Confirm New Password/i), 'NewSecure1');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {
@@ -80,8 +80,8 @@ describe('ResetPasswordContainer', () => {
     const user = userEvent.setup();
     renderComponent();
 
-    await user.type(screen.getByLabelText('New Password'), 'NewSecure1');
-    await user.type(screen.getByLabelText('Confirm New Password'), 'NewSecure1');
+    await user.type(screen.getByLabelText(/^New Password/i), 'NewSecure1');
+    await user.type(screen.getByLabelText(/^Confirm New Password/i), 'NewSecure1');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {

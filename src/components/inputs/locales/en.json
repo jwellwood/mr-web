@@ -1,8 +1,8 @@
 {
   "VALIDATION": {
     "required": "This field is required",
-    "too_small": "The entry is too short (minimum {{min}})",
-    "too_long": "The entry is too long (maximum {{max}})",
+    "too_small": "Use minimum {{min}}",
+    "too_long": "Use maximum {{max}}",
     "pattern": "The entry doesn't match the required pattern",
     "high": "The number is too high (maximum {{max}})",
     "low": "The number is too low (minimum {{min}})",

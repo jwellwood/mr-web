@@ -8,6 +8,7 @@ type Props<T extends object> = {
   label?: string | ReactElement;
   placement?: 'top' | 'end' | 'start' | 'bottom';
   disabled?: boolean;
+  helperText?: string;
 };
 
 export default function ControlledSwitchInput<T extends object>({
@@ -16,6 +17,7 @@ export default function ControlledSwitchInput<T extends object>({
   label,
   placement,
   disabled = false,
+  helperText,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name,
@@ -32,6 +34,7 @@ export default function ControlledSwitchInput<T extends object>({
       checked={value as boolean}
       onCheck={e => onChange(e.target.checked)}
       disabled={disabled}
+      helperText={helperText}
       errors={error ? [error] : []}
     />
   );

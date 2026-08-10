@@ -5,18 +5,22 @@ type Props<T extends object> = {
   name: Path<T>;
   control: Control<T>;
   label: string;
+  required?: boolean;
   multiline?: boolean;
   isPassword?: boolean;
   placeholder?: string;
+  helperText?: string;
 };
 
 export default function ControlledTextInput<T extends object>({
   control,
   name,
   label,
+  required = false,
   multiline = false,
   isPassword = false,
   placeholder,
+  helperText,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name,
@@ -31,6 +35,7 @@ export default function ControlledTextInput<T extends object>({
       inputName={name}
       value={value}
       label={label}
+      required={required}
       multiline={multiline}
       onChange={onChange}
       onBlur={onBlur}
@@ -38,6 +43,7 @@ export default function ControlledTextInput<T extends object>({
       placeholder={placeholder}
       isDirty={isDirty}
       isValid={!invalid}
+      helperText={helperText}
     />
   );
 }

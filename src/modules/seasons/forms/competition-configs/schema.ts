@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { getRequiredFields } from '../../../../utils';
 import { TTiebreaker } from '../../constants';
 
 const CompConfigTeamSchema = z.object({
@@ -19,6 +20,8 @@ export const UpdateCompConfigSchema = z.object({
   ]),
   teams: z.array(CompConfigTeamSchema).optional(),
 });
+
+export const requiredFields = getRequiredFields(UpdateCompConfigSchema);
 
 export type UpdateCompConfigFormInput = z.input<typeof UpdateCompConfigSchema>;
 export type UpdateCompConfigFormData = z.output<typeof UpdateCompConfigSchema>;

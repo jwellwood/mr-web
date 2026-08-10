@@ -68,7 +68,6 @@ input AddResultInput {
 
 input AddTeamInput {
   teamName: String!
-  yearFounded: String
   location: String
   country: String
   isActive: Boolean!

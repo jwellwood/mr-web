@@ -8,6 +8,12 @@
     "EDIT_TROPHY": "Editar Trofeo"
   },
   "FORM": {
+    "SUMMARY": "Si tu equipo ha ganado un trofeo o ha quedado como subcampeón, puedes agregarlo aquí. También puedes agregar un comentario sobre el trofeo.",
+    "HELPERS": {
+      "IS_WINNER": "Marca esta casilla si tu equipo ganó el trofeo, déjala sin seleccionar si el equipo fue subcampeón.",
+      "IS_FINAL": "Marca esta casilla si tu equipo llegó a la final de una competición de copa. Para una competición de liga, déjala sin seleccionar.",
+      "OPPONENT": "Introduce el nombre del equipo contrario en el partido final de la competición."
+    },
     "LABELS": {
       "NAME": "Nombre",
       "SEASON": "Temporada",

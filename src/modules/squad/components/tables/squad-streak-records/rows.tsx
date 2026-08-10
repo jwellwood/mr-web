@@ -12,36 +12,34 @@ export const rows = (t: TFunction, data?: T_FETCH_SQUAD_STREAKS_QUERY['streaks']
     combined: { value: 0, players: [] },
     played: { value: 0, players: [] },
   };
-  const tableData = data
-    ? [
-        {
-          type: 'played',
-          label: t('STREAKS.PLAYED'),
-          value: played?.value,
-          playerNames: played?.players.map(p => ({ name: p.playerName, id: p.playerId })),
-        },
-        {
-          type: 'goals',
-          label: t('STREAKS.GOALS'),
-          value: goals?.value,
-          playerNames: goals?.players.map(p => ({ name: p.playerName, id: p.playerId })),
-        },
-        {
-          type: 'assists',
-          label: t('STREAKS.ASSISTS'),
-          value: assists?.value,
-          playerNames: assists?.players.map(p => ({ name: p.playerName, id: p.playerId })),
-        },
-        {
-          type: 'combined',
-          label: t('STREAKS.COMBINED'),
-          value: combined?.value,
-          playerNames: combined?.players.map(p => ({ name: p.playerName, id: p.playerId })),
-        },
-      ]
-    : [];
+  const tableData = [
+    {
+      type: 'played',
+      label: t('STREAKS.PLAYED'),
+      value: played?.value,
+      playerNames: played?.players.map(p => ({ name: p.playerName, id: p.playerId })),
+    },
+    {
+      type: 'goals',
+      label: t('STREAKS.GOALS'),
+      value: goals?.value,
+      playerNames: goals?.players.map(p => ({ name: p.playerName, id: p.playerId })),
+    },
+    {
+      type: 'assists',
+      label: t('STREAKS.ASSISTS'),
+      value: assists?.value,
+      playerNames: assists?.players.map(p => ({ name: p.playerName, id: p.playerId })),
+    },
+    {
+      type: 'combined',
+      label: t('STREAKS.COMBINED'),
+      value: combined?.value,
+      playerNames: combined?.players.map(p => ({ name: p.playerName, id: p.playerId })),
+    },
+  ];
 
-  return tableData.map(item => {
+  return tableData?.map(item => {
     return {
       label: item.label,
       value: item.value,

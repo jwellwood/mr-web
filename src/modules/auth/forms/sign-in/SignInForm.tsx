@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import { SignInFormData, SignInSchema } from './schema';
+import { requiredFields, SignInFormData, SignInSchema } from './schema';
 
 interface Props {
   defaultValues: SignInFormData;
@@ -29,12 +29,18 @@ export default function SignInForm({ defaultValues, onSubmit, loading }: Props) 
       minWidth={100}
       submitBtn={{ confirm: { show: false }, disabled: !isValid }}
     >
-      <ControlledTextInput control={control} name="email" label={t('FORM.LABELS.EMAIL')} />
+      <ControlledTextInput
+        control={control}
+        name="email"
+        label={t('FORM.LABELS.EMAIL')}
+        required={requiredFields.email}
+      />
       <ControlledTextInput
         control={control}
         name="password"
         label={t('FORM.LABELS.PASSWORD')}
         isPassword={true}
+        required={requiredFields.password}
       />
     </FormContainer>
   );

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { SignUpSchema } from '../schema';
 
-const schema = SignUpSchema();
+const schema = SignUpSchema;
 
 describe('SignUpSchema', () => {
   const validData = {
@@ -18,13 +18,13 @@ describe('SignUpSchema', () => {
   it('fails when username is too short', () => {
     const result = schema.safeParse({ ...validData, username: 'a' });
     expect(result.success).toBe(false);
-    expect(result.error?.issues[0].message).toBe('The entry is too short (minimum 2)');
+    expect(result.error?.issues[0].message).toBe('Use minimum 2');
   });
 
   it('fails when username is too long', () => {
     const result = schema.safeParse({ ...validData, username: 'a'.repeat(21) });
     expect(result.success).toBe(false);
-    expect(result.error?.issues[0].message).toBe('The entry is too long (maximum 20)');
+    expect(result.error?.issues[0].message).toBe('Use maximum 20');
   });
 
   it('fails with an invalid email', () => {
@@ -35,7 +35,7 @@ describe('SignUpSchema', () => {
   it('fails when password is too short', () => {
     const result = schema.safeParse({ ...validData, password: '12345' });
     expect(result.success).toBe(false);
-    expect(result.error?.issues[0].message).toBe('The entry is too short (minimum 6)');
+    expect(result.error?.issues[0].message).toBe('Use minimum 6');
   });
 
   it('fails when acceptTerms is false', () => {

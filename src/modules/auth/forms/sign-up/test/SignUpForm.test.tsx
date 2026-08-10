@@ -19,9 +19,9 @@ describe('SignUpForm', () => {
       </TestWrapper>
     );
 
-    expect(screen.getByLabelText('Username')).toBeInTheDocument();
-    expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
-    expect(screen.getByLabelText('Password')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Username/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
     expect(screen.getByRole('switch')).toBeInTheDocument();
   });
 
@@ -44,9 +44,9 @@ describe('SignUpForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('Username'), 'john');
-    await user.type(screen.getByLabelText('Email Address'), 'user@example.com');
-    await user.type(screen.getByLabelText('Password'), 'secret123');
+    await user.type(screen.getByLabelText(/Username/i), 'john');
+    await user.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
+    await user.type(screen.getByLabelText(/Password/i), 'secret123');
     await user.click(screen.getByRole('switch'));
 
     expect(screen.getByRole('button', { name: /submit/i })).not.toBeDisabled();
@@ -62,9 +62,9 @@ describe('SignUpForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('Username'), 'john');
-    await user.type(screen.getByLabelText('Email Address'), 'user@example.com');
-    await user.type(screen.getByLabelText('Password'), 'secret123');
+    await user.type(screen.getByLabelText(/Username/i), 'john');
+    await user.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
+    await user.type(screen.getByLabelText(/Password/i), 'secret123');
     await user.click(screen.getByRole('switch'));
     await user.click(screen.getByRole('button', { name: /submit/i }));
 

@@ -46,15 +46,15 @@ describe('SignInContainer', () => {
 
   it('renders the email and password form inputs', () => {
     renderComponent();
-    expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
-    expect(screen.getByLabelText('Password')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
   });
 
   it('shows a spinner and hides inputs when the mutation is loading', () => {
     setUseMutationImpl(() => [async () => undefined, { loading: true }]);
     renderComponent();
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
-    expect(screen.queryByLabelText('Email Address')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/Email Address/i)).not.toBeInTheDocument();
   });
 
   it('calls the mutation with the correct credentials on form submit', async () => {
@@ -63,8 +63,8 @@ describe('SignInContainer', () => {
     const user = userEvent.setup();
     renderComponent();
 
-    await user.type(screen.getByLabelText('Email Address'), 'test@example.com');
-    await user.type(screen.getByLabelText('Password'), 'Secret123');
+    await user.type(screen.getByLabelText(/Email Address/i), 'test@example.com');
+    await user.type(screen.getByLabelText(/Password/i), 'Secret123');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {
@@ -82,8 +82,8 @@ describe('SignInContainer', () => {
     const user = userEvent.setup();
     renderComponent();
 
-    await user.type(screen.getByLabelText('Email Address'), 'test@example.com');
-    await user.type(screen.getByLabelText('Password'), 'Secret123');
+    await user.type(screen.getByLabelText(/Email Address/i), 'test@example.com');
+    await user.type(screen.getByLabelText(/Password/i), 'Secret123');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {

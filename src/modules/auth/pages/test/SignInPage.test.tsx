@@ -30,8 +30,8 @@ describe('SignInPage', () => {
         </TestWrapper>
       </MemoryRouter>
     );
-    expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
-    expect(screen.getByLabelText('Password')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
   });
 
   it('renders the authorization links', () => {

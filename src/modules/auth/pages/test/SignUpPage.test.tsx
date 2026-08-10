@@ -30,8 +30,8 @@ describe('SignUpPage', () => {
         </TestWrapper>
       </MemoryRouter>
     );
-    expect(screen.getByLabelText('Username')).toBeInTheDocument();
-    expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Username/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
   });
 
   it('shows the email confirmation alert instead of the form once email is set', () => {
@@ -42,7 +42,7 @@ describe('SignUpPage', () => {
         </TestWrapper>
       </MemoryRouter>
     );
-    expect(screen.queryByLabelText('Username')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/Username/i)).not.toBeInTheDocument();
     expect(
       screen.getByText(/validation email has been sent to user@example.com/i)
     ).toBeInTheDocument();

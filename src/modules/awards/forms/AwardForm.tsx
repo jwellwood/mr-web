@@ -8,7 +8,7 @@ import {
   type ISelectOptions,
 } from '../../../components';
 import { TApolloError } from '../../../types/apollo';
-import { AwardSchema, type AwardFormData } from './schema';
+import { AwardSchema, requiredFields, type AwardFormData } from './schema';
 
 interface Props {
   onSubmit: (data: AwardFormData) => void;
@@ -43,12 +43,14 @@ export default function AwardForm({
       loading={loading}
       error={error}
       submitBtn={{ disabled: !isDirty || !isValid }}
+      formSummary={t('FORM.SUMMARY')}
     >
       <ControlledTextInput
         control={control}
         name="awardName"
         label={t('FORM.LABELS.AWARD_NAME')}
         placeholder={t('FORM.LABELS.AWARD_NAME_PLACEHOLDER')}
+        required={requiredFields.awardName}
       />
       <ControlledMultiSelectInput
         control={control}
@@ -56,9 +58,21 @@ export default function AwardForm({
         label={t('FORM.LABELS.WINNERS')}
         options={playersOptions}
         showLabels
+        required={requiredFields.winners}
       />
-      <ControlledTextInput control={control} name="awardValue" label={t('FORM.LABELS.VALUE')} />
-      <ControlledTextInput control={control} name="comment" label={t('FORM.LABELS.COMMENT')} />
+      <ControlledTextInput
+        control={control}
+        name="awardValue"
+        label={t('FORM.LABELS.VALUE')}
+        required={requiredFields.awardValue}
+        helperText={t('FORM.HELPERS.VALUE')}
+      />
+      <ControlledTextInput
+        control={control}
+        name="comment"
+        label={t('FORM.LABELS.COMMENT')}
+        required={requiredFields.comment}
+      />
     </FormContainer>
   );
 }

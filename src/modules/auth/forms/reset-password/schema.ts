@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../../utils';
 
 const t = (key: string, options?: Record<string, unknown>) =>
   i18n.t(key, { ns: 'inputs', ...options });
@@ -13,6 +14,8 @@ export const ResetPasswordSchema = z
     path: ['confirmPassword'],
     message: t('VALIDATION.password.no_match'),
   });
+
+export const requiredFields = getRequiredFields(ResetPasswordSchema);
 
 export type ResetPasswordFormData = z.infer<typeof ResetPasswordSchema>;
 

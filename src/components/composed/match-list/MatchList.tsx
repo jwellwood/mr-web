@@ -12,8 +12,15 @@ interface Props {
   loading: boolean;
   showBadge?: boolean;
   showComp?: boolean;
+  length?: number;
 }
-export default function MatchList({ matches, loading, showBadge = true, showComp = true }: Props) {
+export default function MatchList({
+  matches,
+  loading,
+  showBadge = true,
+  showComp = true,
+  length = 12,
+}: Props) {
   const { orgId, teamId, matchId } = useCustomParams();
   const isWinnerSide = (match: IMatchesListMatch) => {
     if (match.isHome && match.winnerSide?.toUpperCase() === 'HOME') return true;
@@ -45,7 +52,7 @@ export default function MatchList({ matches, loading, showBadge = true, showComp
     };
   });
   return loading ? (
-    <MatchLoading showBadge={showBadge} />
+    <MatchLoading showBadge={showBadge} length={length} />
   ) : (
     <LinksList links={data} loading={loading} rows={20} />
   );

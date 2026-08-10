@@ -87,6 +87,12 @@
     }
   },
   "FORM": {
+    "REQUEST_ACCESS": {
+      "SUMMARY": "Un administrador actual te proporcionará un código de acceso para obtener acceso de administrador a esta organización. Por favor, ingresa el código a continuación y haz clic en enviar."
+    },
+    "SET_ADMIN_ACCESS": {
+      "SUMMARY": "Puedes establecer un código de acceso de administrador para este equipo. Copia este código y envíalo al usuario correspondiente. Se puede usar este código para obtener acceso de administrador a este equipo"
+    },
     "LABELS": {
       "NAME": "Nombre de la Organización",
       "WEBSITE": "Sitio Web",

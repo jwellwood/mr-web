@@ -37,9 +37,9 @@ const renderComponent = () =>
 
 /** Fill all required sign-up fields so the form becomes valid. */
 const fillSignUpForm = async (user: ReturnType<typeof userEvent.setup>) => {
-  await user.type(screen.getByLabelText('Username'), 'testuser');
-  await user.type(screen.getByLabelText('Email Address'), 'test@example.com');
-  await user.type(screen.getByLabelText('Password'), 'Secret123');
+  await user.type(screen.getByLabelText(/Username/i), 'testuser');
+  await user.type(screen.getByLabelText(/Email Address/i), 'test@example.com');
+  await user.type(screen.getByLabelText(/Password/i), 'Secret123');
   // Toggle the acceptTerms switch (MUI Switch uses role="switch")
   await user.click(screen.getByRole('switch'));
 };
@@ -56,16 +56,16 @@ describe('SignUpContainer', () => {
 
   it('renders the sign-up form inputs', () => {
     renderComponent();
-    expect(screen.getByLabelText('Username')).toBeInTheDocument();
-    expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
-    expect(screen.getByLabelText('Password')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Username/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
+    expect(screen.getByLabelText(/Password/i)).toBeInTheDocument();
   });
 
   it('shows a spinner and hides the form when the mutation is loading', () => {
     setUseMutationImpl(() => [async () => undefined, { loading: true }]);
     renderComponent();
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
-    expect(screen.queryByLabelText('Username')).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/Username/i)).not.toBeInTheDocument();
   });
 
   it('dispatches a CAPTCHA warning when the form is submitted without a Turnstile token', async () => {

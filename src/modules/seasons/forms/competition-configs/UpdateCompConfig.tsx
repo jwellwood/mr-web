@@ -7,6 +7,7 @@ import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { FETCH_COMPETITIONS } from '../../../competitions/graphql';
 import { FETCH_LEAGUE_TABLES } from '../../../results/graphql';
+import { TTiebreaker } from '../../constants';
 import { FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../../graphql';
 import { UPDATE_COMPETITION_CONFIGS } from '../../graphql';
 import type { CompetitionConfig } from '../../helpers/mapOrgSeasonForm';
@@ -19,6 +20,7 @@ import type { UpdateCompConfigFormData } from './schema';
 import UpdateCompConfigForm from './UpdateCompConfigForm';
 
 interface Props {
+  competitionName?: string;
   competitionId: string;
   existingConfig?: CompetitionConfig;
   numberOfTeams: number;
@@ -28,6 +30,7 @@ interface Props {
 }
 
 export default function UpdateCompConfig({
+  competitionName,
   competitionId,
   existingConfig,
   numberOfTeams,
@@ -58,6 +61,11 @@ export default function UpdateCompConfig({
       })),
     [seasonTeamIds]
   );
+
+  const tiebreakerOptions = [
+    { label: t('CONFIG.HEAD_TO_HEAD'), value: TTiebreaker.HEAD_TO_HEAD },
+    { label: t('CONFIG.GOAL_DIFFERENCE'), value: TTiebreaker.GOAL_DIFFERENCE },
+  ];
 
   const [updateCompConfigs, { loading }] = useMutation(UPDATE_COMPETITION_CONFIGS, {
     refetchQueries: [
@@ -103,6 +111,7 @@ export default function UpdateCompConfig({
 
   return (
     <UpdateCompConfigForm
+      competitionName={competitionName}
       defaultValues={defaultValues!}
       onSubmit={onSubmit}
       numberOfTeams={numberOfTeams}
@@ -110,6 +119,7 @@ export default function UpdateCompConfig({
       loading={loading}
       competitionType={competitionType}
       teamOptions={teamOptions}
+      tiebreakerOptions={tiebreakerOptions}
     />
   );
 }

@@ -2,6 +2,7 @@ import { FormControl } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import React from 'react';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
+import FormHelperText from '../form-helper-text/FormHelperText';
 import { TypedFormError } from '../types';
 
 interface Props {
@@ -10,7 +11,9 @@ interface Props {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   label?: string;
+  required?: boolean;
   errors: TypedFormError[];
+  helperText?: string;
   isPassword?: boolean;
   isEmail?: boolean;
   multiline?: boolean;
@@ -26,7 +29,9 @@ export default function TextInput({
   value,
   onChange,
   label,
+  required = false,
   errors,
+  helperText,
   isPassword,
   multiline,
   role = 'textbox',
@@ -38,6 +43,7 @@ export default function TextInput({
 }: Props) {
   return (
     <FormControl fullWidth variant="standard">
+      {helperText ? <FormHelperText helperText={helperText} /> : null}
       <TextField
         variant="filled"
         size="small"
@@ -50,6 +56,7 @@ export default function TextInput({
         onChange={onChange}
         onBlur={onBlur}
         label={label}
+        required={required}
         fullWidth
         disabled={disabled}
         placeholder={placeholder}

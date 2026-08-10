@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../../utils';
 import zodDate from '../../../../utils/dev/zodDate';
 
 const t = (key: string, options?: Record<string, unknown>) =>
@@ -12,6 +13,8 @@ export const OrganizationSchema = z.object({
   city: z.string().min(1, t('VALIDATION.required')),
   country: z.string().min(1, t('VALIDATION.required')),
 });
+
+export const requiredFields = getRequiredFields(OrganizationSchema);
 
 export type OrganizationFormData = z.infer<typeof OrganizationSchema>;
 

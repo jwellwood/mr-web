@@ -9,7 +9,7 @@ import {
 } from '../../../../components';
 import { useNationality } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
-import { EditProfileSchema, type EditProfileFormData } from './schema';
+import { EditProfileSchema, type EditProfileFormData, requiredFields } from './schema';
 
 interface Props {
   onSubmit: (event: EditProfileFormData) => Promise<void> | void;
@@ -40,18 +40,30 @@ export default function EditProfileForm({ onSubmit, defaultValues, loading, erro
       submitBtn={{ disabled: !isDirty || !isValid }}
       onReset={() => reset(defaultValues)}
     >
-      <ControlledTextInput control={control} name="username" label={t('FORM.LABELS.USERNAME')} />
-      <ControlledTextInput control={control} name="email" label={t('FORM.LABELS.EMAIL_ADDRESS')} />
+      <ControlledTextInput
+        control={control}
+        name="username"
+        label={t('FORM.LABELS.USERNAME')}
+        required={requiredFields.username}
+      />
+      <ControlledTextInput
+        control={control}
+        name="email"
+        label={t('FORM.LABELS.EMAIL_ADDRESS')}
+        required={requiredFields.email}
+      />
       <ControlledDateInput
         control={control}
         name="dateOfBirth"
         label={t('FORM.LABELS.DATE_OF_BIRTH')}
+        required={requiredFields.dateOfBirth}
       />
       <ControlledSelectInput
         control={control}
         name="nationality"
         label={t('FORM.LABELS.NATIONALITY')}
         options={nationalityOptions}
+        required={requiredFields.nationality}
       />
     </FormContainer>
   );

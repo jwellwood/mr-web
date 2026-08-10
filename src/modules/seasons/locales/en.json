@@ -18,6 +18,7 @@
     "SEASON_ADMIN": "Season Admin"
   },
   "FORM": {
+    "SUMMARY": "Add the teams and competitions that will be part of this season. You can can then configure them in the Season Admin > Configuration tab.",
     "LABELS": {
       "YEAR_STARTED": "Year Started",
       "YEAR_ENDED": "Year Ended",
@@ -38,6 +39,14 @@
     "NO": "No"
   },
   "CONFIG": {
+    "FORM": {
+      "HELPERS": {
+        "ROUNDS": "Add the number of rounds that will be played in this competition. For example, if there are 10 teams and 2 rounds, each team will play 18 matches (9 home and 9 away).",
+        "TEAMS": "Add the teams that will be part of this competition. You can also set starting points for each team.",
+        "SPLIT": "Select this if your table splits. You will see a line in the table after the position you select",
+        "PRIORITY": "The priority determines the order that the competitions will be displayed in the season"
+      }
+    },
     "ROUNDS": "Rounds",
     "RELEGATION": "Relegation Positions",
     "RELEGATION_FORM": "Relegation Spots",
@@ -58,7 +67,7 @@
     "ADD_TEAM": "Add Team"
   },
   "MESSAGES": {
-    "INCLUDED": "Included"
+    "INCLUDED": "Included: {{count}}"
   },
   "NO_DATA": {
     "SEASONS": "No seasons yet."

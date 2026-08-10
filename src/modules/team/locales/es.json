@@ -41,6 +41,13 @@
     }
   },
   "FORM": {
+    "REQUEST_ACCESS": {
+      "SUMMARY": "Un administrador actual del equipo le proporcionará un código de acceso para obtener acceso de administrador a este equipo. Por favor, ingrese el código a continuación y haga clic en enviar.",
+      "TITLE": "Solicitar Acceso de Administrador"
+    },
+    "SUMMARY": {
+      "ADD": "Aquí puedes agregar lo básico para iniciar el equipo. Más detalles pueden ser agregados más tarde por un administrador del equipo a través de la página admin > Editar Equipo."
+    },
     "LABELS": {
       "TEAM_NAME": "Nombre del equipo",
       "YEAR_FOUNDED": "Año de fundación",
@@ -66,6 +73,11 @@
           "SHORTS": "Pantalones cortos visitantes",
           "SOCKS": "Calcetines visitantes"
         }
+      }
+    },
+    "HELPERS": {
+      "KIT": {
+        "BACKGROUND": "Elige un color de fondo que facilite ver los uniformes locales y visitantes."
       }
     }
   },

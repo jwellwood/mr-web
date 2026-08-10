@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import { RequestAccessData, RequestAccessSchema } from './schema';
+import { RequestAccessData, RequestAccessSchema, requiredFields } from './schema';
 
 interface Props {
   onSubmit: (data: RequestAccessData) => void;
@@ -29,11 +29,13 @@ export default function RequestAccessForm({ onSubmit, defaultValues, loading }: 
       submitBtn={{ disabled: !isValid }}
       onReset={() => reset(defaultValues)}
       loading={loading}
+      formSummary={t('FORM.REQUEST_ACCESS.SUMMARY')}
     >
       <ControlledTextInput
         control={control}
         name="accessCode"
         label={t('FORM.LABELS.ACCESS_CODE')}
+        required={requiredFields.accessCode}
       />
     </FormContainer>
   );

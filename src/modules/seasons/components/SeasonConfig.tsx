@@ -45,6 +45,10 @@ export default function SeasonConfig({ season, loading, error }: Props) {
       const isCup = isCupCompetitionType(competitionTypeById.get(config.competitionId._id));
       const compLinks = [
         {
+          label: t('CONFIG.PRIORITY'),
+          value: config.priority ?? '-',
+        },
+        {
           label: t('CONFIG.ROUNDS'),
           value: config.rounds || '-',
         },
@@ -68,10 +72,6 @@ export default function SeasonConfig({ season, loading, error }: Props) {
               },
             ]
           : []),
-        {
-          label: t('CONFIG.PRIORITY'),
-          value: config.priority ?? '-',
-        },
       ];
 
       return (
@@ -80,6 +80,7 @@ export default function SeasonConfig({ season, loading, error }: Props) {
           title={config.competitionId.name}
           secondaryAction={
             <UpdateCompConfig
+              competitionName={config.competitionId.name}
               competitionId={config.competitionId._id}
               existingConfig={config}
               numberOfTeams={season.teamIds.length}

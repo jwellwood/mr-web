@@ -7,6 +7,7 @@ import { SectionContainer } from '../../containers';
 import { MutationError } from '../../errors';
 import { APP_ICONS, AppIcon } from '../../icons';
 import { Spinner } from '../../loaders';
+import { CustomTypography } from '../../typography';
 import SubmitButton from '../submit-button/SubmitButton';
 
 interface ISubmitButton {
@@ -28,6 +29,7 @@ interface Props {
   loading: boolean;
   error?: TApolloError;
   minWidth?: number;
+  formSummary?: string;
 }
 
 export default function FormContainer({
@@ -40,6 +42,7 @@ export default function FormContainer({
   loading,
   error,
   minWidth,
+  formSummary,
 }: Props) {
   const { t } = useTranslation('components');
 
@@ -61,6 +64,11 @@ export default function FormContainer({
 
   return (
     <Container maxWidth="sm" disableGutters style={{ marginBottom: '4px' }}>
+      {formSummary ? (
+        <SectionContainer type="admin">
+          <CustomTypography color="data">{formSummary}</CustomTypography>
+        </SectionContainer>
+      ) : null}
       <form
         onSubmit={ev => {
           handleSubmit(ev);
@@ -88,7 +96,7 @@ export default function FormContainer({
             {onReset && (
               <AppIcon
                 icon={APP_ICONS.RESET}
-                color="warning"
+                color="silver"
                 onClick={handleReset}
                 size="24px"
                 data-testid="reset-icon"

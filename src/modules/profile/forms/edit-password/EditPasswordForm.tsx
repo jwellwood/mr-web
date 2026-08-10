@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
 import type { ChangePasswordFormData } from './schema';
-import { ChangePasswordSchema } from './schema';
+import { ChangePasswordSchema, requiredFields } from './schema';
 
 interface Props {
   onSubmit: (data: ChangePasswordFormData) => void;
@@ -40,18 +40,21 @@ export default function EditPasswordForm({ onSubmit, defaultValues, loading }: P
         name="password"
         label={t('FORM.LABELS.CURRENT_PASSWORD')}
         isPassword={true}
+        required={requiredFields.password}
       />
       <ControlledTextInput
         control={control}
         name="newPassword"
         label={t('FORM.LABELS.NEW_PASSWORD')}
         isPassword={true}
+        required={requiredFields.newPassword}
       />
       <ControlledTextInput
         control={control}
         name="confirmPassword"
         label={t('FORM.LABELS.CONFIRM_NEW_PASSWORD')}
         isPassword={true}
+        required={requiredFields.confirmPassword}
       />
     </FormContainer>
   );

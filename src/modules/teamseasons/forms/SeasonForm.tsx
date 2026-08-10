@@ -7,12 +7,11 @@ import {
   ControlledSelectInput,
   ControlledTextInput,
   SectionContainer,
-  CustomTypography,
 } from '../../../components';
 import type { ISelectOptions } from '../../../components';
 import { TApolloError } from '../../../types/apollo';
 import { getNumberOptions } from '../../../utils/';
-import { SeasonSchema, type SeasonFormData } from './schema';
+import { requiredFields, SeasonSchema, type SeasonFormData, type SeasonFormInput } from './schema';
 
 interface Props {
   onSubmit: (formData: SeasonFormData) => void;
@@ -37,13 +36,13 @@ export default function SeasonForm({
     control,
     formState: { isDirty, isValid },
     reset,
-  } = useForm<SeasonFormData>({
+  } = useForm<SeasonFormInput, unknown, SeasonFormData>({
     defaultValues,
     resolver: zodResolver(SeasonSchema),
     mode: 'onChange',
   });
 
-  const totalTeams = useWatch({ control, name: 'totalFinalPositions' });
+  const totalTeams = useWatch({ control, name: 'totalFinalPositions' }) as number | undefined;
   return (
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
@@ -51,15 +50,14 @@ export default function SeasonForm({
       submitBtn={{ disabled: !isValid || !isDirty }}
       loading={loading}
       error={error}
+      formSummary={t('FORM.SUMMARY')}
     >
-      <SectionContainer type="info">
-        <CustomTypography color="data">{t('FORM.INFO.ORG_SEASON')}</CustomTypography>
-      </SectionContainer>
       <ControlledSelectInput
         control={control}
         name="orgSeasonId"
         label={t('FORM.LABELS.ORG_SEASON')}
         options={orgSeasonOptions}
+        required={requiredFields.orgSeasonId}
       />
 
       <ControlledDateInput
@@ -67,6 +65,7 @@ export default function SeasonForm({
         name="yearStarted"
         label={t('FORM.LABELS.YEAR_STARTED')}
         view="year"
+        required={requiredFields.yearStarted}
       />
       <ControlledDateInput
         control={control}
@@ -74,32 +73,38 @@ export default function SeasonForm({
         label={t('FORM.LABELS.YEAR_ENDED')}
         view="year"
         disableFuture={false}
+        required={requiredFields.yearEnded}
       />
-      <ControlledSelectInput
-        control={control}
-        name="division"
-        label={t('FORM.LABELS.DIVISION')}
-        options={competitionOptions}
-      />
-      <ControlledSelectInput
-        control={control}
-        name="totalFinalPositions"
-        label={t('FORM.LABELS.NUMBER_OF_TEAMS')}
-        options={getNumberOptions(50, 0)}
-      />
-      {totalTeams ? (
+      <SectionContainer type="info" subtitle={t('FORM.HELPERS.NUMBER_OF_TEAMS')}>
+        <ControlledSelectInput
+          control={control}
+          name="division"
+          label={t('FORM.LABELS.DIVISION')}
+          options={competitionOptions}
+          required={requiredFields.division}
+        />
+        <ControlledSelectInput
+          control={control}
+          name="totalFinalPositions"
+          label={t('FORM.LABELS.NUMBER_OF_TEAMS')}
+          options={getNumberOptions(50, 0)}
+          required={requiredFields.totalFinalPositions}
+        />
+
         <ControlledSelectInput
           control={control}
           name="leaguePosition"
           label={t('FORM.LABELS.FINAL_POSITION')}
           options={getNumberOptions(totalTeams, 0)}
+          required={requiredFields.leaguePosition}
         />
-      ) : null}
+      </SectionContainer>
       <ControlledTextInput
         multiline
         control={control}
         name="comment"
         label={t('FORM.LABELS.COMMENT')}
+        required={requiredFields.comment}
       />
     </FormContainer>
   );

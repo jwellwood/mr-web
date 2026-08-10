@@ -10,7 +10,7 @@ import {
 } from '../../../../components';
 import { PresentationModal } from '../../../../components/modals';
 import TermsOfUseContent from '../../components/terms/TermsOfUseContent';
-import { SignUpSchema, type SignUpFormData } from './schema';
+import { requiredFields, SignUpSchema, type SignUpFormData } from './schema';
 
 interface Props {
   onSubmit: (data: SignUpFormData) => void;
@@ -26,7 +26,7 @@ export default function SignUpForm({ onSubmit, defaultValues, loading }: Props) 
     formState: { isValid },
   } = useForm<SignUpFormData>({
     defaultValues,
-    resolver: zodResolver(SignUpSchema()),
+    resolver: zodResolver(SignUpSchema),
     mode: 'onChange',
   });
 
@@ -36,14 +36,26 @@ export default function SignUpForm({ onSubmit, defaultValues, loading }: Props) 
       loading={loading}
       minWidth={100}
       submitBtn={{ confirm: { show: false }, disabled: !isValid }}
+      formSummary={t('FORM.SUMMARY.SIGN_UP')}
     >
-      <ControlledTextInput control={control} name="username" label={t('FORM.LABELS.USERNAME')} />
-      <ControlledTextInput control={control} name="email" label={t('FORM.LABELS.EMAIL')} />
+      <ControlledTextInput
+        control={control}
+        name="username"
+        label={t('FORM.LABELS.USERNAME')}
+        required={requiredFields.username}
+      />
+      <ControlledTextInput
+        control={control}
+        name="email"
+        label={t('FORM.LABELS.EMAIL')}
+        required={requiredFields.email}
+      />
       <ControlledTextInput
         control={control}
         name="password"
         isPassword={true}
         label={t('FORM.LABELS.PASSWORD')}
+        required={requiredFields.password}
       />
       <ControlledSwitchInput
         control={control}

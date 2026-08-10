@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
-import { ResetPasswordFormData, ResetPasswordSchema } from './schema';
+import { ResetPasswordFormData, ResetPasswordSchema, requiredFields } from './schema';
 
 interface Props {
   onSubmit: (data: ResetPasswordFormData) => void;
@@ -28,18 +28,21 @@ export default function ResetPasswordForm({ onSubmit, defaultValues, loading }: 
       loading={loading}
       submitBtn={{ confirm: { show: false }, disabled: !isValid }}
       minWidth={100}
+      formSummary={t('FORM.SUMMARY.RESET_PASSWORD')}
     >
       <ControlledTextInput
         control={control}
         name="password"
         label={t('FORM.LABELS.NEW_PASSWORD')}
         isPassword={true}
+        required={requiredFields.password}
       />
       <ControlledTextInput
         control={control}
         name="confirmPassword"
         isPassword={true}
         label={t('FORM.LABELS.CONFIRM_NEW_PASSWORD')}
+        required={requiredFields.confirmPassword}
       />
     </FormContainer>
   );

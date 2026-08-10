@@ -19,7 +19,7 @@ export default function SignUpPage({ loading, onSubmit, email, onToken }: Props)
   const { t, i18n } = useTranslation('auth');
   return (
     <PageContainer title={t('PAGES.SIGN_UP_PAGE')}>
-      <AuthLayout helpText={!email ? t('FORM.HELP.SIGN_UP') : ''}>
+      <AuthLayout>
         <>
           {email ? (
             <CustomAlert type="info" text={t('EMAIL_VALIDATION.SENT', { email })} />

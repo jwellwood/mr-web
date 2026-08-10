@@ -57,8 +57,11 @@
       "IS_CAPTAIN": "Es capitán",
       "IS_VICE_CAPTAIN": "Es vicecapitán",
       "IS_HALL_OF_FAME": "Es miembro del Salón de la Fama",
-      "DESCRIPTION": "Descripción",
+      "DESCRIPTION": "Comentario del Salón de la Fama",
       "POSITION": "Posición"
+    },
+    "HELPERS": {
+      "DESCRIPTION": "Este comentario aparecerá en el perfil del jugador en el Salón de la Fama."
     }
   },
   "TABLES": {

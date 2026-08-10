@@ -8,20 +8,21 @@
     "EDIT_COMPETITION": "Editar Competición"
   },
   "FORM": {
+    "SUMMARY": "Una vez que hayas agregado una competición, puedes añadirla a la configuración de la temporada para que pueda ser utilizada en la temporada.",
     "LABELS": {
       "NAME": "Nombre",
       "TYPE": "Tipo",
       "ACTIVE": "Activo",
       "PLAYERS_PER_TEAM": "Jugadores por equipo",
       "MATCH_LENGTH": "Duración del partido (minutos)"
+    },
+    "HELPERS": {
+      "TYPE": "Selecciona el tipo de competición. Las competiciones de liga son de estilo round-robin, mientras que las competiciones de copa son de estilo knockout."
     }
   },
   "OPTIONS": {
-    "FRIENDLY": "Amistoso",
     "LEAGUE": "Liga",
-    "CUP": "Copa",
-    "TOURNAMENT": "Torneo",
-    "OTHER": "Otro"
+    "CUP": "Copa"
   },
   "SECTIONS": {
     "SUMMARY": "Resumen"

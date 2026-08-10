@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../../utils';
 import { zodDate } from '../../../../utils/dev/zodDate';
 
 const t = (key: string, options?: Record<string, unknown>) =>
@@ -10,7 +11,7 @@ export const PlayerSchema = z.object({
     .string()
     .min(2, t('VALIDATION.too_small', { min: 2 }))
     .max(50, t('VALIDATION.too_long', { max: 50 })),
-  squadNumber: z.union([z.string(), z.number()]).optional(),
+  squadNumber: z.union([z.string(), z.number()]),
   position: z.string(),
   image: z.any().optional(),
   nationality: z.string(),
@@ -25,6 +26,8 @@ export const PlayerSchema = z.object({
     .optional(),
   seasonIds: z.array(z.string()).min(1, t('VALIDATION.too_small', { min: 1 })),
 });
+
+export const requiredFields = getRequiredFields(PlayerSchema);
 
 export type PlayerFormData = z.infer<typeof PlayerSchema>;
 

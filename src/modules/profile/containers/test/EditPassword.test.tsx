@@ -72,8 +72,8 @@ describe('ChangePasswordContainer', () => {
 
     const user = userEvent.setup();
     const password = screen.getByLabelText(/current password/i);
-    const newPassword = screen.getByLabelText(/^New Password$/i);
-    const confirm = screen.getByLabelText(/^Confirm New Password$/i);
+    const newPassword = screen.getByLabelText(/^new password/i);
+    const confirm = screen.getByLabelText(/Confirm New Password/i);
     const submit = screen.getByRole('button', { name: /submit/i });
 
     await user.type(password, 'oldpass');

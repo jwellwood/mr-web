@@ -87,6 +87,12 @@
     }
   },
   "FORM": {
+    "REQUEST_ACCESS": {
+      "SUMMARY": "A current admin will provide you with an access code to gain admin access to this organization. Please enter the code below and click submit."
+    },
+    "SET_ADMIN_ACCESS": {
+      "SUMMARY": "You can set an admin access code for this team. Copy this code and send it to the relevant user. They will be able to use this code to gain admin access to this team"
+    },
     "LABELS": {
       "NAME": "Organization Name",
       "WEBSITE": "Website",

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../utils';
 
 export const AwardSchema = z.object({
   awardName: z
@@ -10,6 +11,8 @@ export const AwardSchema = z.object({
   awardValue: z.union([z.string(), z.number()]).optional(),
   comment: z.string().optional(),
 });
+
+export const requiredFields = getRequiredFields(AwardSchema);
 
 export type AwardFormData = z.infer<typeof AwardSchema>;
 

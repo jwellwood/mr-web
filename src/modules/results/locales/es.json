@@ -131,6 +131,12 @@
     "ADD_GOALSCORER": "Agregar Goleador",
     "ADD_MATCH": "Agregar Partido"
   },
+  "STATUS": {
+    "SUBMITTED": "Enviado",
+    "PENDING": "Pendiente",
+    "CONFIRMED": "Confirmado",
+    "DISPUTED": "Disputado"
+  },
   "MESSAGES": {
     "DISPUTE_RESULT": "¿Está seguro de que desea disputar este resultado? Esto marcará el resultado como disputado y deberá ser revisado por un administrador.",
     "CONFIRM_RESULTS": "¿Está seguro de que desea confirmar {{count}} resultados? Serán marcados como confirmados y no podrán ser disputados por los usuarios, pero aún podrán ser editados por los administradores.",

@@ -8,6 +8,12 @@
     "EDIT_TROPHY": "Edit Trophy"
   },
   "FORM": {
+    "SUMMARY": "If your team has won a trophy or finished as a runner up, you can add it here. You can also add a comment about the trophy.",
+    "HELPERS": {
+      "IS_WINNER": "Check this box if your team won the trophy, leave it unselected if the team was the runner up.",
+      "IS_FINAL": "Check this box if your team reached the final of a cup competition. For a league competition, leave it unselected.",
+      "OPPONENT": "Enter the name of the opponent team in the final match of the competition."
+    },
     "LABELS": {
       "NAME": "Name",
       "SEASON": "Season",

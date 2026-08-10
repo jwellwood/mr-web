@@ -5,7 +5,6 @@ export const MuiInputBase = {
     root: {
       fontWeight: 'bold',
       color: teal[50],
-      backgroundColor: 'transparent',
     },
   },
 };

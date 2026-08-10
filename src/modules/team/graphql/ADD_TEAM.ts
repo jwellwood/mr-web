@@ -4,24 +4,16 @@ export const ADD_TEAM = gql`
   mutation ADD_TEAM(
     $orgId: String!
     $teamName: String!
-    $yearFounded: String
     $location: String
     $country: String
     $isActive: Boolean!
   ) {
     team: ADD_TEAM(
       orgId: $orgId
-      data: {
-        teamName: $teamName
-        yearFounded: $yearFounded
-        location: $location
-        country: $country
-        isActive: $isActive
-      }
+      data: { teamName: $teamName, location: $location, country: $country, isActive: $isActive }
     ) {
       teamName
       isActive
-      yearFounded
       location
       country
     }

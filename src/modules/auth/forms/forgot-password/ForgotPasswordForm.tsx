@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { FormContainer, ControlledTextInput } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { ForgotPasswordFormData, ForgotPasswordSchema } from './schema';
+import { ForgotPasswordFormData, ForgotPasswordSchema, requiredFields } from './schema';
 
 interface Props {
   defaultValues: ForgotPasswordFormData;
@@ -31,8 +31,14 @@ export default function ForgotPasswordForm({ defaultValues, onSubmit, loading, e
       error={error}
       submitBtn={{ confirm: { show: false }, disabled: !isValid }}
       minWidth={100}
+      formSummary={t('FORM.SUMMARY.FORGOT_PASSWORD')}
     >
-      <ControlledTextInput control={control} name="email" label={t('FORM.LABELS.EMAIL')} />
+      <ControlledTextInput
+        control={control}
+        name="email"
+        label={t('FORM.LABELS.EMAIL')}
+        required={requiredFields.email}
+      />
     </FormContainer>
   );
 }

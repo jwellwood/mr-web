@@ -5,12 +5,11 @@ import {
   FormContainer,
   ControlledTextInput,
   ControlledSelectInput,
-  ControlledDateInput,
   ControlledSwitchInput,
 } from '../../../../components';
 import { useNationality } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
-import { TeamDetailsSchema, type TeamFormData } from './schema';
+import { requiredFields, TeamDetailsSchema, type TeamFormData } from './schema';
 
 interface Props {
   onSubmit: (data: TeamFormData) => void;
@@ -40,20 +39,26 @@ export default function AddTeamForm({ onSubmit, defaultValues, loading, error }:
       onReset={() => reset(defaultValues)}
       loading={loading}
       error={error}
+      formSummary={t('FORM.SUMMARY.ADD')}
     >
-      <ControlledTextInput control={control} name="teamName" label={t('FORM.LABELS.TEAM_NAME')} />
-      <ControlledDateInput
+      <ControlledTextInput
         control={control}
-        name="yearFounded"
-        label={t('FORM.LABELS.YEAR_FOUNDED')}
-        view="year"
+        name="teamName"
+        label={t('FORM.LABELS.TEAM_NAME')}
+        required={requiredFields.teamName}
       />
-      <ControlledTextInput control={control} name="location" label="City" />
+      <ControlledTextInput
+        control={control}
+        name="location"
+        label={t('FORM.LABELS.CITY')}
+        required={requiredFields.location}
+      />
       <ControlledSelectInput
         control={control}
         name="country"
         label={t('FORM.LABELS.COUNTRY')}
         options={nationalityOptions}
+        required={requiredFields.country}
       />
       <ControlledSwitchInput name="isActive" label={t('FORM.LABELS.IS_ACTIVE')} control={control} />
     </FormContainer>

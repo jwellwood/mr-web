@@ -9,6 +9,8 @@ type Props<T extends object> = {
   view?: DateView;
   openTo?: DateView;
   disableFuture?: boolean;
+  helperText?: string;
+  required?: boolean;
 };
 
 export default function ControlledDateInput<T extends object>({
@@ -18,6 +20,8 @@ export default function ControlledDateInput<T extends object>({
   view,
   openTo,
   disableFuture = true,
+  helperText,
+  required = false,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name,
@@ -39,6 +43,8 @@ export default function ControlledDateInput<T extends object>({
       openTo={openTo}
       view={view}
       disableFuture={disableFuture}
+      helperText={helperText}
+      required={required}
     />
   );
 }

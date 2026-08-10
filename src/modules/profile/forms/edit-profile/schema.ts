@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../../utils';
 import { zodDate } from '../../../../utils/dev/zodDate';
 
 const t = (key: string, options?: Record<string, unknown>) =>
@@ -14,5 +15,7 @@ export const EditProfileSchema = z.object({
   dateOfBirth: zodDate(true),
   nationality: z.string().optional(),
 });
+
+export const requiredFields = getRequiredFields(EditProfileSchema);
 
 export type EditProfileFormData = z.infer<typeof EditProfileSchema>;

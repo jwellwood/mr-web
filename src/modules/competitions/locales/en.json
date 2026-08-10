@@ -8,20 +8,21 @@
     "EDIT_COMPETITION": "Edit Competition"
   },
   "FORM": {
+    "SUMMARY": "Once you have added a competition, you can add it to the season configuration so that it can be used in the season.",
     "LABELS": {
       "NAME": "Name",
       "TYPE": "Type",
       "ACTIVE": "Active",
       "PLAYERS_PER_TEAM": "Players per Team",
       "MATCH_LENGTH": "Match Length (minutes)"
+    },
+    "HELPERS": {
+      "TYPE": "Select the type of competition. League competitions are round-robin style, while cup competitions are knockout style."
     }
   },
   "OPTIONS": {
-    "FRIENDLY": "Friendly",
     "LEAGUE": "League",
-    "CUP": "Cup",
-    "TOURNAMENT": "Tournament",
-    "OTHER": "Other"
+    "CUP": "Cup"
   },
   "SECTIONS": {
     "SUMMARY": "Summary"

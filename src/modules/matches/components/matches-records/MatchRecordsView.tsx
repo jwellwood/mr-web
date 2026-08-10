@@ -35,6 +35,7 @@ export default function MatchRecordsView({ data, loading, error }: Props) {
                 loading={loading}
                 showBadge={false}
                 showComp={false}
+                length={1}
               />
             </SectionContainer>
           );

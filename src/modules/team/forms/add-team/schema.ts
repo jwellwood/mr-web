@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../../utils';
 import { zodDate } from '../../../../utils/dev/zodDate';
 import { T_ADD_TEAM_MUTATION_INPUT } from '../../graphql';
 
@@ -8,9 +9,9 @@ const t = (key: string, options?: Record<string, unknown>) =>
 
 export const TeamDetailsSchema = z.object({
   teamName: z.string().min(2, t('VALIDATION.too_small', { min: 2 })),
-  yearFounded: zodDate(),
+  yearFounded: zodDate().optional(),
   location: z.string().nullable(),
-  country: z.string().optional(),
+  country: z.string(),
   stadiumName: z.string().optional(),
   stadiumLocation: z.string().optional(),
   stadiumCapacity: z
@@ -28,6 +29,8 @@ export const TeamDetailsSchema = z.object({
   isActive: z.boolean(),
 });
 
+export const requiredFields = getRequiredFields(TeamDetailsSchema);
+
 export type TeamFormData = z.infer<typeof TeamDetailsSchema>;
 
 export const mapFormDataToMutationInput = (
@@ -36,7 +39,6 @@ export const mapFormDataToMutationInput = (
   return {
     ...data,
     teamName: data.teamName,
-    yearFounded: data.yearFounded ? data.yearFounded.toISOString() : null,
     location: data.location ?? null,
     country: data.country ?? null,
     isActive: data.isActive,

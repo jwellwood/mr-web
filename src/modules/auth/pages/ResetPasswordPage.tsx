@@ -13,7 +13,7 @@ export default function ResetPasswordPage({ loading, onSubmit }: Props) {
   const { t, i18n } = useTranslation('auth');
   return (
     <PageContainer title={t('PAGES.RESET_PASSWORD_PAGE')}>
-      <AuthLayout helpText={t('FORM.HELP.RESET_PASSWORD')}>
+      <AuthLayout>
         <ResetPasswordForm
           key={i18n.language}
           defaultValues={resetPasswordFormState}

@@ -8,6 +8,8 @@ type Props<T extends object> = {
   label: string;
   options: ISelectOptions[];
   showLabels?: boolean;
+  helperText?: string;
+  required?: boolean;
 };
 
 export default function ControlledMultiSelectInput<T extends object>({
@@ -16,6 +18,8 @@ export default function ControlledMultiSelectInput<T extends object>({
   options,
   label,
   showLabels,
+  helperText,
+  required = false,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name,
@@ -34,6 +38,8 @@ export default function ControlledMultiSelectInput<T extends object>({
       showLabels={showLabels}
       isDirty={isDirty}
       isValid={!invalid}
+      helperText={helperText}
+      required={required}
     />
   );
 }

@@ -18,6 +18,7 @@
     "SEASON_ADMIN": "Administración de Temporada"
   },
   "FORM": {
+    "SUMMARY": "Agrega los equipos y competiciones que formarán parte de esta temporada. Luego puedes configurarlos en Administración de Temporada > Pestaña de Configuración.",
     "LABELS": {
       "YEAR_STARTED": "Año de Inicio",
       "YEAR_ENDED": "Año de Fin",
@@ -38,6 +39,14 @@
     "NO": "No"
   },
   "CONFIG": {
+    "FORM": {
+      "HELPERS": {
+        "ROUNDS": "Agrega el número de rondas que se jugarán en esta competición. Por ejemplo, si hay 10 equipos y 2 rondas, cada equipo jugará 18 partidos (9 en casa y 9 fuera).",
+        "TEAMS": "Agrega los equipos que formarán parte de esta competición. También puedes establecer los puntos iniciales para cada equipo.",
+        "SPLIT": "Selecciona esto si tu tabla se divide. Verás una línea en la tabla después de la posición que selecciones",
+        "PRIORITY": "La prioridad determina el orden en que se mostrarán las competiciones en la temporada"
+      }
+    },
     "ROUNDS": "Rondas",
     "RELEGATION": "Posiciones de Descenso",
     "RELEGATION_FORM": "Plazas de Descenso",

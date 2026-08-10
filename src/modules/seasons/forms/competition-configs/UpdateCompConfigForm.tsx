@@ -9,14 +9,16 @@ import { AppIcon } from '../../../../components/icons';
 import { ControlledSelectInput, ControlledMultiSelectInput } from '../../../../components/inputs';
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
-import { isCupCompetitionType, TTiebreaker } from '../../constants';
+import { isCupCompetitionType } from '../../constants';
 import {
+  requiredFields,
   UpdateCompConfigSchema,
   type UpdateCompConfigFormData,
   type UpdateCompConfigFormInput,
 } from './schema';
 
 interface Props {
+  competitionName?: string;
   onSubmit: (formData: UpdateCompConfigFormData) => void;
   defaultValues: UpdateCompConfigFormData;
   loading: boolean;
@@ -24,9 +26,11 @@ interface Props {
   numberOfCompetitions: number;
   competitionType?: string | null;
   teamOptions: ISelectOptions[];
+  tiebreakerOptions: ISelectOptions[];
 }
 
 export default function UpdateCompConfigForm({
+  competitionName,
   onSubmit,
   defaultValues,
   numberOfTeams,
@@ -34,6 +38,7 @@ export default function UpdateCompConfigForm({
   competitionType,
   loading,
   teamOptions,
+  tiebreakerOptions,
 }: Props) {
   const [open, setOpen] = useState(false);
   const { t } = useTranslation('seasons');
@@ -42,6 +47,7 @@ export default function UpdateCompConfigForm({
   const {
     handleSubmit,
     control,
+    watch,
     formState: { isValid, isDirty },
     reset,
   } = useForm<UpdateCompConfigFormInput, unknown, UpdateCompConfigFormData>({
@@ -51,6 +57,7 @@ export default function UpdateCompConfigForm({
   });
 
   const { fields, append, remove } = useFieldArray({ control, name: 'teams' });
+  const selectedTeamIds = (watch('teams') ?? []).map(t => t.teamId);
 
   const submitHandler = (data: UpdateCompConfigFormData) => {
     onSubmit(data);
@@ -62,7 +69,11 @@ export default function UpdateCompConfigForm({
       <CustomButton onClick={() => setOpen(true)} variant="text">
         {t('CONFIG.EDIT')}
       </CustomButton>
-      <FormModal open={open} onClose={() => setOpen(false)}>
+      <FormModal
+        open={open}
+        onClose={() => setOpen(false)}
+        title={`${t('CONFIG.EDIT')} ${competitionName}`}
+      >
         <FormContainer
           onSubmit={handleSubmit(submitHandler)}
           loading={loading}
@@ -75,19 +86,26 @@ export default function UpdateCompConfigForm({
         >
           <ControlledSelectInput
             control={control}
+            name="priority"
+            label={t('CONFIG.PRIORITY')}
+            options={getNumberOptions(numberOfCompetitions, 1)}
+            required={requiredFields.priority}
+            helperText={t('CONFIG.FORM.HELPERS.PRIORITY')}
+          />
+          <ControlledSelectInput
+            control={control}
             name="rounds"
             label={t('CONFIG.ROUNDS')}
             options={getNumberOptions(50, 0)}
+            required={requiredFields.rounds}
+            helperText={t('CONFIG.FORM.HELPERS.ROUNDS')}
           />
           <ControlledSelectInput
             control={control}
             name="tiebreaker"
             label={t('CONFIG.TIEBREAKER')}
-            options={[
-              { label: t('CONFIG.HEAD_TO_HEAD'), value: TTiebreaker.HEAD_TO_HEAD },
-              { label: t('CONFIG.GOAL_DIFFERENCE'), value: TTiebreaker.GOAL_DIFFERENCE },
-              { label: t('CONFIG.PENALTIES'), value: TTiebreaker.PENALTIES },
-            ]}
+            options={tiebreakerOptions}
+            required={requiredFields.tiebreaker}
           />
           {!isCup ? (
             <>
@@ -97,29 +115,29 @@ export default function UpdateCompConfigForm({
                 label={t('CONFIG.SPLIT_FORM')}
                 options={getNumberOptions(numberOfTeams, 0)}
                 showLabels
+                required={requiredFields.splitIndexes}
+                helperText={t('CONFIG.FORM.HELPERS.SPLIT')}
               />
               <ControlledMultiSelectInput
                 control={control}
                 name="promotionPositions"
                 label={t('CONFIG.PROMOTION_FORM')}
                 options={getNumberOptions(numberOfTeams, 1)}
+                required={requiredFields.promotionPositions}
               />
               <ControlledMultiSelectInput
                 control={control}
                 name="relegationPositions"
                 label={t('CONFIG.RELEGATION_FORM')}
                 options={getNumberOptions(numberOfTeams, 1)}
+                required={requiredFields.relegationPositions}
               />
             </>
           ) : null}
-          <ControlledSelectInput
-            control={control}
-            name="priority"
-            label={t('CONFIG.PRIORITY')}
-            options={getNumberOptions(numberOfCompetitions, 1)}
-          />
+
           <SectionContainer
             title={`${t('CONFIG.TEAMS')} / ${t('CONFIG.STARTING_POINTS')}`}
+            subtitle={t('CONFIG.FORM.HELPERS.TEAMS')}
             type="info"
           >
             {fields.map((field, index) => (
@@ -129,7 +147,11 @@ export default function UpdateCompConfigForm({
                     control={control}
                     name={`teams.${index}.teamId`}
                     label={t('CONFIG.TEAM')}
-                    options={teamOptions}
+                    options={teamOptions.filter(
+                      opt =>
+                        !selectedTeamIds.includes(String(opt.value)) ||
+                        selectedTeamIds[index] === String(opt.value)
+                    )}
                   />
                 </CustomGridItem>
                 {!isCup ? (
@@ -147,9 +169,14 @@ export default function UpdateCompConfigForm({
                 </CustomGridItem>
               </CustomGridContainer>
             ))}
-            <CustomButton variant="text" onClick={() => append({ teamId: '', startingPoints: 0 })}>
-              {t('CONFIG.ADD_TEAM')}
-            </CustomButton>
+            {teamOptions.length > fields.length && (
+              <CustomButton
+                variant="text"
+                onClick={() => append({ teamId: '', startingPoints: 0 })}
+              >
+                {t('CONFIG.ADD_TEAM')}
+              </CustomButton>
+            )}
           </SectionContainer>
         </FormContainer>
       </FormModal>

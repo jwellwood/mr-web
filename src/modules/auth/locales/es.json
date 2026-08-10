@@ -24,7 +24,7 @@
       "TERMS": "Términos de uso",
       "ACCEPT_TERMS": "Aceptar términos de uso"
     },
-    "HELP": {
+    "SUMMARY": {
       "FORGOT_PASSWORD": "Introduce la dirección de correo asociada a tu cuenta. Te enviaremos instrucciones para restablecer tu contraseña.",
       "SIGN_UP": "Proporciona un correo válido y crea una contraseña para registrarte. Recibirás un correo de verificación para confirmar tu dirección.",
       "RESET_PASSWORD": "Ahora puedes establecer una nueva contraseña para tu cuenta. Elige una contraseña fuerte que no hayas usado antes."

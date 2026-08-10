@@ -9,6 +9,7 @@
     "EDIT_SEASON": "Editar Temporada"
   },
   "FORM": {
+    "SUMMARY": "Las temporadas generalmente se crean a nivel de organización y se vinculan automáticamente a los equipos. Solo debe agregar su propia temporada si es una temporada histórica que no está en el sistema. Aún puede editar la temporada como desee, pero debe estar vinculada a una temporada de la organización si es posible.",
     "LABELS": {
       "YEAR_STARTED": "Año de Inicio",
       "YEAR_ENDED": "Año de Fin",
@@ -18,8 +19,8 @@
       "COMMENT": "Comentario",
       "ORG_SEASON": "Temporada de la Organización"
     },
-    "INFO": {
-      "ORG_SEASON": "Las temporadas generalmente se crean a nivel de organización y se vinculan automáticamente a los equipos. Solo debe agregar su propia temporada si es una temporada histórica que no está en el sistema. Aún puede editar la temporada como desee, pero debe estar vinculada a una temporada de la organización si es posible."
+    "HELPERS": {
+      "NUMBER_OF_TEAMS": "Agregue esto cuando la temporada esté completa, se utilizará para presentar el gráfico de la posición final del equipo"
     }
   },
   "TABLES": {

@@ -9,7 +9,7 @@ import {
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
 import { TApolloError } from '../../../../types/apollo';
-import { OrganizationSchema, type OrganizationFormData } from './schema';
+import { OrganizationSchema, requiredFields, type OrganizationFormData } from './schema';
 
 interface Props {
   onSubmit: (data: OrganizationFormData) => void;
@@ -45,20 +45,37 @@ export default function OrgForm({
       loading={loading}
       error={error}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
-      <ControlledTextInput control={control} name="website" label={t('FORM.LABELS.WEBSITE')} />
+      <ControlledTextInput
+        control={control}
+        name="name"
+        label={t('FORM.LABELS.NAME')}
+        required={requiredFields.name}
+      />
+      <ControlledTextInput
+        control={control}
+        name="website"
+        label={t('FORM.LABELS.WEBSITE')}
+        required={requiredFields.website}
+      />
       <ControlledDateInput
         control={control}
         name="yearFounded"
         label={t('FORM.LABELS.YEAR_FOUNDED')}
         view="year"
+        required={requiredFields.yearFounded}
       />
-      <ControlledTextInput control={control} name="city" label={t('FORM.LABELS.CITY')} />
+      <ControlledTextInput
+        control={control}
+        name="city"
+        label={t('FORM.LABELS.CITY')}
+        required={requiredFields.city}
+      />
       <ControlledSelectInput
         control={control}
         name="country"
         label={t('FORM.LABELS.COUNTRY')}
         options={countryOptions}
+        required={requiredFields.country}
       />
     </FormContainer>
   );

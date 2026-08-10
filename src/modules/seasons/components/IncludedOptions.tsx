@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { CustomTypography, ISelectOptions } from '../../../components';
+import { CustomTypography, ISelectOptions, SectionContainer } from '../../../components';
 import { CustomGridContainer, CustomGridItem } from '../../../components/grids';
 
 interface Props {
@@ -9,10 +9,10 @@ interface Props {
 export default function IncludedOptions({ options }: Props) {
   const { t } = useTranslation('seasons');
   return (
-    <>
-      <CustomTypography>
-        {t('MESSAGES.INCLUDED')}: {options.length}
-      </CustomTypography>
+    <SectionContainer
+      type={options.length ? 'success' : 'warning'}
+      title={t('MESSAGES.INCLUDED', { count: options.length })}
+    >
       <CustomGridContainer spacing={1}>
         {options.map(option => (
           <CustomGridItem key={option.value}>
@@ -22,6 +22,6 @@ export default function IncludedOptions({ options }: Props) {
           </CustomGridItem>
         ))}
       </CustomGridContainer>
-    </>
+    </SectionContainer>
   );
 }

@@ -3,6 +3,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { PickerValue } from '@mui/x-date-pickers/internals';
 import { theme } from '../../../theme';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
+import FormHelperText from '../form-helper-text/FormHelperText';
 import { TypedFormError } from '../types';
 
 interface Props {
@@ -19,6 +20,8 @@ interface Props {
   errors?: TypedFormError[];
   isDirty?: boolean;
   isValid?: boolean;
+  helperText?: string;
+  required?: boolean;
 }
 
 export default function DateInput({
@@ -32,6 +35,8 @@ export default function DateInput({
   isValid,
   view,
   disableFuture,
+  helperText,
+  required = false,
 }: Props) {
   let views = ['year', 'month', 'day'] as DateView[];
   if (view === 'year') {
@@ -40,6 +45,7 @@ export default function DateInput({
 
   return (
     <>
+      {helperText ? <FormHelperText helperText={helperText} /> : null}
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <MobileDatePicker
           label={label}
@@ -51,6 +57,7 @@ export default function DateInput({
           slotProps={{
             textField: {
               variant: 'filled',
+              required: required,
               fullWidth: true,
               InputLabelProps: {
                 sx: { background: isDirty ? (isValid ? 'primary' : 'warning') : 'primary' },

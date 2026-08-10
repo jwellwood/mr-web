@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ControlledTextInput, CustomButton, FormContainer } from '../../../../components';
 import { CustomStack } from '../../../../components/grids';
 import { FormModal } from '../../../../components/modals';
-import { SetAdminAccessCodeData, SetAdminAccessCodeSchema } from './schema';
+import { requiredFields, SetAdminAccessCodeData, SetAdminAccessCodeSchema } from './schema';
 
 interface Props {
   open: boolean;
@@ -55,6 +55,7 @@ export default function SetAdminAccessCodeForm({
             control={control}
             name="accessCode"
             label={t('FORM.LABELS.ADMIN_ACCESS_CODE')}
+            required={requiredFields.accessCode}
           />
         </FormContainer>
       </FormModal>

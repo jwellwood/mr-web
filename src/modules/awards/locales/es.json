@@ -8,12 +8,16 @@
     "EDIT_AWARD": "Editar Premio"
   },
   "FORM": {
+    "SUMMARY": "Puede agregar premios para los jugadores que están asociados con la temporada. Si tiene un premio que no está asociado con un jugador, puede agregarlo como un comentario para que se muestre en el resumen de premios de la temporada.",
     "LABELS": {
       "AWARD_NAME": "Nombre del Premio",
       "AWARD_NAME_PLACEHOLDER": "ej. Jugador de la Temporada",
       "WINNERS": "Ganadores",
       "VALUE": "Valor",
       "COMMENT": "Comentario"
+    },
+    "HELPERS": {
+      "VALUE": "Use este campo para asignar un valor al premio. Esto se puede usar para premios que tienen un valor numérico, como la mayoría de los goles, etc."
     }
   },
   "ALERTS": {

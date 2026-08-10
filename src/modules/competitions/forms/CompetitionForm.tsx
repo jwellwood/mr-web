@@ -11,7 +11,7 @@ import { TApolloError } from '../../../types/apollo';
 import { getNumberOptions } from '../../../utils';
 import { getCompetitionTypeOptions } from '../helpers/getCompetitionTypeOptions';
 import type { CompetitionFormData } from './schema';
-import { CompetitionSchema } from './schema';
+import { requiredFields, CompetitionSchema } from './schema';
 
 interface Props {
   onSubmit: (data: CompetitionFormData) => void;
@@ -40,25 +40,35 @@ export default function CompetitionForm({ onSubmit, defaultValues, loading, erro
       submitBtn={{ disabled: !isDirty || !isValid }}
       loading={loading}
       error={error}
+      formSummary={t('FORM.SUMMARY')}
     >
-      <ControlledTextInput control={control} name="name" label={t('FORM.LABELS.NAME')} />
+      <ControlledTextInput
+        control={control}
+        name="name"
+        label={t('FORM.LABELS.NAME')}
+        required={requiredFields.name}
+      />
       <ControlledSelectInput
         control={control}
         name="competitionType"
         label={t('FORM.LABELS.TYPE')}
         options={getCompetitionTypeOptions(t)}
+        helperText={t('FORM.HELPERS.TYPE')}
+        required={requiredFields.competitionType}
       />
       <ControlledSelectInput
         control={control}
         name="playersPerTeam"
         label={t('FORM.LABELS.PLAYERS_PER_TEAM')}
         options={getNumberOptions(15, 0)}
+        required={requiredFields.playersPerTeam}
       />
       <ControlledSelectInput
         control={control}
         name="matchMinutes"
         label={t('FORM.LABELS.MATCH_LENGTH')}
         options={getNumberOptions(120, 0, 5)}
+        required={requiredFields.matchMinutes}
       />
       <ControlledSwitchInput control={control} name="isActive" label={t('FORM.LABELS.ACTIVE')} />
     </FormContainer>

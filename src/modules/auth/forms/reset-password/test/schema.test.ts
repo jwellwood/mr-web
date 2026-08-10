@@ -13,7 +13,7 @@ describe('ResetPasswordSchema', () => {
   it('fails when password is too short', () => {
     const result = schema.safeParse({ password: '12345', confirmPassword: '12345' });
     expect(result.success).toBe(false);
-    expect(result.error?.issues[0].message).toBe('The entry is too short (minimum 6)');
+    expect(result.error?.issues[0].message).toBe('Use minimum 6');
   });
 
   it('fails when confirmPassword is too short', () => {

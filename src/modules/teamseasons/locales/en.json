@@ -9,6 +9,7 @@
     "EDIT_SEASON": "Edit Season"
   },
   "FORM": {
+    "SUMMARY": "Seasons are usually created at the organization level and automatically linked to teams. You should only add your own season if it is a historical season that is not in the system. You can still edit the season as you wish, but it should be linked to an organization season if possible.",
     "LABELS": {
       "YEAR_STARTED": "Year Started",
       "YEAR_ENDED": "Year Ended",
@@ -18,8 +19,8 @@
       "COMMENT": "Comment",
       "ORG_SEASON": "Organisation Season"
     },
-    "INFO": {
-      "ORG_SEASON": "Seasons are usually created at the organization level and automatically linked to teams. You should only add your own season if it is a historical season that is not in the system. You can still edit the season as you wish, but it should be linked to an organization season if possible."
+    "HELPERS": {
+      "NUMBER_OF_TEAMS": "Add this when the season is complete, it will be used to present the graph of the final position of the team"
     }
   },
   "TABLES": {

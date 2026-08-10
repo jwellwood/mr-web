@@ -6,8 +6,8 @@
     "ORG": "Liga",
     "MODAL": {
       "TITLE": {
-        "TEAM": "Busca tu equipo",
-        "ORG": "Busca tu liga"
+        "TEAM": "Busca un equipo",
+        "ORG": "Busca una liga"
       }
     }
   },

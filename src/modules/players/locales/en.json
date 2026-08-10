@@ -57,8 +57,11 @@
       "IS_CAPTAIN": "Is Captain",
       "IS_VICE_CAPTAIN": "Is Vice Captain",
       "IS_HALL_OF_FAME": "Is Hall of Fame",
-      "DESCRIPTION": "Description",
+      "DESCRIPTION": "Hall of Fame comment",
       "POSITION": "Position"
+    },
+    "HELPERS": {
+      "DESCRIPTION": "This comment will appear in the player's hall of fame profile."
     }
   },
   "TABLES": {

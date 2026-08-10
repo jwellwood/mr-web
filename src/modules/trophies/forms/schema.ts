@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../utils';
 import { zodDate } from '../../../utils/dev/zodDate';
 
 export const TrophySchema = z.object({
@@ -11,6 +12,8 @@ export const TrophySchema = z.object({
   opponent: z.string().optional(),
   comment: z.string().optional(),
 });
+
+export const requiredFields = getRequiredFields(TrophySchema);
 
 export type TrophyFormData = z.infer<typeof TrophySchema>;
 

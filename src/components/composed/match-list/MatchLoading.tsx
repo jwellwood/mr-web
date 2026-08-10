@@ -6,10 +6,11 @@ import MatchListScoreBox from './MatchListScoreBox';
 
 interface Props {
   showBadge?: boolean;
+  length?: number;
 }
 
-export default function MatchLoading({ showBadge }: Props) {
-  const data = Array.from({ length: 12 }).map((_, index) => ({
+export default function MatchLoading({ showBadge, length = 12 }: Props) {
+  const data = Array.from({ length }).map((_, index) => ({
     id: index,
     avatar: showBadge ? <CustomAvatar loading size="40px" /> : null,
     link: '',

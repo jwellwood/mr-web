@@ -19,7 +19,7 @@ describe('ForgotPasswordForm', () => {
       </TestWrapper>
     );
 
-    expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
+    expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
   });
 
   it('has the submit button disabled when email is empty', () => {
@@ -41,7 +41,7 @@ describe('ForgotPasswordForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('Email Address'), 'user@example.com');
+    await user.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
 
     expect(screen.getByRole('button', { name: /submit/i })).not.toBeDisabled();
   });
@@ -56,7 +56,7 @@ describe('ForgotPasswordForm', () => {
       </TestWrapper>
     );
 
-    await user.type(screen.getByLabelText('Email Address'), 'user@example.com');
+    await user.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {

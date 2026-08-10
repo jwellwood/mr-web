@@ -37,10 +37,17 @@
     },
     "ADMIN_ACCESS": {
       "SUCCESS": "Admin access requested successfully!",
-      "ERROR": "Admin access failed"
+      "ERROR": "Admin access failed: {{error}}"
     }
   },
   "FORM": {
+    "REQUEST_ACCESS": {
+      "SUMMARY": "A current team admin will provide you with an access code to gain admin access to this team. Please enter the code below and click submit.",
+      "TITLE": "Request Admin Access"
+    },
+    "SUMMARY": {
+      "ADD": "Here you can add the basics to get the team started. More details can be added later by a team admin through the admin > Edit Team page."
+    },
     "LABELS": {
       "TEAM_NAME": "Team Name",
       "YEAR_FOUNDED": "Year Founded",
@@ -66,6 +73,11 @@
           "SHORTS": "Away shorts",
           "SOCKS": "Away socks"
         }
+      }
+    },
+    "HELPERS": {
+      "KIT": {
+        "BACKGROUND": "Choose a background color that makes it easy to see the home and away kits. "
       }
     }
   },

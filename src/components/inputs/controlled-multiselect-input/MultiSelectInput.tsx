@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
+import FormHelperText from '../form-helper-text/FormHelperText';
 import { TypedFormError, ISelectOptions } from '../types';
 
 interface Props {
@@ -16,6 +17,8 @@ interface Props {
   errors: TypedFormError[];
   isDirty?: boolean;
   isValid?: boolean;
+  helperText?: string;
+  required?: boolean;
 }
 
 export default function MultipleSelectInput({
@@ -27,6 +30,8 @@ export default function MultipleSelectInput({
   errors,
   isDirty,
   isValid,
+  helperText,
+  required = false,
 }: Props) {
   const arrayValue = value || [];
 
@@ -45,33 +50,38 @@ export default function MultipleSelectInput({
   };
 
   return (
-    <FormControl fullWidth variant="filled">
-      <InputLabel
-        id="seasons-played"
-        sx={{
-          color: isDirty ? (isValid ? 'primary' : 'error') : undefined,
-        }}
-      >
-        {label}
-      </InputLabel>
-      <Select
-        labelId="seasons-played"
-        id="multiple-checkbox"
-        multiple
-        value={arrayValue}
-        onChange={handleChange}
-        renderValue={selected => renderValue(selected)}
-        MenuProps={{ PaperProps: { style: { maxHeight: 300 } } }}
-        error={!!errors?.[0]}
-      >
-        {options?.map((option, i) => (
-          <MenuItem key={(option.label, i)} value={option.value as string}>
-            <Checkbox checked={arrayValue.includes(option.value as string)} />
-            <ListItemText primary={option.label} />
-          </MenuItem>
-        ))}
-      </Select>
-      {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
-    </FormControl>
+    <>
+      {helperText ? <FormHelperText helperText={helperText} /> : null}
+      <FormControl fullWidth variant="filled">
+        <InputLabel
+          required={required}
+          id="seasons-played"
+          sx={{
+            color: isDirty ? (isValid ? 'primary' : 'error') : undefined,
+          }}
+        >
+          {label}
+        </InputLabel>
+        <Select
+          labelId="seasons-played"
+          id="multiple-checkbox"
+          multiple
+          value={arrayValue}
+          onChange={handleChange}
+          renderValue={selected => renderValue(selected)}
+          MenuProps={{ PaperProps: { style: { maxHeight: 300 } } }}
+          error={!!errors?.[0]}
+          required={required}
+        >
+          {options?.map((option, i) => (
+            <MenuItem key={(option.label, i)} value={option.value as string}>
+              <Checkbox checked={arrayValue.includes(option.value as string)} />
+              <ListItemText primary={option.label} />
+            </MenuItem>
+          ))}
+        </Select>
+        {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
+      </FormControl>
+    </>
   );
 }

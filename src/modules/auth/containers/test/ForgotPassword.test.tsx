@@ -73,7 +73,7 @@ describe('ForgotPasswordContainer', () => {
     await user.click(screen.getByTestId('captcha-btn'));
 
     await waitFor(() => {
-      expect(screen.getByLabelText('Email Address')).toBeInTheDocument();
+      expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument();
     });
   });
 
@@ -84,9 +84,9 @@ describe('ForgotPasswordContainer', () => {
 
     // Set the token first so the form is accessible
     await user.click(screen.getByTestId('captcha-btn'));
-    await waitFor(() => expect(screen.getByLabelText('Email Address')).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByLabelText(/Email Address/i)).toBeInTheDocument());
 
-    await user.type(screen.getByLabelText('Email Address'), 'user@example.com');
+    await user.type(screen.getByLabelText(/Email Address/i), 'user@example.com');
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => {
