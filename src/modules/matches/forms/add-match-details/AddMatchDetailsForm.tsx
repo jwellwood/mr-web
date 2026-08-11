@@ -15,6 +15,7 @@ import { getNumberOptions } from '../../../../utils';
 import AddMatchDetailsSchema, {
   AddMatchDetailsFormInput,
   AddMatchDetailsFormValues,
+  requiredFields,
 } from './schema';
 
 interface Props {
@@ -97,18 +98,21 @@ export default function AddMatchDetailsForm({
         name="date"
         label={t('FORM.LABELS.DATE')}
         disableFuture={false}
+        required={requiredFields.date}
       />
       <ControlledSelectInput
         control={control}
         name="seasonId"
         label={t('FORM.LABELS.SEASON')}
         options={seasonOptions}
+        required={requiredFields.seasonId}
       />
       <ControlledSelectInput
         control={control}
         name="competitionId"
         label={t('FORM.LABELS.COMPETITION')}
         options={competitionOptions}
+        required={requiredFields.competitionId}
       />
       <ControlledSwitchInput control={control} name="isHome" label={t('FORM.LABELS.IS_HOME')} />
 
@@ -117,6 +121,7 @@ export default function AddMatchDetailsForm({
         name="opponentId"
         label={t('FORM.LABELS.OPPONENT')}
         options={opponentOptions}
+        required={requiredFields.opponentId}
       />
 
       <ControlledSelectInput
@@ -124,12 +129,14 @@ export default function AddMatchDetailsForm({
         name="teamGoals"
         label={t('FORM.LABELS.GOALS_SCORED')}
         options={getNumberOptions(99)}
+        required={requiredFields.teamGoals}
       />
       <ControlledSelectInput
         control={control}
         name="opponentGoals"
         label={t('FORM.LABELS.GOALS_CONCEDED')}
         options={getNumberOptions(99)}
+        required={requiredFields.opponentGoals}
       />
       <SectionContainer type="info">
         <ControlledSwitchInput
@@ -144,12 +151,14 @@ export default function AddMatchDetailsForm({
               name="decision"
               label={t('FORM.LABELS.DECISION')}
               options={decisionOptions}
+              required={requiredFields.decision}
             />
             <ControlledSelectInput
               control={control}
               name="winnerSide"
               label={t('FORM.LABELS.WINNER_SIDE')}
               options={winnerSideOptions}
+              required={requiredFields.winnerSide}
             />
           </>
         ) : null}

@@ -47,9 +47,11 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
           }}
         >
           <StyledTabs value={currentIndex} onChange={handleChange} level={level}>
-            {tabs.map((tab: ITab, i: number) => (
-              <StyledTab key={i} label={tab.label} icon={tab.icon} level={level} disableRipple />
-            ))}
+            {tabs
+              .filter(tab => !tab.hidden)
+              .map((tab: ITab, i: number) => (
+                <StyledTab key={i} label={tab.label} icon={tab.icon} level={level} disableRipple />
+              ))}
           </StyledTabs>
         </AppBar>
       </>

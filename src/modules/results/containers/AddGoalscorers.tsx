@@ -12,6 +12,7 @@ import {
   type AddGoalscorersFormData,
 } from '../forms/add-goalscorers/schema';
 import { ADD_GOALSCORERS, FETCH_RESULT } from '../graphql';
+import type { T_FETCH_RESULT } from '../graphql';
 import { useGoalscorerOptions } from '../hooks/useGoalscorerOptions';
 
 interface Props {
@@ -19,15 +20,33 @@ interface Props {
   teamName?: string;
   teamGoals?: number;
   side: 'HOME' | 'AWAY';
+  currentGoalscorers?: T_FETCH_RESULT['result']['homeGoalscorers'];
 }
 
-export default function AddGoalscorers({ teamId, teamName, teamGoals = 0, side }: Props) {
+export default function AddGoalscorers({
+  teamId,
+  teamName,
+  teamGoals = 0,
+  side,
+  currentGoalscorers,
+}: Props) {
   const { t } = useTranslation('results');
   const { resultId, orgSeasonId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
   const [open, setOpen] = useState(false);
 
   const { playerOptions, playersLoading } = useGoalscorerOptions(teamId!, orgSeasonId!);
+
+  const defaultValues = currentGoalscorers?.length
+    ? {
+        goalscorers: currentGoalscorers
+          .filter(goalscorer => goalscorer.playerId != null)
+          .map(goalscorer => ({
+            playerId: goalscorer.playerId!._id,
+            goals: goalscorer.goals,
+          })),
+      }
+    : addGoalscorersInitialFormState;
 
   const [addGoalscorers, { loading, error }] = useMutation(ADD_GOALSCORERS, {
     refetchQueries: [{ query: FETCH_RESULT, variables: { resultId } }],
@@ -61,7 +80,7 @@ export default function AddGoalscorers({ teamId, teamName, teamGoals = 0, side }
       <FormModal open={open} onClose={() => setOpen(false)} title={title}>
         <AddGoalscorersForm
           onSubmit={onSubmit}
-          defaultValues={addGoalscorersInitialFormState}
+          defaultValues={defaultValues}
           playerOptions={playerOptions}
           teamGoals={teamGoals}
           loading={playersLoading || loading}

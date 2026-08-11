@@ -43,6 +43,10 @@
     "HEAD_TO_HEAD": "Head to Head"
   },
   "FORM": {
+    "SUMMARY": "Haz clic en los jugadores de la lista para agregar sus estadísticas de este partido",
+    "HELPERS": {
+      "PENS_SCORED": "If any of the goals scored were penalties, select how many of them were penalties. If none of the goals scored were penalties, leave this field blank."
+    },
     "LABELS": {
       "DATE": "Fecha",
       "IS_HOME": "¿Local?",

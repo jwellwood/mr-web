@@ -10,6 +10,7 @@ import {
 } from '../../../../components';
 import { FormModal } from '../../../../components/modals';
 import { getNumberOptions } from '../../../../utils';
+import { requiredFields } from '../result/schema';
 import {
   type SubmitResultFormData,
   type SubmitResultFormInput,
@@ -66,12 +67,14 @@ export default function SubmitResultForm({
             name="homeGoals"
             label={`${homeTeamName} ${t('FORM.LABELS.GOALS')}`}
             options={getNumberOptions(99, 0)}
+            required={requiredFields.homeGoals}
           />
           <ControlledSelectInput
             control={control}
             name="awayGoals"
             label={`${awayTeamName} ${t('FORM.LABELS.GOALS')}`}
             options={getNumberOptions(99, 0)}
+            required={requiredFields.awayGoals}
           />
           <ControlledSwitchInput
             control={control}

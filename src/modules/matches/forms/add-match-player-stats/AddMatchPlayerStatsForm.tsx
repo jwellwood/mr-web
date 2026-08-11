@@ -13,6 +13,7 @@ import { getNumberOptions } from '../../../../utils';
 import AddMatchPlayerStatsSchema, {
   AddMatchPlayerStatsFormValues,
   AddMatchPlayerStatsFormInput,
+  requiredFields,
 } from './schema';
 
 interface Props {
@@ -68,55 +69,65 @@ export default function AddMatchPlayerStatsForm({
         name="matchPosition"
         label={t('FORM.LABELS.POSITION')}
         options={positionOptions}
+        required={requiredFields.matchPosition}
       />
       <ControlledSelectInput
         control={control}
         name="goals"
         label={t('FORM.LABELS.GOALS')}
         options={goalOptions}
+        required={requiredFields.goals}
       />
       <ControlledSelectInput
         control={control}
         name="pensScored"
         label={t('FORM.LABELS.PENS_SCORED')}
-        options={goalOptions}
+        options={goalsScored ? getNumberOptions(goalsScored, 0) : []}
         disabled={+goalsScored === 0}
+        required={requiredFields.pensScored}
+        helperText={goalsScored ? t('FORM.HELPERS.PENS_SCORED') : ''}
       />
       <ControlledSelectInput
         control={control}
         name="assists"
         label={t('FORM.LABELS.ASSISTS')}
         options={goalOptions}
+        required={requiredFields.assists}
       />
       <ControlledSelectInput
         control={control}
         name="ownGoals"
         label={t('FORM.LABELS.OWN_GOALS')}
         options={concededOptions}
+        required={requiredFields.ownGoals}
       />
       <ControlledSelectInput
         control={control}
         name="pensMissed"
         label={t('FORM.LABELS.PENS_MISSED')}
         options={getNumberOptions(10)}
+        required={requiredFields.pensMissed}
       />
       <ControlledSelectInput
         control={control}
         name="pensSaved"
         label={t('FORM.LABELS.PENS_SAVED')}
         options={getNumberOptions(10)}
+        required={requiredFields.pensSaved}
       />
       <ControlledSelectInput
         control={control}
         name="conceded"
         label={t('FORM.LABELS.CONCEDED')}
         options={concededOptions}
+        required={requiredFields.conceded}
       />
       <ControlledSelectInput
         control={control}
         name="yellowCards"
         label={t('FORM.LABELS.YELLOW_CARDS')}
         options={getNumberOptions(2, 0)}
+        required={requiredFields.yellowCards}
       />
       <ControlledSwitchInput control={control} name="mvp" label={t('FORM.LABELS.IS_MVP')} />
       <ControlledSwitchInput control={control} name="redCard" label={t('FORM.LABELS.RED_CARD')} />

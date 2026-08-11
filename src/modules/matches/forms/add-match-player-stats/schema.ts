@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../../utils';
 
 const t = (key: string, options?: Record<string, unknown>) =>
   i18n.t(key, { ns: 'inputs', ...options });
@@ -43,6 +44,8 @@ export const AddMatchPlayerStatsSchema = z.object({
   redCard: z.boolean(),
   cleanSheet: z.boolean(),
 });
+
+export const requiredFields = getRequiredFields(AddMatchPlayerStatsSchema);
 
 export type AddMatchPlayerStatsFormInput = z.input<typeof AddMatchPlayerStatsSchema>;
 export type AddMatchPlayerStatsFormValues = z.output<typeof AddMatchPlayerStatsSchema>;

@@ -46,6 +46,10 @@ export default function AddGoalscorersForm({
 
   const { fields, append, remove } = useFieldArray({ name: 'goalscorers', control });
   const goalscorers = useWatch({ control, name: 'goalscorers' });
+  const selectedPlayerIds =
+    goalscorers
+      ?.map(goalscorer => goalscorer?.playerId)
+      .filter((playerId): playerId is string => !!playerId) ?? [];
 
   const totalAssignedGoals = goalscorers?.reduce((sum, g) => sum + (Number(g?.goals) || 0), 0) ?? 0;
   const remainingGoals = teamGoals - totalAssignedGoals;
@@ -59,6 +63,11 @@ export default function AddGoalscorersForm({
       error={error}
     >
       {fields.map((field, index) => {
+        const currentPlayerId = goalscorers?.[index]?.playerId;
+        const availablePlayerOptions = playerOptions.filter(option => {
+          const optionId = String(option.value);
+          return !selectedPlayerIds.includes(optionId) || optionId === currentPlayerId;
+        });
         const otherGoals =
           goalscorers?.reduce(
             (sum, g, idx) => (idx !== index ? sum + (Number(g?.goals) || 0) : sum),
@@ -73,7 +82,8 @@ export default function AddGoalscorersForm({
                 control={control}
                 name={`goalscorers.${index}.playerId`}
                 label={t('FORM.LABELS.PLAYER')}
-                options={playerOptions}
+                options={availablePlayerOptions}
+                required
               />
             </CustomGridItem>
             <CustomGridItem size={3}>
@@ -82,6 +92,7 @@ export default function AddGoalscorersForm({
                 name={`goalscorers.${index}.goals`}
                 label={t('FORM.LABELS.GOALS')}
                 options={getNumberOptions(maxGoals, 1)}
+                required
               />
             </CustomGridItem>
             <CustomGridItem size={1}>

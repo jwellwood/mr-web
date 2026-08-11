@@ -17,7 +17,7 @@ import BatchResultConfirmation from '../../components/BatchResultConfirmation';
 import { isCupMatch } from '../../helpers/isCupMatch';
 import { useCompetitionRoundOptions } from '../../hooks/useResultInput';
 import GameweekTeamsInput from './GameweekTeamsInput';
-import { BatchResultSchema, BatchResultFormData } from './schema';
+import { BatchResultSchema, BatchResultFormData, requiredFields } from './schema';
 
 export type MatchRow = {
   homeTeam: string;
@@ -183,18 +183,21 @@ export default function BatchResultForm({
         name="date"
         label={t('FORM.LABELS.DATE')}
         disableFuture={false}
+        required={requiredFields.date}
       />
       <ControlledSelectInput
         control={control}
         name="orgSeasonId"
         label={t('FORM.LABELS.SEASON')}
         options={orgSeasonOptions}
+        required={requiredFields.orgSeasonId}
       />
       <ControlledSelectInput
         control={control}
         name="competitionId"
         label={t('FORM.LABELS.COMPETITION')}
         options={competitionOptions}
+        required={requiredFields.competitionId}
       />
       {showGameWeek ? (
         <ControlledSelectInput
@@ -202,6 +205,7 @@ export default function BatchResultForm({
           name="gameWeek"
           label={gameWeekLabel}
           options={roundOptions}
+          required={requiredFields.gameWeek}
         />
       ) : null}
 

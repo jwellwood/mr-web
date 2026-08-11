@@ -91,6 +91,7 @@
     "LABELS": {
       "HOME_TEAM": "Home",
       "AWAY_TEAM": "Away",
+      "BYE_TEAM": "Bye Team",
       "HOME_SCORE": "Home Score",
       "AWAY_SCORE": "Away Score",
       "HOME_GOALS": "Home Goals",

@@ -43,6 +43,7 @@
     "HEAD_TO_HEAD": "Head to Head"
   },
   "FORM": {
+    "SUMMARY": "Click on the players in the list to add their stats for this match",
     "LABELS": {
       "DATE": "Date",
       "IS_HOME": "Home?",
@@ -70,6 +71,9 @@
       "RED_CARD": "Red Card?",
       "CLEAN_SHEET": "Clean Sheet?",
       "FORFEITED_MATCH": "Forfeited Match"
+    },
+    "HELPERS": {
+      "PENS_SCORED": "If any of the goals scored were penalties, select how many of them were penalties. If none of the goals scored were penalties, leave this field blank."
     },
     "BUTTONS": {
       "APPLY": "Apply",

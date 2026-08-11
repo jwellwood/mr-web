@@ -16,10 +16,12 @@ const HeadToHead = lazy(() => import('../../containers/HeadToHead'));
 interface Props {
   data?: T_FETCH_MATCH;
   loading: boolean;
+  showH2H?: boolean;
+  disableLink?: boolean;
   error?: TApolloError;
 }
 
-export default function MatchView({ data, loading, error }: Props) {
+export default function MatchView({ data, loading, showH2H, disableLink, error }: Props) {
   const { t } = useTranslation('matches');
   const { teamId, orgId } = useCustomParams();
   const baseUrl = `/org/${orgId}/team/${teamId}`;
@@ -45,7 +47,7 @@ export default function MatchView({ data, loading, error }: Props) {
         <SectionContainer>
           <CustomTable
             columns={MATCH_PLAYER_TABLE.columns(t)}
-            rows={MATCH_PLAYER_TABLE.rows(mappedPlayers, baseUrl)}
+            rows={MATCH_PLAYER_TABLE.rows(mappedPlayers, baseUrl, disableLink)}
             isSortable
             sortByString="position"
             loading={loading}
@@ -57,6 +59,7 @@ export default function MatchView({ data, loading, error }: Props) {
     {
       label: t('TABS.HEAD_TO_HEAD'),
       component: <HeadToHead opponentId={opponentId?._id} />,
+      hidden: !showH2H,
     },
   ];
 

@@ -2,7 +2,7 @@ import { ITempMatch } from '../../types';
 import { AddMatchDetailsFormValues } from '../add-match-details/schema';
 
 const toFormDecision = (value: ITempMatch['decision']): AddMatchDetailsFormValues['decision'] => {
-  if (value === 'NORMAL_TIME' || value === 'EXTRA_TIME' || value === 'PENALTIES') {
+  if (value === 'EXTRA_TIME' || value === 'PENALTIES') {
     return value;
   }
   return null;

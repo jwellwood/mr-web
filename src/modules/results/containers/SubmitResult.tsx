@@ -26,8 +26,8 @@ export default function SubmitResult({ homeTeamName, awayTeamName, homeGoals, aw
   });
   const [defaultValues] = useState<SubmitResultFormData>({
     ...submitResultInitialFormState,
-    homeGoals,
-    awayGoals,
+    homeGoals: homeGoals ?? 0,
+    awayGoals: awayGoals ?? 0,
   });
   const onSubmit = async (formData: SubmitResultFormData) => {
     try {

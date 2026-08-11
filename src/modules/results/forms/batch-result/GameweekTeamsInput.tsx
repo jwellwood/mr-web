@@ -66,6 +66,7 @@ export default function GameweekTeamsInput<T extends object>({
             name={`matches.${index}.homeTeam`}
             label={t('FORM.LABELS.HOME_TEAM')}
             options={homeOptions}
+            required
           />
         </CustomGridItem>
         {!isBye && (
@@ -75,6 +76,7 @@ export default function GameweekTeamsInput<T extends object>({
               name={`matches.${index}.awayTeam`}
               label={t('FORM.LABELS.AWAY_TEAM')}
               options={awayOptions}
+              required
             />
           </CustomGridItem>
         )}

@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { getRequiredFields } from '../../../../utils';
 
 const GoalscorerSchema = z.object({
   playerId: z.string().min(1),
@@ -23,6 +24,8 @@ export const createAddGoalscorersSchema = (teamGoals: number) =>
       });
     }
   });
+
+export const requiredFields = getRequiredFields(AddGoalscorersSchema);
 
 export const addGoalscorersInitialFormState: AddGoalscorersFormData = {
   goalscorers: [{ playerId: '', goals: 1 }],

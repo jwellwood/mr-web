@@ -37,7 +37,7 @@ export default function MatchFormStepper({ onSubmit, loading, error }: Props) {
   return (
     <FormStepper steps={steps} activeStep={activeStep} handleBack={handleBack}>
       <>
-        {activeStep !== 0 && <MatchOverview />}
+        {activeStep !== 0 && activeStep !== 3 && <MatchOverview />}
         {steps[activeStep]}
         {activeStep === 0 && matchId && <DeleteMatch />}
       </>

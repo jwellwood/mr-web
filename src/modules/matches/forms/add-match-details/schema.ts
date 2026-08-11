@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../../i18n/react-i18n';
+import { getRequiredFields } from '../../../../utils';
 import { zodDate } from '../../../../utils/dev/zodDate';
 
 const t = (key: string, options?: Record<string, unknown>) =>
@@ -13,13 +14,7 @@ export const AddMatchDetailsSchema = z.object({
   competitionId: z.string().min(1, t('VALIDATION.required')),
   seasonId: z.string().min(1, t('VALIDATION.required')),
   decision: z
-    .union([
-      z.literal('EXTRA_TIME'),
-      z.literal('NORMAL_TIME'),
-      z.literal('PENALTIES'),
-      z.literal(''),
-      z.null(),
-    ])
+    .union([z.literal('EXTRA_TIME'), z.literal('PENALTIES'), z.literal(''), z.null()])
     .optional()
     .transform(value => (value === '' ? undefined : value)),
   winnerSide: z
@@ -37,6 +32,8 @@ export const AddMatchDetailsSchema = z.object({
     .min(0, t('VALIDATION.low', { min: 0 }))
     .max(99, t('VALIDATION.high', { max: 99 })),
 });
+
+export const requiredFields = getRequiredFields(AddMatchDetailsSchema);
 
 export type AddMatchDetailsFormInput = z.input<typeof AddMatchDetailsSchema>;
 export type AddMatchDetailsFormValues = z.output<typeof AddMatchDetailsSchema>;

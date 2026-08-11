@@ -60,9 +60,13 @@ export default function AccordionSection({
             .sort((a, b) => new Date(b[0]).getTime() - new Date(a[0]).getTime())
             .map(([dateKey, dateResults]) => (
               <SectionContainer
-                type="success"
+                type="form"
                 key={`${competitionName}-${gameWeek}-${dateKey}`}
-                title={parseDate(dateKey)}
+                subtitle={
+                  <CustomTypography bold size="xs" color="primary">
+                    {parseDate(dateKey)}
+                  </CustomTypography>
+                }
               >
                 <ResultTable results={dateResults} />
               </SectionContainer>

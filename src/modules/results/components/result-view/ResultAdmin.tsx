@@ -25,6 +25,8 @@ export default function ResultAdmin({ result }: Props) {
     resultStatus,
     homeGoals,
     awayGoals,
+    homeGoalscorers,
+    awayGoalscorers,
   } = result || {};
 
   const { isTeamAuth: isHomeTeamAdmin } = useAuth(homeTeam?._id);
@@ -99,6 +101,7 @@ export default function ResultAdmin({ result }: Props) {
           teamId={homeTeam?._id}
           teamName={homeTeam?.teamName}
           teamGoals={homeGoals}
+          currentGoalscorers={homeGoalscorers}
         />
       ) : null}
       {showAddGoalscorers && isAwayTeamAdmin && awayGoals ? (
@@ -107,6 +110,7 @@ export default function ResultAdmin({ result }: Props) {
           teamId={awayTeam?._id}
           teamName={awayTeam?.teamName}
           teamGoals={awayGoals}
+          currentGoalscorers={awayGoalscorers}
         />
       ) : null}
       {showAddGoalscorers && isOrgAuth && !isHomeTeamAdmin && !isAwayTeamAdmin && (
@@ -117,6 +121,7 @@ export default function ResultAdmin({ result }: Props) {
               teamId={homeTeam?._id}
               teamName={homeTeam?.teamName}
               teamGoals={homeGoals}
+              currentGoalscorers={homeGoalscorers}
             />
           )}
           {awayGoals && (
@@ -125,6 +130,7 @@ export default function ResultAdmin({ result }: Props) {
               teamId={awayTeam?._id}
               teamName={awayTeam?.teamName}
               teamGoals={awayGoals}
+              currentGoalscorers={awayGoalscorers}
             />
           )}
         </>

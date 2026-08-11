@@ -6,7 +6,7 @@ export const validateStats = (
 ): {
   isValid: boolean;
   validationArray: readonly {
-    label: 'Starters' | 'Goals' | 'Assists' | 'Own Goals' | 'Conceded';
+    label: 'Goals' | 'Assists' | 'Conceded';
     value: number;
     isValid: boolean;
     isExact: boolean;
@@ -22,7 +22,6 @@ export const validateStats = (
   const goals = getTotalArray('goals');
   const assists = getTotalArray('assists');
   const conceded = getTotalArray('conceded');
-  const ownGoals = getTotalArray('ownGoals');
 
   const validateScored = (stat: number) => {
     return +stat <= +teamGoals;
@@ -45,13 +44,6 @@ export const validateStats = (
       isValid: validateScored(assists) || false,
       isExact: +assists === +teamGoals,
       total: teamGoals,
-    },
-    {
-      label: 'Own Goals',
-      value: ownGoals,
-      isValid: validateConceded(ownGoals) || false,
-      isExact: +ownGoals === +opponentGoals || false,
-      total: opponentGoals,
     },
     {
       label: 'Conceded',

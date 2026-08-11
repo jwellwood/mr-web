@@ -91,6 +91,7 @@
     "LABELS": {
       "HOME_TEAM": "Local",
       "AWAY_TEAM": "Visitante",
+      "BYE_TEAM": "Equipo con pase directo",
       "HOME_SCORE": "Goles Local",
       "AWAY_SCORE": "Goles Visitante",
       "HOME_GOALS": "Goles Local",

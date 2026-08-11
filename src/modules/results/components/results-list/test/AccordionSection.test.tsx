@@ -28,11 +28,13 @@ vi.mock('../../../../../components/accordion', () => ({
 }));
 
 vi.mock('../../../../../components', () => ({
-  SectionContainer: ({ children, title }: { children: React.ReactNode; title?: string }) => (
-    <div data-testid="section-container" data-title={title}>
+  SectionContainer: ({ children, subtitle }: { children: React.ReactNode; subtitle?: string }) => (
+    <div data-testid="section-container">
+      <div data-testid="section-subtitle">{subtitle}</div>
       {children}
     </div>
   ),
+  CustomTypography: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
 vi.mock('../../../../../utils', () => ({
@@ -104,9 +106,9 @@ describe('AccordionSection', () => {
       makeResult({ _id: 'r-2', date: '2020-06-15T10:00:00.000Z' }),
     ];
     renderSection({ gwResults: results });
-    const sections = screen.getAllByTestId('section-container');
-    expect(sections[0]).toHaveAttribute('data-title', 'Parsed:2020-06-15');
-    expect(sections[1]).toHaveAttribute('data-title', 'Parsed:2020-06-01');
+    const subtitles = screen.getAllByTestId('section-subtitle');
+    expect(subtitles[0]).toHaveTextContent('Parsed:2020-06-15');
+    expect(subtitles[1]).toHaveTextContent('Parsed:2020-06-01');
   });
 
   it('passes the correct results to ResultTable for each date group', () => {

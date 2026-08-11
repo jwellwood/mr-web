@@ -19,7 +19,7 @@ import { isCupMatch } from '../../helpers/isCupMatch';
 import { useCompetitionRoundOptions } from '../../hooks/useResultInput';
 import { useResultEffects } from '../useResultEffects';
 import type { ResultFormData } from './schema';
-import { ResultSchema } from './schema';
+import { requiredFields, ResultSchema } from './schema';
 
 interface Props {
   onSubmit: (formData: ResultFormData) => void;
@@ -116,24 +116,27 @@ export default function ResultForm({
       loading={loading}
       error={error}
     >
-      <SectionContainer title={t('FORM.HEADERS.MATCH')} type="info">
+      <SectionContainer title={t('FORM.HEADERS.MATCH')} type="form">
         <ControlledDateInput
           control={control}
           name="date"
           label={t('FORM.LABELS.DATE')}
           disableFuture={false}
+          required={requiredFields.date}
         />
         <ControlledSelectInput
           control={control}
           name="kickoffTime"
           label={t('FORM.LABELS.KICKOFF_TIME')}
           options={getKickoffTimeOptions()}
+          required={requiredFields.kickoffTime}
         />
         <ControlledSelectInput
           control={control}
           name="orgSeasonId"
           label={t('FORM.LABELS.SEASON')}
           options={orgSeasonOptions}
+          required={requiredFields.orgSeasonId}
         />
         <SectionContainer title={t('FORM.HEADERS.COMPETITION')} type="info">
           <ControlledSelectInput
@@ -141,6 +144,7 @@ export default function ResultForm({
             name="competitionId"
             label={t('FORM.LABELS.COMPETITION')}
             options={competitionOptions}
+            required={requiredFields.competitionId}
           />
 
           {showGameWeek ? (
@@ -149,6 +153,7 @@ export default function ResultForm({
               name="gameWeek"
               label={gameWeekLabel}
               options={roundOptions}
+              required={requiredFields.gameWeek}
             />
           ) : null}
           {isCup ? (
@@ -163,8 +168,9 @@ export default function ResultForm({
             <ControlledSelectInput
               control={control}
               name="homeTeam"
-              label={t('FORM.LABELS.HOME_TEAM')}
+              label={t(isBye ? 'FORM.LABELS.BYE_TEAM' : 'FORM.LABELS.HOME_TEAM')}
               options={activeTeamOptions}
+              required={requiredFields.homeTeam}
             />
           </CustomGridItem>
           <CustomGridItem size={isBye ? 12 : 3}>
@@ -175,6 +181,7 @@ export default function ResultForm({
                 name="homeGoals"
                 label={t('FORM.LABELS.HOME_GOALS')}
                 options={getNumberOptions(50, 0)}
+                required={requiredFields.homeGoals}
               />
             )}
           </CustomGridItem>
@@ -187,6 +194,7 @@ export default function ResultForm({
                   name="awayTeam"
                   label={t('FORM.LABELS.AWAY_TEAM')}
                   options={activeTeamOptions}
+                  required={requiredFields.awayTeam}
                 />
               }
             </CustomGridItem>
@@ -200,6 +208,7 @@ export default function ResultForm({
                   name="awayGoals"
                   label={t('FORM.LABELS.AWAY_GOALS')}
                   options={getNumberOptions(50, 0)}
+                  required={requiredFields.awayGoals}
                 />
               )}
             </CustomGridItem>
@@ -220,12 +229,14 @@ export default function ResultForm({
               name="decision"
               label={t('FORM.LABELS.DECISION')}
               options={decisionOptions}
+              required={requiredFields.decision}
             />
             <ControlledSelectInput
               control={control}
               name="winnerSide"
               label={t('FORM.LABELS.WINNER_SIDE')}
               options={winnerSideOptions}
+              required={requiredFields.winnerSide}
             />
           </>
         ) : null}

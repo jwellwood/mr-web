@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { zodDate } from '../../../../utils';
+import { getRequiredFields, zodDate } from '../../../../utils';
 import { initialResultState } from '../result/schema';
 
 export const BatchResultSchema = z.object({
@@ -70,6 +70,8 @@ export const BatchResultSchema = z.object({
       });
     }),
 });
+
+export const requiredFields = getRequiredFields(BatchResultSchema);
 
 export type BatchResultFormData = z.infer<typeof BatchResultSchema>;
 

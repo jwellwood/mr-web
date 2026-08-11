@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { zodDate } from '../../../../utils';
+import { getRequiredFields, zodDate } from '../../../../utils';
 
 export const ResultSchema = z
   .object({
@@ -28,20 +28,20 @@ export const ResultSchema = z
     }
   });
 
+export const requiredFields = getRequiredFields(ResultSchema);
+
 export type ResultFormData = z.infer<typeof ResultSchema>;
 
 export const initialResultState: ResultFormData = {
   date: new Date(),
   kickoffTime: '09:00',
-  gameWeek: 0,
+  gameWeek: '',
   competitionId: '',
   orgSeasonId: '',
   homeTeam: '',
   awayTeam: '',
   homeGoals: 0,
   awayGoals: 0,
-  // decision: 'NORMAL_TIME',
-  // winnerSide: null,
   isForfeit: false,
   isComplete: false,
   isBye: false,
