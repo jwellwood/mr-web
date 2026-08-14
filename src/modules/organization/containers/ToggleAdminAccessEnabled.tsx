@@ -31,6 +31,7 @@ export default function ToggleAdminAccessEnabled({ data }: Props) {
 
   return (
     <CustomSwitch
+      name="enabled"
       label={t('LABELS.ADMIN_ACCESS_ENABLED')}
       checked={data?.enabled ?? false}
       onCheck={onChange}
