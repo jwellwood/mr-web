@@ -12,6 +12,7 @@ interface Props {
   gameWeek: string;
   gwResults: T_FETCH_RESULTS['results'];
   isExpanded: boolean;
+  isAdminView?: boolean;
 }
 
 export default function AccordionSection({
@@ -19,6 +20,7 @@ export default function AccordionSection({
   gameWeek,
   gwResults,
   isExpanded,
+  isAdminView,
 }: Props) {
   const { t } = useTranslation('results');
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -45,7 +47,14 @@ export default function AccordionSection({
       <CustomAccordion
         key={`${competitionName}-${gameWeek}`}
         isExpanded={isExpanded}
-        title={<AccordionTitle gameWeek={gameWeek} gwResults={gwResults} isExpanded={isExpanded} />}
+        title={
+          <AccordionTitle
+            gameWeek={gameWeek}
+            gwResults={gwResults}
+            isExpanded={isExpanded}
+            isAdminView={isAdminView}
+          />
+        }
       >
         <>
           {Object.entries(

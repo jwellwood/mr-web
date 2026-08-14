@@ -10,7 +10,7 @@ export default function IncludedOptions({ options }: Props) {
   const { t } = useTranslation('seasons');
   return (
     <SectionContainer
-      type={options.length ? 'success' : 'warning'}
+      type={options.length ? 'form' : 'warning'}
       title={t('MESSAGES.INCLUDED', { count: options.length })}
     >
       <CustomGridContainer spacing={1}>

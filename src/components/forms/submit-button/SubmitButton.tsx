@@ -40,7 +40,7 @@ export default function SubmitButton({
     <Button
       fullWidth
       type={confirmEnabled ? 'button' : type}
-      variant="contained"
+      variant="text"
       color="primary"
       disabled={disabled}
       onClick={confirmEnabled ? () => {} : onClick}

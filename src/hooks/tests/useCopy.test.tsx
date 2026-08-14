@@ -1,96 +1,125 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
+import { act, renderHook } from '@testing-library/react';
+import { useDispatch } from 'react-redux';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { showAlert } from '../../store';
 import { useCopy } from '../useCopy';
 
-const mockDispatch = vi.fn();
-let writeTextMock: ReturnType<typeof vi.fn>;
-
-vi.mock('react-redux', () => ({
-  useDispatch: () => mockDispatch,
+vi.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
 }));
 
-function HookHarness({ text }: { text: string }) {
-  const { copied, onCopy } = useCopy(text);
+vi.mock('react-redux', async () => {
+  const actual = await vi.importActual<typeof import('react-redux')>('react-redux');
 
-  return (
-    <div>
-      <span>{copied ? 'copied' : 'not-copied'}</span>
-      <button onClick={() => void onCopy()}>copy</button>
-    </div>
-  );
-}
+  return {
+    ...actual,
+    useDispatch: vi.fn(),
+  };
+});
+
+const mockedUseDispatch = vi.mocked(useDispatch);
 
 describe('useCopy', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
-
-    writeTextMock = vi.fn().mockResolvedValue(undefined);
-
-    Object.defineProperty(navigator, 'clipboard', {
-      configurable: true,
+    vi.useFakeTimers();
+    mockedUseDispatch.mockReturnValue(vi.fn());
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
       value: {
-        writeText: writeTextMock,
+        writeText: vi.fn().mockResolvedValue(undefined),
       },
+      configurable: true,
     });
   });
 
   afterEach(() => {
     vi.useRealTimers();
+    vi.clearAllMocks();
   });
 
-  it('copies text, dispatches success alert and resets copied after timeout', async () => {
-    render(<HookHarness text="admin-code" />);
-
-    fireEvent.click(screen.getByRole('button', { name: 'copy' }));
-
-    await waitFor(() => {
-      expect(writeTextMock).toHaveBeenCalledWith('admin-code');
-      expect(mockDispatch).toHaveBeenCalledWith(
-        expect.objectContaining({
-          type: expect.stringContaining('showAlert'),
-          payload: { text: 'Text copied to clipboard', type: 'success' },
-        })
-      );
+  it('does nothing when the text is empty', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true,
     });
 
-    await waitFor(() => {
-      expect(screen.getByText('copied')).toBeInTheDocument();
+    const { result } = renderHook(() => useCopy(''));
+
+    await act(async () => {
+      await result.current.onCopy();
     });
 
-    await waitFor(
-      () => {
-        expect(screen.getByText('not-copied')).toBeInTheDocument();
-      },
-      { timeout: 2600 }
+    expect(writeText).not.toHaveBeenCalled();
+    expect(result.current.copied).toBe(false);
+  });
+
+  it('copies text and dispatches a success alert when the clipboard write succeeds', async () => {
+    const dispatch = vi.fn();
+    mockedUseDispatch.mockReturnValue(dispatch);
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true,
+    });
+
+    const { result } = renderHook(() => useCopy('abc123'));
+
+    await act(async () => {
+      await result.current.onCopy();
+    });
+
+    expect(writeText).toHaveBeenCalledWith('abc123');
+    expect(result.current.copied).toBe(true);
+    expect(dispatch).toHaveBeenCalledWith(
+      showAlert({ text: 'HOOKS.USE_COPY.SUCCESS', type: 'success' })
     );
   });
 
-  it('dispatches error alert when copy fails', async () => {
-    writeTextMock.mockRejectedValueOnce(new Error('denied'));
-
-    render(<HookHarness text="admin-code" />);
-
-    fireEvent.click(screen.getByRole('button', { name: 'copy' }));
-
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith(
-        expect.objectContaining({
-          type: expect.stringContaining('showAlert'),
-          payload: { text: 'Failed to copy text to clipboard', type: 'error' },
-        })
-      );
+  it('dispatches an error alert and keeps copied false when copying fails', async () => {
+    const dispatch = vi.fn();
+    mockedUseDispatch.mockReturnValue(dispatch);
+    const writeText = vi.fn().mockRejectedValue(new Error('copy failed'));
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true,
     });
-    expect(screen.getByText('not-copied')).toBeInTheDocument();
+
+    const { result } = renderHook(() => useCopy('abc123'));
+
+    await act(async () => {
+      await result.current.onCopy();
+    });
+
+    expect(writeText).toHaveBeenCalledWith('abc123');
+    expect(result.current.copied).toBe(false);
+    expect(dispatch).toHaveBeenCalledWith(
+      showAlert({ text: 'HOOKS.USE_COPY.ERROR', type: 'error' })
+    );
   });
 
-  it('does nothing when text is empty', async () => {
-    render(<HookHarness text="" />);
+  it('resets copied back to false after 2 seconds', async () => {
+    const dispatch = vi.fn();
+    mockedUseDispatch.mockReturnValue(dispatch);
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(globalThis.navigator, 'clipboard', {
+      value: { writeText },
+      configurable: true,
+    });
 
-    fireEvent.click(screen.getByRole('button', { name: 'copy' }));
+    const { result } = renderHook(() => useCopy('abc123'));
 
-    expect(writeTextMock).not.toHaveBeenCalled();
-    expect(mockDispatch).not.toHaveBeenCalled();
-    expect(screen.getByText('not-copied')).toBeInTheDocument();
+    await act(async () => {
+      await result.current.onCopy();
+    });
+
+    expect(result.current.copied).toBe(true);
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    expect(result.current.copied).toBe(false);
   });
 });

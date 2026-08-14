@@ -78,7 +78,6 @@ export const useOrgSetupChecklist = () => {
     },
   ];
 
-  const allDone = steps.every(step => step.done);
   const isLoading = orgLoading || teamsLoading || seasonsLoading || seasonLoading || resultsLoading;
-  return { steps, allDone, loading: isLoading };
+  return { steps, loading: isLoading };
 };

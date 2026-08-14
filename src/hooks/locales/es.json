@@ -1,0 +1,18 @@
+{
+  "USE_COPY": {
+    "SUCCESS": "Copiado al portapapeles",
+    "ERROR": "Error al copiar al portapapeles"
+  },
+  "LOGOUT": {
+    "SUCCESS": "Has cerrado sesión correctamente",
+    "ERROR": "Error al cerrar sesión"
+  },
+  "UPLOAD_IMAGE": {
+    "INVALID_FILE_TYPE": "Tipo de archivo no válido",
+    "FILE_TOO_LARGE": "El archivo es demasiado grande. El tamaño máximo es {{maxSize}} MB",
+    "UPLOAD_FAILED": "Error al subir la imagen",
+    "SUCCESS": "Imagen subida correctamente",
+    "REMOVE_SUCCESS": "Imagen eliminada correctamente",
+    "REMOVE_FAILED": "Error al eliminar la imagen"
+  }
+}

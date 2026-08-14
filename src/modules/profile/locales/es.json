@@ -68,7 +68,15 @@
       "CREATE_ORG": "Crear una organización"
     }
   },
-  "GETTING_STARTED": {},
+  "GETTING_STARTED": {
+    "TITLE": "Primeros pasos",
+    "DESCRIPTION": "¡Bienvenido a tu perfil! Aquí hay algunos pasos para ayudarte a comenzar.",
+    "STEPS": {
+      "UPDATE_PROFILE": "Actualiza la información de tu perfil.",
+      "UPLOAD_IMAGE": "Sube una imagen de perfil.",
+      "JOIN_TEAM": "Únete o crea un equipo u organización."
+    }
+  },
   "HEADERS": {
     "TEAMS": "Equipos",
     "ORGANIZATIONS": "Organizaciones"

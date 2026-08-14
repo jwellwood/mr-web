@@ -8,9 +8,10 @@ import ResultsFilter, { FilterForm } from './ResultsFilter';
 
 interface Props {
   results: T_FETCH_RESULTS['results'];
+  isAdminView?: boolean;
 }
 
-export default function ResultsAccordion({ results }: Props) {
+export default function ResultsAccordion({ results, isAdminView }: Props) {
   const { control } = useForm<FilterForm>({ defaultValues: { selectedTeam: 'all' } });
   const selectedTeam = useWatch({ control, name: 'selectedTeam' });
 
@@ -47,6 +48,7 @@ export default function ResultsAccordion({ results }: Props) {
                 gameWeek={gameWeek}
                 gwResults={gwResults}
                 isExpanded={gameWeek === defaultExpanded}
+                isAdminView={isAdminView}
               />
             ))}
           </Fragment>

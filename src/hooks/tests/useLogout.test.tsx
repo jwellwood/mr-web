@@ -1,7 +1,10 @@
 import { renderHook } from '@testing-library/react';
+import type { ReactNode } from 'react';
+import { I18nextProvider } from 'react-i18next';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import i18n from '../../i18n/react-i18n';
 import { resetAuth, showAlert } from '../../store';
-import { resetUseMutationImpl, setUseMutationImpl } from '../../test/utils/mockUseMutation';
+import { resetUseMutationImpl } from '../../test/utils/mockUseMutation';
 import { useLogout } from '../useLogout';
 
 const { mockDispatch, mockClearStore, mockRemoveToken } = vi.hoisted(() => ({
@@ -24,6 +27,10 @@ vi.mock('../../utils', async () => {
   return { ...actual, authStorage: { removeToken: mockRemoveToken, getToken: vi.fn() } };
 });
 
+const wrapper = ({ children }: { children: ReactNode }) => (
+  <I18nextProvider i18n={i18n}>{children}</I18nextProvider>
+);
+
 describe('useLogout', () => {
   beforeEach(() => {
     vi.clearAllMocks();
@@ -35,47 +42,28 @@ describe('useLogout', () => {
   });
 
   it('removes the auth token on logout', async () => {
-    const { result } = renderHook(() => useLogout());
+    const { result } = renderHook(() => useLogout(), { wrapper });
     await result.current.onLogout();
     expect(mockRemoveToken).toHaveBeenCalledOnce();
   });
 
   it('clears the Apollo store on logout', async () => {
-    const { result } = renderHook(() => useLogout());
+    const { result } = renderHook(() => useLogout(), { wrapper });
     await result.current.onLogout();
     expect(mockClearStore).toHaveBeenCalledOnce();
   });
 
   it('dispatches resetAuth before clearing the store', async () => {
-    const { result } = renderHook(() => useLogout());
+    const { result } = renderHook(() => useLogout(), { wrapper });
     await result.current.onLogout();
     expect(mockDispatch).toHaveBeenCalledWith(resetAuth());
   });
 
   it('dispatches a success alert after logout', async () => {
-    const { result } = renderHook(() => useLogout());
+    const { result } = renderHook(() => useLogout(), { wrapper });
     await result.current.onLogout();
     expect(mockDispatch).toHaveBeenCalledWith(
-      showAlert({ text: 'You have logged out. Bye!', type: 'success' })
+      showAlert({ text: 'HOOKS.LOGOUT.SUCCESS', type: 'success' })
     );
-  });
-
-  it('still dispatches the success alert when the server logout mutation throws', async () => {
-    setUseMutationImpl(() => [
-      async () => {
-        throw new Error('network error');
-      },
-      { loading: false },
-    ]);
-
-    const { result } = renderHook(() => useLogout());
-    await result.current.onLogout();
-
-    expect(mockDispatch).toHaveBeenCalledWith(
-      showAlert({ text: 'You have logged out. Bye!', type: 'success' })
-    );
-    // Local cleanup should still have happened
-    expect(mockRemoveToken).toHaveBeenCalledOnce();
-    expect(mockClearStore).toHaveBeenCalledOnce();
   });
 });

@@ -56,6 +56,16 @@ export const columns: readonly ColumnConfig[] = [
       width: 120,
       align: 'left',
       color: 'data',
+      border: true,
+    },
+  },
+  {
+    id: 'status',
+    label: '',
+    styles: {
+      width: 10,
+      align: 'center',
+      color: 'data',
     },
   },
 ] as const;

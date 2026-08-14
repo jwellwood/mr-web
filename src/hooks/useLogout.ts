@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client/react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { LOG_OUT_USER } from '../modules/auth/graphql';
 import { apolloClient } from '../services/graphql/apolloClient';
@@ -6,6 +7,7 @@ import { AppDispatch, resetAuth, showAlert } from '../store';
 import { authStorage } from '../utils';
 
 export const useLogout = () => {
+  const { t } = useTranslation('hooks');
   const dispatch: AppDispatch = useDispatch();
   const [logOutUser] = useMutation(LOG_OUT_USER);
 
@@ -17,6 +19,7 @@ export const useLogout = () => {
       await apolloClient.clearStore();
     } catch (error) {
       console.error(error);
+      dispatch(showAlert({ text: t('HOOKS.LOGOUT.ERROR'), type: 'error' }));
     }
 
     // Logout on server
@@ -26,7 +29,7 @@ export const useLogout = () => {
       // Local logout already succeeded; ignore server logout failure.
     }
 
-    dispatch(showAlert({ text: 'You have logged out. Bye!', type: 'success' }));
+    dispatch(showAlert({ text: t('HOOKS.LOGOUT.SUCCESS'), type: 'success' }));
   };
 
   return { onLogout };

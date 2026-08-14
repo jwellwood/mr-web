@@ -10,7 +10,8 @@
     "HOME": "Inicio",
     "PROFILE": "Perfil",
     "ADMIN": "Admin",
-    "LOGOUT": "Cerrar sesión"
+    "LOGOUT": "Cerrar sesión",
+    "DISMISS": "Descartar"
   },
   "FORMS": {
     "DELETE": {
@@ -28,7 +29,7 @@
     }
   },
   "BUTTONS": {
-    "SUBMIT": "Enviar",
+    "SUBMIT": "ENVIAR",
     "CANCEL": "Cancelar",
     "CLOSE": "Cerrar",
     "CHOOSE_FILE": "Elegir archivo",

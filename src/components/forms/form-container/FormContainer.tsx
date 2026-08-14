@@ -65,8 +65,10 @@ export default function FormContainer({
   return (
     <Container maxWidth="sm" disableGutters style={{ marginBottom: '4px' }}>
       {formSummary ? (
-        <SectionContainer type="admin">
-          <CustomTypography color="data">{formSummary}</CustomTypography>
+        <SectionContainer type="form">
+          <AppIcon icon={APP_ICONS.INFO} color="data" size="24px" />
+          {'  '}
+          <CustomTypography color="label">{formSummary}</CustomTypography>
         </SectionContainer>
       ) : null}
       <form

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { showAlert } from '../store';
@@ -34,6 +35,7 @@ export const useUpload = ({
   graphQLMutation,
   refetchFunc,
 }: UseUpload) => {
+  const { t } = useTranslation('hooks');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [imageUrl, setImageUrl] = useState<string | null>(url ?? null);
@@ -46,12 +48,14 @@ export const useUpload = ({
     }
 
     if (!ALLOWED_MIME_TYPES.includes(formData.imageFile.type)) {
-      dispatch(showAlert({ text: 'Invalid file type.', type: 'error' }));
+      dispatch(showAlert({ text: t('HOOKS.UPLOAD_IMAGE.INVALID_FILE_TYPE'), type: 'error' }));
       return;
     }
 
     if (formData.imageFile.size > MAX_SIZE_BYTES) {
-      dispatch(showAlert({ text: 'File must be under 2MB.', type: 'error' }));
+      dispatch(
+        showAlert({ text: t('HOOKS.UPLOAD_IMAGE.FILE_TOO_LARGE', { maxSize: 2 }), type: 'error' })
+      );
       return;
     }
     setLoading(true);
@@ -62,7 +66,7 @@ export const useUpload = ({
       const res = await uploadFunc(fileData);
       await graphQLMutation({ variables: { ...res } });
       await refetchFunc();
-      dispatch(showAlert({ text: 'Image updated!', type: 'success' }));
+      dispatch(showAlert({ text: t('HOOKS.UPLOAD_IMAGE.SUCCESS'), type: 'success' }));
       navigate(-1);
     } catch (err) {
       console.error(err);
@@ -79,7 +83,7 @@ export const useUpload = ({
       await removeFunc(public_id);
       await graphQLMutation({ variables: { public_id: '0', url: 'default' } });
       await refetchFunc();
-      dispatch(showAlert({ text: 'Image removed successfully!', type: 'success' }));
+      dispatch(showAlert({ text: t('HOOKS.UPLOAD_IMAGE.REMOVE_SUCCESS'), type: 'success' }));
       navigate(-1);
     } catch (err) {
       console.error(err);

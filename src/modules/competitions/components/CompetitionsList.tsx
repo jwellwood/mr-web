@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { NoDataText } from '../../../components';
+import { CustomTypography, NoDataText } from '../../../components';
 import { SectionContainer } from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { T_FETCH_COMPETITIONS } from '../graphql';
@@ -13,8 +13,16 @@ export default function CompetitionsList({ competitions }: Props) {
   const data: IListItem[] =
     competitions?.map(comp => {
       return {
-        label: comp.competitionType,
-        value: comp.name,
+        secondary: (
+          <CustomTypography color="label">
+            {t(`OPTIONS.${comp.competitionType.toUpperCase()}`)}
+          </CustomTypography>
+        ),
+        label: (
+          <CustomTypography bold color="data">
+            {comp.name}
+          </CustomTypography>
+        ),
         link: `competition/${comp._id}`,
       };
     }) || [];

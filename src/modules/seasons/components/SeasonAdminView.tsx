@@ -19,7 +19,7 @@ export default function SeasonAdminView({ season, loading, error }: Props) {
   const tabs = [
     {
       label: t('TABS.RESULTS'),
-      component: <Results />,
+      component: <Results isAdminView={true} />,
     },
     {
       label: t('TABS.CONFIGURATION'),

@@ -97,7 +97,7 @@ describe('AccordionTitle', () => {
   });
 
   it('shows the pending icon for a past match with no status', () => {
-    renderTitle({ gwResults: [makeResult({ date: PAST, resultStatus: null })] });
+    renderTitle({ isAdminView: true, gwResults: [makeResult({ date: PAST, resultStatus: null })] });
     expect(screen.getByTestId('icon-pending')).toBeInTheDocument();
   });
 
@@ -106,31 +106,43 @@ describe('AccordionTitle', () => {
     expect(screen.queryByTestId('icon-pending')).not.toBeInTheDocument();
   });
 
-  it('shows the disputed icon when a result is disputed', () => {
-    renderTitle({ gwResults: [makeResult({ resultStatus: 'DISPUTED' as never })] });
+  it('shows the disputed icon in admin view when a result is disputed', () => {
+    renderTitle({
+      isAdminView: true,
+      gwResults: [makeResult({ resultStatus: 'DISPUTED' as never })],
+    });
     expect(screen.getByTestId('icon-disputed')).toBeInTheDocument();
   });
 
-  it('shows the submitted icon when a result is submitted', () => {
-    renderTitle({ gwResults: [makeResult({ resultStatus: 'SUBMITTED' as never })] });
+  it('shows the submitted icon in admin view when a result is submitted', () => {
+    renderTitle({
+      isAdminView: true,
+      gwResults: [makeResult({ resultStatus: 'SUBMITTED' as never })],
+    });
     expect(screen.getByTestId('icon-submitted')).toBeInTheDocument();
   });
 
   it('shows BatchConfirmResults when isOrgAuth and there are submitted results', () => {
     mockUseAuth.mockReturnValue({ isOrgAuth: true });
-    renderTitle({ gwResults: [makeResult({ resultStatus: 'SUBMITTED' as never })] });
+    renderTitle({
+      isAdminView: true,
+      gwResults: [makeResult({ resultStatus: 'SUBMITTED' as never })],
+    });
     expect(screen.getByTestId('batch-confirm')).toBeInTheDocument();
   });
 
   it('shows BatchConfirmResults when isOrgAuth and there are disputed results', () => {
     mockUseAuth.mockReturnValue({ isOrgAuth: true });
-    renderTitle({ gwResults: [makeResult({ resultStatus: 'DISPUTED' as never })] });
+    renderTitle({
+      isAdminView: true,
+      gwResults: [makeResult({ resultStatus: 'DISPUTED' as never })],
+    });
     expect(screen.getByTestId('batch-confirm')).toBeInTheDocument();
   });
 
   it('shows BatchConfirmResults when isOrgAuth and there are past pending results', () => {
     mockUseAuth.mockReturnValue({ isOrgAuth: true });
-    renderTitle({ gwResults: [makeResult({ date: PAST, resultStatus: null })] });
+    renderTitle({ isAdminView: true, gwResults: [makeResult({ date: PAST, resultStatus: null })] });
     expect(screen.getByTestId('batch-confirm')).toBeInTheDocument();
   });
 

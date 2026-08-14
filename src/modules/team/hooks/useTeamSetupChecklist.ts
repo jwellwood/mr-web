@@ -50,8 +50,7 @@ export const useTeamSetupChecklist = () => {
     },
   ];
 
-  const allDone = steps.every(step => step.done);
   const loading = seasonsLoading || playersLoading || matchesLoading;
 
-  return { steps, allDone, loading };
+  return { steps, loading };
 };

@@ -10,6 +10,7 @@ type Props<T extends object> = {
   options: readonly ISelectOptions[];
   disabled?: boolean;
   helperText?: string;
+  hideLabel?: boolean;
 };
 
 export default function ControlledSelectInput<T extends object>({
@@ -20,6 +21,7 @@ export default function ControlledSelectInput<T extends object>({
   options,
   disabled = false,
   helperText,
+  hideLabel = false,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name: name as Path<T>,
@@ -31,7 +33,7 @@ export default function ControlledSelectInput<T extends object>({
   return (
     <SelectInput
       inputName={name}
-      label={label}
+      label={hideLabel ? '' : label}
       required={required}
       onChange={onChange}
       value={value}

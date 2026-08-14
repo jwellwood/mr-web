@@ -21,7 +21,7 @@ export default function Organization({ team, loading }: Props) {
         <ImageAvatar imageUrl={orgId?.badge?.url} fallbackIcon={IMAGE_TYPE.BADGE} size="40px" />
       ),
       label: (
-        <CustomTypography color="data">
+        <CustomTypography color="data" bold>
           {loading ? <CustomSkeleton /> : orgId?.name}
         </CustomTypography>
       ),

@@ -1,13 +1,12 @@
 import { Box, Stack } from '@mui/material';
 import Switch from '@mui/material/Switch';
 import React, { ReactElement } from 'react';
-import CustomTypography from '../../typography/custom-typography/CustomTypography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
-import FormHelperText from '../form-helper-text/FormHelperText';
+import FormLabel from '../form-label/FormLabel';
 import { TypedFormError } from '../types';
 
 interface Props {
-  name?: string;
+  name: string;
   onCheck?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   label?: string | ReactElement;
   placement?: 'top' | 'end' | 'start' | 'bottom';
@@ -33,19 +32,16 @@ export default function CustomSwitch({
 }: Props) {
   return (
     <>
-      {helperText ? <FormHelperText helperText={helperText} /> : null}
       <Box sx={{ background: 'rgba(0, 0, 0, 0.06)' }}>
         <Stack
           direction="row"
           justifyContent="space-between"
           alignItems="center"
-          paddingLeft={'12px'}
+          paddingLeft={'0px'}
           height="56px"
           borderBottom="2px solid rgba(0, 0, 0, 0.12)"
         >
-          <CustomTypography bold color="label" size="md">
-            {label}
-          </CustomTypography>
+          <FormLabel id={name} label={label} required={false} helperText={helperText} />
           <Switch
             color={color}
             name={name}

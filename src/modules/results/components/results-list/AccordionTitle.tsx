@@ -17,9 +17,10 @@ interface Props {
   gameWeek: string;
   gwResults: T_FETCH_RESULTS['results'];
   isExpanded: boolean;
+  isAdminView?: boolean;
 }
 
-export default function AccordionTitle({ gameWeek, gwResults, isExpanded }: Props) {
+export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isAdminView }: Props) {
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { isOrgAuth } = useAuth('', orgId);
@@ -65,18 +66,20 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded }: Prop
         </CustomTypography>
       </div>
 
-      <CustomStack direction="row" spacing={1} justify="flex-end">
-        {listData.map((item, index) => (
-          <SectionContainer key={index}>
-            <CustomTypography color="data" bold>
-              {item.label} {item.value}
-            </CustomTypography>
-          </SectionContainer>
-        ))}
-        {isOrgAuth &&
-          (counts.submitted > 0 || counts.disputed > 0 || pastPendingCount > 0) &&
-          orgSeasonId && <BatchConfirmResults resultIds={gwResults.map(r => r._id)} />}
-      </CustomStack>
+      {isAdminView && (
+        <CustomStack direction="row" spacing={1} justify="flex-end">
+          {listData.map((item, index) => (
+            <SectionContainer key={index}>
+              <CustomTypography color="data" bold>
+                {item.label} {item.value}
+              </CustomTypography>
+            </SectionContainer>
+          ))}
+          {isOrgAuth &&
+            (counts.submitted > 0 || counts.disputed > 0 || pastPendingCount > 0) &&
+            orgSeasonId && <BatchConfirmResults resultIds={gwResults.map(r => r._id)} />}
+        </CustomStack>
+      )}
     </CustomStack>
   );
 }

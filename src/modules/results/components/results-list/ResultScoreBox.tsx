@@ -1,5 +1,4 @@
 import { CustomTypography } from '../../../../components';
-import { theme } from '../../../../theme';
 import { RESULT_STATUS } from '../../constants';
 import { isDateInPast } from '../../helpers/isDateInPast';
 
@@ -10,39 +9,16 @@ interface Props {
 }
 
 export default function ResultScoreBox({ resultStatus, goals, date }: Props) {
-  const getBorderColor = (resultStatus: string | null | undefined): string | null => {
-    const s = String(resultStatus ?? '').toLowerCase();
-    if (s.includes('submit')) return theme.palette.info.main;
-    if (s.includes('dispute')) return theme.palette.error.main;
-    if (s.includes('pending') || !resultStatus) return theme.palette.warning.main;
-    return null;
-  };
-
-  const renderGoals = (goals: number | undefined, borderColor: string | null) => {
+  const renderGoals = (goals: number | undefined) => {
     const display = resultStatus === RESULT_STATUS.PENDING || !date ? '-' : String(goals);
-    if (!borderColor) {
-      return (
-        <CustomTypography bold color="data">
-          {display}
-        </CustomTypography>
-      );
-    }
-
     return (
-      <span
-        style={{
-          border: `2px solid ${borderColor}`,
-          borderRadius: 1,
-          padding: '0 6px',
-          display: 'inline-block',
-        }}
-      >
-        <CustomTypography bold>{display}</CustomTypography>
-      </span>
+      <CustomTypography bold color="data">
+        {display}
+      </CustomTypography>
     );
   };
 
   const isPast = date ? isDateInPast(date) : false;
-  const borderColor = isPast ? getBorderColor(resultStatus) : null;
-  return renderGoals(isPast ? goals : undefined, borderColor);
+
+  return renderGoals(isPast ? goals : undefined);
 }

@@ -7,7 +7,11 @@ import { useCustomParams } from '../../../hooks';
 import CompetitionTabs from '../components/CompetitionTabs';
 import { FETCH_RESULTS } from '../graphql';
 
-export default function Results() {
+interface Props {
+  isAdminView?: boolean;
+}
+
+export default function Results({ isAdminView }: Props) {
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { data, error, loading } = useQuery(FETCH_RESULTS, {
@@ -15,7 +19,11 @@ export default function Results() {
   });
 
   const renderData = data?.results.length ? (
-    <CompetitionTabs matches={data.results} type={TAB_TYPES.RESULTS_COMPETITIONS} />
+    <CompetitionTabs
+      matches={data.results}
+      type={TAB_TYPES.RESULTS_COMPETITIONS}
+      isAdminView={isAdminView}
+    />
   ) : (
     <NoDataText>{t('NO_DATA.RESULTS')}</NoDataText>
   );

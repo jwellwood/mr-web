@@ -4,7 +4,7 @@ export const MuiInputBase = {
   styleOverrides: {
     root: {
       fontWeight: 'bold',
-      color: teal[50],
+      color: teal['A400'],
     },
   },
 };
@@ -13,7 +13,7 @@ export const MuiPickersInputBase = {
   styleOverrides: {
     root: {
       fontWeight: 'bold',
-      color: teal[50],
+      color: teal['A400'],
       backgroundColor: 'green',
     },
   },

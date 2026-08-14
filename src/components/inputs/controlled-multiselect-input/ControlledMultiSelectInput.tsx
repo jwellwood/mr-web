@@ -30,6 +30,7 @@ export default function ControlledMultiSelectInput<T extends object>({
 
   return (
     <MultiSelectInput
+      inputName={name}
       value={value}
       onChange={onChange}
       options={options}

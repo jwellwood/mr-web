@@ -2,11 +2,11 @@ import { FormControl } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import React from 'react';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
-import FormHelperText from '../form-helper-text/FormHelperText';
+import FormLabel from '../form-label/FormLabel';
 import { TypedFormError } from '../types';
 
 interface Props {
-  inputName?: string;
+  inputName: string;
   value?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
@@ -37,14 +37,14 @@ export default function TextInput({
   role = 'textbox',
   disabled = false,
   placeholder,
-  isDirty,
   onBlur,
-  isValid,
 }: Props) {
   return (
     <FormControl fullWidth variant="standard">
-      {helperText ? <FormHelperText helperText={helperText} /> : null}
+      <FormLabel id={inputName || ''} required={required} label={label} helperText={helperText} />
+
       <TextField
+        id={inputName}
         variant="filled"
         size="small"
         role={role}
@@ -55,19 +55,17 @@ export default function TextInput({
         value={value ?? ''}
         onChange={onChange}
         onBlur={onBlur}
-        label={label}
+        sx={{
+          '& .MuiFilledInput-input': {
+            py: 1,
+          },
+        }}
+        // label={''}
         required={required}
         fullWidth
         disabled={disabled}
-        placeholder={placeholder}
+        placeholder={placeholder || ''}
         error={!!errors?.[0]}
-        slotProps={{
-          inputLabel: {
-            sx: {
-              color: isDirty ? (isValid ? 'primary.main' : 'error.main') : undefined,
-            },
-          },
-        }}
       />
       {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
     </FormControl>

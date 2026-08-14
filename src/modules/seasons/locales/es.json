@@ -3,7 +3,7 @@
     "SEASON": "Temporada",
     "ADD_SEASON": "Agregar Temporada",
     "EDIT_SEASON": "Editar Temporada",
-    "SEASON_ADMIN": "Administración de Temporada"
+    "SEASON_ADMIN": "Admin"
   },
   "TABS": {
     "TABLES": "Tablas",
@@ -15,10 +15,10 @@
     "ADD_RESULT": "Agregar Resultado",
     "ADD_GAMEWEEK": "Agregar Jornada",
     "EDIT_SEASON": "Editar Temporada",
-    "SEASON_ADMIN": "Administración de Temporada"
+    "SEASON_ADMIN": "Admin"
   },
   "FORM": {
-    "SUMMARY": "Agrega los equipos y competiciones que formarán parte de esta temporada. Luego puedes configurarlos en Administración de Temporada > Pestaña de Configuración.",
+    "SUMMARY": "Agrega los equipos y competiciones que formarán parte de esta temporada. Luego puedes configurarlos en Admin > Pestaña de Configuración.",
     "LABELS": {
       "YEAR_STARTED": "Año de Inicio",
       "YEAR_ENDED": "Año de Fin",

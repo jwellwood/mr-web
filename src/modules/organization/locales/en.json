@@ -15,7 +15,9 @@
     "HISTORY": "History",
     "SEASONS": "Seasons",
     "COMPETITIONS": "Competitions",
-    "USERS": "Users"
+    "USERS": "Users",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive"
   },
   "LINKS": {
     "ADD_TEAM": "Add Team",
@@ -105,12 +107,27 @@
   "BUTTONS": {
     "GENERATE_ADMIN_CODE": "Generate Admin Code",
     "REQUEST_ADMIN_ACCESS": "Request Admin Access",
-    "SET_ADMIN_ACCESS_CODE": "Set Admin Access Code"
+    "SET_ADMIN_ACCESS_CODE": "Set Admin Access Code",
+    "COPY": "Copy",
+    "COPIED": "Copied"
   },
   "MODALS": {
     "REQUEST_ADMIN_ACCESS": "Request Admin Access"
   },
   "LABELS": {
     "ADMIN_ACCESS_ENABLED": "Admin Access Enabled"
+  },
+  "ADMIN": {
+    "CODE": "Admin Code",
+    "SUMMARY": "* The code will only work once. Once it is used, it will no longer be valid and a new one will be automatically generated. If you generate a new code, the old code will stop working.",
+    "NOT_SET": "Not set",
+    "USERS": {
+      "TITLE": "Users with Admin Access",
+      "NO_USERS": "No users have admin access to this organization yet."
+    }
+  },
+  "MESSAGES": {
+    "NO_ACTIVE_TEAMS": "No active teams",
+    "NO_INACTIVE_TEAMS": "No inactive teams"
   }
 }

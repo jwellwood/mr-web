@@ -3,7 +3,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { PickerValue } from '@mui/x-date-pickers/internals';
 import { theme } from '../../../theme';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
-import FormHelperText from '../form-helper-text/FormHelperText';
+import FormLabel from '../form-label/FormLabel';
 import { TypedFormError } from '../types';
 
 interface Props {
@@ -25,14 +25,13 @@ interface Props {
 }
 
 export default function DateInput({
+  inputName,
   value,
   defaultValue,
   onChange,
   label,
   openTo,
   errors,
-  isDirty,
-  isValid,
   view,
   disableFuture,
   helperText,
@@ -45,10 +44,9 @@ export default function DateInput({
 
   return (
     <>
-      {helperText ? <FormHelperText helperText={helperText} /> : null}
+      <FormLabel id={inputName} required={required} label={label} helperText={helperText} />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <MobileDatePicker
-          label={label}
           value={value !== undefined ? value : defaultValue}
           onChange={onChange}
           openTo={openTo || views[views.length - 1]}
@@ -56,11 +54,17 @@ export default function DateInput({
           views={views}
           slotProps={{
             textField: {
+              id: inputName,
               variant: 'filled',
               required: required,
               fullWidth: true,
-              InputLabelProps: {
-                sx: { background: isDirty ? (isValid ? 'primary' : 'warning') : 'primary' },
+              sx: {
+                '& .MuiPickersInputBase-sectionsContainer': {
+                  py: 1,
+                },
+                '& .MuiPickersInputBase-root.MuiPickersFilledInput-root': {
+                  mt: '-8px',
+                },
               },
             },
             openPickerButton: {

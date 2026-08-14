@@ -4,14 +4,14 @@ import { useOrgSetupChecklist } from '../hooks/useOrgSetupChecklist';
 export default function OrgSetupChecklist() {
   const { t } = useTranslation('organization');
 
-  const { steps, allDone, loading } = useOrgSetupChecklist();
+  const { steps, loading } = useOrgSetupChecklist();
 
   return (
     <CustomCheckList
       title={t('CHECKLIST.TITLE')}
       steps={steps}
-      allDone={allDone}
       loading={loading}
+      dismissedKey="org_setup_checklist_dismissed"
     />
   );
 }

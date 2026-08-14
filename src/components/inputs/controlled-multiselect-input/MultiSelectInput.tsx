@@ -1,14 +1,16 @@
 import Checkbox from '@mui/material/Checkbox';
 import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { theme } from '../../../theme';
+import { CustomTypography } from '../../typography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
-import FormHelperText from '../form-helper-text/FormHelperText';
+import FormLabel from '../form-label/FormLabel';
 import { TypedFormError, ISelectOptions } from '../types';
 
 interface Props {
+  inputName: string;
   options: ISelectOptions[];
   value: string[];
   label: string;
@@ -22,14 +24,13 @@ interface Props {
 }
 
 export default function MultipleSelectInput({
+  inputName,
   options,
   onChange,
   value,
   label,
   showLabels,
   errors,
-  isDirty,
-  isValid,
   helperText,
   required = false,
 }: Props) {
@@ -51,17 +52,8 @@ export default function MultipleSelectInput({
 
   return (
     <>
-      {helperText ? <FormHelperText helperText={helperText} /> : null}
       <FormControl fullWidth variant="filled">
-        <InputLabel
-          required={required}
-          id="seasons-played"
-          sx={{
-            color: isDirty ? (isValid ? 'primary' : 'error') : undefined,
-          }}
-        >
-          {label}
-        </InputLabel>
+        <FormLabel id={inputName} required={required} label={label} helperText={helperText} />
         <Select
           labelId="seasons-played"
           id="multiple-checkbox"
@@ -69,17 +61,38 @@ export default function MultipleSelectInput({
           value={arrayValue}
           onChange={handleChange}
           renderValue={selected => renderValue(selected)}
-          MenuProps={{ PaperProps: { style: { maxHeight: 300 } } }}
+          MenuProps={{
+            PaperProps: {
+              style: {
+                maxHeight: 300,
+                background: theme.palette.secondary.dark,
+                border: `1px solid ${theme.palette.secondary.light}`,
+              },
+            },
+          }}
+          inputProps={{ placeholder: label, id: inputName, 'aria-label': label }}
           error={!!errors?.[0]}
           required={required}
+          sx={{
+            '& .MuiSelect-select': {
+              py: 2,
+            },
+          }}
         >
           {options?.map((option, i) => (
             <MenuItem key={(option.label, i)} value={option.value as string}>
               <Checkbox checked={arrayValue.includes(option.value as string)} />
-              <ListItemText primary={option.label} />
+              <ListItemText
+                primary={
+                  <CustomTypography bold color="data">
+                    {option.label}
+                  </CustomTypography>
+                }
+              />
             </MenuItem>
           ))}
         </Select>
+
         {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}
       </FormControl>
     </>

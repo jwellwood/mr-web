@@ -1,5 +1,6 @@
 import * as inputs from '../components/inputs/locales';
 import * as components from '../components/locales';
+import * as hooks from '../hooks/locales';
 import * as auth from '../modules/auth/locales';
 import * as awards from '../modules/awards/locales';
 import * as competitions from '../modules/competitions/locales';
@@ -18,6 +19,7 @@ import * as trophies from '../modules/trophies/locales';
 // To add a new module: import its locales/index.ts and add one entry to `namespaces`.
 const namespaces = {
   components,
+  hooks,
   inputs,
   auth,
   awards,

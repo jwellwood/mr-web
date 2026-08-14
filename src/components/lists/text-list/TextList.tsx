@@ -47,7 +47,7 @@ export default function TextList({ data = [], labelSize, loading }: Props) {
                 loading ? (
                   <CustomSkeleton width="200px" height="24px" margin="0px" />
                 ) : (
-                  <CustomTypography color={secondary ? 'data' : 'label'} size={labelSize}>
+                  <CustomTypography color={secondary ? 'data' : 'label'} size={labelSize} bold>
                     {label}
                   </CustomTypography>
                 )

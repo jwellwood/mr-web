@@ -15,7 +15,7 @@ export default function TeamSearch({ buttonElement }: Props) {
     setSearchTerm(data.teamName);
 
     await fetchTeamsBySearch({
-      variables: { filter: data.teamName },
+      variables: { filter: data.teamName.trim() },
     });
   };
 

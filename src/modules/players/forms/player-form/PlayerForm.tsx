@@ -59,6 +59,7 @@ export default function PlayerForm({
         name="name"
         label={t('FORM.LABELS.NAME')}
         required={requiredFields.name}
+        helperText={'echeckechj'}
       />
       <ControlledSelectInput
         control={control}
@@ -66,12 +67,14 @@ export default function PlayerForm({
         label={t('FORM.LABELS.NATIONALITY')}
         options={countryOptions}
         required={requiredFields.nationality}
+        helperText={'echeckechj'}
       />
       <ControlledDateInput
         control={control}
         name="dateOfBirth"
         label={t('FORM.LABELS.DATE_OF_BIRTH')}
         required={requiredFields.dateOfBirth}
+        helperText={'echeckechj'}
       />
       <ControlledDateInput
         control={control}
@@ -86,6 +89,7 @@ export default function PlayerForm({
         label={t('FORM.LABELS.POSITION')}
         required={requiredFields.position}
         options={positionOptions}
+        helperText={'echeckechj'}
       />
       <ControlledSelectInput
         control={control}
@@ -100,6 +104,7 @@ export default function PlayerForm({
         options={seasonOptions}
         label={t('FORM.LABELS.SEASONS')}
         required={requiredFields.seasonIds}
+        helperText={'echeckechj'}
       />
       <ControlledSwitchInput
         control={control}
@@ -115,6 +120,7 @@ export default function PlayerForm({
         control={control}
         name="isHallOfFame"
         label={t('FORM.LABELS.IS_HALL_OF_FAME')}
+        helperText={'echeckechj'}
       />
       {isHallOfFame && (
         <ControlledTextInput

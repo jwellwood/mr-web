@@ -15,7 +15,7 @@ export default function ResultStatus({ resultStatus, isComplete, display = 'both
 
   const spec: { icon: AppIconType; color: string; label: string } =
     status === RESULT_STATUS.CONFIRMED || isComplete
-      ? { icon: APP_ICONS.CONFIRMED, color: 'success', label: t('STATUS.CONFIRMED') }
+      ? { icon: APP_ICONS.SUBMITTED, color: 'success', label: t('STATUS.CONFIRMED') }
       : status === RESULT_STATUS.DISPUTED
         ? { icon: APP_ICONS.DISPUTED, color: 'error', label: t('STATUS.DISPUTED') }
         : status === RESULT_STATUS.SUBMITTED

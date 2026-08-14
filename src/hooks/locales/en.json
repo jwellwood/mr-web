@@ -1,0 +1,18 @@
+{
+  "USE_COPY": {
+    "SUCCESS": "Copied to clipboard",
+    "ERROR": "Failed to copy to clipboard"
+  },
+  "LOGOUT": {
+    "SUCCESS": "You have logged out successfully",
+    "ERROR": "Failed to log out"
+  },
+  "UPLOAD_IMAGE": {
+    "INVALID_FILE_TYPE": "Invalid file type",
+    "FILE_TOO_LARGE": "File is too large. Maximum size is {{maxSize}} MB",
+    "UPLOAD_FAILED": "Failed to upload image",
+    "SUCCESS": "Image uploaded successfully",
+    "REMOVE_SUCCESS": "Image removed successfully",
+    "REMOVE_FAILED": "Failed to remove image"
+  }
+}

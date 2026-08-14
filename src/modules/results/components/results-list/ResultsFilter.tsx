@@ -35,12 +35,13 @@ export default function ResultsFilter({ results, control }: Props) {
   ];
 
   return (
-    <SectionContainer type="success">
+    <SectionContainer type="form">
       <ControlledSelectInput
         name="selectedTeam"
         label={t('FILTERS.TEAMS')}
         options={teamOptions}
         control={control}
+        hideLabel
       />
     </SectionContainer>
   );

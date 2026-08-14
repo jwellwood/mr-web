@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { AppDispatch, showAlert } from '../store';
 
 export const useCopy = (text: string) => {
+  const { t } = useTranslation('hooks');
   const dispatch: AppDispatch = useDispatch();
   const [copied, setCopied] = useState(false);
 
@@ -19,9 +21,9 @@ export const useCopy = (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      dispatch(showAlert({ text: 'Text copied to clipboard', type: 'success' }));
+      dispatch(showAlert({ text: t('HOOKS.USE_COPY.SUCCESS'), type: 'success' }));
     } catch {
-      dispatch(showAlert({ text: 'Failed to copy text to clipboard', type: 'error' }));
+      dispatch(showAlert({ text: t('HOOKS.USE_COPY.ERROR'), type: 'error' }));
     }
   };
 

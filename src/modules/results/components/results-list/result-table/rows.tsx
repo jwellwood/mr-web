@@ -1,6 +1,7 @@
 import { CustomTypography } from '../../../../../components';
 import TiebreakerText from '../../../../../components/composed/TiebreakerText';
 import { T_FETCH_RESULTS } from '../../../graphql';
+import ResultStatus from '../../ResultStatus';
 import ResultScoreBox from '../ResultScoreBox';
 
 export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
@@ -50,6 +51,7 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
           {result?.awayTeam?.teamName}
         </CustomTypography>
       ),
+      status: <ResultStatus resultStatus={result.resultStatus} display="icon" />,
     };
   });
 };

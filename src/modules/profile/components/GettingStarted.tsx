@@ -1,9 +1,6 @@
-import { useState } from 'react';
-import { CustomButton, SectionContainer } from '../../../components';
-import { AppIcon } from '../../../components/icons';
-import { TextList } from '../../../components/lists';
+import { useTranslation } from 'react-i18next';
+import { CustomCheckList } from '../../../components/lists';
 import { T_FETCH_USER_QUERY } from '../graphql';
-import { PROFILE_PATHS } from '../router';
 
 const DISMISSED_KEY = 'getting_started_dismissed';
 
@@ -12,48 +9,29 @@ interface Props {
 }
 
 export default function GettingStarted({ profile }: Props) {
-  const [dismissed, setDismissed] = useState(() => localStorage.getItem(DISMISSED_KEY) === 'true');
+  const { t } = useTranslation('profile');
 
-  const onDismiss = () => {
-    localStorage.setItem(DISMISSED_KEY, 'true');
-    setDismissed(true);
-  };
   const steps = [
     {
-      label: 'Complete your profile',
-      value: (
-        <CustomButton link={PROFILE_PATHS.EDIT} variant="text" color="primary">
-          Edit Profile
-        </CustomButton>
-      ),
+      label: t('GETTING_STARTED.STEPS.UPDATE_PROFILE'),
       done: !!profile?.username && !!profile?.dateOfBirth && !!profile?.nationality,
     },
     {
-      label: 'Upload a profile photo',
-      value: (
-        <CustomButton link={PROFILE_PATHS.EDIT_IMAGE} variant="text" color="primary">
-          Upload Image
-        </CustomButton>
-      ),
+      label: t('GETTING_STARTED.STEPS.UPLOAD_IMAGE'),
       done: profile?.image?.url !== 'default',
     },
     {
-      label: 'Create or join a team or organization',
+      label: t('GETTING_STARTED.STEPS.JOIN_TEAM'),
       done: !!profile?.teamIds.length || !!profile?.orgIds.length,
     },
   ];
 
-  const remaining = steps.filter(s => !s.done);
-
-  if (!remaining.length || dismissed) return null;
-
   return (
-    <SectionContainer
-      title="Getting Started"
-      type="success"
-      secondaryAction={<AppIcon icon="cross" color="dark" onClick={onDismiss} />}
-    >
-      <TextList data={remaining} />
-    </SectionContainer>
+    <CustomCheckList
+      title={t('GETTING_STARTED.TITLE')}
+      steps={steps}
+      loading={false}
+      dismissedKey={DISMISSED_KEY}
+    />
   );
 }

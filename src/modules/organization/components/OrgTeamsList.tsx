@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { NoDataText, SectionContainer } from '../../../components';
 import { ImageAvatar } from '../../../components/avatars';
 import { LinksList, type IListItem } from '../../../components/lists';
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function OrgTeamsList({ teams }: Props) {
+  const { t } = useTranslation('organization');
   const activeTeams = teams.filter(team => team.isActive);
   const inactiveTeams = teams.filter(team => !team.isActive);
 
@@ -31,19 +33,19 @@ export default function OrgTeamsList({ teams }: Props) {
   });
   const tabs: ITab[] = [
     {
-      label: 'Active',
+      label: t('TABS.ACTIVE'),
       component: activeLinks.length ? (
         <LinksList links={activeLinks} />
       ) : (
-        <NoDataText>No active teams</NoDataText>
+        <NoDataText>{t('MESSAGES.NO_ACTIVE_TEAMS')}</NoDataText>
       ),
     },
     {
-      label: 'Inactive',
+      label: t('TABS.INACTIVE'),
       component: inactiveLinks.length ? (
         <LinksList links={inactiveLinks} />
       ) : (
-        <NoDataText>No inactive teams</NoDataText>
+        <NoDataText>{t('MESSAGES.NO_INACTIVE_TEAMS')}</NoDataText>
       ),
     },
   ];

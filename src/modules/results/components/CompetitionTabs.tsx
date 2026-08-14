@@ -9,9 +9,10 @@ import ResultsAccordion from './results-list/ResultsAccordion';
 interface Props {
   matches: T_FETCH_RESULTS['results'];
   type: TTabType;
+  isAdminView?: boolean;
 }
 
-export default function CompetitionTabs({ matches, type }: Props) {
+export default function CompetitionTabs({ matches, type, isAdminView }: Props) {
   const { competitionConfig, loading, error } = useCompetitionConfig();
   const getCompetitionId = (item: T_FETCH_RESULTS['results'][number]) =>
     item.competitionId?._id ?? item.competitionId?.name ?? 'other';
@@ -54,7 +55,7 @@ export default function CompetitionTabs({ matches, type }: Props) {
 
   const tabs = comps.map(comp => ({
     label: comp.name,
-    component: <ResultsAccordion results={comp.results} />,
+    component: <ResultsAccordion results={comp.results} isAdminView={isAdminView} />,
   }));
 
   return (
@@ -63,7 +64,7 @@ export default function CompetitionTabs({ matches, type }: Props) {
       {loading ? (
         <CustomSkeleton width="100%" height="48px" />
       ) : (
-        <CustomTabs type={type} tabs={tabs} level="secondary" />
+        <CustomTabs type={type} tabs={tabs} level="buttons" />
       )}
     </>
   );

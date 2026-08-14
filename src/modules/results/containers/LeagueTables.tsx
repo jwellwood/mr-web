@@ -37,7 +37,7 @@ export default function LeagueTables() {
   return (
     <>
       {loading || configLoading ? <Spinner /> : hasError ? <DataError error={hasError} /> : null}
-      <CustomTabs type={TAB_TYPES.LEAGUE_TABLES} tabs={tabs} level="secondary" />
+      <CustomTabs type={TAB_TYPES.LEAGUE_TABLES} tabs={tabs} level="buttons" />
     </>
   );
 }

@@ -1,6 +1,8 @@
-import { FormControl, InputLabel, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { FormControl, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { CustomTypography } from '../..';
+import { theme } from '../../../theme';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
-import FormHelperText from '../form-helper-text/FormHelperText';
+import FormLabel from '../form-label/FormLabel';
 import type { ISelectOptions, TypedFormError } from '../types';
 
 interface Props {
@@ -30,8 +32,6 @@ export default function SelectInput({
   options,
   disabled,
   errors,
-  isDirty,
-  isValid,
   helperText,
 }: Props) {
   const effective = value !== undefined ? value : defaultValue;
@@ -39,29 +39,36 @@ export default function SelectInput({
 
   return (
     <>
-      {helperText ? <FormHelperText helperText={helperText} /> : null}
       <FormControl fullWidth variant="filled">
-        <InputLabel
-          id="single-select-label"
-          sx={{
-            color: isDirty ? (isValid ? 'primary' : 'error') : undefined,
-          }}
-          required={required}
-        >
-          {label}
-        </InputLabel>
+        <FormLabel id={inputName} required={required} label={label} helperText={helperText} />
         <Select
-          labelId="single-select-label"
-          id="single-select-input"
+          id={inputName}
           name={inputName}
           value={defaultValueString}
-          label={label}
           onChange={onChange}
           required={required}
           disabled={disabled}
-          MenuProps={{ PaperProps: { style: { maxHeight: 300 } } }}
+          MenuProps={{
+            PaperProps: {
+              style: {
+                maxHeight: 300,
+                background: theme.palette.secondary.dark,
+                border: `1px solid ${theme.palette.secondary.light}`,
+              },
+            },
+          }}
+          renderValue={selected => {
+            const selectedOption = options.find(opt => String(opt.value) === String(selected));
+            return selectedOption?.label ?? '';
+          }}
           variant="filled"
+          inputProps={{ placeholder: label, id: inputName, 'aria-label': label }}
           error={!!errors[0]}
+          sx={{
+            '& .MuiSelect-select': {
+              py: 1,
+            },
+          }}
         >
           {options.map(opt => (
             <MenuItem
@@ -69,7 +76,9 @@ export default function SelectInput({
               disabled={opt.disabled}
               value={String(opt.value)}
             >
-              {opt.label}
+              <CustomTypography bold color="data">
+                {opt.label}
+              </CustomTypography>
             </MenuItem>
           ))}
         </Select>

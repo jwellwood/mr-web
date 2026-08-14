@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CustomButton, CustomTypography, DataError, SectionContainer } from '../../../components';
 import { CustomStack } from '../../../components/grids';
 import { IListItem, TextList } from '../../../components/lists';
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function OrgAdminUsersView({ org, loading, error }: Props) {
+  const { t } = useTranslation('organization');
   const { adminUsers, orgAdminAccessCode, orgAdminAccessEnabled } = org || {};
   const { onCopy, copied } = useCopy(orgAdminAccessCode || '');
 
@@ -33,24 +35,22 @@ export default function OrgAdminUsersView({ org, loading, error }: Props) {
         <CustomTypography bold size="lg" color="data">
           {org?.orgName}
         </CustomTypography>
-        <SectionContainer title="Admin Code">
+        <SectionContainer title={t('ADMIN.CODE')}>
           <CustomStack>
-            <CustomTypography color="data">{orgAdminAccessCode || 'Not set'}</CustomTypography>
+            <CustomTypography color="data">
+              {orgAdminAccessCode || t('ADMIN.NOT_SET')}
+            </CustomTypography>
             {orgAdminAccessCode && (
               <CustomButton color={!copied ? 'tertiary' : 'success'} onClick={onCopy}>
-                {copied ? 'Copied' : 'Copy code'}
+                {copied ? t('BUTTONS.COPIED') : t('BUTTONS.COPY')}
               </CustomButton>
             )}
-            <CustomTypography color="data">
-              * The code will only work once. Once it is used, it will no longer be valid and a new
-              one will be automatically generated. If you generate a new code, the old code will
-              stop working.
-            </CustomTypography>
+            <CustomTypography color="data">{t('ADMIN.SUMMARY')}</CustomTypography>
             <GenerateAdminCode />
             <ToggleAdminAccessEnabled data={{ enabled: orgAdminAccessEnabled || false }} />
           </CustomStack>
         </SectionContainer>
-        <SectionContainer title="Admin Users">
+        <SectionContainer title={t('ADMIN.USERS.TITLE')}>
           <TextList data={adminUserList} />
         </SectionContainer>
       </SectionContainer>
