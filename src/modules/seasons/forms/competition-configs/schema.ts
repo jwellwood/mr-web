@@ -4,7 +4,7 @@ import { TTiebreaker } from '../../constants';
 
 const CompConfigTeamSchema = z.object({
   teamId: z.string().min(1),
-  startingPoints: z.number().optional(),
+  startingPoints: z.coerce.number().optional(),
 });
 
 export const UpdateCompConfigSchema = z.object({

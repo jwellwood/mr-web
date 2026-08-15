@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import { useFieldArray, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { CustomButton, ISelectOptions, SectionContainer } from '../../../../components';
 import { FormContainer } from '../../../../components/forms';
@@ -47,7 +47,6 @@ export default function UpdateCompConfigForm({
   const {
     handleSubmit,
     control,
-    watch,
     formState: { isValid, isDirty },
     reset,
   } = useForm<UpdateCompConfigFormInput, unknown, UpdateCompConfigFormData>({
@@ -57,7 +56,7 @@ export default function UpdateCompConfigForm({
   });
 
   const { fields, append, remove } = useFieldArray({ control, name: 'teams' });
-  const selectedTeamIds = (watch('teams') ?? []).map(t => t.teamId);
+  const selectedTeamIds = (useWatch({ control, name: 'teams' }) ?? []).map(t => t.teamId);
 
   const submitHandler = (data: UpdateCompConfigFormData) => {
     onSubmit(data);
