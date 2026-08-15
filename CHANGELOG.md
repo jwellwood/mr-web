@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.31.1](https://github.com/jwellwood/mr-web/compare/v0.31.0...v0.31.1) (2026-08-15)
+
+### Bug Fixes
+
+* fix coercion for starting points ([13a1254](https://github.com/jwellwood/mr-web/commit/13a1254371b2ea68056e674720bd36a4bce01502))
+
 ## [0.31.0](https://github.com/jwellwood/mr-web/compare/v0.29.0...v0.31.0) (2026-08-14)
 
 ### Features
