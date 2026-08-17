@@ -63,7 +63,7 @@ describe('useLogout', () => {
     const { result } = renderHook(() => useLogout(), { wrapper });
     await result.current.onLogout();
     expect(mockDispatch).toHaveBeenCalledWith(
-      showAlert({ text: 'HOOKS.LOGOUT.SUCCESS', type: 'success' })
+      showAlert({ text: 'You have logged out successfully', type: 'success' })
     );
   });
 });

@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { CustomButton, DataError, SectionContainer } from '../../../components';
 import { AppIcon } from '../../../components/icons';
+import { Spinner } from '../../../components/loaders';
 import { TApolloError } from '../../../types/apollo';
 import OrgSearch from '../../home/containers/OrgSearch';
 import TeamSearch from '../../home/containers/TeamSearch';
@@ -9,9 +10,10 @@ interface Props {
   error?: TApolloError;
   type: 'team' | 'organization';
   children: React.ReactNode;
+  loading: boolean;
 }
 
-export default function EntityListWrapper({ error, type, children }: Props) {
+export default function EntityListWrapper({ error, type, children, loading }: Props) {
   const { t } = useTranslation('profile');
 
   const searchButton = (
@@ -31,10 +33,14 @@ export default function EntityListWrapper({ error, type, children }: Props) {
         )
       }
     >
-      <>
-        {error && <DataError error={error} />}
-        {children}
-      </>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
+          {error && <DataError error={error} />}
+          {children}
+        </>
+      )}
     </SectionContainer>
   );
 }

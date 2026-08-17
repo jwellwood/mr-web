@@ -61,7 +61,7 @@ describe('useUpload', () => {
       expect(mockDispatch).toHaveBeenCalledWith(
         expect.objectContaining({
           payload: expect.objectContaining({
-            text: 'HOOKS.UPLOAD_IMAGE.INVALID_FILE_TYPE',
+            text: 'Invalid file type',
             type: 'error',
           }),
         })
@@ -81,7 +81,7 @@ describe('useUpload', () => {
       expect(mockDispatch).toHaveBeenCalledWith(
         expect.objectContaining({
           payload: expect.objectContaining({
-            text: 'HOOKS.UPLOAD_IMAGE.FILE_TOO_LARGE',
+            text: 'File is too large. Maximum size is 2 MB',
             type: 'error',
           }),
         })
@@ -128,7 +128,7 @@ describe('useUpload', () => {
       expect(mockDispatch).toHaveBeenCalledWith(
         expect.objectContaining({
           payload: expect.objectContaining({
-            text: 'HOOKS.UPLOAD_IMAGE.SUCCESS',
+            text: 'Image uploaded successfully',
             type: 'success',
           }),
         })

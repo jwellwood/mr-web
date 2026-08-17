@@ -21,9 +21,9 @@ export const useCopy = (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(true);
-      dispatch(showAlert({ text: t('HOOKS.USE_COPY.SUCCESS'), type: 'success' }));
+      dispatch(showAlert({ text: t('USE_COPY.SUCCESS'), type: 'success' }));
     } catch {
-      dispatch(showAlert({ text: t('HOOKS.USE_COPY.ERROR'), type: 'error' }));
+      dispatch(showAlert({ text: t('USE_COPY.ERROR'), type: 'error' }));
     }
   };
 

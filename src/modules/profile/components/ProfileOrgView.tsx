@@ -1,10 +1,10 @@
-import { ImageAvatar } from '../../../components';
+import { useTranslation } from 'react-i18next';
+import { ImageAvatar, NoDataText } from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { IMAGE_TYPE } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
 import { T_FETCH_ORGS_BY_USER_QUERY } from '../graphql';
 import EntityListWrapper from './EntityListWrapper';
-import NoProfileItems from './NoProfileItems';
 
 interface Props {
   loading: boolean;
@@ -13,6 +13,7 @@ interface Props {
 }
 
 export default function ProfileOrgsView({ data, loading, error }: Props) {
+  const { t } = useTranslation('profile');
   const { orgs } = data || {};
 
   const links: IListItem[] = orgs
@@ -28,11 +29,11 @@ export default function ProfileOrgsView({ data, loading, error }: Props) {
     : [];
 
   return (
-    <EntityListWrapper type="organization" error={error}>
+    <EntityListWrapper type="organization" error={error} loading={loading}>
       {links.length ? (
         <LinksList links={links} loading={loading} />
       ) : (
-        <NoProfileItems type="organization" />
+        <NoDataText>{t('NO_RESULTS.ORGANIZATION.TITLE')}</NoDataText>
       )}
     </EntityListWrapper>
   );

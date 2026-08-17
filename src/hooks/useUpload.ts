@@ -48,13 +48,13 @@ export const useUpload = ({
     }
 
     if (!ALLOWED_MIME_TYPES.includes(formData.imageFile.type)) {
-      dispatch(showAlert({ text: t('HOOKS.UPLOAD_IMAGE.INVALID_FILE_TYPE'), type: 'error' }));
+      dispatch(showAlert({ text: t('UPLOAD_IMAGE.INVALID_FILE_TYPE'), type: 'error' }));
       return;
     }
 
     if (formData.imageFile.size > MAX_SIZE_BYTES) {
       dispatch(
-        showAlert({ text: t('HOOKS.UPLOAD_IMAGE.FILE_TOO_LARGE', { maxSize: 2 }), type: 'error' })
+        showAlert({ text: t('UPLOAD_IMAGE.FILE_TOO_LARGE', { maxSize: 2 }), type: 'error' })
       );
       return;
     }
@@ -66,7 +66,7 @@ export const useUpload = ({
       const res = await uploadFunc(fileData);
       await graphQLMutation({ variables: { ...res } });
       await refetchFunc();
-      dispatch(showAlert({ text: t('HOOKS.UPLOAD_IMAGE.SUCCESS'), type: 'success' }));
+      dispatch(showAlert({ text: t('UPLOAD_IMAGE.SUCCESS'), type: 'success' }));
       navigate(-1);
     } catch (err) {
       console.error(err);
@@ -83,7 +83,7 @@ export const useUpload = ({
       await removeFunc(public_id);
       await graphQLMutation({ variables: { public_id: '0', url: 'default' } });
       await refetchFunc();
-      dispatch(showAlert({ text: t('HOOKS.UPLOAD_IMAGE.REMOVE_SUCCESS'), type: 'success' }));
+      dispatch(showAlert({ text: t('UPLOAD_IMAGE.REMOVE_SUCCESS'), type: 'success' }));
       navigate(-1);
     } catch (err) {
       console.error(err);

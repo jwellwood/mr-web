@@ -19,7 +19,7 @@ export const useLogout = () => {
       await apolloClient.clearStore();
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({ text: t('HOOKS.LOGOUT.ERROR'), type: 'error' }));
+      dispatch(showAlert({ text: t('LOGOUT.ERROR'), type: 'error' }));
     }
 
     // Logout on server
@@ -29,7 +29,7 @@ export const useLogout = () => {
       // Local logout already succeeded; ignore server logout failure.
     }
 
-    dispatch(showAlert({ text: t('HOOKS.LOGOUT.SUCCESS'), type: 'success' }));
+    dispatch(showAlert({ text: t('LOGOUT.SUCCESS'), type: 'success' }));
   };
 
   return { onLogout };

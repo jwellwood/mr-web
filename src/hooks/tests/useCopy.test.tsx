@@ -72,9 +72,7 @@ describe('useCopy', () => {
 
     expect(writeText).toHaveBeenCalledWith('abc123');
     expect(result.current.copied).toBe(true);
-    expect(dispatch).toHaveBeenCalledWith(
-      showAlert({ text: 'HOOKS.USE_COPY.SUCCESS', type: 'success' })
-    );
+    expect(dispatch).toHaveBeenCalledWith(showAlert({ text: 'USE_COPY.SUCCESS', type: 'success' }));
   });
 
   it('dispatches an error alert and keeps copied false when copying fails', async () => {
@@ -94,9 +92,7 @@ describe('useCopy', () => {
 
     expect(writeText).toHaveBeenCalledWith('abc123');
     expect(result.current.copied).toBe(false);
-    expect(dispatch).toHaveBeenCalledWith(
-      showAlert({ text: 'HOOKS.USE_COPY.ERROR', type: 'error' })
-    );
+    expect(dispatch).toHaveBeenCalledWith(showAlert({ text: 'USE_COPY.ERROR', type: 'error' }));
   });
 
   it('resets copied back to false after 2 seconds', async () => {
