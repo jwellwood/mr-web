@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.32.0](https://github.com/jwellwood/mr-web/compare/v0.31.2...v0.32.0) (2026-08-17)
+
+### Features
+
+* improve styles in season config ([4055692](https://github.com/jwellwood/mr-web/commit/40556929f986a2d41ad4b54f97fdbef61c76915c))
+
 ## [0.31.2](https://github.com/jwellwood/mr-web/compare/v0.31.1...v0.31.2) (2026-08-17)
 
 ### Bug Fixes
