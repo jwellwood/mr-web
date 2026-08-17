@@ -1,6 +1,8 @@
 import { useQuery } from '@apollo/client/react';
 import { useTranslation } from 'react-i18next';
-import { DataError, SectionContainer } from '../../../components';
+import { CustomTypography, DataError, SectionContainer } from '../../../components';
+import { CustomAccordion } from '../../../components/accordion';
+import { APP_ICONS, AppIcon } from '../../../components/icons';
 import { TextList } from '../../../components/lists';
 import { Spinner } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks';
@@ -42,33 +44,40 @@ export default function SeasonConfig({ season, loading, error }: Props) {
     };
 
     return season?.competitionConfigs?.map(config => {
-      const isCup = isCupCompetitionType(competitionTypeById.get(config.competitionId._id));
+      const {
+        priority,
+        rounds,
+        tiebreaker,
+        competitionId,
+        relegationPositions,
+        promotionPositions,
+        splitIndexes,
+        teams,
+      } = config;
+      const isValid = rounds && +rounds > 0 && teams && teams?.length > 0;
+      const isCup = isCupCompetitionType(competitionTypeById.get(competitionId._id));
       const compLinks = [
         {
-          label: t('CONFIG.PRIORITY'),
-          value: config.priority ?? '-',
-        },
-        {
           label: t('CONFIG.ROUNDS'),
-          value: config.rounds || '-',
+          value: rounds || <AppIcon icon={APP_ICONS.DISPUTED} color="warning" />,
         },
         {
           label: t('CONFIG.TIEBREAKER'),
-          value: getTiebreakerString(config.tiebreaker),
+          value: getTiebreakerString(tiebreaker),
         },
         ...(!isCup
           ? [
               {
                 label: t('CONFIG.RELEGATION'),
-                value: config.relegationPositions?.join(', ') ?? '-',
+                value: relegationPositions?.length ? relegationPositions?.join(', ') : '-',
               },
               {
                 label: t('CONFIG.PROMOTION'),
-                value: config.promotionPositions?.join(', ') ?? '-',
+                value: promotionPositions?.length ? promotionPositions?.join(', ') : '-',
               },
               {
                 label: t('CONFIG.SPLIT'),
-                value: config.splitIndexes?.join(', ') || '-',
+                value: splitIndexes?.length ? splitIndexes?.join(', ') : '-',
               },
             ]
           : []),
@@ -76,12 +85,14 @@ export default function SeasonConfig({ season, loading, error }: Props) {
 
       return (
         <SectionContainer
-          key={config.competitionId._id}
-          title={config.competitionId.name}
+          key={competitionId._id}
+          type={isValid ? 'form' : 'warning'}
+          title={`${priority ? `#${priority}` : ''}
+              ${competitionId.name}`}
           secondaryAction={
             <UpdateCompConfig
-              competitionName={config.competitionId.name}
-              competitionId={config.competitionId._id}
+              competitionName={competitionId.name}
+              competitionId={competitionId._id}
               existingConfig={config}
               numberOfTeams={season.teamIds.length}
               numberOfCompetitions={season.competitionConfigs?.length || 0}
@@ -92,19 +103,34 @@ export default function SeasonConfig({ season, loading, error }: Props) {
         >
           <TextList data={compLinks} />
           {config.teams && config.teams.length > 0 ? (
-            <SectionContainer
+            <CustomAccordion
               title={
-                isCup ? t('CONFIG.TEAMS') : `${t('CONFIG.TEAMS')} / ${t('CONFIG.STARTING_POINTS')}`
+                <CustomTypography color="primary" bold>
+                  {isCup
+                    ? t('CONFIG.TEAMS')
+                    : `${t('CONFIG.TEAMS')} / ${t('CONFIG.STARTING_POINTS')}`}
+                </CustomTypography>
               }
-              type="info"
+              isExpanded={false}
             >
-              {config.teams.map(team => (
-                <TextList
-                  key={team.teamId._id}
-                  data={[{ label: team.teamId.teamName, value: team.startingPoints ?? 0 }]}
-                />
-              ))}
-            </SectionContainer>
+              <>
+                {config.teams.map(team => (
+                  <TextList
+                    key={team.teamId._id}
+                    data={[
+                      {
+                        label: (
+                          <CustomTypography color="data" bold>
+                            {team.teamId.teamName}
+                          </CustomTypography>
+                        ),
+                        value: team.startingPoints ?? '-',
+                      },
+                    ]}
+                  />
+                ))}
+              </>
+            </CustomAccordion>
           ) : null}
         </SectionContainer>
       );

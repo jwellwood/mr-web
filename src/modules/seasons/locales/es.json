@@ -33,6 +33,7 @@
     "START_DATE": "Fecha de Inicio",
     "END_DATE": "Fecha de Fin",
     "CURRENT_SEASON": "Temporada Actual",
+    "PAST_SEASON": "Temporada Pasada",
     "NUM_TEAMS": "Número de Equipos",
     "NUM_COMPETITIONS": "Número de Competiciones",
     "YES": "Sí",

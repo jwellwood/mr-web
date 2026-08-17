@@ -9,7 +9,7 @@ export const mapCompConfigToForm = (
 ): UpdateCompConfigFormData => {
   const isCup = isCupCompetitionType(competitionType);
   return {
-    rounds: config.rounds ?? undefined,
+    rounds: config.rounds ?? 0,
     splitIndexes: config.splitIndexes ?? undefined,
     relegationPositions: config.relegationPositions ?? undefined,
     promotionPositions: config.promotionPositions ?? undefined,

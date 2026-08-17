@@ -8,7 +8,7 @@ const CompConfigTeamSchema = z.object({
 });
 
 export const UpdateCompConfigSchema = z.object({
-  rounds: z.coerce.number().optional(),
+  rounds: z.coerce.number(),
   splitIndexes: z.array(z.number()).optional(),
   relegationPositions: z.array(z.number()).optional(),
   promotionPositions: z.array(z.number()).optional(),

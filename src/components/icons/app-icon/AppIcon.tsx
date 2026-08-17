@@ -11,6 +11,7 @@ import {
 } from 'react-icons/bi';
 import { BsShieldShaded, BsFilter, BsQuestion, BsCheck, BsCheckAll } from 'react-icons/bs';
 import { FaUserCircle } from 'react-icons/fa';
+import { FaAngleDown } from 'react-icons/fa';
 import { IoShieldSharp, IoHelpCircleOutline, IoSearchSharp } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
 import { MdLocationOn, MdOutlineErrorOutline, MdOutlineInfo, MdClear } from 'react-icons/md';
@@ -53,6 +54,7 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.PENDING]: BsQuestion,
   [APP_ICONS.DISPUTED]: MdOutlineErrorOutline,
   [APP_ICONS.CHECK]: BsCheck,
+  [APP_ICONS.ARROW_DOWN]: FaAngleDown,
   [APP_ICONS.CROSS]: MdClear,
   [APP_ICONS.HELP]: IoHelpCircleOutline,
   [APP_ICONS.INFO]: MdOutlineInfo,

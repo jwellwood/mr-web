@@ -65,7 +65,7 @@ export default function UpdateCompConfigForm({
 
   return (
     <>
-      <CustomButton onClick={() => setOpen(true)} variant="text">
+      <CustomButton onClick={() => setOpen(true)} variant="text" color="tertiary">
         {t('CONFIG.EDIT')}
       </CustomButton>
       <FormModal

@@ -19,7 +19,7 @@ export default function SeasonAdminPage({ data, loading, error }: Props) {
 
   return (
     <PageContainer
-      title={`${data?.orgSeason.name || ''} ${t('PAGES.SEASON_ADMIN')}`}
+      title={t('PAGES.SEASON_ADMIN')}
       links={isOrgAuth ? getSeasonAdminLinks(t, orgId, orgSeasonId) : undefined}
     >
       <SeasonAdminView season={data?.orgSeason} loading={loading} error={error} />

@@ -1,6 +1,5 @@
 import { useTranslation } from 'react-i18next';
 import { CustomTypography, DataError, SectionContainer } from '../../../components';
-import { CustomStack } from '../../../components/grids';
 import { TextList } from '../../../components/lists';
 import { CustomSkeleton } from '../../../components/loaders';
 import { TApolloError } from '../../../types/apollo';
@@ -31,27 +30,22 @@ export default function SeasonAdminOverview({ season, loading, error }: Props) {
   ];
 
   return (
-    <SectionContainer>
+    <SectionContainer
+      title={loading ? <CustomSkeleton width="90px" /> : season?.name}
+      subtitle={
+        loading ? (
+          <CustomSkeleton width="70px" />
+        ) : (
+          <CustomTypography bold color={season?.isCurrent ? 'primary' : 'label'}>
+            {t(season?.isCurrent ? 'LIST.CURRENT_SEASON' : 'LIST.PAST_SEASON')}
+          </CustomTypography>
+        )
+      }
+    >
       {error ? (
         <DataError error={error} />
       ) : (
         <>
-          <CustomStack direction="row" justify="space-between">
-            {loading ? (
-              <CustomSkeleton width="90px" />
-            ) : (
-              <CustomTypography bold color="data">
-                {season?.name}
-              </CustomTypography>
-            )}
-            {loading ? (
-              <CustomSkeleton width="70px" />
-            ) : (
-              season?.isCurrent && (
-                <CustomTypography color="primary">{t('LIST.CURRENT_SEASON')}</CustomTypography>
-              )
-            )}
-          </CustomStack>
           <TextList data={listItems} />
         </>
       )}

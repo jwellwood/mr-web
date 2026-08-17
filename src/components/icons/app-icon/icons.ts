@@ -20,6 +20,7 @@ export const APP_ICONS = {
   PENDING: 'pending',
   DISPUTED: 'disputed',
   CHECK: 'check',
+  ARROW_DOWN: 'arrow_down',
   CROSS: 'cross',
   HELP: 'help',
   INFO: 'info',

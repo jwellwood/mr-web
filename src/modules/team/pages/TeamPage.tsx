@@ -12,7 +12,6 @@ const TeamOverview = lazy(() => import('../containers/Team'));
 const SquadTabs = lazy(() => import('../../squad/main'));
 const MatchesTabs = lazy(() => import('../../matches/main'));
 const HistoryTabs = lazy(() => import('../components/HistoryTabs'));
-const TeamHelp = lazy(() => import('../TeamHelp'));
 
 export default function TeamPage() {
   const { t } = useTranslation('team');
@@ -49,11 +48,7 @@ export default function TeamPage() {
   ];
 
   return (
-    <PageContainer
-      title={t('PAGES.TEAM')}
-      links={isTeamAuth ? getTeamAdminLinks(t) : undefined}
-      help={<TeamHelp />}
-    >
+    <PageContainer title={t('PAGES.TEAM')} links={isTeamAuth ? getTeamAdminLinks(t) : undefined}>
       <CustomTabs type={TAB_TYPES.TEAM} tabs={tabs} level="primary" />
     </PageContainer>
   );
