@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.31.2](https://github.com/jwellwood/mr-web/compare/v0.31.1...v0.31.2) (2026-08-17)
+
+### Bug Fixes
+
+* remove unused form helpers ([b50b855](https://github.com/jwellwood/mr-web/commit/b50b85580a1d10031b40d23389fc3ef7a180692a))
+
 ## [0.31.1](https://github.com/jwellwood/mr-web/compare/v0.31.0...v0.31.1) (2026-08-15)
 
 ### Bug Fixes
