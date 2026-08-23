@@ -266,16 +266,6 @@ input ImageInput {
   url: String!
 }
 
-type LeagueTableByComp {
-  competition: ResultCompetiton!
-  data: [LeagueTableTeamData!]!
-  splitIndexes: [Float!]
-  promotionPositions: [Float!]
-  relegationPositions: [Float!]
-  priority: Float
-  tiebreaker: Tiebreaker
-}
-
 type LeagueTableTeamData {
   team: ResultTeam!
   played: Float!
@@ -286,7 +276,7 @@ type LeagueTableTeamData {
   goalsAgainst: Float!
   goalDiff: Float!
   points: Float!
-  zone: String
+  startingPoints: Float!
 }
 
 """The Match model"""
@@ -620,9 +610,9 @@ type Query {
   FETCH_SEASON(seasonId: String!): TeamSeason!
   FETCH_SEASONS_POSITION(teamId: String!): [PositionFinishes!]!
   FETCH_USER: User!
-  RESULTS(teamId: String, orgSeasonId: String, orgId: String!): [Result!]!
+  RESULTS(teamId: String, competitionId: String!, orgSeasonId: String!, orgId: String!): [Result!]!
   RESULT(resultId: String!): Result!
-  LEAGUE_TABLE_DATA(orgSeasonId: String, orgId: String!): [LeagueTableByComp!]!
+  LEAGUE_TABLE_DATA(orgSeasonId: String, compId: String!, orgId: String!): [LeagueTableTeamData!]!
   GOALSCORER_LEADERBOARD(orgSeasonId: String, competitionId: String!, orgId: String!): [GoalscorerLeaderboardEntry!]!
   SQUAD_LIST_BY_SEASON(seasonId: String, teamId: String!): [SquadListBySeason!]!
   SQUAD_PLAYER_PROFILES(teamId: String!): [PlayerProfile!]!
@@ -705,11 +695,6 @@ type Result {
   confirmedByTeam: Team
   decision: ResultDecision
   winnerSide: ResultSide
-}
-
-type ResultCompetiton {
-  _id: String!
-  name: String!
 }
 
 """

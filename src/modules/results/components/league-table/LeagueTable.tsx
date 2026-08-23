@@ -2,20 +2,22 @@ import { useTranslation } from 'react-i18next';
 import { CustomTable, SectionContainer } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { theme } from '../../../../theme';
+import { CompetitionConfig } from '../../../seasons/helpers/mapOrgSeasonForm';
 import { T_FETCH_LEAGUE_TABLES } from '../../graphql';
-import { league_table } from './columns';
+import { columns } from './columns';
 
 interface Props {
-  data: T_FETCH_LEAGUE_TABLES['data'][0];
+  data?: T_FETCH_LEAGUE_TABLES;
+  competitionConfig: CompetitionConfig;
   loading?: boolean;
 }
 
-export default function LeagueTable({ data, loading }: Props) {
+export default function LeagueTable({ data, competitionConfig, loading }: Props) {
   const { t } = useTranslation('results');
   const { orgId } = useCustomParams();
-  const { data: teamData, promotionPositions, relegationPositions, splitIndexes } = data;
+  const { promotionPositions, relegationPositions, splitIndexes, teams } = competitionConfig;
 
-  const rows = teamData?.map((item, i) => {
+  const rows = data?.data?.map((item, i) => {
     return {
       standing: i + 1,
       name: { value: item.team.teamName, link: `/org/${orgId}/team/${item.team._id}` },
@@ -43,15 +45,15 @@ export default function LeagueTable({ data, loading }: Props) {
   return (
     <SectionContainer>
       <CustomTable
-        rows={rows}
-        columns={league_table(t)}
+        rows={rows || []}
+        columns={columns(t)}
         isSortable={false}
         rowStyles={{
           [getHighestPromotionPosition()]: promotionPositions
-            ? { borderBottom: `2px dashed ${theme.palette.success.dark}` }
+            ? { borderBottom: `1px dashed ${theme.palette.success.dark}` }
             : undefined,
           [getLowestRelegationPosition()]: relegationPositions
-            ? { borderBottom: `2px dashed ${theme.palette.error.dark}` }
+            ? { borderBottom: `1px dashed ${theme.palette.error.dark}` }
             : undefined,
           ...splitIndexes?.reduce(
             (acc, index) => ({
@@ -62,7 +64,7 @@ export default function LeagueTable({ data, loading }: Props) {
           ),
         }}
         loading={loading}
-        loadingRowCount={20}
+        loadingRowCount={teams?.length || 10}
       />
     </SectionContainer>
   );

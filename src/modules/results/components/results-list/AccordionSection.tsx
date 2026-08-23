@@ -8,20 +8,13 @@ import AccordionTitle from './AccordionTitle';
 import ResultTable from './ResultTable';
 
 interface Props {
-  competitionName: string;
   gameWeek: string;
   gwResults: T_FETCH_RESULTS['results'];
   isExpanded: boolean;
   isAdminView?: boolean;
 }
 
-export default function AccordionSection({
-  competitionName,
-  gameWeek,
-  gwResults,
-  isExpanded,
-  isAdminView,
-}: Props) {
+export default function AccordionSection({ gameWeek, gwResults, isExpanded, isAdminView }: Props) {
   const { t } = useTranslation('results');
   const scrollRef = useRef<HTMLDivElement>(null);
   const [byeGames, nonByeGames] = gwResults.reduce(
@@ -45,7 +38,7 @@ export default function AccordionSection({
   return (
     <div ref={scrollRef}>
       <CustomAccordion
-        key={`${competitionName}-${gameWeek}`}
+        key={gameWeek}
         isExpanded={isExpanded}
         title={
           <AccordionTitle
@@ -70,7 +63,7 @@ export default function AccordionSection({
             .map(([dateKey, dateResults]) => (
               <SectionContainer
                 type="form"
-                key={`${competitionName}-${gameWeek}-${dateKey}`}
+                key={`${gameWeek}-${dateKey}`}
                 subtitle={
                   <CustomTypography bold size="xs" color="primary">
                     {parseDate(dateKey)}
@@ -81,7 +74,7 @@ export default function AccordionSection({
               </SectionContainer>
             ))}
           {byeGames.length > 0 && (
-            <SectionContainer key={`${competitionName}-${gameWeek}-bye`} title={t('BYE_GAMES')}>
+            <SectionContainer key={`${gameWeek}-bye`} title={t('BYE_GAMES')}>
               {byeGames.map(result => (
                 <div key={result._id}>
                   <CustomTypography color="data" bold>

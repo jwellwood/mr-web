@@ -48,7 +48,7 @@ export default function GameweekTeamsInput<T extends object>({
       secondaryAction={
         <AppIcon icon="cross" color="secondary" size="20px" onClick={() => remove(index)} />
       }
-      type="success"
+      type="info"
     >
       <CustomGridContainer>
         {isCup && (

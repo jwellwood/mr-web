@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client/react';
 import { useTranslation } from 'react-i18next';
 import { useCustomParams } from '../../../hooks';
-import { FETCH_RESULTS } from '../../results/graphql';
 import { FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../../seasons/graphql';
 import { FETCH_ORG, FETCH_ORG_TEAMS } from '../graphql';
 
@@ -29,11 +28,6 @@ export const useOrgSetupChecklist = () => {
   const { data: seasonData, loading: seasonLoading } = useQuery(FETCH_ORG_SEASON, {
     variables: { seasonId: currentSeason?._id ?? '' },
     skip: !currentSeason?._id,
-  });
-
-  const { data: resultsData, loading: resultsLoading } = useQuery(FETCH_RESULTS, {
-    variables: { orgId: orgId!, orgSeasonId: currentSeason?._id ?? '' },
-    skip: !orgId || !currentSeason?._id,
   });
 
   const steps = [
@@ -69,15 +63,8 @@ export const useOrgSetupChecklist = () => {
         )
       ),
     },
-    {
-      label: t('CHECKLIST.STEPS.RESULTS.LABEL'),
-      secondary: t('CHECKLIST.STEPS.RESULTS.SECONDARY', {
-        value: resultsData?.results?.length || 0,
-      }),
-      done: Boolean(resultsData?.results?.length),
-    },
   ];
 
-  const isLoading = orgLoading || teamsLoading || seasonsLoading || seasonLoading || resultsLoading;
+  const isLoading = orgLoading || teamsLoading || seasonsLoading || seasonLoading;
   return { steps, loading: isLoading };
 };

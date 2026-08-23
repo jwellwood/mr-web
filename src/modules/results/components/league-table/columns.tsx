@@ -1,7 +1,7 @@
 import { TFunction } from 'i18next';
 import type { ColumnConfig } from '../../../../components/tables/types';
 
-export const league_table = (t: TFunction): readonly ColumnConfig[] =>
+export const columns = (t: TFunction): readonly ColumnConfig[] =>
   [
     {
       id: 'standing',

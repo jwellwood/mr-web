@@ -66,18 +66,6 @@ describe('ResultsAccordion', () => {
     expect(screen.getAllByTestId('accordion-section')).toHaveLength(2);
   });
 
-  it('groups results by competition into separate accordion sections', () => {
-    const results = [
-      makeResult({ _id: 'r-1', competitionId: { _id: 'c-1', name: 'League' } }),
-      makeResult({ _id: 'r-2', competitionId: { _id: 'c-2', name: 'Cup' } }),
-    ];
-    renderAccordion({ results });
-    const sections = screen.getAllByTestId('accordion-section');
-    const competitions = sections.map(s => s.getAttribute('data-competition'));
-    expect(competitions).toContain('League');
-    expect(competitions).toContain('Cup');
-  });
-
   it('expands the first gameweek when isFixture is false', () => {
     const results = [
       makeResult({ _id: 'r-1', gameWeek: 1, date: '2020-06-01T10:00:00.000Z' }),

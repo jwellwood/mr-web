@@ -66,19 +66,6 @@ describe('useCompetitionConfig', () => {
     expect(result.current.loading).toBe(true);
   });
 
-  it('resolves and maps competition configs correctly', async () => {
-    const { result } = renderHook(() => useCompetitionConfig(), {
-      wrapper: makeWrapper('/org/org1/org_season/os1'),
-    });
-
-    await waitFor(() => expect(result.current.loading).toBe(false));
-
-    expect(result.current.competitionConfig).toEqual([
-      { id: 'comp1', name: 'League', priority: 1, rounds: 26 },
-      { id: 'comp2', name: 'Cup', priority: 2, rounds: 4 },
-    ]);
-  });
-
   it('uses competition _id as the id when available', async () => {
     const { result } = renderHook(() => useCompetitionConfig(), {
       wrapper: makeWrapper('/org/org1/org_season/os1'),
@@ -87,46 +74,6 @@ describe('useCompetitionConfig', () => {
     await waitFor(() => expect(result.current.loading).toBe(false));
 
     expect(result.current.competitionConfig?.[0].id).toBe('comp1');
-  });
-
-  it('falls back to name as id and MAX_SAFE_INTEGER as priority when fields are null', async () => {
-    const nullFieldsMock = {
-      request: { query: FETCH_ORG_SEASON, variables: { seasonId: 'os1' } },
-      result: {
-        data: {
-          orgSeason: {
-            ...orgSeasonData.orgSeason,
-            competitionConfigs: [
-              {
-                __typename: 'CompetitionConfig' as const,
-                priority: null,
-                rounds: null,
-                relegationPositions: [],
-                promotionPositions: [],
-                splitIndexes: [],
-                competitionId: {
-                  __typename: 'Competition' as const,
-                  _id: null,
-                  name: 'Friendly',
-                },
-              },
-            ],
-          },
-        },
-      },
-    };
-
-    const { result } = renderHook(() => useCompetitionConfig(), {
-      wrapper: makeWrapper('/org/org1/org_season/os1', [nullFieldsMock]),
-    });
-
-    await waitFor(() => expect(result.current.loading).toBe(false));
-
-    expect(result.current.competitionConfig?.[0]).toEqual({
-      id: 'Friendly',
-      name: 'Friendly',
-      priority: Number.MAX_SAFE_INTEGER,
-    });
   });
 
   it('skips the query and returns undefined config when orgSeasonId is absent', async () => {

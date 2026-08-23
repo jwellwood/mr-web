@@ -287,17 +287,6 @@ export type ImageInput = {
   url: Scalars['String']['input'];
 };
 
-export type LeagueTableByComp = {
-  __typename?: 'LeagueTableByComp';
-  competition: ResultCompetiton;
-  data: Array<LeagueTableTeamData>;
-  priority?: Maybe<Scalars['Float']['output']>;
-  promotionPositions?: Maybe<Array<Scalars['Float']['output']>>;
-  relegationPositions?: Maybe<Array<Scalars['Float']['output']>>;
-  splitIndexes?: Maybe<Array<Scalars['Float']['output']>>;
-  tiebreaker?: Maybe<Tiebreaker>;
-};
-
 export type LeagueTableTeamData = {
   __typename?: 'LeagueTableTeamData';
   draws: Scalars['Float']['output'];
@@ -307,9 +296,9 @@ export type LeagueTableTeamData = {
   losses: Scalars['Float']['output'];
   played: Scalars['Float']['output'];
   points: Scalars['Float']['output'];
+  startingPoints: Scalars['Float']['output'];
   team: ResultTeam;
   wins: Scalars['Float']['output'];
-  zone?: Maybe<Scalars['String']['output']>;
 };
 
 /** The Match model */
@@ -977,7 +966,7 @@ export type Query = {
   FETCH_USER: User;
   GOALSCORER_LEADERBOARD: Array<GoalscorerLeaderboardEntry>;
   HALL_OF_FAME_PLAYERS: Array<Player>;
-  LEAGUE_TABLE_DATA: Array<LeagueTableByComp>;
+  LEAGUE_TABLE_DATA: Array<LeagueTableTeamData>;
   MATCH: Match;
   MATCHES: Array<TMatch>;
   MATCHES_ALL_TIME_STATS: TMatchStats;
@@ -1105,6 +1094,7 @@ export type QueryHall_Of_Fame_PlayersArgs = {
 
 
 export type QueryLeague_Table_DataArgs = {
+  compId: Scalars['String']['input'];
   orgId: Scalars['String']['input'];
   orgSeasonId?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1261,8 +1251,9 @@ export type QueryResultArgs = {
 
 
 export type QueryResultsArgs = {
+  competitionId: Scalars['String']['input'];
   orgId: Scalars['String']['input'];
-  orgSeasonId?: InputMaybe<Scalars['String']['input']>;
+  orgSeasonId: Scalars['String']['input'];
   teamId?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1387,12 +1378,6 @@ export type Result = {
   resultStatus?: Maybe<ResultStatus>;
   submittedByTeam?: Maybe<Team>;
   winnerSide?: Maybe<ResultSide>;
-};
-
-export type ResultCompetiton = {
-  __typename?: 'ResultCompetiton';
-  _id: Scalars['String']['output'];
-  name: Scalars['String']['output'];
 };
 
 /** How the match result was decided (normal time, after extra time, or on penalties) */

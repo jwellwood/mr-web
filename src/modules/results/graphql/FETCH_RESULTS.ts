@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const FETCH_RESULTS = gql`
-  query FETCH_RESULTS($orgId: String!, $orgSeasonId: String!) {
-    results: RESULTS(orgId: $orgId, orgSeasonId: $orgSeasonId) {
+  query FETCH_RESULTS($orgId: String!, $orgSeasonId: String!, $competitionId: String!) {
+    results: RESULTS(orgId: $orgId, orgSeasonId: $orgSeasonId, competitionId: $competitionId) {
       _id
       date
       kickoffTime

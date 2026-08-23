@@ -3,7 +3,7 @@ import { SectionContainer } from '../../../components';
 import { CustomTabs } from '../../../components/tabs';
 import { TAB_TYPES } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
-import Results from '../../results/containers/Results';
+import Competitions from '../../results/containers/Competitions';
 import { T_FETCH_ORG_SEASON } from '../graphql';
 import SeasonAdminOverview from './SeasonAdminOverview';
 import SeasonConfig from './SeasonConfig';
@@ -19,7 +19,7 @@ export default function SeasonAdminView({ season, loading, error }: Props) {
   const tabs = [
     {
       label: t('TABS.RESULTS'),
-      component: <Results isAdminView={true} />,
+      component: <Competitions isAdminView={true} />,
     },
     {
       label: t('TABS.CONFIGURATION'),
