@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.32.1](https://github.com/jwellwood/mr-web/compare/v0.32.0...v0.32.1) (2026-08-23)
+
+### Code Refactoring
+
+* league tables ([539c388](https://github.com/jwellwood/mr-web/commit/539c3886446ccd65b2ed0968d6d325981634aceb))
+
 ## [0.32.0](https://github.com/jwellwood/mr-web/compare/v0.31.2...v0.32.0) (2026-08-17)
 
 ### Features
