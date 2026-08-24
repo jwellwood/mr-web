@@ -3,7 +3,7 @@
     "RESULT": "Result",
     "ADD": "Add Result",
     "EDIT": "Edit Result",
-    "ADD_GAMEWEEK": "Add Gameweek Results"
+    "ADD_GAMEWEEK": "Add Round Results"
   },
   "SECTIONS": {
     "MATCH_NUMBER": "Match"
@@ -43,9 +43,9 @@
       "ERROR": "Error updating result. Please try again."
     },
     "ADD_GAMEWEEK": {
-      "SUCCESS": "Gameweek results added successfully",
+      "SUCCESS": "Round results added successfully",
       "ADDED": "Added {{count}} results",
-      "ERROR": "Error adding gameweek results. Please try again."
+      "ERROR": "Error adding round results. Please try again."
     },
     "DELETE": {
       "SUCCESS": "Result deleted successfully",

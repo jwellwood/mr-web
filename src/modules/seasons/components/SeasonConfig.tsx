@@ -54,6 +54,7 @@ export default function SeasonConfig({ season, loading, error }: Props) {
         splitIndexes,
         teams,
       } = config;
+
       const isValid = rounds && +rounds > 0 && teams && teams?.length > 0;
       const isCup = isCupCompetitionType(competitionTypeById.get(competitionId._id));
       const compLinks = [
@@ -131,7 +132,9 @@ export default function SeasonConfig({ season, loading, error }: Props) {
                 ))}
               </>
             </CustomAccordion>
-          ) : null}
+          ) : (
+            <DataError error={{ message: t('CONFIG.NO_TEAMS') }} />
+          )}
         </SectionContainer>
       );
     });

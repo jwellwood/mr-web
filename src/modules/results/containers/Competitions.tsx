@@ -22,27 +22,29 @@ export default function Competitions({ isAdminView }: Props) {
 
   const competitionTabs = !competitionConfig
     ? []
-    : competitionConfig?.map(competition => ({
-        label: competition.name,
-        component: (
-          <CustomTabs
-            type={TAB_TYPES.COMPETITION_VIEW}
-            level="secondary"
-            tabs={[
-              {
-                label: t('organization:TABS.TABLES'),
-                component: <LeagueTableWrapper competitionConfig={competition} />,
-              },
-              {
-                label: t('organization:TABS.MATCHES'),
-                component: (
-                  <ResultsWrapper competitionConfig={competition} isAdminView={isAdminView} />
-                ),
-              },
-            ]}
-          />
-        ),
-      }));
+    : competitionConfig
+        ?.sort((a, b) => b.priority - a.priority)
+        .map(competition => ({
+          label: competition.name,
+          component: (
+            <CustomTabs
+              type={TAB_TYPES.COMPETITION_VIEW}
+              level="secondary"
+              tabs={[
+                {
+                  label: t('organization:TABS.TABLES'),
+                  component: <LeagueTableWrapper competitionConfig={competition} />,
+                },
+                {
+                  label: t('organization:TABS.MATCHES'),
+                  component: (
+                    <ResultsWrapper competitionConfig={competition} isAdminView={isAdminView} />
+                  ),
+                },
+              ]}
+            />
+          ),
+        }));
 
   return loading ? (
     <CustomSkeleton width="290px" height="36px" />

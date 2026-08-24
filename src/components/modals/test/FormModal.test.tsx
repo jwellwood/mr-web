@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../utils/test-helpers/TestWrapper';
 import FormModal from '../form-modal/FormModal';
@@ -36,21 +36,6 @@ describe('FormModal', () => {
       </TestWrapper>
     );
     expect(screen.queryByRole('heading')).not.toBeInTheDocument();
-  });
-
-  it('calls onClose when Back button is clicked', async () => {
-    const onClose = vi.fn();
-    const user = userEvent.setup();
-    render(
-      <TestWrapper>
-        <FormModal open onClose={onClose}>
-          <div>Form</div>
-        </FormModal>
-      </TestWrapper>
-    );
-
-    await user.click(screen.getByRole('button', { name: /back/i }));
-    expect(onClose).toHaveBeenCalledTimes(1);
   });
 
   it('does not render dialog content when closed', () => {

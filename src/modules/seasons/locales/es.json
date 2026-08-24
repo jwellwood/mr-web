@@ -64,8 +64,9 @@
     "PENALTIES": "Penales",
     "TEAMS": "Equipos",
     "TEAM": "Equipo",
-    "STARTING_POINTS": "Puntos Iniciales",
-    "ADD_TEAM": "Agregar Equipo"
+    "STARTING_POINTS": "Puntos",
+    "ADD_TEAM": "Agregar Equipo",
+    "NO_TEAMS": "Aún no hay equipos agregados."
   },
   "MESSAGES": {
     "INCLUDED": "Incluido"

@@ -27,7 +27,7 @@ export default function FormLabel({ id, label, required = false, helperText }: P
         {label} {required && '*'}{' '}
       </CustomTypography>
 
-      {helperText && <FormHelper helperText={helperText} />}
+      {helperText && <FormHelper inputName={label?.toString()} helperText={helperText} />}
     </Box>
   );
 }

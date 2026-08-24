@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
@@ -100,6 +101,6 @@ describe('ProfilePage', () => {
       </MemoryRouter>
     );
     // Admin links are shown via the EditLinksModal — verified by the 'Admin' dropdown button
-    expect(await screen.findByRole('button', { name: 'Admin' })).toBeInTheDocument();
+    expect(await screen.findAllByRole('button', { name: 'Admin' })).toHaveLength(2);
   });
 });

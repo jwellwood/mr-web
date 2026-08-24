@@ -13,7 +13,7 @@
   },
   "LINKS": {
     "ADD_RESULT": "Add Result",
-    "ADD_GAMEWEEK": "Add Gameweek",
+    "ADD_GAMEWEEK": "Add Round",
     "EDIT_SEASON": "Edit Season",
     "SEASON_ADMIN": "Season Admin"
   },
@@ -64,8 +64,9 @@
     "PENALTIES": "Penalties",
     "TEAMS": "Teams",
     "TEAM": "Team",
-    "STARTING_POINTS": "Starting Points",
-    "ADD_TEAM": "Add Team"
+    "STARTING_POINTS": "Points",
+    "ADD_TEAM": "Add Team",
+    "NO_TEAMS": "No teams added yet."
   },
   "MESSAGES": {
     "INCLUDED": "Included: {{count}}"

@@ -46,7 +46,7 @@
         "SECONDARY": "{{value}} added"
       },
       "RESULTS": {
-        "LABEL": "Add results/gameweeks",
+        "LABEL": "Add results/rounds",
         "SECONDARY": "{{value}} added"
       }
     },

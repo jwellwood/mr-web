@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { PresentationModal } from '../../../components/modals';
+import BottomDrawer from '../../../components/modals/bottom-drawer/BottomDrawer';
 import { TApolloError } from '../../../types/apollo';
 import SearchForm from '../forms/SearchForm';
 import { T_FETCH_ORGS_BY_SEARCH, T_FETCH_TEAMS_BY_SEARCH } from '../graphql';
@@ -27,7 +27,7 @@ export default function SearchView({
 }: Props) {
   const { t, i18n } = useTranslation('home');
   return (
-    <PresentationModal
+    <BottomDrawer
       title={type === 'org' ? t('SEARCH.MODAL.TITLE.ORG') : t('SEARCH.MODAL.TITLE.TEAM')}
       buttonElement={buttonElement}
     >
@@ -54,6 +54,6 @@ export default function SearchView({
           type="org"
         />
       )}
-    </PresentationModal>
+    </BottomDrawer>
   );
 }

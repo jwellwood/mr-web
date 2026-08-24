@@ -1,34 +1,44 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import Drawer from '@mui/material/Drawer';
 import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
-import { CustomTypography } from '../../typography';
+import { theme } from '../../../theme';
+import DrawerHeader from '../bottom-drawer/DrawerHeader';
 
 interface Props {
-  title?: string;
   children: ReactNode;
-  open: boolean;
-  onClose: () => void;
+  title?: string | ReactNode;
+  open?: boolean;
+  onClose?: () => void;
 }
 
-export default function FormModal({ title, children, open, onClose }: Props) {
-  const { t } = useTranslation('components');
+export default function FormModal({ children, title, open, onClose }: Props) {
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
-    <div>
-      <Dialog open={open} onClose={onClose} aria-labelledby="responsive-dialog-title">
-        {title ? (
-          <DialogTitle id="responsive-dialog-title" color="primary">
-            <CustomTypography color="secondary" bold>
-              {title}
-            </CustomTypography>
-          </DialogTitle>
-        ) : null}
-        <DialogContent>{children}</DialogContent>
-        <DialogActions>
-          <Button onClick={onClose} color="tertiary">
-            {t('BUTTONS.BACK')}
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
+    <Drawer
+      anchor="bottom"
+      open={open}
+      onClose={handleClose}
+      sx={{ zIndex: 1300 }}
+      slotProps={{
+        paper: {
+          sx: {
+            borderTop: `1px solid ${theme.palette.secondary.light}`,
+            borderTopLeftRadius: '16px',
+            borderTopRightRadius: '16px',
+            padding: '16px',
+            paddingTop: '0px',
+            maxHeight: '80vh',
+            backgroundColor: theme.palette.secondary.main,
+          },
+        },
+      }}
+    >
+      <DrawerHeader title={title} handleClose={handleClose} />
+      {children}
+    </Drawer>
   );
 }
