@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.33.0](https://github.com/jwellwood/mr-web/compare/v0.32.1...v0.33.0) (2026-08-24)
+
+### Features
+
+* change modal style ([90b1f3b](https://github.com/jwellwood/mr-web/commit/90b1f3b9df490dbff32a605d8e34ccfd19c28c69))
+
 ## [0.32.1](https://github.com/jwellwood/mr-web/compare/v0.32.0...v0.32.1) (2026-08-23)
 
 ### Code Refactoring
