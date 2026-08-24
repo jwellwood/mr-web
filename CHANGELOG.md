@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.33.1](https://github.com/jwellwood/mr-web/compare/v0.33.0...v0.33.1) (2026-08-24)
+
+### Bug Fixes
+
+* fix problem with default season id across orgs ([5f439fc](https://github.com/jwellwood/mr-web/commit/5f439fc962ce1e7e78627703d4c40d7d0b55b350))
+
 ## [0.33.0](https://github.com/jwellwood/mr-web/compare/v0.32.1...v0.33.0) (2026-08-24)
 
 ### Features
