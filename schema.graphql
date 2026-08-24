@@ -590,7 +590,7 @@ type Query {
   COMPETITIONS_BY_ORG(orgId: String!): [Competition!]!
   COMPETITION_BY_ID(compId: String!): Competition!
   ORG_SEASONS(orgId: String!): [OrgSeason!]!
-  ORG_SEASON(seasonId: String!): OrgSeason!
+  ORG_SEASON(orgId: String!, seasonId: String!): OrgSeason!
   PLAYER_BY_ID(playerId: String!): Player!
   PLAYERS_BY_TEAM(orgSeasonId: String, teamId: String!): [PlayerBasic!]!
   PLAYER_STATS(competitionId: String!, seasonId: String!, playerId: String!): PlayerStats!

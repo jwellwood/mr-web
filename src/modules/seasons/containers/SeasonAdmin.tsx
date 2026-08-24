@@ -4,10 +4,10 @@ import { FETCH_ORG_SEASON } from '../graphql';
 import SeasonAdminPage from '../pages/SeasonAdminPage';
 
 export default function SeasonAdmin() {
-  const { orgSeasonId } = useCustomParams();
+  const { orgSeasonId, orgId } = useCustomParams();
 
   const { data, loading, error } = useQuery(FETCH_ORG_SEASON, {
-    variables: { seasonId: orgSeasonId! },
+    variables: { orgId: orgId!, seasonId: orgSeasonId! },
   });
 
   return <SeasonAdminPage data={data} loading={loading} error={error} />;

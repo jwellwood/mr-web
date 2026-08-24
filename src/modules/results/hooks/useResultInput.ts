@@ -9,9 +9,9 @@ import { getCupRoundLabel } from '../helpers/getCupRoundLabel';
 
 export const useTeamOptions = () => {
   const { t } = useTranslation('results');
-  const { orgSeasonId } = useCustomParams();
+  const { orgSeasonId, orgId } = useCustomParams();
   const { data, error, loading } = useQuery(FETCH_ORG_SEASON, {
-    variables: { seasonId: orgSeasonId! },
+    variables: { orgId: orgId!, seasonId: orgSeasonId! },
   });
 
   const teamOptions = useMemo<ISelectOptions[]>(() => {
@@ -51,14 +51,15 @@ export const useTeamOptions = () => {
 };
 
 export const useCompetitionRoundOptions = (
+  orgId?: string,
   seasonId?: string,
   competitionId?: string,
   competitionType?: string
 ) => {
   const { t } = useTranslation('results');
   const { data, error, loading } = useQuery(FETCH_ORG_SEASON, {
-    variables: { seasonId: seasonId || '' },
-    skip: !seasonId,
+    variables: { orgId: orgId || '', seasonId: seasonId || '' },
+    skip: !seasonId || !orgId,
   });
 
   const roundOptions = useMemo<ISelectOptions[]>(() => {

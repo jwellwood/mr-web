@@ -21,13 +21,13 @@ export default function EditOrgSeason() {
   const { competitionOptions, loading: competitionOptionsLoading } = useCompetitionOptions();
 
   const { loading, error, data } = useQuery(FETCH_ORG_SEASON, {
-    variables: { seasonId: orgSeasonId! },
+    variables: { orgId: orgId!, seasonId: orgSeasonId! },
   });
 
   const [editOrgSeason, { loading: editLoading }] = useMutation(EDIT_ORG_SEASON, {
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
-      { query: FETCH_ORG_SEASON, variables: { seasonId: orgSeasonId! } },
+      { query: FETCH_ORG_SEASON, variables: { orgId: orgId!, seasonId: orgSeasonId! } },
     ],
     onError: () => dispatch(showAlert({ text: t('ALERTS.EDIT_SEASON.ERROR'), type: 'error' })),
   });

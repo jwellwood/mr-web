@@ -3,9 +3,9 @@ import { useCustomParams } from '../../../hooks';
 import { FETCH_ORG_SEASON, T_FETCH_ORG_SEASON } from '../../seasons/graphql';
 
 export default function useCompetitionConfig(orgSeasonId?: string) {
-  const { orgSeasonId: paramsOrgSeasonId } = useCustomParams();
+  const { orgSeasonId: paramsOrgSeasonId, orgId } = useCustomParams();
   const { data, loading, error } = useQuery<T_FETCH_ORG_SEASON>(FETCH_ORG_SEASON, {
-    variables: { seasonId: orgSeasonId || paramsOrgSeasonId || 'default' },
+    variables: { orgId, seasonId: orgSeasonId || paramsOrgSeasonId || 'default' },
   });
 
   const competitionConfig = data?.orgSeason?.competitionConfigs?.map(c => ({

@@ -26,7 +26,7 @@ export const useOrgSetupChecklist = () => {
   const currentSeason = seasonsData?.orgSeasons?.find(season => season.isCurrent);
 
   const { data: seasonData, loading: seasonLoading } = useQuery(FETCH_ORG_SEASON, {
-    variables: { seasonId: currentSeason?._id ?? '' },
+    variables: { orgId: orgId!, seasonId: currentSeason?._id ?? '' },
     skip: !currentSeason?._id,
   });
 

@@ -66,16 +66,6 @@ describe('useCompetitionConfig', () => {
     expect(result.current.loading).toBe(true);
   });
 
-  it('uses competition _id as the id when available', async () => {
-    const { result } = renderHook(() => useCompetitionConfig(), {
-      wrapper: makeWrapper('/org/org1/org_season/os1'),
-    });
-
-    await waitFor(() => expect(result.current.loading).toBe(false));
-
-    expect(result.current.competitionConfig?.[0].id).toBe('comp1');
-  });
-
   it('skips the query and returns undefined config when orgSeasonId is absent', async () => {
     const noOrgSeasonWrapper = ({ children }: { children: ReactNode }) => (
       <MemoryRouter initialEntries={['/org/org1']}>

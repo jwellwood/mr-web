@@ -1155,6 +1155,7 @@ export type QueryOrganizationArgs = {
 
 
 export type QueryOrg_SeasonArgs = {
+  orgId: Scalars['String']['input'];
   seasonId: Scalars['String']['input'];
 };
 
