@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.34.0](https://github.com/jwellwood/mr-web/compare/v0.33.1...v0.34.0) (2026-08-26)
+
+### Features
+
+* improve admin config ([c3e53cf](https://github.com/jwellwood/mr-web/commit/c3e53cf807bce9715f2f60bead5ec7a43bd6ebec))
+
 ## [0.33.1](https://github.com/jwellwood/mr-web/compare/v0.33.0...v0.33.1) (2026-08-24)
 
 ### Bug Fixes
