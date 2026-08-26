@@ -9,7 +9,6 @@ interface Props {
   data: IListItem[];
   size?: number;
   loading?: boolean;
-
   width?: number;
 }
 

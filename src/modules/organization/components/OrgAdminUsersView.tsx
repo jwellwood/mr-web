@@ -35,6 +35,7 @@ export default function OrgAdminUsersView({ org, loading, error }: Props) {
         <CustomTypography bold size="lg" color="data">
           {org?.orgName}
         </CustomTypography>
+        <ToggleAdminAccessEnabled data={{ enabled: orgAdminAccessEnabled || false }} />
         <SectionContainer title={t('ADMIN.CODE')}>
           <CustomStack>
             <CustomTypography color="data">
@@ -47,7 +48,6 @@ export default function OrgAdminUsersView({ org, loading, error }: Props) {
             )}
             <CustomTypography color="data">{t('ADMIN.SUMMARY')}</CustomTypography>
             <GenerateAdminCode />
-            <ToggleAdminAccessEnabled data={{ enabled: orgAdminAccessEnabled || false }} />
           </CustomStack>
         </SectionContainer>
         <SectionContainer title={t('ADMIN.USERS.TITLE')}>

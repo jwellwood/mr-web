@@ -8,12 +8,13 @@ export default function useCompetitionConfig(orgSeasonId?: string) {
     variables: { orgId, seasonId: orgSeasonId || paramsOrgSeasonId || 'default' },
   });
 
-  const competitionConfig = data?.orgSeason?.competitionConfigs?.map(c => ({
-    ...c,
-    id: c.competitionId?._id ?? c.competitionId?.name ?? 'other',
-    name: c.competitionId?.name ?? 'Other',
-    priority: c.priority ?? 99,
-  }));
+  const competitionConfig = data?.orgSeason?.competitionConfigs
+    ?.map(config => ({
+      ...config,
+      name: config?.competitionId?.name || 'Other',
+      id: config?.competitionId?._id || 'other',
+    }))
+    ?.sort((a, b) => (a?.priority ?? 99) - (b?.priority ?? 99));
 
   return { competitionConfig, loading, error };
 }

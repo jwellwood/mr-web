@@ -48,6 +48,7 @@
         "PRIORITY": "The priority determines the order that the competitions will be displayed in the season"
       }
     },
+    "TYPE": "Type",
     "ROUNDS": "Rounds",
     "RELEGATION": "Relegation Positions",
     "RELEGATION_FORM": "Relegation Spots",
@@ -66,7 +67,9 @@
     "TEAM": "Team",
     "STARTING_POINTS": "Points",
     "ADD_TEAM": "Add Team",
-    "NO_TEAMS": "No teams added yet."
+    "NO_TEAMS": "No teams added yet.",
+    "CUP": "Cup",
+    "LEAGUE": "League"
   },
   "MESSAGES": {
     "INCLUDED": "Included: {{count}}"

@@ -28,8 +28,9 @@ export default function CustomCheckList({ title, steps, loading, dismissedKey }:
 
   if (dismissed) return null;
 
+  const type = loading ? 'form' : allDone ? 'success' : 'warning';
   return (
-    <SectionContainer type={allDone ? 'success' : 'warning'}>
+    <SectionContainer type={type}>
       <CustomAccordion
         title={
           loading ? (

@@ -48,6 +48,7 @@
         "PRIORITY": "La prioridad determina el orden en que se mostrarán las competiciones en la temporada"
       }
     },
+    "TYPE": "Tipo",
     "ROUNDS": "Rondas",
     "RELEGATION": "Posiciones de Descenso",
     "RELEGATION_FORM": "Plazas de Descenso",
@@ -66,7 +67,9 @@
     "TEAM": "Equipo",
     "STARTING_POINTS": "Puntos",
     "ADD_TEAM": "Agregar Equipo",
-    "NO_TEAMS": "Aún no hay equipos agregados."
+    "NO_TEAMS": "Aún no hay equipos agregados.",
+    "CUP": "Copa",
+    "LEAGUE": "Liga"
   },
   "MESSAGES": {
     "INCLUDED": "Incluido"

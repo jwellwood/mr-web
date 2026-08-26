@@ -23,7 +23,7 @@ export default function Competitions({ isAdminView }: Props) {
   const competitionTabs = !competitionConfig
     ? []
     : competitionConfig
-        ?.sort((a, b) => b.priority - a.priority)
+        ?.sort((a, b) => (a?.priority ?? 99) - (b?.priority ?? 99))
         .map(competition => ({
           label: competition.name,
           component: (
