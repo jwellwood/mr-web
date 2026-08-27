@@ -1,15 +1,17 @@
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataError } from '../../../components';
 import { CustomSkeleton } from '../../../components/loaders';
 import { CustomTabs } from '../../../components/tabs';
 import { TAB_TYPES } from '../../../constants';
 import useCompetitionConfig from '../hooks/useCompetitionConfig';
-import LeagueTableWrapper from './LeagueTableWrapper';
-import ResultsWrapper from './ResultsWrapper';
 
 interface Props {
   isAdminView?: boolean;
 }
+
+const LeagueTableWrapper = lazy(() => import('../../tables/containers/LeagueTableWrapper'));
+const ResultsWrapper = lazy(() => import('./ResultsWrapper'));
 
 export default function Competitions({ isAdminView }: Props) {
   const { t } = useTranslation(['results', 'organization']);

@@ -7,3 +7,4 @@ export * from './useSeasons';
 export * from './useUpload';
 export * from './useStatsFilters';
 export * from './useLogout';
+export * from './useTeamOptions';

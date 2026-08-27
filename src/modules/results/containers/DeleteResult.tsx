@@ -6,7 +6,8 @@ import { DeleteModal } from '../../../components/modals';
 import { useCustomParams } from '../../../hooks';
 import { showAlert } from '../../../store';
 import { FETCH_ORG_SEASONS } from '../../seasons/graphql';
-import { DELETE_RESULT, FETCH_LEAGUE_TABLES, FETCH_RESULTS } from '../graphql';
+import { FETCH_LEAGUE_TABLES } from '../../tables/graphql';
+import { DELETE_RESULT, FETCH_RESULTS } from '../graphql';
 
 export default function DeleteResult() {
   const { t } = useTranslation('results');

@@ -1085,6 +1085,7 @@ export type QueryGoalscorer_LeaderboardArgs = {
   competitionId: Scalars['String']['input'];
   orgId: Scalars['String']['input'];
   orgSeasonId?: InputMaybe<Scalars['String']['input']>;
+  teamId: Scalars['String']['input'];
 };
 
 

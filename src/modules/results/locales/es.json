@@ -17,22 +17,6 @@
     "GOALSCORERS": "Goleadores",
     "COMPETITIONS": "Competiciones"
   },
-  "TABLES": {
-    "HEADERS": {
-      "TEAM": "Equipo",
-      "NAME": "Nombre",
-      "PLAYED": "PJ",
-      "WINS": "G",
-      "DRAWS": "E",
-      "LOSSES": "P",
-      "GOALS_FOR": "GF",
-      "GOALS_AGAINST": "GC",
-      "GOAL_DIFFERENCE": "DG",
-      "POINTS": "Pts",
-      "HOME": "Local",
-      "AWAY": "Visitante"
-    }
-  },
   "ALERTS": {
     "ADD": {
       "SUCCESS": "Resultado agregado correctamente",
@@ -148,8 +132,7 @@
     "RESULTS": "No se encontraron resultados.",
     "FIXTURES": "No se encontraron partidos.",
     "RESULT": "No se encontró el resultado.",
-    "GOALSCORERS": "No hay goleadores aún",
-    "TABLE": "No se encontraron datos de la tabla."
+    "GOALSCORERS": "No hay goleadores aún"
   },
   "ADMIN": {
     "TITLE": "Admin",

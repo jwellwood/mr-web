@@ -6,7 +6,7 @@ import { ISelectOptions } from '../../../../components';
 import { useCustomParams } from '../../../../hooks';
 import { AppDispatch, showAlert } from '../../../../store';
 import { FETCH_COMPETITIONS } from '../../../competitions/graphql';
-import { FETCH_LEAGUE_TABLES } from '../../../results/graphql';
+import { FETCH_LEAGUE_TABLES } from '../../../tables/graphql';
 import { TTiebreaker } from '../../constants';
 import { FETCH_ORG_SEASON, FETCH_ORG_SEASONS } from '../../graphql';
 import { UPDATE_COMPETITION_CONFIGS } from '../../graphql';

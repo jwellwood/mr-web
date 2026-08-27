@@ -1,0 +1,21 @@
+{
+  "TABLES": {
+    "HEADERS": {
+      "TEAM": "Equipo",
+      "NAME": "Nombre",
+      "PLAYED": "PJ",
+      "WINS": "G",
+      "DRAWS": "E",
+      "LOSSES": "P",
+      "GOALS_FOR": "GF",
+      "GOALS_AGAINST": "GC",
+      "GOAL_DIFFERENCE": "DG",
+      "POINTS": "Pts",
+      "HOME": "Local",
+      "AWAY": "Visitante"
+    }
+  },
+  "NO_DATA": {
+    "TABLE": "No se encontraron datos de la tabla."
+  }
+}

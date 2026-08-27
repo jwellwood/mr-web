@@ -613,7 +613,7 @@ type Query {
   RESULTS(teamId: String, competitionId: String!, orgSeasonId: String!, orgId: String!): [Result!]!
   RESULT(resultId: String!): Result!
   LEAGUE_TABLE_DATA(orgSeasonId: String, compId: String!, orgId: String!): [LeagueTableTeamData!]!
-  GOALSCORER_LEADERBOARD(orgSeasonId: String, competitionId: String!, orgId: String!): [GoalscorerLeaderboardEntry!]!
+  GOALSCORER_LEADERBOARD(orgSeasonId: String, teamId: String!, competitionId: String!, orgId: String!): [GoalscorerLeaderboardEntry!]!
   SQUAD_LIST_BY_SEASON(seasonId: String, teamId: String!): [SquadListBySeason!]!
   SQUAD_PLAYER_PROFILES(teamId: String!): [PlayerProfile!]!
   SQUAD_STATS(sortBy: String! = "apps", limit: Int! = 20, page: Int! = 1, competitionId: String!, seasonId: String!, teamId: String!): SquadStatsPage!

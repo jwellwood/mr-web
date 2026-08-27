@@ -1,0 +1,30 @@
+{
+  "TABLES": {
+    "HEADERS": {
+      "NAME": "Name",
+      "TEAM": "Team"
+    }
+  },
+  "FILTERS": {
+    "TITLE": "Filters",
+    "ALL_COMPETITIONS": "All Competitions",
+    "COMPETITIONS": "Competitions",
+    "ALL_TEAMS": "All Teams",
+    "TEAMS": "Teams",
+    "APPLY": "Apply"
+  },
+  "ALERTS": {
+    "ADD_GOALSCORERS": {
+      "SUCCESS": "Goalscorers added successfully",
+      "ERROR": "Error adding goalscorers. Please try again."
+    }
+  },
+  "BUTTONS": {
+    "ADD_GOALSCORERS": "Add Goalscorers",
+    "ADD_GOALSCORER": "Add Goalscorer"
+  },
+
+  "NO_DATA": {
+    "GOALSCORERS": "No goalscorers yet"
+  }
+}
