@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.35.0](https://github.com/jwellwood/mr-web/compare/v0.34.0...v0.35.0) (2026-08-27)
+
+### Features
+
+* add goalscorers module ([fd81a2e](https://github.com/jwellwood/mr-web/commit/fd81a2e5f0f711178e1a92d67337cf7329355e92))
+
 ## [0.34.0](https://github.com/jwellwood/mr-web/compare/v0.33.1...v0.34.0) (2026-08-26)
 
 ### Features
