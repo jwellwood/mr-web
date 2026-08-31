@@ -141,6 +141,7 @@ type CompetitionConfig {
   promotionPositions: [Float!]
   priority: Float
   tiebreaker: Tiebreaker
+  type: String
 }
 
 input CompetitionConfigInput {

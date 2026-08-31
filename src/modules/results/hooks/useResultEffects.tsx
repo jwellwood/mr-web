@@ -1,29 +1,24 @@
 import { useEffect, useRef } from 'react';
-import { ISelectOptions } from '../../../components';
-import { ResultFormData } from './result/schema';
+import { ResultFormData } from '../forms/result/schema';
 
 export const useResultEffects = ({
   currentCompetitionId,
   currentSeasonId,
-  currentGameWeek,
   isBye,
   isCup,
-  roundOptions,
-  showGameWeek,
   setValue,
   clearErrors,
 }: {
   currentCompetitionId: string;
   currentSeasonId: string;
-  currentGameWeek: string | number;
   isBye?: boolean;
   isCup: boolean;
-  roundOptions: ISelectOptions[];
-  showGameWeek: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setValue: (name: keyof ResultFormData, value: any, options?: any) => void;
   clearErrors: (name?: keyof ResultFormData | (keyof ResultFormData)[]) => void;
 }) => {
+  // Conditions:
+  // 1. If the competition or season changes, reset all fields except for the changed field
   const hasInitializedCompetitionSeason = useRef(false);
   const previousCompetitionIdRef = useRef(currentCompetitionId);
   const previousSeasonIdRef = useRef(currentSeasonId);
@@ -60,31 +55,51 @@ export const useResultEffects = ({
       shouldDirty: false,
       shouldValidate: false,
     });
-    clearErrors('gameWeek');
-    clearErrors(['decision', 'winnerSide']);
+    setValue('homeTeam', '', {
+      shouldDirty: false,
+      shouldValidate: false,
+    });
+    setValue('awayTeam', '', {
+      shouldDirty: false,
+      shouldValidate: false,
+    });
+    setValue('homeGoals', '0', {
+      shouldDirty: false,
+      shouldValidate: false,
+    });
+    setValue('awayGoals', '0', {
+      shouldDirty: false,
+      shouldValidate: false,
+    });
+    setValue('isComplete', false, {
+      shouldDirty: false,
+      shouldValidate: false,
+    });
+    setValue('isBye', false, {
+      shouldDirty: false,
+      shouldValidate: false,
+    });
+    setValue('isForfeit', false, {
+      shouldDirty: false,
+      shouldValidate: false,
+    });
+
+    clearErrors([
+      'homeTeam',
+      'awayTeam',
+      'homeGoals',
+      'awayGoals',
+      'isBye',
+      'isForfeit',
+      'gameWeek',
+      'decision',
+      'winnerSide',
+      'isComplete',
+    ]);
   }, [currentCompetitionId, currentSeasonId, clearErrors, setValue]);
 
-  useEffect(() => {
-    if (!showGameWeek) {
-      clearErrors('gameWeek');
-      return;
-    }
-    // Avoid clearing prefilled values before async round options are loaded.
-    if (roundOptions.length === 0) return;
-    if (currentGameWeek === '' || currentGameWeek === undefined || currentGameWeek === null) return;
-
-    const isValidOption = roundOptions.some(
-      option => String(option.value) === String(currentGameWeek)
-    );
-    if (!isValidOption) {
-      setValue('gameWeek', '' as ResultFormData['gameWeek'], {
-        shouldDirty: false,
-        shouldValidate: true,
-      });
-      clearErrors('gameWeek');
-    }
-  }, [clearErrors, currentGameWeek, roundOptions, setValue, showGameWeek]);
-
+  useEffect(() => {}, [currentCompetitionId, currentSeasonId, clearErrors, setValue]);
+  // 2. If the match is a bye, reset away team and home/away goals fields
   useEffect(() => {
     if (isBye) {
       setValue('awayTeam', '', { shouldDirty: false, shouldValidate: false });
@@ -93,7 +108,7 @@ export const useResultEffects = ({
       clearErrors(['awayTeam', 'homeGoals', 'awayGoals']);
     }
   }, [isBye, clearErrors, setValue]);
-
+  // 3. If the match is not a cup match, reset decision and winner side fields
   useEffect(() => {
     if (isCup) return;
     setValue('decision', '', { shouldDirty: false, shouldValidate: false });

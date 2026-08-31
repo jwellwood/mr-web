@@ -8,32 +8,23 @@ interface Props {
   onSubmit: (data: BatchResultFormData) => void;
   defaultValues: BatchResultFormData;
   loading: boolean;
-  teamOptions: ISelectOptions[];
-  competitionTeamMap: Map<string, ISelectOptions[]>;
-  competitionOptions: ISelectOptions[];
   orgSeasonOptions: ISelectOptions[];
 }
 
-export default function AddGameweekPage({
+export default function AddRoundPage({
   onSubmit,
   defaultValues,
   loading,
-  teamOptions,
-  competitionTeamMap,
-  competitionOptions,
   orgSeasonOptions,
 }: Props) {
   const { t } = useTranslation('results');
 
   return (
-    <PageHeader title={t('PAGES.ADD_GAMEWEEK')}>
+    <PageHeader title={t('PAGES.ADD_ROUND')}>
       {loading ? (
         <Spinner />
       ) : (
         <BatchResultForm
-          competitionOptions={competitionOptions}
-          teamOptions={teamOptions}
-          competitionTeamMap={competitionTeamMap}
           orgSeasonOptions={orgSeasonOptions}
           defaultValues={defaultValues}
           onSubmit={onSubmit}

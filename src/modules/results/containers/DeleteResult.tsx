@@ -9,7 +9,11 @@ import { FETCH_ORG_SEASONS } from '../../seasons/graphql';
 import { FETCH_LEAGUE_TABLES } from '../../tables/graphql';
 import { DELETE_RESULT, FETCH_RESULTS } from '../graphql';
 
-export default function DeleteResult() {
+interface Props {
+  competitionId?: string;
+}
+
+export default function DeleteResult({ competitionId }: Props) {
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId, resultId } = useCustomParams();
   const dispatch = useDispatch();
@@ -18,8 +22,8 @@ export default function DeleteResult() {
   const [deleteResult, { loading, error }] = useMutation(DELETE_RESULT, {
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId } },
-      { query: FETCH_RESULTS, variables: { orgId, orgSeasonId } },
-      { query: FETCH_LEAGUE_TABLES, variables: { orgId, orgSeasonId } },
+      { query: FETCH_RESULTS, variables: { orgId, orgSeasonId, competitionId } },
+      { query: FETCH_LEAGUE_TABLES, variables: { orgId, orgSeasonId, compId: competitionId } },
     ],
     awaitRefetchQueries: true,
   });

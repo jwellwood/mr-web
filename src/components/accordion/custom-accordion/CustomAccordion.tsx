@@ -19,7 +19,7 @@ export default function CustomAccordion({ title, children, isExpanded }: Props) 
         <AccordionSummary
           component="div"
           expandIcon={<AppIcon icon={APP_ICONS.ARROW_DOWN} color="label" />}
-          sx={{ bgcolor: theme.palette.secondary.dark, border: 'none', cursor: 'pointer' }}
+          sx={{ bgcolor: theme.palette.dark.main, border: 'none', cursor: 'pointer' }}
         >
           {typeof title === 'string' ? (
             <CustomTypography color="error" bold size="xs">

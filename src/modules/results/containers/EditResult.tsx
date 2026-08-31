@@ -5,13 +5,11 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useCustomParams } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { useCompetitionOptions } from '../../competitions/hooks/useCompetitionOptions';
 import { useOrgSeasonOptions } from '../../seasons/hooks/useOrgSeasonOptions';
 import { FETCH_LEAGUE_TABLES } from '../../tables/graphql';
 import { ResultFormData } from '../forms/result/schema';
 import { EDIT_RESULT, FETCH_RESULT, FETCH_RESULTS } from '../graphql';
 import { mapFormToEditResult, mapResultToForm } from '../helpers/mapResultForm';
-import { useTeamOptions } from '../hooks/useResultInput';
 import EditResultPage from '../pages/EditResultPage';
 
 export default function EditResult() {
@@ -20,8 +18,6 @@ export default function EditResult() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
 
-  const { teamOptions, competitionTeamMap, loading: teamsLoading } = useTeamOptions();
-  const { competitionOptions, loading: competitionsLoading } = useCompetitionOptions();
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
   const { loading, error, data } = useQuery(FETCH_RESULT, {
     variables: { resultId: resultId! },
@@ -32,11 +28,22 @@ export default function EditResult() {
     return mapResultToForm(data.result);
   }, [data]);
 
+  const competitionId = data?.result?.competitionId._id;
   const [editResult, { loading: editLoading }] = useMutation(EDIT_RESULT, {
     refetchQueries: [
       { query: FETCH_RESULT, variables: { resultId: resultId! } },
-      { query: FETCH_RESULTS, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
-      { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
+      {
+        query: FETCH_RESULTS,
+        variables: {
+          orgId: orgId!,
+          orgSeasonId: orgSeasonId!,
+          competitionId: competitionId!,
+        },
+      },
+      {
+        query: FETCH_LEAGUE_TABLES,
+        variables: { orgId: orgId!, orgSeasonId: orgSeasonId!, compId: competitionId! },
+      },
     ],
     onError: () => dispatch(showAlert({ text: t('ALERTS.EDIT.ERROR'), type: 'error' })),
   });
@@ -55,8 +62,7 @@ export default function EditResult() {
     }
   };
 
-  const isLoading =
-    loading || editLoading || teamsLoading || competitionsLoading || orgSeasonsLoading;
+  const isLoading = loading || editLoading || orgSeasonsLoading;
 
   return (
     <EditResultPage
@@ -64,10 +70,8 @@ export default function EditResult() {
       defaultValues={defaultValues}
       loading={isLoading}
       error={error}
-      teamOptions={teamOptions}
-      competitionTeamMap={competitionTeamMap}
-      competitionOptions={competitionOptions}
       orgSeasonOptions={orgSeasonOptions}
+      competitionId={competitionId}
     />
   );
 }

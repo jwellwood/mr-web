@@ -18,6 +18,7 @@ export const FETCH_ORG_SEASON = gql`
           name
           _id
         }
+        type
         rounds
         relegationPositions
         promotionPositions

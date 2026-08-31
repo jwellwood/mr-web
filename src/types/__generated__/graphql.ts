@@ -165,6 +165,7 @@ export type CompetitionConfig = {
   splitIndexes?: Maybe<Array<Scalars['Float']['output']>>;
   teams?: Maybe<Array<CompetitionConfigTeam>>;
   tiebreaker?: Maybe<Tiebreaker>;
+  type?: Maybe<Scalars['String']['output']>;
 };
 
 export type CompetitionConfigInput = {

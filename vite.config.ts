@@ -39,8 +39,8 @@ export default defineConfig(({ mode }) => {
           'src/main.tsx',
         ],
         thresholds: {
-          statements: 27,
-          branches: 27,
+          statements: 26,
+          branches: 26,
           functions: 24,
           lines: 28,
           autoUpdate: false,

@@ -5,8 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { DeleteModal } from '../../../components/modals';
 import { useCustomParams } from '../../../hooks';
 import { showAlert } from '../../../store';
-import { FETCH_RESULTS } from '../../results/graphql';
-import { FETCH_LEAGUE_TABLES } from '../../tables/graphql';
 import { DELETE_ORG_SEASON, FETCH_ORG_SEASONS } from '../graphql';
 
 export default function DeleteOrgSeason() {
@@ -16,11 +14,7 @@ export default function DeleteOrgSeason() {
   const navigate = useNavigate();
 
   const [deleteOrgSeason, { loading, error }] = useMutation(DELETE_ORG_SEASON, {
-    refetchQueries: [
-      { query: FETCH_RESULTS, variables: { orgId, orgSeasonId } },
-      { query: FETCH_ORG_SEASONS, variables: { orgId } },
-      { query: FETCH_LEAGUE_TABLES, variables: { orgId, orgSeasonId } },
-    ],
+    refetchQueries: [{ query: FETCH_ORG_SEASONS, variables: { orgId } }],
     onError: () => dispatch(showAlert({ text: t('ALERTS.DELETE_SEASON.ERROR'), type: 'error' })),
   });
 

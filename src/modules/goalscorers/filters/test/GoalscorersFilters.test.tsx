@@ -32,7 +32,7 @@ function renderWithContext(setFilters = vi.fn()) {
   return render(
     <TestWrapper>
       <GoalscorersContext.Provider value={{ filters: DEFAULT_FILTERS, setFilters }}>
-        <GoalscorersFilters />
+        <GoalscorersFilters competitionId="all" />
       </GoalscorersContext.Provider>
     </TestWrapper>
   );

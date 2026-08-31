@@ -3,7 +3,7 @@
     "RESULT": "Resultado",
     "ADD": "Agregar Resultado",
     "EDIT": "Editar Resultado",
-    "ADD_GAMEWEEK": "Agregar Resultados de la Jornada"
+    "ADD_ROUND": "Agregar Resultados de la Jornada"
   },
   "SECTIONS": {
     "MATCH_NUMBER": "Partido"

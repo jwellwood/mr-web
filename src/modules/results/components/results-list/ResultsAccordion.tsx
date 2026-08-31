@@ -7,6 +7,7 @@ import { getExpandedGameweeks } from '../../helpers/getExpandedGameweeks';
 import { getResultsByGameWeek } from '../../helpers/getResultsByGameweek';
 import AccordionSection from './AccordionSection';
 import ResultsFilter, { FilterForm } from './ResultsFilter';
+import TeamResults from './TeamResults';
 
 interface Props {
   results: T_FETCH_RESULTS['results'];
@@ -39,15 +40,19 @@ export default function ResultsAccordion({ results, isAdminView, loading }: Prop
     <>
       <ResultsFilter results={results} control={control} />
 
-      {gameWeekEntries.map(([gameWeek, gwResults]) => (
-        <AccordionSection
-          key={gameWeek}
-          gameWeek={gameWeek}
-          gwResults={gwResults}
-          isExpanded={gameWeek === defaultExpanded}
-          isAdminView={isAdminView}
-        />
-      ))}
+      {gameWeekEntries.map(([gameWeek, gwResults]) =>
+        selectedTeam === 'all' ? (
+          <AccordionSection
+            key={gameWeek}
+            gameWeek={gameWeek}
+            gwResults={gwResults}
+            isExpanded={gameWeek === defaultExpanded}
+            isAdminView={isAdminView}
+          />
+        ) : (
+          <TeamResults key={gameWeek} results={gwResults} selectedTeam={selectedTeam} />
+        )
+      )}
     </>
   );
 }

@@ -12,6 +12,7 @@ interface Props {
 
 const LeagueTableWrapper = lazy(() => import('../../tables/containers/LeagueTableWrapper'));
 const ResultsWrapper = lazy(() => import('./ResultsWrapper'));
+const Goalscorers = lazy(() => import('../../goalscorers/containers/Goalscorers'));
 
 export default function Competitions({ isAdminView }: Props) {
   const { t } = useTranslation(['results', 'organization']);
@@ -42,6 +43,10 @@ export default function Competitions({ isAdminView }: Props) {
                   component: (
                     <ResultsWrapper competitionConfig={competition} isAdminView={isAdminView} />
                   ),
+                },
+                {
+                  label: t('organization:TABS.GOALSCORERS'),
+                  component: <Goalscorers competitionId={competition.id || 'all'} />,
                 },
               ]}
             />

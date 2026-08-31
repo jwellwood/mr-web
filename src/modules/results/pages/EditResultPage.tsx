@@ -11,10 +11,8 @@ interface Props {
   defaultValues?: ResultFormData | null;
   loading: boolean;
   error?: TApolloError;
-  teamOptions: ISelectOptions[];
-  competitionTeamMap: Map<string, ISelectOptions[]>;
-  competitionOptions: ISelectOptions[];
   orgSeasonOptions: ISelectOptions[];
+  competitionId?: string;
 }
 
 export default function EditResultPage({
@@ -22,10 +20,8 @@ export default function EditResultPage({
   defaultValues,
   loading,
   error,
-  teamOptions,
-  competitionTeamMap,
-  competitionOptions,
   orgSeasonOptions,
+  competitionId,
 }: Props) {
   const { t } = useTranslation('results');
 
@@ -35,14 +31,11 @@ export default function EditResultPage({
         <ResultForm
           defaultValues={defaultValues}
           onSubmit={onSubmit}
-          teamOptions={teamOptions}
-          competitionTeamMap={competitionTeamMap}
-          competitionOptions={competitionOptions}
           orgSeasonOptions={orgSeasonOptions}
           loading={loading}
           error={error}
         />
-        <DeleteResult />
+        <DeleteResult competitionId={competitionId} />
       </>
     ) : (
       <Spinner />

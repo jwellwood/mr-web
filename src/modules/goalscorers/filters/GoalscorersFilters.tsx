@@ -3,9 +3,12 @@ import { TGoalscorersFilters } from '../context';
 import { useGoalscorersFilters } from '../hooks';
 import GoalscorersFiltersForm from './GoalscorersFiltersForm';
 
-const DEFAULT_FILTERS: TGoalscorersFilters = { competitionId: 'all', teamId: 'all' };
+interface Props {
+  competitionId: string;
+}
 
-export default function GoalscorersFilters() {
+export default function GoalscorersFilters({ competitionId }: Props) {
+  const DEFAULT_FILTERS: TGoalscorersFilters = { competitionId, teamId: 'all' };
   const { competitionOptions } = useStatsFilters();
   const { teamOptions } = useTeamOptions();
 

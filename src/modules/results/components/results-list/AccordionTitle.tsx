@@ -4,12 +4,10 @@ import { CustomTypography, SectionContainer } from '../../../../components';
 import { CustomStack } from '../../../../components/grids';
 import { AppIcon } from '../../../../components/icons';
 import { useAuth, useCustomParams } from '../../../../hooks';
-import { useCompetitionOptions } from '../../../competitions/hooks/useCompetitionOptions';
 import BatchConfirmResults from '../../containers/BatchConfirmResults';
 import { T_FETCH_RESULTS } from '../../graphql';
 import { getCupRoundLabel } from '../../helpers/getCupRoundLabel';
 import { getResultStatusInGameweek } from '../../helpers/getResultStatusInGameweek';
-import { isCupMatch } from '../../helpers/isCupMatch';
 import { isDateInPast } from '../../helpers/isDateInPast';
 import useCompetitionConfig from '../../hooks/useCompetitionConfig';
 
@@ -24,11 +22,10 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isAdmi
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
   const { isOrgAuth } = useAuth('', orgId);
-  const { competitionOptions } = useCompetitionOptions();
-  const isCup = isCupMatch(competitionOptions, gwResults[0].competitionId._id);
   const { competitionConfig } = useCompetitionConfig(gwResults[0].orgSeasonId._id);
 
   const currentCompConfig = competitionConfig?.find(c => c.id === gwResults[0].competitionId._id);
+  const isCup = currentCompConfig?.type === 'Cup';
   const totalRounds = currentCompConfig?.rounds;
   const counts = getResultStatusInGameweek(gwResults);
   const nonByeGames = gwResults.filter(r => !r.isBye);

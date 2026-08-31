@@ -70,8 +70,11 @@ export default function UpdateCompConfig({
   const [updateCompConfigs, { loading }] = useMutation(UPDATE_COMPETITION_CONFIGS, {
     refetchQueries: [
       { query: FETCH_ORG_SEASONS, variables: { orgId: orgId! } },
-      { query: FETCH_ORG_SEASON, variables: { seasonId: orgSeasonId! } },
-      { query: FETCH_LEAGUE_TABLES, variables: { orgId: orgId!, orgSeasonId: orgSeasonId! } },
+      { query: FETCH_ORG_SEASON, variables: { orgId: orgId!, seasonId: orgSeasonId! } },
+      {
+        query: FETCH_LEAGUE_TABLES,
+        variables: { orgId: orgId!, orgSeasonId: orgSeasonId!, compId: competitionId },
+      },
     ],
     onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });

@@ -39,7 +39,7 @@ export default function PlayerStatsView({ data, loading, error }: Props) {
   return (
     <>
       <SectionContainer title={<StatsFilters />}>{renderContent()}</SectionContainer>
-      {!error && hasStats && (
+      {!error && hasStats ? (
         <>
           <SectionContainer title={t('SECTIONS.STATS')}>
             <CustomTable
@@ -60,7 +60,7 @@ export default function PlayerStatsView({ data, loading, error }: Props) {
             />
           </SectionContainer>
         </>
-      )}
+      ) : null}
     </>
   );
 }

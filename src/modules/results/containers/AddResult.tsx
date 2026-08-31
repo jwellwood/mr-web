@@ -5,19 +5,15 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useCustomParams } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { useCompetitionOptions } from '../../competitions/hooks/useCompetitionOptions';
 import { useOrgSeasonOptions } from '../../seasons/hooks/useOrgSeasonOptions';
 import { initialResultState, ResultFormData } from '../forms/result/schema';
 import { ADD_RESULT, FETCH_RESULTS } from '../graphql';
 import { mapFormToAddResult } from '../helpers/mapResultForm';
-import { useTeamOptions } from '../hooks/useResultInput';
 import AddResultPage from '../pages/AddResultPage';
 
 export default function AddResult() {
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
-  const { teamOptions, competitionTeamMap, loading: teamsLoading } = useTeamOptions();
-  const { competitionOptions, loading: competitionsLoading } = useCompetitionOptions();
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
 
   const navigate = useNavigate();
@@ -50,16 +46,13 @@ export default function AddResult() {
     }
   };
 
-  const isLoading = loading || teamsLoading || orgSeasonsLoading || competitionsLoading;
+  const isLoading = loading || orgSeasonsLoading;
 
   return (
     <AddResultPage
       onSubmit={onSubmit}
       defaultValues={defaultValues}
       loading={isLoading}
-      teamOptions={teamOptions}
-      competitionTeamMap={competitionTeamMap}
-      competitionOptions={competitionOptions}
       orgSeasonOptions={orgSeasonOptions}
     />
   );

@@ -20,7 +20,7 @@ interface Props {
 export default function SeasonConfig({ season, loading, error }: Props) {
   const { t } = useTranslation('seasons');
 
-  const { sortedCompetitionConfigs, compType } = useCompetitionConfigs(season);
+  const { sortedCompetitionConfigs } = useCompetitionConfigs(season);
 
   const renderContent = () => {
     if (loading) return <Spinner />;
@@ -49,7 +49,7 @@ export default function SeasonConfig({ season, loading, error }: Props) {
 
       const isValid = rounds && +rounds > 0 && teams && teams?.length > 0;
 
-      const isCup = compType(competitionId._id).toLowerCase() === 'cup';
+      const isCup = config.type === 'Cup';
 
       const compLinks = [
         {

@@ -6,10 +6,6 @@ import {
 } from './BATCH_CONFIRM_RESULTS.generated';
 import { Delete_ResultDocument, type Delete_ResultMutation } from './DELETE_RESULT.generated';
 import { Edit_ResultDocument, type Edit_ResultMutation } from './EDIT_RESULT.generated';
-import {
-  Fetch_Players_By_TeamDocument,
-  type Fetch_Players_By_TeamQuery,
-} from './FETCH_PLAYERS_FOR_RESULT_INPUT.generated';
 import { Fetch_ResultDocument, type Fetch_ResultQuery } from './FETCH_RESULT.generated';
 import { Fetch_ResultsDocument, type Fetch_ResultsQuery } from './FETCH_RESULTS.generated';
 
@@ -20,7 +16,6 @@ export {
   Edit_ResultDocument as EDIT_RESULT,
   Delete_ResultDocument as DELETE_RESULT,
   Batch_Confirm_ResultsDocument as BATCH_CONFIRM_RESULTS,
-  Fetch_Players_By_TeamDocument as FETCH_PLAYERS_BY_TEAM,
 };
 
 export type T_FETCH_RESULT = DeepOmitTypename<Fetch_ResultQuery>;
@@ -29,4 +24,3 @@ export type T_ADD_RESULT = DeepOmitTypename<Add_ResultMutation>;
 export type T_EDIT_RESULT = DeepOmitTypename<Edit_ResultMutation>;
 export type T_DELETE_RESULT = DeepOmitTypename<Delete_ResultMutation>;
 export type T_BATCH_CONFIRM_RESULTS = DeepOmitTypename<Batch_Confirm_ResultsMutation>;
-export type T_FETCH_PLAYERS_BY_TEAM = DeepOmitTypename<Fetch_Players_By_TeamQuery>;

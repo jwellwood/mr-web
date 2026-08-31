@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import { CustomTypography, SectionContainer } from '../../../../components';
 import { CustomAccordion } from '../../../../components/accordion';
 import { parseDate } from '../../../../utils';
 import { T_FETCH_RESULTS } from '../../graphql';
 import AccordionTitle from './AccordionTitle';
+import ByeGames from './ByeGames';
 import ResultTable from './ResultTable';
 
 interface Props {
@@ -15,7 +15,6 @@ interface Props {
 }
 
 export default function AccordionSection({ gameWeek, gwResults, isExpanded, isAdminView }: Props) {
-  const { t } = useTranslation('results');
   const scrollRef = useRef<HTMLDivElement>(null);
   const [byeGames, nonByeGames] = gwResults.reduce(
     (acc, result) => {
@@ -65,7 +64,7 @@ export default function AccordionSection({ gameWeek, gwResults, isExpanded, isAd
                 type="form"
                 key={`${gameWeek}-${dateKey}`}
                 subtitle={
-                  <CustomTypography bold size="xs" color="primary">
+                  <CustomTypography bold size="xs" color="data">
                     {parseDate(dateKey)}
                   </CustomTypography>
                 }
@@ -73,17 +72,7 @@ export default function AccordionSection({ gameWeek, gwResults, isExpanded, isAd
                 <ResultTable results={dateResults} />
               </SectionContainer>
             ))}
-          {byeGames.length > 0 && (
-            <SectionContainer key={`${gameWeek}-bye`} title={t('BYE_GAMES')}>
-              {byeGames.map(result => (
-                <div key={result._id}>
-                  <CustomTypography color="data" bold>
-                    {result.homeTeam?.teamName}
-                  </CustomTypography>
-                </div>
-              ))}
-            </SectionContainer>
-          )}
+          <ByeGames results={byeGames} />
         </>
       </CustomAccordion>
     </div>

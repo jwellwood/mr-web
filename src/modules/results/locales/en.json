@@ -3,7 +3,7 @@
     "RESULT": "Result",
     "ADD": "Add Result",
     "EDIT": "Edit Result",
-    "ADD_GAMEWEEK": "Add Round Results"
+    "ADD_ROUND": "Add Round Results"
   },
   "SECTIONS": {
     "MATCH_NUMBER": "Match"

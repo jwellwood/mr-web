@@ -15,17 +15,12 @@ import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
 import ResultConfirmation from '../../components/ResultConfirmation';
 import { getKickoffTimeOptions } from '../../helpers/getKickoffTimeOptions';
-import { isCupMatch } from '../../helpers/isCupMatch';
-import { useCompetitionRoundOptions } from '../../hooks/useResultInput';
-import { useResultEffects } from '../useResultEffects';
+import { useResultInputs, useResultEffects } from '../../hooks';
 import type { ResultFormData } from './schema';
 import { requiredFields, ResultSchema } from './schema';
 
 interface Props {
   onSubmit: (formData: ResultFormData) => void;
-  competitionOptions: ISelectOptions[];
-  teamOptions: ISelectOptions[];
-  competitionTeamMap: Map<string, ISelectOptions[]>;
   orgSeasonOptions: ISelectOptions[];
   defaultValues: ResultFormData;
   loading: boolean;
@@ -35,24 +30,12 @@ interface Props {
 export default function ResultForm({
   onSubmit,
   defaultValues,
-  competitionOptions,
-  teamOptions,
-  competitionTeamMap,
   orgSeasonOptions,
   loading,
   error,
 }: Props) {
   const { t } = useTranslation('results');
-  const decisionOptions = [
-    { label: '', value: '' },
-    { label: t('FORM.OPTIONS.DECISION.EXTRA_TIME'), value: 'EXTRA_TIME' },
-    { label: t('FORM.OPTIONS.DECISION.PENALTIES'), value: 'PENALTIES' },
-  ];
-  const winnerSideOptions = [
-    { label: '', value: '' },
-    { label: t('FORM.OPTIONS.WINNER_SIDE.HOME'), value: 'HOME' },
-    { label: t('FORM.OPTIONS.WINNER_SIDE.AWAY'), value: 'AWAY' },
-  ];
+
   const {
     handleSubmit,
     control,
@@ -67,32 +50,30 @@ export default function ResultForm({
   });
 
   const currentDate = useWatch({ control, name: 'date' });
+  const isFutureMatch = isFuture(new Date(currentDate));
   const currentSeasonId = useWatch({ control, name: 'orgSeasonId' });
   const currentCompetitionId = useWatch({ control, name: 'competitionId' });
-  const currentGameWeek = useWatch({ control, name: 'gameWeek' });
+  const currentGameweek = useWatch({ control, name: 'gameWeek' });
+  const {
+    loading: inputsLoading,
+    competitionOptions,
+    teamOptions,
+    roundOptions,
+    decisionOptions,
+    winnerSideOptions,
+    isCup,
+  } = useResultInputs(currentCompetitionId);
+  // Cup specific
   const isBye = useWatch({ control, name: 'isBye' });
   const currentValues = useWatch({ control });
-  const isFutureMatch = isFuture(new Date(currentDate));
-  const isCup = isCupMatch(competitionOptions, currentCompetitionId);
-  const activeTeamOptions =
-    (currentCompetitionId && competitionTeamMap.get(currentCompetitionId)) || teamOptions;
 
-  const { roundOptions } = useCompetitionRoundOptions(
-    currentSeasonId,
-    currentCompetitionId,
-    isCup ? 'cup' : undefined
-  );
   const showGameWeek = Boolean(currentCompetitionId);
-  const gameWeekLabel = isCup ? t('LABELS.ROUND') : t('FORM.LABELS.GAME_WEEK');
 
   useResultEffects({
     currentCompetitionId,
     currentSeasonId,
-    currentGameWeek,
     isBye,
     isCup,
-    roundOptions,
-    showGameWeek,
     setValue,
     clearErrors,
   });
@@ -113,7 +94,7 @@ export default function ResultForm({
           ),
         },
       }}
-      loading={loading}
+      loading={loading || inputsLoading}
       error={error}
     >
       <SectionContainer title={t('FORM.HEADERS.MATCH')} type="form">
@@ -143,7 +124,7 @@ export default function ResultForm({
             control={control}
             name="competitionId"
             label={t('FORM.LABELS.COMPETITION')}
-            options={competitionOptions}
+            options={competitionOptions || []}
             required={requiredFields.competitionId}
           />
 
@@ -151,7 +132,7 @@ export default function ResultForm({
             <ControlledSelectInput
               control={control}
               name="gameWeek"
-              label={gameWeekLabel}
+              label={t('FORM.LABELS.GAME_WEEK')}
               options={roundOptions}
               required={requiredFields.gameWeek}
             />
@@ -162,85 +143,87 @@ export default function ResultForm({
         </SectionContainer>
       </SectionContainer>
 
-      <SectionContainer title={t('FORM.HEADERS.RESULT')} type="info">
-        <CustomGridContainer>
-          <CustomGridItem size={isBye ? 12 : 9}>
-            <ControlledSelectInput
-              control={control}
-              name="homeTeam"
-              label={t(isBye ? 'FORM.LABELS.BYE_TEAM' : 'FORM.LABELS.HOME_TEAM')}
-              options={activeTeamOptions}
-              required={requiredFields.homeTeam}
-            />
-          </CustomGridItem>
-          <CustomGridItem size={isBye ? 12 : 3}>
-            {!isFutureMatch && !isBye && (
+      {currentCompetitionId && currentSeasonId && currentGameweek ? (
+        <SectionContainer title={t('FORM.HEADERS.RESULT')} type="info">
+          <CustomGridContainer>
+            <CustomGridItem size={isBye ? 12 : 9}>
               <ControlledSelectInput
                 control={control}
-                disabled={isBye}
-                name="homeGoals"
-                label={t('FORM.LABELS.HOME_GOALS')}
-                options={getNumberOptions(50, 0)}
-                required={requiredFields.homeGoals}
+                name="homeTeam"
+                label={t(isBye ? 'FORM.LABELS.BYE_TEAM' : 'FORM.LABELS.HOME_TEAM')}
+                options={teamOptions}
+                required={requiredFields.homeTeam}
               />
-            )}
-          </CustomGridItem>
-          {!isBye ? (
-            <CustomGridItem size={isBye ? 12 : 9}>
-              {
-                <ControlledSelectInput
-                  control={control}
-                  disabled={isBye}
-                  name="awayTeam"
-                  label={t('FORM.LABELS.AWAY_TEAM')}
-                  options={activeTeamOptions}
-                  required={requiredFields.awayTeam}
-                />
-              }
             </CustomGridItem>
-          ) : null}
-          {!isBye ? (
             <CustomGridItem size={isBye ? 12 : 3}>
-              {!isFutureMatch && (
+              {!isFutureMatch && !isBye && (
                 <ControlledSelectInput
                   control={control}
                   disabled={isBye}
-                  name="awayGoals"
-                  label={t('FORM.LABELS.AWAY_GOALS')}
+                  name="homeGoals"
+                  label={t('FORM.LABELS.HOME_GOALS')}
                   options={getNumberOptions(50, 0)}
-                  required={requiredFields.awayGoals}
+                  required={requiredFields.homeGoals}
                 />
               )}
             </CustomGridItem>
-          ) : null}
-        </CustomGridContainer>
+            {!isBye ? (
+              <CustomGridItem size={isBye ? 12 : 9}>
+                {
+                  <ControlledSelectInput
+                    control={control}
+                    disabled={isBye}
+                    name="awayTeam"
+                    label={t('FORM.LABELS.AWAY_TEAM')}
+                    options={teamOptions}
+                    required={requiredFields.awayTeam}
+                  />
+                }
+              </CustomGridItem>
+            ) : null}
+            {!isBye ? (
+              <CustomGridItem size={isBye ? 12 : 3}>
+                {!isFutureMatch && (
+                  <ControlledSelectInput
+                    control={control}
+                    disabled={isBye}
+                    name="awayGoals"
+                    label={t('FORM.LABELS.AWAY_GOALS')}
+                    options={getNumberOptions(50, 0)}
+                    required={requiredFields.awayGoals}
+                  />
+                )}
+              </CustomGridItem>
+            ) : null}
+          </CustomGridContainer>
 
-        {!isBye ? (
-          <ControlledSwitchInput
-            control={control}
-            name="isForfeit"
-            label={t('FORM.LABELS.FORFEIT')}
-          />
-        ) : null}
-        {isCup && !isBye && currentValues.homeGoals === currentValues.awayGoals ? (
-          <>
-            <ControlledSelectInput
+          {!isBye ? (
+            <ControlledSwitchInput
               control={control}
-              name="decision"
-              label={t('FORM.LABELS.DECISION')}
-              options={decisionOptions}
-              required={requiredFields.decision}
+              name="isForfeit"
+              label={t('FORM.LABELS.FORFEIT')}
             />
-            <ControlledSelectInput
-              control={control}
-              name="winnerSide"
-              label={t('FORM.LABELS.WINNER_SIDE')}
-              options={winnerSideOptions}
-              required={requiredFields.winnerSide}
-            />
-          </>
-        ) : null}
-      </SectionContainer>
+          ) : null}
+          {isCup && !isBye && currentValues.homeGoals === currentValues.awayGoals ? (
+            <>
+              <ControlledSelectInput
+                control={control}
+                name="decision"
+                label={t('FORM.LABELS.DECISION')}
+                options={decisionOptions}
+                required={requiredFields.decision}
+              />
+              <ControlledSelectInput
+                control={control}
+                name="winnerSide"
+                label={t('FORM.LABELS.WINNER_SIDE')}
+                options={winnerSideOptions}
+                required={requiredFields.winnerSide}
+              />
+            </>
+          ) : null}
+        </SectionContainer>
+      ) : null}
 
       <ControlledSwitchInput
         control={control}

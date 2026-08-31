@@ -7,10 +7,14 @@ import { GoalscorersContext, TGoalscorersFilters } from '../context';
 import GoalscorersFilters from '../filters/GoalscorersFilters';
 import { FETCH_GOALSCORER_LEADERBOARD } from '../graphql';
 
-export default function Goalscorers() {
+interface Props {
+  competitionId: string;
+}
+
+export default function Goalscorers({ competitionId }: Props) {
   const { orgId, orgSeasonId } = useCustomParams();
   const [filters, setFilters] = useState<TGoalscorersFilters>({
-    competitionId: 'all',
+    competitionId: competitionId,
     teamId: 'all',
   });
 
@@ -25,7 +29,7 @@ export default function Goalscorers() {
 
   return (
     <GoalscorersContext.Provider value={{ filters, setFilters }}>
-      <SectionContainer title={<GoalscorersFilters />}>
+      <SectionContainer title={<GoalscorersFilters competitionId={competitionId} />}>
         <GoalScorersTable data={data?.data} loading={loading} error={error} />
       </SectionContainer>
     </GoalscorersContext.Provider>

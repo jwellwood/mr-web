@@ -77,6 +77,9 @@ export default function MultipleSelectInput({
             '& .MuiSelect-select': {
               py: 2,
             },
+            '& .MuiSelect-icon': {
+              color: theme.palette.secondary.light,
+            },
           }}
         >
           {options?.map((option, i) => (

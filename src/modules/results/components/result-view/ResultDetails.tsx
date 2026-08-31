@@ -1,3 +1,4 @@
+import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CustomAvatar, CustomTypography, SectionContainer } from '../../../../components';
 import TiebreakerText from '../../../../components/composed/TiebreakerText';
@@ -5,9 +6,9 @@ import { CustomStack } from '../../../../components/grids';
 import { TextList } from '../../../../components/lists';
 import { parseDate } from '../../../../utils';
 import { T_FETCH_RESULT } from '../../graphql';
-import ResultAdmin from './ResultAdmin';
-import ResultGoalscorers from './ResultGoalscorers';
 
+const ResultGoalscorers = lazy(() => import('../../../goalscorers/components/ResultGoalscorers'));
+const ResultAdmin = lazy(() => import('./ResultAdmin'));
 interface Props {
   result: T_FETCH_RESULT['result'];
 }
@@ -26,6 +27,7 @@ export default function ResultDetails({ result }: Props) {
     kickoffTime,
     winnerSide,
     decision,
+    isBye,
   } = result;
 
   const goalsAvatar = (goals: number | null | undefined) => (
@@ -36,7 +38,7 @@ export default function ResultDetails({ result }: Props) {
     </CustomAvatar>
   );
 
-  const scoreData = [
+  const scoreData = (isBye?: boolean) => [
     {
       label: (
         <CustomTypography size="lg" bold color="data">
@@ -46,10 +48,12 @@ export default function ResultDetails({ result }: Props) {
           )}
         </CustomTypography>
       ),
-      value: goalsAvatar(homeGoals),
+      value: isBye ? undefined : goalsAvatar(homeGoals),
     },
     {
-      label: (
+      label: isBye ? (
+        ''
+      ) : (
         <CustomTypography size="lg" bold color="data">
           {awayTeam?.teamName}{' '}
           {decision && winnerSide === 'AWAY' && (
@@ -57,7 +61,7 @@ export default function ResultDetails({ result }: Props) {
           )}
         </CustomTypography>
       ),
-      value: goalsAvatar(awayGoals),
+      value: isBye ? undefined : goalsAvatar(awayGoals),
     },
   ];
 
@@ -68,17 +72,24 @@ export default function ResultDetails({ result }: Props) {
           <CustomTypography size="xs" bold color="label">
             {orgSeasonId.name}
           </CustomTypography>
-          <CustomTypography size="xs" bold color="primary">
-            {date ? parseDate(date) : ''}
-            <CustomTypography size="xs" bold color="label">
-              {kickoffTime ? ` ${kickoffTime}` : ''}
+          {isBye ? (
+            <CustomTypography size="md" bold color="warning">
+              {t('BYE')}
             </CustomTypography>
-          </CustomTypography>
+          ) : (
+            <CustomTypography size="xs" bold color="primary">
+              {date ? parseDate(date) : ''}
+              <CustomTypography size="xs" bold color="label">
+                {kickoffTime ? ` ${kickoffTime}` : ''}
+              </CustomTypography>
+            </CustomTypography>
+          )}
         </CustomStack>
         <CustomTypography size="sm" bold color="label">
           {competitionId.name} - {gameWeek ? `${t('ROUND')} ${gameWeek}` : ''}
         </CustomTypography>
-        <TextList data={scoreData} />
+
+        <TextList data={scoreData(isBye || false)} />
         <ResultGoalscorers result={result} />
       </SectionContainer>
       <ResultAdmin result={result} />

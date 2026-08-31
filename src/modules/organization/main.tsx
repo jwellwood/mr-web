@@ -9,7 +9,6 @@ import { ORG_PATHS } from './router';
 
 const Org = lazy(() => import('./containers/Org'));
 const Competitions = lazy(() => import('../results/containers/Competitions'));
-const Goalscorers = lazy(() => import('../goalscorers/containers/Goalscorers'));
 const OrgTeams = lazy(() => import('./containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('../seasons/containers/OrgSeasons'));
 
@@ -23,10 +22,6 @@ export default function Team() {
     {
       label: t('TABS.COMPETITIONS'),
       component: <Competitions />,
-    },
-    {
-      label: t('TABS.GOALSCORERS'),
-      component: <Goalscorers />,
     },
     {
       label: t('TABS.TEAMS'),

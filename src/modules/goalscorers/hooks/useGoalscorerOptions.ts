@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client/react';
 import { useMemo } from 'react';
 import { ISelectOptions } from '../../../components';
-import { FETCH_PLAYERS_BY_TEAM } from '../../results/graphql';
+import { FETCH_PLAYERS_BY_TEAM } from '../graphql';
 
 export const useGoalscorerOptions = (teamId: string, orgSeasonId: string) => {
   const { data, loading: playersLoading } = useQuery(FETCH_PLAYERS_BY_TEAM, {

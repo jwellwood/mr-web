@@ -5,21 +5,17 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useCustomParams } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { useCompetitionOptions } from '../../competitions/hooks/useCompetitionOptions';
 import { useOrgSeasonOptions } from '../../seasons/hooks/useOrgSeasonOptions';
 import { MatchRow } from '../forms/batch-result/BatchResultForm';
 import { initialBatchResultState, type BatchResultFormData } from '../forms/batch-result/schema';
 import { ResultFormData } from '../forms/result/schema';
 import { ADD_RESULT, FETCH_RESULTS } from '../graphql';
 import { mapFormToAddResult } from '../helpers/mapResultForm';
-import { useTeamOptions } from '../hooks/useResultInput';
-import AddGameweekPage from '../pages/AddGameweekPage';
+import AddRoundPage from '../pages/AddRoundPage';
 
-export default function AddGameweekResults() {
+export default function AddRoundResults() {
   const { t } = useTranslation('results');
   const { orgId, orgSeasonId } = useCustomParams();
-  const { teamOptions, competitionTeamMap, loading: teamsLoading } = useTeamOptions();
-  const { competitionOptions, loading: competitionsLoading } = useCompetitionOptions();
   const { orgSeasonOptions, loading: orgSeasonsLoading } = useOrgSeasonOptions();
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
@@ -75,16 +71,13 @@ export default function AddGameweekResults() {
     }
   };
 
-  const isLoading = loading || teamsLoading || orgSeasonsLoading || competitionsLoading;
+  const isLoading = loading || orgSeasonsLoading;
 
   return (
-    <AddGameweekPage
+    <AddRoundPage
       onSubmit={onSubmit}
       defaultValues={defaultValues}
       loading={isLoading}
-      teamOptions={teamOptions}
-      competitionTeamMap={competitionTeamMap}
-      competitionOptions={competitionOptions}
       orgSeasonOptions={orgSeasonOptions}
     />
   );

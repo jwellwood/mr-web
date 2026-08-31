@@ -68,6 +68,9 @@ export default function SelectInput({
             '& .MuiSelect-select': {
               py: 1,
             },
+            '& .MuiSelect-icon': {
+              color: theme.palette.secondary.light,
+            },
           }}
         >
           {options.map(opt => (

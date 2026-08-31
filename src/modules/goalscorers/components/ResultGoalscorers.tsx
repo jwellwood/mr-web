@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import { NoDataText } from '../../../../components';
-import { CustomStack } from '../../../../components/grids';
-import { IListItem, TextList } from '../../../../components/lists';
-import { T_FETCH_RESULT } from '../../graphql';
+import { NoDataText } from '../../../components';
+import { CustomStack } from '../../../components/grids';
+import { IListItem, TextList } from '../../../components/lists';
+import { T_FETCH_RESULT } from '../../results/graphql';
 
 interface Props {
   result: T_FETCH_RESULT['result'];
 }
 
 export default function ResultGoalscorers({ result }: Props) {
-  const { t } = useTranslation('results');
+  const { t } = useTranslation('goalscorers');
   const { homeGoalscorers, awayGoalscorers, homeGoals, awayGoals } = result;
   const isGoalless = !homeGoals && !awayGoals;
   const homeTeamGoalscorers: IListItem[] =
