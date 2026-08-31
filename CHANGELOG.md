@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.36.0](https://github.com/jwellwood/mr-web/compare/v0.35.0...v0.36.0) (2026-08-31)
+
+### Features
+
+* improve result forms ([63ce7f5](https://github.com/jwellwood/mr-web/commit/63ce7f5d904ff5e82040daf755279e9a98498dee))
+
 ## [0.35.0](https://github.com/jwellwood/mr-web/compare/v0.34.0...v0.35.0) (2026-08-27)
 
 ### Features
