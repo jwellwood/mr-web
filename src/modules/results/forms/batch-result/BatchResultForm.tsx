@@ -58,6 +58,8 @@ export default function BatchResultForm({
 
   const { fields, append, remove } = useFieldArray({ name: 'matches', control });
   const currentCompetitionId = useWatch({ control, name: 'competitionId' });
+  const currentSeasonId = useWatch({ control, name: 'orgSeasonId' });
+  const currentRound = useWatch({ control, name: 'gameWeek' });
   const matchesRaw = useWatch({ control, name: 'matches' });
   const matches = useMemo(() => matchesRaw || [], [matchesRaw]);
   const currentValues = useWatch({ control });
@@ -119,52 +121,57 @@ export default function BatchResultForm({
       ) : null}
 
       {errors.matches ? <FormErrorMessage error={errors.matches} /> : null}
-      <CustomStack direction="row" justify="space-between">
-        <CustomTypography>
-          {t('MESSAGES.MATCHES_ADDED')}{' '}
-          <CustomTypography bold color="data">
-            {matches.length}
-          </CustomTypography>
-        </CustomTypography>
-        <Button
-          color="primary"
-          onClick={() =>
-            append({
-              homeTeam: '',
-              awayTeam: '',
-              homeGoals: 0,
-              awayGoals: 0,
-              kickoffTime: '09:00',
-              isComplete: false,
-            })
-          }
-        >
-          {t('BUTTONS.ADD_MATCH')}
-        </Button>
-      </CustomStack>
-      {fields.map((f, idx) => {
-        const excludedTeams = matches
-          .flatMap((m, i) => (i === idx ? [] : [m?.homeTeam, m?.awayTeam]))
-          .filter(Boolean) as string[];
+      {currentSeasonId && currentRound ? (
+        <>
+          {' '}
+          <CustomStack direction="row" justify="space-between">
+            <CustomTypography>
+              {t('MESSAGES.MATCHES_ADDED')}{' '}
+              <CustomTypography bold color="data">
+                {matches.length}
+              </CustomTypography>
+            </CustomTypography>
+            <Button
+              color="primary"
+              onClick={() =>
+                append({
+                  homeTeam: '',
+                  awayTeam: '',
+                  homeGoals: 0,
+                  awayGoals: 0,
+                  kickoffTime: '09:00',
+                  isComplete: false,
+                })
+              }
+            >
+              {t('BUTTONS.ADD_MATCH')}
+            </Button>
+          </CustomStack>
+          {fields.map((f, idx) => {
+            const excludedTeams = matches
+              .flatMap((m, i) => (i === idx ? [] : [m?.homeTeam, m?.awayTeam]))
+              .filter(Boolean) as string[];
 
-        const currentHome = matches[idx]?.homeTeam as string | undefined;
-        const currentAway = matches[idx]?.awayTeam as string | undefined;
+            const currentHome = matches[idx]?.homeTeam as string | undefined;
+            const currentAway = matches[idx]?.awayTeam as string | undefined;
 
-        return (
-          <GameweekTeamsInput
-            key={f.id}
-            index={idx}
-            control={control}
-            teamOptions={teamOptions || []}
-            remove={remove}
-            excludedTeams={excludedTeams}
-            currentHome={currentHome}
-            currentAway={currentAway}
-            isBye={Boolean(matches[idx]?.isBye)}
-            isCup={isCup}
-          />
-        );
-      })}
+            return (
+              <GameweekTeamsInput
+                key={f.id}
+                index={idx}
+                control={control}
+                teamOptions={teamOptions || []}
+                remove={remove}
+                excludedTeams={excludedTeams}
+                currentHome={currentHome}
+                currentAway={currentAway}
+                isBye={Boolean(matches[idx]?.isBye)}
+                isCup={isCup}
+              />
+            );
+          })}
+        </>
+      ) : null}
     </FormContainer>
   );
 }

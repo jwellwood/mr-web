@@ -32,7 +32,11 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
         ),
         link: link(result._id, result.orgSeasonId._id),
       },
-      divider: <CustomTypography color="label">-</CustomTypography>,
+      divider: (
+        <CustomTypography color="label" bold>
+          {result.isComplete ? '-' : '?'}
+        </CustomTypography>
+      ),
       awayScore: {
         value: (
           <ResultScoreBox

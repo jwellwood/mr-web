@@ -98,7 +98,6 @@ export const useResultEffects = ({
     ]);
   }, [currentCompetitionId, currentSeasonId, clearErrors, setValue]);
 
-  useEffect(() => {}, [currentCompetitionId, currentSeasonId, clearErrors, setValue]);
   // 2. If the match is a bye, reset away team and home/away goals fields
   useEffect(() => {
     if (isBye) {

@@ -92,7 +92,7 @@ export default function ResultDetails({ result }: Props) {
         <TextList data={scoreData(isBye || false)} />
         <ResultGoalscorers result={result} />
       </SectionContainer>
-      <ResultAdmin result={result} />
+      {!isBye ? <ResultAdmin result={result} /> : null}
     </>
   );
 }
