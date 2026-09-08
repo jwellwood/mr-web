@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.37.0](https://github.com/jwellwood/mr-web/compare/v0.36.1...v0.37.0) (2026-09-08)
+
+### Features
+
+* improve org setup todo list ([69134b1](https://github.com/jwellwood/mr-web/commit/69134b17bb84bf61f7925d512b59cc829a43b437))
+
 ## [0.36.1](https://github.com/jwellwood/mr-web/compare/v0.36.0...v0.36.1) (2026-09-03)
 
 ## [0.36.0](https://github.com/jwellwood/mr-web/compare/v0.35.0...v0.36.0) (2026-08-31)
