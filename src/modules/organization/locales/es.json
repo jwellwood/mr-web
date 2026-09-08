@@ -43,8 +43,8 @@
         "SECONDARY": "{{value}} agregada"
       },
       "COMP_CONFIG": {
-        "LABEL": "Personalizar cada competencia con equipos y rondas",
-        "SECONDARY": "{{value}} configuradas"
+        "LABEL": "Configura cada competencia con equipos y rondas",
+        "SECONDARY": "{{value}}/{{total}} configuraciones válidas agregadas"
       },
       "RESULTS": {
         "LABEL": "Agregar resultados/jornadas",

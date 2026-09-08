@@ -43,8 +43,8 @@
         "SECONDARY": "{{value}} added"
       },
       "COMP_CONFIG": {
-        "LABEL": "Personalize each competition with teams and rounds",
-        "SECONDARY": "{{value}} added"
+        "LABEL": "Configure each competition with teams and rounds",
+        "SECONDARY": "{{value}}/{{total}} valid configurations added"
       },
       "RESULTS": {
         "LABEL": "Add results/rounds",

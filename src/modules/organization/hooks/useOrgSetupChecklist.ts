@@ -30,6 +30,10 @@ export const useOrgSetupChecklist = () => {
     skip: !currentSeason?._id,
   });
 
+  const validConfigs = seasonData?.orgSeason?.competitionConfigs?.filter(
+    config => config.rounds && config.teams && config?.teams?.length > 0
+  );
+
   const steps = [
     {
       label: t('CHECKLIST.STEPS.COMPETITION.LABEL'),
@@ -55,13 +59,10 @@ export const useOrgSetupChecklist = () => {
     {
       label: t('CHECKLIST.STEPS.COMP_CONFIG.LABEL'),
       secondary: t('CHECKLIST.STEPS.COMP_CONFIG.SECONDARY', {
-        value: seasonData?.orgSeason?.competitionConfigs?.length || 0,
+        value: validConfigs?.length || 0,
+        total: seasonData?.orgSeason?.competitionConfigs?.length || 0,
       }),
-      done: Boolean(
-        seasonData?.orgSeason?.competitionConfigs?.some(config =>
-          orgData?.org?.competitions?.some(comp => comp._id === config.competitionId?._id)
-        )
-      ),
+      done: Boolean(validConfigs?.length === seasonData?.orgSeason?.competitionConfigs?.length),
     },
   ];
 
