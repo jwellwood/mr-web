@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.38.0](https://github.com/jwellwood/mr-web/compare/v0.37.0...v0.38.0) (2026-09-18)
+
+### Features
+
+* edit rounds ([5017c8a](https://github.com/jwellwood/mr-web/commit/5017c8a3df4859cfafc5148f30934ea8da27a578))
+
 ## [0.37.0](https://github.com/jwellwood/mr-web/compare/v0.36.1...v0.37.0) (2026-09-08)
 
 ### Features
