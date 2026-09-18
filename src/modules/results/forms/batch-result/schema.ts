@@ -14,13 +14,13 @@ export const BatchResultSchema = z.object({
   matches: z
     .array(
       z.object({
+        _id: z.string().optional(),
         homeTeam: z.string().min(1, 'Home team is required'),
         awayTeam: z.string(),
         kickoffTime: z.string().optional().nullable(),
         homeGoals: z.union([z.string(), z.number()]).optional(),
         awayGoals: z.union([z.string(), z.number()]).optional(),
         isForfeit: z.boolean().optional(),
-        isComplete: z.boolean().optional(),
         isBye: z.boolean().optional(),
       })
     )
@@ -89,7 +89,6 @@ export const initialBatchResultState = (orgSeasonId?: string): BatchResultFormDa
         homeGoals: 0,
         awayGoals: 0,
         kickoffTime: initialResultState.kickoffTime,
-        isComplete: false,
         isBye: false,
       },
     ],

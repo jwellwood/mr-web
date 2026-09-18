@@ -5,6 +5,7 @@ export const MuiButton = {
       textTransform: 'none',
       textDecoration: 'none',
       fontWeight: 'bold',
+      minWidth: 'auto',
     },
   },
 };

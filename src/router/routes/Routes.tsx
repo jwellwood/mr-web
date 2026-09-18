@@ -210,6 +210,14 @@ export default function AppRoutes() {
               }
             />
             <Route
+              path={ORG.ORG_PATHS.EDIT_GAME_WEEK}
+              element={
+                <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>
+                  <ORG.EditGameWeek />
+                </RouteGuard>
+              }
+            />
+            <Route
               path={ORG.ORG_PATHS.EDIT_ORG_SEASON}
               element={
                 <RouteGuard authorization={AUTH_ROLES.ORG_ADMIN}>

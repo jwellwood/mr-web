@@ -13,15 +13,21 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
     const awayWin = result.awayGoals! > result.homeGoals! || result.winnerSide === 'AWAY';
 
     return {
-      kickoffTime: result.kickoffTime || '09:00',
-      homeTeam: (
-        <CustomTypography color={homeWin ? 'data' : 'label'} bold={homeWin}>
-          {result?.homeTeam?.teamName}{' '}
-          {result.decision && homeWin && (
-            <TiebreakerText tiebreakType={result.decision} size="xs" />
-          )}
-        </CustomTypography>
-      ),
+      kickoffTime: {
+        value: result.kickoffTime || '09:00',
+        link: link(result._id, result.orgSeasonId._id),
+      },
+      homeTeam: {
+        value: (
+          <CustomTypography color={homeWin ? 'data' : 'label'} bold={homeWin}>
+            {result?.homeTeam?.teamName}{' '}
+            {result.decision && homeWin && (
+              <TiebreakerText tiebreakType={result.decision} size="xs" />
+            )}
+          </CustomTypography>
+        ),
+        link: link(result._id, result.orgSeasonId._id),
+      },
       homeScore: {
         value: (
           <ResultScoreBox
@@ -32,11 +38,14 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
         ),
         link: link(result._id, result.orgSeasonId._id),
       },
-      divider: (
-        <CustomTypography color="label" bold>
-          {result.isComplete ? '-' : '?'}
-        </CustomTypography>
-      ),
+      divider: {
+        value: (
+          <CustomTypography color="label" bold>
+            {result.isComplete ? '-' : '?'}
+          </CustomTypography>
+        ),
+        link: link(result._id, result.orgSeasonId._id),
+      },
       awayScore: {
         value: (
           <ResultScoreBox
@@ -47,15 +56,21 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
         ),
         link: link(result._id, result.orgSeasonId._id),
       },
-      awayTeam: (
-        <CustomTypography color={awayWin ? 'data' : 'label'} bold={awayWin}>
-          {result.decision && awayWin && (
-            <TiebreakerText tiebreakType={result.decision} size="xs" />
-          )}{' '}
-          {result?.awayTeam?.teamName}
-        </CustomTypography>
-      ),
-      status: <ResultStatus resultStatus={result.resultStatus} display="icon" />,
+      awayTeam: {
+        value: (
+          <CustomTypography color={awayWin ? 'data' : 'label'} bold={awayWin}>
+            {result.decision && awayWin && (
+              <TiebreakerText tiebreakType={result.decision} size="xs" />
+            )}{' '}
+            {result?.awayTeam?.teamName}
+          </CustomTypography>
+        ),
+        link: link(result._id, result.orgSeasonId._id),
+      },
+      status: {
+        value: <ResultStatus resultStatus={result.resultStatus} display="icon" />,
+        link: link(result._id, result.orgSeasonId._id),
+      },
     };
   });
 };

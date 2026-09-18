@@ -18,8 +18,8 @@ vi.mock('../../../../../hooks', () => ({
 }));
 
 vi.mock('../../../containers/BatchConfirmResults', () => ({
-  default: ({ resultIds }: { resultIds: string[] }) => (
-    <div data-testid="batch-confirm">{resultIds.length} ids</div>
+  default: ({ results }: { results: T_FETCH_RESULTS['results'] }) => (
+    <div data-testid="batch-confirm">{results.length} results</div>
   ),
 }));
 
@@ -37,6 +37,7 @@ vi.mock('../../../../competitions/hooks/useCompetitionOptions', () => ({
 }));
 
 vi.mock('../../../../../components/icons', () => ({
+  APP_ICONS: { EDIT: 'edit' },
   AppIcon: ({ icon }: { icon: string }) => <span data-testid={`icon-${icon}`} />,
 }));
 

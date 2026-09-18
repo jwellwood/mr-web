@@ -6,6 +6,7 @@ export const ORG_PATHS = {
   EDIT_BADGE: 'edit_badge',
   ADD_ORG_SEASON: 'add_org_season',
   ADD_GAME_WEEK: 'add_game_week',
+  EDIT_GAME_WEEK: 'edit_game_week/:gameWeek',
   EDIT_ORG_SEASON: 'edit',
   ORG_SEASON_ADMIN: 'admin',
   ORG_SEASON: 'org_season/:orgSeasonId',

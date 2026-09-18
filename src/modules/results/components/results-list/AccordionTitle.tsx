@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CustomTypography, SectionContainer } from '../../../../components';
+import { CustomButton } from '../../../../components/buttons';
 import { CustomStack } from '../../../../components/grids';
-import { AppIcon } from '../../../../components/icons';
+import { APP_ICONS, AppIcon } from '../../../../components/icons';
 import { useAuth, useCustomParams } from '../../../../hooks';
 import BatchConfirmResults from '../../containers/BatchConfirmResults';
 import { T_FETCH_RESULTS } from '../../graphql';
@@ -37,6 +38,9 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isAdmi
   ).length;
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  const competitionId = gwResults[0].competitionId._id;
+  const editGameweekLink = `/org/${orgId}/org_admin/org_season/${orgSeasonId}/edit_game_week/${gameWeek}?competitionId=${competitionId}`;
+
   useEffect(() => {
     if (isExpanded && scrollRef.current) {
       scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -48,6 +52,8 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isAdmi
     { label: <AppIcon icon="disputed" color="error" />, value: counts.disputed },
     { label: <AppIcon icon="submitted" color="info" />, value: counts.submitted },
   ].filter(item => item.value > 0);
+
+  const showAuthAdminControls = isOrgAuth && orgSeasonId;
 
   return (
     <CustomStack direction="row" justify="space-between">
@@ -72,9 +78,15 @@ export default function AccordionTitle({ gameWeek, gwResults, isExpanded, isAdmi
               </CustomTypography>
             </SectionContainer>
           ))}
-          {isOrgAuth &&
-            (counts.submitted > 0 || counts.disputed > 0 || pastPendingCount > 0) &&
-            orgSeasonId && <BatchConfirmResults resultIds={gwResults.map(r => r._id)} />}
+          {showAuthAdminControls &&
+            (counts.submitted > 0 || counts.disputed > 0 || pastPendingCount > 0) && (
+              <BatchConfirmResults results={gwResults} />
+            )}
+          {showAuthAdminControls && (
+            <CustomButton link={editGameweekLink} variant="text" color="secondary">
+              <AppIcon icon={APP_ICONS.EDIT} size="16px" color="warning" />
+            </CustomButton>
+          )}
         </CustomStack>
       )}
     </CustomStack>

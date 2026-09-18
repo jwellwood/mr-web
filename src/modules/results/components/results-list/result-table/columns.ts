@@ -4,6 +4,7 @@ export const columns: readonly ColumnConfig[] = [
   {
     id: 'kickoffTime',
     label: '',
+    type: 'link',
     styles: {
       width: 20,
       border: true,
@@ -13,6 +14,7 @@ export const columns: readonly ColumnConfig[] = [
   {
     id: 'homeTeam',
     label: 'Home',
+    type: 'link',
     styles: {
       width: 120,
       align: 'right',
@@ -32,6 +34,7 @@ export const columns: readonly ColumnConfig[] = [
   {
     id: 'divider',
     label: '',
+    type: 'link',
     styles: {
       width: 5,
       align: 'center',
@@ -52,6 +55,7 @@ export const columns: readonly ColumnConfig[] = [
   {
     id: 'awayTeam',
     label: 'Away',
+    type: 'link',
     styles: {
       width: 120,
       align: 'left',
@@ -62,6 +66,7 @@ export const columns: readonly ColumnConfig[] = [
   {
     id: 'status',
     label: '',
+    type: 'link',
     styles: {
       width: 10,
       align: 'center',

@@ -18,6 +18,7 @@ export const Result = lazy(() => import('../../results/containers/Result'));
 export const AddResult = lazy(() => import('../../results/containers/AddResult'));
 export const EditResult = lazy(() => import('../../results/containers/EditResult'));
 export const AddGameWeek = lazy(() => import('../../results/containers/AddGameweekResults'));
+export const EditGameWeek = lazy(() => import('../../results/containers/EditGameweekResults'));
 // Admin
 export const OrgAdmin = lazy(() => import('../pages/OrgAdminPage'));
 export const AdminTeam = lazy(() => import('../containers/AdminTeam'));

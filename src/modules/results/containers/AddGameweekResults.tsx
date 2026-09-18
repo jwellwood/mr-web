@@ -49,7 +49,6 @@ export default function AddRoundResults() {
           homeGoals: match.homeGoals,
           awayGoals: match.awayGoals,
           isForfeit: match.isForfeit,
-          isComplete: match.isComplete,
           isBye: match.isBye,
         };
         const variables = mapFormToAddResult(single as ResultFormData, orgId!, orgSeasonId);

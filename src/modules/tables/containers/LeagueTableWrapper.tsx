@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client/react';
 import { DataError } from '../../../components';
 import { useCustomParams } from '../../../hooks';
 import { CompetitionConfig } from '../../seasons/helpers/mapOrgSeasonForm';
+import CupTable from '../components/CupTable';
 import LeagueTable from '../components/league-table/LeagueTable';
 import { FETCH_LEAGUE_TABLES } from '../graphql';
 
@@ -20,6 +21,8 @@ export default function LeagueTableWrapper({ competitionConfig }: Props) {
 
   return error ? (
     <DataError error={error} />
+  ) : competitionConfig.type === 'Cup' ? (
+    <CupTable data={data} competitionConfig={competitionConfig} loading={loading} />
   ) : (
     <LeagueTable data={data} competitionConfig={competitionConfig} loading={loading} />
   );

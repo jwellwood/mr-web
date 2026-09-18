@@ -3,13 +3,15 @@
     "RESULT": "Resultado",
     "ADD": "Agregar Resultado",
     "EDIT": "Editar Resultado",
-    "ADD_ROUND": "Agregar Resultados de la Jornada"
+    "ADD_ROUND": "Agregar Resultados de la Jornada",
+    "EDIT_ROUND": "Editar Resultados de la Jornada"
   },
   "SECTIONS": {
     "MATCH_NUMBER": "Partido"
   },
   "LINKS": {
-    "EDIT_RESULT": "Editar Resultado"
+    "EDIT_RESULT": "Editar Resultado",
+    "EDIT_GAMEWEEK": "Editar Jornada"
   },
   "TABS": {
     "FIXTURES": "Partidos",
@@ -30,6 +32,10 @@
       "SUCCESS": "Resultados de la jornada agregados correctamente",
       "ADDED": "Se agregaron {{count}} resultados",
       "ERROR": "Error al agregar los resultados de la jornada. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_GAMEWEEK": {
+      "SUCCESS": "Resultados de la jornada actualizados correctamente",
+      "ERROR": "Error al actualizar los resultados de la jornada. Por favor, inténtelo de nuevo."
     },
     "DELETE": {
       "SUCCESS": "Resultado eliminado correctamente",
@@ -126,7 +132,9 @@
     "DISPUTE_RESULT": "¿Está seguro de que desea disputar este resultado? Esto marcará el resultado como disputado y deberá ser revisado por un administrador.",
     "CONFIRM_RESULTS": "¿Está seguro de que desea confirmar {{count}} resultados? Serán marcados como confirmados y no podrán ser disputados por los usuarios, pero aún podrán ser editados por los administradores.",
     "MATCHES_ADDED": "Partidos Agregados",
-    "RESULTS_TO_ADD": "Resultados / Partidos a agregar:"
+    "RESULTS_TO_ADD": "Resultados / Partidos a agregar:",
+    "GAMEWEEK_CHANGES": "Cambios en esta jornada:",
+    "GAMEWEEK_RESULTS_REMOVED": "{{count}} resultado(s) será(n) eliminado(s)"
   },
   "NO_DATA": {
     "RESULTS": "No se encontraron resultados.",

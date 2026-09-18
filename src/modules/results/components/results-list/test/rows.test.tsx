@@ -35,8 +35,8 @@ describe('rows()', () => {
 
   it('maps homeTeam and awayTeam names', () => {
     const [row] = rows([makeResult()], 'org-1');
-    const { container: homeContainer } = render(row.homeTeam);
-    const { container: awayContainer } = render(row.awayTeam);
+    const { container: homeContainer } = render(row.homeTeam.value);
+    const { container: awayContainer } = render(row.awayTeam.value);
 
     expect(homeContainer).toHaveTextContent('Home FC');
     expect(awayContainer).toHaveTextContent('Away FC');
@@ -44,12 +44,12 @@ describe('rows()', () => {
 
   it('uses the result kickoffTime when present', () => {
     const [row] = rows([makeResult({ kickoffTime: '20:45' })], 'org-1');
-    expect(row.kickoffTime).toBe('20:45');
+    expect(row.kickoffTime.value).toBe('20:45');
   });
 
   it('defaults kickoffTime to "09:00" when null', () => {
     const [row] = rows([makeResult({ kickoffTime: null })], 'org-1');
-    expect(row.kickoffTime).toBe('09:00');
+    expect(row.kickoffTime.value).toBe('09:00');
   });
 
   it('builds the correct homeScore and awayScore link', () => {
@@ -67,7 +67,7 @@ describe('rows()', () => {
 
   it('provides a React element for the divider', () => {
     const [row] = rows([makeResult()], 'org-1');
-    expect(React.isValidElement(row.divider)).toBe(true);
+    expect(React.isValidElement(row.divider.value)).toBe(true);
   });
 
   it('returns an empty array when given no results', () => {

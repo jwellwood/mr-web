@@ -46,7 +46,7 @@ export default function GameweekTeamsInput<T extends object>({
     <SectionContainer
       title={`${t('SECTIONS.MATCH_NUMBER')} ${index + 1}`}
       secondaryAction={
-        <AppIcon icon="cross" color="secondary" size="20px" onClick={() => remove(index)} />
+        <AppIcon icon="cross" color="error" size="20px" onClick={() => remove(index)} />
       }
       type="info"
     >
@@ -110,14 +110,6 @@ export default function GameweekTeamsInput<T extends object>({
             />
           </CustomGridItem>
         )}
-
-        <CustomGridItem size={12}>
-          <ControlledSwitchInput
-            control={control}
-            name={`matches.${index}.isComplete` as Path<T>}
-            label={t('FORM.LABELS.COMPLETED')}
-          />
-        </CustomGridItem>
       </CustomGridContainer>
     </SectionContainer>
   );

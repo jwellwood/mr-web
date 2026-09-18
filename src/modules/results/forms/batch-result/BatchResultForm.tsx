@@ -1,11 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@mui/material';
 import { useMemo } from 'react';
 import { useFieldArray, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import {
   ControlledDateInput,
   ControlledSelectInput,
+  CustomButton,
   CustomTypography,
   FormContainer,
   FormErrorMessage,
@@ -19,13 +19,13 @@ import GameweekTeamsInput from './GameweekTeamsInput';
 import { BatchResultSchema, BatchResultFormData, requiredFields } from './schema';
 
 export type MatchRow = {
+  _id?: string;
   homeTeam: string;
   awayTeam: string;
   kickoffTime?: string | null;
   homeGoals?: string | number;
   awayGoals?: string | number;
   isForfeit?: boolean;
-  isComplete?: boolean;
   isBye?: boolean;
 };
 
@@ -35,6 +35,8 @@ interface Props {
   defaultValues: BatchResultFormData;
   loading: boolean;
   error?: TApolloError;
+  confirmTitle?: string;
+  originalCount?: number;
 }
 
 export default function BatchResultForm({
@@ -43,6 +45,8 @@ export default function BatchResultForm({
   orgSeasonOptions,
   loading,
   error,
+  confirmTitle,
+  originalCount,
 }: Props) {
   const { t } = useTranslation('results');
   const {
@@ -68,6 +72,10 @@ export default function BatchResultForm({
 
   const showGameWeek = Boolean(currentCompetitionId);
   const gameWeekLabel = isCup ? t('LABELS.ROUND') : t('FORM.LABELS.GAME_WEEK');
+  const removedCount =
+    originalCount !== undefined
+      ? originalCount - matches.filter((m: MatchRow) => m._id).length
+      : undefined;
 
   return (
     <FormContainer
@@ -76,11 +84,12 @@ export default function BatchResultForm({
         disabled: !isDirty || !isValid,
         confirm: {
           show: true,
-          title: t('MESSAGES.RESULTS_TO_ADD'),
+          title: confirmTitle || t('MESSAGES.RESULTS_TO_ADD'),
           content: (
             <BatchResultConfirmation
               results={currentValues as BatchResultFormData}
               teamOptions={teamOptions}
+              removedCount={removedCount}
             />
           ),
         },
@@ -131,8 +140,8 @@ export default function BatchResultForm({
                 {matches.length}
               </CustomTypography>
             </CustomTypography>
-            <Button
-              color="primary"
+            <CustomButton
+              color="info"
               onClick={() =>
                 append({
                   homeTeam: '',
@@ -140,12 +149,11 @@ export default function BatchResultForm({
                   homeGoals: 0,
                   awayGoals: 0,
                   kickoffTime: '09:00',
-                  isComplete: false,
                 })
               }
             >
               {t('BUTTONS.ADD_MATCH')}
-            </Button>
+            </CustomButton>
           </CustomStack>
           {fields.map((f, idx) => {
             const excludedTeams = matches

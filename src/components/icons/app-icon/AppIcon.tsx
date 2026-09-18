@@ -8,6 +8,7 @@ import {
   BiTrashAlt,
   BiFlag,
   BiReset,
+  BiPencil,
 } from 'react-icons/bi';
 import { BsShieldShaded, BsFilter, BsQuestion, BsCheck, BsCheckAll } from 'react-icons/bs';
 import { FaUserCircle } from 'react-icons/fa';
@@ -62,6 +63,7 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.COPIED]: TbCopyCheck,
   [APP_ICONS.FLAG]: BiFlag,
   [APP_ICONS.RESET]: BiReset,
+  [APP_ICONS.EDIT]: BiPencil,
 };
 
 export default function AppIcon({

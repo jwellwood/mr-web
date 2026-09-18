@@ -1,5 +1,7 @@
+import type { MatchRow } from '../forms/batch-result/BatchResultForm';
+import { BatchResultFormData } from '../forms/batch-result/schema';
 import { ResultFormData } from '../forms/result/schema';
-import { T_FETCH_RESULT } from '../graphql';
+import { T_FETCH_RESULT, T_FETCH_RESULTS } from '../graphql';
 import type { Add_ResultMutationVariables } from '../graphql/ADD_RESULT.generated';
 import type { Edit_ResultMutationVariables } from '../graphql/EDIT_RESULT.generated';
 
@@ -86,4 +88,45 @@ export const mapFormToEditResult = (
     decision: toResultDecision(formData.decision),
     winnerSide: toWinnerSide(formData.winnerSide),
   };
+};
+
+export const mapResultsToBatchForm = (results: T_FETCH_RESULTS['results']): BatchResultFormData => {
+  const first = results[0];
+
+  return {
+    date: first.date ? new Date(first.date) : new Date(),
+    kickoffTime: first.kickoffTime || null,
+    gameWeek: first.gameWeek ?? 0,
+    competitionId: first.competitionId?._id ?? '',
+    orgSeasonId: first.orgSeasonId?._id ?? '',
+    matches: results.map(result => ({
+      _id: result._id,
+      homeTeam: result.homeTeam?._id ?? '',
+      awayTeam: result.awayTeam?._id ?? '',
+      homeGoals: result.homeGoals ?? 0,
+      awayGoals: result.awayGoals ?? 0,
+      kickoffTime: result.kickoffTime || null,
+      isForfeit: result.isForfeit ?? false,
+      isBye: result.isBye ?? false,
+    })),
+  };
+};
+
+export const getGameweekChanges = (
+  originalResults: T_FETCH_RESULTS['results'],
+  formData: BatchResultFormData
+): { toAdd: MatchRow[]; toUpdate: { _id: string; match: MatchRow }[]; toDelete: string[] } => {
+  const validMatches = (formData.matches as MatchRow[]).filter(
+    m => m.homeTeam && (m.awayTeam || m.isBye)
+  );
+
+  const toAdd = validMatches.filter(m => !m._id);
+  const toUpdate = validMatches
+    .filter(m => m._id && originalResults.some(r => r._id === m._id))
+    .map(m => ({ _id: m._id as string, match: m }));
+
+  const submittedIds = new Set(validMatches.map(m => m._id).filter(Boolean));
+  const toDelete = originalResults.filter(r => !submittedIds.has(r._id)).map(r => r._id);
+
+  return { toAdd, toUpdate, toDelete };
 };

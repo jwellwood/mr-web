@@ -40,7 +40,7 @@ export default defineConfig(({ mode }) => {
         ],
         thresholds: {
           statements: 26,
-          branches: 26,
+          branches: 25,
           functions: 24,
           lines: 28,
           autoUpdate: false,

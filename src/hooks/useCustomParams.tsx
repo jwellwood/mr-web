@@ -4,6 +4,7 @@ export const useCustomParams = () => {
   const {
     awardId,
     competitionId,
+    gameWeek,
     matchId,
     orgId,
     orgSeasonId,
@@ -15,6 +16,7 @@ export const useCustomParams = () => {
   } = useParams<{
     awardId?: string;
     competitionId?: string;
+    gameWeek?: string;
     matchId?: string;
     orgId?: string;
     orgSeasonId?: string;
@@ -28,6 +30,7 @@ export const useCustomParams = () => {
   return {
     awardId,
     competitionId,
+    gameWeek,
     matchId,
     orgId,
     orgSeasonId,

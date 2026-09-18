@@ -3,13 +3,15 @@
     "RESULT": "Result",
     "ADD": "Add Result",
     "EDIT": "Edit Result",
-    "ADD_ROUND": "Add Round Results"
+    "ADD_ROUND": "Add Round Results",
+    "EDIT_ROUND": "Edit Round Results"
   },
   "SECTIONS": {
     "MATCH_NUMBER": "Match"
   },
   "LINKS": {
-    "EDIT_RESULT": "Edit Result"
+    "EDIT_RESULT": "Edit Result",
+    "EDIT_GAMEWEEK": "Edit Round"
   },
   "TABS": {
     "FIXTURES": "Fixtures",
@@ -30,6 +32,10 @@
       "SUCCESS": "Round results added successfully",
       "ADDED": "Added {{count}} results",
       "ERROR": "Error adding round results. Please try again."
+    },
+    "EDIT_GAMEWEEK": {
+      "SUCCESS": "Round results updated successfully",
+      "ERROR": "Error updating round results. Please try again."
     },
     "DELETE": {
       "SUCCESS": "Result deleted successfully",
@@ -126,7 +132,9 @@
     "DISPUTE_RESULT": "Are you sure you want to dispute this result? This will mark the result as disputed and it will need to be reviewed by an admin.",
     "CONFIRM_RESULTS": "Are you sure you want to confirm {{count}} results? They will be marked as confirmed and cannot be disputed by users, but can still be edited by admins.",
     "MATCHES_ADDED": "Matches Added",
-    "RESULTS_TO_ADD": "Results / Fixtures to add:"
+    "RESULTS_TO_ADD": "Results / Fixtures to add:",
+    "GAMEWEEK_CHANGES": "Changes to this round:",
+    "GAMEWEEK_RESULTS_REMOVED": "{{count}} result(s) will be removed"
   },
   "NO_DATA": {
     "RESULTS": "No results found.",
