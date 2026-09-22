@@ -35,14 +35,15 @@ export default function Competitions({ isAdminView }: Props) {
               level="secondary"
               tabs={[
                 {
-                  label: t('organization:TABS.TABLES'),
-                  component: <LeagueTableWrapper competitionConfig={competition} />,
-                },
-                {
                   label: t('organization:TABS.MATCHES'),
                   component: (
                     <ResultsWrapper competitionConfig={competition} isAdminView={isAdminView} />
                   ),
+                },
+                {
+                  label: t('organization:TABS.TABLES'),
+                  component: <LeagueTableWrapper competitionConfig={competition} />,
+                  hidden: competition.type === 'Cup',
                 },
                 {
                   label: t('organization:TABS.GOALSCORERS'),

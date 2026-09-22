@@ -18,8 +18,10 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
   const [searchParams, setSearchParams] = useSearchParams();
   const isPrimary = level === 'primary';
   const isButtons = level === 'buttons';
+  const visibleTabs = tabs.filter(tab => !tab.hidden);
   const rawIndex = Number(searchParams.get(type) ?? 0);
-  const currentIndex = rawIndex < tabs.length ? rawIndex : 0;
+  // the tracked index refers to a position in visibleTabs, so hidden tabs can't desync selection
+  const currentIndex = rawIndex < visibleTabs.length ? rawIndex : 0;
   const handleChange = (_: SyntheticEvent<Element, Event>, newValue: number) => {
     setSearchParams(
       prev => {
@@ -47,16 +49,14 @@ export default function CustomTabs({ type, tabs, level }: TabProps) {
           }}
         >
           <StyledTabs value={currentIndex} onChange={handleChange} level={level}>
-            {tabs
-              .filter(tab => !tab.hidden)
-              .map((tab: ITab, i: number) => (
-                <StyledTab key={i} label={tab.label} icon={tab.icon} level={level} disableRipple />
-              ))}
+            {visibleTabs.map((tab: ITab, i: number) => (
+              <StyledTab key={i} label={tab.label} icon={tab.icon} level={level} disableRipple />
+            ))}
           </StyledTabs>
         </AppBar>
       </>
 
-      {tabs.map((tab: ITab, i: number) => (
+      {visibleTabs.map((tab: ITab, i: number) => (
         <TabPanel key={i} value={currentIndex} index={i}>
           {tab.component}
         </TabPanel>
