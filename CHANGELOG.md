@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.38.1](https://github.com/jwellwood/mr-web/compare/v0.38.0...v0.38.1) (2026-09-22)
+
+### Bug Fixes
+
+* fix tabs order and prolem with indexing ([261afc4](https://github.com/jwellwood/mr-web/commit/261afc4cc6485dcb37936b49be56307f123820c3))
+
 ## [0.38.0](https://github.com/jwellwood/mr-web/compare/v0.37.0...v0.38.0) (2026-09-18)
 
 ### Features
