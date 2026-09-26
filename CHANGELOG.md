@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.39.0](https://github.com/jwellwood/mr-web/compare/v0.38.1...v0.39.0) (2026-09-26)
+
+### Features
+
+* streamline result status ([ae7cd65](https://github.com/jwellwood/mr-web/commit/ae7cd6580377d0e58aee18f2904781a7209bbcfb))
+
 ## [0.38.1](https://github.com/jwellwood/mr-web/compare/v0.38.0...v0.38.1) (2026-09-22)
 
 ### Bug Fixes
