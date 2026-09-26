@@ -104,7 +104,6 @@ export default function EditGameweekResults() {
           awayGoals: match.awayGoals,
           isForfeit: match.isForfeit,
           isBye: match.isBye,
-          isComplete: original?.isComplete ?? false,
           decision: original?.decision ?? null,
           winnerSide: original?.winnerSide ?? null,
         };

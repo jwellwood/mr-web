@@ -15,7 +15,6 @@ export const ResultSchema = z
     decision: z.string().optional().nullable(),
     winnerSide: z.string().optional().nullable(),
     isForfeit: z.boolean(),
-    isComplete: z.boolean(),
     isBye: z.boolean().optional(),
   })
   .superRefine((data, ctx) => {
@@ -43,6 +42,5 @@ export const initialResultState: ResultFormData = {
   homeGoals: 0,
   awayGoals: 0,
   isForfeit: false,
-  isComplete: false,
   isBye: false,
 };

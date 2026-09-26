@@ -1,5 +1,6 @@
 import { CustomTypography } from '../../../../../components';
 import TiebreakerText from '../../../../../components/composed/TiebreakerText';
+import { RESULT_STATUS } from '../../../constants';
 import { T_FETCH_RESULTS } from '../../../graphql';
 import ResultStatus from '../../ResultStatus';
 import ResultScoreBox from '../ResultScoreBox';
@@ -41,7 +42,7 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
       divider: {
         value: (
           <CustomTypography color="label" bold>
-            {result.isComplete ? '-' : '?'}
+            {result.resultStatus === RESULT_STATUS.CONFIRMED ? '-' : '?'}
           </CustomTypography>
         ),
         link: link(result._id, result.orgSeasonId._id),

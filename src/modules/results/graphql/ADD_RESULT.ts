@@ -15,7 +15,6 @@ export const ADD_RESULT = gql`
     $decision: ResultDecision
     $winnerSide: ResultSide
     $isForfeit: Boolean!
-    $isComplete: Boolean!
     $isBye: Boolean!
   ) {
     result: ADD_RESULT(
@@ -33,7 +32,6 @@ export const ADD_RESULT = gql`
         decision: $decision
         winnerSide: $winnerSide
         isForfeit: $isForfeit
-        isComplete: $isComplete
         isBye: $isBye
       }
     ) {

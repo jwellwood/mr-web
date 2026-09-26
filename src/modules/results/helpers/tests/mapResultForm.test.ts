@@ -17,7 +17,6 @@ describe('mapResultForm helpers', () => {
       decision: 'NORMAL_TIME',
       winnerSide: 'HOME',
       isForfeit: true,
-      isComplete: false,
     };
     const variables = mapFormToAddResult(form, 'org1', 'season1');
     expect(variables.orgId).toBe('org1');
@@ -46,7 +45,6 @@ describe('mapResultForm helpers', () => {
       decision: 'PENALTIES',
       winnerSide: 'AWAY',
       isForfeit: false,
-      isComplete: true,
     };
     const form = mapResultToForm(result as T_FETCH_RESULT['result']);
     expect(form.date).toBeInstanceOf(Date);
@@ -56,7 +54,6 @@ describe('mapResultForm helpers', () => {
     expect(form.awayGoals).toBe(0);
     expect(form.decision).toBe('PENALTIES');
     expect(form.winnerSide).toBe('AWAY');
-    expect(form.isComplete).toBe(true);
   });
 
   it('mapFormToEditResult includes resultId and maps kickoffTime null correctly', () => {
@@ -73,7 +70,6 @@ describe('mapResultForm helpers', () => {
       decision: 'EXTRA_TIME',
       winnerSide: 'HOME',
       isForfeit: false,
-      isComplete: false,
     };
     const variables = mapFormToEditResult(form, 'orgX', 'resultX');
     expect(variables.orgId).toBe('orgX');

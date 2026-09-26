@@ -224,12 +224,6 @@ export default function ResultForm({
           ) : null}
         </SectionContainer>
       ) : null}
-
-      <ControlledSwitchInput
-        control={control}
-        name="isComplete"
-        label={t('FORM.LABELS.COMPLETED')}
-      />
     </FormContainer>
   );
 }

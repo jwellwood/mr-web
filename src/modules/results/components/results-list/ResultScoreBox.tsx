@@ -1,6 +1,5 @@
 import { CustomTypography } from '../../../../components';
 import { RESULT_STATUS } from '../../constants';
-import { isDateInPast } from '../../helpers/isDateInPast';
 
 interface Props {
   resultStatus?: keyof typeof RESULT_STATUS | null;
@@ -8,9 +7,10 @@ interface Props {
   date?: string;
 }
 
-export default function ResultScoreBox({ resultStatus, goals, date }: Props) {
+export default function ResultScoreBox({ resultStatus, goals }: Props) {
   const renderGoals = (goals: number | undefined) => {
-    const display = resultStatus === RESULT_STATUS.PENDING || !date ? '-' : String(goals);
+    const display =
+      resultStatus === RESULT_STATUS.PENDING || goals === undefined ? '-' : String(goals);
     return (
       <CustomTypography bold color="data">
         {display}
@@ -18,7 +18,5 @@ export default function ResultScoreBox({ resultStatus, goals, date }: Props) {
     );
   };
 
-  const isPast = date ? isDateInPast(date) : false;
-
-  return renderGoals(isPast ? goals : undefined);
+  return renderGoals(goals);
 }

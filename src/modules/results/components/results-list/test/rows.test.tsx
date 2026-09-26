@@ -14,7 +14,6 @@ const makeResult = (overrides: Partial<T_FETCH_RESULTS['results'][number]> = {})
     homeGoals: 2,
     awayGoals: 1,
     isForfeit: false,
-    isComplete: true,
     resultStatus: null,
     homeTeam: { _id: 'h-1', teamName: 'Home FC' },
     awayTeam: { _id: 'a-1', teamName: 'Away FC' },

@@ -41,7 +41,6 @@ export const mapFormToAddResult = (
     decision: toResultDecision(formData.decision),
     winnerSide: toWinnerSide(formData.winnerSide),
     isForfeit: formData.isForfeit || false,
-    isComplete: formData.isComplete || false,
     isBye: formData.isBye || false,
   };
 };
@@ -60,7 +59,6 @@ export const mapResultToForm = (result: T_FETCH_RESULT['result']): ResultFormDat
     decision: result.decision ?? null,
     winnerSide: result.winnerSide ?? null,
     isForfeit: result.isForfeit ?? false,
-    isComplete: result.isComplete ?? false,
     isBye: result.isBye ?? false,
   };
 };
@@ -83,7 +81,6 @@ export const mapFormToEditResult = (
     homeGoals: Number(formData.homeGoals) || 0,
     awayGoals: Number(formData.awayGoals) || 0,
     isForfeit: formData.isForfeit || false,
-    isComplete: formData.isComplete || false,
     isBye: formData.isBye || false,
     decision: toResultDecision(formData.decision),
     winnerSide: toWinnerSide(formData.winnerSide),

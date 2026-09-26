@@ -16,8 +16,8 @@ export const EDIT_RESULT = gql`
     $decision: ResultDecision
     $winnerSide: ResultSide
     $isForfeit: Boolean!
-    $isComplete: Boolean!
     $isBye: Boolean!
+    $resultStatus: ResultStatus
   ) {
     result: EDIT_RESULT(
       orgId: $orgId
@@ -35,8 +35,8 @@ export const EDIT_RESULT = gql`
         decision: $decision
         winnerSide: $winnerSide
         isForfeit: $isForfeit
-        isComplete: $isComplete
         isBye: $isBye
+        resultStatus: $resultStatus
       }
     ) {
       _id

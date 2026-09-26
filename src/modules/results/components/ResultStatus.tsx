@@ -5,16 +5,15 @@ import { RESULT_STATUS, ResultStatusType } from '../constants';
 
 interface Props {
   resultStatus?: ResultStatusType | null;
-  isComplete?: boolean;
   display?: 'icon' | 'text' | 'both';
 }
 
-export default function ResultStatus({ resultStatus, isComplete, display = 'both' }: Props) {
+export default function ResultStatus({ resultStatus, display = 'both' }: Props) {
   const { t } = useTranslation('results');
   const status = (resultStatus as ResultStatusType) || RESULT_STATUS.PENDING;
 
   const spec: { icon: AppIconType; color: string; label: string } =
-    status === RESULT_STATUS.CONFIRMED || isComplete
+    status === RESULT_STATUS.CONFIRMED
       ? { icon: APP_ICONS.SUBMITTED, color: 'success', label: t('STATUS.CONFIRMED') }
       : status === RESULT_STATUS.DISPUTED
         ? { icon: APP_ICONS.DISPUTED, color: 'error', label: t('STATUS.DISPUTED') }

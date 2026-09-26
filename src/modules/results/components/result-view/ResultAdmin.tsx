@@ -19,7 +19,6 @@ export default function ResultAdmin({ result }: Props) {
   const {
     submittedByTeam,
     confirmedByTeam,
-    isComplete,
     homeTeam,
     awayTeam,
     resultStatus,
@@ -47,7 +46,9 @@ export default function ResultAdmin({ result }: Props) {
     return false;
   };
   const showSubmit = isAdminToEither && (status === RESULT_STATUS.PENDING || !status);
-  const showConfirm = isConfirmingTeamAdmin() && status === RESULT_STATUS.SUBMITTED;
+  const showConfirm =
+    (isConfirmingTeamAdmin() && status === RESULT_STATUS.SUBMITTED) ||
+    (isOrgAuth && status === RESULT_STATUS.DISPUTED);
   const showAddGoalscorers =
     isAdminToEither && (status === RESULT_STATUS.SUBMITTED || status === RESULT_STATUS.CONFIRMED);
 
@@ -79,7 +80,7 @@ export default function ResultAdmin({ result }: Props) {
     },
     {
       label: t('ADMIN.STATUS'),
-      value: <ResultStatus resultStatus={resultStatus} isComplete={!!isComplete} display="text" />,
+      value: <ResultStatus resultStatus={resultStatus} display="text" />,
     },
   ];
 

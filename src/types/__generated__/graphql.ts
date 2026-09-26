@@ -76,7 +76,6 @@ export type AddResultInput = {
   homeGoalscorers?: InputMaybe<Array<GoalscorerInput>>;
   homeTeam: Scalars['ID']['input'];
   isBye?: InputMaybe<Scalars['Boolean']['input']>;
-  isComplete: Scalars['Boolean']['input'];
   isForfeit: Scalars['Boolean']['input'];
   kickoffTime?: InputMaybe<Scalars['String']['input']>;
   orgSeasonId: Scalars['ID']['input'];
@@ -1374,7 +1373,6 @@ export type Result = {
   homeGoalscorers?: Maybe<Array<Goalscorer>>;
   homeTeam?: Maybe<Team>;
   isBye?: Maybe<Scalars['Boolean']['output']>;
-  isComplete?: Maybe<Scalars['Boolean']['output']>;
   isForfeit?: Maybe<Scalars['Boolean']['output']>;
   kickoffTime?: Maybe<Scalars['String']['output']>;
   orgSeasonId: OrgSeason;

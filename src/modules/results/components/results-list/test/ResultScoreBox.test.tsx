@@ -17,11 +17,6 @@ const renderBox = (props: React.ComponentProps<typeof ResultScoreBox>) =>
   );
 
 describe('ResultScoreBox', () => {
-  it('renders "-" when no date is provided', () => {
-    renderBox({ goals: 2, resultStatus: 'SUBMITTED' });
-    expect(screen.getByText('-')).toBeInTheDocument();
-  });
-
   it('renders the goal value for a past date', () => {
     renderBox({ goals: 3, date: PAST });
     expect(screen.getByText('3')).toBeInTheDocument();

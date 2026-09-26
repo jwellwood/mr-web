@@ -71,10 +71,7 @@ export const useResultEffects = ({
       shouldDirty: false,
       shouldValidate: false,
     });
-    setValue('isComplete', false, {
-      shouldDirty: false,
-      shouldValidate: false,
-    });
+
     setValue('isBye', false, {
       shouldDirty: false,
       shouldValidate: false,
@@ -94,7 +91,6 @@ export const useResultEffects = ({
       'gameWeek',
       'decision',
       'winnerSide',
-      'isComplete',
     ]);
   }, [currentCompetitionId, currentSeasonId, clearErrors, setValue]);
 

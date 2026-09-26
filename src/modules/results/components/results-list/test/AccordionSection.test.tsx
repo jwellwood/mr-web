@@ -53,7 +53,6 @@ const makeResult = (overrides: Partial<T_FETCH_RESULTS['results'][number]> = {})
     kickoffTime: '10:00',
     gameWeek: 1,
     isForfeit: false,
-    isComplete: false,
     competitionId: { _id: 'c-1', name: 'Cup' },
     orgSeasonId: { _id: 'os-1' },
     homeGoalscorers: [],

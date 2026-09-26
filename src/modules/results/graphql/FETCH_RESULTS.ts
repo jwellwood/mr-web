@@ -24,7 +24,6 @@ export const FETCH_RESULTS = gql`
       decision
       winnerSide
       isForfeit
-      isComplete
       isBye
       homeGoalscorers {
         playerId {
