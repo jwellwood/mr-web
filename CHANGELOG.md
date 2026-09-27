@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.40.0](https://github.com/jwellwood/mr-web/compare/v0.39.0...v0.40.0) (2026-09-27)
+
+### Features
+
+* add test coverage in results ([3cbf0f1](https://github.com/jwellwood/mr-web/commit/3cbf0f1c2ad7cba487ab6cacd871e568d515eefe))
+
 ## [0.39.0](https://github.com/jwellwood/mr-web/compare/v0.38.1...v0.39.0) (2026-09-26)
 
 ### Features
