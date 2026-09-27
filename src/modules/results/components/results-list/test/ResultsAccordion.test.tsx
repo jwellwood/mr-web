@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/vitest';
-import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { MemoryRouter, useSearchParams } from 'react-router-dom';
 import { describe, expect, it, vi } from 'vitest';
 import TestWrapper from '../../../../../utils/test-helpers/TestWrapper';
 import { T_FETCH_RESULTS } from '../../../graphql';
@@ -25,6 +25,27 @@ vi.mock('../AccordionSection', () => ({
   ),
 }));
 
+vi.mock('../TeamResults', () => ({
+  default: ({
+    results,
+    selectedTeam,
+  }: {
+    results: T_FETCH_RESULTS['results'];
+    selectedTeam: string;
+  }) => (
+    <div
+      data-testid="team-results"
+      data-selected-team={selectedTeam}
+      data-result-ids={results.map(result => result._id).join(',')}
+    />
+  ),
+}));
+
+const SearchParamsDisplay = () => {
+  const [searchParams] = useSearchParams();
+  return <div data-testid="search-params">{searchParams.toString()}</div>;
+};
+
 const makeResult = (overrides: Partial<T_FETCH_RESULTS['results'][number]> = {}) =>
   ({
     _id: 'r-1',
@@ -46,9 +67,12 @@ const makeResult = (overrides: Partial<T_FETCH_RESULTS['results'][number]> = {})
     ...overrides,
   }) as T_FETCH_RESULTS['results'][number];
 
-const renderAccordion = (props: React.ComponentProps<typeof ResultsAccordion>) =>
+const renderAccordion = (
+  props: React.ComponentProps<typeof ResultsAccordion>,
+  initialEntries = ['/']
+) =>
   render(
-    <MemoryRouter>
+    <MemoryRouter initialEntries={initialEntries}>
       <TestWrapper>
         <ResultsAccordion {...props} />
       </TestWrapper>
@@ -63,6 +87,57 @@ describe('ResultsAccordion', () => {
     ];
     renderAccordion({ results });
     expect(screen.getAllByTestId('accordion-section')).toHaveLength(2);
+  });
+
+  it('restores the selected team from the URL', () => {
+    renderAccordion({ results: [makeResult()] }, ['/?teamId=h-1']);
+
+    expect(screen.getByTestId('team-results')).toHaveAttribute('data-selected-team', 'h-1');
+    expect(screen.queryByTestId('accordion-section')).not.toBeInTheDocument();
+  });
+
+  it('stores the selected team in the URL', () => {
+    render(
+      <MemoryRouter>
+        <TestWrapper>
+          <>
+            <ResultsAccordion results={[makeResult()]} />
+            <SearchParamsDisplay />
+          </>
+        </TestWrapper>
+      </MemoryRouter>
+    );
+
+    fireEvent.mouseDown(screen.getByRole('combobox'));
+    fireEvent.click(screen.getByRole('option', { name: 'Home' }));
+
+    expect(screen.getByTestId('search-params')).toHaveTextContent('teamId=h-1');
+    expect(screen.getByTestId('team-results')).toHaveAttribute('data-selected-team', 'h-1');
+  });
+
+  it('shows only results involving the selected team', () => {
+    const results = [
+      makeResult({ _id: 'home-match', gameWeek: 1 }),
+      makeResult({
+        _id: 'other-match',
+        gameWeek: 1,
+        homeTeam: { _id: 'h-2', teamName: 'Other Home' },
+        awayTeam: { _id: 'a-2', teamName: 'Other Away' },
+      }),
+      makeResult({
+        _id: 'away-match',
+        gameWeek: 2,
+        homeTeam: { _id: 'h-3', teamName: 'Another Home' },
+        awayTeam: { _id: 'h-1', teamName: 'Home' },
+      }),
+    ];
+    renderAccordion({ results }, ['/?teamId=h-1']);
+
+    const visibleResultIds = screen
+      .getAllByTestId('team-results')
+      .flatMap(result => result.getAttribute('data-result-ids')!.split(','))
+      .sort();
+    expect(visibleResultIds).toEqual(['away-match', 'home-match']);
   });
 
   it('expands the first gameweek when isFixture is false', () => {

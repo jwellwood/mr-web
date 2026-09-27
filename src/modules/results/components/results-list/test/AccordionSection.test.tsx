@@ -18,9 +18,23 @@ vi.mock('../ResultTable', () => ({
   ),
 }));
 
+vi.mock('../ByeGames', () => ({
+  default: ({ results }: { results: T_FETCH_RESULTS['results'] }) => (
+    <div data-testid="bye-games">{results.map(result => result._id).join(',')}</div>
+  ),
+}));
+
 vi.mock('../../../../../components/accordion', () => ({
-  CustomAccordion: ({ children, title }: { children: React.ReactNode; title: React.ReactNode }) => (
-    <div data-testid="accordion">
+  CustomAccordion: ({
+    children,
+    title,
+    isExpanded,
+  }: {
+    children: React.ReactNode;
+    title: React.ReactNode;
+    isExpanded: boolean;
+  }) => (
+    <div data-testid="accordion" data-expanded={String(isExpanded)}>
       <div data-testid="accordion-title-wrapper">{title}</div>
       <div data-testid="accordion-content">{children}</div>
     </div>
@@ -66,13 +80,7 @@ const renderSection = (props: Partial<React.ComponentProps<typeof AccordionSecti
   render(
     <MemoryRouter>
       <TestWrapper>
-        <AccordionSection
-          competitionName="League"
-          gameWeek="1"
-          gwResults={[makeResult()]}
-          isExpanded={false}
-          {...props}
-        />
+        <AccordionSection gameWeek="1" gwResults={[makeResult()]} isExpanded={false} {...props} />
       </TestWrapper>
     </MemoryRouter>
   );
@@ -81,6 +89,7 @@ describe('AccordionSection', () => {
   it('renders the accordion', () => {
     renderSection();
     expect(screen.getByTestId('accordion')).toBeInTheDocument();
+    expect(screen.getByTestId('accordion')).toHaveAttribute('data-expanded', 'false');
   });
 
   it('renders the AccordionTitle with the correct gameWeek', () => {
@@ -121,5 +130,14 @@ describe('AccordionSection', () => {
     expect(tables).toHaveLength(2);
     expect(tables.find(t => t.textContent === '2 results')).toBeInTheDocument();
     expect(tables.find(t => t.textContent === '1 results')).toBeInTheDocument();
+  });
+
+  it('renders bye games separately from the dated result tables', () => {
+    renderSection({
+      gwResults: [makeResult({ _id: 'normal-1' }), makeResult({ _id: 'bye-1', isBye: true })],
+    });
+
+    expect(screen.getByTestId('result-table')).toHaveTextContent('1 results');
+    expect(screen.getByTestId('bye-games')).toHaveTextContent('bye-1');
   });
 });

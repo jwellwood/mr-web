@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
+import { useSearchParams } from 'react-router-dom';
 import { NoDataText } from '../../../../components';
 import { Spinner } from '../../../../components/loaders';
 import { T_FETCH_RESULTS } from '../../graphql';
@@ -17,8 +19,24 @@ interface Props {
 
 export default function ResultsAccordion({ results, isAdminView, loading }: Props) {
   const { t } = useTranslation('results');
-  const { control } = useForm<FilterForm>({ defaultValues: { selectedTeam: 'all' } });
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { control } = useForm<FilterForm>({
+    defaultValues: { selectedTeam: searchParams.get('teamId') || 'all' },
+  });
   const selectedTeam = useWatch({ control, name: 'selectedTeam' });
+
+  useEffect(() => {
+    const currentTeamId = searchParams.get('teamId');
+    if (selectedTeam === 'all' ? !currentTeamId : currentTeamId === selectedTeam) return;
+
+    const nextSearchParams = new URLSearchParams(searchParams);
+    if (selectedTeam === 'all') {
+      nextSearchParams.delete('teamId');
+    } else {
+      nextSearchParams.set('teamId', selectedTeam);
+    }
+    setSearchParams(nextSearchParams, { replace: true });
+  }, [searchParams, selectedTeam, setSearchParams]);
 
   const filteredResults =
     selectedTeam === 'all'

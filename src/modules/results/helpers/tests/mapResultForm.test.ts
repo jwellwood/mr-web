@@ -1,6 +1,12 @@
 import { describe, it, expect } from 'vitest';
-import { T_FETCH_RESULT } from '../../graphql';
-import { mapFormToAddResult, mapResultToForm, mapFormToEditResult } from '../mapResultForm';
+import { T_FETCH_RESULT, T_FETCH_RESULTS } from '../../graphql';
+import {
+  getGameweekChanges,
+  mapFormToAddResult,
+  mapResultToForm,
+  mapFormToEditResult,
+  mapResultsToBatchForm,
+} from '../mapResultForm';
 
 describe('mapResultForm helpers', () => {
   it('mapFormToAddResult maps form to mutation variables', () => {
@@ -78,5 +84,61 @@ describe('mapResultForm helpers', () => {
     expect(variables.gameWeek).toBe(7);
     expect(variables.decision).toBe('EXTRA_TIME');
     expect(variables.winnerSide).toBe('HOME');
+  });
+
+  it('classifies added, updated, deleted, and incomplete gameweek rows', () => {
+    const originalResults = [
+      { _id: 'existing-1' },
+      { _id: 'existing-2' },
+    ] as T_FETCH_RESULTS['results'];
+    const formData = {
+      matches: [
+        { _id: 'existing-1', homeTeam: 'home-1', awayTeam: 'away-1' },
+        { homeTeam: 'home-2', awayTeam: 'away-2' },
+        { _id: 'existing-2', homeTeam: '', awayTeam: 'away-3' },
+        { homeTeam: 'bye-team', awayTeam: '', isBye: true },
+      ],
+    } as Parameters<typeof getGameweekChanges>[1];
+
+    const changes = getGameweekChanges(originalResults, formData);
+
+    expect(changes.toAdd).toEqual([
+      { homeTeam: 'home-2', awayTeam: 'away-2' },
+      { homeTeam: 'bye-team', awayTeam: '', isBye: true },
+    ]);
+    expect(changes.toUpdate).toEqual([
+      { _id: 'existing-1', match: { _id: 'existing-1', homeTeam: 'home-1', awayTeam: 'away-1' } },
+    ]);
+    expect(changes.toDelete).toEqual(['existing-2']);
+  });
+
+  it('preserves bye fields when mapping results into the gameweek form', () => {
+    const results = [
+      {
+        _id: 'bye-result',
+        date: '2026-01-01T12:00:00.000Z',
+        gameWeek: 2,
+        competitionId: { _id: 'competition-1' },
+        orgSeasonId: { _id: 'season-1' },
+        homeTeam: { _id: 'home-1' },
+        awayTeam: null,
+        homeGoals: null,
+        awayGoals: null,
+        kickoffTime: null,
+        isForfeit: false,
+        isBye: true,
+      },
+    ] as T_FETCH_RESULTS['results'];
+
+    const formData = mapResultsToBatchForm(results);
+
+    expect(formData.matches[0]).toMatchObject({
+      _id: 'bye-result',
+      homeTeam: 'home-1',
+      awayTeam: '',
+      homeGoals: 0,
+      awayGoals: 0,
+      isBye: true,
+    });
   });
 });
