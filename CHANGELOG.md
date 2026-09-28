@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.42.1](https://github.com/jwellwood/mr-web/compare/v0.42.0...v0.42.1) (2026-09-28)
+
+### Bug Fixes
+
+* competition options in goalscorers filters ([b7f431e](https://github.com/jwellwood/mr-web/commit/b7f431edaf5dc7c2e7136d4aed2e43f83afcab61))
+
 ## [0.42.0](https://github.com/jwellwood/mr-web/compare/v0.41.0...v0.42.0) (2026-09-28)
 
 ### Features
