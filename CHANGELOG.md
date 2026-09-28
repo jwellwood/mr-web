@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.41.0](https://github.com/jwellwood/mr-web/compare/v0.40.0...v0.41.0) (2026-09-28)
+
+### Features
+
+* add points breakdown ([6aedc15](https://github.com/jwellwood/mr-web/commit/6aedc153fc7f1ce62d1495c9d1381e8964f60420))
+
 ## [0.40.0](https://github.com/jwellwood/mr-web/compare/v0.39.0...v0.40.0) (2026-09-27)
 
 ### Features
