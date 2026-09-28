@@ -7,7 +7,8 @@ export type CellType =
   | 'difference'
   | 'percentage'
   | 'nationality'
-  | 'image';
+  | 'image'
+  | 'custom';
 
 export interface ColumnStyles {
   color?: string;

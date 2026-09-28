@@ -75,6 +75,9 @@ export default function CustomTableCell({
       );
     }
   }
+  if (cellType === 'custom') {
+    return renderWithSkeleton(cellValue as React.ReactNode);
+  }
   if (cellType === 'position' || cellKey === 'position') {
     return renderWithSkeleton(<PositionText>{cellValue as string}</PositionText>);
   }

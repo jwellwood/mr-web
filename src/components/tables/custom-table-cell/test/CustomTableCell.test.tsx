@@ -23,6 +23,21 @@ describe('CustomTableCell', () => {
     expect(screen.getByText('7')).toBeInTheDocument();
   });
 
+  it('renders custom cell content without a typography wrapper', () => {
+    const { container } = render(
+      <TestWrapper>
+        <CustomTableCell
+          cellKey="points"
+          cellValue={<button type="button">Points breakdown</button>}
+          cellType="custom"
+        />
+      </TestWrapper>
+    );
+
+    expect(screen.getByRole('button', { name: 'Points breakdown' })).toBeInTheDocument();
+    expect(container.querySelector('.MuiTypography-root')).not.toBeInTheDocument();
+  });
+
   it('renders position cell for cellType="position"', () => {
     render(
       <TestWrapper>

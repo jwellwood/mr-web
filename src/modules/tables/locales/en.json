@@ -18,5 +18,11 @@
 
   "NO_DATA": {
     "TABLE": "No table data found."
+  },
+  "POINTS_BREAKDOWN": {
+    "TITLE": "Points breakdown",
+    "STARTING": "Initial points",
+    "EARNED": "Earned points",
+    "TOTAL": "Total"
   }
 }

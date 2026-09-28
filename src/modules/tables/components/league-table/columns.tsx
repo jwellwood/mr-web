@@ -84,6 +84,7 @@ export const columns = (t: TFunction): readonly ColumnConfig[] =>
     },
     {
       id: 'points',
+      type: 'custom',
       label: t('TABLES.HEADERS.POINTS'),
       styles: {
         width: 30,

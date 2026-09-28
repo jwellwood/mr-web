@@ -17,5 +17,11 @@
   },
   "NO_DATA": {
     "TABLE": "No se encontraron datos de la tabla."
+  },
+  "POINTS_BREAKDOWN": {
+    "TITLE": "Desglose de puntos",
+    "STARTING": "Puntos iniciales",
+    "EARNED": "Puntos obtenidos",
+    "TOTAL": "Totales"
   }
 }

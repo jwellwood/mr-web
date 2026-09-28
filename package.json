@@ -15,6 +15,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
+    "test:coverage:view": "python3 -m http.server 8000 --bind 127.0.0.1 --directory coverage",
     "test:ui": "vitest --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

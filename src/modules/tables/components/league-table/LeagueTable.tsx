@@ -4,6 +4,7 @@ import { useCustomParams } from '../../../../hooks';
 import { theme } from '../../../../theme';
 import { CompetitionConfig } from '../../../seasons/helpers/mapOrgSeasonForm';
 import { T_FETCH_LEAGUE_TABLES } from '../../graphql';
+import PointsBreakdown from '../PointsBreakdown';
 import { columns } from './columns';
 
 interface Props {
@@ -18,6 +19,10 @@ export default function LeagueTable({ data, competitionConfig, loading }: Props)
   const { promotionPositions, relegationPositions, splitIndexes, teams } = competitionConfig;
 
   const rows = data?.data?.map((item, i) => {
+    const startingPoints = item.startingPoints ?? 0;
+    const earnedPoints = item.points - startingPoints;
+    const totalPoints = startingPoints + earnedPoints;
+
     return {
       standing: i + 1,
       name: { value: item.team.teamName, link: `/org/${orgId}/team/${item.team._id}` },
@@ -28,7 +33,14 @@ export default function LeagueTable({ data, competitionConfig, loading }: Props)
       goalsFor: item.goalsFor,
       goalsAgainst: item.goalsAgainst,
       goalDiff: item.goalDiff,
-      points: item.points,
+      points: (
+        <PointsBreakdown
+          item={{ points: item.points }}
+          startingPoints={startingPoints}
+          earnedPoints={earnedPoints}
+          totalPoints={totalPoints}
+        />
+      ),
     };
   });
 
