@@ -11,13 +11,13 @@ vi.mock('react-i18next', async importOriginal => {
   return { ...actual, useTranslation: () => ({ t: (key: string) => key }) };
 });
 
-vi.mock('../../../../hooks', () => ({
-  useStatsFilters: () => ({
-    competitionOptions: [
-      { label: 'All Competitions', value: 'all' },
-      { label: 'League A', value: 'comp-1' },
-    ],
+vi.mock('../../../results/hooks/useCompetitionConfig', () => ({
+  default: () => ({
+    competitionConfig: [{ id: 'comp-1', name: 'League A' }],
   }),
+}));
+
+vi.mock('../../../../hooks', () => ({
   useTeamOptions: () => ({
     teamOptions: [
       { label: 'All Teams', value: 'all' },

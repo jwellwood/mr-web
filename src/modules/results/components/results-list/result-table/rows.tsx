@@ -30,13 +30,7 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
         link: link(result._id, result.orgSeasonId._id),
       },
       homeScore: {
-        value: (
-          <ResultScoreBox
-            resultStatus={result.resultStatus}
-            goals={result.homeGoals!}
-            date={result.date!}
-          />
-        ),
+        value: <ResultScoreBox resultStatus={result.resultStatus} goals={result.homeGoals!} />,
         link: link(result._id, result.orgSeasonId._id),
       },
       divider: {
@@ -48,13 +42,7 @@ export const rows = (results: T_FETCH_RESULTS['results'], orgId: string) => {
         link: link(result._id, result.orgSeasonId._id),
       },
       awayScore: {
-        value: (
-          <ResultScoreBox
-            resultStatus={result.resultStatus}
-            goals={result.awayGoals!}
-            date={result.date!}
-          />
-        ),
+        value: <ResultScoreBox resultStatus={result.resultStatus} goals={result.awayGoals!} />,
         link: link(result._id, result.orgSeasonId._id),
       },
       awayTeam: {

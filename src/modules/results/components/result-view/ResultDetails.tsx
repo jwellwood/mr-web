@@ -5,6 +5,7 @@ import TiebreakerText from '../../../../components/composed/TiebreakerText';
 import { CustomStack } from '../../../../components/grids';
 import { TextList } from '../../../../components/lists';
 import { parseDate } from '../../../../utils';
+import { RESULT_STATUS } from '../../constants';
 import { T_FETCH_RESULT } from '../../graphql';
 
 const ResultGoalscorers = lazy(() => import('../../../goalscorers/components/ResultGoalscorers'));
@@ -28,12 +29,15 @@ export default function ResultDetails({ result }: Props) {
     winnerSide,
     decision,
     isBye,
+    resultStatus,
   } = result;
+
+  const isPending = resultStatus === RESULT_STATUS.PENDING;
 
   const goalsAvatar = (goals: number | null | undefined) => (
     <CustomAvatar bgColor="white" size="40px" variant="square">
       <CustomTypography size="lg" bold color="secondary">
-        {typeof goals === 'number' ? goals : '-'}
+        {typeof goals !== 'number' || isPending ? '-' : goals}
       </CustomTypography>
     </CustomAvatar>
   );

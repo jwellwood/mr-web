@@ -1,4 +1,5 @@
-import { useStatsFilters, useTeamOptions } from '../../../hooks';
+import { useTeamOptions } from '../../../hooks';
+import useCompetitionConfig from '../../results/hooks/useCompetitionConfig';
 import { TGoalscorersFilters } from '../context';
 import { useGoalscorersFilters } from '../hooks';
 import GoalscorersFiltersForm from './GoalscorersFiltersForm';
@@ -9,7 +10,10 @@ interface Props {
 
 export default function GoalscorersFilters({ competitionId }: Props) {
   const DEFAULT_FILTERS: TGoalscorersFilters = { competitionId, teamId: 'all' };
-  const { competitionOptions } = useStatsFilters();
+  const { competitionConfig } = useCompetitionConfig();
+
+  const competitionOptions =
+    competitionConfig?.map(config => ({ label: config.name, value: config.id })) || [];
   const { teamOptions } = useTeamOptions();
 
   const { setFilters } = useGoalscorersFilters();

@@ -4,7 +4,6 @@ import { RESULT_STATUS } from '../../constants';
 interface Props {
   resultStatus?: keyof typeof RESULT_STATUS | null;
   goals?: number;
-  date?: string;
 }
 
 export default function ResultScoreBox({ resultStatus, goals }: Props) {
