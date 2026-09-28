@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.42.0](https://github.com/jwellwood/mr-web/compare/v0.41.0...v0.42.0) (2026-09-28)
+
+### Features
+
+* update public folder and reorganise index.html ([a896e1e](https://github.com/jwellwood/mr-web/commit/a896e1edb3adc50cb9779b68e5d8ebb06332583c))
+
 ## [0.41.0](https://github.com/jwellwood/mr-web/compare/v0.40.0...v0.41.0) (2026-09-28)
 
 ### Features
