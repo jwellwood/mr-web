@@ -4,7 +4,7 @@ import { theme } from '../../../theme';
 interface Props {
   children: React.ReactNode;
   spacing?: number;
-  justify?: 'flex-start' | 'center' | 'space-between' | 'flex-end';
+  justify?: 'flex-start' | 'center' | 'space-between' | 'space-around' | 'flex-end';
   direction?: 'row' | 'column';
   align?: 'flex-start' | 'center' | 'flex-end';
   divider?: boolean;

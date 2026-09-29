@@ -1,30 +1,27 @@
 import { lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AppIcon } from '../../../components/icons';
-import { StatSkeleton } from '../../../components/loaders';
-import { PresentationModal } from '../../../components/modals';
+import { SectionContainer } from '../../../components';
+import { Spinner } from '../../../components/loaders';
 
 const Awards = lazy(() => import('../../awards/containers/Awards'));
 
 interface Props {
-  seasonId?: string;
-  name: string;
-  position?: number;
+  seasonId: string;
   loading?: boolean;
 }
 
-export default function SeasonAwards({ seasonId, name, position, loading }: Props) {
+export default function SeasonAwards({ seasonId, loading }: Props) {
   const { t } = useTranslation('teamseasons');
 
-  const renderDisplay = position ? (
-    <PresentationModal
-      title={t('MODALS.AWARDS_TITLE', { name })}
-      buttonElement={<AppIcon icon="medal" color="label" />}
-    >
-      <Suspense fallback={<StatSkeleton />}>
-        <Awards season_id={seasonId} />
-      </Suspense>
-    </PresentationModal>
-  ) : null;
-  return loading ? <StatSkeleton /> : renderDisplay;
+  return (
+    <SectionContainer title={t('TABS.AWARDS')}>
+      {loading ? (
+        <Spinner />
+      ) : (
+        <Suspense fallback={<Spinner />}>
+          <Awards season_id={seasonId} />
+        </Suspense>
+      )}
+    </SectionContainer>
+  );
 }

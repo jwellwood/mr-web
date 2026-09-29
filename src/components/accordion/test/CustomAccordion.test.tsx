@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/vitest';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import CustomAccordion from '../custom-accordion/CustomAccordion';
 
 describe('CustomAccordion', () => {
-  it('renders title and children when expanded', async () => {
+  it('renders title and children when initially expanded', () => {
     render(
       <CustomAccordion title={<div>My Title</div>} isExpanded={true}>
         <div>Panel content</div>
@@ -16,7 +16,7 @@ describe('CustomAccordion', () => {
     expect(screen.getByText('Panel content')).toBeInTheDocument();
   });
 
-  it('renders title and hides children when not expanded', async () => {
+  it('keeps children in the DOM when collapsed', () => {
     render(
       <CustomAccordion title={<div>Hidden Title</div>} isExpanded={false}>
         <div>Hidden content</div>
@@ -29,10 +29,11 @@ describe('CustomAccordion', () => {
     expect(content).toBeInTheDocument();
   });
 
-  it('allows user interaction with the accordion summary', async () => {
+  it('reports expansion and collapse through onToggle', async () => {
     const user = userEvent.setup();
+    const onToggle = vi.fn();
     render(
-      <CustomAccordion title={<div>Clickable</div>} isExpanded={false}>
+      <CustomAccordion title={<div>Clickable</div>} isExpanded={false} onToggle={onToggle}>
         <div>Interactive content</div>
       </CustomAccordion>
     );
@@ -40,8 +41,10 @@ describe('CustomAccordion', () => {
     const summaryButton = screen.getByRole('button', { name: /clickable/i });
     expect(summaryButton).toBeInTheDocument();
     await user.click(summaryButton);
+    expect(onToggle).toHaveBeenLastCalledWith(true);
 
-    // After click, content should exist (MUI handles expand animation; presence in DOM is sufficient)
+    await user.click(summaryButton);
+    expect(onToggle).toHaveBeenLastCalledWith(false);
     expect(screen.getByText('Interactive content')).toBeInTheDocument();
   });
 });

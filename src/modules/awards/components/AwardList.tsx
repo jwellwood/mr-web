@@ -29,7 +29,7 @@ export default function AwardList({ awards, loading, seasonId }: Props) {
                 </div>
               ))}
               {award.comment ? (
-                <CustomTypography size="sm" bold color="primary">
+                <CustomTypography size="sm" bold color="label">
                   {award.comment}
                 </CustomTypography>
               ) : null}

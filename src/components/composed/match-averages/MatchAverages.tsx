@@ -47,7 +47,7 @@ export default function MatchAverages({ stats, loading }: Props) {
       value: loading ? (
         <StatSkeleton />
       ) : (
-        <CustomTypography bold size="xs" color={difference > 0 ? 'success' : 'error'}>
+        <CustomTypography bold size="md" color={difference > 0 ? 'success' : 'error'}>
           {difference.toFixed(2)}
         </CustomTypography>
       ),

@@ -1,9 +1,9 @@
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
+import { SectionContainer } from '../../../components';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { TAB_TYPES } from '../../../constants';
 import { T_FETCH_SEASON } from '../graphql';
-import SeasonHeader from './SeasonHeader';
 
 const Matches = lazy(() => import('../../matches/containers/Matches'));
 const Squad = lazy(() => import('../../squad/containers/Squad'));
@@ -29,8 +29,8 @@ export default function SeasonTabs({ season }: Props) {
   }
 
   return (
-    <SeasonHeader title={season.name}>
+    <SectionContainer title={season.name}>
       <CustomTabs type={TAB_TYPES.SEASON} tabs={tabs} level="secondary" />
-    </SeasonHeader>
+    </SectionContainer>
   );
 }

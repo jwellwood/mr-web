@@ -27,14 +27,26 @@
     "DIVISION": "División",
     "POSITION": "Posición"
   },
+  "BUTTONS": {
+    "SEE_MORE": "Ver más"
+  },
+  "HEADERS": {
+    "SUMMARY": "Resumen"
+  },
   "TABS": {
     "STATS": "Estadísticas",
     "MATCHES": "Partidos",
     "SQUAD": "Plantilla",
     "AWARDS": "Premios"
   },
+  "LABELS": {
+    "POSITION": "Posición",
+    "WIN_PERCENTAGE": "Victorias %",
+    "GOAL_DIFFERENCE": "Diferencia"
+  },
   "NO_DATA": {
-    "SEASONS": "Aún no hay temporadas"
+    "SEASONS": "Aún no hay temporadas",
+    "SUMMARY": "No summary available"
   },
   "MODALS": {
     "AWARDS_TITLE": "Premios de {{name}}"

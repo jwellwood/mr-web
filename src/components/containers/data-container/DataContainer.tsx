@@ -27,15 +27,15 @@ export default function DataContainer({ data, loading, size = 4 }: Props) {
               }}
             >
               <CustomGridContainer direction="column">
-                <CustomTypography size="xs" color="label">
-                  {item.label}
-                </CustomTypography>
                 {item.icon && <CustomGridItem>{item.icon}</CustomGridItem>}
                 <CustomGridItem>
-                  <CustomTypography bold color="data" size="xs">
+                  <CustomTypography bold color="data" size="md">
                     {loading ? <CustomSkeleton height="20px" width="50px" /> : item.value}
                   </CustomTypography>
                 </CustomGridItem>
+                <CustomTypography size="xs" color="label">
+                  {item.label}
+                </CustomTypography>
               </CustomGridContainer>
             </Paper>
           </Grid>
