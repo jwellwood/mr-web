@@ -1,11 +1,12 @@
+import { Divider } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { getPercentage } from '../../../utils';
 import { CustomPieChart } from '../../charts';
-import { DataContainer } from '../../containers';
 import { CustomGridContainer, CustomGridItem } from '../../grids';
 import { StatSkeleton, CustomSkeleton } from '../../loaders';
 import { CustomTypography } from '../../typography';
 import { IMatchesAveragesStats } from '../types';
+import DataContainer from './DataContainer';
 
 interface Props {
   stats?: IMatchesAveragesStats;
@@ -38,6 +39,9 @@ export default function MatchAverages({ stats, loading }: Props) {
       label: t('MATCH_TABLES.DEFEAT_PERCENTAGE'),
       value: loading ? <StatSkeleton /> : `${getPercentage(defeats || 0, total || 0, 1)}%`,
     },
+  ];
+
+  const goalData = [
     {
       label: t('MATCH_TABLES.GOALS_FOR_AVG'),
       value: loading ? <StatSkeleton /> : teamAvg?.toFixed(1),
@@ -77,7 +81,10 @@ export default function MatchAverages({ stats, loading }: Props) {
         )}
       </CustomGridItem>
       <CustomGridItem size={8}>
+        <Divider sx={{ my: 1 }} />
         <DataContainer data={percentageData} loading={loading} />
+        <Divider sx={{ my: 1 }} />
+        <DataContainer data={goalData} loading={loading} />
       </CustomGridItem>
     </CustomGridContainer>
   );

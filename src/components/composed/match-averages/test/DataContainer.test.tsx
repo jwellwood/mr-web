@@ -1,14 +1,14 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import { describe, test, expect } from 'vitest';
-import { type IListItem } from '../../lists';
-import DataContainer from '../data-container/DataContainer';
+import { type IListItem } from '../../../lists';
+import DataContainer from '../DataContainer';
 
 describe('DataContainer', () => {
   const mockData: IListItem[] = [
     { label: 'Name', value: 'John Doe' },
     { label: 'Age', value: '30' },
-    { label: 'Location', value: 'New York', icon: <span>Mock icon</span> },
+    { label: 'Location', value: 'New York' },
   ];
 
   test('renders all data items', () => {
@@ -20,27 +20,6 @@ describe('DataContainer', () => {
     expect(screen.getByText('30')).toBeInTheDocument();
     expect(screen.getByText('Location')).toBeInTheDocument();
     expect(screen.getByText('New York')).toBeInTheDocument();
-  });
-
-  test('renders with icons when provided', () => {
-    const { container } = render(<DataContainer data={mockData} />);
-
-    // Icons are rendered in grid items
-    const gridItems = container.querySelectorAll('[class*="MuiGrid"]');
-    expect(gridItems.length).toBeGreaterThan(0);
-  });
-
-  test('renders without icons when not provided', () => {
-    const dataWithoutIcons: IListItem[] = [
-      { label: 'Title', value: 'Test Title' },
-      { label: 'Description', value: 'Test Description' },
-    ];
-
-    render(<DataContainer data={dataWithoutIcons} />);
-
-    expect(screen.getByText('Title')).toBeInTheDocument();
-    expect(screen.getByText('Test Title')).toBeInTheDocument();
-    expect(screen.queryByText('person')).not.toBeInTheDocument();
   });
 
   test('renders loading skeletons when loading is true', () => {
@@ -57,29 +36,19 @@ describe('DataContainer', () => {
     expect(screen.queryByText('30')).not.toBeInTheDocument();
   });
 
-  test('renders Paper components for data items', () => {
-    const { container } = render(<DataContainer data={mockData} />);
-
-    const papers = container.querySelectorAll('[class*="MuiPaper"]');
-    expect(papers.length).toBeGreaterThan(0);
-  });
-
   test('renders empty array without errors', () => {
     const { container } = render(<DataContainer data={[]} />);
 
-    expect(container.querySelector('[class*="MuiGrid"]')).toBeInTheDocument();
+    expect(container.querySelector('[class*="MuiStack"]')).toBeInTheDocument();
   });
 
   test('handles single data item', () => {
-    const singleItem: IListItem[] = [
-      { label: 'Email', value: 'test@example.com', icon: <>icon</> },
-    ];
+    const singleItem: IListItem[] = [{ label: 'Email', value: 'test@example.com' }];
 
     render(<DataContainer data={singleItem} />);
 
     expect(screen.getByText('Email')).toBeInTheDocument();
     expect(screen.getByText('test@example.com')).toBeInTheDocument();
-    expect(screen.getByText('icon')).toBeInTheDocument();
   });
 
   test('handles long values', () => {
@@ -95,13 +64,6 @@ describe('DataContainer', () => {
 
     expect(screen.getByText('Description')).toBeInTheDocument();
     expect(screen.getByText(/This is a very long description/)).toBeInTheDocument();
-  });
-
-  test('renders grid structure', () => {
-    const { container } = render(<DataContainer data={mockData} />);
-
-    const grids = container.querySelectorAll('[class*="MuiGrid"]');
-    expect(grids.length).toBeGreaterThan(0);
   });
 
   test('handles special characters in values', () => {
