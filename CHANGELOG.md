@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.43.0](https://github.com/jwellwood/mr-web/compare/v0.42.1...v0.43.0) (2026-09-29)
+
+### Features
+
+* team seasons in accordion ([cb98819](https://github.com/jwellwood/mr-web/commit/cb98819b65ff1608cf3b32439bc9dc021ff16788))
+
 ## [0.42.1](https://github.com/jwellwood/mr-web/compare/v0.42.0...v0.42.1) (2026-09-28)
 
 ### Bug Fixes
