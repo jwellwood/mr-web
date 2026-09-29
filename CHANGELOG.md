@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.44.0](https://github.com/jwellwood/mr-web/compare/v0.43.0...v0.44.0) (2026-09-29)
+
+### Features
+
+* improve auth init ([5154c59](https://github.com/jwellwood/mr-web/commit/5154c599ec348954ddf98e1af8f71890cbeb23f2))
+
 ## [0.43.0](https://github.com/jwellwood/mr-web/compare/v0.42.1...v0.43.0) (2026-09-29)
 
 ### Features
