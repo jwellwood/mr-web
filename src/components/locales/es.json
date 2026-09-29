@@ -39,10 +39,12 @@
     "HELP": "Ayuda",
     "DEFAULT": "Predeterminado",
     "SEARCH": "Buscar",
-    "RESET": "Restablecer"
+    "RESET": "Restablecer",
+    "RETRY": "Reintentar"
   },
   "LOADERS": {
-    "AUTH": "Verificando autenticación"
+    "AUTH": "Verificando autenticación",
+    "AUTH_ERROR": "No se pudo verificar tu sesión"
   },
   "MATCH_TABLES": {
     "WIN_PERCENTAGE": "G %",

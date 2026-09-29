@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { AuthLoader } from '../components/loaders';
@@ -7,6 +7,7 @@ import { useAuth, useCustomParams } from '../hooks';
 import { AUTH_PATHS } from '../modules/auth/router';
 import { PROFILE_PATHS } from '../modules/profile/router';
 import { showAlert } from '../store';
+import { AuthBootstrapContext } from './AuthBootstrapContext';
 
 interface Props {
   children: ReactNode;
@@ -16,6 +17,7 @@ interface Props {
 export default function RouteGuard({ children, authorization }: Props) {
   const dispatch = useDispatch();
   const { teamId, orgId } = useCustomParams();
+  const { hasRetryableError, retry } = useContext(AuthBootstrapContext);
   const { isTeamAdmin, isSiteAdmin, isTeamAuth, isOrgAuth, isAuth, authInitialized } = useAuth(
     teamId,
     orgId
@@ -23,9 +25,9 @@ export default function RouteGuard({ children, authorization }: Props) {
 
   const PROFILE = PROFILE_PATHS.PROFILE;
 
-  // Wait for auth to be initialized before making routing decisions
-  if (!authInitialized) {
-    return <AuthLoader />;
+  // Public routes do not need to wait for auth hydration.
+  if (!authInitialized && authorization !== AUTH_ROLES.PUBLIC) {
+    return <AuthLoader onRetry={hasRetryableError ? retry : undefined} />;
   }
 
   if (authorization === AUTH_ROLES.USER && !isAuth) {

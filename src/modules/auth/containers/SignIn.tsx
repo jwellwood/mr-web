@@ -3,9 +3,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { TAuthRoles } from '../../../constants';
-import { useAuth } from '../../../hooks';
-import { AppDispatch, showAlert, setAuth } from '../../../store';
+import { AUTH_ROLES } from '../../../constants';
+import { AppDispatch, authPayloadFromUser, setAuth, showAlert } from '../../../store';
 import { authStorage } from '../../../utils';
 import { PROFILE_PATHS } from '../../profile/router';
 import { SignInFormData } from '../forms/sign-in/schema';
@@ -21,8 +20,6 @@ export default function SignInContainer() {
     onError: err => dispatch(showAlert({ text: err.message, type: 'error' })),
   });
   const [showResendLink, setShowResendLink] = useState(false);
-  const { isAuth } = useAuth();
-
   const onSubmit = async (formData: SignInFormData) => {
     setEmail(formData.email);
     return signInUser({ variables: { ...formData } })
@@ -35,15 +32,8 @@ export default function SignInContainer() {
           if (token) {
             authStorage.setToken(token);
           }
-          dispatch(
-            setAuth({
-              roles: user.roles as TAuthRoles[],
-              teamIds: user.teamIds,
-              orgIds: user.orgIds,
-              username: user.username,
-            })
-          );
-          if (isAuth) {
+          dispatch(setAuth(authPayloadFromUser(user)));
+          if (user.roles.includes(AUTH_ROLES.USER)) {
             navigate(PROFILE_PATHS.PROFILE, { replace: false });
           }
         }

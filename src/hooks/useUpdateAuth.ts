@@ -1,8 +1,7 @@
 import { useApolloClient } from '@apollo/client/react';
 import { useDispatch } from 'react-redux';
-import { TAuthRoles } from '../constants';
 import { FETCH_USER } from '../modules/profile/graphql';
-import { AppDispatch, setAuth } from '../store';
+import { AppDispatch, authPayloadFromUser, setAuth } from '../store';
 import { authStorage } from '../utils';
 
 export const useUpdateAuth = () => {
@@ -19,14 +18,7 @@ export const useUpdateAuth = () => {
     const user = userRes.data?.user;
 
     if (user) {
-      dispatch(
-        setAuth({
-          roles: user.roles as TAuthRoles[],
-          teamIds: user.teamIds,
-          orgIds: user.orgIds,
-          username: user.username,
-        })
-      );
+      dispatch(setAuth(authPayloadFromUser(user)));
     }
   };
 

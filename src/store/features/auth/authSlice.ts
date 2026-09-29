@@ -21,6 +21,20 @@ const initialState: IAuthState = {
   authInitialized: false,
 };
 
+interface IAuthUser {
+  roles: string[];
+  teamIds: string[];
+  orgIds: string[];
+  username: string;
+}
+
+export const authPayloadFromUser = (user: IAuthUser) => ({
+  roles: user.roles as TAuthRoles[],
+  teamIds: user.teamIds,
+  orgIds: user.orgIds,
+  username: user.username,
+});
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,

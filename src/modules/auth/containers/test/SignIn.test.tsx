@@ -1,7 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { authPayloadFromUser, setAuth } from '../../../../store';
 import { resetUseMutationImpl, setUseMutationImpl } from '../../../../test/utils/mockUseMutation';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import SignInContainer from '../SignIn';
@@ -72,6 +74,45 @@ describe('SignInContainer', () => {
         variables: { email: 'test@example.com', password: 'Secret123' },
       });
     });
+  });
+
+  it('navigates to the profile after a successful sign-in', async () => {
+    setUseMutationImpl(() => [
+      async () => ({
+        data: {
+          user: {
+            token: 'token',
+            user: {
+              username: 'test-user',
+              roles: ['user'],
+              teamIds: [],
+              orgIds: [],
+            },
+          },
+        },
+      }),
+      { loading: false },
+    ]);
+    const user = userEvent.setup();
+    renderComponent();
+
+    await user.type(screen.getByLabelText(/Email Address/i), 'test@example.com');
+    await user.type(screen.getByLabelText(/Password/i), 'Secret123');
+    await user.click(screen.getByRole('button', { name: /submit/i }));
+
+    await waitFor(() => {
+      expect(mockNavigate).toHaveBeenCalledWith('/profile', { replace: false });
+    });
+    expect(mockDispatch).toHaveBeenCalledWith(
+      setAuth(
+        authPayloadFromUser({
+          username: 'test-user',
+          roles: ['user'],
+          teamIds: [],
+          orgIds: [],
+        })
+      )
+    );
   });
 
   it('shows the resend verification section when the mutation rejects with Unverified User', async () => {

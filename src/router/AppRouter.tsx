@@ -1,3 +1,4 @@
+import { CombinedGraphQLErrors, ServerError } from '@apollo/client/errors';
 import { useQuery } from '@apollo/client/react';
 import { lazy, useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
@@ -6,10 +7,10 @@ import { CustomSnackbar } from '../components/alerts';
 import { BackgroundContainer } from '../components/containers';
 import { ErrorBoundary } from '../components/errors';
 import { LazyLoader } from '../components/loaders';
-import { TAuthRoles } from '../constants';
 import { FETCH_USER } from '../modules/profile/graphql';
-import { resetAuth, setAuth } from '../store';
+import { authPayloadFromUser, resetAuth, setAuth } from '../store';
 import { authStorage } from '../utils';
+import { AuthBootstrapContext } from './AuthBootstrapContext';
 
 // Lazy load routes with retry logic for chunk load errors
 const AppRoutes = lazy(() =>
@@ -30,12 +31,17 @@ function AppContent() {
   );
 }
 
+const isAuthenticationError = (error: unknown) =>
+  (CombinedGraphQLErrors.is(error) &&
+    error.errors.some(graphQLError => graphQLError.extensions?.code === 'UNAUTHENTICATED')) ||
+  (ServerError.is(error) && error.statusCode === 401);
+
 function AppRouter() {
   const dispatch = useDispatch();
   const token = authStorage.getToken();
 
   // Fetch user data but don't block rendering
-  const { data, error } = useQuery(FETCH_USER, {
+  const { data, error, loading, refetch } = useQuery(FETCH_USER, {
     skip: !token,
     fetchPolicy: 'cache-first',
   });
@@ -43,23 +49,16 @@ function AppRouter() {
   // Handle successful data (replaces deprecated onCompleted)
   useEffect(() => {
     if (data?.user) {
-      dispatch(
-        setAuth({
-          roles: data.user.roles as TAuthRoles[],
-          teamIds: data.user.teamIds,
-          orgIds: data.user.orgIds,
-          username: data.user.username,
-        })
-      );
+      dispatch(setAuth(authPayloadFromUser(data.user)));
     } else if (data && !data.user) {
       // Query returned but no user - clear auth
       dispatch(resetAuth());
     }
   }, [data, dispatch]);
 
-  // Handle errors (replaces deprecated onError)
+  // Only discard credentials when the server confirms they are invalid.
   useEffect(() => {
-    if (error) {
+    if (error && isAuthenticationError(error)) {
       dispatch(resetAuth());
       authStorage.removeToken();
     }
@@ -76,7 +75,16 @@ function AppRouter() {
     <BrowserRouter>
       <ErrorBoundary>
         <BackgroundContainer>
-          <AppContent />
+          <AuthBootstrapContext.Provider
+            value={{
+              hasRetryableError: Boolean(error && !loading && !isAuthenticationError(error)),
+              retry: () => {
+                void refetch();
+              },
+            }}
+          >
+            <AppContent />
+          </AuthBootstrapContext.Provider>
           <CustomSnackbar />
         </BackgroundContainer>
       </ErrorBoundary>
