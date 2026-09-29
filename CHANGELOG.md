@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.44.1](https://github.com/jwellwood/mr-web/compare/v0.44.0...v0.44.1) (2026-09-29)
+
+### Bug Fixes
+
+* improve averages styles ([2c7d060](https://github.com/jwellwood/mr-web/commit/2c7d060d81eea900ae17737a0aab8bac3d9d09ec))
+
 ## [0.44.0](https://github.com/jwellwood/mr-web/compare/v0.43.0...v0.44.0) (2026-09-29)
 
 ### Features
