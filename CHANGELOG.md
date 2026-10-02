@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.45.0](https://github.com/jwellwood/mr-web/compare/v0.44.1...v0.45.0) (2026-10-02)
+
+### Features
+
+* update accordion results ([ae31fdc](https://github.com/jwellwood/mr-web/commit/ae31fdcd50659bee44a6334beaa8d8c72c247da0))
+
 ## [0.44.1](https://github.com/jwellwood/mr-web/compare/v0.44.0...v0.44.1) (2026-09-29)
 
 ### Bug Fixes
