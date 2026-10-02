@@ -69,7 +69,11 @@ export default function AccordionSection({ gameWeek, gwResults, isExpanded, isAd
                   </CustomTypography>
                 }
               >
-                <ResultTable results={dateResults} />
+                <ResultTable
+                  results={[...dateResults].sort((a, b) =>
+                    (a.kickoffTime || '09:00').localeCompare(b.kickoffTime || '09:00')
+                  )}
+                />
               </SectionContainer>
             ))}
           <ByeGames results={byeGames} />

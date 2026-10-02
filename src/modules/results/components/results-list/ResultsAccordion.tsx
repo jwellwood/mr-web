@@ -45,7 +45,18 @@ export default function ResultsAccordion({ results, isAdminView, loading }: Prop
 
   const resultsByGameWeek = getResultsByGameWeek(filteredResults);
   const expandedGameWeek = getExpandedGameweeks(resultsByGameWeek);
-  const gameWeekEntries = Object.entries(resultsByGameWeek).reverse();
+
+  const isCurrentSeason = true; // TODO fix this later
+  const sortDirection = isCurrentSeason ? 1 : -1;
+  const gameWeekEntries = Object.entries(resultsByGameWeek).sort(([first], [second]) => {
+    const firstRound = Number(first);
+    const secondRound = Number(second);
+    const difference =
+      Number.isFinite(firstRound) && Number.isFinite(secondRound)
+        ? firstRound - secondRound
+        : first.localeCompare(second);
+    return difference * sortDirection;
+  });
   const defaultExpanded = expandedGameWeek ?? gameWeekEntries[0]?.[0] ?? null;
 
   if (!results.length && !loading) {

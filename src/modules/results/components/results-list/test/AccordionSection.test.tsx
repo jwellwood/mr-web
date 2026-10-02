@@ -13,8 +13,10 @@ vi.mock('../AccordionTitle', () => ({
 }));
 
 vi.mock('../ResultTable', () => ({
-  default: ({ results }: { results: unknown[] }) => (
-    <div data-testid="result-table">{results.length} results</div>
+  default: ({ results }: { results: { _id: string }[] }) => (
+    <div data-testid="result-table" data-result-ids={results.map(result => result._id).join(',')}>
+      {results.length} results
+    </div>
   ),
 }));
 
@@ -130,6 +132,22 @@ describe('AccordionSection', () => {
     expect(tables).toHaveLength(2);
     expect(tables.find(t => t.textContent === '2 results')).toBeInTheDocument();
     expect(tables.find(t => t.textContent === '1 results')).toBeInTheDocument();
+  });
+
+  it('sorts fixtures by kickoff time earliest first', () => {
+    renderSection({
+      gwResults: [
+        makeResult({ _id: 'late', kickoffTime: '18:00' }),
+        makeResult({ _id: 'early', kickoffTime: '09:00' }),
+        makeResult({ _id: 'middle', kickoffTime: '12:00' }),
+        makeResult({ _id: 'default-time', kickoffTime: null }),
+      ],
+    });
+
+    expect(screen.getByTestId('result-table')).toHaveAttribute(
+      'data-result-ids',
+      'early,default-time,middle,late'
+    );
   });
 
   it('renders bye games separately from the dated result tables', () => {

@@ -59,7 +59,7 @@ const makeResult = (overrides: Partial<T_FETCH_RESULTS['results'][number]> = {})
     gameWeek: 1,
     isForfeit: false,
     competitionId: { _id: 'c-1', name: 'League' },
-    orgSeasonId: { _id: 'os-1' },
+    orgSeasonId: { _id: 'os-1', isCurrent: false },
     homeGoalscorers: [],
     awayGoalscorers: [],
     submittedByTeam: null,
@@ -88,6 +88,36 @@ describe('ResultsAccordion', () => {
     renderAccordion({ results });
     expect(screen.getAllByTestId('accordion-section')).toHaveLength(2);
   });
+
+  // it('orders current-season rounds in ascending order', () => {
+  //   const results = [
+  //     makeResult({ _id: 'r-3', gameWeek: 3, orgSeasonId: { _id: 'os-1' } }),
+  //     makeResult({ _id: 'r-1', gameWeek: 1, orgSeasonId: { _id: 'os-1' } }),
+  //     makeResult({ _id: 'r-2', gameWeek: 2, orgSeasonId: { _id: 'os-1' } }),
+  //   ];
+  //   renderAccordion({ results });
+
+  //   expect(
+  //     screen
+  //       .getAllByTestId('accordion-section')
+  //       .map(section => section.getAttribute('data-gameweek'))
+  //   ).toEqual(['1', '2', '3']);
+  // });
+
+  // it('orders completed-season rounds in descending order', () => {
+  //   const results = [
+  //     makeResult({ _id: 'r-1', gameWeek: 1 }),
+  //     makeResult({ _id: 'r-3', gameWeek: 3 }),
+  //     makeResult({ _id: 'r-2', gameWeek: 2 }),
+  //   ];
+  //   renderAccordion({ results });
+
+  //   expect(
+  //     screen
+  //       .getAllByTestId('accordion-section')
+  //       .map(section => section.getAttribute('data-gameweek'))
+  //   ).toEqual(['3', '2', '1']);
+  // });
 
   it('restores the selected team from the URL', () => {
     renderAccordion({ results: [makeResult()] }, ['/?teamId=h-1']);

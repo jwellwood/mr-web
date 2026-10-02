@@ -64,7 +64,7 @@ export default function TeamResults({ results, selectedTeam }: Props) {
             <CustomTypography size="xs" bold color="label">
               {data.kickoffTime || '-'}
             </CustomTypography>
-            {outcome && (
+            {outcome && !isPending && (
               <CustomTypography size="sm" bold color={outcome.color}>
                 {outcome.label}
               </CustomTypography>
