@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client/react';
 import { DataError } from '../../../components';
 import { useCustomParams } from '../../../hooks';
+import { FETCH_ORG_SEASONS } from '../../seasons/graphql';
 import { CompetitionConfig } from '../../seasons/helpers/mapOrgSeasonForm';
 import ResultsAccordion from '../components/results-list/ResultsAccordion';
 import { FETCH_RESULTS } from '../graphql';
@@ -19,10 +20,21 @@ export default function ResultsWrapper({ competitionConfig, isAdminView }: Props
   };
 
   const { data, error, loading } = useQuery(FETCH_RESULTS, { variables });
+  const { data: seasonsData } = useQuery(FETCH_ORG_SEASONS, { variables: { orgId: orgId! } });
+
+  const isCurrentSeason =
+    !orgSeasonId ||
+    orgSeasonId === 'default' ||
+    !!seasonsData?.orgSeasons.find(s => s._id === orgSeasonId)?.isCurrent;
 
   return error ? (
     <DataError error={error} />
   ) : (
-    <ResultsAccordion results={data?.results || []} loading={loading} isAdminView={isAdminView} />
+    <ResultsAccordion
+      results={data?.results || []}
+      loading={loading}
+      isAdminView={isAdminView}
+      isCurrentSeason={isCurrentSeason}
+    />
   );
 }

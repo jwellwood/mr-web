@@ -15,9 +15,15 @@ interface Props {
   results: T_FETCH_RESULTS['results'];
   isAdminView?: boolean;
   loading?: boolean;
+  isCurrentSeason?: boolean;
 }
 
-export default function ResultsAccordion({ results, isAdminView, loading }: Props) {
+export default function ResultsAccordion({
+  results,
+  isAdminView,
+  loading,
+  isCurrentSeason = true,
+}: Props) {
   const { t } = useTranslation('results');
   const [searchParams, setSearchParams] = useSearchParams();
   const { control } = useForm<FilterForm>({
@@ -46,7 +52,6 @@ export default function ResultsAccordion({ results, isAdminView, loading }: Prop
   const resultsByGameWeek = getResultsByGameWeek(filteredResults);
   const expandedGameWeek = getExpandedGameweeks(resultsByGameWeek);
 
-  const isCurrentSeason = true; // TODO fix this later
   const sortDirection = isCurrentSeason ? 1 : -1;
   const gameWeekEntries = Object.entries(resultsByGameWeek).sort(([first], [second]) => {
     const firstRound = Number(first);
