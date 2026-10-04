@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.45.1](https://github.com/jwellwood/mr-web/compare/v0.45.0...v0.45.1) (2026-10-04)
+
+### Bug Fixes
+
+* sort order for results and scroll ([b548972](https://github.com/jwellwood/mr-web/commit/b548972ab06eaf11a9ea4388a7659c581ec9061c))
+
 ## [0.45.0](https://github.com/jwellwood/mr-web/compare/v0.44.1...v0.45.0) (2026-10-02)
 
 ### Features
