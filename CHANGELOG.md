@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.46.0](https://github.com/jwellwood/mr-web/compare/v0.45.1...v0.46.0) (2026-10-05)
+
+### Features
+
+* paginate goalscorers ([2667a49](https://github.com/jwellwood/mr-web/commit/2667a49b8f38ed0a1496b2abee58b1bfce6c9253))
+
 ## [0.45.1](https://github.com/jwellwood/mr-web/compare/v0.45.0...v0.45.1) (2026-10-04)
 
 ### Bug Fixes
