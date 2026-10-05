@@ -13,16 +13,20 @@ export default function ResultGoalscorers({ result }: Props) {
   const { homeGoalscorers, awayGoalscorers, homeGoals, awayGoals } = result;
   const isGoalless = !homeGoals && !awayGoals;
   const homeTeamGoalscorers: IListItem[] =
-    homeGoalscorers?.map(scorer => ({
-      label: scorer?.playerId?.name || '-',
-      value: scorer?.goals,
-    })) || [];
+    [...(homeGoalscorers || [])]
+      ?.sort((a, b) => b?.goals - a?.goals)
+      .map(scorer => ({
+        label: scorer?.playerId?.name || '-',
+        value: scorer?.goals,
+      })) || [];
 
   const awayTeamGoalscorers: IListItem[] =
-    awayGoalscorers?.map(scorer => ({
-      label: scorer?.playerId?.name || '-',
-      value: scorer?.goals,
-    })) || [];
+    [...(awayGoalscorers || [])]
+      ?.sort((a, b) => b?.goals - a?.goals)
+      .map(scorer => ({
+        label: scorer?.playerId?.name || '-',
+        value: scorer?.goals,
+      })) || [];
 
   if (homeTeamGoalscorers.length === 0 && awayTeamGoalscorers.length === 0 && !isGoalless) {
     return <NoDataText>{t('NO_DATA.GOALSCORERS')}</NoDataText>;

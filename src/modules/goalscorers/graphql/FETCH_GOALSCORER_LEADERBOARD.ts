@@ -6,23 +6,32 @@ export const FETCH_GOALSCORER_LEADERBOARD = gql`
     $orgSeasonId: String!
     $competitionId: String!
     $teamId: String!
+    $page: Int!
+    $limit: Int!
   ) {
     data: GOALSCORER_LEADERBOARD(
       orgId: $orgId
       orgSeasonId: $orgSeasonId
       competitionId: $competitionId
       teamId: $teamId
+      page: $page
+      limit: $limit
     ) {
-      goals
-      player {
-        _id
-        name
+      entries {
+        goals
+        player {
+          _id
+          name
+        }
+        team {
+          _id
+          teamName
+          badgeUrl
+        }
       }
-      team {
-        _id
-        teamName
-        badgeUrl
-      }
+      total
+      page
+      totalPages
     }
   }
 `;

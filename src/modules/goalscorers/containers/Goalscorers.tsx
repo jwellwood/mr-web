@@ -13,10 +13,17 @@ interface Props {
 
 export default function Goalscorers({ competitionId }: Props) {
   const { orgId, orgSeasonId } = useCustomParams();
+  const pageSize = 20;
   const [filters, setFilters] = useState<TGoalscorersFilters>({
     competitionId: competitionId,
     teamId: 'all',
   });
+  const [page, setPage] = useState(1);
+
+  const handleFiltersChange: typeof setFilters = value => {
+    setFilters(value);
+    setPage(1);
+  };
 
   const { data, error, loading } = useQuery(FETCH_GOALSCORER_LEADERBOARD, {
     variables: {
@@ -24,13 +31,23 @@ export default function Goalscorers({ competitionId }: Props) {
       orgSeasonId: orgSeasonId || 'default',
       competitionId: filters.competitionId,
       teamId: filters.teamId,
+      page,
+      limit: pageSize,
     },
   });
 
   return (
-    <GoalscorersContext.Provider value={{ filters, setFilters }}>
+    <GoalscorersContext.Provider value={{ filters, setFilters: handleFiltersChange }}>
       <SectionContainer title={<GoalscorersFilters competitionId={competitionId} />}>
-        <GoalScorersTable data={data?.data} loading={loading} error={error} />
+        <GoalScorersTable
+          data={data?.data}
+          loading={loading}
+          error={error}
+          page={page}
+          pageSize={pageSize}
+          totalPages={data?.data.totalPages ?? 1}
+          onPageChange={setPage}
+        />
       </SectionContainer>
     </GoalscorersContext.Provider>
   );
