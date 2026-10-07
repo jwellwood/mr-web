@@ -3,6 +3,16 @@
 All notable changes to this project will be documented here.
 
 
+## [0.47.0](https://github.com/jwellwood/mr-web/compare/v0.46.0...v0.47.0) (2026-10-07)
+
+### Features
+
+* org trophies ([d1b7718](https://github.com/jwellwood/mr-web/commit/d1b77180f89f52440c3f63ca657248188e1731bd))
+
+### Bug Fixes
+
+* auth loader, select no options ([5349ffc](https://github.com/jwellwood/mr-web/commit/5349ffc05473a4d050291bfeef23fbe1af0885e7))
+
 ## [0.46.0](https://github.com/jwellwood/mr-web/compare/v0.45.1...v0.46.0) (2026-10-05)
 
 ### Features
