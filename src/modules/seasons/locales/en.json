@@ -15,7 +15,8 @@
     "ADD_RESULT": "Add Result",
     "ADD_GAMEWEEK": "Add Round",
     "EDIT_SEASON": "Edit Season",
-    "SEASON_ADMIN": "Season Admin"
+    "SEASON_ADMIN": "Season Admin",
+    "SEE_MORE": "Full Season View"
   },
   "FORM": {
     "SUMMARY": "Add the teams and competitions that will be part of this season. You can can then configure them in the Season Admin > Configuration tab.",

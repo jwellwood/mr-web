@@ -54,6 +54,7 @@ export default function EditTrophy() {
       seasonOptions={seasonOptions}
       loading={loading || editLoading || loadingSeasons}
       error={error}
+      hasOrgTrophy={!!data?.trophy?.orgTrophyId}
     />
   );
 }

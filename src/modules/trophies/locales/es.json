@@ -11,8 +11,9 @@
     "SEE_MORE": "Ver Más"
   },
   "FORM": {
-    "SUMMARY": "Si tu equipo ha ganado un trofeo o ha quedado como subcampeón, puedes agregarlo aquí. También puedes agregar un comentario sobre el trofeo.",
-    "ORG_SUMMARY": "Registra los equipos campeón y subcampeón de una competición y temporada de la organización. También puedes agregar un comentario.",
+    "SUMMARY": "Utiliza este formulario para agregar trofeos históricos que la organización no haya agregado previamente",
+    "ORG_SUMMARY": "Registra los equipos campeón y subcampeón de una competición",
+    "EDIT_ORG_TROPHY": "Este trofeo está gestionado por la organización, puedes agregar un comentario pero no se puede cambiar los detalles, ni borrarlo.",
     "HELPERS": {
       "IS_WINNER": "Marca esta casilla si tu equipo ganó el trofeo, déjala sin seleccionar si el equipo fue subcampeón.",
       "IS_FINAL": "Marca esta casilla si tu equipo llegó a la final de una competición de copa. Para una competición de liga, déjala sin seleccionar.",

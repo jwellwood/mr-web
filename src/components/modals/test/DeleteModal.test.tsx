@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../utils/test-helpers/TestWrapper';
@@ -57,6 +57,7 @@ describe('DeleteModal', () => {
     await user.click(screen.getByTestId('delete-modal-trigger'));
     await user.click(screen.getByRole('button', { name: /^delete$/i }));
     expect(onDelete).toHaveBeenCalledTimes(1);
+    await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
   });
 
   it('disables DELETE button when disabled prop is true', async () => {

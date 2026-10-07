@@ -10,6 +10,7 @@ type Props<T extends object> = {
   isPassword?: boolean;
   placeholder?: string;
   helperText?: string;
+  disabled?: boolean;
 };
 
 export default function ControlledTextInput<T extends object>({
@@ -21,6 +22,7 @@ export default function ControlledTextInput<T extends object>({
   isPassword = false,
   placeholder,
   helperText,
+  disabled = false,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name,
@@ -44,6 +46,7 @@ export default function ControlledTextInput<T extends object>({
       isDirty={isDirty}
       isValid={!invalid}
       helperText={helperText}
+      disabled={disabled}
     />
   );
 }

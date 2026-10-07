@@ -1,4 +1,5 @@
 import { FormControl, Select, MenuItem, SelectChangeEvent } from '@mui/material';
+import { blueGrey } from '@mui/material/colors';
 import { useTranslation } from 'react-i18next';
 import { CustomTypography, NoDataText } from '../..';
 import { theme } from '../../../theme';
@@ -61,10 +62,26 @@ export default function SelectInput({
           }}
           renderValue={selected => {
             const selectedOption = options.find(opt => String(opt.value) === String(selected));
-            return selectedOption?.label ?? '';
+            return selectedOption ? (
+              <span
+                style={{
+                  color: disabled ? blueGrey[700] : undefined,
+                  WebkitTextFillColor: disabled ? blueGrey[700] : undefined,
+                }}
+              >
+                {selectedOption.label}
+              </span>
+            ) : (
+              ''
+            );
           }}
           variant="filled"
-          inputProps={{ placeholder: label, id: inputName, 'aria-label': label }}
+          inputProps={{
+            placeholder: label,
+            id: inputName,
+            'aria-label': label,
+            disabled: disabled,
+          }}
           error={!!errors[0]}
           sx={{
             '& .MuiSelect-select': {

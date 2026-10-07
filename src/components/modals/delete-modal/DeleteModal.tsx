@@ -34,10 +34,19 @@ export default function DeleteModal({ title, loading, onDelete, disabled, error 
     setOpen(false);
   };
 
+  const handleDelete = () => {
+    onDelete();
+    handleClose();
+  };
+
   return (
     <>
       <CustomAccordion title={<AppIcon icon="delete" color="error" />} isExpanded={false}>
-        <div onClick={handleClickOpen} data-testid="delete-modal-trigger">
+        <div
+          onClick={handleClickOpen}
+          data-testid="delete-modal-trigger"
+          style={{ cursor: 'pointer', paddingLeft: '16px' }}
+        >
           <CustomTypography size="xs" color="error">
             {t('FORMS.DELETE.TITLE', { item: title })}
           </CustomTypography>
@@ -70,7 +79,12 @@ export default function DeleteModal({ title, loading, onDelete, disabled, error 
             <Button onClick={handleClose} color="warning">
               {t('BUTTONS.CANCEL')}
             </Button>
-            <Button type="submit" color="error" onClick={onDelete} disabled={disabled || loading}>
+            <Button
+              type="submit"
+              color="error"
+              onClick={handleDelete}
+              disabled={disabled || loading}
+            >
               {t('BUTTONS.DELETE')}
             </Button>
           </DialogActions>

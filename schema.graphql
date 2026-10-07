@@ -1059,6 +1059,7 @@ type Trophy {
 
 type TrophyResponse {
   _id: String!
+  orgTrophyId: String
   name: String!
   season: String
   isWinner: Boolean!

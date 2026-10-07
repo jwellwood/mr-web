@@ -1,4 +1,5 @@
 import { Box, Stack } from '@mui/material';
+import { blueGrey } from '@mui/material/colors';
 import Switch from '@mui/material/Switch';
 import React, { ReactElement } from 'react';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
@@ -49,6 +50,11 @@ export default function CustomSwitch({
             defaultChecked={defaultChecked}
             onChange={onCheck}
             disabled={disabled}
+            sx={{
+              '& .MuiSwitch-switchBase.Mui-disabled': {
+                color: blueGrey[700],
+              },
+            }}
           />
         </Stack>
         {errors?.[0] ? <FormErrorMessage error={errors[0]} /> : null}

@@ -31,6 +31,7 @@ export default function AddTrophyPage({
         seasonOptions={seasonOptions}
         loading={loading}
         error={error}
+        hasOrgTrophy={false}
       />
     ) : (
       <Spinner />

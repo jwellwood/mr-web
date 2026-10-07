@@ -11,8 +11,9 @@
     "SEE_MORE": "See More"
   },
   "FORM": {
-    "SUMMARY": "If your team has won a trophy or finished as a runner up, you can add it here. You can also add a comment about the trophy.",
-    "ORG_SUMMARY": "Record the winning and runner-up teams for an organization competition and season. You can also add a comment.",
+    "SUMMARY": "Use this form to add historical trophies that the organization has not already added",
+    "ORG_SUMMARY": "Record the winning and runner-up teams for a competition",
+    "EDIT_ORG_TROPHY": "This trophy is managed by the organization, you can add a comment but not change the details or delete it.",
     "HELPERS": {
       "IS_WINNER": "Check this box if your team won the trophy, leave it unselected if the team was the runner up.",
       "IS_FINAL": "Check this box if your team reached the final of a cup competition. For a league competition, leave it unselected.",

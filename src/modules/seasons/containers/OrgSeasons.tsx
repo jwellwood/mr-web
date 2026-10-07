@@ -21,10 +21,19 @@ interface Props {
 
 export default function OrgSeasons({ isAdminView }: Props) {
   const { t } = useTranslation('seasons');
-  const { t: tTeamSeasons } = useTranslation('teamseasons');
   const { orgId } = useCustomParams();
   const { data, error, loading } = useQuery(FETCH_ORG_SEASONS, { variables: { orgId: orgId! } });
   const [openedSeasonIds, setOpenedSeasonIds] = useState<Set<string>>(() => new Set());
+
+  const seasonBtn = (seasonId: string, isAdminView: boolean) => (
+    <CustomButton
+      variant="text"
+      color={isAdminView ? 'tertiary' : 'primary'}
+      link={`org_season/${seasonId}`}
+    >
+      {t('LINKS.SEE_MORE')}
+    </CustomButton>
+  );
 
   const renderData = data?.orgSeasons.length ? (
     <SectionContainer>
@@ -42,16 +51,17 @@ export default function OrgSeasons({ isAdminView }: Props) {
               <CustomTypography color="data" bold>
                 {season.name}
               </CustomTypography>
-              {season.isCurrent && (
-                <CustomTypography color="primary">{t('LABELS.CURRENT')}</CustomTypography>
+              {season.isCurrent && isAdminView && (
+                <>
+                  <CustomTypography color="primary">{t('LABELS.CURRENT')}</CustomTypography>
+                  {seasonBtn(season._id, true)}
+                </>
               )}
             </CustomStack>
           }
         >
           <>
-            <CustomButton variant="text" link={`org_season/${season._id}`}>
-              {tTeamSeasons('BUTTONS.SEE_MORE')}
-            </CustomButton>
+            {!season.isCurrent ? seasonBtn(season._id, false) : null}
             {openedSeasonIds.has(season._id) && (
               <OrgTrophies orgSeasonId={season._id} isAdminView={isAdminView} />
             )}

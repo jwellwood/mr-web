@@ -22,6 +22,7 @@ interface Props {
   seasonOptions: ISelectOptions[];
   loading: boolean;
   error?: TApolloError;
+  hasOrgTrophy: boolean;
 }
 
 export default function TrophyForm({
@@ -30,6 +31,7 @@ export default function TrophyForm({
   seasonOptions,
   loading,
   error,
+  hasOrgTrophy,
 }: Props) {
   const { t } = useTranslation('trophies');
   const {
@@ -52,49 +54,60 @@ export default function TrophyForm({
       submitBtn={{ disabled: !isValid || !isDirty }}
       loading={loading}
       error={error}
-      formSummary={t('FORM.SUMMARY')}
+      formSummary={hasOrgTrophy ? t('FORM.EDIT_ORG_TROPHY') : t('FORM.SUMMARY')}
     >
-      <ControlledTextInput
-        control={control}
-        name="name"
-        label={t('FORM.LABELS.NAME')}
-        required={requiredFields.name}
-      />
-      <ControlledSelectInput
-        control={control}
-        name="seasonId"
-        label={t('FORM.LABELS.SEASON')}
-        options={seasonOptions}
-        required={requiredFields.seasonId}
-      />
-      <ControlledDateInput
-        control={control}
-        name="year"
-        label={t('FORM.LABELS.YEAR')}
-        view="year"
-        required={requiredFields.year}
-      />
-      <ControlledSwitchInput
-        control={control}
-        label={t('FORM.LABELS.IS_WINNER')}
-        name="isWinner"
-        helperText={t('FORM.HELPERS.IS_WINNER')}
-      />
-      <ControlledSwitchInput
-        control={control}
-        label={t('FORM.LABELS.IS_FINAL')}
-        name="isFinal"
-        helperText={t('FORM.HELPERS.IS_FINAL')}
-      />
-      {isFinal && (
-        <ControlledTextInput
-          control={control}
-          name="opponent"
-          label={t('FORM.LABELS.OPPONENT')}
-          required={requiredFields.opponent}
-          helperText={t('FORM.HELPERS.OPPONENT')}
-        />
+      {!hasOrgTrophy && (
+        <>
+          <ControlledTextInput
+            control={control}
+            name="name"
+            disabled={hasOrgTrophy}
+            label={t('FORM.LABELS.NAME')}
+            required={requiredFields.name}
+          />
+          <ControlledSelectInput
+            control={control}
+            name="seasonId"
+            disabled={hasOrgTrophy}
+            label={t('FORM.LABELS.SEASON')}
+            options={seasonOptions}
+            required={requiredFields.seasonId}
+          />
+          <ControlledDateInput
+            control={control}
+            name="year"
+            label={t('FORM.LABELS.YEAR')}
+            view="year"
+            required={requiredFields.year}
+            disabled={hasOrgTrophy}
+          />
+          <ControlledSwitchInput
+            control={control}
+            label={t('FORM.LABELS.IS_WINNER')}
+            name="isWinner"
+            helperText={t('FORM.HELPERS.IS_WINNER')}
+            disabled={hasOrgTrophy}
+          />
+          <ControlledSwitchInput
+            control={control}
+            label={t('FORM.LABELS.IS_FINAL')}
+            name="isFinal"
+            helperText={t('FORM.HELPERS.IS_FINAL')}
+            disabled={hasOrgTrophy}
+          />
+          {isFinal && (
+            <ControlledTextInput
+              control={control}
+              name="opponent"
+              label={t('FORM.LABELS.OPPONENT')}
+              required={requiredFields.opponent}
+              disabled={hasOrgTrophy}
+              helperText={t('FORM.HELPERS.OPPONENT')}
+            />
+          )}
+        </>
       )}
+
       <ControlledTextInput
         control={control}
         name="comment"

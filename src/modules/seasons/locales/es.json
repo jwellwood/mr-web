@@ -15,7 +15,8 @@
     "ADD_RESULT": "Agregar Resultado",
     "ADD_GAMEWEEK": "Agregar Jornada",
     "EDIT_SEASON": "Editar Temporada",
-    "SEASON_ADMIN": "Admin"
+    "SEASON_ADMIN": "Admin",
+    "SEE_MORE": "Ver Temporada Completa"
   },
   "FORM": {
     "SUMMARY": "Agrega los equipos y competiciones que formarán parte de esta temporada. Luego puedes configurarlos en Admin > Pestaña de Configuración.",

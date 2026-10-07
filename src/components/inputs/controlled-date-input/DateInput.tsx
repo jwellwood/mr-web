@@ -22,6 +22,7 @@ interface Props {
   isValid?: boolean;
   helperText?: string;
   required?: boolean;
+  disabled?: boolean;
 }
 
 export default function DateInput({
@@ -36,6 +37,7 @@ export default function DateInput({
   disableFuture,
   helperText,
   required = false,
+  disabled = false,
 }: Props) {
   let views = ['year', 'month', 'day'] as DateView[];
   if (view === 'year') {
@@ -52,11 +54,13 @@ export default function DateInput({
           openTo={openTo || views[views.length - 1]}
           disableFuture={disableFuture}
           views={views}
+          disabled={disabled}
           slotProps={{
             textField: {
               id: inputName,
               variant: 'filled',
               required: required,
+              disabled: disabled,
               fullWidth: true,
               sx: {
                 '& .MuiPickersInputBase-sectionsContainer': {

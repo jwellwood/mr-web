@@ -11,6 +11,7 @@ type Props<T extends object> = {
   disableFuture?: boolean;
   helperText?: string;
   required?: boolean;
+  disabled?: boolean;
 };
 
 export default function ControlledDateInput<T extends object>({
@@ -22,6 +23,7 @@ export default function ControlledDateInput<T extends object>({
   disableFuture = true,
   helperText,
   required = false,
+  disabled = false,
 }: Props<T>) {
   const { field, fieldState } = useController({
     name,
@@ -45,6 +47,7 @@ export default function ControlledDateInput<T extends object>({
       disableFuture={disableFuture}
       helperText={helperText}
       required={required}
+      disabled={disabled}
     />
   );
 }

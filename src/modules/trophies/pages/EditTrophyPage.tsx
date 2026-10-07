@@ -13,6 +13,7 @@ interface Props {
   seasonOptions: ISelectOptions[];
   loading: boolean;
   error?: TApolloError;
+  hasOrgTrophy: boolean;
 }
 
 export default function EditTrophyPage({
@@ -21,6 +22,7 @@ export default function EditTrophyPage({
   seasonOptions,
   loading,
   error,
+  hasOrgTrophy,
 }: Props) {
   const { t } = useTranslation('trophies');
 
@@ -33,8 +35,9 @@ export default function EditTrophyPage({
           onSubmit={onSubmit}
           loading={loading}
           error={error}
+          hasOrgTrophy={hasOrgTrophy}
         />
-        <DeleteTrophy />
+        {!hasOrgTrophy && <DeleteTrophy />}
       </>
     ) : (
       <Spinner />

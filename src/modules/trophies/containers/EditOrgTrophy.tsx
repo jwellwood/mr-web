@@ -9,6 +9,7 @@ import { EDIT_ORG_TROPHY, FETCH_ORG_TROPHIES } from '../graphql';
 import type { T_FETCH_ORG_TROPHIES } from '../graphql';
 import { useOrgTrophyOptions } from '../hooks/useOrgTrophyOptions';
 import type { OrgTrophyFormData } from '../schema/org-trophy';
+import DeleteOrgTrophy from './DeleteOrgTrophy';
 
 interface Props {
   orgSeasonId: string;
@@ -64,6 +65,7 @@ export default function EditOrgTrophy({ orgSeasonId, trophy, onClose }: Props) {
         loading={loading || saving}
         error={error}
       />
+      <DeleteOrgTrophy orgSeasonId={orgSeasonId} orgTrophyId={trophy._id} onDeleted={onClose} />
     </FormModal>
   );
 }

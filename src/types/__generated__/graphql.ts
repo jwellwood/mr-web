@@ -1822,6 +1822,7 @@ export type TrophyResponse = {
   isWinner: Scalars['Boolean']['output'];
   name: Scalars['String']['output'];
   opponent?: Maybe<Scalars['String']['output']>;
+  orgTrophyId?: Maybe<Scalars['String']['output']>;
   season?: Maybe<Scalars['String']['output']>;
   year?: Maybe<Scalars['String']['output']>;
 };
