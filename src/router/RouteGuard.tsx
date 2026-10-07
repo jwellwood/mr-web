@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { AuthLoader } from '../components/loaders';
 import { AUTH_ROLES, TAuthRoles } from '../constants';
 import { useAuth, useCustomParams } from '../hooks';
+import { useLogout } from '../hooks/useLogout';
 import { AUTH_PATHS } from '../modules/auth/router';
 import { PROFILE_PATHS } from '../modules/profile/router';
 import { showAlert } from '../store';
@@ -18,6 +19,7 @@ export default function RouteGuard({ children, authorization }: Props) {
   const dispatch = useDispatch();
   const { teamId, orgId } = useCustomParams();
   const { hasRetryableError, retry } = useContext(AuthBootstrapContext);
+  const { onLogout } = useLogout();
   const { isTeamAdmin, isSiteAdmin, isTeamAuth, isOrgAuth, isAuth, authInitialized } = useAuth(
     teamId,
     orgId
@@ -27,7 +29,12 @@ export default function RouteGuard({ children, authorization }: Props) {
 
   // Public routes do not need to wait for auth hydration.
   if (!authInitialized && authorization !== AUTH_ROLES.PUBLIC) {
-    return <AuthLoader onRetry={hasRetryableError ? retry : undefined} />;
+    return (
+      <AuthLoader
+        onRetry={hasRetryableError ? retry : undefined}
+        onSignOut={hasRetryableError ? onLogout : undefined}
+      />
+    );
   }
 
   if (authorization === AUTH_ROLES.USER && !isAuth) {

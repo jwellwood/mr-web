@@ -26,6 +26,9 @@
         "BUTTON": "Eliminar imagen"
       },
       "DEFAULT": "Predeterminado"
+    },
+    "SELECT": {
+      "NO_OPTIONS": "No hay opciones disponibles"
     }
   },
   "BUTTONS": {

@@ -159,7 +159,7 @@ export default function UpdateCompConfigForm({
                       control={control}
                       name={`teams.${index}.startingPoints`}
                       label={t('CONFIG.STARTING_POINTS')}
-                      options={getNumberOptions(20, 0)}
+                      options={getNumberOptions(99, 0)}
                     />
                   </CustomGridItem>
                 ) : null}

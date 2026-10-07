@@ -2,13 +2,17 @@
   "PAGES": {
     "TROPHY": "Trofeo",
     "ADD_TROPHY": "Agregar Trofeo",
-    "EDIT_TROPHY": "Editar Trofeo"
+    "ADD_ORG_TROPHY": "Agregar trofeo de la organización",
+    "EDIT_TROPHY": "Editar Trofeo",
+    "EDIT_ORG_TROPHY": "Editar trofeo de la organización"
   },
   "LINKS": {
-    "EDIT_TROPHY": "Editar Trofeo"
+    "EDIT_TROPHY": "Editar Trofeo",
+    "SEE_MORE": "Ver Más"
   },
   "FORM": {
     "SUMMARY": "Si tu equipo ha ganado un trofeo o ha quedado como subcampeón, puedes agregarlo aquí. También puedes agregar un comentario sobre el trofeo.",
+    "ORG_SUMMARY": "Registra los equipos campeón y subcampeón de una competición y temporada de la organización. También puedes agregar un comentario.",
     "HELPERS": {
       "IS_WINNER": "Marca esta casilla si tu equipo ganó el trofeo, déjala sin seleccionar si el equipo fue subcampeón.",
       "IS_FINAL": "Marca esta casilla si tu equipo llegó a la final de una competición de copa. Para una competición de liga, déjala sin seleccionar.",
@@ -17,6 +21,9 @@
     "LABELS": {
       "NAME": "Nombre",
       "SEASON": "Temporada",
+      "COMPETITION": "Competición",
+      "WINNING_TEAM": "Equipo ganador",
+      "RUNNER_UP_TEAM": "Equipo subcampeón",
       "YEAR": "Año",
       "IS_WINNER": "¿Es Ganador?",
       "IS_FINAL": "¿Es una final?",
@@ -33,6 +40,14 @@
       "SUCCESS": "Trofeo actualizado con éxito.",
       "ERROR": "Hubo un error al actualizar el trofeo. Por favor, inténtelo de nuevo."
     },
+    "ADD_ORG_TROPHY": {
+      "SUCCESS": "Trofeo de la organización agregado con éxito.",
+      "ERROR": "Hubo un error al agregar el trofeo de la organización. Por favor, inténtelo de nuevo."
+    },
+    "EDIT_ORG_TROPHY": {
+      "SUCCESS": "Trofeo de la organización actualizado con éxito.",
+      "ERROR": "Hubo un error al actualizar el trofeo de la organización. Por favor, inténtelo de nuevo."
+    },
     "DELETE_TROPHY": {
       "SUCCESS": "Trofeo eliminado con éxito.",
       "ERROR": "Hubo un problema."
@@ -40,10 +55,16 @@
   },
   "VALIDATION": {
     "NAME_REQUIRED": "El nombre es obligatorio",
-    "SEASON_REQUIRED": "La temporada es obligatoria"
+    "SEASON_REQUIRED": "La temporada es obligatoria",
+    "COMPETITION_REQUIRED": "La competición es obligatoria",
+    "WINNING_TEAM_REQUIRED": "El equipo ganador es obligatorio",
+    "RUNNER_UP_TEAM_REQUIRED": "El equipo subcampeón es obligatorio"
   },
   "NO_DATA": {
     "TROPHIES": "Aún no hay trofeos"
+  },
+  "HEADERS": {
+    "TROPHIES": "Trofeos"
   },
   "ORDER": {
     "LABEL": "Ordenar por",

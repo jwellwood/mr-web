@@ -1,0 +1,18 @@
+import * as Types from '../../../types/__generated__/graphql';
+
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+export type Edit_Org_TrophyMutationVariables = Types.Exact<{
+  orgId: Types.Scalars['String']['input'];
+  orgTrophyId: Types.Scalars['String']['input'];
+  orgSeasonId: Types.Scalars['String']['input'];
+  competitionId: Types.Scalars['String']['input'];
+  winningTeamId: Types.Scalars['String']['input'];
+  runnerUpTeamId: Types.Scalars['String']['input'];
+  comment?: Types.InputMaybe<Types.Scalars['String']['input']>;
+}>;
+
+
+export type Edit_Org_TrophyMutation = { trophy: { __typename: 'OrgTrophy', _id: string } };
+
+
+export const Edit_Org_TrophyDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"EDIT_ORG_TROPHY"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orgId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orgTrophyId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"orgSeasonId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"competitionId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"winningTeamId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"runnerUpTeamId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"comment"}},"type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","alias":{"kind":"Name","value":"trophy"},"name":{"kind":"Name","value":"EDIT_ORG_TROPHY"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"orgId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orgId"}}},{"kind":"Argument","name":{"kind":"Name","value":"orgTrophyId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orgTrophyId"}}},{"kind":"Argument","name":{"kind":"Name","value":"data"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"orgSeasonId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"orgSeasonId"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"competitionId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"competitionId"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"winningTeamId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"winningTeamId"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"runnerUpTeamId"},"value":{"kind":"Variable","name":{"kind":"Name","value":"runnerUpTeamId"}}},{"kind":"ObjectField","name":{"kind":"Name","value":"comment"},"value":{"kind":"Variable","name":{"kind":"Name","value":"comment"}}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"_id"}}]}}]}}]} as unknown as DocumentNode<Edit_Org_TrophyMutation, Edit_Org_TrophyMutationVariables>;

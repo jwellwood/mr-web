@@ -10,7 +10,11 @@ import {
   ControlledDateInput,
 } from '../../../components';
 import { TApolloError } from '../../../types/apollo';
-import { requiredFields, TrophySchema, type TrophyFormData } from './schema';
+import {
+  teamTrophyRequiredFields as requiredFields,
+  TrophySchema,
+  type TrophyFormData,
+} from '../schema/team-trophy';
 
 interface Props {
   onSubmit: (data: TrophyFormData) => void;

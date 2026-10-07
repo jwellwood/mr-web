@@ -3,8 +3,8 @@ import { PageHeader } from '../../../components';
 import type { ISelectOptions } from '../../../components';
 import { Spinner } from '../../../components/loaders';
 import { TApolloError } from '../../../types/apollo';
-import type { TrophyFormData } from '../forms/schema';
 import TrophyForm from '../forms/TrophyForm';
+import { TrophyFormData } from '../schema';
 
 interface Props {
   onSubmit: (data: TrophyFormData) => void;

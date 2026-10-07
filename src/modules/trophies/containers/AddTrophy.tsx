@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useCustomParams, useSeasons } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { initialTrophyFormState, type TrophyFormData } from '../forms/schema';
 import { ADD_TROPHY, FETCH_TROPHIES } from '../graphql';
 import AddTrophyPage from '../pages/AddTrophyPage';
+import { initialTrophyFormState, type TrophyFormData } from '../schema/team-trophy';
 
 export default function AddTrophy() {
   const { t } = useTranslation('trophies');

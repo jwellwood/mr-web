@@ -1,5 +1,6 @@
 import { FormControl, Select, MenuItem, SelectChangeEvent } from '@mui/material';
-import { CustomTypography } from '../..';
+import { useTranslation } from 'react-i18next';
+import { CustomTypography, NoDataText } from '../..';
 import { theme } from '../../../theme';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import FormLabel from '../form-label/FormLabel';
@@ -34,6 +35,7 @@ export default function SelectInput({
   errors,
   helperText,
 }: Props) {
+  const { t } = useTranslation('components');
   const effective = value !== undefined ? value : defaultValue;
   const defaultValueString = effective !== undefined ? String(effective) : '';
 
@@ -73,6 +75,11 @@ export default function SelectInput({
             },
           }}
         >
+          {options.length === 0 && (
+            <MenuItem disabled value="" sx={{ '&.Mui-disabled': { opacity: 1 } }}>
+              <NoDataText>{t('FORMS.SELECT.NO_OPTIONS')}</NoDataText>
+            </MenuItem>
+          )}
           {options.map(opt => (
             <MenuItem
               key={`${inputName}-${String(opt.value)}`}

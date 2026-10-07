@@ -3,8 +3,9 @@ import FormControl from '@mui/material/FormControl';
 import ListItemText from '@mui/material/ListItemText';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { useTranslation } from 'react-i18next';
 import { theme } from '../../../theme';
-import { CustomTypography } from '../../typography';
+import { CustomTypography, NoDataText } from '../../typography';
 import FormErrorMessage from '../form-error-message/FormErrorMessage';
 import FormLabel from '../form-label/FormLabel';
 import { TypedFormError, ISelectOptions } from '../types';
@@ -34,6 +35,7 @@ export default function MultipleSelectInput({
   helperText,
   required = false,
 }: Props) {
+  const { t } = useTranslation('components');
   const arrayValue = value || [];
 
   const handleChange = (event: SelectChangeEvent<string[]>) => {
@@ -82,6 +84,11 @@ export default function MultipleSelectInput({
             },
           }}
         >
+          {options.length === 0 && (
+            <MenuItem disabled value="" sx={{ '&.Mui-disabled': { opacity: 1 } }}>
+              <NoDataText>{t('FORMS.SELECT.NO_OPTIONS')}</NoDataText>
+            </MenuItem>
+          )}
           {options?.map((option, i) => (
             <MenuItem key={(option.label, i)} value={option.value as string}>
               <Checkbox checked={arrayValue.includes(option.value as string)} />

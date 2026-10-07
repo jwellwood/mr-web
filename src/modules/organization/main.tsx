@@ -29,7 +29,7 @@ export default function Team() {
     },
     {
       label: t('TABS.HISTORY'),
-      component: <OrgSeasons />,
+      component: <OrgSeasons isAdminView={false} />,
     },
   ];
 

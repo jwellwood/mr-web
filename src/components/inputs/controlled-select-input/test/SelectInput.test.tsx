@@ -30,6 +30,20 @@ describe('SelectInput', () => {
     expect(screen.getByLabelText('Test Label')).toBeInTheDocument();
   });
 
+  it('keeps the select and shows a no options message as its only item when empty', async () => {
+    const user = userEvent.setup();
+    render(
+      <TestWrapper>
+        <SelectInput {...defaultProps} options={[]} />
+      </TestWrapper>
+    );
+
+    await user.click(screen.getByRole('combobox'));
+
+    expect(screen.getByText('No options available')).toBeInTheDocument();
+    expect(screen.getAllByRole('option')).toHaveLength(1);
+  });
+
   it('displays value when provided', () => {
     render(
       <TestWrapper>

@@ -33,6 +33,14 @@ input AddOrgSeasonInput {
   competitionIds: [String!]
 }
 
+input AddOrgTrophyInput {
+  orgSeasonId: String!
+  competitionId: String!
+  winningTeamId: String!
+  runnerUpTeamId: String!
+  comment: String
+}
+
 input AddPlayerInput {
   name: String!
   position: String!
@@ -193,6 +201,14 @@ input EditGoalscorersInput {
   goalscorers: [GoalscorerInput!]!
 }
 
+input EditOrgTrophyInput {
+  orgSeasonId: String!
+  competitionId: String!
+  winningTeamId: String!
+  runnerUpTeamId: String!
+  comment: String
+}
+
 input EditPasswordInput {
   password: String!
   newPassword: String!
@@ -212,11 +228,11 @@ input EditPlayerInput {
 }
 
 input EditTrophyInput {
-  name: String!
-  seasonId: String!
-  year: String!
-  isWinner: Boolean!
-  isFinal: Boolean!
+  name: String
+  seasonId: String
+  year: String
+  isWinner: Boolean
+  isFinal: Boolean
   comment: String
   opponent: String
 }
@@ -380,6 +396,9 @@ type Mutation {
   ADD_TROPHY(data: AddTrophyInput!, teamId: String!): Trophy!
   EDIT_TROPHY(data: EditTrophyInput!, trophyId: String!, teamId: String!): Trophy!
   DELETE_TROPHY(trophyId: String!, teamId: String!): Trophy!
+  ADD_ORG_TROPHY(data: AddOrgTrophyInput!, orgId: String!): OrgTrophy!
+  EDIT_ORG_TROPHY(data: EditOrgTrophyInput!, orgTrophyId: String!, orgId: String!): OrgTrophy!
+  DELETE_ORG_TROPHY(orgTrophyId: String!, orgId: String!): OrgTrophy!
   ADD_AWARD(data: AddAwardInput!, seasonId: String!, teamId: String!): Award!
   EDIT_AWARD(data: AddAwardInput!, awardId: String!, teamId: String!): Award!
   DELETE_AWARD(awardId: String!, teamId: String!): Award!
@@ -430,6 +449,30 @@ type OrgSeason {
   isCurrent: Boolean!
   teamIds: [Team!]!
   competitionConfigs: [CompetitionConfig!]
+}
+
+"""The Org Trophy model"""
+type OrgTrophy {
+  _id: ID!
+  orgId: ID!
+  orgSeasonId: OrgSeason!
+  competitionId: Competition!
+  winningTeamId: Team!
+  runnerUpTeamId: Team!
+  year: String!
+  comment: String
+}
+
+type OrgTrophyResponse {
+  _id: String!
+  competitionId: String!
+  competitionName: String!
+  winningTeamId: String!
+  winningTeamName: String!
+  runnerUpTeamId: String!
+  runnerUpTeamName: String!
+  year: String!
+  comment: String
 }
 
 type PastPlayer {
@@ -650,6 +693,7 @@ type Query {
   FETCH_TROPHIES(teamId: String!): [TrophyResponse!]!
   PLAYER_TROPHIES(playerId: String!): [Trophy!]!
   FETCH_TROPHY(trophyId: String!): TrophyResponse!
+  ORG_TROPHIES_BY_SEASON(orgSeasonId: String!): [OrgTrophyResponse!]!
   AWARDS(seasonId: String!): [Award!]!
   AWARDS_BY_PLAYER(playerId: String!): [AwardByPlayer!]!
   AWARD(awardId: String!): Award!
@@ -1001,11 +1045,13 @@ type TRecordMatch {
 """The Trophy model"""
 type Trophy {
   _id: ID!
+  orgTrophyId: ID
   teamId: Team!
   seasonId: TeamSeason!
   name: String!
   year: String!
   isWinner: Boolean!
+  isRunnerUp: Boolean!
   isFinal: Boolean!
   comment: String
   opponent: String

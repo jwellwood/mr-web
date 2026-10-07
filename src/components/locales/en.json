@@ -26,6 +26,9 @@
         "BUTTON": "Remove image"
       },
       "DEFAULT": "Default"
+    },
+    "SELECT": {
+      "NO_OPTIONS": "No options available"
     }
   },
   "BUTTONS": {

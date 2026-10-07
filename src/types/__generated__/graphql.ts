@@ -43,6 +43,14 @@ export type AddOrgSeasonInput = {
   yearStarted: Scalars['String']['input'];
 };
 
+export type AddOrgTrophyInput = {
+  comment?: InputMaybe<Scalars['String']['input']>;
+  competitionId: Scalars['String']['input'];
+  orgSeasonId: Scalars['String']['input'];
+  runnerUpTeamId: Scalars['String']['input'];
+  winningTeamId: Scalars['String']['input'];
+};
+
 export type AddOrganizationInput = {
   city?: InputMaybe<Scalars['String']['input']>;
   country?: InputMaybe<Scalars['String']['input']>;
@@ -210,6 +218,14 @@ export type EditGoalscorersInput = {
   side: ResultSide;
 };
 
+export type EditOrgTrophyInput = {
+  comment?: InputMaybe<Scalars['String']['input']>;
+  competitionId: Scalars['String']['input'];
+  orgSeasonId: Scalars['String']['input'];
+  runnerUpTeamId: Scalars['String']['input'];
+  winningTeamId: Scalars['String']['input'];
+};
+
 export type EditPasswordInput = {
   newPassword: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -230,12 +246,12 @@ export type EditPlayerInput = {
 
 export type EditTrophyInput = {
   comment?: InputMaybe<Scalars['String']['input']>;
-  isFinal: Scalars['Boolean']['input'];
-  isWinner: Scalars['Boolean']['input'];
-  name: Scalars['String']['input'];
+  isFinal?: InputMaybe<Scalars['Boolean']['input']>;
+  isWinner?: InputMaybe<Scalars['Boolean']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
   opponent?: InputMaybe<Scalars['String']['input']>;
-  seasonId: Scalars['String']['input'];
-  year: Scalars['String']['input'];
+  seasonId?: InputMaybe<Scalars['String']['input']>;
+  year?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type EditUserInput = {
@@ -362,6 +378,7 @@ export type Mutation = {
   ADD_MATCH: Match;
   ADD_ORGANIZATION: OrgAuthPayload;
   ADD_ORG_SEASON: OrgSeason;
+  ADD_ORG_TROPHY: OrgTrophy;
   ADD_PLAYER: Player;
   ADD_RESULT: Result;
   ADD_SEASON: TeamSeason;
@@ -374,6 +391,7 @@ export type Mutation = {
   DELETE_MATCH: Match;
   DELETE_ORGANIZATION: Organization;
   DELETE_ORG_SEASON: OrgSeason;
+  DELETE_ORG_TROPHY: OrgTrophy;
   DELETE_PLAYER: Player;
   DELETE_RESULT: Result;
   DELETE_SEASON: TeamSeason;
@@ -387,6 +405,7 @@ export type Mutation = {
   EDIT_ORGANIZATION: Organization;
   EDIT_ORG_BADGE: Organization;
   EDIT_ORG_SEASON: OrgSeason;
+  EDIT_ORG_TROPHY: OrgTrophy;
   EDIT_PASSWORD: User;
   EDIT_PLAYER: Player;
   EDIT_PLAYER_PHOTO: Player;
@@ -445,6 +464,12 @@ export type MutationAdd_OrganizationArgs = {
 
 export type MutationAdd_Org_SeasonArgs = {
   data: AddOrgSeasonInput;
+  orgId: Scalars['String']['input'];
+};
+
+
+export type MutationAdd_Org_TrophyArgs = {
+  data: AddOrgTrophyInput;
   orgId: Scalars['String']['input'];
 };
 
@@ -520,6 +545,12 @@ export type MutationDelete_Org_SeasonArgs = {
 };
 
 
+export type MutationDelete_Org_TrophyArgs = {
+  orgId: Scalars['String']['input'];
+  orgTrophyId: Scalars['String']['input'];
+};
+
+
 export type MutationDelete_PlayerArgs = {
   playerId: Scalars['String']['input'];
   teamId: Scalars['String']['input'];
@@ -592,6 +623,13 @@ export type MutationEdit_Org_SeasonArgs = {
   data: AddOrgSeasonInput;
   orgId: Scalars['String']['input'];
   seasonId: Scalars['String']['input'];
+};
+
+
+export type MutationEdit_Org_TrophyArgs = {
+  data: EditOrgTrophyInput;
+  orgId: Scalars['String']['input'];
+  orgTrophyId: Scalars['String']['input'];
 };
 
 
@@ -760,6 +798,32 @@ export type OrgSeason = {
   teamIds: Array<Team>;
   yearEnded: Scalars['String']['output'];
   yearStarted: Scalars['String']['output'];
+};
+
+/** The Org Trophy model */
+export type OrgTrophy = {
+  __typename?: 'OrgTrophy';
+  _id: Scalars['ID']['output'];
+  comment?: Maybe<Scalars['String']['output']>;
+  competitionId: Competition;
+  orgId: Scalars['ID']['output'];
+  orgSeasonId: OrgSeason;
+  runnerUpTeamId: Team;
+  winningTeamId: Team;
+  year: Scalars['String']['output'];
+};
+
+export type OrgTrophyResponse = {
+  __typename?: 'OrgTrophyResponse';
+  _id: Scalars['String']['output'];
+  comment?: Maybe<Scalars['String']['output']>;
+  competitionId: Scalars['String']['output'];
+  competitionName: Scalars['String']['output'];
+  runnerUpTeamId: Scalars['String']['output'];
+  runnerUpTeamName: Scalars['String']['output'];
+  winningTeamId: Scalars['String']['output'];
+  winningTeamName: Scalars['String']['output'];
+  year: Scalars['String']['output'];
 };
 
 /** The Organization model */
@@ -986,6 +1050,7 @@ export type Query = {
   ORGANIZATION: Organization;
   ORG_SEASON: OrgSeason;
   ORG_SEASONS: Array<OrgSeason>;
+  ORG_TROPHIES_BY_SEASON: Array<OrgTrophyResponse>;
   PAST_PLAYERS: PastPlayersPage;
   PLAYERS_BY_TEAM: Array<PlayerBasic>;
   PLAYER_BY_ID: Player;
@@ -1173,6 +1238,11 @@ export type QueryOrg_SeasonArgs = {
 
 export type QueryOrg_SeasonsArgs = {
   orgId: Scalars['String']['input'];
+};
+
+
+export type QueryOrg_Trophies_By_SeasonArgs = {
+  orgSeasonId: Scalars['String']['input'];
 };
 
 
@@ -1734,9 +1804,11 @@ export type Trophy = {
   _id: Scalars['ID']['output'];
   comment?: Maybe<Scalars['String']['output']>;
   isFinal: Scalars['Boolean']['output'];
+  isRunnerUp: Scalars['Boolean']['output'];
   isWinner: Scalars['Boolean']['output'];
   name: Scalars['String']['output'];
   opponent?: Maybe<Scalars['String']['output']>;
+  orgTrophyId?: Maybe<Scalars['ID']['output']>;
   seasonId: TeamSeason;
   teamId: Team;
   year: Scalars['String']['output'];

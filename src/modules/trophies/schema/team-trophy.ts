@@ -1,7 +1,6 @@
 import { z } from 'zod';
 import i18n from '../../../i18n/react-i18n';
-import { getRequiredFields } from '../../../utils';
-import { zodDate } from '../../../utils/dev/zodDate';
+import { getRequiredFields, zodDate } from '../../../utils';
 
 export const TrophySchema = z.object({
   name: z.string().min(1, i18n.t('trophies:VALIDATION.NAME_REQUIRED')),
@@ -13,7 +12,7 @@ export const TrophySchema = z.object({
   comment: z.string().optional(),
 });
 
-export const requiredFields = getRequiredFields(TrophySchema);
+export const teamTrophyRequiredFields = getRequiredFields(TrophySchema);
 
 export type TrophyFormData = z.infer<typeof TrophySchema>;
 

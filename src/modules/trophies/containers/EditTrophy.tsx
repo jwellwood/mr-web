@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useCustomParams, useSeasons } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import type { TrophyFormData } from '../forms/schema';
 import { FETCH_TROPHY, EDIT_TROPHY, FETCH_TROPHIES } from '../graphql';
 import { mapTrophyToForm, mapFormToEditTrophyVariables } from '../helpers/mapTrophyForm';
 import EditTrophyPage from '../pages/EditTrophyPage';
+import type { TrophyFormData } from '../schema/';
 
 export default function EditTrophy() {
   const { t } = useTranslation('trophies');
