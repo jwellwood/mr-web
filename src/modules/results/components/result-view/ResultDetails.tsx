@@ -7,9 +7,11 @@ import { TextList } from '../../../../components/lists';
 import { parseDate } from '../../../../utils';
 import { RESULT_STATUS } from '../../constants';
 import { T_FETCH_RESULT } from '../../graphql';
+import { useResultAdmin } from '../../hooks/useResultAdmin';
+import ResultAdmin from './ResultAdmin';
 
 const ResultGoalscorers = lazy(() => import('../../../goalscorers/components/ResultGoalscorers'));
-const ResultAdmin = lazy(() => import('./ResultAdmin'));
+const ResultStatusView = lazy(() => import('./ResultStatusView'));
 interface Props {
   result: T_FETCH_RESULT['result'];
 }
@@ -33,6 +35,7 @@ export default function ResultDetails({ result }: Props) {
   } = result;
 
   const isPending = resultStatus === RESULT_STATUS.PENDING;
+  const { isAdminToEither } = useResultAdmin(homeTeam?._id, awayTeam?._id);
 
   const goalsAvatar = (goals: number | null | undefined) => (
     <CustomAvatar bgColor="white" size="40px" variant="square">
@@ -96,7 +99,8 @@ export default function ResultDetails({ result }: Props) {
         <TextList data={scoreData(isBye || false)} />
         <ResultGoalscorers result={result} />
       </SectionContainer>
-      {!isBye ? <ResultAdmin result={result} /> : null}
+      {!isBye ? <ResultStatusView result={result} /> : null}
+      {isAdminToEither && <ResultAdmin result={result} />}
     </>
   );
 }

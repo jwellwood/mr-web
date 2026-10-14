@@ -741,10 +741,33 @@ type Result {
   isForfeit: Boolean
   isBye: Boolean
   resultStatus: ResultStatus
-  submittedByTeam: Team
-  confirmedByTeam: Team
+  submittedByTeam: ResultActionTeam
+  submittedAt: DateTimeISO
+  confirmedByTeam: ResultActionTeam
+  confirmedAt: DateTimeISO
+  disputedByTeam: ResultActionTeam
+  disputedAt: DateTimeISO
+  createdBy: ResultAdminUser
+  createdAt: DateTimeISO
+  updatedBy: ResultAdminUser
+  updatedAt: DateTimeISO
   decision: ResultDecision
   winnerSide: ResultSide
+}
+
+"""Team and admin details for result submission or confirmation"""
+type ResultActionTeam {
+  _id: String
+  teamName: String
+  admin: ResultAdminUser
+  timestamp: DateTimeISO
+}
+
+"""Admin user details for a result"""
+type ResultAdminUser {
+  _id: ID
+  username: String
+  email: String
 }
 
 """

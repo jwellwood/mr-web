@@ -6,6 +6,9 @@
     "ADD_ROUND": "Add Round Results",
     "EDIT_ROUND": "Edit Round Results"
   },
+  "HEADERS": {
+    "STATUS": "Status"
+  },
   "SECTIONS": {
     "MATCH_NUMBER": "Match"
   },
@@ -149,6 +152,8 @@
   },
   "ADMIN": {
     "TITLE": "Admin",
+    "CREATED_BY": "Created",
+    "LAST_UPDATED": "Last Updated",
     "SUBMITTED_BY": "Submitted By",
     "CONFIRMED_BY": "Confirmed By",
     "DISPUTED_BY": "Disputed By",

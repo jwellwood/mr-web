@@ -1445,9 +1445,14 @@ export type Result = {
   awayGoalscorers?: Maybe<Array<Goalscorer>>;
   awayTeam?: Maybe<Team>;
   competitionId: Competition;
-  confirmedByTeam?: Maybe<Team>;
+  confirmedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  confirmedByTeam?: Maybe<ResultActionTeam>;
+  createdAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  createdBy?: Maybe<ResultAdminUser>;
   date?: Maybe<Scalars['String']['output']>;
   decision?: Maybe<ResultDecision>;
+  disputedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  disputedByTeam?: Maybe<ResultActionTeam>;
   gameWeek?: Maybe<Scalars['Float']['output']>;
   homeGoals?: Maybe<Scalars['Float']['output']>;
   homeGoalscorers?: Maybe<Array<Goalscorer>>;
@@ -1457,8 +1462,28 @@ export type Result = {
   kickoffTime?: Maybe<Scalars['String']['output']>;
   orgSeasonId: OrgSeason;
   resultStatus?: Maybe<ResultStatus>;
-  submittedByTeam?: Maybe<Team>;
+  submittedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  submittedByTeam?: Maybe<ResultActionTeam>;
+  updatedAt?: Maybe<Scalars['DateTimeISO']['output']>;
+  updatedBy?: Maybe<ResultAdminUser>;
   winnerSide?: Maybe<ResultSide>;
+};
+
+/** Team and admin details for result submission or confirmation */
+export type ResultActionTeam = {
+  __typename?: 'ResultActionTeam';
+  _id?: Maybe<Scalars['String']['output']>;
+  admin?: Maybe<ResultAdminUser>;
+  teamName?: Maybe<Scalars['String']['output']>;
+  timestamp?: Maybe<Scalars['DateTimeISO']['output']>;
+};
+
+/** Admin user details for a result */
+export type ResultAdminUser = {
+  __typename?: 'ResultAdminUser';
+  _id?: Maybe<Scalars['ID']['output']>;
+  email?: Maybe<Scalars['String']['output']>;
+  username?: Maybe<Scalars['String']['output']>;
 };
 
 /** How the match result was decided (normal time, after extra time, or on penalties) */

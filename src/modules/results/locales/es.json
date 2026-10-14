@@ -6,6 +6,9 @@
     "ADD_ROUND": "Agregar Resultados de la Jornada",
     "EDIT_ROUND": "Editar Resultados de la Jornada"
   },
+  "HEADERS": {
+    "STATUS": "Estado"
+  },
   "SECTIONS": {
     "MATCH_NUMBER": "Partido"
   },
@@ -149,6 +152,8 @@
   },
   "ADMIN": {
     "TITLE": "Admin",
+    "CREATED_BY": "Creado",
+    "LAST_UPDATED": "Última actualización",
     "SUBMITTED_BY": "Enviado por",
     "CONFIRMED_BY": "Confirmado por",
     "DISPUTED_BY": "Disputado por",

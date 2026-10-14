@@ -75,9 +75,9 @@ export default function AddGoalscorers({
 
   return (
     <>
-      <span onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
-        <CustomButton variant="text">{title}</CustomButton>
-      </span>
+      <div onClick={() => setOpen(true)} style={{ cursor: 'pointer', margin: '8px ' }}>
+        <CustomButton variant="contained">{title}</CustomButton>
+      </div>
       <FormModal open={open} onClose={() => setOpen(false)} title={title}>
         <AddGoalscorersForm
           onSubmit={onSubmit}

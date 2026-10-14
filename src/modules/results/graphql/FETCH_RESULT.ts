@@ -44,13 +44,47 @@ export const FETCH_RESULT = gql`
         goals
       }
       resultStatus
+      createdAt
+      createdBy {
+        _id
+        username
+        email
+      }
+      updatedAt
+      updatedBy {
+        _id
+        username
+        email
+      }
       submittedByTeam {
         _id
         teamName
+        timestamp
+        admin {
+          _id
+          username
+          email
+        }
       }
       confirmedByTeam {
         _id
         teamName
+        timestamp
+        admin {
+          _id
+          username
+          email
+        }
+      }
+      disputedByTeam {
+        _id
+        teamName
+        timestamp
+        admin {
+          _id
+          username
+          email
+        }
       }
     }
   }
