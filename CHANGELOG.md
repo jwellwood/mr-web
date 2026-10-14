@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.48.0](https://github.com/jwellwood/mr-web/compare/v0.47.0...v0.48.0) (2026-10-14)
+
+### Features
+
+* improve admin result views ([3109a53](https://github.com/jwellwood/mr-web/commit/3109a5308101f4f710f02fa8d9bc021b7130b0c9))
+
 ## [0.47.0](https://github.com/jwellwood/mr-web/compare/v0.46.0...v0.47.0) (2026-10-07)
 
 ### Features
