@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.49.0](https://github.com/jwellwood/mr-web/compare/v0.48.0...v0.49.0) (2026-10-30)
+
+### Features
+
+* admin module ([6f52297](https://github.com/jwellwood/mr-web/commit/6f52297514ba7dc3cbfbfc4ce927ee2922fefd82))
+
 ## [0.48.0](https://github.com/jwellwood/mr-web/compare/v0.47.0...v0.48.0) (2026-10-14)
 
 ### Features
