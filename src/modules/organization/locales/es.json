@@ -2,11 +2,10 @@
   "PAGES": {
     "ORG": "Organización",
     "ADMIN": "Admin",
-    "ADD": "Agregar Nueva Organización",
-    "EDIT": "Editar Organización",
-    "EDIT_BADGE": "Editar Insignia de la Organización",
-    "DELETE": "Eliminar Organización",
-    "TEAM_ADMIN": "Administrador del Equipo"
+    "ADD": "Agregar nueva organización",
+    "EDIT": "Editar organización",
+    "EDIT_BADGE": "Editar distintivo de la organización",
+    "DELETE": "Eliminar organización"
   },
   "TABS": {
     "TEAMS": "Equipos",
@@ -17,37 +16,37 @@
     "COMPETITIONS": "Competiciones",
     "GOALSCORERS": "Goleadores",
     "USERS": "Usuarios",
-    "ACTIVE": "Activo",
-    "INACTIVE": "Inactivo"
+    "ACTIVE": "Activos",
+    "INACTIVE": "Inactivos"
   },
   "LINKS": {
-    "ADD_TEAM": "Agregar Equipo",
-    "ADD_COMPETITION": "Agregar Competición",
-    "ADD_SEASON": "Agregar Temporada",
-    "EDIT_ORGANIZATION": "Editar Organización",
-    "EDIT_ORG_BADGE": "Editar Insignia"
+    "ADD_TEAM": "Agregar equipo",
+    "ADD_COMPETITION": "Agregar competición",
+    "ADD_SEASON": "Agregar temporada",
+    "EDIT_ORGANIZATION": "Editar organización",
+    "EDIT_ORG_BADGE": "Editar distintivo de la organización"
   },
   "CHECKLIST": {
-    "TITLE": "Lista de Setup",
+    "TITLE": "Lista de verificación de configuración",
     "STEPS": {
       "COMPETITION": {
-        "LABEL": "Crear una competencia",
+        "LABEL": "Crear una competición",
         "SECONDARY": "{{value}} agregada"
       },
       "ACTIVE_TEAMS": {
-        "LABEL": "Crear al menos 2 equipos activos",
+        "LABEL": "Crear equipos activos",
         "SECONDARY": "{{value}} agregados"
       },
       "CURRENT_SEASON": {
         "LABEL": "Crear una temporada actual y agregar tus equipos y competiciones",
-        "SECONDARY": "{{value}} agregada"
+        "SECONDARY": "{{value}} agregados"
       },
       "COMP_CONFIG": {
-        "LABEL": "Configura cada competencia con equipos y rondas",
+        "LABEL": "Configurar cada competición con equipos y rondas",
         "SECONDARY": "{{value}}/{{total}} configuraciones válidas agregadas"
       },
       "RESULTS": {
-        "LABEL": "Agregar resultados/jornadas",
+        "LABEL": "Agregar resultados/rondas",
         "SECONDARY": "{{value}} agregados"
       }
     },
@@ -61,10 +60,6 @@
       "SUCCESS": "¡Organización agregada con éxito!",
       "ERROR": "Algo salió mal"
     },
-    "REQUEST_ADMIN": {
-      "SUCCESS": "¡Solicitud de acceso de administrador enviada con éxito!",
-      "ERROR": "Algo salió mal"
-    },
     "EDIT": {
       "SUCCESS": "¡Organización actualizada con éxito!",
       "ERROR": "Algo salió mal"
@@ -75,58 +70,18 @@
     "DELETE": {
       "SUCCESS": "¡Organización eliminada con éxito!",
       "ERROR": "Algo salió mal"
-    },
-    "GENERATE_ADMIN_CODE": {
-      "SUCCESS": "¡Código de acceso de administrador generado con éxito!",
-      "ERROR": "Error al generar el código de acceso de administrador"
-    },
-    "TOGGLE_ADMIN_ACCESS": {
-      "SUCCESS": "¡Acceso de administrador actualizado con éxito!",
-      "ERROR": "Algo salió mal"
-    },
-    "SET_ADMIN_ACCESS_CODE": {
-      "SUCCESS": "¡Código de acceso de administrador establecido con éxito!",
-      "ERROR": "Error al establecer el código de acceso de administrador"
     }
   },
   "FORM": {
-    "REQUEST_ACCESS": {
-      "SUMMARY": "Un administrador actual te proporcionará un código de acceso para obtener acceso de administrador a esta organización. Por favor, ingresa el código a continuación y haz clic en enviar."
-    },
-    "SET_ADMIN_ACCESS": {
-      "SUMMARY": "Puedes establecer un código de acceso de administrador para este equipo. Copia este código y envíalo al usuario correspondiente. Se puede usar este código para obtener acceso de administrador a este equipo"
-    },
     "LABELS": {
-      "NAME": "Nombre de la Organización",
-      "WEBSITE": "Sitio Web",
-      "YEAR_FOUNDED": "Año de Fundación",
+      "NAME": "Nombre de la organización",
+      "WEBSITE": "Sitio web",
+      "YEAR_FOUNDED": "Año de fundación",
       "CITY": "Ciudad",
-      "COUNTRY": "País",
-      "ADMIN_ACCESS_CODE": "Código de Acceso de Administrador"
+      "COUNTRY": "País"
     }
   },
-  "BUTTONS": {
-    "GENERATE_ADMIN_CODE": "Generar Código de Administrador",
-    "REQUEST_ADMIN_ACCESS": "Solicitar Acceso de Administrador",
-    "SET_ADMIN_ACCESS_CODE": "Establecer Código de Acceso de Administrador",
-    "COPY": "Copiar",
-    "COPIED": "Copiado"
-  },
-  "MODALS": {
-    "REQUEST_ADMIN_ACCESS": "Solicitar Acceso de Administrador"
-  },
-  "LABELS": {
-    "ADMIN_ACCESS_ENABLED": "Acceso de Administrador Habilitado"
-  },
-  "ADMIN": {
-    "CODE": "Código de Admin",
-    "SUMMARY": "* El código solo funcionará una vez. Una vez que se use, ya no será válido y se generará automáticamente uno nuevo. Si generas un nuevo código, el código antiguo dejará de funcionar.",
-    "NOT_SET": "No establecido",
-    "USERS": {
-      "TITLE": "Usuarios de Admin",
-      "NO_USERS": "Ningún usuario tiene acceso de administrador a esta organización todavía."
-    }
-  },
+
   "MESSAGES": {
     "NO_ACTIVE_TEAMS": "No hay equipos activos",
     "NO_INACTIVE_TEAMS": "No hay equipos inactivos"

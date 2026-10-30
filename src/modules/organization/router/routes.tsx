@@ -21,7 +21,7 @@ export const AddGameWeek = lazy(() => import('../../results/containers/AddGamewe
 export const EditGameWeek = lazy(() => import('../../results/containers/EditGameweekResults'));
 // Admin
 export const OrgAdmin = lazy(() => import('../pages/OrgAdminPage'));
-export const AdminTeam = lazy(() => import('../containers/AdminTeam'));
+export const AdminTeam = lazy(() => import('../../admin/containers/AdminTeam'));
 export const AdminCompetition = lazy(
   () => import('../../competitions/containers/AdminCompetition')
 );

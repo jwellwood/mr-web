@@ -8,7 +8,7 @@ import { getOrgAdminLinks } from '../helpers/getOrgAdminLinks';
 const OrgTeams = lazy(() => import('../containers/OrgTeams'));
 const OrgSeasons = lazy(() => import('../../seasons/containers/OrgSeasons'));
 const AdminCompetitions = lazy(() => import('../../competitions/containers/AdminCompetitions'));
-const OrgAdminUsers = lazy(() => import('../containers/OrgAdmin'));
+const OrgAdminUsers = lazy(() => import('../../admin/containers/OrgAdmin'));
 const OrgSetupCheckList = lazy(() => import('../components/OrgSetupCheckList'));
 
 export default function OrgAdmin() {

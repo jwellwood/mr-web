@@ -365,6 +365,14 @@ export default function AppRoutes() {
             }
           />
           <Route
+            path={TEAM.TEAM_PATHS.ADMIN}
+            element={
+              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
+                <TEAM.AdminTeam />
+              </RouteGuard>
+            }
+          />
+          <Route
             path={TEAM.TEAM_PATHS.EDIT_BADGE}
             element={
               <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>

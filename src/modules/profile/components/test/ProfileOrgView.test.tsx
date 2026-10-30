@@ -1,19 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import ProfileOrgsView from '../ProfileOrgView';
 
-vi.mock('../../../home/containers/OrgSearch', () => ({
-  default: ({ buttonElement }: { buttonElement: React.ReactNode }) => (
-    <div data-testid="org-search">{buttonElement}</div>
-  ),
+vi.mock('../../../admin/containers/RequestOrgAdmin', () => ({
+  default: () => <div data-testid="request-org-admin" />,
 }));
 
-vi.mock('../../../home/containers/TeamSearch', () => ({
-  default: ({ buttonElement }: { buttonElement: React.ReactNode }) => (
-    <div data-testid="team-search">{buttonElement}</div>
-  ),
+vi.mock('../../../admin/containers/RequestTeamAdmin', () => ({
+  default: () => <div data-testid="request-team-admin" />,
 }));
 
 const makeOrg = (id: string, name: string) => ({
@@ -62,7 +59,7 @@ describe('ProfileOrgsView', () => {
     expect(screen.getByText('Real Madrid')).toBeInTheDocument();
   });
 
-  it('renders the OrgSearch button in the header', () => {
+  it('renders the request admin button in the header', () => {
     render(
       <MemoryRouter>
         <TestWrapper>
@@ -70,7 +67,7 @@ describe('ProfileOrgsView', () => {
         </TestWrapper>
       </MemoryRouter>
     );
-    expect(screen.getByTestId('org-search')).toBeInTheDocument();
+    expect(screen.getByTestId('request-org-admin')).toBeInTheDocument();
   });
 
   it('renders a DataError when error is provided', () => {

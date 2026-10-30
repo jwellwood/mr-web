@@ -1,30 +1,23 @@
 import { useQuery } from '@apollo/client/react';
 import { DataError, ModuleHeader } from '../../../components';
 import { IMAGE_TYPE } from '../../../constants';
-import { useAuth, useCustomParams } from '../../../hooks';
+import { useCustomParams } from '../../../hooks';
 import { FETCH_ORG } from '../graphql';
-import RequestOrgAdmin from './RequestOrgAdmin';
 
 export default function Org() {
   const { orgId } = useCustomParams();
-  const { isAuth, isOrgAuth } = useAuth('', orgId);
   const { data, error, loading } = useQuery(FETCH_ORG, { variables: { orgId: orgId! } });
-
-  const canRequestAdmin = isAuth && !isOrgAuth;
 
   const renderContent = () => {
     return (
-      <>
-        {canRequestAdmin && <RequestOrgAdmin />}
-        <ModuleHeader
-          loading={loading}
-          title={data?.org.name}
-          badge={data?.org.badge.url}
-          country={data?.org.country}
-          city={data?.org.city}
-          type={IMAGE_TYPE.BADGE}
-        />
-      </>
+      <ModuleHeader
+        loading={loading}
+        title={data?.org.name}
+        badge={data?.org.badge.url}
+        country={data?.org.country}
+        city={data?.org.city}
+        type={IMAGE_TYPE.BADGE}
+      />
     );
   };
 

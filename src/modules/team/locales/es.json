@@ -11,7 +11,8 @@
     "ADD_PLAYER": "Agregar Jugador",
     "EDIT_TEAM": "Editar Equipo",
     "EDIT_TEAM_BADGE": "Editar Insignia del Equipo",
-    "ADD_TROPHY": "Agregar Trofeo"
+    "ADD_TROPHY": "Agregar Trofeo",
+    "TEAM_ADMIN": "Administrador del Equipo"
   },
   "TABS": {
     "OVERVIEW": "Resumen",
@@ -34,17 +35,9 @@
     "DELETE_TEAM": {
       "SUCCESS": "¡Equipo eliminado con éxito!",
       "ERROR": "¡Error al eliminar el equipo!"
-    },
-    "ADMIN_ACCESS": {
-      "SUCCESS": "¡Acceso de administrador solicitado con éxito!",
-      "ERROR": "¡Error al solicitar acceso de administrador!"
     }
   },
   "FORM": {
-    "REQUEST_ACCESS": {
-      "SUMMARY": "Un administrador actual del equipo le proporcionará un código de acceso para obtener acceso de administrador a este equipo. Por favor, ingrese el código a continuación y haga clic en enviar.",
-      "TITLE": "Solicitar Acceso de Administrador"
-    },
     "SUMMARY": {
       "ADD": "Aquí puedes agregar lo básico para iniciar el equipo. Más detalles pueden ser agregados más tarde por un administrador del equipo a través de la página admin > Editar Equipo."
     },

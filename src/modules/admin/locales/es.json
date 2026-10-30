@@ -1,0 +1,53 @@
+{
+  "PAGES": {
+    "TEAM_ADMIN": "Admin del equipo"
+  },
+  "HEADERS": {
+    "REQUEST_ADMIN_ACCESS": "Solicitar acceso de administrador",
+    "ADMIN_CODE": "Código de administrador",
+    "ADMIN_USERS": "Usuarios administradores"
+  },
+  "ALERTS": {
+    "REQUEST_ADMIN": {
+      "SUCCESS": "¡Solicitud de acceso de administrador enviada con éxito!",
+      "ERROR": "Algo salió mal"
+    },
+    "GENERATE_ADMIN_CODE": {
+      "SUCCESS": "Código de acceso de administrador generado con éxito",
+      "ERROR": "Error al generar el código de acceso de administrador"
+    },
+    "TOGGLE_ADMIN_ACCESS": {
+      "SUCCESS": "¡Acceso de administrador actualizado con éxito!",
+      "ERROR": "Algo salió mal"
+    },
+    "SET_ADMIN_ACCESS_CODE": {
+      "SUCCESS": "Código de acceso de administrador establecido con éxito",
+      "ERROR": "Error al establecer el código de acceso de administrador"
+    }
+  },
+  "FORM": {
+    "REQUEST_ACCESS": {
+      "SUMMARY": "Pide a un administrador actual un código de acceso e ingresa el código aquí",
+      "TEAM_SUMMARY": "Pide a un administrador del equipo actual que te proporcione un código e ingrésalo aquí",
+      "NOT_FOUND_ORG": "No se encontraron organizaciones",
+      "NOT_FOUND_TEAM": "No se encontraron equipos",
+      "CHANGE": "Cambiar"
+    }
+  },
+  "LABELS": {
+    "ADMIN_ACCESS_CODE": "Código de acceso de administrador",
+    "ADMIN_ACCESS_ENABLED": "Acceso de administrador habilitado"
+  },
+  "HELPERS": {
+    "COPY_ADMIN_CODE": "Copia este código y compártelo con el usuario correspondiente. El código solo se puede usar una vez. Después de usarlo, se generará uno nuevo automáticamente.",
+    "NOT_SET": "No establecido"
+  },
+  "BUTTONS": {
+    "GENERATE_ADMIN_CODE": "Generar código de administrador",
+    "SET_ADMIN_ACCESS_CODE": "Establecer código de acceso de administrador",
+    "JOIN_TEAM": "Unirse a un equipo",
+    "JOIN_ORG": "Unirse a una organización",
+    "COPY": "Copiar",
+    "COPIED": "Copiado"
+  }
+}

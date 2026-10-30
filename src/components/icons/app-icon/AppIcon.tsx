@@ -11,7 +11,7 @@ import {
   BiPencil,
 } from 'react-icons/bi';
 import { BsShieldShaded, BsFilter, BsQuestion, BsCheck, BsCheckAll } from 'react-icons/bs';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaPlus } from 'react-icons/fa';
 import { FaAngleDown } from 'react-icons/fa';
 import { IoShieldSharp, IoHelpCircleOutline, IoSearchSharp } from 'react-icons/io5';
 import { LiaMedalSolid } from 'react-icons/lia';
@@ -64,6 +64,7 @@ const ICON_MAP: Record<AppIconType, IconType> = {
   [APP_ICONS.FLAG]: BiFlag,
   [APP_ICONS.RESET]: BiReset,
   [APP_ICONS.EDIT]: BiPencil,
+  [APP_ICONS.ADD]: FaPlus,
 };
 
 export default function AppIcon({

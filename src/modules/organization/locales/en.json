@@ -5,8 +5,7 @@
     "ADD": "Add New Organization",
     "EDIT": "Edit Organization",
     "EDIT_BADGE": "Edit Organization Badge",
-    "DELETE": "Delete Organization",
-    "TEAM_ADMIN": "Team Admin"
+    "DELETE": "Delete Organization"
   },
   "TABS": {
     "TEAMS": "Teams",
@@ -61,10 +60,6 @@
       "SUCCESS": "Organization added successfully!",
       "ERROR": "Something went wrong"
     },
-    "REQUEST_ADMIN": {
-      "SUCCESS": "Admin access request sent successfully!",
-      "ERROR": "Something went wrong"
-    },
     "EDIT": {
       "SUCCESS": "Organization updated successfully!",
       "ERROR": "Something went wrong"
@@ -75,58 +70,18 @@
     "DELETE": {
       "SUCCESS": "Organization deleted successfully!",
       "ERROR": "Something went wrong"
-    },
-    "GENERATE_ADMIN_CODE": {
-      "SUCCESS": "Admin access code generated successfully",
-      "ERROR": "Failed to generate admin access code"
-    },
-    "TOGGLE_ADMIN_ACCESS": {
-      "SUCCESS": "Admin access updated successfully!",
-      "ERROR": "Something went wrong"
-    },
-    "SET_ADMIN_ACCESS_CODE": {
-      "SUCCESS": "Admin access code set successfully",
-      "ERROR": "Failed to set admin access code"
     }
   },
   "FORM": {
-    "REQUEST_ACCESS": {
-      "SUMMARY": "A current admin will provide you with an access code to gain admin access to this organization. Please enter the code below and click submit."
-    },
-    "SET_ADMIN_ACCESS": {
-      "SUMMARY": "You can set an admin access code for this team. Copy this code and send it to the relevant user. They will be able to use this code to gain admin access to this team"
-    },
     "LABELS": {
       "NAME": "Organization Name",
       "WEBSITE": "Website",
       "YEAR_FOUNDED": "Year Founded",
       "CITY": "City",
-      "COUNTRY": "Country",
-      "ADMIN_ACCESS_CODE": "Admin Access Code"
+      "COUNTRY": "Country"
     }
   },
-  "BUTTONS": {
-    "GENERATE_ADMIN_CODE": "Generate Admin Code",
-    "REQUEST_ADMIN_ACCESS": "Request Admin Access",
-    "SET_ADMIN_ACCESS_CODE": "Set Admin Access Code",
-    "COPY": "Copy",
-    "COPIED": "Copied"
-  },
-  "MODALS": {
-    "REQUEST_ADMIN_ACCESS": "Request Admin Access"
-  },
-  "LABELS": {
-    "ADMIN_ACCESS_ENABLED": "Admin Access Enabled"
-  },
-  "ADMIN": {
-    "CODE": "Admin Code",
-    "SUMMARY": "* The code will only work once. Once it is used, it will no longer be valid and a new one will be automatically generated. If you generate a new code, the old code will stop working.",
-    "NOT_SET": "Not set",
-    "USERS": {
-      "TITLE": "Users with Admin Access",
-      "NO_USERS": "No users have admin access to this organization yet."
-    }
-  },
+
   "MESSAGES": {
     "NO_ACTIVE_TEAMS": "No active teams",
     "NO_INACTIVE_TEAMS": "No inactive teams"

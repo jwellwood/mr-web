@@ -6,7 +6,6 @@ import { TApolloError } from '../../../types/apollo';
 import Kits from '../components/Kits';
 import Organization from '../components/Organization';
 import Stadium from '../components/Stadium';
-import RequestTeamAdmin from '../forms/request-admin-access/RequestTeamAdmin';
 import { T_FETCH_TEAM_QUERY } from '../graphql';
 import TeamSetupChecklist from './TeamSetupChecklist';
 
@@ -19,9 +18,7 @@ interface Props {
 export default function TeamView({ data, loading, error }: Props) {
   const { teamName, teamBadge, location, country } = data?.team || {};
   const { teamId } = useCustomParams();
-  const { isAuth, isTeamAuth } = useAuth(teamId);
-
-  const canRequestAdmin = isAuth && !isTeamAuth;
+  const { isTeamAuth } = useAuth(teamId);
 
   return (
     <>
@@ -29,7 +26,6 @@ export default function TeamView({ data, loading, error }: Props) {
         <DataError error={error} />
       ) : (
         <>
-          {canRequestAdmin && <RequestTeamAdmin />}
           {isTeamAuth && <TeamSetupChecklist />}
           <ModuleHeader
             title={teamName}

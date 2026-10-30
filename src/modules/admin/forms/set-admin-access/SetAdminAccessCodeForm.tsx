@@ -21,7 +21,7 @@ export default function SetAdminAccessCodeForm({
   defaultValues,
   loading,
 }: Props) {
-  const { t } = useTranslation('organization');
+  const { t } = useTranslation('admin');
   const {
     handleSubmit,
     control,
@@ -54,7 +54,7 @@ export default function SetAdminAccessCodeForm({
           <ControlledTextInput
             control={control}
             name="accessCode"
-            label={t('FORM.LABELS.ADMIN_ACCESS_CODE')}
+            label={t('LABELS.ADMIN_ACCESS_CODE')}
             required={requiredFields.accessCode}
           />
         </FormContainer>

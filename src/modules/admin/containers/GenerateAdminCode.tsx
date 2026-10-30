@@ -5,10 +5,11 @@ import { CustomButton, DataError } from '../../../components';
 import { CustomSkeleton } from '../../../components/loaders';
 import { useCustomParams } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { FETCH_ORG_ADMIN_VIEW, SET_ORG_ADMIN_ACCESS_CODE } from '../graphql';
+import { FETCH_ORG_ADMIN_VIEW } from '../graphql';
+import { SET_ORG_ADMIN_ACCESS_CODE } from '../graphql';
 
 export default function GenerateAdminCode() {
-  const { t } = useTranslation('organization');
+  const { t } = useTranslation('admin');
   const { orgId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
 

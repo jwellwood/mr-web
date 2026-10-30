@@ -20,4 +20,9 @@ export const getTeamAdminLinks = (t: TFunction<'team'>) => [
     type: LINK_TYPE.EDIT,
     link: `edit_badge`,
   },
+  {
+    label: t('LINKS.TEAM_ADMIN'),
+    type: LINK_TYPE.EDIT,
+    link: `admin`,
+  },
 ];

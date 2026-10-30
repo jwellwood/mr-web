@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client/react';
 import { useCustomParams } from '../../../hooks/useCustomParams';
-import OrgAdminUsersView from '../components/OrgAdminUsersView';
+import OrgAdminView from '../components/OrgAdminView';
 import { FETCH_ORG_ADMIN_VIEW } from '../graphql';
 
 export default function OrgAdminUsers() {
@@ -9,5 +9,5 @@ export default function OrgAdminUsers() {
     variables: { orgId: orgId! },
   });
 
-  return <OrgAdminUsersView org={data?.org} loading={loading} error={error} />;
+  return <OrgAdminView org={data?.org} loading={loading} error={error} />;
 }

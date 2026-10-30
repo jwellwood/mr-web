@@ -9,7 +9,7 @@ import SetAdminAccessCodeForm from '../forms/set-admin-access/SetAdminAccessCode
 import { SET_TEAM_ADMIN_ACCESS_CODE } from '../graphql';
 
 export default function SetAdminAccessCode() {
-  const { t } = useTranslation('organization');
+  const { t } = useTranslation('admin');
   const { teamId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
   const [open, setOpen] = useState(false);

@@ -43,7 +43,7 @@ describe('TeamAdminView', () => {
     expect(screen.getByText('abc123')).toBeInTheDocument();
     expect(screen.getByText('john')).toBeInTheDocument();
     expect(screen.getByText('john@example.com')).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: 'Copy code' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Copy' })).toBeInTheDocument();
     expect(mockedUseCopy).toHaveBeenCalledWith('abc123');
   });
 

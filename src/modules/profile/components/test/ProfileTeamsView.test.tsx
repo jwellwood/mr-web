@@ -1,19 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import '@testing-library/jest-dom';
 import { describe, it, expect, vi } from 'vitest';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import ProfileTeamsView from '../ProfileTeamsView';
 
-vi.mock('../../../home/containers/OrgSearch', () => ({
-  default: ({ buttonElement }: { buttonElement: React.ReactNode }) => (
-    <div data-testid="org-search">{buttonElement}</div>
-  ),
+vi.mock('../../../admin/containers/RequestOrgAdmin', () => ({
+  default: () => <div data-testid="request-org-admin" />,
 }));
 
-vi.mock('../../../home/containers/TeamSearch', () => ({
-  default: ({ buttonElement }: { buttonElement: React.ReactNode }) => (
-    <div data-testid="team-search">{buttonElement}</div>
-  ),
+vi.mock('../../../admin/containers/RequestTeamAdmin', () => ({
+  default: () => <div data-testid="request-team-admin" />,
 }));
 
 const makeTeam = (
@@ -130,7 +127,7 @@ describe('ProfileTeamsView', () => {
     expect(screen.getByText(/network error/i)).toBeInTheDocument();
   });
 
-  it('renders TeamSearch button in the header', () => {
+  it('renders the request admin button in the header', () => {
     render(
       <MemoryRouter>
         <TestWrapper>
@@ -138,6 +135,6 @@ describe('ProfileTeamsView', () => {
         </TestWrapper>
       </MemoryRouter>
     );
-    expect(screen.getAllByTestId('team-search').length).toBeGreaterThan(0);
+    expect(screen.getAllByTestId('request-team-admin').length).toBeGreaterThan(0);
   });
 });

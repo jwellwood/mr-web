@@ -8,10 +8,11 @@ interface Props {
   onSubmit: (data: RequestAccessData) => void;
   defaultValues: RequestAccessData;
   loading: boolean;
+  type: 'org' | 'team';
 }
 
-export default function RequestAccessForm({ onSubmit, defaultValues, loading }: Props) {
-  const { t } = useTranslation('team');
+export default function RequestAccessForm({ onSubmit, defaultValues, loading, type }: Props) {
+  const { t } = useTranslation('admin');
   const {
     handleSubmit,
     control,
@@ -29,12 +30,14 @@ export default function RequestAccessForm({ onSubmit, defaultValues, loading }: 
       submitBtn={{ disabled: !isValid }}
       onReset={() => reset(defaultValues)}
       loading={loading}
-      formSummary={t('FORM.REQUEST_ACCESS.SUMMARY')}
+      formSummary={t(
+        type === 'org' ? 'FORM.REQUEST_ACCESS.SUMMARY' : 'FORM.REQUEST_ACCESS.TEAM_SUMMARY'
+      )}
     >
       <ControlledTextInput
         control={control}
         name="accessCode"
-        label={t('FORM.LABELS.ACCESS_CODE')}
+        label={t('LABELS.ADMIN_ACCESS_CODE')}
         required={requiredFields.accessCode}
       />
     </FormContainer>

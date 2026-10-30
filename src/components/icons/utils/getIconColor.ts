@@ -4,6 +4,7 @@ export const getIconColor = (color?: string) => {
   const {
     primary,
     secondary,
+    tertiary,
     success,
     error,
     warning,
@@ -41,6 +42,9 @@ export const getIconColor = (color?: string) => {
       break;
     case 'secondary-dark':
       iconColor = secondary.dark;
+      break;
+    case 'tertiary':
+      iconColor = tertiary.main;
       break;
     case 'success':
       iconColor = success.main;

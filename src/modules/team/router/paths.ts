@@ -3,6 +3,7 @@ export const TEAM_PATHS = {
   EDIT: 'edit',
   EDIT_ROLES: 'edit_roles',
   EDIT_BADGE: 'edit_badge',
+  ADMIN: 'admin',
   ADD_PLAYER: 'add_player',
   SEASON: 'season/:seasonId',
   EDIT_SEASON: 'season/:seasonId/edit',

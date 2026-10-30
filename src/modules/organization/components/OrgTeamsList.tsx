@@ -21,7 +21,11 @@ export default function OrgTeamsList({ teams }: Props) {
       avatar: <ImageAvatar imageUrl={team.teamBadge?.url} fallbackIcon={IMAGE_TYPE.BADGE} />,
       label: team.teamName,
       link: `team/${team._id}`,
-      value: <KitDisplay team={team} />,
+      value: (
+        <div>
+          <KitDisplay team={team} />
+        </div>
+      ),
     };
   });
 

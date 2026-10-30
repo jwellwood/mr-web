@@ -4,14 +4,15 @@ import { useDispatch } from 'react-redux';
 import { CustomSwitch } from '../../../components';
 import { useCustomParams } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
-import { FETCH_ORG_ADMIN_VIEW, TOGGLE_ORG_ADMIN_ACCESS } from '../graphql';
+import { FETCH_ORG_ADMIN_VIEW } from '../graphql';
+import { TOGGLE_ORG_ADMIN_ACCESS } from '../graphql';
 
 interface Props {
   data: { enabled: boolean } | undefined;
 }
 
 export default function ToggleAdminAccessEnabled({ data }: Props) {
-  const { t } = useTranslation('organization');
+  const { t } = useTranslation('admin');
   const { orgId } = useCustomParams();
   const dispatch: AppDispatch = useDispatch();
 

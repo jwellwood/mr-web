@@ -17,10 +17,6 @@ export default function GettingStarted({ profile }: Props) {
       done: !!profile?.username && !!profile?.dateOfBirth && !!profile?.nationality,
     },
     {
-      label: t('GETTING_STARTED.STEPS.UPLOAD_IMAGE'),
-      done: profile?.image?.url !== 'default',
-    },
-    {
       label: t('GETTING_STARTED.STEPS.JOIN_TEAM'),
       done: !!profile?.teamIds.length || !!profile?.orgIds.length,
     },

@@ -1,0 +1,53 @@
+{
+  "PAGES": {
+    "TEAM_ADMIN": "Team Admin"
+  },
+  "HEADERS": {
+    "REQUEST_ADMIN_ACCESS": "Request Admin Access",
+    "ADMIN_CODE": "Admin Code",
+    "ADMIN_USERS": "Admin Users"
+  },
+  "ALERTS": {
+    "REQUEST_ADMIN": {
+      "SUCCESS": "Admin access request sent successfully!",
+      "ERROR": "Something went wrong"
+    },
+    "GENERATE_ADMIN_CODE": {
+      "SUCCESS": "Admin access code generated successfully",
+      "ERROR": "Failed to generate admin access code"
+    },
+    "TOGGLE_ADMIN_ACCESS": {
+      "SUCCESS": "Admin access updated successfully!",
+      "ERROR": "Something went wrong"
+    },
+    "SET_ADMIN_ACCESS_CODE": {
+      "SUCCESS": "Admin access code set successfully",
+      "ERROR": "Failed to set admin access code"
+    }
+  },
+  "FORM": {
+    "REQUEST_ACCESS": {
+      "SUMMARY": "Ask a current admin for an access code and enter the code here",
+      "TEAM_SUMMARY": "Ask a current team admin to provide you with a code and enter the code here",
+      "NOT_FOUND_ORG": "No organizations found",
+      "NOT_FOUND_TEAM": "No teams found",
+      "CHANGE": "Change"
+    }
+  },
+  "LABELS": {
+    "ADMIN_ACCESS_CODE": "Admin Access Code",
+    "ADMIN_ACCESS_ENABLED": "Admin Access Enabled"
+  },
+  "HELPERS": {
+    "COPY_ADMIN_CODE": "Copy this code and share it with the relevant user. The code can only be used once. After it is used, a new one will be generated automatically.",
+    "NOT_SET": "Not set"
+  },
+  "BUTTONS": {
+    "GENERATE_ADMIN_CODE": "Generate Admin Code",
+    "SET_ADMIN_ACCESS_CODE": "Set Admin Access Code",
+    "JOIN_TEAM": "Join Team",
+    "JOIN_ORG": "Join Organization",
+    "COPY": "Copy",
+    "COPIED": "Copied"
+  }
+}

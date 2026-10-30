@@ -1,4 +1,4 @@
-import { CustomAvatar } from '../../../components';
+import { FaTshirt } from 'react-icons/fa';
 import { CustomStack } from '../../../components/grids';
 import { T_FETCH_ORG_TEAMS } from '../graphql';
 
@@ -7,11 +7,7 @@ interface Props {
 }
 
 export default function KitDisplay({ team }: Props) {
-  const kit = (color: string) => (
-    <CustomAvatar>
-      <div style={{ height: 20, width: 20, background: color || 'transparent' }} />
-    </CustomAvatar>
-  );
+  const kit = (color: string) => <FaTshirt size="1.5rem" color={color || 'white'} style={{}} />;
 
   return (
     <CustomStack direction="row" spacing={0}>

@@ -56,15 +56,17 @@ export default function NavMenu({ username }: Props) {
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <CustomAvatar onClick={handleClick} border={username ? 'secondary' : 'none'}>
-          {username ? (
-            <CustomTypography bold size="sm" color="data">
-              {getInitials(username)}
-            </CustomTypography>
-          ) : (
-            <AppIcon icon="menu" />
-          )}
-        </CustomAvatar>
+        <span style={{ cursor: 'pointer' }}>
+          <CustomAvatar onClick={handleClick} border={username ? 'secondary' : 'none'}>
+            {username ? (
+              <CustomTypography bold size="sm" color="data">
+                {getInitials(username)}
+              </CustomTypography>
+            ) : (
+              <AppIcon icon="menu" />
+            )}
+          </CustomAvatar>
+        </span>
       </Box>
       <Menu
         anchorEl={anchorEl}

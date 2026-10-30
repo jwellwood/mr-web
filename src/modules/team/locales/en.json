@@ -11,7 +11,8 @@
     "ADD_PLAYER": "Add Player",
     "EDIT_TEAM": "Edit Team",
     "EDIT_TEAM_BADGE": "Edit Team Badge",
-    "ADD_TROPHY": "Add Trophy"
+    "ADD_TROPHY": "Add Trophy",
+    "TEAM_ADMIN": "Team Admin"
   },
   "TABS": {
     "OVERVIEW": "Overview",
@@ -34,17 +35,9 @@
     "DELETE_TEAM": {
       "SUCCESS": "Team deleted successfully!",
       "ERROR": "Failed to delete team"
-    },
-    "ADMIN_ACCESS": {
-      "SUCCESS": "Admin access requested successfully!",
-      "ERROR": "Admin access failed: {{error}}"
     }
   },
   "FORM": {
-    "REQUEST_ACCESS": {
-      "SUMMARY": "A current team admin will provide you with an access code to gain admin access to this team. Please enter the code below and click submit.",
-      "TITLE": "Request Admin Access"
-    },
     "SUMMARY": {
       "ADD": "Here you can add the basics to get the team started. More details can be added later by a team admin through the admin > Edit Team page."
     },

@@ -30,6 +30,7 @@ export const APP_ICONS = {
   SEARCH: 'search',
   RESET: 'reset',
   EDIT: 'edit',
+  ADD: 'add',
 } as const;
 
 export type AppIconType = (typeof APP_ICONS)[keyof typeof APP_ICONS];
