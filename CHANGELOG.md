@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.49.1](https://github.com/jwellwood/mr-web/compare/v0.49.0...v0.49.1) (2026-11-04)
+
+### Code Refactoring
+
+* move generated files to separate folders ([ef15f8b](https://github.com/jwellwood/mr-web/commit/ef15f8bbb77b0ab84fd6c98043e1d58428b2d67b))
+
 ## [0.49.0](https://github.com/jwellwood/mr-web/compare/v0.48.0...v0.49.0) (2026-10-30)
 
 ### Features
