@@ -1,10 +1,10 @@
-import { Add_MatchMutationVariables } from '../../graphql/ADD_MATCH.generated';
+import { T_ADD_MATCH_VARIABLES } from '../../graphql';
 import { ITempMatch, ITempMatchPlayers } from '../../types';
 import { mapTempPlayersToMutation } from './mapTempPlayersToMutation';
 
 const toMatchDecision = (
   value: ITempMatch['decision']
-): Add_MatchMutationVariables['decision'] | undefined => {
+): T_ADD_MATCH_VARIABLES['decision'] | undefined => {
   if (value === 'NORMAL_TIME' || value === 'EXTRA_TIME' || value === 'PENALTIES') {
     return value;
   }
@@ -13,7 +13,7 @@ const toMatchDecision = (
 
 const toWinnerSide = (
   value: ITempMatch['winnerSide']
-): Add_MatchMutationVariables['winnerSide'] | undefined => {
+): T_ADD_MATCH_VARIABLES['winnerSide'] | undefined => {
   if (value === 'HOME' || value === 'AWAY') {
     return value;
   }
@@ -24,8 +24,8 @@ export const mapTempMatchToMutation = (
   teamId: string,
   match: ITempMatch,
   players: ITempMatchPlayers[]
-): Add_MatchMutationVariables => {
-  const variables: Add_MatchMutationVariables = {
+): T_ADD_MATCH_VARIABLES => {
+  const variables: T_ADD_MATCH_VARIABLES = {
     teamId,
     opponentId: match.opponentId!,
     competitionId: match.competitionId!,

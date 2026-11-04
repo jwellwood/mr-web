@@ -1,27 +1,27 @@
 import { useQuery } from '@apollo/client/react';
 import { useTranslation } from 'react-i18next';
 import { useCustomParams } from '../../../hooks';
-import { Fetch_MatchesDocument } from '../../matches/graphql/FETCH_MATCHES.generated';
-import { Fetch_Player_ProfilesDocument } from '../../squad/graphql/FETCH_PLAYER_PROFILES.generated';
-import { Fetch_SeasonsDocument } from '../../teamseasons/graphql/FETCH_SEASONS.generated';
+import { FETCH_MATCHES } from '../../matches/graphql';
+import { FETCH_PLAYER_PROFILES } from '../../squad/graphql';
+import { FETCH_SEASONS } from '../../teamseasons/graphql';
 
 export const useTeamSetupChecklist = () => {
   const { t } = useTranslation('team');
   const { teamId } = useCustomParams();
 
-  const { data: seasonsData, loading: seasonsLoading } = useQuery(Fetch_SeasonsDocument, {
+  const { data: seasonsData, loading: seasonsLoading } = useQuery(FETCH_SEASONS, {
     variables: { teamId: teamId! },
     skip: !teamId,
   });
 
-  const { data: playersData, loading: playersLoading } = useQuery(Fetch_Player_ProfilesDocument, {
+  const { data: playersData, loading: playersLoading } = useQuery(FETCH_PLAYER_PROFILES, {
     variables: { teamId: teamId! },
     skip: !teamId,
   });
 
   const firstSeasonId = seasonsData?.seasons?.[0]?._id;
 
-  const { data: matchesData, loading: matchesLoading } = useQuery(Fetch_MatchesDocument, {
+  const { data: matchesData, loading: matchesLoading } = useQuery(FETCH_MATCHES, {
     variables: { teamId: teamId!, seasonId: firstSeasonId ?? '' },
     skip: !teamId || !firstSeasonId,
   });

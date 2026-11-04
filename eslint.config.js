@@ -18,8 +18,6 @@ export default tseslint.config(
       'schema.json',
       'src/types/__generated__/**',
       'src/**/__generated__/**',
-      'src/**/graphql/*.generated.ts',
-      'src/**/graphql/*.generated.tsx',
     ],
   },
   {

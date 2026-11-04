@@ -1,19 +1,38 @@
 import { DeepOmitTypename } from '../../../utils';
-import { Add_Org_TrophyDocument, type Add_Org_TrophyMutation } from './ADD_ORG_TROPHY.generated';
-import { Add_TrophyDocument, type Add_TrophyMutation } from './ADD_TROPHY.generated';
+import {
+  Add_Org_TrophyDocument,
+  type Add_Org_TrophyMutation,
+} from './__generated__/ADD_ORG_TROPHY.generated';
+import { Add_TrophyDocument, type Add_TrophyMutation } from './__generated__/ADD_TROPHY.generated';
 import {
   Delete_Org_TrophyDocument,
   type Delete_Org_TrophyMutation,
-} from './DELETE_ORG_TROPHY.generated';
-import { Delete_TrophyDocument, type Delete_TrophyMutation } from './DELETE_TROPHY.generated';
-import { Edit_Org_TrophyDocument, type Edit_Org_TrophyMutation } from './EDIT_ORG_TROPHY.generated';
-import { Edit_TrophyDocument, type Edit_TrophyMutation } from './EDIT_TROPHY.generated';
+} from './__generated__/DELETE_ORG_TROPHY.generated';
+import {
+  Delete_TrophyDocument,
+  type Delete_TrophyMutation,
+} from './__generated__/DELETE_TROPHY.generated';
+import {
+  Edit_Org_TrophyDocument,
+  type Edit_Org_TrophyMutation,
+} from './__generated__/EDIT_ORG_TROPHY.generated';
+import {
+  Edit_TrophyDocument,
+  type Edit_TrophyMutation,
+  type Edit_TrophyMutationVariables,
+} from './__generated__/EDIT_TROPHY.generated';
 import {
   Fetch_Org_TrophiesDocument,
   type Fetch_Org_TrophiesQuery,
-} from './FETCH_ORG_TROPHIES.generated';
-import { Fetch_TrophiesDocument, type Fetch_TrophiesQuery } from './FETCH_TROPHIES.generated';
-import { Fetch_TrophyDocument, type Fetch_TrophyQuery } from './FETCH_TROPHY.generated';
+} from './__generated__/FETCH_ORG_TROPHIES.generated';
+import {
+  Fetch_TrophiesDocument,
+  type Fetch_TrophiesQuery,
+} from './__generated__/FETCH_TROPHIES.generated';
+import {
+  Fetch_TrophyDocument,
+  type Fetch_TrophyQuery,
+} from './__generated__/FETCH_TROPHY.generated';
 
 export {
   Add_Org_TrophyDocument as ADD_ORG_TROPHY,
@@ -33,6 +52,7 @@ export type T_DELETE_ORG_TROPHY = DeepOmitTypename<Delete_Org_TrophyMutation>;
 export type T_DELETE_TROPHY = DeepOmitTypename<Delete_TrophyMutation>;
 export type T_EDIT_ORG_TROPHY = DeepOmitTypename<Edit_Org_TrophyMutation>;
 export type T_EDIT_TROPHY = DeepOmitTypename<Edit_TrophyMutation>;
+export type T_EDIT_TROPHY_VARIABLES = Edit_TrophyMutationVariables;
 export type T_FETCH_ORG_TROPHIES = DeepOmitTypename<Fetch_Org_TrophiesQuery>;
 export type T_FETCH_TROPHIES = DeepOmitTypename<Fetch_TrophiesQuery>;
 export type T_FETCH_TROPHY = DeepOmitTypename<Fetch_TrophyQuery>;

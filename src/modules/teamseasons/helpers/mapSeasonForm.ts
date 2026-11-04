@@ -1,6 +1,5 @@
 import type { SeasonFormData } from '../forms/schema';
-import { T_FETCH_SEASON } from '../graphql';
-import type { Edit_SeasonMutationVariables } from '../graphql/EDIT_SEASON.generated';
+import { T_EDIT_SEASON_VARIABLES, T_FETCH_SEASON } from '../graphql';
 
 export function mapSeasonToForm(
   season: T_FETCH_SEASON['season'] | null | undefined
@@ -30,7 +29,7 @@ export function mapSeasonToForm(
 
 export function mapFormToEditSeasonVariables(
   form: Partial<SeasonFormData>
-): Omit<Edit_SeasonMutationVariables, 'teamId' | 'seasonId'> {
+): Omit<T_EDIT_SEASON_VARIABLES, 'teamId' | 'seasonId'> {
   const yearStartedRaw = form.yearStarted as unknown;
   const yearEndedRaw = form.yearEnded as unknown;
 

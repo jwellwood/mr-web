@@ -1,14 +1,32 @@
 import { DeepOmitTypename } from '../../../utils';
-import { type Forgot_PasswordMutation, Forgot_PasswordDocument } from './FORGOT_PASSWORD.generated';
-import { type Log_Out_UserMutation, Log_Out_UserDocument } from './LOG_OUT_USER.generated';
-import { type Register_UserMutation, Register_UserDocument } from './REGISTER_USER.generated';
+import {
+  type Forgot_PasswordMutation,
+  Forgot_PasswordDocument,
+} from './__generated__/FORGOT_PASSWORD.generated';
+import {
+  type Log_Out_UserMutation,
+  Log_Out_UserDocument,
+} from './__generated__/LOG_OUT_USER.generated';
+import {
+  type Register_UserMutation,
+  Register_UserDocument,
+} from './__generated__/REGISTER_USER.generated';
 import {
   type Resend_Verification_EmailMutation,
   Resend_Verification_EmailDocument,
-} from './RESEND_VERIFICATION_EMAIL.generated';
-import { type Reset_PasswordMutation, Reset_PasswordDocument } from './RESET_PASSWORD.generated';
-import { type Sign_In_UserMutation, Sign_In_UserDocument } from './SIGN_IN_USER.generated';
-import { type Verify_EmailMutation, Verify_EmailDocument } from './VERIFY_EMAIL.generated';
+} from './__generated__/RESEND_VERIFICATION_EMAIL.generated';
+import {
+  type Reset_PasswordMutation,
+  Reset_PasswordDocument,
+} from './__generated__/RESET_PASSWORD.generated';
+import {
+  type Sign_In_UserMutation,
+  Sign_In_UserDocument,
+} from './__generated__/SIGN_IN_USER.generated';
+import {
+  type Verify_EmailMutation,
+  Verify_EmailDocument,
+} from './__generated__/VERIFY_EMAIL.generated';
 
 export {
   Sign_In_UserDocument as SIGN_IN_USER,

@@ -2,47 +2,47 @@ import { DeepOmitTypename } from '../../../utils';
 import {
   Fetch_Hall_Of_FameDocument,
   type Fetch_Hall_Of_FameQuery,
-} from '../../squad/graphql/FETCH_HALL_OF_FAME.generated';
+} from '../../squad/graphql/__generated__/FETCH_HALL_OF_FAME.generated';
 import {
   Fetch_Past_PlayersDocument,
   type Fetch_Past_PlayersQuery,
-} from './FETCH_PAST_PLAYERS.generated';
+} from './__generated__/FETCH_PAST_PLAYERS.generated';
 import {
   Fetch_Player_ProfilesDocument,
   type Fetch_Player_ProfilesQuery,
-} from './FETCH_PLAYER_PROFILES.generated';
+} from './__generated__/FETCH_PLAYER_PROFILES.generated';
 import {
   Fetch_Squad_List_By_SeasonDocument,
   type Fetch_Squad_List_By_SeasonQuery,
-} from './FETCH_SQUAD_LIST_BY_SEASON.generated';
+} from './__generated__/FETCH_SQUAD_LIST_BY_SEASON.generated';
 import {
   Fetch_Squad_Record_Assists_In_MatchDocument,
   type Fetch_Squad_Record_Assists_In_MatchQuery,
-} from './FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH.generated';
+} from './__generated__/FETCH_SQUAD_RECORD_ASSISTS_IN_MATCH.generated';
 import {
   Fetch_Squad_Record_Goals_In_MatchDocument,
   type Fetch_Squad_Record_Goals_In_MatchQuery,
-} from './FETCH_SQUAD_RECORD_GOALS_IN_MATCH.generated';
+} from './__generated__/FETCH_SQUAD_RECORD_GOALS_IN_MATCH.generated';
 import {
   Fetch_Squad_RecordsDocument,
   type Fetch_Squad_RecordsQuery,
-} from './FETCH_SQUAD_RECORDS.generated';
+} from './__generated__/FETCH_SQUAD_RECORDS.generated';
 import {
   Fetch_Squad_Single_Season_RecordsDocument,
   type Fetch_Squad_Single_Season_RecordsQuery,
-} from './FETCH_SQUAD_SINGLE_SEASON_RECORDS.generated';
+} from './__generated__/FETCH_SQUAD_SINGLE_SEASON_RECORDS.generated';
 import {
   Fetch_Squad_StatsDocument,
   type Fetch_Squad_StatsQuery,
-} from './FETCH_SQUAD_STATS.generated';
+} from './__generated__/FETCH_SQUAD_STATS.generated';
 import {
   Fetch_Squad_StreaksDocument,
   type Fetch_Squad_StreaksQuery,
-} from './FETCH_SQUAD_STREAKS.generated';
+} from './__generated__/FETCH_SQUAD_STREAKS.generated';
 import {
   Fetch_Top_Player_StreaksDocument,
   type Fetch_Top_Player_StreaksQuery,
-} from './FETCH_TOP_PLAYER_STREAKS.generated';
+} from './__generated__/FETCH_TOP_PLAYER_STREAKS.generated';
 
 export {
   Fetch_Player_ProfilesDocument as FETCH_PLAYER_PROFILES,

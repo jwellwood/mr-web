@@ -1,56 +1,65 @@
 import { DeepOmitTypename } from '../../../utils';
-import { Add_PlayerDocument, type Add_PlayerMutation } from './ADD_PLAYER.generated';
-import { Delete_PlayerDocument, type Delete_PlayerMutation } from './DELETE_PLAYER.generated';
-import { Edit_PlayerDocument, type Edit_PlayerMutation } from './EDIT_PLAYER.generated';
+import { Add_PlayerDocument, type Add_PlayerMutation } from './__generated__/ADD_PLAYER.generated';
+import {
+  Delete_PlayerDocument,
+  type Delete_PlayerMutation,
+} from './__generated__/DELETE_PLAYER.generated';
+import {
+  Edit_PlayerDocument,
+  type Edit_PlayerMutation,
+} from './__generated__/EDIT_PLAYER.generated';
 import {
   Edit_Player_PhotoDocument,
   type Edit_Player_PhotoMutation,
-} from './EDIT_PLAYER_PHOTO.generated';
+} from './__generated__/EDIT_PLAYER_PHOTO.generated';
 import {
   Fetch_Awards_By_PlayerDocument,
   type Fetch_Awards_By_PlayerQuery,
-} from './FETCH_AWARDS_BY_PLAYER.generated';
-import { Fetch_PlayerDocument, type Fetch_PlayerQuery } from './FETCH_PLAYER.generated';
+} from './__generated__/FETCH_AWARDS_BY_PLAYER.generated';
+import {
+  Fetch_PlayerDocument,
+  type Fetch_PlayerQuery,
+} from './__generated__/FETCH_PLAYER.generated';
 import {
   Fetch_Player_Match_RecordsDocument,
   type Fetch_Player_Match_RecordsQuery,
-} from './FETCH_PLAYER_MATCH_RECORDS.generated';
+} from './__generated__/FETCH_PLAYER_MATCH_RECORDS.generated';
 import {
   Fetch_Player_Matches_By_OpponentDocument,
   type Fetch_Player_Matches_By_OpponentQuery,
-} from './FETCH_PLAYER_MATCHES_BY_OPPONENT.generated';
+} from './__generated__/FETCH_PLAYER_MATCHES_BY_OPPONENT.generated';
 import {
   Fetch_Player_Matches_With_Record_AssistsDocument,
   type Fetch_Player_Matches_With_Record_AssistsQuery,
-} from './FETCH_PLAYER_MATCHES_WITH_RECORD_ASSISTS.generated';
+} from './__generated__/FETCH_PLAYER_MATCHES_WITH_RECORD_ASSISTS.generated';
 import {
   Fetch_Player_Matches_With_Record_CombinedDocument,
   type Fetch_Player_Matches_With_Record_CombinedQuery,
-} from './FETCH_PLAYER_MATCHES_WITH_RECORD_COMBINED.generated';
+} from './__generated__/FETCH_PLAYER_MATCHES_WITH_RECORD_COMBINED.generated';
 import {
   Fetch_Player_Matches_With_Record_GoalsDocument,
   type Fetch_Player_Matches_With_Record_GoalsQuery,
-} from './FETCH_PLAYER_MATCHES_WITH_RECORD_GOALS.generated';
+} from './__generated__/FETCH_PLAYER_MATCHES_WITH_RECORD_GOALS.generated';
 import {
   Fetch_Player_Opponent_StatsDocument,
   type Fetch_Player_Opponent_StatsQuery,
-} from './FETCH_PLAYER_OPPONENT_STATS.generated';
+} from './__generated__/FETCH_PLAYER_OPPONENT_STATS.generated';
 import {
   Fetch_Player_Seasons_SummaryDocument,
   type Fetch_Player_Seasons_SummaryQuery,
-} from './FETCH_PLAYER_SEASON_SUMMARY.generated';
+} from './__generated__/FETCH_PLAYER_SEASON_SUMMARY.generated';
 import {
   Fetch_Player_StatsDocument,
   type Fetch_Player_StatsQuery,
-} from './FETCH_PLAYER_STATS.generated';
+} from './__generated__/FETCH_PLAYER_STATS.generated';
 import {
   Fetch_Player_StreaksDocument,
   type Fetch_Player_StreaksQuery,
-} from './FETCH_PLAYER_STREAKS.generated';
+} from './__generated__/FETCH_PLAYER_STREAKS.generated';
 import {
   Fetch_Player_TrophiesDocument,
   type Fetch_Player_TrophiesQuery,
-} from './FETCH_PLAYER_TROPHIES.generated';
+} from './__generated__/FETCH_PLAYER_TROPHIES.generated';
 
 export {
   Add_PlayerDocument as ADD_PLAYER,

@@ -2,11 +2,11 @@ import { DeepOmitTypename } from '../../../utils';
 import {
   type Fetch_Orgs_By_SearchQuery,
   Fetch_Orgs_By_SearchDocument,
-} from './FETCH_ORGS_BY_SEARCH.generated';
+} from './__generated__/FETCH_ORGS_BY_SEARCH.generated';
 import {
   type Fetch_Teams_By_SearchQuery,
   Fetch_Teams_By_SearchDocument,
-} from './FETCH_TEAMS_BY_SEARCH.generated';
+} from './__generated__/FETCH_TEAMS_BY_SEARCH.generated';
 
 export {
   Fetch_Teams_By_SearchDocument as FETCH_TEAMS_BY_SEARCH,

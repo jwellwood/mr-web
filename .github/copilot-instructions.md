@@ -36,7 +36,7 @@ Each module may contain:
 - `containers/` — page/feature-level orchestration: graphql queries/mutations, state management, and rendering of module-specific components
 - `hooks/` — module-specific React hooks
 - `forms/` — forms and form logic including zod validation schemas
-- `graphql/` — GraphQL queries/mutations/fragments as appropriate
+- `graphql/` — GraphQL queries/mutations/fragments as appropriate; codegen output lives in `graphql/__generated__/` (never edit by hand)
 - `locales/` — module-specific localization namespaces and translations
 - `helpers/` — module-specific utility functions
 

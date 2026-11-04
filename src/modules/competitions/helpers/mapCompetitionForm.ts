@@ -1,12 +1,14 @@
 import type { CompetitionFormData } from '../forms/schema';
-import type { Add_CompetitionMutationVariables } from '../graphql/ADD_COMPETITION.generated';
-import type { Edit_CompetitionMutationVariables } from '../graphql/EDIT_COMPETITION.generated';
-import type { Fetch_CompetitionQuery } from '../graphql/FETCH_COMPETITION.generated';
+import type {
+  T_ADD_COMPETITION_VARIABLES,
+  T_EDIT_COMPETITION_VARIABLES,
+  T_FETCH_COMPETITION,
+} from '../graphql';
 
 export const mapFormToAddCompetition = (
   formData: CompetitionFormData,
   orgId: string
-): Add_CompetitionMutationVariables => {
+): T_ADD_COMPETITION_VARIABLES => {
   return {
     orgId,
     name: formData.name.trim(),
@@ -21,7 +23,7 @@ export const mapFormToEditCompetition = (
   formData: CompetitionFormData,
   orgId: string,
   compId: string
-): Edit_CompetitionMutationVariables => {
+): T_EDIT_COMPETITION_VARIABLES => {
   return {
     compId,
     orgId,
@@ -34,7 +36,7 @@ export const mapFormToEditCompetition = (
 };
 
 export const mapCompetitionToForm = (
-  competition: Fetch_CompetitionQuery['competition']
+  competition: T_FETCH_COMPETITION['competition']
 ): CompetitionFormData => {
   return {
     name: competition.name ?? '',

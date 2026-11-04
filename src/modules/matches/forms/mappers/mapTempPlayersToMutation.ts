@@ -1,9 +1,9 @@
-import { TAddMatchInput } from '../../../../types/__generated__/graphql';
+import { T_ADD_MATCH_VARIABLES } from '../../graphql';
 import { ITempMatchPlayers } from '../../types';
 
 export const mapTempPlayersToMutation = (
   tempPlayers: ITempMatchPlayers[]
-): TAddMatchInput['matchPlayers'] => {
+): T_ADD_MATCH_VARIABLES['matchPlayers'] => {
   return tempPlayers.map(player => ({
     playerId: player.playerId,
     isStarter: player.isStarter,

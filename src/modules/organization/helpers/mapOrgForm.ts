@@ -1,8 +1,7 @@
 import type { OrganizationFormData } from '../forms/org-form/schema';
-import { T_FETCH_ORG } from '../graphql';
-import type { Add_OrgMutationVariables } from '../graphql/ADD_ORG.generated';
+import { T_ADD_ORG_VARIABLES, T_FETCH_ORG } from '../graphql';
 
-export const mapFormToOrg = (formData: OrganizationFormData): Add_OrgMutationVariables => {
+export const mapFormToOrg = (formData: OrganizationFormData): T_ADD_ORG_VARIABLES => {
   return {
     name: formData.name.trim(),
     website: formData.website || undefined,

@@ -2,19 +2,19 @@ import { DeepOmitTypename } from '../../../utils';
 import {
   Add_GoalscorersDocument,
   type Add_GoalscorersMutation,
-} from '../../goalscorers/graphql/ADD_GOALSCORERS.generated';
+} from '../../goalscorers/graphql/__generated__/ADD_GOALSCORERS.generated';
 import {
   Edit_GoalscorersDocument,
   type Edit_GoalscorersMutation,
-} from './EDIT_GOALSCORERS.generated';
+} from './__generated__/EDIT_GOALSCORERS.generated';
 import {
   Fetch_Goalscorer_LeaderboardDocument,
   type Fetch_Goalscorer_LeaderboardQuery,
-} from './FETCH_GOALSCORER_LEADERBOARD.generated';
+} from './__generated__/FETCH_GOALSCORER_LEADERBOARD.generated';
 import {
   Fetch_Players_By_TeamDocument,
   type Fetch_Players_By_TeamQuery,
-} from './FETCH_PLAYERS_FOR_RESULT_INPUT.generated';
+} from './__generated__/FETCH_PLAYERS_FOR_RESULT_INPUT.generated';
 
 export {
   Fetch_Goalscorer_LeaderboardDocument as FETCH_GOALSCORER_LEADERBOARD,

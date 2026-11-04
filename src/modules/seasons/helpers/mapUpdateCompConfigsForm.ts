@@ -1,7 +1,12 @@
-import type { CompetitionConfigInput } from '../../../types/__generated__/graphql';
 import { isCupCompetitionType, TTiebreaker } from '../constants';
 import { UpdateCompConfigFormData } from '../forms/competition-configs/schema';
+import type { T_UPDATE_COMPETITION_CONFIGS_VARIABLES } from '../graphql';
 import { CompetitionConfig } from './mapOrgSeasonForm';
+
+type CompetitionConfigInput = Extract<
+  T_UPDATE_COMPETITION_CONFIGS_VARIABLES['competitionConfigs'],
+  unknown[]
+>[number];
 
 export const mapCompConfigToForm = (
   config: CompetitionConfig,

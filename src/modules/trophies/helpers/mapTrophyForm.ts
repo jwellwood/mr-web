@@ -1,10 +1,9 @@
 import type { ISelectOptions } from '../../../components';
-import type { Edit_TrophyMutationVariables } from '../graphql/EDIT_TROPHY.generated';
-import type { Fetch_TrophyQuery } from '../graphql/FETCH_TROPHY.generated';
+import type { T_EDIT_TROPHY_VARIABLES, T_FETCH_TROPHY } from '../graphql';
 import { TrophyFormData } from '../schema';
 
 export function mapTrophyToForm(
-  trophy: Fetch_TrophyQuery['trophy'] | null | undefined,
+  trophy: T_FETCH_TROPHY['trophy'] | null | undefined,
   seasonOptions?: ISelectOptions[]
 ): TrophyFormData {
   if (!trophy) {
@@ -37,7 +36,7 @@ export function mapTrophyToForm(
 
 export function mapFormToEditTrophyVariables(
   form: Partial<TrophyFormData>
-): Omit<Edit_TrophyMutationVariables, 'teamId' | 'trophyId'> {
+): Omit<T_EDIT_TROPHY_VARIABLES, 'teamId' | 'trophyId'> {
   const yearRaw = form.year as unknown;
   let year: string = '';
   if (yearRaw instanceof Date && !isNaN(yearRaw.getTime())) {

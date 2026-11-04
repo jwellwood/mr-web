@@ -1,20 +1,29 @@
 import { DeepOmitTypename } from '../../../utils';
-import { Delete_UserDocument, type Delete_UserMutation } from './DELETE_USER.generated';
-import { Edit_PasswordDocument, type Edit_PasswordMutation } from './EDIT_PASSWORD.generated';
-import { Edit_ProfileDocument, type Edit_ProfileMutation } from './EDIT_PROFILE.generated';
+import {
+  Delete_UserDocument,
+  type Delete_UserMutation,
+} from './__generated__/DELETE_USER.generated';
+import {
+  Edit_PasswordDocument,
+  type Edit_PasswordMutation,
+} from './__generated__/EDIT_PASSWORD.generated';
+import {
+  Edit_ProfileDocument,
+  type Edit_ProfileMutation,
+} from './__generated__/EDIT_PROFILE.generated';
 import {
   Edit_Profile_ImageDocument,
   type Edit_Profile_ImageMutation,
-} from './EDIT_PROFILE_IMAGE.generated';
+} from './__generated__/EDIT_PROFILE_IMAGE.generated';
 import {
   Fetch_Orgs_By_UserDocument,
   type Fetch_Orgs_By_UserQuery,
-} from './FETCH_ORGS_BY_USER.generated';
+} from './__generated__/FETCH_ORGS_BY_USER.generated';
 import {
   Fetch_Teams_By_UserDocument,
   type Fetch_Teams_By_UserQuery,
-} from './FETCH_TEAMS_BY_USER.generated';
-import { Fetch_UserDocument, type Fetch_UserQuery } from './FETCH_USER.generated';
+} from './__generated__/FETCH_TEAMS_BY_USER.generated';
+import { Fetch_UserDocument, type Fetch_UserQuery } from './__generated__/FETCH_USER.generated';
 
 export {
   Fetch_UserDocument as FETCH_USER,

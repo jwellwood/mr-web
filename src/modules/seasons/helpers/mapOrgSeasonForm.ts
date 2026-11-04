@@ -1,7 +1,9 @@
 import type { OrgSeasonFormData } from '../forms/schema';
-import { T_FETCH_ORG_SEASON } from '../graphql';
-import type { Add_Org_SeasonMutationVariables } from '../graphql/ADD_ORG_SEASON.generated';
-import type { Edit_Org_SeasonMutationVariables } from '../graphql/EDIT_ORG_SEASON.generated';
+import {
+  T_ADD_ORG_SEASON_VARIABLES,
+  T_EDIT_ORG_SEASON_VARIABLES,
+  T_FETCH_ORG_SEASON,
+} from '../graphql';
 
 export type CompetitionConfig = NonNullable<
   T_FETCH_ORG_SEASON['orgSeason']['competitionConfigs']
@@ -10,7 +12,7 @@ export type CompetitionConfig = NonNullable<
 export const mapFormToAddOrgSeason = (
   formData: OrgSeasonFormData,
   orgId: string
-): Add_Org_SeasonMutationVariables => {
+): T_ADD_ORG_SEASON_VARIABLES => {
   return {
     orgId,
     yearStarted: formData.yearStarted
@@ -28,7 +30,7 @@ export const mapFormToEditOrgSeason = (
   formData: OrgSeasonFormData,
   orgId: string,
   seasonId: string
-): Edit_Org_SeasonMutationVariables => {
+): T_EDIT_ORG_SEASON_VARIABLES => {
   return {
     orgId,
     seasonId,

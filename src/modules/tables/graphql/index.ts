@@ -2,7 +2,7 @@ import { DeepOmitTypename } from '../../../utils';
 import {
   Fetch_League_TablesDocument,
   type Fetch_League_TablesQuery,
-} from '../../tables/graphql/FETCH_LEAGUE_TABLES.generated';
+} from '../../tables/graphql/__generated__/FETCH_LEAGUE_TABLES.generated';
 
 export { Fetch_League_TablesDocument as FETCH_LEAGUE_TABLES };
 

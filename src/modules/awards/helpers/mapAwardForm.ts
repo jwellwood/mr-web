@@ -1,6 +1,5 @@
 import type { AwardFormData } from '../forms/schema';
-import { T_FETCH_AWARD } from '../graphql';
-import type { Edit_AwardMutationVariables } from '../graphql/EDIT_AWARD.generated';
+import { T_EDIT_AWARD_VARIABLES, T_FETCH_AWARD } from '../graphql';
 
 export function mapAwardToForm(award: T_FETCH_AWARD['award'] | null | undefined): AwardFormData {
   if (!award) {
@@ -22,7 +21,7 @@ export function mapAwardToForm(award: T_FETCH_AWARD['award'] | null | undefined)
 
 export function mapFormToEditAwardVariables(
   form: Partial<AwardFormData>
-): Omit<Edit_AwardMutationVariables, 'awardId' | 'teamId'> {
+): Omit<T_EDIT_AWARD_VARIABLES, 'awardId' | 'teamId'> {
   const winners = (form.winners ?? []).filter(Boolean) as string[];
 
   const awardValueRaw = (form.awardValue ?? undefined) as unknown;

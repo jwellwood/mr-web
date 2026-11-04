@@ -1,6 +1,6 @@
 import { getPoints } from '../../../modules/matches/helpers';
+import type { T_FETCH_RESULT } from '../../../modules/results/graphql';
 import { theme } from '../../../theme';
-import { ResultDecision } from '../../../types/__generated__/graphql';
 import { getOpaqueValue } from '../../../utils';
 import CustomSkeleton from '../../loaders/custom-skeleton/CustomSkeleton';
 import { CustomTypography } from '../../typography';
@@ -60,7 +60,12 @@ export default function MatchListScoreBox({
     >
       <CustomTypography color="data" bold size="xs">
         {teamGoals} - {opponentGoals}{' '}
-        {decidedBy ? <TiebreakerText tiebreakType={decidedBy as ResultDecision} size="xs" /> : null}
+        {decidedBy ? (
+          <TiebreakerText
+            tiebreakType={decidedBy as T_FETCH_RESULT['result']['decision']}
+            size="xs"
+          />
+        ) : null}
       </CustomTypography>
     </div>
   );

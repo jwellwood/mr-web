@@ -1,9 +1,12 @@
 import type { MatchRow } from '../forms/batch-result/BatchResultForm';
 import { BatchResultFormData } from '../forms/batch-result/schema';
 import { ResultFormData } from '../forms/result/schema';
-import { T_FETCH_RESULT, T_FETCH_RESULTS } from '../graphql';
-import type { Add_ResultMutationVariables } from '../graphql/ADD_RESULT.generated';
-import type { Edit_ResultMutationVariables } from '../graphql/EDIT_RESULT.generated';
+import {
+  T_ADD_RESULT_VARIABLES,
+  T_EDIT_RESULT_VARIABLES,
+  T_FETCH_RESULT,
+  T_FETCH_RESULTS,
+} from '../graphql';
 
 type TResultDecision = 'NORMAL_TIME' | 'EXTRA_TIME' | 'PENALTIES';
 type TWinnerSide = 'HOME' | 'AWAY';
@@ -26,7 +29,7 @@ export const mapFormToAddResult = (
   formData: ResultFormData,
   orgId: string,
   orgSeasonIdFromParams?: string
-): Add_ResultMutationVariables => {
+): T_ADD_RESULT_VARIABLES => {
   return {
     orgId,
     orgSeasonId: orgSeasonIdFromParams || 'default',
@@ -67,7 +70,7 @@ export const mapFormToEditResult = (
   formData: ResultFormData,
   orgId: string,
   resultId: string
-): Edit_ResultMutationVariables => {
+): T_EDIT_RESULT_VARIABLES => {
   return {
     orgId,
     resultId,
