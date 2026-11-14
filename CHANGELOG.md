@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.50.0](https://github.com/jwellwood/mr-web/compare/v0.49.1...v0.50.0) (2026-11-14)
+
+### Features
+
+* refactor admin module ([4b7f726](https://github.com/jwellwood/mr-web/commit/4b7f726e989bb7e13f3719f6fd00d169286983f6))
+
 ## [0.49.1](https://github.com/jwellwood/mr-web/compare/v0.49.0...v0.49.1) (2026-11-04)
 
 ### Code Refactoring
