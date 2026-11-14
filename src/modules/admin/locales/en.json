@@ -3,7 +3,8 @@
     "TEAM_ADMIN": "Team Admin"
   },
   "HEADERS": {
-    "REQUEST_ADMIN_ACCESS": "Request Admin Access",
+    "REQUEST_TEAM_ADMIN_ACCESS": "Request Team Admin Access",
+    "REQUEST_ORG_ADMIN_ACCESS": "Request League Admin Access",
     "ADMIN_CODE": "Admin Code",
     "ADMIN_USERS": "Admin Users"
   },
@@ -26,9 +27,14 @@
     }
   },
   "FORM": {
+    "CHECKLIST": {
+      "STEP_1": "1 - Find your team",
+      "STEP_1_ORG": "1 - Find your league",
+      "STEP_2": "2 - Enter the admin code"
+    },
     "REQUEST_ACCESS": {
-      "SUMMARY": "Ask a current admin for an access code and enter the code here",
-      "TEAM_SUMMARY": "Ask a current team admin to provide you with a code and enter the code here",
+      "SUMMARY": "Ask a current admin for an access code",
+      "TEAM_SUMMARY": "Ask a current admin for an access code",
       "NOT_FOUND_ORG": "No organizations found",
       "NOT_FOUND_TEAM": "No teams found",
       "CHANGE": "Change"
@@ -45,9 +51,16 @@
   "BUTTONS": {
     "GENERATE_ADMIN_CODE": "Generate Admin Code",
     "SET_ADMIN_ACCESS_CODE": "Set Admin Access Code",
-    "JOIN_TEAM": "Join Team",
-    "JOIN_ORG": "Join Organization",
+    "JOIN_TEAM": "Team Admin Access",
+    "JOIN_ORG": "League Admin Access",
     "COPY": "Copy",
     "COPIED": "Copied"
+  },
+  "ERRORS": {
+    "INVALID_TEAM_ADMIN_ACCESS_CODE": "Invalid team admin access code",
+    "INVALID_ORG_ADMIN_ACCESS_CODE": "Invalid league admin access code",
+    "ORG_ADMIN_ACCESS_DISABLED": "League admin access is disabled",
+    "ORG_ADMIN_ACCESS_CODE_NOT_SET": "League admin access code is not set",
+    "TEAM_ADMIN_ACCESS_CODE_NOT_SET": "Team admin access is disabled"
   }
 }

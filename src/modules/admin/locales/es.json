@@ -3,7 +3,8 @@
     "TEAM_ADMIN": "Admin del equipo"
   },
   "HEADERS": {
-    "REQUEST_ADMIN_ACCESS": "Solicitar acceso de administrador",
+    "REQUEST_TEAM_ADMIN_ACCESS": "Solicitar acceso de admin del equipo",
+    "REQUEST_ORG_ADMIN_ACCESS": "Solicitar acceso de admin de la organización",
     "ADMIN_CODE": "Código de administrador",
     "ADMIN_USERS": "Usuarios administradores"
   },
@@ -26,9 +27,14 @@
     }
   },
   "FORM": {
+    "CHECKLIST": {
+      "STEP_1": "1 - Encuentra tu equipo",
+      "STEP_1_ORG": "1 - Encuentra tu liga",
+      "STEP_2": "2 - Introduce el código"
+    },
     "REQUEST_ACCESS": {
-      "SUMMARY": "Pide a un administrador actual un código de acceso e ingresa el código aquí",
-      "TEAM_SUMMARY": "Pide a un administrador del equipo actual que te proporcione un código e ingrésalo aquí",
+      "SUMMARY": "Pide a un admin actual un código de acceso",
+      "TEAM_SUMMARY": "Pide a un admin actual un código de acceso",
       "NOT_FOUND_ORG": "No se encontraron organizaciones",
       "NOT_FOUND_TEAM": "No se encontraron equipos",
       "CHANGE": "Cambiar"
@@ -45,9 +51,16 @@
   "BUTTONS": {
     "GENERATE_ADMIN_CODE": "Generar código de administrador",
     "SET_ADMIN_ACCESS_CODE": "Establecer código de acceso de administrador",
-    "JOIN_TEAM": "Unirse a un equipo",
-    "JOIN_ORG": "Unirse a una organización",
+    "JOIN_TEAM": "Acceso de admin del equipo",
+    "JOIN_ORG": "Acceso de admin de la liga",
     "COPY": "Copiar",
     "COPIED": "Copiado"
+  },
+  "ERRORS": {
+    "INVALID_TEAM_ADMIN_ACCESS_CODE": "Código de acceso de admin del equipo inválido",
+    "INVALID_ORG_ADMIN_ACCESS_CODE": "Código de acceso de admin de la liga inválido",
+    "ORG_ADMIN_ACCESS_DISABLED": "El acceso de admin de la liga está deshabilitado",
+    "ORG_ADMIN_ACCESS_CODE_NOT_SET": "El código de acceso de admin de la liga no está establecido",
+    "TEAM_ADMIN_ACCESS_CODE_NOT_SET": "El acceso de admin del equipo está deshabilitado"
   }
 }

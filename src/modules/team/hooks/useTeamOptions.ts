@@ -7,7 +7,7 @@ import { FETCH_ORG_TEAMS } from '../../organization/graphql';
 export const useTeamOptions = () => {
   const { orgId } = useCustomParams();
   const { data, error, loading } = useQuery(FETCH_ORG_TEAMS, {
-    variables: { orgId: orgId! },
+    variables: { orgId: orgId!, includeInactive: true },
   });
 
   const teamOptions = useMemo<ISelectOptions[]>(() => {

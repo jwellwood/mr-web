@@ -1,7 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
-import { describe, it, expect, vi } from 'vitest';
+import { afterEach, describe, it, expect, vi } from 'vitest';
+import i18n from '../../../../i18n/react-i18n';
+import { resetAuth, setAuth, store } from '../../../../store';
+import { theme } from '../../../../theme';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import ProfileOrgsView from '../ProfileOrgView';
 
@@ -20,6 +23,10 @@ const makeOrg = (id: string, name: string) => ({
 });
 
 describe('ProfileOrgsView', () => {
+  afterEach(() => {
+    store.dispatch(resetAuth());
+  });
+
   it('renders the Organizations header', () => {
     render(
       <MemoryRouter>
@@ -28,7 +35,9 @@ describe('ProfileOrgsView', () => {
         </TestWrapper>
       </MemoryRouter>
     );
-    expect(screen.getByText('Organizations')).toBeInTheDocument();
+    expect(
+      screen.getByText(i18n.t('HEADERS.ORGANIZATIONS', { ns: 'profile' }))
+    ).toBeInTheDocument();
   });
 
   it('renders NoProfileItems when data has no orgs', () => {
@@ -57,6 +66,29 @@ describe('ProfileOrgsView', () => {
     );
     expect(screen.getByText('FC Barcelona')).toBeInTheDocument();
     expect(screen.getByText('Real Madrid')).toBeInTheDocument();
+  });
+
+  it('shows admin and user labels with their respective colors', () => {
+    store.dispatch(setAuth({ orgIds: ['1'] }));
+    render(
+      <MemoryRouter>
+        <TestWrapper>
+          <ProfileOrgsView
+            loading={false}
+            data={{ orgs: [makeOrg('1', 'Admin org'), makeOrg('2', 'Team-only org')] }}
+          />
+        </TestWrapper>
+      </MemoryRouter>
+    );
+
+    const adminLink = screen.getByRole('link', { name: /Admin org/ });
+    const teamOnlyLink = screen.getByRole('link', { name: /Team-only org/ });
+    expect(within(adminLink).getByText('Admin')).toHaveStyle({
+      color: theme.palette.tertiary.main,
+    });
+    expect(within(teamOnlyLink).queryByText('Admin')).not.toBeInTheDocument();
+    expect(within(teamOnlyLink).getByText('User')).toHaveStyle({ color: theme.palette.info.main });
+    expect(within(adminLink).queryByText('User')).not.toBeInTheDocument();
   });
 
   it('renders the request admin button in the header', () => {

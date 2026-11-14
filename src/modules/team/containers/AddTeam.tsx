@@ -23,7 +23,7 @@ export default function AddTeam() {
     refetchQueries: [
       {
         query: FETCH_ORG_TEAMS,
-        variables: { orgId },
+        variables: { orgId, includeInactive: true },
       },
       { query: FETCH_TEAMS_BY_USER },
     ],

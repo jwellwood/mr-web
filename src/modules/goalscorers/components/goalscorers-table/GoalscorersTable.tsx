@@ -1,9 +1,13 @@
-import { Pagination, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { CustomTable, DataError, NoDataText, SectionContainer } from '../../../../components';
+import {
+  CustomPagination,
+  CustomTable,
+  DataError,
+  NoDataText,
+  SectionContainer,
+} from '../../../../components';
 import { IMAGE_TYPE } from '../../../../constants';
 import { useCustomParams } from '../../../../hooks';
-import { theme } from '../../../../theme';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_GOALSCORER_LEADERBOARD } from '../../graphql';
 import { columns } from './columns';
@@ -50,28 +54,7 @@ export default function GoalScorersTable({
   return (
     <>
       {totalPages > 1 && (
-        <SectionContainer>
-          <Stack alignItems="center">
-            <Pagination
-              count={totalPages}
-              page={page}
-              onChange={(_, value) => onPageChange(value)}
-              color="primary"
-              variant="outlined"
-              shape="rounded"
-              sx={{
-                '& .MuiPaginationItem-root': {
-                  color: theme.palette.label.main,
-                  borderColor: theme.palette.label.main,
-                },
-                '& .MuiPaginationItem-root.Mui-selected': {
-                  color: theme.palette.primary.main,
-                  borderColor: theme.palette.primary.main,
-                },
-              }}
-            />
-          </Stack>
-        </SectionContainer>
+        <CustomPagination totalPages={totalPages} page={page} onPageChange={onPageChange} />
       )}
       <SectionContainer>
         {data?.entries.length === 0 && !loading ? (

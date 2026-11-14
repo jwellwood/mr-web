@@ -10,6 +10,7 @@ interface Props {
   color?: TColor;
   link?: string;
   fullWidth?: boolean;
+  disabled?: boolean;
 }
 
 export default function CustomButton({
@@ -19,6 +20,7 @@ export default function CustomButton({
   variant = 'outlined',
   link,
   fullWidth,
+  disabled,
 }: Props) {
   const componentProps: Record<string, string | React.ElementType> = {
     component: link ? (Link as React.ElementType) : ('button' as React.ElementType),
@@ -30,6 +32,7 @@ export default function CustomButton({
       onClick={onClick}
       color={color}
       fullWidth={fullWidth}
+      disabled={disabled}
       {...componentProps}
     >
       {children}

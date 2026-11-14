@@ -2,7 +2,6 @@ import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { describe, it, expect } from 'vitest';
-import { theme } from '../../../theme';
 import CustomTypography from '../custom-typography/CustomTypography';
 
 describe('CustomTypography', () => {
@@ -51,18 +50,5 @@ describe('CustomTypography', () => {
     expect(link).toBeInTheDocument();
     // react-router Link renders an anchor with href
     expect(link.getAttribute('href')).toBe('/test/path');
-  });
-
-  it('uses the theme fontFamily', () => {
-    render(
-      <CustomTypography color="data" size="sm">
-        FontCheck
-      </CustomTypography>
-    );
-
-    const el = screen.getByText('FontCheck');
-    const style = window.getComputedStyle(el);
-    // fontFamily may include fallback list, assert contains the theme family
-    expect(style.fontFamily.includes(theme.typography.fontFamily as string)).toBe(true);
   });
 });

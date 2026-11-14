@@ -1,8 +1,16 @@
 import { useTranslation } from 'react-i18next';
-import { DataError, ImageAvatar, NoDataText, SectionContainer } from '../../../components';
+import { useSelector } from 'react-redux';
+import {
+  CustomTypography,
+  DataError,
+  ImageAvatar,
+  NoDataText,
+  SectionContainer,
+} from '../../../components';
 import { LinksList, type IListItem } from '../../../components/lists';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { IMAGE_TYPE, TAB_TYPES } from '../../../constants';
+import { getAuth } from '../../../store';
 import { TApolloError } from '../../../types/apollo';
 import { T_FETCH_TEAMS_BY_USER_QUERY } from '../graphql';
 import EntityListWrapper from './EntityListWrapper';
@@ -15,6 +23,7 @@ interface Props {
 
 export default function ProfileTeamsView({ data, loading, error }: Props) {
   const { t } = useTranslation('profile');
+  const { isTeamAdmin, teamIds } = useSelector(getAuth);
   const { teams } = data || {};
 
   const activeTeams = teams?.filter(team => team.isActive);
@@ -25,9 +34,15 @@ export default function ProfileTeamsView({ data, loading, error }: Props) {
     list?.forEach(team => {
       const orgName = team.orgId?.name || t('LABELS.UNKNOWN');
       const orgId = team.orgId?._id;
+      const isAdmin = isTeamAdmin && teamIds.includes(team._id);
       const item: IListItem = {
         label: team.teamName,
         link: orgId ? `/org/${orgId}/team/${team._id}` : `/team/${team._id}`,
+        secondary: (
+          <CustomTypography color={isAdmin ? 'tertiary' : 'info'}>
+            {t(isAdmin ? 'LABELS.ADMIN' : 'LABELS.USER')}
+          </CustomTypography>
+        ),
         avatar: (
           <ImageAvatar imageUrl={team.teamBadge?.url || ''} fallbackIcon={IMAGE_TYPE.BADGE} />
         ),

@@ -14,6 +14,10 @@ export const FETCH_TEAMS_BY_USER = gql`
       orgId {
         _id
         name
+        badge {
+          public_id
+          url
+        }
       }
     }
   }

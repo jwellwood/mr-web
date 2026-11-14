@@ -17,7 +17,7 @@ export const useMatchDetailsInput = () => {
 
   useEffect(() => {
     if (orgId) {
-      getTeamByOrg({ variables: { orgId: orgId! } });
+      getTeamByOrg({ variables: { orgId: orgId!, includeInactive: true } });
       getOrgById({ variables: { orgId: orgId! } });
     }
   }, [getOrgById, getTeamByOrg, orgId]);

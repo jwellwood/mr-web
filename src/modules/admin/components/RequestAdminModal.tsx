@@ -1,19 +1,12 @@
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CustomButton, ImageAvatar, NoDataText } from '../../../components';
-import { FlagIcon } from '../../../components/icons';
+import { CustomButton, SectionContainer } from '../../../components';
 import { FormModal } from '../../../components/modals';
-import { CustomTypography } from '../../../components/typography';
-import { IMAGE_TYPE } from '../../../constants';
 import { TApolloError } from '../../../types/apollo';
-import SearchForm from '../../home/forms/SearchForm';
 import RequestAccessForm from '../forms/request-admin-access/RequestAccessForm';
 import { RequestAccessData } from '../forms/request-admin-access/schema';
+import FindEntity from './FindEntity';
+import RenderEntityList from './RenderEntityList';
 
 export interface RequestAdminEntity {
   id: string;
@@ -65,92 +58,56 @@ export default function RequestAdminModal({
     }
   };
 
-  const renderEntity = (entity: RequestAdminEntity, onClick?: () => void) => {
-    const content = (
-      <>
-        <ListItemAvatar>
-          <ImageAvatar imageUrl={entity.badge ?? undefined} fallbackIcon={IMAGE_TYPE.BADGE} />
-        </ListItemAvatar>
-        <ListItemText
-          primary={
-            <CustomTypography bold size="sm" color="data">
-              {entity.name}
-            </CustomTypography>
-          }
-          secondary={
-            <CustomTypography bold size="sm" color="label">
-              {entity.city} <FlagIcon nationality={entity.country || ''} />
-            </CustomTypography>
-          }
-          slotProps={{ secondary: { component: 'div' } }}
-        />
-      </>
-    );
-
-    return (
-      <ListItem key={entity.id} disablePadding>
-        {onClick ? (
-          <ListItemButton onClick={onClick}>{content}</ListItemButton>
-        ) : (
-          <ListItemButton disableRipple sx={{ cursor: 'default' }}>
-            {content}
-          </ListItemButton>
-        )}
-      </ListItem>
-    );
-  };
-
-  const renderResults = () => {
-    if (!searchTerm.trim() || searchLoading || !results) {
-      return null;
-    }
-    if (!results.length) {
-      return (
-        <NoDataText>
-          {t(
-            type === 'org'
-              ? 'FORM.REQUEST_ACCESS.NOT_FOUND_ORG'
-              : 'FORM.REQUEST_ACCESS.NOT_FOUND_TEAM'
-          )}
-        </NoDataText>
-      );
-    }
-    return (
-      <List dense>{results.map(entity => renderEntity(entity, () => setSelected(entity)))}</List>
-    );
-  };
-
   return (
     <>
-      <CustomButton variant="text" color="primary" onClick={() => setOpen(true)}>
+      <CustomButton variant="contained" color="primary" onClick={() => setOpen(true)}>
         {t(type === 'org' ? 'BUTTONS.JOIN_ORG' : 'BUTTONS.JOIN_TEAM')}
       </CustomButton>
-      <FormModal open={open} onClose={handleClose} title={t('HEADERS.REQUEST_ADMIN_ACCESS')}>
-        {selected ? (
-          <>
-            <List dense>{renderEntity(selected)}</List>
-            <CustomButton variant="text" color="tertiary" onClick={() => setSelected(null)}>
-              {t('FORM.REQUEST_ACCESS.CHANGE')}
-            </CustomButton>
-            <RequestAccessForm
-              type={type}
-              defaultValues={{ accessCode: '' }}
-              onSubmit={handleSubmit}
-              loading={submitLoading}
-            />
-          </>
-        ) : (
-          <>
-            <SearchForm
-              defaultValues={{ teamName: searchTerm }}
-              onSubmit={handleSearch}
-              loading={searchLoading}
-              error={searchError}
-              type={type}
-            />
-            {renderResults()}
-          </>
+      <FormModal
+        open={open}
+        onClose={handleClose}
+        title={t(
+          type === 'org' ? 'HEADERS.REQUEST_ORG_ADMIN_ACCESS' : 'HEADERS.REQUEST_TEAM_ADMIN_ACCESS'
         )}
+      >
+        <SectionContainer>
+          {selected ? (
+            <>
+              <SectionContainer
+                title={t(type === 'org' ? 'FORM.CHECKLIST.STEP_1_ORG' : 'FORM.CHECKLIST.STEP_1')}
+              >
+                <RenderEntityList
+                  results={results}
+                  searchTerm={searchTerm}
+                  searchLoading={searchLoading}
+                  type={type}
+                />
+              </SectionContainer>
+              <SectionContainer title={t('FORM.CHECKLIST.STEP_2')}>
+                <RequestAccessForm
+                  type={type}
+                  defaultValues={{ accessCode: '' }}
+                  onSubmit={handleSubmit}
+                  loading={submitLoading}
+                />
+              </SectionContainer>
+            </>
+          ) : (
+            <SectionContainer
+              title={t(type === 'org' ? 'FORM.CHECKLIST.STEP_1_ORG' : 'FORM.CHECKLIST.STEP_1')}
+            >
+              <FindEntity
+                searchTerm={searchTerm}
+                searchLoading={searchLoading}
+                error={searchError}
+                type={type}
+                results={results}
+                setSelected={setSelected}
+                handleSearch={handleSearch}
+              />
+            </SectionContainer>
+          )}
+        </SectionContainer>
       </FormModal>
     </>
   );

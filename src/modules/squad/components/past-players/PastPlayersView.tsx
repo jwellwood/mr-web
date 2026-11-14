@@ -1,8 +1,6 @@
-import { Pagination, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { DataError, NoDataText, SectionContainer } from '../../../../components';
+import { CustomPagination, DataError, NoDataText, SectionContainer } from '../../../../components';
 import CustomTable from '../../../../components/tables/custom-table/CustomTable';
-import { theme } from '../../../../theme';
 import { TApolloError } from '../../../../types/apollo';
 import { T_FETCH_PAST_PLAYERS_QUERY } from '../../graphql';
 import { columns, rows } from '../tables/past-players';
@@ -47,29 +45,9 @@ export default function PastPlayersView({
   return (
     <>
       {totalPages > 1 && (
-        <SectionContainer>
-          <Stack alignItems="center">
-            <Pagination
-              count={totalPages}
-              page={page}
-              onChange={(_, value) => onPageChange(value)}
-              color="primary"
-              variant="outlined"
-              shape="rounded"
-              sx={{
-                '& .MuiPaginationItem-root': {
-                  color: theme.palette.label.main,
-                  borderColor: theme.palette.label.main,
-                },
-                '& .MuiPaginationItem-root.Mui-selected': {
-                  color: theme.palette.primary.main,
-                  borderColor: theme.palette.primary.main,
-                },
-              }}
-            />
-          </Stack>
-        </SectionContainer>
+        <CustomPagination totalPages={totalPages} page={page} onPageChange={onPageChange} />
       )}
+
       <SectionContainer>{error ? <DataError error={error} /> : renderData}</SectionContainer>
     </>
   );

@@ -42,7 +42,6 @@ describe('AdminTeamPage', () => {
       <AdminTeamPage
         data={{
           team: {
-            __typename: 'TeamAdminView',
             teamName: 'Rovers',
             teamAdminAccessCode: null,
             adminUsers: [],

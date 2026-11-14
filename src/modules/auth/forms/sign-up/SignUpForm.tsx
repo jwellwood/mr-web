@@ -1,5 +1,4 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Link } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import {
@@ -65,15 +64,9 @@ export default function SignUpForm({ onSubmit, defaultValues, loading }: Props) 
             <PresentationModal
               title={t('FORM.LABELS.TERMS')}
               buttonElement={
-                <Link
-                  component="span"
-                  underline="always"
-                  sx={{ cursor: 'pointer', textDecoration: 'none' }}
-                >
-                  <CustomTypography color="info" size="md" bold>
-                    {t('FORM.LABELS.ACCEPT_TERMS')}
-                  </CustomTypography>
-                </Link>
+                <CustomTypography color="info" size="md" bold>
+                  {t('FORM.LABELS.ACCEPT_TERMS')}
+                </CustomTypography>
               }
             >
               <TermsOfUseContent />

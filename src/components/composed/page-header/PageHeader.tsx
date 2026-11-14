@@ -17,17 +17,18 @@ interface Props {
   help?: React.ReactNode;
 }
 
+function HideOnScroll({ children }: { children: ReactElement }) {
+  const trigger = useScrollTrigger();
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+}
+
 export default function PageHeader({ title, children, backButton = true, links, help }: Props) {
   const { username } = useAuth();
-  function HideOnScroll({ children }: { children: ReactElement }) {
-    const trigger = useScrollTrigger();
-
-    return (
-      <Slide appear={false} direction="down" in={!trigger}>
-        {children}
-      </Slide>
-    );
-  }
 
   return (
     <>

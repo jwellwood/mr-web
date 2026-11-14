@@ -4,10 +4,12 @@ import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { resetUseMutationImpl, setUseMutationImpl } from '../../../../test/utils/mockUseMutation';
 import TestWrapper from '../../../../utils/test-helpers/TestWrapper';
 import { FETCH_ORGS_BY_SEARCH } from '../../../home/graphql/FETCH_ORGS_BY_SEARCH';
+import { REQUEST_ORG_ADMIN_ACCESS } from '../../graphql';
 import RequestOrgAdmin from '../RequestOrgAdmin';
+
+vi.mock('@apollo/client/react', async importOriginal => importOriginal());
 
 const updateAuth = vi.fn();
 
@@ -37,20 +39,25 @@ const searchMocks = [
 
 describe('RequestOrgAdmin', () => {
   afterEach(() => {
-    resetUseMutationImpl();
     vi.clearAllMocks();
   });
 
   it('searches, selects an org, submits the code and closes the modal', async () => {
-    const mutate = vi.fn(async () => ({
-      data: { REQUEST_ORG_ADMIN_ACCESS: { token: 'new-token' } },
-    }));
-    setUseMutationImpl(() => [mutate, { loading: false }]);
-
     const user = userEvent.setup();
     render(
       <MemoryRouter>
-        <MockedProvider mocks={searchMocks}>
+        <MockedProvider
+          mocks={[
+            ...searchMocks,
+            {
+              request: {
+                query: REQUEST_ORG_ADMIN_ACCESS,
+                variables: { orgId: 'org1', code: 'secret1' },
+              },
+              result: { data: { REQUEST_ORG_ADMIN_ACCESS: { token: 'new-token' } } },
+            },
+          ]}
+        >
           <TestWrapper>
             <RequestOrgAdmin />
           </TestWrapper>
@@ -68,7 +75,6 @@ describe('RequestOrgAdmin', () => {
     await user.click(screen.getByRole('button', { name: /submit/i }));
 
     await waitFor(() => expect(updateAuth).toHaveBeenCalledWith('new-token'));
-    expect(mutate).toHaveBeenCalledWith({ variables: { orgId: 'org1', code: 'secret1' } });
     await waitFor(() => expect(screen.queryByLabelText(/access code/i)).not.toBeInTheDocument(), {
       timeout: 3000,
     });

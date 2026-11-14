@@ -1398,6 +1398,7 @@ export type QuerySquad_Streak_RecordsArgs = {
 
 
 export type QueryTeams_By_OrgArgs = {
+  includeInactive?: Scalars['Boolean']['input'];
   orgId: Scalars['String']['input'];
 };
 

@@ -20,6 +20,14 @@ export const useUpdateAuth = () => {
     if (user) {
       dispatch(setAuth(authPayloadFromUser(user)));
     }
+    // clearStore does not refetch the profile lists after permissions change.
+    await client.refetchQueries({
+      include: 'active',
+      onQueryUpdated: query =>
+        query.queryName === 'FETCH_ORGS_BY_USER' || query.queryName === 'FETCH_TEAMS_BY_USER'
+          ? query.refetch()
+          : false,
+    });
   };
 
   return { updateAuth };

@@ -1,9 +1,7 @@
-import { Pagination, Stack } from '@mui/material';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DataError, SectionContainer, NoDataText } from '../../../../components';
-import { CustomTable, CellValue } from '../../../../components/tables';
-import { theme } from '../../../../theme';
+import { CustomTable, CellValue, CustomPagination } from '../../../../components/tables';
 import { TApolloError } from '../../../../types/apollo';
 import { TFilters } from '../../context/SquadStatsFiltersContext';
 import StatFilters from '../../forms/StatsFilters';
@@ -56,28 +54,7 @@ export default function StatsView({
   return (
     <>
       {totalPages > 1 && (
-        <SectionContainer>
-          <Stack alignItems="center">
-            <Pagination
-              count={totalPages}
-              page={page}
-              onChange={(_, value) => onPageChange(value)}
-              color="primary"
-              variant="outlined"
-              shape="rounded"
-              sx={{
-                '& .MuiPaginationItem-root': {
-                  color: theme.palette.label.main,
-                  borderColor: theme.palette.label.main,
-                },
-                '& .MuiPaginationItem-root.Mui-selected': {
-                  color: theme.palette.primary.main,
-                  borderColor: theme.palette.primary.main,
-                },
-              }}
-            />
-          </Stack>
-        </SectionContainer>
+        <CustomPagination totalPages={totalPages} page={page} onPageChange={onPageChange} />
       )}
       <SectionContainer title={<StatFilters />} secondaryAction={<PlayerProfilesModal />}>
         {error ? <DataError error={error} /> : renderContent()}

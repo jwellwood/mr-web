@@ -1,9 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from '@mui/material';
 import { useMemo } from 'react';
 import { useFieldArray, useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
-import { ControlledSelectInput, FormContainer, type ISelectOptions } from '../../../../components';
+import {
+  ControlledSelectInput,
+  CustomButton,
+  FormContainer,
+  type ISelectOptions,
+} from '../../../../components';
 import { CustomGridContainer, CustomGridItem } from '../../../../components/grids';
 import { APP_ICONS, AppIcon } from '../../../../components/icons';
 import { TApolloError } from '../../../../types/apollo';
@@ -101,13 +105,13 @@ export default function AddGoalscorersForm({
           </CustomGridContainer>
         );
       })}
-      <Button
+      <CustomButton
         variant="outlined"
         onClick={() => append({ playerId: '', goals: 1 })}
         disabled={remainingGoals <= 0}
       >
         {t('BUTTONS.ADD_GOALSCORER')}
-      </Button>
+      </CustomButton>
     </FormContainer>
   );
 }

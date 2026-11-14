@@ -24,7 +24,9 @@
     }
   },
   "LABELS": {
-    "UNKNOWN": "Desconocido"
+    "UNKNOWN": "Desconocido",
+    "ADMIN": "Admin",
+    "USER": "Usuario"
   },
   "LIST_ITEMS": {
     "EMAIL": "Correo electrónico",

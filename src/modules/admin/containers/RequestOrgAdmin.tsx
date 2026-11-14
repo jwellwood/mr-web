@@ -5,6 +5,7 @@ import { useUpdateAuth } from '../../../hooks';
 import { AppDispatch, showAlert } from '../../../store';
 import { FETCH_ORGS_BY_SEARCH } from '../../home/graphql';
 import RequestAdminModal from '../components/RequestAdminModal';
+import { generateErrorMessage } from '../errors/generateErrorMessage';
 import { REQUEST_ORG_ADMIN_ACCESS } from '../graphql';
 
 export default function RequestOrgAdmin() {
@@ -36,7 +37,7 @@ export default function RequestOrgAdmin() {
       return true;
     } catch (error) {
       console.error(error);
-      dispatch(showAlert({ text: t('ALERTS.REQUEST_ADMIN.ERROR'), type: 'error' }));
+      dispatch(showAlert({ text: generateErrorMessage(error, t), type: 'error' }));
       return false;
     }
   };

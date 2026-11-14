@@ -24,7 +24,9 @@
     }
   },
   "LABELS": {
-    "UNKNOWN": "Unknown"
+    "UNKNOWN": "Unknown",
+    "ADMIN": "Admin",
+    "USER": "User"
   },
   "LIST_ITEMS": {
     "EMAIL": "Email",
@@ -78,7 +80,7 @@
     }
   },
   "HEADERS": {
-    "TEAMS": "Teams",
-    "ORGANIZATIONS": "Organizations"
+    "TEAMS": "My Teams",
+    "ORGANIZATIONS": "My Leagues"
   }
 }
