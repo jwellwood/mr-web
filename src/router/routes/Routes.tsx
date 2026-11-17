@@ -5,7 +5,6 @@ import * as HISTORY from '../../modules/awards/router';
 import * as HOME from '../../modules/home/router';
 import * as MATCH from '../../modules/matches/router';
 import * as ORG from '../../modules/organization/router';
-import * as PLAYER from '../../modules/players/router';
 import * as PROFILE from '../../modules/profile/router';
 import * as TEAM from '../../modules/team/router';
 import * as TEAMSEASONS from '../../modules/teamseasons/router';
@@ -269,14 +268,6 @@ export default function AppRoutes() {
             element={
               <RouteGuard authorization={AUTH_ROLES.PUBLIC}>
                 <TEAM.Team />
-              </RouteGuard>
-            }
-          />
-          <Route
-            path={TEAM.TEAM_PATHS.ADD_PLAYER}
-            element={
-              <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-                <PLAYER.AddPlayer />
               </RouteGuard>
             }
           />

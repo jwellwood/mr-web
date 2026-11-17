@@ -18,7 +18,7 @@ export default function PlayerView({ data, loading, error }: Props) {
   const dataToDisplay = [
     {
       label: '',
-      value: <PositionText>{data?.player.position || '-'}</PositionText>,
+      value: <PositionText position={data?.player.position || ''} />,
     },
     { label: '', value: `#${data?.player.squadNumber || '-'}` },
     { label: '', value: `${age} ${t('YEARS')}` },

@@ -1,11 +1,13 @@
 import { useQuery } from '@apollo/client/react';
-import { useCustomParams } from '../../../hooks';
+import { useAuth, useCustomParams } from '../../../hooks';
 import { useSeasons } from '../../../hooks/useSeasons';
+import AddPlayer from '../../players/containers/AddPlayer';
 import SquadView from '../components/squad-overview/SquadView';
 import { FETCH_SQUAD_LIST_BY_SEASON } from '../graphql';
 
 export default function Squad() {
   const { teamId } = useCustomParams();
+  const { isTeamAuth } = useAuth(teamId);
   const { seasonId, loading, seasonReady } = useSeasons();
 
   const {
@@ -18,5 +20,10 @@ export default function Squad() {
     fetchPolicy: 'cache-and-network',
   });
 
-  return <SquadView data={data} loading={loading || statsLoading} error={error} />;
+  return (
+    <>
+      {isTeamAuth && <AddPlayer />}
+      <SquadView data={data} loading={loading || statsLoading} error={error} />
+    </>
+  );
 }

@@ -3,6 +3,7 @@ export * from './useCustomParams';
 export * from './useUpdateAuth';
 export * from './useDateOfBirth';
 export * from './useNationality';
+export * from './usePositionOptions';
 export * from './useSeasons';
 export * from './useUpload';
 export * from './useStatsFilters';

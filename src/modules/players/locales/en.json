@@ -6,6 +6,7 @@
     "EDIT_PLAYER_PHOTO": "Edit Player Photo"
   },
   "LINKS": {
+    "ADD_PLAYER": "Add Player",
     "EDIT_PLAYER": "Edit Player",
     "EDIT_PLAYER_PHOTO": "Edit Player Photo"
   },
@@ -139,5 +140,11 @@
     "STATS": "No stats",
     "MATCHES_PLAYED": "No matches played yet"
   },
-  "YEARS": "years"
+  "YEARS": "years",
+  "POSITION": {
+    "GK": "GK",
+    "DF": "DF",
+    "MF": "MF",
+    "FW": "FW"
+  }
 }

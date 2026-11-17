@@ -4,6 +4,7 @@ import { PageContainer } from '../../../components';
 import { CustomTabs, ITab } from '../../../components/tabs';
 import { TAB_TYPES } from '../../../constants';
 import { useAuth, useCustomParams } from '../../../hooks';
+import EditPlayer from '../containers/EditPlayer';
 import { getPlayerAdminLinks } from '../helpers/getPlayerAdminLinks';
 
 const Player = lazy(() => import('../containers/Player'));
@@ -17,7 +18,7 @@ const PlayerGameStreaks = lazy(() => import('../containers/PlayerGameStreaks'));
 
 export default function PlayerTabs() {
   const { t } = useTranslation('players');
-  const { teamId } = useCustomParams();
+  const { teamId, playerId } = useCustomParams();
   const { isTeamAuth } = useAuth(teamId);
 
   const tabs: ITab[] = [
@@ -58,6 +59,7 @@ export default function PlayerTabs() {
     >
       <>
         <Player />
+        {isTeamAuth && playerId && <EditPlayer playerId={playerId} />}
         <CustomTabs type={TAB_TYPES.PLAYER} tabs={tabs} level="primary" />
       </>
     </PageContainer>

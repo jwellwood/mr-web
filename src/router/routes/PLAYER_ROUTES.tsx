@@ -15,14 +15,6 @@ export const PLAYER_ROUTES = () => (
         }
       />
       <Route
-        path={PLAYER.PLAYER_PATHS.EDIT}
-        element={
-          <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>
-            <PLAYER.EditPlayer />
-          </RouteGuard>
-        }
-      />
-      <Route
         path={PLAYER.PLAYER_PATHS.EDIT_PHOTO}
         element={
           <RouteGuard authorization={AUTH_ROLES.TEAM_ADMIN}>

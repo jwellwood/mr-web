@@ -10,7 +10,7 @@ import {
   ControlledSwitchInput,
   type ISelectOptions,
 } from '../../../../components';
-import { positionOptions } from '../../../../constants';
+import { usePositionOptions } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
 import { type PlayerFormData, PlayerSchema, requiredFields } from './schema';
@@ -33,12 +33,8 @@ export default function PlayerForm({
   error,
 }: Props) {
   const { t } = useTranslation('players');
-  const {
-    handleSubmit,
-    control,
-    formState: { isValid, isDirty },
-    reset,
-  } = useForm<PlayerFormData>({
+  const positionOptions = usePositionOptions();
+  const { handleSubmit, control, reset } = useForm<PlayerFormData>({
     defaultValues: defaultValues as PlayerFormData,
     resolver: zodResolver(PlayerSchema),
     mode: 'onChange',
@@ -50,7 +46,6 @@ export default function PlayerForm({
     <FormContainer
       onSubmit={handleSubmit(onSubmit)}
       onReset={() => reset(defaultValues)}
-      submitBtn={{ disabled: !isValid || !isDirty }}
       loading={loading}
       error={error}
     >

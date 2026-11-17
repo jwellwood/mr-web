@@ -51,7 +51,7 @@ export default function HallOfFamePlayer({ player, loading }: Props) {
               {loading ? (
                 <CustomSkeleton width="30px" height="30px" />
               ) : (
-                <PositionText size="sm">{position}</PositionText>
+                <PositionText size="sm" position={position} />
               )}
             </SectionContainer>
             <SectionContainer>

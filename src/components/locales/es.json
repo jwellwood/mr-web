@@ -49,6 +49,16 @@
     "AUTH": "Verificando autenticación",
     "AUTH_ERROR": "No se pudo verificar tu sesión"
   },
+  "POSITION": {
+    "GK": "PT",
+    "GOALKEEPER": "Portero",
+    "DF": "DF",
+    "DEFENDER": "Defensa",
+    "MF": "MC",
+    "MIDFIELDER": "Centrocampista",
+    "FW": "DL",
+    "FORWARD": "Delantero"
+  },
   "MATCH_TABLES": {
     "WIN_PERCENTAGE": "G %",
     "DRAW_PERCENTAGE": "E %",

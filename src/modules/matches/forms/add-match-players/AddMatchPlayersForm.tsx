@@ -50,7 +50,7 @@ export default function AddMatchPlayersForm({
       const selectedPlayer = players.find(p => p._id === playerId);
 
       list.push({
-        avatar: <PositionText>{selectedPlayer?.position || ''}</PositionText>,
+        avatar: <PositionText position={selectedPlayer?.position || ''} />,
         label: (
           <CustomTypography bold color="data">
             {selectedPlayer?.name || ''}

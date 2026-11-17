@@ -7,7 +7,7 @@ import {
   ControlledSwitchInput,
 } from '../../../../components';
 import type { ISelectOptions } from '../../../../components';
-import { positionOptions } from '../../../../constants';
+import { usePositionOptions } from '../../../../hooks';
 import { TApolloError } from '../../../../types/apollo';
 import { getNumberOptions } from '../../../../utils';
 import AddMatchPlayerStatsSchema, {
@@ -34,6 +34,7 @@ export default function AddMatchPlayerStatsForm({
   error,
 }: Props) {
   const { t } = useTranslation('matches');
+  const positionOptions = usePositionOptions();
   const {
     handleSubmit,
     control,

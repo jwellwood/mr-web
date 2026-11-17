@@ -32,7 +32,7 @@ export default function DeletePlayer() {
             type: 'success',
           })
         );
-        navigate(-2);
+        navigate(-1);
       });
     } catch (error) {
       console.error("Couldn't delete player: ", error);

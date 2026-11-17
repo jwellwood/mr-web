@@ -24,7 +24,7 @@ export default function ControlledTextInput<T extends object>({
   helperText,
   disabled = false,
 }: Props<T>) {
-  const { field, fieldState } = useController({
+  const { field, fieldState, formState } = useController({
     name,
     control,
   });
@@ -41,7 +41,7 @@ export default function ControlledTextInput<T extends object>({
       multiline={multiline}
       onChange={onChange}
       onBlur={onBlur}
-      errors={isTouched && error ? [error] : []}
+      errors={(isTouched || formState.isSubmitted) && error ? [error] : []}
       placeholder={placeholder}
       isDirty={isDirty}
       isValid={!invalid}

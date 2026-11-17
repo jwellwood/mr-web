@@ -79,7 +79,7 @@ export default function CustomTableCell({
     return renderWithSkeleton(cellValue as React.ReactNode);
   }
   if (cellType === 'position' || cellKey === 'position') {
-    return renderWithSkeleton(<PositionText>{cellValue as string}</PositionText>);
+    return renderWithSkeleton(<PositionText position={cellValue as string} />);
   }
 
   if (cellType === 'difference') {

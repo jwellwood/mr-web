@@ -6,6 +6,7 @@
     "EDIT_PLAYER_PHOTO": "Editar Foto del Jugador"
   },
   "LINKS": {
+    "ADD_PLAYER": "Agregar Jugador",
     "EDIT_PLAYER": "Editar Jugador",
     "EDIT_PLAYER_PHOTO": "Editar Foto del Jugador"
   },
@@ -140,5 +141,11 @@
     "MATCHES_PLAYED": "Aún no se han jugado partidos"
   },
   "YEARS": "años",
-  "MOST": "Más"
+  "MOST": "Más",
+  "POSITION": {
+    "GK": "PT",
+    "DF": "DF",
+    "MF": "MC",
+    "FW": "DL"
+  }
 }

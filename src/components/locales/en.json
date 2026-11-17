@@ -49,6 +49,16 @@
     "AUTH": "Checking authentication",
     "AUTH_ERROR": "Unable to verify your session"
   },
+  "POSITION": {
+    "GK": "GK",
+    "GOALKEEPER": "Goalkeeper",
+    "DF": "DF",
+    "DEFENDER": "Defender",
+    "MF": "MF",
+    "MIDFIELDER": "Midfielder",
+    "FW": "FW",
+    "FORWARD": "Forward"
+  },
   "MATCH_TABLES": {
     "WIN_PERCENTAGE": "Win %",
     "DRAW_PERCENTAGE": "Draw %",
