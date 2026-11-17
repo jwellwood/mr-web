@@ -3,6 +3,12 @@
 All notable changes to this project will be documented here.
 
 
+## [0.51.0](https://github.com/jwellwood/mr-web/compare/v0.50.0...v0.51.0) (2026-11-17)
+
+### Features
+
+* change player add and edit forms to modals ([1c635b4](https://github.com/jwellwood/mr-web/commit/1c635b4046e2a32ab34227e25f78204899302b4e))
+
 ## [0.50.0](https://github.com/jwellwood/mr-web/compare/v0.49.1...v0.50.0) (2026-11-14)
 
 ### Features
